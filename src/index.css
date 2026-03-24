@@ -1,0 +1,114 @@
+:root {
+  --bg-dark: #060E0A;
+  --bg-light: #F5F7FA;
+  --accent: #C5EBAA;
+  --text-white: #FFFFFF;
+  --text-gray: #A0A0A0;
+  --text-dark: #060E0A;
+  
+  --font-main: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --section-padding: 120px 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: var(--transition-smooth);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 6% ;
+}
+
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 34px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: var(--transition-smooth);
+  font-family: var(--font-main);
+}
+
+.pill-button.primary {
+  background-color: var(--accent);
+  color: var(--text-dark);
+}
+
+.pill-button.primary:hover {
+  transform: scale(1.05);
+  background-color: #fff;
+}
+
+.pill-button.outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-white);
+}
+
+.pill-button.outline:hover {
+  background-color: rgba(255, 255, 255, 1);
+  color: var(--text-dark);
+  border-color: #fff;
+}
+
+.pill-button.lg {
+  padding: 20px 44px;
+  font-size: 18px;
+}
+
+.pill-button.xl {
+  padding: 30px 60px;
+  font-size: 24px;
+}
+
+.pill-button.dark {
+  border: 1px solid rgba(6, 14, 10, 0.2);
+  color: var(--text-dark);
+}
+
+.pill-button.dark:hover {
+  background-color: var(--text-dark);
+  color: #fff;
+}
