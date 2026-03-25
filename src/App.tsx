@@ -413,8 +413,6 @@ function App() {
                 <a 
                   href="/sacca_dafia-cv.pdf" 
                   download="SACCA_Dafia_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="pill-button outline"
                 >
                   Télécharger CV (PDF)
