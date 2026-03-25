@@ -410,12 +410,15 @@ function App() {
               </p>
               <div className="cv-header-actions no-print">
                 <a href="mailto:dafiashalom@gmail.com" className="pill-button primary">Me contacter</a>
-                <button 
-                  onClick={() => window.print()} 
+                <a 
+                  href="/sacca_dafia-cv.pdf" 
+                  download="SACCA_Dafia_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="pill-button outline"
                 >
                   Télécharger CV (PDF)
-                </button>
+                </a>
               </div>
             </div>
           </header>
