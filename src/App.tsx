@@ -20,6 +20,7 @@ import './App.css';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeProject, setActiveProject] = useState(0);
   const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'cv'>('home');
 
   useEffect(() => {
@@ -52,41 +53,35 @@ function App() {
   };
 
   const projects = [
-    { 
-      title: 'Vortex', 
-      type: 'Mobile App — Fuel Purchase',
+    {
+      title: 'Vortex',
+      role: 'Product Designer',
+      category: 'Mobile App',
       image: '/imgs/vortex.webp',
-      description: "Application mobile d'achat de carburant et de gestion de portefeuille.",
-      impact: 'Simplifier un acte transactionnel répété, souvent effectué en mobilité et sous contrainte de temps.',
-      context: "Le contexte d'usage impose des parcours courts et des retours immédiats. Chaque étape superflue crée de l'abandon.",
-      contribution: 'Architecture des flows utilisateurs, hiérarchisation des actions clés, réduction des étapes critiques.',
-      cta: 'Voir le projet',
+      description: "Application mobile d'achat de carburant et de gestion de portefeuille. Parcours transactionnels optimis\u00e9s pour la mobilit\u00e9 avec onboarding fluide et gestion de wallet int\u00e9gr\u00e9e.",
+      techs: ['Figma', 'UX Research', 'Prototyping', 'Design System'],
       link: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel',
-      color: '#FFD700'
+      color: '#FFD700',
     },
-    { 
-      title: 'Sport Advisor', 
-      type: 'AI Sports Analysis Landing Page',
+    {
+      title: 'Sport Advisor',
+      role: 'Product Designer',
+      category: 'AI & Analytics',
       image: '/imgs/advisor.webp',
-      description: "Landing page pour une plateforme d'analyse sportive basée sur l'IA.",
-      impact: "Rendre des données complexes (probabilités, statistiques) lisibles au premier coup d'œil.",
-      context: "Le produit s'adresse à des parieurs et analysts qui ont besoin d'une lecture rapide et fiable de l'information.",
-      contribution: "Structuration de la hiérarchie d'information, storytelling visuel, conception de l'interface de consultation.",
-      cta: 'Voir le projet',
+      description: "Landing page pour une plateforme d'analyse sportive bas\u00e9e sur l'IA. Hi\u00e9rarchie d'information dense rendue lisible au premier coup d'\u0153il avec un storytelling visuel fort.",
+      techs: ['Figma', 'UX Strategy', 'Visual Design', 'Motion'],
       link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
-      color: '#00FA9A'
+      color: '#00FA9A',
     },
-    { 
-      title: "Art du Bénin", 
-      type: 'Mobile APK — Cultural Heritage',
+    {
+      title: 'Art du B\u00e9nin',
+      role: 'Product Designer',
+      category: 'Cultural Heritage',
       image: '/imgs/case study.webp',
-      description: "Application Android de médiation culturelle autour du patrimoine artistique béninois.",
-      impact: "Rendre un contenu culturel dense accessible et engageant pour un public non spécialiste.",
-      context: "Conçue pour une exposition, l'app devait guider les visiteurs dans la découverte des œuvres sans remplacer l'expérience physique.",
-      contribution: "Conception des parcours de découverte, design de l'interface de médiation, structure des contenus.",
-      cta: 'Voir le projet',
+      description: "Application Android de m\u00e9diation culturelle autour du patrimoine artistique b\u00e9ninois. Con\u00e7ue pour guider les visiteurs dans la d\u00e9couverte des \u0153uvres sans remplacer l'exp\u00e9rience physique.",
+      techs: ['Figma', 'User Research', 'Android UX', 'Content Design'],
       link: 'https://www.behance.net/gallery/229060431/Case-Study-Mobile-Apk-for-the-Art-of-Benin',
-      color: '#A020F0'
+      color: '#A020F0',
     },
   ];
 
@@ -892,54 +887,98 @@ function App() {
             <span className="section-number">04 / Projets</span>
             <div className="title-with-badge">
               <h2>Projets sélectionnés</h2>
-              <div className="rotating-badge">
-                <svg viewBox="0 0 100 100">
-                  <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-                  <text>
-                    <textPath xlinkHref="#circlePath">
-                      DAFIA SACCA • PRODUCT DESIGNER • 
-                    </textPath>
-                  </text>
-                </svg>
+            </div>
+            <p className="section-subtitle" style={{ marginTop: '16px', fontSize: '18px' }}>
+              Une sélection de mes projets récents en design & développement.
+            </p>
+          </div>
+
+          {/* Editorial Split Layout */}
+          <div className="proj-showcase">
+            {/* Left Panel */}
+            <div className="proj-left">
+              <div className="proj-counter">
+                {String(activeProject + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
               </div>
+              <div className="proj-tags">
+                <span className="proj-tag-pill">{projects[activeProject].role.toUpperCase()}</span>
+                <span className="proj-tag-dot">—</span>
+                <span className="proj-tag-accent" style={{ color: projects[activeProject].color }}>
+                  {projects[activeProject].category.toUpperCase()}
+                </span>
+              </div>
+              <h2 className="proj-title">{projects[activeProject].title}</h2>
+              <p className="proj-desc">{projects[activeProject].description}</p>
+              <div className="proj-techs">
+                {projects[activeProject].techs.map((t, i) => (
+                  <span key={i} className="proj-tech-pill">{t}</span>
+                ))}
+              </div>
+              <a
+                href={projects[activeProject].link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="proj-cta-circle"
+              >
+                <ArrowRight size={22} style={{ transform: 'rotate(-45deg)' }} />
+              </a>
+            </div>
+
+            {/* Right Panel — Preview */}
+            <div className="proj-right">
+              <div className="proj-browser-frame">
+                <div className="proj-browser-bar">
+                  <span className="proj-browser-dot" />
+                  <span className="proj-browser-dot" />
+                  <span className="proj-browser-dot" />
+                </div>
+                <div className="proj-browser-screen">
+                  <img
+                    key={activeProject}
+                    src={projects[activeProject].image}
+                    alt={projects[activeProject].title}
+                    className="proj-screen-img"
+                  />
+                  <div className="proj-screen-index">
+                    {String(activeProject + 1).padStart(2, '0')}
+                  </div>
+                </div>
+              </div>
+
+              {/* Side counter */}
+              <div className="proj-side-counter">
+                {String(activeProject + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <div className="proj-nav">
+              <button
+                className="proj-nav-btn"
+                onClick={() => setActiveProject(p => (p - 1 + projects.length) % projects.length)}
+                aria-label="Projet précédent"
+              >
+                <ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} />
+              </button>
+              <button
+                className="proj-nav-btn"
+                onClick={() => setActiveProject(p => (p + 1) % projects.length)}
+                aria-label="Projet suivant"
+              >
+                <ArrowRight size={20} />
+              </button>
             </div>
           </div>
 
-          <div className="project-list-minimalist">
-            {projects.map((project, index) => (
-              <div 
-                key={index} 
-                className="project-row-minimal"
-                onClick={() => {
-                  if (project.link) {
-                    window.open(project.link, '_blank');
-                  } else if (project.cta === 'Voir le case study') {
-                    setCurrentView('asset-iq');
-                  }
-                }}
-              >
-                <div className="p-row-left">
-                  <span className="p-index">0{index + 1}</span>
-                  <div className="p-title-group">
-                    <h3 className="p-title">{project.title}</h3>
-                    <span className="p-type" style={{ color: project.color }}>{project.type}</span>
-                  </div>
-                </div>
-                <div className="p-row-right">
-                  <p className="p-desc-short">{project.description}</p>
-                  <span className="p-cta-arrow">
-                    <ArrowRight size={24} />
-                  </span>
-                </div>
-                
-                {/* Floating Preview Image */}
-                <div className="p-floating-preview">
-                  <img src={project.image} alt={project.title} />
-                  <div className="p-preview-overlay">
-                    <span className="p-impact-tag">{project.impact}</span>
-                  </div>
-                </div>
-              </div>
+          {/* Dot Indicators */}
+          <div className="proj-dots">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                className={`proj-dot ${i === activeProject ? 'active' : ''}`}
+                onClick={() => setActiveProject(i)}
+                aria-label={`Voir projet ${i + 1}`}
+              />
             ))}
           </div>
         </div>
