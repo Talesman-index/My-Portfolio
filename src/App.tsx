@@ -17,81 +17,13 @@ import {
 } from 'lucide-react';
 import './App.css';
 
-function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeProject, setActiveProject] = useState(0);
-  const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'cv'>('home');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Scroll to top on view change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentView]);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isMenuOpen]);
-
-  // Calendly Integration
-  const openCalendly = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if ((window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-    }
-  };
-
-  const projects = [
-    {
-      title: 'Vortex',
-      role: 'Product Designer',
-      category: 'Mobile App',
-      image: '/imgs/vortex.webp',
-      description: "Application mobile d'achat de carburant et de gestion de portefeuille. Parcours transactionnels optimis\u00e9s pour la mobilit\u00e9 avec onboarding fluide et gestion de wallet int\u00e9gr\u00e9e.",
-      techs: ['Figma', 'UX Research', 'Prototyping', 'Design System'],
-      link: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel',
-      color: '#FFD700',
-    },
-    {
-      title: 'Sport Advisor',
-      role: 'Product Designer',
-      category: 'AI & Analytics',
-      image: '/imgs/advisor.webp',
-      description: "Landing page pour une plateforme d'analyse sportive bas\u00e9e sur l'IA. Hi\u00e9rarchie d'information dense rendue lisible au premier coup d'\u0153il avec un storytelling visuel fort.",
-      techs: ['Figma', 'UX Strategy', 'Visual Design', 'Motion'],
-      link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
-      color: '#00FA9A',
-    },
-    {
-      title: 'Art du B\u00e9nin',
-      role: 'Product Designer',
-      category: 'Cultural Heritage',
-      image: '/imgs/case study.webp',
-      description: "Application Android de m\u00e9diation culturelle autour du patrimoine artistique b\u00e9ninois. Con\u00e7ue pour guider les visiteurs dans la d\u00e9couverte des \u0153uvres sans remplacer l'exp\u00e9rience physique.",
-      techs: ['Figma', 'User Research', 'Android UX', 'Content Design'],
-      link: 'https://www.behance.net/gallery/229060431/Case-Study-Mobile-Apk-for-the-Art-of-Benin',
-      color: '#A020F0',
-    },
-  ];
-
-  const CaseStudy = ({ id }: { id: 'asset-iq' | 'ehadj' }) => {
+const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj', mousePos: { x: number, y: number }, setCurrentView: any }) => {
     const data = id === 'asset-iq' ? {
-      title: "AssetIQ",
+      title: "Asset IQ",
       subtitle: "Gouvernance et pilotage opérationnel des actifs physiques",
       label: "Product Design & Strategy",
-      color: "var(--accent-yellow)",
-      image: "/imgs/assetiQ_cs.jpg",
+      color: "#10B981", // Emerald
+      bgImage: "/imgs/assetiQ_cs.jpg",
       context: "Dans l'industrie, la dispersion géographique des équipements génère des pertes massives et une absence totale de traçabilité. Le problème n'est pas le manque de données, mais leur fragmentation.",
       challenge: "Transformer un inventaire passif en un outil d'aide à la décision. Le défi UX : permettre à des opérateurs terrain de capter de l'information fiable sans friction.",
       solution: "AssetIQ centralise le cycle de vie complet de l'actif. Chaque équipement possède une identité digitale unique (QR Code), fusionnant l'inventaire physique et le carnet de maintenance actif.",
@@ -118,35 +50,35 @@ function App() {
       title: "eHadj",
       subtitle: "Orchestration digitale du pèlerinage au Bénin",
       label: "Product Design & Strategy",
-      color: "var(--accent-blue)",
-      image: "/imgs/ehadj_cs.jpg",
-      context: "L'eHadj est piloté par l'Agence pour la Gestion de la Logistique des Officiels (AGLO), institution publique dont la mission est d'optimiser les ressources de l'État liées aux déplacements officiels. Via son Unité de Gestion du Hadj, l'AGLO supervise l'organisation complète du pèlerinage à la Mecque.",
-      problem: "Avant eHadj, le système reposait sur des processus manuels et fragmentés. Les agences utilisaient des outils disparates, entraînant des erreurs fatales : double-inscriptions de pèlerins dans plusieurs agences, fautes d'orthographe sur les passeports bloquant les visas, et une impossibilité pour le gouvernement de suivre la consommation réelle des quotas nationaux.",
+      color: "#3B82F6", // Blue
+      bgImage: "/imgs/ehadj_cs.jpg",
+      context: "L'eHadj est piloté par l'Agence pour la Gestion de la Logistique des Officiels (AGLO). Avant eHadj, le système reposait sur des processus manuels et fragmentés, entraînant des erreurs de quotas et de visas.",
+      problem: "Le système reposait sur des processus manuels. Les erreurs de saisie sur 2300 dossiers créaient des doublons et des blocages de visas critiques au niveau national.",
       stakeholders: [
         { name: "Pèlerins", constraint: "Souvent âgés, faible aisance numérique, besoin de certitude absolue." },
         { name: "Agences", constraint: "Gérer les inscriptions sous pression de quotas limités." },
-        { name: "AGLO (Hadj Unit)", constraint: "Supervision globale, paramétrage des sociétés, suivi des quotas et contrôle de la saison." }
+        { name: "AGLO (Hadj Unit)", constraint: "Supervision globale, paramétrage des sociétés, suivi des quotas." }
       ],
-      challenge: "Éliminer les erreurs de saisie sur 2300 dossiers dès le point d'entrée et gérer en temps réel la répartition dynamique des 2300 places entre les agences agréées.",
+      challenge: "Éliminer les erreurs de saisie sur 2300 dossiers dès le point d'entrée et gérer en temps réel la répartition dynamique des places entre les agences.",
       decisions: [
         { 
-          title: "L'ID-First Onboarding", 
+          title: "ID-First Onboarding", 
           desc: "Imposer la saisie du numéro NPI (Identifiant National) comme première étape.",
-          why: "Auto-remplit les données certifiées, élimine les doublons et vérifie l'âge instantanément."
+          why: "Auto-remplit les données certifiées et élimine les doublons instantanément."
         },
         { 
-          title: "Dashboard 'Health-Check'", 
+          title: "Health-Check View", 
           desc: "Une vue pilotée par les statuts plutôt que par des listes de noms.",
-          why: "Permet aux décideurs d'identifier et de résoudre les goulots d'étranglement opérationnels."
+          why: "Permet d'identifier les goulots d'étranglement opérationnels en un coup d'œil."
         }
       ],
       solution: "Un workflow linéaire où chaque étape (Santé, Paiement, Visa) fait office de 'gatekeeper' strict pour assurer l'intégrité du processus.",
       uxSolutions: "Logic de validation séquentielle : impossible de générer un reçu de paiement sans le feu vert du médecin certificateur.",
       keyFlow: {
         title: "Validation Médicale",
-        desc: "Interface médecin contextuelle : affiche uniquement les indicateurs d'aptitude sans exposer les données financières complexes."
+        desc: "Interface médecin contextuelle : affiche uniquement les indicateurs d'aptitude sans exposer les données complexes."
       },
-      tradeoffs: "Nous avons sacrifié la liberté de saisie manuelle au profit d'un système de recherche par ID National. Cela garantit la qualité de la donnée mais impose une dépendance totale à la base de données source.",
+      tradeoffs: "Sacrifice de la liberté de saisie manuelle au profit d'un système de recherche par ID National pour garantir la qualité de la donnée.",
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
       solutionImg: "/imgs/ehadj/hadj3.png",
@@ -160,141 +92,146 @@ function App() {
       impact: [
         "Élimination totale des erreurs de double-inscription",
         "Réduction de 90% des dossiers rejetés pour erreur matérielle",
-        "Transparence totale sur la consommation du quota national à J+0",
+        "Transparence totale sur la consommation du quota national",
         "Fluidité majeure dans la coordination entre les 30+ agences"
       ],
-      insight: "L’intégrité de la donnée n’est pas une option, c’est le moteur du système. En imposant un onboarding basé sur l'identité certifiée (NPI), nous avons sécurisé le parcours de 2300 pèlerins contre toute erreur humaine.",
+      insight: "L’intégrité de la donnée n’est pas une option, c’est le moteur du système. L'onboarding basé sur le NPI a été la clé de voûte de la réussite.",
       conclusion: "eHadj a transformé une logistique complexe en un processus industriel fiable, sécurisant le voyage sacré de milliers de Béninois.",
       externalLink: "https://ehadj.aglo.bj/"
     };
 
     return (
-      <div className="case-study-view anim-fade-in">
-        <nav className="cs-nav">
-          <div className="container cs-nav-container">
-            <button onClick={() => setCurrentView('home')} className="back-button">
-              <ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} /> Retour
+      <div className="cs-view-new" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="cs-gradient-overlay" style={{ '--glow-color': data.color } as any}></div>
+        
+        <nav className="cs-nav-new">
+          <div className="container cs-nav-flex">
+            <button onClick={() => setCurrentView('home')} className="cs-back-btn">
+              <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
+              <span>RETOUR</span>
             </button>
-            <div className="cs-nav-title">{data.title}</div>
+            <div className="cs-nav-label">{data.title} — {data.label}</div>
           </div>
         </nav>
 
-        <header className="cs-header" style={{ borderBottomColor: data.color }}>
+        <header className="cs-hero-new">
           <div className="container">
-            <span className="cs-label" style={{ backgroundColor: data.color }}>{data.label}</span>
-            <h1>{data.title}</h1>
-            <p className="cs-subtitle">{data.subtitle}</p>
-            {data.externalLink && (
-              <a href={data.externalLink} target="_blank" rel="noopener noreferrer" className="pill-button primary" style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Voir le produit <ExternalLink size={18} style={{ marginLeft: '10px' }} />
-              </a>
-            )}
-            <div className="cs-hero-image-container">
-              <img src={data.image} alt={data.title} className="cs-hero-image" />
+            <div className="cs-hero-content">
+              <span className="cs-hero-tag">{data.label}</span>
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                {data.title}.
+              </motion.h1>
+              <p className="cs-hero-subtitle">{data.subtitle}</p>
+              {data.externalLink && (
+                <motion.a 
+                  href={data.externalLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="cs-external-cta"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  VOIR LE PRODUIT <ExternalLink size={16} />
+                </motion.a>
+              )}
             </div>
+            
           </div>
         </header>
 
-        <section className="cs-content">
+        <section className="cs-body-new">
           <div className="container">
-            <div className="cs-grid">
-              <div className="cs-main">
-                <div className="cs-section">
-                  <div className="cs-section-head">
-                    <Globe size={20} color={data.color} strokeWidth={2.5} />
-                    <h3>Contexte</h3>
-                  </div>
+            <div className="cs-layout-new">
+              <div className="cs-main-content">
+                <motion.div 
+                  className="cs-section-new"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="cs-section-label">01 / CONTEXTE</label>
+                  <h3>La fragmentation des données opérationnelles.</h3>
                   <p>{data.context}</p>
-                  {data.contextImg && <img src={data.contextImg} alt="Contexte" className="cs-inline-image" />}
-                </div>
+                  {data.contextImg && (
+                    <div className="cs-inline-mockup">
+                      <img src={data.contextImg} alt="Context" />
+                    </div>
+                  )}
+                </motion.div>
 
                 {data.problem && (
-                  <div className="cs-section">
-                    <div className="cs-section-head">
-                      <Search size={20} color={data.color} strokeWidth={2.5} />
-                      <h3>Le Problème Réel</h3>
-                    </div>
+                  <motion.div 
+                    className="cs-section-new"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                  >
+                    <label className="cs-section-label">02 / LE PROBLÈME</label>
+                    <h3>Processus manuels et erreurs critiques.</h3>
                     <p>{data.problem}</p>
-                  </div>
+                  </motion.div>
                 )}
 
-                {data.stakeholders && (
-                  <div className="cs-section">
-                    <div className="cs-section-head">
-                      <ArrowRight size={20} color={data.color} strokeWidth={2.5} />
-                      <h3>Parties Prenantes</h3>
-                    </div>
-                    <div className="cs-stakeholder-list">
-                      {data.stakeholders.map((s: any, i: number) => (
-                        <div key={i} className="cs-stakeholder-card">
-                          <strong>{s.name}</strong>
-                          <p>{s.constraint}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="cs-section" style={{ borderLeft: `4px solid ${data.color}`, paddingLeft: '30px', margin: '40px 0' }}>
-                  <div className="cs-section-head">
-                    <Zap size={20} color={data.color} strokeWidth={2.5} />
-                    <h3>Challenge Opérationnel</h3>
-                  </div>
+                <motion.div 
+                  className="cs-section-new highlighted-section"
+                  style={{ borderLeftColor: data.color }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="cs-section-label">03 / CHALLENGE</label>
+                  <h3>Sécuriser le parcours de 2300 utilisateurs.</h3>
                   <p>{data.challenge}</p>
-                  {data.challengeImg && <img src={data.challengeImg} alt="Challenge" className="cs-inline-image" />}
-                </div>
+                  <div className="cs-inline-mockup">
+                    <img src={data.challengeImg} alt="Challenge" />
+                  </div>
+                </motion.div>
 
                 {data.decisions && (
-                  <div className="cs-section">
-                    <div className="cs-section-head">
-                      <Zap size={20} color={data.color} strokeWidth={2.5} />
-                      <h3>Décisions Produit</h3>
-                    </div>
-                    <div className="cs-decision-grid">
+                  <div className="cs-section-new">
+                    <label className="cs-section-label">04 / DÉCISIONS PRODUIT</label>
+                    <div className="cs-decisions-grid-new">
                       {data.decisions.map((d: any, i: number) => (
-                        <div key={i} className="cs-decision-block">
+                        <div key={i} className="cs-decision-card-new">
                           <h4>{d.title}</h4>
                           <p>{d.desc}</p>
-                          <div className="cs-why-tag" style={{ color: data.color }}>{d.why}</div>
+                          <div className="cs-why-pill" style={{ color: data.color }}>{d.why}</div>
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
 
-                <div className="cs-section">
-                  <div className="cs-section-head">
-                    <CheckCircle size={20} color={data.color} strokeWidth={2.5} />
-                    <h3>Solution UX</h3>
-                  </div>
+                <div className="cs-section-new">
+                  <label className="cs-section-label">05 / SOLUTION UX</label>
+                  <h3>Intégrité par le design et validation stricte.</h3>
                   <p>{data.solution}</p>
-                  {data.uxSolutions && <p className="cs-logic-text">{data.uxSolutions}</p>}
-                  {data.solutionImg && <img src={data.solutionImg} alt="Solution" className="cs-inline-image" />}
+                  {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
+                  <div className="cs-dashboard-frame-new">
+                    <div className="mockup-frame-new">
+                      <div className="mockup-header-new">
+                        <span className="mockup-dot" />
+                        <span className="mockup-dot" />
+                        <span className="mockup-dot" />
+                      </div>
+                      <div className="mockup-screen-new">
+                        <img src={data.dashboardImg} alt="Dashboard" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {data.keyFlow && (
-                  <div className="cs-section cs-flow-block">
-                    <div className="cs-section-head">
-                      <ArrowRight size={20} color={data.color} strokeWidth={2.5} />
-                      <h3>Zoom sur un Flux : {data.keyFlow.title}</h3>
-                    </div>
-                    <p>{data.keyFlow.desc}</p>
-                  </div>
-                )}
-
-                {data.tradeoffs && (
-                  <div className="cs-section cs-tradeoff-block">
-                    <div className="cs-section-head">
-                      <Search size={20} color="#FF9500" strokeWidth={2.5} />
-                      <h3>Arbitrages & Limites</h3>
-                    </div>
-                    <p>{data.tradeoffs}</p>
-                  </div>
-                )}
-
-                <div className="cs-features">
+                <div className="cs-features-grid-new">
                   {data.features.map((f, i) => (
-                    <div key={i} className="cs-feature-card">
+                    <div key={i} className="cs-feature-box-new">
+                      <span className="feature-num-new">0{i+1}</span>
                       <h4>{f.title}</h4>
                       <p>{f.desc}</p>
                     </div>
@@ -302,59 +239,44 @@ function App() {
                 </div>
               </div>
 
-              <div className="cs-sidebar">
-                {data.insight && (
-                  <div className="cs-card insight-card">
-                    <div className="cs-section-head">
-                      <Search size={24} color={data.color} />
-                      <h3>Insight Produit</h3>
-                    </div>
+              <aside className="cs-sidebar-new">
+                <div className="cs-sidebar-sticky">
+                  <div className="cs-sidebar-block">
+                    <label>INSIGHT PRODUIT</label>
                     <p>{data.insight}</p>
                   </div>
-                )}
-
-                {data.impact && (
-                  <div className="cs-card impact-card">
-                    <div className="cs-section-head">
-                      <ArrowRight size={24} color={data.color} />
-                      <h3>Impact</h3>
-                    </div>
-                    <ul>
-                      {data.impact.map((item: string, i: number) => (
+                  
+                  <div className="cs-sidebar-block">
+                    <label>IMPACT CLÉ</label>
+                    <ul className="cs-impact-list">
+                      {data.impact.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
                   </div>
-                )}
-              </div>
-            </div>
 
-            <div className="cs-divider">
-              <div className="cs-dot" style={{ backgroundColor: data.color }}></div>
-              <div className="cs-dot" style={{ backgroundColor: data.color }}></div>
-              <div className="cs-dot" style={{ backgroundColor: data.color }}></div>
-            </div>
-
-            <div className="cs-footer">
-              {data.dashboardImg && (
-                <div className="cs-dashboard-preview">
-                  <img src={data.dashboardImg} alt={`Dashboard ${data.title}`} className="cs-dashboard-img" />
+                  <button onClick={() => setCurrentView('home')} className="cs-final-back-btn">
+                    RETOUR AU PORTFOLIO
+                  </button>
                 </div>
-              )}
-              <div className="cs-conclusion">
-                <p>{data.conclusion}</p>
-              </div>
-              <button onClick={() => setCurrentView('home')} className="pill-button" style={{ backgroundColor: data.color, color: '#000' }}>
-                Retour au portfolio
-              </button>
+              </aside>
             </div>
           </div>
         </section>
+
+        <footer className="cs-footer-new">
+          <div className="container">
+            <div className="cs-footer-content">
+              <h2>{data.conclusion}</h2>
+              <p>© 2026 sacca dafia. all rights reserved.</p>
+            </div>
+          </div>
+        </footer>
       </div>
     );
   };
 
-  const CVView = () => {
+const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
     return (
       <div className="cv-view anim-fade-in">
         <nav className="cv-nav no-print">
@@ -640,34 +562,360 @@ function App() {
       </div>
     );
   };
+function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeProject, setActiveProject] = useState(0);
+  const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'cv'>('home');
+  const [lang, setLang] = useState<'en' | 'fr'>('en');
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+  const [activeSection, setActiveSection] = useState('home');
+  const [domSections, setDomSections] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Select all sections that have an id
+    const sectionElements = Array.from(document.querySelectorAll('section')).filter(s => s.id);
+    const sectionIds = sectionElements.map(s => s.id);
+    setDomSections(sectionIds);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -30% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionElements.forEach(element => {
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [currentView]); // Re-run whenever view resets
+
+  const translations = {
+    en: {
+      nav: { home: 'Home', about: 'About', services: 'Services', experience: 'Experience', focus: 'Focus', projects: 'Projects', process: 'Process', contact: 'Contact' },
+      contact: {
+        label: '08 / Contact',
+        title: <>Ready to create<br /><span className="highlight">together?</span></>,
+        subtitle: '30 minutes to discuss your project, your needs, and see how I can help.',
+        bookCall: 'Book a call',
+        availability: 'Available for new projects',
+        emailText: 'Let\'s turn your idea into reality.',
+        rights: 'All rights reserved.'
+      },
+      hero: {
+        label: '00 / Home',
+        title: <>Your product deserves<br /><span className="highlight">better design decisions.</span></>,
+        subtitle: 'CLEAR. USEFUL. SCALABLE.',
+        viewProjects: 'View my projects',
+        contactMe: 'Contact me',
+      },
+      services: {
+        label: '03 / Services',
+        title: 'My Services',
+        subtitle: 'Comprehensive solutions for your digital projects.',
+        items: [
+          {
+            id: '01',
+            title: 'Product Design',
+            subtitle: 'Interfaces & Experience',
+            desc: 'Creating seamless user journeys and high-fidelity interfaces that prioritize clarity and user engagement.',
+            tags: ['Figma', 'UX Research', 'Prototyping'],
+            color: '#3B82F6'
+          },
+          {
+            id: '02',
+            title: 'UX Audit',
+            subtitle: 'Optimization & Analysis',
+            desc: 'Identifying friction points and usability bottlenecks to improve conversion rates and overall user satisfaction.',
+            tags: ['Heuristic Eval', 'User Testing', 'Analytics'],
+            color: '#A855F7'
+          },
+          {
+            id: '03',
+            title: 'Product Strategy',
+            subtitle: 'Vision & Roadmapping',
+            desc: 'Bridging the gap between business goals and user needs by defining MVPs and scalable product architectures.',
+            tags: ['Roadmap', 'User Personas', 'MVP'],
+            color: '#F97316'
+          },
+          {
+            id: '04',
+            title: 'Design System',
+            subtitle: 'Consistency & Scale',
+            desc: 'Building robust, reusable component libraries that ensure visual consistency and speed up development cycles.',
+            tags: ['React', 'Storybook', 'Documentation'],
+            color: '#10B981'
+          }
+        ]
+      },
+      about: {
+        title: <>What I <br/><span className="highlight">really do.</span></>,
+        bio: 'Product Designer with +3 years of experience. I design B2B SaaS, mobile apps & complex platforms, from UX strategy to final delivery.',
+        approach: 'My approach: combining product vision with technical rigor to ensure interfaces are not just aesthetic, but primarily usable, performant, and truly ready to ship.',
+        label: '02 / About'
+      },
+      experience: {
+        title: 'Experience',
+        label: '04 / EXPERIENCE',
+        items: [
+          {
+            id: '01',
+            role: 'Product Designer',
+            company: 'CACTUCE',
+            date: 'OCTOBER 2025 — PRESENT',
+            desc: 'Working on the structuring and optimization of complex products like eHadj and Asset IQ. Identifying friction points, defining user journeys, and overseeing QA to ensure execution matches the product vision.',
+            skills: ['Interfaces Logic', 'UX Analysis', 'Hi-Fi Design', 'QA Oversight'],
+            color: '#A855F7'
+          },
+          {
+            id: '02',
+            role: 'Product Designer',
+            company: 'TRELLIX',
+            date: 'FEBRUARY 2024 — SEPTEMBER 2025',
+            desc: 'Evolved from a design-focused to a product-focused approach, working on integrations for the Beans loyalty program. Defined features, structured user journeys, and ensured global product consistency.',
+            skills: ['PRD & Specs', 'Beans Journey', 'Dev Coordination', 'QA Validation'],
+            color: '#3B82F6'
+          },
+          {
+            id: '03',
+            role: 'Web Designer',
+            company: 'CREAFIX',
+            date: 'AUGUST 2022 — FEBRUARY 2024',
+            desc: 'Started in digital design with a focus on creating web interfaces and visual execution. Developed visual hierarchy, readability, and graphic coherence for various client websites.',
+            skills: ['Visual Design', 'Info Hierarchy', 'Web Layouts', 'Project Delivery'],
+            color: '#F97316'
+          }
+        ]
+      }
+    },
+    fr: {
+      nav: { home: 'Accueil', about: 'À propos', services: 'Services', experience: 'Expérience', focus: 'Focus', projects: 'Projets', process: 'Process', contact: 'Contact' },
+      contact: {
+        label: '08 / Contact',
+        title: <>Prêt à créer<br /><span className="highlight">ensemble ?</span></>,
+        subtitle: '30 minutes pour discuter de votre projet, de vos besoins et voir comment je peux vous aider.',
+        bookCall: 'Réserver un appel',
+        availability: 'Disponible pour de nouveaux projets',
+        emailText: 'Transformons votre idée en réalité.',
+        rights: 'Tous droits réservés.'
+      },
+      hero: {
+        label: '00 / Accueil',
+        title: <>Votre produit mérite<br /><span className="highlight">de meilleures décisions design.</span></>,
+        subtitle: 'CLAIR. UTILE. SCALABLE.',
+        viewProjects: 'Voir mes projets',
+        contactMe: 'Me contacter',
+      },
+      services: {
+        label: '03 / Services',
+        title: 'Mes Services',
+        subtitle: 'Des solutions complètes pour vos projets digitaux.',
+        items: [
+          {
+            id: '01',
+            title: 'Product Design',
+            subtitle: 'Interfaces & Expérience',
+            desc: 'Création de parcours fluides et d\'interfaces haute fidélité privilégiant la clarté et l\'engagement.',
+            tags: ['Figma', 'UX Research', 'Prototypage'],
+            color: '#3B82F6'
+          },
+          {
+            id: '02',
+            title: 'Audit UX',
+            subtitle: 'Optimisation & Analyse',
+            desc: 'Identification des points de friction pour améliorer les taux de conversion et la satisfaction globale.',
+            tags: ['Éval Heuristique', 'Tests Utilisateurs', 'Analytics'],
+            color: '#A855F7'
+          },
+          {
+            id: '03',
+            title: 'Stratégie Produit',
+            subtitle: 'Vision & Roadmap',
+            desc: 'Réconciliation des objectifs business et besoins utilisateurs via la définition de MVPs évolutifs.',
+            tags: ['Roadmap', 'Personas', 'MVP'],
+            color: '#F97316'
+          },
+          {
+            id: '04',
+            title: 'Design System',
+            subtitle: 'Cohérence & Échelle',
+            desc: 'Construction de bibliothèques de composants robustes garantissant une cohérence visuelle totale.',
+            tags: ['React', 'Storybook', 'Documentation'],
+            color: '#10B981'
+          }
+        ]
+      },
+      about: {
+        title: <>Ce que je fais <br/><span className="highlight">vraiment.</span></>,
+        bio: 'Product Designer avec +3 ans d\'expérience. Je conçois des SaaS B2B, applications mobiles et plateformes complexes, de la stratégie UX à la livraison finale.',
+        approach: 'Mon approche : allier vision produit et rigueur technique pour garantir des interfaces non seulement esthétiques, mais surtout utilisables, performantes et réellement prêtes à être livrées.',
+        label: '02 / À propos'
+      },
+      experience: {
+        title: 'Expérience',
+        label: '04 / EXPÉRIENCE',
+        items: [
+          {
+            id: '01',
+            role: 'Product Designer',
+            company: 'CACTUCE',
+            date: 'OCTOBRE 2025 — PRÉSENT',
+            desc: 'Intervention sur la structuration et l\'optimisation de produits complexes comme eHadj et Asset IQ. Identification des points de friction et supervision de la phase de QA.',
+            skills: ['Logique d\'interfaces', 'Analyse UX', 'Design Haute-fidélité', 'Supervision QA'],
+            color: '#A855F7'
+          },
+          {
+            id: '02',
+            role: 'Product Designer',
+            company: 'TRELLIX',
+            date: 'FÉVRIER 2024 — SEPTEMBRE 2025',
+            desc: 'Évolution vers une approche produit structurée sur le programme Beans. Définition des fonctionnalités et coordination avec l\'équipe dev.',
+            skills: ['PRD & Specs', 'Parcours Beans', 'Coordination Dev', 'Validation QA'],
+            color: '#3B82F6'
+          },
+          {
+            id: '03',
+            role: 'Web Designer',
+            company: 'CREAFIX',
+            date: 'AOÛT 2022 — FÉVRIER 2024',
+            desc: 'Création d\'interfaces web et exécution visuelle. Travail sur la hiérarchie visuelle, la lisibilité et la cohérence graphique.',
+            skills: ['Visual Design', 'Hiérarchie Info', 'Web Layouts', 'Livraison Projet'],
+            color: '#F97316'
+          }
+        ]
+      }
+    }
+  };
+
+  const t = translations[lang];
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      setMousePos({ x, y });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top on view change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentView]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMenuOpen]);
+
+  // Calendly Integration
+  const openCalendly = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+    }
+  };
+
+  const projects = [
+    {
+      title: 'Vortex',
+      role: 'Product Designer',
+      category: 'Mobile App',
+      image: '/imgs/vortex.webp',
+      description: "Application mobile d'achat de carburant et de gestion de portefeuille. Parcours transactionnels optimis\u00e9s pour la mobilit\u00e9 avec onboarding fluide et gestion de wallet int\u00e9gr\u00e9e.",
+      techs: ['Figma', 'UX Research', 'Prototyping', 'Design System'],
+      link: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel',
+      color: '#FFD700',
+    },
+    {
+      title: 'Sport Advisor',
+      role: 'Product Designer',
+      category: 'AI & Analytics',
+      image: '/imgs/advisor.webp',
+      description: "Landing page pour une plateforme d'analyse sportive bas\u00e9e sur l'IA. Hi\u00e9rarchie d'information dense rendue lisible au premier coup d'\u0153il avec un storytelling visuel fort.",
+      techs: ['Figma', 'UX Strategy', 'Visual Design', 'Motion'],
+      link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
+      color: '#00FA9A',
+    },
+    {
+      title: 'Art du B\u00e9nin',
+      role: 'Product Designer',
+      category: 'Cultural Heritage',
+      image: '/imgs/case study.webp',
+      description: "Application Android de m\u00e9diation culturelle autour du patrimoine artistique b\u00e9ninois. Con\u00e7ue pour guider les visiteurs dans la d\u00e9couverte des \u0153uvres sans remplacer l'exp\u00e9rience physique.",
+      techs: ['Figma', 'User Research', 'Android UX', 'Content Design'],
+      link: 'https://www.behance.net/gallery/229060431/Case-Study-Mobile-Apk-for-the-Art-of-Benin',
+      color: '#A020F0',
+    },
+  ];
+
 
   if (currentView === 'cv') {
-    return <CVView />;
+    return <CVView setCurrentView={setCurrentView} />;
   }
 
   if (currentView !== 'home') {
-    return <CaseStudy id={currentView as 'asset-iq' | 'ehadj'} />;
+    return <CaseStudy id={currentView as 'asset-iq' | 'ehadj'} mousePos={mousePos} setCurrentView={setCurrentView} />;
   }
 
   return (
     <div className="app anim-fade-in">
       {/* Navigation */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="container nav-container">
-          <div className="logo" onClick={() => { setCurrentView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ cursor: 'pointer' }}>
-            <img src="/imgs/Logo.png" alt="SACCA Dafia Logo" className="logo-img" />
+        <div className="container nav-container-new">
+          <div className="logo-new" onClick={() => { setCurrentView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <img src="/imgs/Logo.png" alt="Logo" className="logo-img-new" />
           </div>
           
-          <div className="nav-right">
-            <div className="desktop-links hide-mobile">
-              <a href="#about">À PROPOS</a>
-              <a href="#services">SERVICES</a>
-              <a href="#experience">EXPÉRIENCE</a>
-              <a href="#projects">PROJETS</a>
-              <a href="#saas">SAAS</a>
-              <a href="#process">PROCESS</a>
+          <div className="nav-center-links hide-mobile">
+            <a href="#about" className={activeSection === 'about' ? 'active' : ''}>{t.nav.about}</a>
+            <a href="#services" className={activeSection === 'services' ? 'active' : ''}>{t.nav.services}</a>
+            <a href="#experience" className={activeSection === 'experience' ? 'active' : ''}>{t.nav.experience}</a>
+            <a href="#saas" className={activeSection === 'saas' ? 'active' : ''}>{t.nav.focus}</a>
+            <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>{t.nav.projects}</a>
+            <a href="#process" className={activeSection === 'process' ? 'active' : ''}>{t.nav.process}</a>
+            <a href="#contact" onClick={openCalendly}>{t.nav.contact}</a>
+          </div>
+
+          <div className="nav-right-new">
+            <div className="lang-switch hide-mobile">
+              <button 
+                className={`lang-btn ${lang === 'en' ? 'active' : ''}`} 
+                onClick={() => setLang('en')}
+              >
+                <img src="https://flagcdn.com/w20/gb.png" alt="EN" /> EN
+              </button>
+              <span className="lang-sep">|</span>
+              <button 
+                className={`lang-btn ${lang === 'fr' ? 'active' : ''}`} 
+                onClick={() => setLang('fr')}
+              >
+                <img src="https://flagcdn.com/w20/fr.png" alt="FR" /> FR
+              </button>
             </div>
-            <button onClick={openCalendly} className="pill-button outline hide-mobile" style={{ marginLeft: '15px' }}>ME CONTACTER</button>
             <button className="menu-icon hide-desktop" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <div className="menu-bar"></div>
               <div className="menu-bar"></div>
@@ -676,350 +924,385 @@ function App() {
         </div>
       </nav>
 
+      {/* Dynamic Side Indicator */}
+      <div className="side-indicator no-print">
+        {domSections.map((id) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className={`dot ${activeSection === id ? 'active' : ''}`}
+            title={id.charAt(0).toUpperCase() + id.slice(1)}
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          />
+        ))}
+      </div>
+
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <button className="close-menu" onClick={() => setIsMenuOpen(false)}><X size={32} /></button>
+        <div className="mobile-menu-header">
+          <div className="mobile-lang-switch">
+            <button className={`mobile-link-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => { setLang('en'); setIsMenuOpen(false); }}>EN</button>
+            <button className={`mobile-link-btn ${lang === 'fr' ? 'active' : ''}`} onClick={() => { setLang('fr'); setIsMenuOpen(false); }}>FR</button>
+          </div>
+          <button className="close-menu" onClick={() => setIsMenuOpen(false)}><X size={32} /></button>
+        </div>
         <div className="mobile-links">
-          <a href="#about" onClick={() => setIsMenuOpen(false)}>À propos</a>
-          <a href="#services" onClick={() => setIsMenuOpen(false)}>Services</a>
-          <a href="#experience" onClick={() => setIsMenuOpen(false)}>Expérience</a>
-          <a href="#projects" onClick={() => setIsMenuOpen(false)}>Projets</a>
-          <a href="#saas" onClick={() => setIsMenuOpen(false)}>SaaS</a>
-          <a href="#process" onClick={() => setIsMenuOpen(false)}>Process</a>
-          <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
+          <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.about}</a>
+          <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.services}</a>
+          <a href="#experience" className={activeSection === 'experience' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.experience}</a>
+          <a href="#saas" className={activeSection === 'saas' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.focus}</a>
+          <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.projects}</a>
+          <a href="#process" className={activeSection === 'process' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.process}</a>
           <button 
             className="mobile-menu-cta" 
             onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }} 
-            style={{ marginTop: '20px', width: '100%', cursor: 'pointer' }}
           >
-            Me contacter
+            {t.nav.contact}
           </button>
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="hero">
-        <div className="container hero-container">
-          <div className="hero-grid">
-            <div className="hero-main">
-              <h1>
-                <span className="hero-line">Je conçois des </span>
-                <span className="hero-line">interfaces <span className="highlight">qui résolvent </span></span>
-                <span className="hero-line highlight">de vrais problèmes</span>
-              </h1>
-              <p className="hero-subtitle">
-                Product Designer spécialisé en UX, structuration produit et logique produit. Je structure les parcours, clarifie les interfaces et m&apos;assure que le design est aligné avec les objectifs business.
-              </p>
-              <div className="hero-actions">
-                <a href="#projects" className="pill-button primary">VOIR MES PROJETS</a>
-                <button onClick={() => setCurrentView('cv')} className="pill-button outline">VOIR MON CV</button>
-              </div>
-            </div>
-            <div className="hero-side">
-              <p>
-                J’aide à transformer des idées ou des produits existants en expériences simples, cohérentes et efficaces, alignées avec les objectifs business.
-              </p>
-            </div>
+      <section id="home" className="hero-new left-aligned" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="hero-gradient-overlay"></div>
+        <div className="container hero-container-new">
+          <div className="hero-content-new">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {t.hero.title}
+            </motion.h1>
+            <motion.p 
+              className="hero-subtitle-new"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {t.hero.subtitle}
+            </motion.p>
+            <motion.div 
+              className="hero-actions-new"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <a href="#projects" className="btn-primary-new">{t.hero.viewProjects}</a>
+              <button onClick={openCalendly} className="btn-secondary-new">{t.hero.contactMe}</button>
+            </motion.div>
           </div>
         </div>
-        <div className="hero-bg-glow"></div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="section light about">
-        <div className="container">
-          <div className="content-grid-2">
-            <div className="content-left">
-              <span className="section-number">01 / À propos</span>
-              <h2>Ce que je fais vraiment</h2>
+      <section id="about" className="about-section-new" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="about-gradient-overlay"></div>
+        <div className="container about-container-new">
+          <div className="about-header-new">
+            <span className="about-label-new">{t.about.label}</span>
+            <motion.h2 
+              className="about-title-large"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              {t.about.title}
+            </motion.h2>
+          </div>
+          
+          <div className="about-content-refined">
+            <div className="about-text-narrative">
+              <motion.p 
+                className="about-bio-massive"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                {t.about.bio}
+              </motion.p>
+              <motion.p 
+                className="about-approach-soft"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                {t.about.approach}
+              </motion.p>
             </div>
-            <div className="content-text">
-              <p>
-                Product Designer avec +3 ans d'expérience. Je conçois des SaaS B2B, applications mobiles et plateformes complexes, de la stratégie UX à la livraison finale. 
-              </p>
-              <p>
-                Mon approche : allier vision produit et rigueur technique pour garantir des interfaces non seulement esthétiques, mais surtout utilisables, performantes et réellement prêtes à être livrées.
-              </p>
+            <div className="about-stats-mini hide-mobile">
+              <div className="stat-item">
+                <span className="stat-num">+3</span>
+                <span className="stat-label">Years of<br/>Experience</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-num">50+ Projects</span>
+                <span className="stat-label">Delivered with<br/>Excellence</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="section light services-section no-border-top">
+      <section id="services" className="services-section-new">
         <div className="container">
-          <div className="section-header">
-            <span className="section-number">02 / Services</span>
-            <h2>Mes Services</h2>
-            <p className="section-subtitle">Une approche holistique du Product Design.</p>
+          <div className="services-header-new">
+            <span className="services-label-new">{t.services.label}</span>
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              {t.services.title}
+            </motion.h2>
+            <motion.p 
+              className="services-subtitle-new"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              {t.services.subtitle}
+            </motion.p>
           </div>
           
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon"><Zap size={32} /></div>
-              <h3>Product Design (UX/UI)</h3>
-              <p>Je conçois des interfaces qui guident l&apos;utilisateur sans effort : parcours clairs, hiérarchie lisible, interactions cohérentes avec la logique produit.</p>
-            </div>
-            
-            <div className="service-card">
-              <div className="service-icon"><Search size={32} /></div>
-              <h3>Audit UX</h3>
-              <p>J&apos;identifie les frictions dans un produit existant : points d&apos;abandon, incohérences de flow, interfaces qui créent de la confusion plutôt que de la clarté.</p>
-            </div>
-            
-            <div className="service-card">
-              <div className="service-icon"><Globe size={32} /></div>
-              <h3>Stratégie Produit</h3>
-              <p>Je traduis des besoins business en décisions de design : structuration du MVP, priorisation des fonctionnalités, alignement entre ce qu&apos;on construit et ce dont les utilisateurs ont besoin.</p>
-            </div>
-            
-            <div className="service-card">
-              <div className="service-icon"><CheckCircle size={32} /></div>
-              <h3>Design System</h3>
-              <p>Je crée des systèmes de composants cohérents qui permettent aux équipes de scaler le produit sans recréer les mêmes éléments à chaque sprint.</p>
-            </div>
+          <div className="services-grid-new">
+            {t.services.items.map((service : any, index : number) => (
+              <motion.div 
+                key={service.id}
+                className="service-card-new"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="card-header-new">
+                  <span className="card-index-new">{service.id}</span>
+                  <div className="card-dot-new" style={{ backgroundColor: service.color }}></div>
+                </div>
+                <div className="card-body-new">
+                  <h3>{service.title}</h3>
+                  <p className="card-subtitle-new">{service.subtitle}</p>
+                  <p className="card-desc-new">{service.desc}</p>
+                </div>
+                <div className="card-footer-new">
+                  <div className="card-tags-new">
+                    {service.tags.map((tag: string) => (
+                      <span key={tag} className="tag-pill-new">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                {index === 0 && <div className="card-glow-new" style={{ '--glow-color': service.color } as any}></div>}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="section dark experience-section">
-        <div className="container">
-          <div className="section-head-flex">
-            <span className="section-index">03/</span>
-            <span className="section-label">/ EXPÉRIENCE</span>
-          </div>
-          <div className="experience-header">
-            <h2>Expérience</h2>
+      <section id="experience" className="experience-section-new" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="experience-gradient-overlay"></div>
+        <div className="container experience-container-new">
+          <div className="experience-header-new">
+            <span className="experience-label-new">{t.experience.label}</span>
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              {t.experience.title}
+            </motion.h2>
           </div>
           
-          <div className="experience-list">
-            <div className="experience-item">
-              <div className="exp-time">
-                <span className="exp-date">OCTOBRE 2025 — PRÉSENT</span>
-                <div className="exp-dot purple"></div>
-              </div>
-              <div className="exp-content">
-                <div className="exp-header-info">
-                  <h3>Product Designer</h3>
-                  <span className="exp-company">CACTUCE</span>
-                </div>
-                <div className="exp-main">
-                  <div className="exp-description">
-                    <p>Product Designer chez Cactuce, j’interviens sur la structuration et l’optimisation de produits complexes comme <strong>eHadj</strong> et <strong>Asset IQ</strong>. J’identifie les points de friction, définis la logique des parcours et supervise la phase de QA pour garantir une exécution fidèle à la vision produit.</p>
-                  </div>
-                  <div className="exp-footer">
-                    <span className="exp-tag-label">POINTS CLÉS</span>
-                    <div className="exp-tags">
-                      <span className="exp-skill">Logique d'interfaces</span>
-                      <span className="exp-skill">Analyse UX</span>
-                      <span className="exp-skill">Design Haute-fidélité</span>
-                      <span className="exp-skill">Supervision QA</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="experience-item">
-              <div className="exp-time">
-                <span className="exp-date">FÉVRIER 2024 — SEPTEMBRE 2025</span>
-                <div className="exp-dot blue"></div>
-              </div>
-              <div className="exp-content">
-                <div className="exp-header-info">
-                  <h3>Product Designer</h3>
-                  <span className="exp-company">TRELLIX</span>
-                </div>
-                <div className="exp-main">
-                  <div className="exp-description">
-                    <p>Chez Trellix, j’ai évolué d’une approche design vers une approche produit plus structurée, en travaillant sur les intégrations du programme de fidélité <strong>Beans</strong>.</p>
-                    <p>Mon rôle ne se limitait pas à l’interface : j’intervenais sur la définition des fonctionnalités, la structuration des parcours utilisateurs et la cohérence globale du produit.</p>
-                  </div>
-                  <div className="exp-footer">
-                    <span className="exp-tag-label">POINTS CLÉS</span>
-                    <div className="exp-tags">
-                      <span className="exp-skill">PRD & Specs</span>
-                      <span className="exp-skill">Parcours Beans</span>
-                      <span className="exp-skill">Coordination Dev</span>
-                      <span className="exp-skill">Validation QA</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="experience-item">
-              <div className="exp-time">
-                <span className="exp-date">AOÛT 2022 — FÉVRIER 2024</span>
-                <div className="exp-dot yellow"></div>
-              </div>
-              <div className="exp-content">
-                <div className="exp-header-info">
-                  <h3>Web Designer</h3>
-                  <span className="exp-company">CREAFIX</span>
-                </div>
-                <div className="exp-main">
-                  <div className="exp-description">
-                    <p>Mon parcours a débuté chez Creafix dans la conception digitale, avec un focus sur la création d’interfaces web et l’exécution visuelle.</p>
-                    <p>J’ai travaillé sur la conception de sites web et d’interfaces en développant une attention particulière à la hiérarchie visuelle, à la lisibilité et à la cohérence graphique.</p>
-                  </div>
-                  <div className="exp-footer">
-                    <span className="exp-tag-label">POINTS CLÉS</span>
-                    <div className="exp-tags">
-                      <span className="exp-skill">Visual Design</span>
-                      <span className="exp-skill">Info Hierarchy</span>
-                      <span className="exp-skill">Web Layouts</span>
-                      <span className="exp-skill">Project Delivery</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="section dark projects-section">
-        <div className="container">
-          <div className="section-header project-header">
-            <span className="section-number">04 / Projets</span>
-            <div className="title-with-badge">
-              <h2>Projets sélectionnés</h2>
-            </div>
-            <p className="section-subtitle" style={{ marginTop: '16px', fontSize: '18px' }}>
-              Une sélection de mes projets récents en design & développement.
-            </p>
-          </div>
-
-          {/* Editorial Split Layout */}
-          <div className="proj-showcase">
-            {/* Left Panel */}
-            <div className="proj-left">
-              <div className="proj-counter">
-                {String(activeProject + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
-              </div>
-              <div className="proj-tags">
-                <span className="proj-tag-pill">{projects[activeProject].role.toUpperCase()}</span>
-                <span className="proj-tag-dot">—</span>
-                <span className="proj-tag-accent" style={{ color: projects[activeProject].color }}>
-                  {projects[activeProject].category.toUpperCase()}
-                </span>
-              </div>
-              <h2 className="proj-title">{projects[activeProject].title}</h2>
-              <p className="proj-desc">{projects[activeProject].description}</p>
-              <div className="proj-techs">
-                {projects[activeProject].techs.map((t, i) => (
-                  <span key={i} className="proj-tech-pill">{t}</span>
-                ))}
-              </div>
-              <a
-                href={projects[activeProject].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="proj-cta-circle"
+          <div className="experience-list-new">
+            {t.experience.items.map((exp: any, index: number) => (
+              <motion.div 
+                key={index} 
+                className="experience-item-new"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                <ArrowRight size={22} style={{ transform: 'rotate(-45deg)' }} />
-              </a>
-            </div>
-
-            {/* Right Panel — Preview */}
-            <div className="proj-right">
-              <div className="proj-browser-frame">
-                <div className="proj-browser-bar">
-                  <span className="proj-browser-dot" />
-                  <span className="proj-browser-dot" />
-                  <span className="proj-browser-dot" />
-                </div>
-                <div className="proj-browser-screen">
-                  <img
-                    key={activeProject}
-                    src={projects[activeProject].image}
-                    alt={projects[activeProject].title}
-                    className="proj-screen-img"
-                  />
-                  <div className="proj-screen-index">
-                    {String(activeProject + 1).padStart(2, '0')}
+                <div className="exp-left-new">
+                  <span className="exp-date-new">{exp.date}</span>
+                  <div className="exp-connector-new">
+                    <div className="exp-dot-new" style={{ backgroundColor: exp.color }}></div>
+                    <div className="exp-line-new"></div>
                   </div>
                 </div>
-              </div>
-
-              {/* Side counter */}
-              <div className="proj-side-counter">
-                {String(activeProject + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
-              </div>
-            </div>
-
-            {/* Navigation Arrows */}
-            <div className="proj-nav">
-              <button
-                className="proj-nav-btn"
-                onClick={() => setActiveProject(p => (p - 1 + projects.length) % projects.length)}
-                aria-label="Projet précédent"
-              >
-                <ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} />
-              </button>
-              <button
-                className="proj-nav-btn"
-                onClick={() => setActiveProject(p => (p + 1) % projects.length)}
-                aria-label="Projet suivant"
-              >
-                <ArrowRight size={20} />
-              </button>
-            </div>
-          </div>
-
-          {/* Dot Indicators */}
-          <div className="proj-dots">
-            {projects.map((_, i) => (
-              <button
-                key={i}
-                className={`proj-dot ${i === activeProject ? 'active' : ''}`}
-                onClick={() => setActiveProject(i)}
-                aria-label={`Voir projet ${i + 1}`}
-              />
+                <div className="exp-right-new">
+                  <div className="exp-info-new">
+                    <h3>{exp.role}</h3>
+                    <span className="exp-company-new">{exp.company}</span>
+                  </div>
+                  <p className="exp-desc-new">{exp.desc}</p>
+                  <div className="exp-skills-new">
+                    {exp.skills.map((skill: string) => (
+                      <span key={skill} className="skill-tag-new">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Produits & SaaS Section */}
-      <section id="saas" className="section light saas-section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-number">05 / Focus</span>
-            <h2>Produits & SaaS</h2>
+      <section id="saas" className="saas-section-new" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="saas-gradient-overlay"></div>
+        <div className="container saas-container-new">
+          <div className="saas-header-new">
+            <span className="saas-label-new">05 / Focus</span>
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              Produits & <span className="highlight">SaaS.</span>
+            </motion.h2>
           </div>
           
-          <div className="saas-grid">
-            <div className="saas-card ehadj" onClick={() => setCurrentView('ehadj')} style={{ cursor: 'pointer' }}>
-              <div className="saas-content">
-                <span className="saas-label">Process Orchestration</span>
-                <h3>eHadj</h3>
-                <p>Digitalisation de l&apos;organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés sur une seule plateforme.</p>
-                <motion.div 
-                  className="saas-btn featured-case-study"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  VOIR L'ÉTUDE DE CAS <ExternalLink size={16} />
-                </motion.div>
+          <div className="saas-grid-new">
+            {[
+              {
+                id: 'ehadj',
+                label: 'Process Orchestration',
+                title: 'eHadj',
+                desc: 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
+                view: 'ehadj',
+                color: '#10B981'
+              },
+              {
+                id: 'asset-iq',
+                label: 'Product Design & Strategy',
+                title: 'Asset IQ',
+                desc: 'Système intelligent de suivi et de gouvernance opérationnelle des ressources physiques.',
+                view: 'asset-iq',
+                color: '#34D399'
+              }
+            ].map((product, index) => (
+              <motion.div 
+                key={product.id}
+                className="saas-card-new"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() => setCurrentView(product.view as any)}
+              >
+                <div className="saas-card-content">
+                  <span className="saas-card-label">{product.label}</span>
+                  <h3>{product.title}</h3>
+                  <p>{product.desc}</p>
+                  <div className="saas-card-footer">
+                    <span className="saas-cta-text">VOIR L'ÉTUDE DE CAS</span>
+                    <div className="saas-cta-circle">
+                      <ArrowRight size={20} style={{ transform: 'rotate(-45deg)' }} />
+                    </div>
+                  </div>
+                </div>
+                <div className="saas-card-glow" style={{ backgroundColor: product.color }}></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="projects-section-new" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="projects-gradient-overlay"></div>
+        <div className="container">
+          <div className="projects-header-new">
+            <span className="projects-label-new">06 / Projets</span>
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              Selected <span className="highlight">Works.</span>
+            </motion.h2>
+          </div>
+
+          <div className="proj-showcase-new">
+            <div className="proj-left-new">
+              <div className="proj-meta-new">
+                <span className="proj-index-new">{String(activeProject + 1).padStart(2, '0')}</span>
+                <span className="proj-role-new">{projects[activeProject].role.toUpperCase()}</span>
               </div>
+              <h3 className="proj-title-new">{projects[activeProject].title}</h3>
+              <p className="proj-desc-new">{projects[activeProject].description}</p>
+              <div className="proj-techs-new">
+                {projects[activeProject].techs.map((t, i) => (
+                  <span key={i} className="tech-pill-new">{t}</span>
+                ))}
+              </div>
+              <motion.a
+                href={projects[activeProject].link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="proj-cta-new"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ArrowRight size={24} style={{ transform: 'rotate(-45deg)' }} />
+              </motion.a>
             </div>
 
-            <div className="saas-card advisor" onClick={() => setCurrentView('asset-iq')} style={{ cursor: 'pointer' }}>
-              <div className="saas-content">
-                <span className="saas-label">Product Design & Strategy</span>
-                <h3>Asset IQ</h3>
-                <p>Système intelligent de suivi et de gouvernance opérationnelle des ressources physiques.</p>
-                <motion.div 
-                  className="saas-btn featured-case-study"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+            <div className="proj-right-new">
+              <div className="mockup-frame-new">
+                <div className="mockup-header-new">
+                  <span className="mockup-dot" />
+                  <span className="mockup-dot" />
+                  <span className="mockup-dot" />
+                </div>
+                <div className="mockup-screen-new">
+                  <motion.img
+                    key={activeProject}
+                    src={projects[activeProject].image}
+                    alt={projects[activeProject].title}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                </div>
+              </div>
+              
+              <div className="proj-nav-new">
+                <button
+                  className="proj-nav-btn-new"
+                  onClick={() => setActiveProject(p => (p - 1 + projects.length) % projects.length)}
                 >
-                  VOIR L'ÉTUDE DE CAS <ExternalLink size={16} />
-                </motion.div>
+                  <ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} />
+                </button>
+                <button
+                  className="proj-nav-btn-new"
+                  onClick={() => setActiveProject(p => (p + 1) % projects.length)}
+                >
+                  <ArrowRight size={20} />
+                </button>
               </div>
             </div>
           </div>
@@ -1027,87 +1310,101 @@ function App() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="process section light">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-number">06 / Process</span>
-            <h2>Ma Méthodologie</h2>
+      <section id="process" className="methodology-section-new" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="methodology-gradient-overlay"></div>
+        <div className="container methodology-container-new">
+          <div className="methodology-header-new">
+            <span className="methodology-label-new">07 / Process</span>
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              Ma <span className="highlight">Méthodologie.</span>
+            </motion.h2>
           </div>
-          <div className="process-list">
+
+          <div className="methodology-list-new">
             {[
               { num: '01', title: 'Discovery', desc: 'Je commence par comprendre le produit, ses utilisateurs et les vraies contraintes business. Avant de toucher à Figma.' },
               { num: '02', title: 'UX Audit', desc: "Sur un produit existant, j'identifie les frictions, les incohérences de flow et les interfaces qui créent de la confusion." },
               { num: '03', title: 'Product Thinking', desc: "Je structure les parcours et définis la logique produit : qu'est-ce qui doit arriver en premier, pourquoi, et pour qui." },
               { num: '04', title: 'Design & Delivery', desc: "Je conçois les interfaces haute-fidélité, rédige les specs si nécessaire et suis l'implémentation jusqu'au QA final." }
             ].map((step, i) => (
-              <div key={i} className="process-row">
-                <div className="process-num-large">{step.num}</div>
-                <div className="process-content">
+              <motion.div 
+                key={i} 
+                className="methodology-item-new"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="methodology-num-new">{step.num}</div>
+                <div className="methodology-content-new">
                   <h3>{step.title}</h3>
                   <p>{step.desc}</p>
                 </div>
-                <div className="process-arrow">
-                  <ArrowRight size={32} strokeWidth={1} />
+                <div className="methodology-arrow-new">
+                  <ArrowRight size={32} />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Book a Call Section */}
-      <section className="book-call-section section dark">
-        <div className="container">
-          <div className="book-call-header">
-            <h2>Prêt à créer <span>ensemble ?</span></h2>
+            {/* Contact Section */}
+      <section id="contact" className="contact-section-new" style={{ 
+        '--mouse-x': `${mousePos.x}%`, 
+        '--mouse-y': `${mousePos.y}%` 
+      } as any}>
+        <div className="contact-gradient-overlay"></div>
+        <div className="container contact-container-new">
+          <div className="contact-header-new">
+            <span className="contact-label-new">{t.contact.label}</span>
+            <motion.h2 
+              className="contact-title-large"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              {t.contact.title}
+            </motion.h2>
           </div>
           
-          <div className="book-card-premium">
-            <div className="book-card-left">
-              <div className="book-icon-wrapper">
-                <Calendar size={24} />
+          <div className="contact-grid-new">
+            <div className="book-card-premium" onClick={openCalendly}>
+              <div className="book-card-left">
+                <div className="book-icon-wrapper">
+                  <Calendar size={24} />
+                </div>
+                <h3>{t.contact.bookCall}</h3>
+                <p>{t.contact.subtitle}</p>
               </div>
-              <span className="book-label">RÉSERVER UN APPEL</span>
-              <h3>Réserver un appel</h3>
-              <p>30 minutes pour discuter de votre projet, de vos besoins et voir comment je peux vous aider.</p>
-            </div>
-            
-            <div className="book-card-right">
-              <button 
-                className="book-cta-circle" 
-                onClick={openCalendly}
-                title="Ouvrir Calendly"
-              >
-                <ArrowRight size={40} />
-              </button>
-            </div>
-            
-            <div className="book-card-footer">
-              <div className="availability">
-                <span className="dot"></span>
-                Disponible pour de nouveaux projets
+              <div className="book-card-right">
+                <div className="book-cta-circle">
+                  <ArrowRight size={40} style={{ transform: 'rotate(-45deg)' }} />
+                </div>
               </div>
-              <span className="calendly-label">CALENDLY</span>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Final Footer Section */}
-      <footer className="final-footer section dark">
-        <div className="container">
-          <div className="footer-top-row">
-            <div className="footer-huge-title">
-              <h2>Un projet ? <br /><span>Parlons-en</span> ensemble.</h2>
-            </div>
-            <div className="footer-contact-info">
-              <p>Transformons votre idée en réalité.</p>
-              <a href="mailto:dafiashalom@gmail.com" className="footer-email-link">
-                dafiashalom@gmail.com <ArrowRight size={20} />
-              </a>
+            <div className="contact-info-new">
+              <div className="availability-row">
+                <span className="dot"></span>
+                <span className="availability-text">{t.contact.availability}</span>
+              </div>
+              <div className="email-wrapper-new">
+                <p>{t.contact.emailText}</p>
+                <a href="mailto:dafiashalom@gmail.com" className="email-link-huge">
+                  dafiashalom@gmail.com 
+                </a>
+              </div>
             </div>
           </div>
-          
+
           <div className="footer-bottom-bar">
             <div className="footer-bottom-left">
               <span className="footer-brand-logo">SACCA DAFIA.</span>
@@ -1120,22 +1417,29 @@ function App() {
                     <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.011.022 3.038-2.998.05-3.016z"/>
                   </svg>
                 </a>
-
               </div>
             </div>
             
             <div className="footer-bottom-right">
               <nav className="footer-nav-simple">
-                <a href="#projects">Projets</a>
-                <a href="#experience">Expérience</a>
-                <a href="#about">À propos</a>
-                <a href="#contact">Contact</a>
+                <a href="#projects" onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                }}>{t.nav.projects}</a>
+                <a href="#experience" onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+                }}>{t.nav.experience}</a>
+                <a href="#about" onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+                }}>{t.nav.about}</a>
               </nav>
-              <span className="copyright">© 2026 Sacca Dafia. Tous droits réservés.</span>
+              <span className="copyright">© 2026 Sacca Dafia. {t.contact.rights}</span>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
