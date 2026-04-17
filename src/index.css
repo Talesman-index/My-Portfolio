@@ -58,7 +58,19 @@ button {
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 6% ;
+  padding: 0 6%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px;
+  }
 }
 
 .pill-button {

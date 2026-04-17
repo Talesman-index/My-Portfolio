@@ -278,286 +278,175 @@ const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj',
 
 const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
     return (
-      <div className="cv-view anim-fade-in">
-        <nav className="cv-nav no-print">
-          <div className="container cv-nav-container">
-            <button onClick={() => setCurrentView('home')} className="back-button">
-              <ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} /> Retour
+      <div className="cv-view-new anim-fade-in">
+        <nav className="cv-nav-new no-print">
+          <div className="container cv-nav-flex">
+            <button onClick={() => setCurrentView('home')} className="cv-back-btn">
+              <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
+              <span>RETOUR</span>
             </button>
             <div className="cv-nav-actions">
               <motion.a 
                 href="/sacca_dafia-cv.pdf" 
                 download 
-                className="nav-download-link"
+                className="cv-download-pill"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Download size={14} /> PDF
+                <Download size={14} /> <span>PDF</span>
               </motion.a>
             </div>
           </div>
         </nav>
 
-        <div className="container cv-container">
-          {/* Print Layout (Hidden on Web) */}
-          <div className="sw-header no-web">
-            <div className="sw-header-left">
-              <h1 className="sw-name">
-                <span className="sw-firstname">SACCA</span>
-                <span className="sw-lastname">DAFIA</span>
-              </h1>
-              <div className="sw-tagline">PRODUCT DESIGNER / WEB DESIGNER</div>
+        <div className="container cv-main-container">
+          {/* Print Layout - Hidden on Web */}
+          <div className="cv-print-only no-web">
+            <div className="print-header">
+              <h1>SACCA DAFIA</h1>
+              <p>PRODUCT DESIGNER / WEB DESIGNER</p>
             </div>
-            <div className="sw-header-right">
-              <div className="sw-photo-circle">
-                <img src="/imgs/cv-profile.jpg" alt="Sacca Dafia" />
-              </div>
+            <div className="print-contact">
+              <span>Cotonou, Bénin</span> • <span>+229 01 60 35 90 22</span> • <span>dafiashalom@gmail.com</span>
             </div>
+            {/* Simple content for print */}
           </div>
 
-          <div className="sw-layout no-web">
-            <aside className="sw-sidebar">
-              <div className="sw-section no-web">
-                <h2 className="sw-label">CONTACT</h2>
-                <ul className="sw-contact-list">
-                  <li><MapPin size={16} /> Cotonou, Bénin</li>
-                  <li><Phone size={16} /> +229 0160359022</li>
-                  <li><Mail size={16} /> dafiashalom@gmail.com</li>
-                  <li><Globe size={16} /> portfolio.dafia.me</li>
-                </ul>
+          {/* Web Editorial Narrative */}
+          <div className="cv-narrative-flow no-print">
+            <header className="cv-hero-editorial">
+              <motion.div 
+                className="cv-hero-meta"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                PRODUCT DESIGNER / 2026
+              </motion.div>
+              <motion.h1 
+                className="cv-massive-name"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                SACCA DAFIA.
+              </motion.h1>
+              <motion.div 
+                className="cv-hero-bio"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <p>Ambition créative. Rigueur produit. Je transforme les problématiques complexes en solutions digitales fluides, alliant vision stratégique et excellence visuelle.</p>
+              </motion.div>
+            </header>
+
+            <section className="cv-experience-narrative">
+              <div className="cv-section-label-new">01 / EXPÉRIENCES</div>
+              
+              <div className="cv-experience-grid">
+                {[
+                  {
+                    company: "CACTUCE",
+                    role: "Product Designer",
+                    date: "OCT. 25 — PRÉSENT",
+                    desc: "Orchestration des parcours utilisateurs pour des produits SaaS complexes tels que eHadj et Asset IQ.",
+                    points: [
+                      "Optimisation UX/UI et identification des frictions.",
+                      "Définition de la logique produit et parcours critiques.",
+                      "Supervision QA et accompagnement technique."
+                    ],
+                    active: true
+                  },
+                  {
+                    company: "TRELLIX",
+                    role: "Product Designer Lead",
+                    date: "FÉV. 24 — SEP. 25",
+                    desc: "Pilotage du programme de fidélité Beans. Coordination entre design, technique et produit.",
+                    points: [
+                      "Rédaction de PRDs et spécifications fonctionnelles.",
+                      "Conception de systèmes de fidélisation innovants.",
+                      "Leadership de projet et coordination d’équipe."
+                    ]
+                  },
+                  {
+                    company: "CREAFIX",
+                    role: "Web Designer",
+                    date: "AOÛT 22 — FÉV. 24",
+                    desc: "Focus sur l’identité visuelle et la hiérarchie de l’information pour des interfaces orientées conversion."
+                  }
+                ].map((exp, i) => (
+                  <motion.div 
+                    key={exp.company}
+                    className={`cv-exp-block ${exp.active ? 'active' : ''}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <div className="exp-header">
+                      <h3>{exp.company}</h3>
+                      <span className="exp-date">{exp.date}</span>
+                    </div>
+                    <div className="exp-content">
+                      <div className="exp-role">{exp.role}</div>
+                      <p>{exp.desc}</p>
+                      {exp.points && (
+                        <ul className="exp-points-new">
+                          {exp.points.map((p, pi) => <li key={pi}>{p}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              <div className="sw-section">
-                <h2 className="sw-label">SKILLS</h2>
-                <ul className="sw-bullet-list-small">
-                  <li>Design Research</li>
-                  <li>Interaction Design</li>
-                  <li>Wireframing</li>
-                </ul>
-              </div>
-              <div className="sw-section">
-                <h2 className="sw-label">EDUCATION</h2>
-                <div className="sw-edu-item">
-                  <span className="sw-date">2025</span>
-                  <div className="sw-edu-info">
-                    <strong>UX Design Professional</strong>
-                    <span>Google & Coursera</span>
+            </section>
+
+            <div className="cv-footer-blocks">
+              <section className="cv-block-mini">
+                <div className="cv-section-label-new">02 / ÉDUCATION</div>
+                <div className="cv-edu-list">
+                  <div className="edu-item-new">
+                    <strong>UX Design Certificate</strong>
+                    <span>Google (2025)</span>
+                  </div>
+                  <div className="edu-item-new">
+                    <strong>Web Designer Certifié</strong>
+                    <span>EIGB (2023)</span>
                   </div>
                 </div>
-              </div>
-            </aside>
-            <main className="sw-main">
-              <div className="sw-section">
-                <h2 className="sw-label">PROFILE</h2>
-                <p className="sw-profile-text">Product Designer alliant ambition créative et rigueur produit.</p>
-              </div>
-            </main>
-          </div>
+              </section>
 
-
-
-          {/* Editorial Web Narrative */}
-          <div className="cv-editorial-flow no-print">
-            
-            {/* HER0 - Massive Name & Intro */}
-            <motion.header 
-              className="cv-editorial-hero"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <div className="hero-text-wrap">
-                <h1 className="hero-massive-name">SACCA DAFIA</h1>
-                <motion.div 
-                  className="hero-tag-accent"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  PRODUCT DESIGNER / 2026
-                </motion.div>
-              </div>
-              <motion.div 
-                className="hero-floating-photo"
-                whileHover={{ scale: 1.05, rotate: 0 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <img src="/imgs/cv-profile.jpg" alt="Sacca Dafia" />
-              </motion.div>
-            </motion.header>
-
-            <motion.section 
-              className="cv-editorial-bio"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.5 }}
-            >
-              <p className="bio-lead">
-                Product Designer alliant ambition créative et rigueur produit. Je transforme les problématiques complexes en solutions digitales fluides, en alliant vision stratégique et excellence visuelle.
-              </p>
-              <div className="bio-meta">Basé à Cotonou — Disponible partout</div>
-            </motion.section>
-
-            {/* EXPERIENCE NARRATIVE */}
-            <div className="cv-experiences-narrative">
-              
-              {/* Experiences with Scroll focus */}
-              {[
-                {
-                  id: 'cactuce',
-                  year: '25',
-                  company: 'Cactuce',
-                  dates: 'OCT. 25 — PRÉSENT',
-                  chip: 'LATEST POSITION',
-                  role: 'Product Designer',
-                  desc: 'Orchestration des parcours utilisateurs pour des produits SaaS complexes tels que eHadj et Asset IQ.',
-                  points: [
-                    'Identification des points de frictions et optimisation UX/UI.',
-                    'Définition de la logique produit et des parcours critiques.',
-                    'Accompagnement technique et supervision QA.'
-                  ]
-                },
-                {
-                  id: 'trellix',
-                  year: '24',
-                  company: 'Trellix',
-                  dates: 'FÉV. 24 — SEP. 25',
-                  role: 'Product Designer Lead',
-                  desc: 'Pilotage du programme de fidélité Beans. Coordination entre design, technique et produit.',
-                  points: [
-                    'Rédaction de PRDs et spécifications fonctionnelles.',
-                    'Conception de systèmes de fidélisation innovants.',
-                    'Leadership de projet et coordination d’équipe.'
-                  ]
-                },
-                {
-                  id: 'creafix',
-                  year: '22',
-                  company: 'Creafix',
-                  dates: 'AOÛT 22 — FÉV. 24',
-                  role: 'Web Designer',
-                  desc: 'Focus sur l’identité visuelle et la hiérarchie de l’information pour des interfaces orientées conversion.'
-                }
-              ].map((exp) => (
-                <motion.section 
-                  key={exp.id}
-                  className="narrative-block"
-                  initial={{ opacity: 0.3, filter: 'blur(4px)' }}
-                  whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-                  viewport={{ amount: 0.6, margin: "-100px 0px -100px 0px" }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="sticky-header">
-                    <motion.div 
-                      className="ghost-year"
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 1 }}
-                    >
-                      {exp.year}
-                    </motion.div>
-                    <motion.h2 
-                      className="company-name"
-                      whileHover={{ x: 10, color: '#C5EBAB' }}
-                    >
-                      {exp.company}
-                    </motion.h2>
-                    <span className="dates">{exp.dates}</span>
-                  </div>
-                  
-                  <div className="narrative-content">
-                    {exp.chip && <div className="role-chip">{exp.chip}</div>}
-                    <h3 className="role-title">{exp.role}</h3>
-                    <p className="description">{exp.desc}</p>
-                    {exp.points && (
-                      <motion.ul 
-                        className="narrative-points"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={{
-                          visible: { transition: { staggerChildren: 0.1 } }
-                        }}
-                      >
-                        {exp.points.map((p, i) => (
-                          <motion.li 
-                            key={i}
-                            variants={{
-                              hidden: { opacity: 0, x: -10 },
-                              visible: { opacity: 1, x: 0 }
-                            }}
-                          >
-                            {p}
-                          </motion.li>
-                        ))}
-                      </motion.ul>
-                    )}
-                  </div>
-                </motion.section>
-              ))}
-
-            </div>
-
-            {/* EDUCATION & SKILLS - Staggered Grid */}
-            <motion.div 
-              className="editorial-footer-grid"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ amount: 0.3 }}
-            >
-              <div className="edu-block">
-                <h2 className="section-label-editorial">Éducation</h2>
-                <ul className="edu-list-editorial">
-                  <li><strong>UX Design Certificate</strong> — Google (2025)</li>
-                  <li><strong>Design Thinking</strong> — Sèmè City (2024)</li>
-                  <li><strong>Web Designer Certifié</strong> — EIGB (2023)</li>
-                </ul>
-              </div>
-              
-              <div className="skills-block-editorial">
-                <h2 className="section-label-editorial">Skills & Tools</h2>
-                <div className="skill-pills-narrative">
-                  {['Figma', 'Illustrator', 'Notion', 'Miro', 'Linear', 'Product Logic', 'UX Audit', 'QA Strategy'].map(skill => (
-                    <motion.span 
-                      key={skill} 
-                      className="skill-pill-editorial"
-                      whileHover={{ scale: 1.1, backgroundColor: '#C5EBAB', color: '#000' }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {skill}
-                    </motion.span>
+              <section className="cv-block-mini">
+                <div className="cv-section-label-new">03 / SKILLS</div>
+                <div className="cv-skills-pills">
+                  {['Figma', 'Illustrator', 'Notion', 'Product Logic', 'UX Audit', 'QA Strategy'].map(skill => (
+                    <span key={skill} className="skill-pill-new">{skill}</span>
                   ))}
                 </div>
-              </div>
-            </motion.div>
+              </section>
+            </div>
 
-            <footer className="editorial-final-footer">
-              <motion.div 
-                className="footer-line-accent"
-                initial={{ width: 0 }}
-                whileInView={{ width: 100 }}
-              ></motion.div>
-              <div className="final-actions">
-                <a href="mailto:dafiashalom@gmail.com" className="email-link-narrative">dafiashalom@gmail.com</a>
+            <footer className="cv-final-actions">
+              <div className="footer-line-accent"></div>
+              <div className="cv-contact-row">
+                <a href="mailto:dafiashalom@gmail.com" className="cv-email-link">dafiashalom@gmail.com</a>
                 <motion.a 
                   href="/sacca_dafia-cv.pdf" 
                   download 
-                  className="download-cta-narrative featured-cta"
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(197, 235, 171, 0.4)' }}
+                  className="cv-cta-premium"
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Download size={20} style={{ marginRight: '10px' }} />
-                  Télécharger le CV (PDF)
+                  TÉLÉCHARGER LE CV
                 </motion.a>
               </div>
             </footer>
-
           </div>
         </div>
         
-        <footer className="cv-minimal-footer no-print">
-          <div className="container">
-            <p>&copy; 2026 PortfoliO — SACCA DAFIA</p>
-          </div>
+        <footer className="cv-minimal-footer">
+          <p>© 2026 Portfolio — Sacca Dafia</p>
         </footer>
       </div>
     );
@@ -603,7 +492,7 @@ function App() {
 
   const translations = {
     en: {
-      nav: { home: 'Home', about: 'About', services: 'Services', experience: 'Experience', focus: 'Focus', projects: 'Projects', process: 'Process', contact: 'Contact' },
+      nav: { home: 'Home', about: 'About', services: 'Services', experience: 'Experience', focus: 'Focus', projects: 'Projects', process: 'Process', contact: 'Contact', resume: 'MON CV' },
       contact: {
         label: '08 / Contact',
         title: <>Ready to create<br /><span className="highlight">together?</span></>,
@@ -700,7 +589,7 @@ function App() {
       }
     },
     fr: {
-      nav: { home: 'Accueil', about: 'À propos', services: 'Services', experience: 'Expérience', focus: 'Focus', projects: 'Projets', process: 'Process', contact: 'Contact' },
+      nav: { home: 'Accueil', about: 'À propos', services: 'Services', experience: 'Expérience', focus: 'Focus', projects: 'Projets', process: 'Process', contact: 'Contact', resume: 'MON CV' },
       contact: {
         label: '08 / Contact',
         title: <>Prêt à créer<br /><span className="highlight">ensemble ?</span></>,
@@ -897,6 +786,12 @@ function App() {
             <a href="#saas" className={activeSection === 'saas' ? 'active' : ''}>{t.nav.focus}</a>
             <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>{t.nav.projects}</a>
             <a href="#process" className={activeSection === 'process' ? 'active' : ''}>{t.nav.process}</a>
+            <button 
+              className={`nav-cv-btn-new ${currentView === 'cv' ? 'active' : ''}`}
+              onClick={() => setCurrentView('cv')}
+            >
+              {t.nav.resume}
+            </button>
             <a href="#contact" onClick={openCalendly}>{t.nav.contact}</a>
           </div>
 
@@ -916,9 +811,10 @@ function App() {
                 <img src="https://flagcdn.com/w20/fr.png" alt="FR" /> FR
               </button>
             </div>
-            <button className="menu-icon hide-desktop" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <div className="menu-bar"></div>
-              <div className="menu-bar"></div>
+            <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
           </div>
         </div>
@@ -940,28 +836,60 @@ function App() {
         ))}
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <div className="mobile-menu-header">
-          <div className="mobile-lang-switch">
-            <button className={`mobile-link-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => { setLang('en'); setIsMenuOpen(false); }}>EN</button>
-            <button className={`mobile-link-btn ${lang === 'fr' ? 'active' : ''}`} onClick={() => { setLang('fr'); setIsMenuOpen(false); }}>FR</button>
+      <div className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-bg"></div>
+        <div className="container mobile-nav-container">
+          <div className="mobile-nav-header">
+            <div className="mobile-brand">SACCA DAFIA.</div>
+            <div className="mobile-nav-lang">
+              <button className={`lang-pill ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+              <button className={`lang-pill ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>FR</button>
+            </div>
           </div>
-          <button className="close-menu" onClick={() => setIsMenuOpen(false)}><X size={32} /></button>
-        </div>
-        <div className="mobile-links">
-          <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.about}</a>
-          <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.services}</a>
-          <a href="#experience" className={activeSection === 'experience' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.experience}</a>
-          <a href="#saas" className={activeSection === 'saas' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.focus}</a>
-          <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.projects}</a>
-          <a href="#process" className={activeSection === 'process' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t.nav.process}</a>
-          <button 
-            className="mobile-menu-cta" 
-            onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }} 
-          >
-            {t.nav.contact}
-          </button>
+          
+          <div className="mobile-nav-links">
+            {[
+              { id: 'about', label: t.nav.about },
+              { id: 'services', label: t.nav.services },
+              { id: 'experience', label: t.nav.experience },
+              { id: 'saas', label: t.nav.focus },
+              { id: 'projects', label: t.nav.projects },
+              { id: 'process', label: t.nav.process },
+              { id: 'cv', label: t.nav.resume }
+            ].map((link, i) => (
+              <motion.a
+                key={link.id}
+                href={`#${link.id}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: i * 0.1 + 0.3 }}
+                className={activeSection === link.id ? 'active' : ''}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  if (link.id === 'cv') {
+                    setCurrentView('cv');
+                  }
+                }}
+              >
+                <span className="link-num">0{i+1}</span>
+                <span className="link-text">{link.label}</span>
+              </motion.a>
+            ))}
+            
+            <motion.button 
+              className="mobile-cta-premium"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isMenuOpen ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ delay: 0.8 }}
+              onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
+            >
+              {t.nav.contact}
+            </motion.button>
+          </div>
+
+          <div className="mobile-nav-footer">
+            <p>© 2026 sacca dafia. all rights reserved.</p>
+          </div>
         </div>
       </div>
 
