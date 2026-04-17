@@ -5,7 +5,8 @@ import {
   ExternalLink,
   Calendar,
   Linkedin,
-  Download
+  Download,
+  X
 } from 'lucide-react';
 import './App.css';
 
@@ -452,6 +453,12 @@ function App() {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [activeSection, setActiveSection] = useState('home');
   const [domSections, setDomSections] = useState<string[]>([]);
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     // Select all sections that have an id
@@ -484,7 +491,17 @@ function App() {
 
   const translations = {
     en: {
-      nav: { home: 'Home', about: 'About', services: 'Services', experience: 'Experience', focus: 'Focus', projects: 'Projects', process: 'Process', contact: 'Contact', resume: 'MON CV' },
+      nav: { home: 'Home', about: 'About', services: 'Services', experience: 'Experience', focus: 'Focus', projects: 'Projects', process: 'Process', contact: 'Contact' },
+      process: {
+        label: '07 / Process',
+        title: <>My <span className="highlight">Methodology.</span></>,
+        items: [
+          { num: '01', title: 'Discovery', desc: 'I start by understanding the product, its users, and the real business constraints. Before touching Figma.' },
+          { num: '02', title: 'UX Audit', desc: "On an existing product, I identify friction, flow inconsistencies, and interfaces that create confusion." },
+          { num: '03', title: 'Product Thinking', desc: "I structure user journeys and define the product logic: what should happen first, why, and for whom." },
+          { num: '04', title: 'Design & Delivery', desc: "I design high-fidelity interfaces, write specs if necessary, and follow implementation through to final QA." }
+        ]
+      },
       contact: {
         label: '08 / Contact',
         title: <>Ready to create<br /><span className="highlight">together?</span></>,
@@ -581,7 +598,17 @@ function App() {
       }
     },
     fr: {
-      nav: { home: 'Accueil', about: 'À propos', services: 'Services', experience: 'Expérience', focus: 'Focus', projects: 'Projets', process: 'Process', contact: 'Contact', resume: 'MON CV' },
+      nav: { home: 'Accueil', about: 'À propos', services: 'Services', experience: 'Expérience', focus: 'Focus', projects: 'Projets', process: 'Process', contact: 'Contact' },
+      process: {
+        label: '07 / Process',
+        title: <>Ma <span className="highlight">Méthodologie.</span></>,
+        items: [
+          { num: '01', title: 'Discovery', desc: 'Je commence par comprendre le produit, ses utilisateurs et les vraies contraintes business. Avant de toucher à Figma.' },
+          { num: '02', title: 'UX Audit', desc: "Sur un produit existant, j'identifie les frictions, les incohérences de flow et les interfaces qui créent de la confusion." },
+          { num: '03', title: 'Product Thinking', desc: "Je structure les parcours et définis la logique produit : qu'est-ce qui doit arriver en premier, pourquoi, et pour qui." },
+          { num: '04', title: 'Design & Delivery', desc: "Je conçois les interfaces haute-fidélité, rédige les specs si nécessaire et suis l'implémentation jusqu'au QA final." }
+        ]
+      },
       contact: {
         label: '08 / Contact',
         title: <>Prêt à créer<br /><span className="highlight">ensemble ?</span></>,
@@ -778,12 +805,6 @@ function App() {
             <a href="#saas" className={activeSection === 'saas' ? 'active' : ''}>{t.nav.focus}</a>
             <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>{t.nav.projects}</a>
             <a href="#process" className={activeSection === 'process' ? 'active' : ''}>{t.nav.process}</a>
-            <button 
-              className="nav-cv-btn-new"
-              onClick={() => setCurrentView('cv')}
-            >
-              {t.nav.resume}
-            </button>
             <a href="#contact" onClick={openCalendly}>{t.nav.contact}</a>
           </div>
 
@@ -829,58 +850,90 @@ function App() {
       </div>
 
       <div className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-noise"></div>
+        <div className="mobile-nav-bg-vignette"></div>
         <div className="mobile-nav-bg"></div>
+        
         <div className="container mobile-nav-container">
           <div className="mobile-nav-header">
             <div className="mobile-brand">SACCA DAFIA.</div>
-            <div className="mobile-nav-lang">
-              <button className={`lang-pill ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
-              <button className={`lang-pill ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>FR</button>
+            <div className="mobile-nav-right">
+              <div className="mobile-nav-lang">
+                <button className={`lang-pill ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+                <button className={`lang-pill ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>FR</button>
+              </div>
+              <button className="mobile-close-btn" onClick={() => setIsMenuOpen(false)}>
+                <X size={28} />
+              </button>
+            </div>
+          </div>
+
+          <div className="mobile-nav-meta-top hide-mobile-small">
+            <div className="meta-item-new">
+              <span className="meta-label-new">LOCATION</span>
+              <span className="meta-value-new">COTONOU, BENIN</span>
+            </div>
+            <div className="meta-item-new">
+              <span className="meta-label-new">LOCAL TIME</span>
+              <span className="meta-value-new">{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
             </div>
           </div>
           
-          <div className="mobile-nav-links">
-            {[
-              { id: 'about', label: t.nav.about },
-              { id: 'services', label: t.nav.services },
-              { id: 'experience', label: t.nav.experience },
-              { id: 'saas', label: t.nav.focus },
-              { id: 'projects', label: t.nav.projects },
-              { id: 'process', label: t.nav.process },
-              { id: 'cv', label: t.nav.resume }
-            ].map((link, i) => (
-              <motion.a
-                key={link.id}
-                href={`#${link.id}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: i * 0.1 + 0.3 }}
-                className={activeSection === link.id ? 'active' : ''}
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  if (link.id === 'cv') {
-                    setCurrentView('cv');
-                  }
-                }}
-              >
-                <span className="link-num">0{i+1}</span>
-                <span className="link-text">{link.label}</span>
-              </motion.a>
-            ))}
-            
-            <motion.button 
-              className="mobile-cta-premium"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isMenuOpen ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              transition={{ delay: 0.8 }}
-              onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
-            >
-              {t.nav.contact}
-            </motion.button>
+          <div className="mobile-nav-content">
+            <div className="mobile-nav-links">
+              {[
+                { id: 'about', label: t.nav.about },
+                { id: 'services', label: t.nav.services },
+                { id: 'experience', label: t.nav.experience },
+                { id: 'saas', label: t.nav.focus },
+                { id: 'projects', label: t.nav.projects },
+                { id: 'process', label: t.nav.process }
+              ].map((link, i) => (
+                <motion.div 
+                  key={link.id}
+                  className="mobile-link-wrapper"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ delay: i * 0.08 + 0.2, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                >
+                  <a
+                    href={`#${link.id}`}
+                    className={`mobile-link-item ${activeSection === link.id ? 'active' : ''}`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="mobile-link-num">0{i+1}</span>
+                    <span className="mobile-link-text">{link.label}</span>
+                    <div className="mobile-link-line"></div>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mobile-nav-aside hide-mobile">
+              <div className="aside-box">
+                <span className="aside-label">READY TO SHIP?</span>
+                <button 
+                  className="aside-cta"
+                  onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
+                >
+                  {t.nav.contact}
+                  <ArrowRight size={20} style={{ transform: 'rotate(-45deg)' }} />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="mobile-nav-footer">
-            <p>© 2026 sacca dafia. all rights reserved.</p>
+          <div className="mobile-nav-footer-new">
+            <div className="mobile-socials-new">
+              <span className="meta-label-new">SOCIALS</span>
+              <div className="social-links-row">
+                <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+                <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer">BEHANCE</a>
+              </div>
+            </div>
+            <div className="mobile-copyright-new">
+              <p>© 2026 SACCA DAFIA. ALL RIGHTS RESERVED.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1237,23 +1290,18 @@ function App() {
         <div className="methodology-gradient-overlay"></div>
         <div className="container methodology-container-new">
           <div className="methodology-header-new">
-            <span className="methodology-label-new">07 / Process</span>
+            <span className="methodology-label-new">{t.process.label}</span>
             <motion.h2 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              Ma <span className="highlight">Méthodologie.</span>
+              {t.process.title}
             </motion.h2>
           </div>
 
           <div className="methodology-list-new">
-            {[
-              { num: '01', title: 'Discovery', desc: 'Je commence par comprendre le produit, ses utilisateurs et les vraies contraintes business. Avant de toucher à Figma.' },
-              { num: '02', title: 'UX Audit', desc: "Sur un produit existant, j'identifie les frictions, les incohérences de flow et les interfaces qui créent de la confusion." },
-              { num: '03', title: 'Product Thinking', desc: "Je structure les parcours et définis la logique produit : qu'est-ce qui doit arriver en premier, pourquoi, et pour qui." },
-              { num: '04', title: 'Design & Delivery', desc: "Je conçois les interfaces haute-fidélité, rédige les specs si nécessaire et suis l'implémentation jusqu'au QA final." }
-            ].map((step, i) => (
+            {t.process.items.map((step, i) => (
               <motion.div 
                 key={i} 
                 className="methodology-item-new"
