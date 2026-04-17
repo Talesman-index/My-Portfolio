@@ -1,16 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { 
-  X, 
-  Search,
-  Zap,
-  CheckCircle,
-  Globe,
   ArrowRight,
   ExternalLink,
-  MapPin,
-  Phone,
-  Mail,
   Calendar,
   Linkedin,
   Download
@@ -787,7 +779,7 @@ function App() {
             <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>{t.nav.projects}</a>
             <a href="#process" className={activeSection === 'process' ? 'active' : ''}>{t.nav.process}</a>
             <button 
-              className={`nav-cv-btn-new ${currentView === 'cv' ? 'active' : ''}`}
+              className="nav-cv-btn-new"
               onClick={() => setCurrentView('cv')}
             >
               {t.nav.resume}
