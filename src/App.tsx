@@ -769,14 +769,14 @@ function App() {
       color: '#00FA9A',
     },
     {
-      title: 'Art du B\u00e9nin',
-      role: 'Product Designer',
-      category: 'Cultural Heritage',
-      image: '/imgs/case study.webp',
-      description: "Application Android de m\u00e9diation culturelle autour du patrimoine artistique b\u00e9ninois. Con\u00e7ue pour guider les visiteurs dans la d\u00e9couverte des \u0153uvres sans remplacer l'exp\u00e9rience physique.",
-      techs: ['Figma', 'User Research', 'Android UX', 'Content Design'],
-      link: 'https://www.behance.net/gallery/229060431/Case-Study-Mobile-Apk-for-the-Art-of-Benin',
-      color: '#A020F0',
+      title: 'Sagana',
+      role: 'Web Designer & Developer',
+      category: 'Digital Agency',
+      image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
+      description: "Conception et développement intégral du site web de Sagana. Une plateforme moderne alliant design premium et performance pour accompagner les entreprises dans leur croissance digitale.",
+      techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+      link: 'https://www.sagana-agency.com/',
+      color: '#DFFF00',
     },
   ];
 
