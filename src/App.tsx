@@ -9,6 +9,7 @@ import {
   X
 } from 'lucide-react';
 import './App.css';
+import ShootingStarsBackground from './components/ShootingStarsBackground';
 
 const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj', mousePos: { x: number, y: number }, setCurrentView: any }) => {
     const data = id === 'asset-iq' ? {
@@ -749,6 +750,16 @@ function App() {
 
   const projects = [
     {
+      title: 'Sagana',
+      role: 'Web Designer & Developer',
+      category: 'Digital Agency',
+      image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
+      description: "Conception et développement intégral du site web de Sagana. Une plateforme moderne alliant design premium et performance pour accompagner les entreprises dans leur croissance digitale.",
+      techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+      link: 'https://www.sagana-agency.com/',
+      color: '#DFFF00',
+    },
+    {
       title: 'Vortex',
       role: 'Product Designer',
       category: 'Mobile App',
@@ -767,16 +778,6 @@ function App() {
       techs: ['Figma', 'UX Strategy', 'Visual Design', 'Motion'],
       link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
       color: '#00FA9A',
-    },
-    {
-      title: 'Sagana',
-      role: 'Web Designer & Developer',
-      category: 'Digital Agency',
-      image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
-      description: "Conception et développement intégral du site web de Sagana. Une plateforme moderne alliant design premium et performance pour accompagner les entreprises dans leur croissance digitale.",
-      techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
-      link: 'https://www.sagana-agency.com/',
-      color: '#DFFF00',
     },
   ];
 
@@ -943,6 +944,7 @@ function App() {
         '--mouse-x': `${mousePos.x}%`, 
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
+        <ShootingStarsBackground />
         <div className="hero-gradient-overlay"></div>
         <div className="container hero-container-new">
           <div className="hero-content-new">
