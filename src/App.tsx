@@ -9,7 +9,6 @@ import {
   X
 } from 'lucide-react';
 import './App.css';
-import ShootingStarsBackground from './components/ShootingStarsBackground';
 
 const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj', mousePos: { x: number, y: number }, setCurrentView: any }) => {
     const data = id === 'asset-iq' ? {
@@ -779,6 +778,16 @@ function App() {
       link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
       color: '#00FA9A',
     },
+    {
+      title: 'Forum Grandes Écoles',
+      role: 'Fullstack Developer',
+      category: 'Education Platform',
+      image: '/imgs/forum.png',
+      description: "Plateforme événementielle dédiée à l'orientation et à la réussite académique. Gestion d'agendas complexes, inscriptions en ligne et mise en relation directe entre étudiants et grandes écoles.",
+      techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
+      link: 'https://forum-grandes-ecoles.vercel.app/',
+      color: '#E63946',
+    },
   ];
 
 
@@ -944,7 +953,7 @@ function App() {
         '--mouse-x': `${mousePos.x}%`, 
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
-        <ShootingStarsBackground />
+        
         <div className="hero-gradient-overlay"></div>
         <div className="container hero-container-new">
           <div className="hero-content-new">
