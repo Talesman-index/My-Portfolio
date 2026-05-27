@@ -10,8 +10,43 @@ import {
 } from 'lucide-react';
 import './App.css';
 
-const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj', mousePos: { x: number, y: number }, setCurrentView: any }) => {
-    const data = id === 'asset-iq' ? {
+interface CaseStudyData {
+  title: string;
+  subtitle: string;
+  label: string;
+  color: string;
+  bgImage: string;
+  context: string;
+  contextTitle?: string;
+  contextImg?: string;
+  problem?: string;
+  problemTitle?: string;
+  challenge: string;
+  challengeTitle?: string;
+  challengeImg: string;
+  decisions?: Array<{ title: string; desc: string; why: string }>;
+  solution: string;
+  solutionTitle?: string;
+  uxSolutions?: string;
+  dashboardImg: string;
+  features: Array<{ title: string; desc: string }>;
+  insight: string;
+  impact: string[];
+  conclusion: string;
+  externalLink?: string;
+}
+
+const CaseStudy = ({ 
+  id, 
+  mousePos, 
+  setCurrentView 
+}: { 
+  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares', 
+  mousePos: { x: number, y: number }, 
+  setCurrentView: any 
+}) => {
+  const caseStudiesData: Record<typeof id, CaseStudyData> = {
+    'asset-iq': {
       title: "Asset IQ",
       subtitle: "Gouvernance et pilotage opérationnel des actifs physiques",
       label: "Product Design & Strategy",
@@ -23,7 +58,6 @@ const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj',
       insight: "La data n'est utile que si elle est saisie par ceux qui sont sur le terrain. Nous avons réduit le flow de saisie à 3 actions critiques pour garantir l'adoption.",
       contextImg: "/imgs/assetiQ/tech2.jpg",
       challengeImg: "/imgs/assetiQ/military2.jpg",
-      solutionImg: "/imgs/assetiQ/tech3.jpg",
       dashboardImg: "/imgs/assetiQ/Dashboard_asset.png",
       features: [
         { title: "Traçabilité Native", desc: "Identification par QR code pour un accès immédiat à l'historique complet." },
@@ -39,7 +73,8 @@ const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj',
       ],
       conclusion: "AssetIQ redéfinit la gestion matérielle en passant d'un simple listing à une véritable gouvernance opérationnelle structurée.",
       externalLink: "https://www.assetiQ.com"
-    } : {
+    },
+    'ehadj': {
       title: "eHadj",
       subtitle: "Orchestration digitale du pèlerinage au Bénin",
       label: "Product Design & Strategy",
@@ -47,11 +82,6 @@ const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj',
       bgImage: "/imgs/ehadj_cs.jpg",
       context: "L'eHadj est piloté par l'Agence pour la Gestion de la Logistique des Officiels (AGLO). Avant eHadj, le système reposait sur des processus manuels et fragmentés, entraînant des erreurs de quotas et de visas.",
       problem: "Le système reposait sur des processus manuels. Les erreurs de saisie sur 2300 dossiers créaient des doublons et des blocages de visas critiques au niveau national.",
-      stakeholders: [
-        { name: "Pèlerins", constraint: "Souvent âgés, faible aisance numérique, besoin de certitude absolue." },
-        { name: "Agences", constraint: "Gérer les inscriptions sous pression de quotas limités." },
-        { name: "AGLO (Hadj Unit)", constraint: "Supervision globale, paramétrage des sociétés, suivi des quotas." }
-      ],
       challenge: "Éliminer les erreurs de saisie sur 2300 dossiers dès le point d'entrée et gérer en temps réel la répartition dynamique des places entre les agences.",
       decisions: [
         { 
@@ -67,14 +97,8 @@ const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj',
       ],
       solution: "Un workflow linéaire où chaque étape (Santé, Paiement, Visa) fait office de 'gatekeeper' strict pour assurer l'intégrité du processus.",
       uxSolutions: "Logic de validation séquentielle : impossible de générer un reçu de paiement sans le feu vert du médecin certificateur.",
-      keyFlow: {
-        title: "Validation Médicale",
-        desc: "Interface médecin contextuelle : affiche uniquement les indicateurs d'aptitude sans exposer les données complexes."
-      },
-      tradeoffs: "Sacrifice de la liberté de saisie manuelle au profit d'un système de recherche par ID National pour garantir la qualité de la donnée.",
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
-      solutionImg: "/imgs/ehadj/hadj3.png",
       dashboardImg: "/imgs/ehadj/Dashboard_ehadj.png",
       features: [
         { title: "Paramétrage Métier", desc: "Configuration granulaire des sociétés agréées et des catégories gérées." },
@@ -91,183 +115,390 @@ const CaseStudy = ({ id, mousePos, setCurrentView }: { id: 'asset-iq' | 'ehadj',
       insight: "L’intégrité de la donnée n’est pas une option, c’est le moteur du système. L'onboarding basé sur le NPI a été la clé de voûte de la réussite.",
       conclusion: "eHadj a transformé une logistique complexe en un processus industriel fiable, sécurisant le voyage sacré de milliers de Béninois.",
       externalLink: "https://ehadj.aglo.bj/"
-    };
+    },
+    'sagana': {
+      title: "Sagana",
+      subtitle: "Identité et performance web pour une agence digitale premium",
+      label: "Creative Direction & Web Development",
+      color: "#DFFF00",
+      bgImage: "/imgs/sagana.png",
+      context: "Sagana est une agence digitale premium qui avait besoin d'un site web à la hauteur de son positionnement haut de gamme. Le site existant manquait de fluidité, d'impact visuel et de conversion.",
+      contextTitle: "Le positionnement d'une marque haut de gamme.",
+      challenge: "Créer une expérience de marque immersive avec des animations sophistiquées sans sacrifier les performances de chargement et le référencement naturel (SEO).",
+      challengeTitle: "Allier esthétique premium et performance pure.",
+      challengeImg: "/imgs/sagana.png",
+      decisions: [
+        {
+          title: "Micro-animations fluides",
+          desc: "Intégration d'animations interactives sur les survols de cartes et les transitions de pages.",
+          why: "Renforce le sentiment de qualité premium et de maîtrise technique."
+        },
+        {
+          title: "Dark Mode par défaut",
+          desc: "Palette sombre accentuée par des touches néon pour un style moderne et technologique.",
+          why: "Donne une impression de modernité immédiate et réduit la fatigue oculaire."
+        }
+      ],
+      solution: "Une architecture basée sur React et Framer Motion, optimisant chaque transition. Le site utilise des techniques de chargement progressif pour offrir une fluidité absolue.",
+      solutionTitle: "Optimisation de bout en bout et Framer Motion.",
+      dashboardImg: "/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png",
+      features: [
+        { title: "Animations 60fps", desc: "Transitions fluides basées sur Framer Motion et CSS transitions." },
+        { title: "Performance brute", desc: "Score Lighthouse de 95+ grâce à l'optimisation des images et du code." },
+        { title: "SEO Structuré", desc: "Balisage sémantique rigoureux pour maximiser la visibilité organique." },
+        { title: "Responsive Adaptatif", desc: "Mise en page fluide adaptée à tous les types d'écrans." }
+      ],
+      insight: "La performance est un élément de design. Un site esthétique mais lent perd ses visiteurs avant même qu'ils ne voient les visuels.",
+      impact: [
+        "Augmentation de 40% du temps passé sur le site",
+        "Hausse de 25% des demandes de contact qualifiées",
+        "Une image de marque renforcée et alignée avec le positionnement premium"
+      ],
+      conclusion: "Sagana dispose désormais d'un site vitrine d'excellence qui fait écho à la qualité de ses services et attire des clients haut de gamme.",
+      externalLink: "https://www.sagana-agency.com/"
+    },
+    'vortex': {
+      title: "Vortex",
+      subtitle: "Application mobile d'achat de carburant et de gestion de portefeuille",
+      label: "Product Design & UX Research",
+      color: "#FFD700",
+      bgImage: "/imgs/vortex.webp",
+      context: "L'approvisionnement en carburant pour les flottes et particuliers en mobilité manque de fluidité. L'attente en station et la gestion de la facturation papier génèrent des frictions importantes.",
+      contextTitle: "Les frictions logistiques de l'approvisionnement en carburant.",
+      challenge: "Simplifier le parcours d'achat de carburant en le réduisant à quelques clics directement depuis le volant, tout en intégrant un portefeuille numérique sécurisé.",
+      challengeTitle: "Concevoir pour un usage rapide en situation de mobilité.",
+      challengeImg: "/vortex_preview.png",
+      decisions: [
+        {
+          title: "Boutons d'action agrandis",
+          desc: "Agrandissement des cibles de clic de 30% par rapport aux standards mobiles.",
+          why: "Évite les erreurs de saisie lorsque l'utilisateur est pressé ou en extérieur."
+        },
+        {
+          title: "Mode Haute Clarté",
+          desc: "Sélection de couleurs à haut contraste avec un fond sombre optimisé pour l'extérieur.",
+          why: "Garantit la lisibilité de l'écran même en plein soleil en station-service."
+        }
+      ],
+      solution: "Vortex propose une interface épurée avec un onboarding rapide et une intégration de wallet. Le design met l'accent sur les contrastes élevés et de grands boutons d'action adaptés.",
+      solutionTitle: "Interface mobile contrastée et accès en un clic.",
+      dashboardImg: "/imgs/vortex.webp",
+      features: [
+        { title: "Paiement en 1-Clic", desc: "Achat instantané de carburant via le wallet sécurisé intégré." },
+        { title: "QR Code Station", desc: "Génération de codes de validation rapides pour les terminaux de pompes." },
+        { title: "Reçus Automatiques", desc: "Génération et envoi automatique des factures dématérialisées." },
+        { title: "Suivi Consommation", desc: "Historique clair des dépenses et analyses des volumes consommés." }
+      ],
+      insight: "En situation de mobilité (conduite, station-service), l'attention de l'utilisateur est divisée. L'interface doit être conçue pour être lue et actionnée en moins de 3 secondes.",
+      impact: [
+        "Temps de transaction divisé par 3 en station",
+        "Taux d'onboarding réussi de 92% dès la première tentative",
+        "Adoption massive par les gestionnaires de flottes de véhicules"
+      ],
+      conclusion: "Vortex transforme la corvée de la station-service en un parcours digital fluide, sécurisé et extrêmement rapide.",
+      externalLink: "https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel"
+    },
+    'sport-advisor': {
+      title: "Sport Advisor",
+      subtitle: "Plateforme d'analyse et de pronostics sportifs basés sur l'IA",
+      label: "Product Design & Visual Strategy",
+      color: "#00FA9A",
+      bgImage: "/imgs/advisor.webp",
+      context: "Les plateformes d'analyses sportives souffrent d'une surcharge d'informations. La profusion de statistiques brutes, de graphiques complexes et de cotes rend la prise de décision confuse et intimidante.",
+      contextTitle: "La surcharge cognitive dans la visualisation de données sportives.",
+      challenge: "Organiser une quantité massive de données statistiques temps réel dans une hiérarchie visuelle intuitive, et concevoir un storytelling montrant la valeur des analyses IA.",
+      challengeTitle: "Simplifier des statistiques complexes pour tous.",
+      challengeImg: "/sport_advisor_preview.png",
+      decisions: [
+        {
+          title: "Visualisation par jauge",
+          desc: "Remplacement des tableaux de chiffres bruts par des jauges de probabilité colorées.",
+          why: "Permet une lecture instantanée de la tendance d'un match."
+        },
+        {
+          title: "Filtres Contextuels",
+          desc: "Système de filtres par pertinence, sport, et fiabilité des pronostics.",
+          why: "Aide les utilisateurs à trouver rapidement les opportunités clés."
+        }
+      ],
+      solution: "Une interface structurée sous forme de tableaux clairs, avec des indicateurs de confiance basés sur l'IA (en pourcentages) et des graphiques épurés facilitant la comparaison.",
+      solutionTitle: "Storytelling visuel et indicateurs de confiance IA.",
+      dashboardImg: "/imgs/advisor.webp",
+      features: [
+        { title: "Moteur de Prédiction", desc: "Recommandations quotidiennes générées par des modèles de deep learning." },
+        { title: "Comparateur de Cotes", desc: "Intégration en temps réel des meilleures cotes du marché." },
+        { title: "Alertes de Confiance", desc: "Notifications push lorsque des anomalies de cotes sont détectées par l'IA." },
+        { title: "Stats Comparatives", desc: "Historique des face-à-face et formes des équipes visualisés simplement." }
+      ],
+      insight: "L'IA ne doit pas juste donner une réponse, elle doit expliquer son raisonnement de manière visuelle et transparente pour créer de la confiance.",
+      impact: [
+        "Augmentation de 50% du taux d'engagement des utilisateurs",
+        "Une lisibilité des données saluée par les bêta-testeurs",
+        "Une conversion d'abonnés Premium en hausse de 35%"
+      ],
+      conclusion: "Sport Advisor simplifie la donnée sportive complexe en la rendant accessible, interactive et actionnable grâce au design.",
+      externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive"
+    },
+    'forum-grandes-ecoles': {
+      title: "Forum Grandes Écoles",
+      subtitle: "Plateforme d'orientation académique et d'inscription événementielle",
+      label: "Fullstack Development & UX",
+      color: "#E63946",
+      bgImage: "/imgs/forum.png",
+      context: "L'organisation d'un forum étudiant physique implique une logistique complexe : gestion des stands, plannings des conférences, inscriptions et transmission des données de contact.",
+      contextTitle: "La logistique des événements étudiants à grande échelle.",
+      challenge: "Créer une plateforme numérique capable de gérer l'inscription de milliers d'étudiants, de centraliser le calendrier des présentations et de faciliter la collecte de CV.",
+      challengeTitle: "Garantir la stabilité sous charge et simplifier les flux.",
+      challengeImg: "/imgs/forum.png",
+      decisions: [
+        {
+          title: "Agenda Personnalisé",
+          desc: "Permettre à l'étudiant de composer son propre programme de conférences.",
+          why: "Évite les conflits d'horaires et maximise la participation aux événements."
+        },
+        {
+          title: "Badges QR Code",
+          desc: "Génération d'un pass étudiant avec QR code pour un scan rapide à l'entrée.",
+          why: "Réduit le temps d'attente à l'entrée du forum physique de 80%."
+        }
+      ],
+      solution: "Développement d'une application web sous Next.js avec un système d'authentification robuste, un agenda dynamique et interactif, et un module d'exportation de CV pour les écoles.",
+      solutionTitle: "Application Next.js avec base de données relationnelle et QR code.",
+      dashboardImg: "/imgs/forum.png",
+      features: [
+        { title: "Inscription Simplifiée", desc: "Flow d'inscription en moins d'une minute avec intégration de profil." },
+        { title: "Calendrier Dynamique", desc: "Suivi en temps réel des horaires et des places disponibles en conférences." },
+        { title: "Espace Écoles", desc: "Dashboard dédié aux écoles pour collecter les candidatures et CV." },
+        { title: "Notifications SMS", desc: "Rappels automatiques avant le début des sessions réservées." }
+      ],
+      insight: "L'expérience événementielle se prépare avant, se vit pendant et se prolonge après. La plateforme doit accompagner l'utilisateur à chaque étape de ce cycle.",
+      impact: [
+        "Plus de 5000 inscriptions d'étudiants gérées sans bug",
+        "Temps d'attente à l'entrée réduit à moins de 5 secondes par personne",
+        "Une fluidité d'échange de contacts saluée par 100% des écoles"
+      ],
+      conclusion: "La plateforme a modernisé l'expérience du forum, facilitant l'accès à l'information et sécurisant les inscriptions à grande échelle.",
+      externalLink: "https://forum-grandes-ecoles.vercel.app/"
+    },
+    'tavares': {
+      title: "Tavares",
+      subtitle: "Portfolio cinématographique interactif pour réalisateur",
+      label: "Creative Web Design & Development",
+      color: "#E50914",
+      bgImage: "/imgs/tavares.png",
+      context: "Le réalisateur Tavares recherchait un portfolio numérique unique, capable de refléter son univers cinématographique. Les portfolios traditionnels surchargent l'interface, détournant l'attention des vidéos.",
+      contextTitle: "Sublimer le travail cinématographique sans distraction.",
+      challenge: "Créer un site web ultra-minimaliste et moderne, servant d'écrin esthétique et fluide, où l'interface s'efface pour laisser les projets et les vidéos être le point focal unique.",
+      challengeTitle: "Concevoir une interface invisible au service de l'image.",
+      challengeImg: "/imgs/tavares.png",
+      decisions: [
+        {
+          title: "Lecteur plein écran",
+          desc: "Ouverture des vidéos en immersion totale (light box) au clic.",
+          why: "Permet d'apprécier la qualité cinématographique sans distraction."
+        },
+        {
+          title: "Transitions fluides",
+          desc: "Micro-animations basées sur le défilement et le survol.",
+          why: "Crée un rythme visuel rappelant le montage de films."
+        }
+      ],
+      solution: "Un site web épuré avec des transitions fluides, un chargement vidéo optimisé, et un lecteur vidéo immersif intégré. L'identité graphique repose sur une typographie forte et un design noir absolu.",
+      solutionTitle: "Espace immersif, streaming optimisé et contrastes intenses.",
+      dashboardImg: "/imgs/tavares.png",
+      features: [
+        { title: "Showreel Immersif", desc: "Bande-démo jouée en arrière-plan avec contrôle du son discret." },
+        { title: "Galerie de projets", desc: "Mise en page asymétrique mettant en valeur les affiches de films." },
+        { title: "Optimisation vidéo", desc: "Streaming vidéo fluide adapté aux connexions mobiles." },
+        { title: "Contact direct", desc: "Formulaire de contact épuré pour la production et les collaborations." }
+      ],
+      insight: "Dans le domaine créatif, l'interface doit servir le contenu et non l'inverse. L'invisibilité du design est sa plus grande force.",
+      impact: [
+        "Engagement accru des producteurs sur le portfolio",
+        "Temps de lecture moyen de la bande-démo supérieur à 70%",
+        "Une identité numérique forte qui se démarque dans le milieu du cinéma"
+      ],
+      conclusion: "Le site de Tavares allie avec succès minimalisme, esthétique premium et performance technique pour sublimer son art cinématographique."
+    }
+  };
 
-    return (
-      <div className="cs-view-new" style={{ 
-        '--mouse-x': `${mousePos.x}%`, 
-        '--mouse-y': `${mousePos.y}%` 
-      } as any}>
-        <div className="cs-gradient-overlay" style={{ '--glow-color': data.color } as any}></div>
-        
-        <nav className="cs-nav-new">
-          <div className="container cs-nav-flex">
-            <button onClick={() => setCurrentView('home')} className="cs-back-btn">
-              <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
-              <span>RETOUR</span>
-            </button>
-            <div className="cs-nav-label">{data.title} — {data.label}</div>
-          </div>
-        </nav>
+  const data = caseStudiesData[id];
 
-        <header className="cs-hero-new">
-          <div className="container">
-            <div className="cs-hero-content">
-              <span className="cs-hero-tag">{data.label}</span>
-              <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+  return (
+    <div className="cs-view-new" style={{ 
+      '--mouse-x': `${mousePos.x}%`, 
+      '--mouse-y': `${mousePos.y}%` 
+    } as any}>
+      <div className="cs-gradient-overlay" style={{ '--glow-color': data.color } as any}></div>
+      
+      <nav className="cs-nav-new">
+        <div className="container cs-nav-flex">
+          <button onClick={() => setCurrentView('home')} className="cs-back-btn">
+            <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
+            <span>RETOUR</span>
+          </button>
+          <div className="cs-nav-label">{data.title} — {data.label}</div>
+        </div>
+      </nav>
+
+      <header className="cs-hero-new">
+        <div className="container">
+          <div className="cs-hero-content">
+            <span className="cs-hero-tag">{data.label}</span>
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {data.title}.
+            </motion.h1>
+            <p className="cs-hero-subtitle">{data.subtitle}</p>
+            {data.externalLink && data.externalLink !== '#' && (
+              <motion.a 
+                href={data.externalLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="cs-external-cta"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {data.title}.
-              </motion.h1>
-              <p className="cs-hero-subtitle">{data.subtitle}</p>
-              {data.externalLink && (
-                <motion.a 
-                  href={data.externalLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="cs-external-cta"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  VOIR LE PRODUIT <ExternalLink size={16} />
-                </motion.a>
-              )}
-            </div>
-            
+                VOIR LE PRODUIT <ExternalLink size={16} />
+              </motion.a>
+            )}
           </div>
-        </header>
+          
+        </div>
+      </header>
 
-        <section className="cs-body-new">
-          <div className="container">
-            <div className="cs-layout-new">
-              <div className="cs-main-content">
+      <section className="cs-body-new">
+        <div className="container">
+          <div className="cs-layout-new">
+            <div className="cs-main-content">
+              <motion.div 
+                className="cs-section-new"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                <label className="cs-section-label">01 / CONTEXTE</label>
+                <h3>{data.contextTitle || "La fragmentation des données opérationnelles."}</h3>
+                <p>{data.context}</p>
+                {data.contextImg && (
+                  <div className="cs-inline-mockup">
+                    <img src={data.contextImg} alt="Context" />
+                  </div>
+                )}
+              </motion.div>
+
+              {data.problem && (
                 <motion.div 
                   className="cs-section-new"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  <label className="cs-section-label">01 / CONTEXTE</label>
-                  <h3>La fragmentation des données opérationnelles.</h3>
-                  <p>{data.context}</p>
-                  {data.contextImg && (
-                    <div className="cs-inline-mockup">
-                      <img src={data.contextImg} alt="Context" />
-                    </div>
-                  )}
+                  <label className="cs-section-label">02 / LE PROBLÈME</label>
+                  <h3>{data.problemTitle || "Processus manuels et erreurs critiques."}</h3>
+                  <p>{data.problem}</p>
                 </motion.div>
+              )}
 
-                {data.problem && (
-                  <motion.div 
-                    className="cs-section-new"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                  >
-                    <label className="cs-section-label">02 / LE PROBLÈME</label>
-                    <h3>Processus manuels et erreurs critiques.</h3>
-                    <p>{data.problem}</p>
-                  </motion.div>
-                )}
+              <motion.div 
+                className="cs-section-new highlighted-section"
+                style={{ borderLeftColor: data.color }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <label className="cs-section-label">03 / CHALLENGE</label>
+                <h3>{data.challengeTitle || "Sécuriser le parcours de 2300 utilisateurs."}</h3>
+                <p>{data.challenge}</p>
+                <div className="cs-inline-mockup">
+                  <img src={data.challengeImg} alt="Challenge" />
+                </div>
+              </motion.div>
 
-                <motion.div 
-                  className="cs-section-new highlighted-section"
-                  style={{ borderLeftColor: data.color }}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <label className="cs-section-label">03 / CHALLENGE</label>
-                  <h3>Sécuriser le parcours de 2300 utilisateurs.</h3>
-                  <p>{data.challenge}</p>
-                  <div className="cs-inline-mockup">
-                    <img src={data.challengeImg} alt="Challenge" />
-                  </div>
-                </motion.div>
-
-                {data.decisions && (
-                  <div className="cs-section-new">
-                    <label className="cs-section-label">04 / DÉCISIONS PRODUIT</label>
-                    <div className="cs-decisions-grid-new">
-                      {data.decisions.map((d: any, i: number) => (
-                        <div key={i} className="cs-decision-card-new">
-                          <h4>{d.title}</h4>
-                          <p>{d.desc}</p>
-                          <div className="cs-why-pill" style={{ color: data.color }}>{d.why}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
+              {data.decisions && (
                 <div className="cs-section-new">
-                  <label className="cs-section-label">05 / SOLUTION UX</label>
-                  <h3>Intégrité par le design et validation stricte.</h3>
-                  <p>{data.solution}</p>
-                  {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
-                  <div className="cs-dashboard-frame-new">
-                    <div className="mockup-frame-new">
-                      <div className="mockup-header-new">
-                        <span className="mockup-dot" />
-                        <span className="mockup-dot" />
-                        <span className="mockup-dot" />
+                  <label className="cs-section-label">04 / DÉCISIONS PRODUIT</label>
+                  <div className="cs-decisions-grid-new">
+                    {data.decisions.map((d: any, i: number) => (
+                      <div key={i} className="cs-decision-card-new">
+                        <h4>{d.title}</h4>
+                        <p>{d.desc}</p>
+                        <div className="cs-why-pill" style={{ color: data.color }}>{d.why}</div>
                       </div>
-                      <div className="mockup-screen-new">
-                        <img src={data.dashboardImg} alt="Dashboard" />
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
+              )}
 
-                <div className="cs-features-grid-new">
-                  {data.features.map((f, i) => (
-                    <div key={i} className="cs-feature-box-new">
-                      <span className="feature-num-new">0{i+1}</span>
-                      <h4>{f.title}</h4>
-                      <p>{f.desc}</p>
+              <div className="cs-section-new">
+                <label className="cs-section-label">05 / SOLUTION UX</label>
+                <h3>{data.solutionTitle || "Intégrité par le design et validation stricte."}</h3>
+                <p>{data.solution}</p>
+                {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
+                <div className="cs-dashboard-frame-new">
+                  <div className="mockup-frame-new">
+                    <div className="mockup-header-new">
+                      <span className="mockup-dot" />
+                      <span className="mockup-dot" />
+                      <span className="mockup-dot" />
                     </div>
-                  ))}
+                    <div className="mockup-screen-new">
+                      <img src={data.dashboardImg} alt="Dashboard" />
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <aside className="cs-sidebar-new">
-                <div className="cs-sidebar-sticky">
-                  <div className="cs-sidebar-block">
-                    <label>INSIGHT PRODUIT</label>
-                    <p>{data.insight}</p>
+              <div className="cs-features-grid-new">
+                {data.features.map((f, i) => (
+                  <div key={i} className="cs-feature-box-new">
+                    <span className="feature-num-new">0{i+1}</span>
+                    <h4>{f.title}</h4>
+                    <p>{f.desc}</p>
                   </div>
-                  
-                  <div className="cs-sidebar-block">
-                    <label>IMPACT CLÉ</label>
-                    <ul className="cs-impact-list">
-                      {data.impact.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
+                ))}
+              </div>
+            </div>
 
-                  <button onClick={() => setCurrentView('home')} className="cs-final-back-btn">
-                    RETOUR AU PORTFOLIO
-                  </button>
+            <aside className="cs-sidebar-new">
+              <div className="cs-sidebar-sticky">
+                <div className="cs-sidebar-block">
+                  <label>INSIGHT PRODUIT</label>
+                  <p>{data.insight}</p>
                 </div>
-              </aside>
-            </div>
-          </div>
-        </section>
+                
+                <div className="cs-sidebar-block">
+                  <label>IMPACT CLÉ</label>
+                  <ul className="cs-impact-list">
+                    {data.impact.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
 
-        <footer className="cs-footer-new">
-          <div className="container">
-            <div className="cs-footer-content">
-              <h2>{data.conclusion}</h2>
-              <p>© 2026 sacca dafia. all rights reserved.</p>
-            </div>
+                <button onClick={() => setCurrentView('home')} className="cs-final-back-btn">
+                  RETOUR AU PORTFOLIO
+                </button>
+              </div>
+            </aside>
           </div>
-        </footer>
-      </div>
-    );
-  };
+        </div>
+      </section>
+
+      <footer className="cs-footer-new">
+        <div className="container">
+          <div className="cs-footer-content">
+            <h2>{data.conclusion}</h2>
+            <p>© 2026 sacca dafia. all rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
 const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
     return (
@@ -448,7 +679,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeProject, setActiveProject] = useState(0);
-  const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'cv'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'cv'>('home');
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [activeSection, setActiveSection] = useState('home');
@@ -549,10 +780,10 @@ function App() {
           },
           {
             id: '04',
-            title: 'Design System',
-            subtitle: 'Consistency & Scale',
-            desc: 'Building robust, reusable component libraries that ensure visual consistency and speed up development cycles.',
-            tags: ['React', 'Storybook', 'Documentation'],
+            title: 'Design & Development',
+            subtitle: 'Design Systems & Front-End',
+            desc: 'Bridging the gap between design and code by building reusable component libraries and clean, interactive React/Next.js interfaces.',
+            tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
             color: '#10B981'
           }
         ]
@@ -594,6 +825,75 @@ function App() {
             skills: ['Visual Design', 'Info Hierarchy', 'Web Layouts', 'Project Delivery'],
             color: '#F97316'
           }
+        ]
+      },
+      projects: {
+        label: '06 / Projects',
+        title: <>Selected <span className="highlight">Works.</span></>,
+        viewCaseStudy: 'View Case Study',
+        visitSite: 'Visit Site',
+        viewProject: 'View Project',
+        items: [
+          {
+            id: 'sagana',
+            title: 'Sagana',
+            role: 'Web Designer & Developer',
+            category: 'Digital Agency',
+            image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
+            description: "Full design and development of Sagana's website. A modern platform combining premium design and performance to support businesses in their digital growth.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: 'https://www.sagana-agency.com/',
+            color: '#DFFF00',
+            linkType: 'site',
+          },
+          {
+            id: 'vortex',
+            title: 'Vortex',
+            role: 'Product Designer',
+            category: 'Mobile App',
+            image: '/imgs/vortex.webp',
+            description: "Mobile app for fuel purchase and wallet management. Optimized transactional flows designed for mobility with smooth onboarding and integrated wallet.",
+            techs: ['Figma', 'UX Research', 'Prototyping', 'Design System'],
+            link: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel',
+            color: '#FFD700',
+            linkType: 'behance',
+          },
+          {
+            id: 'sport-advisor',
+            title: 'Sport Advisor',
+            role: 'Product Designer',
+            category: 'AI & Analytics',
+            image: '/imgs/advisor.webp',
+            description: "Landing page for an AI-powered sports analytics platform. Dense information hierarchy made readable at first glance with strong visual storytelling.",
+            techs: ['Figma', 'UX Strategy', 'Visual Design', 'Motion'],
+            link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
+            color: '#00FA9A',
+            linkType: 'behance',
+          },
+          {
+            id: 'forum-grandes-ecoles',
+            title: 'Forum Grandes Écoles',
+            role: 'Fullstack Developer',
+            category: 'Education Platform',
+            image: '/imgs/forum.png',
+            description: "Event platform for academic orientation and student success. Complex agenda management, online registrations, and direct matchmaking between students and top schools.",
+            techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
+            link: 'https://forum-grandes-ecoles.vercel.app/',
+            color: '#E63946',
+            linkType: 'site',
+          },
+          {
+            id: 'tavares',
+            title: 'Tavares',
+            role: 'Web Designer & Developer',
+            category: 'Cinematic Portfolio',
+            image: '/imgs/tavares.png',
+            description: "Modern website for director Tavares, designed as a minimalist showcase for his cinematic work, putting his projects front and center.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: '#',
+            color: '#E50914',
+            linkType: 'site',
+          },
         ]
       }
     },
@@ -656,10 +956,10 @@ function App() {
           },
           {
             id: '04',
-            title: 'Design System',
-            subtitle: 'Cohérence & Échelle',
-            desc: 'Construction de bibliothèques de composants robustes garantissant une cohérence visuelle totale.',
-            tags: ['React', 'Storybook', 'Documentation'],
+            title: 'Design & Développement',
+            subtitle: 'Design Systems & Front-End',
+            desc: 'Faire le pont entre le design et le code en concevant des systèmes de composants réutilisables et des interfaces React/Next.js propres, interactives et performantes.',
+            tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
             color: '#10B981'
           }
         ]
@@ -701,6 +1001,75 @@ function App() {
             skills: ['Visual Design', 'Hiérarchie Info', 'Web Layouts', 'Livraison Projet'],
             color: '#F97316'
           }
+        ]
+      },
+      projects: {
+        label: '06 / Projets',
+        title: <>Projets <span className="highlight">Sélectionnés.</span></>,
+        viewCaseStudy: "Voir l'étude de cas",
+        visitSite: 'Visiter le site',
+        viewProject: 'Visualiser le projet',
+        items: [
+          {
+            id: 'sagana',
+            title: 'Sagana',
+            role: 'Web Designer & Développeur',
+            category: 'Agence Digitale',
+            image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
+            description: "Conception et développement intégral du site web de Sagana. Une plateforme moderne alliant design premium et performance pour accompagner les entreprises dans leur croissance digitale.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: 'https://www.sagana-agency.com/',
+            color: '#DFFF00',
+            linkType: 'site',
+          },
+          {
+            id: 'vortex',
+            title: 'Vortex',
+            role: 'Product Designer',
+            category: 'Application Mobile',
+            image: '/imgs/vortex.webp',
+            description: "Application mobile d'achat de carburant et de gestion de portefeuille. Parcours transactionnels optimisés pour la mobilité avec onboarding fluide et gestion de wallet intégrée.",
+            techs: ['Figma', 'UX Research', 'Prototyping', 'Design System'],
+            link: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel',
+            color: '#FFD700',
+            linkType: 'behance',
+          },
+          {
+            id: 'sport-advisor',
+            title: 'Sport Advisor',
+            role: 'Product Designer',
+            category: 'IA & Analytics',
+            image: '/imgs/advisor.webp',
+            description: "Landing page pour une plateforme d'analyse sportive basée sur l'IA. Hiérarchie d'information dense rendue lisible au premier coup d'œil avec un storytelling visuel fort.",
+            techs: ['Figma', 'UX Strategy', 'Visual Design', 'Motion'],
+            link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
+            color: '#00FA9A',
+            linkType: 'behance',
+          },
+          {
+            id: 'forum-grandes-ecoles',
+            title: 'Forum Grandes Écoles',
+            role: 'Développeur Fullstack',
+            category: 'Plateforme Éducative',
+            image: '/imgs/forum.png',
+            description: "Plateforme événementielle dédiée à l'orientation et à la réussite académique. Gestion d'agendas complexes, inscriptions en ligne et mise en relation directe entre étudiants et grandes écoles.",
+            techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
+            link: 'https://forum-grandes-ecoles.vercel.app/',
+            color: '#E63946',
+            linkType: 'site',
+          },
+          {
+            id: 'tavares',
+            title: 'Tavares',
+            role: 'Web Designer & Développeur',
+            category: 'Portfolio Cinématographique',
+            image: '/imgs/tavares.png',
+            description: "Site web moderne pour le réalisateur Tavares, conçu comme un écrin minimaliste pour ses œuvres cinématographiques afin de mettre ses projets au premier plan.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: '#',
+            color: '#E50914',
+            linkType: 'site',
+          },
         ]
       }
     }
@@ -747,48 +1116,7 @@ function App() {
     }
   };
 
-  const projects = [
-    {
-      title: 'Sagana',
-      role: 'Web Designer & Developer',
-      category: 'Digital Agency',
-      image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
-      description: "Conception et développement intégral du site web de Sagana. Une plateforme moderne alliant design premium et performance pour accompagner les entreprises dans leur croissance digitale.",
-      techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
-      link: 'https://www.sagana-agency.com/',
-      color: '#DFFF00',
-    },
-    {
-      title: 'Vortex',
-      role: 'Product Designer',
-      category: 'Mobile App',
-      image: '/imgs/vortex.webp',
-      description: "Application mobile d'achat de carburant et de gestion de portefeuille. Parcours transactionnels optimis\u00e9s pour la mobilit\u00e9 avec onboarding fluide et gestion de wallet int\u00e9gr\u00e9e.",
-      techs: ['Figma', 'UX Research', 'Prototyping', 'Design System'],
-      link: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel',
-      color: '#FFD700',
-    },
-    {
-      title: 'Sport Advisor',
-      role: 'Product Designer',
-      category: 'AI & Analytics',
-      image: '/imgs/advisor.webp',
-      description: "Landing page pour une plateforme d'analyse sportive bas\u00e9e sur l'IA. Hi\u00e9rarchie d'information dense rendue lisible au premier coup d'\u0153il avec un storytelling visuel fort.",
-      techs: ['Figma', 'UX Strategy', 'Visual Design', 'Motion'],
-      link: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive',
-      color: '#00FA9A',
-    },
-    {
-      title: 'Forum Grandes Écoles',
-      role: 'Fullstack Developer',
-      category: 'Education Platform',
-      image: '/imgs/forum.png',
-      description: "Plateforme événementielle dédiée à l'orientation et à la réussite académique. Gestion d'agendas complexes, inscriptions en ligne et mise en relation directe entre étudiants et grandes écoles.",
-      techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
-      link: 'https://forum-grandes-ecoles.vercel.app/',
-      color: '#E63946',
-    },
-  ];
+  const projects: any[] = t.projects.items;
 
 
   if (currentView === 'cv') {
@@ -796,7 +1124,7 @@ function App() {
   }
 
   if (currentView !== 'home') {
-    return <CaseStudy id={currentView as 'asset-iq' | 'ehadj'} mousePos={mousePos} setCurrentView={setCurrentView} />;
+    return <CaseStudy id={currentView as any} mousePos={mousePos} setCurrentView={setCurrentView} />;
   }
 
   return (
@@ -1220,13 +1548,13 @@ function App() {
         <div className="projects-gradient-overlay"></div>
         <div className="container">
           <div className="projects-header-new">
-            <span className="projects-label-new">06 / Projets</span>
+            <span className="projects-label-new">{t.projects.label}</span>
             <motion.h2 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              Selected <span className="highlight">Works.</span>
+              {t.projects.title}
             </motion.h2>
           </div>
 
@@ -1243,16 +1571,30 @@ function App() {
                   <span key={i} className="tech-pill-new">{t}</span>
                 ))}
               </div>
-              <motion.a
-                href={projects[activeProject].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="proj-cta-new"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <ArrowRight size={24} style={{ transform: 'rotate(-45deg)' }} />
-              </motion.a>
+              <div className="proj-actions-new" style={{ display: 'flex', gap: '16px', marginTop: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <motion.button
+                  onClick={() => setCurrentView(projects[activeProject].id as any)}
+                  className="btn-primary-new"
+                  style={{ padding: '12px 24px', fontSize: '0.9rem', border: 'none', cursor: 'pointer' }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {t.projects.viewCaseStudy}
+                </motion.button>
+                {projects[activeProject].link && projects[activeProject].link !== '#' && (
+                  <motion.a
+                    href={projects[activeProject].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary-new"
+                    style={{ padding: '12px 24px', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer', textDecoration: 'none' }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {projects[activeProject].linkType === 'behance' ? t.projects.viewProject : t.projects.visitSite} <ExternalLink size={16} />
+                  </motion.a>
+                )}
+              </div>
             </div>
 
             <div className="proj-right-new">
