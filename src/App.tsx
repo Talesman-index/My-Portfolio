@@ -1567,8 +1567,8 @@ function App() {
               <h3 className="proj-title-new">{projects[activeProject].title}</h3>
               <p className="proj-desc-new">{projects[activeProject].description}</p>
               <div className="proj-techs-new">
-                {projects[activeProject].techs.map((t, i) => (
-                  <span key={i} className="tech-pill-new">{t}</span>
+                {projects[activeProject].techs.map((tech: string, i: number) => (
+                  <span key={i} className="tech-pill-new">{tech}</span>
                 ))}
               </div>
               <div className="proj-actions-new" style={{ display: 'flex', gap: '16px', marginTop: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
