@@ -318,7 +318,8 @@ const CaseStudy = ({
         "Temps de lecture moyen de la bande-démo supérieur à 70%",
         "Une identité numérique forte qui se démarque dans le milieu du cinéma"
       ],
-      conclusion: "Le site de Tavares allie avec succès minimalisme, esthétique premium et performance technique pour sublimer son art cinématographique."
+      conclusion: "Le site de Tavares allie avec succès minimalisme, esthétique premium et performance technique pour sublimer son art cinématographique.",
+      externalLink: "https://portfolio-tavares.vercel.app/"
     }
   };
 
@@ -835,6 +836,18 @@ function App() {
         viewProject: 'View Project',
         items: [
           {
+            id: 'tavares',
+            title: 'Tavares',
+            role: 'Web Designer & Developer',
+            category: 'Cinematic Portfolio',
+            image: '/imgs/tavares.png',
+            description: "Modern website for director Tavares, designed as a minimalist showcase for his cinematic work, putting his projects front and center.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: 'https://portfolio-tavares.vercel.app/',
+            color: '#E50914',
+            linkType: 'site',
+          },
+          {
             id: 'sagana',
             title: 'Sagana',
             role: 'Web Designer & Developer',
@@ -880,18 +893,6 @@ function App() {
             techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
             link: 'https://forum-grandes-ecoles.vercel.app/',
             color: '#E63946',
-            linkType: 'site',
-          },
-          {
-            id: 'tavares',
-            title: 'Tavares',
-            role: 'Web Designer & Developer',
-            category: 'Cinematic Portfolio',
-            image: '/imgs/tavares.png',
-            description: "Modern website for director Tavares, designed as a minimalist showcase for his cinematic work, putting his projects front and center.",
-            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
-            link: '#',
-            color: '#E50914',
             linkType: 'site',
           },
         ]
@@ -1011,6 +1012,18 @@ function App() {
         viewProject: 'Visualiser le projet',
         items: [
           {
+            id: 'tavares',
+            title: 'Tavares',
+            role: 'Web Designer & Développeur',
+            category: 'Portfolio Cinématographique',
+            image: '/imgs/tavares.png',
+            description: "Site web moderne pour le réalisateur Tavares, conçu comme un écrin minimaliste pour ses œuvres cinématographiques afin de mettre ses projets au premier plan.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: 'https://portfolio-tavares.vercel.app/',
+            color: '#E50914',
+            linkType: 'site',
+          },
+          {
             id: 'sagana',
             title: 'Sagana',
             role: 'Web Designer & Développeur',
@@ -1056,18 +1069,6 @@ function App() {
             techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
             link: 'https://forum-grandes-ecoles.vercel.app/',
             color: '#E63946',
-            linkType: 'site',
-          },
-          {
-            id: 'tavares',
-            title: 'Tavares',
-            role: 'Web Designer & Développeur',
-            category: 'Portfolio Cinématographique',
-            image: '/imgs/tavares.png',
-            description: "Site web moderne pour le réalisateur Tavares, conçu comme un écrin minimaliste pour ses œuvres cinématographiques afin de mettre ses projets au premier plan.",
-            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
-            link: '#',
-            color: '#E50914',
             linkType: 'site',
           },
         ]
