@@ -1144,7 +1144,6 @@ function App() {
             <a href="#saas" className={activeSection === 'saas' ? 'active' : ''}>{t.nav.focus}</a>
             <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>{t.nav.projects}</a>
             <a href="#process" className={activeSection === 'process' ? 'active' : ''}>{t.nav.process}</a>
-            <a href="#contact" onClick={openCalendly}>{t.nav.contact}</a>
           </div>
 
           <div className="nav-right-new">
@@ -1163,6 +1162,9 @@ function App() {
                 <img src="https://flagcdn.com/w20/fr.png" alt="FR" /> FR
               </button>
             </div>
+            <button onClick={openCalendly} className="nav-contact-btn-pentos hide-mobile">
+              {t.nav.contact} <span className="arrow">↗</span>
+            </button>
             <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span>
               <span></span>
@@ -1278,37 +1280,37 @@ function App() {
       </div>
 
       {/* Hero Section */}
-      <section id="home" className="hero-new left-aligned" style={{ 
+      <section id="home" className="hero-pentos" style={{ 
         '--mouse-x': `${mousePos.x}%`, 
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
-        
         <div className="hero-gradient-overlay"></div>
-        <div className="container hero-container-new">
-          <div className="hero-content-new">
+        <div className="container hero-container-pentos">
+          <div className="hero-content-pentos">
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              className="hero-title-pentos"
             >
               {t.hero.title}
             </motion.h1>
-            <motion.p 
-              className="hero-subtitle-new"
+            <motion.div 
+              className="hero-tagline-pentos"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
             >
               {t.hero.subtitle}
-            </motion.p>
+            </motion.div>
             <motion.div 
-              className="hero-actions-new"
+              className="hero-actions-pentos"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <a href="#projects" className="btn-primary-new">{t.hero.viewProjects}</a>
-              <button onClick={openCalendly} className="btn-secondary-new">{t.hero.contactMe}</button>
+              <a href="#projects" className="btn-primary-pentos">{t.hero.viewProjects}</a>
+              <button onClick={openCalendly} className="btn-secondary-pentos">{t.hero.contactMe}</button>
             </motion.div>
           </div>
         </div>
