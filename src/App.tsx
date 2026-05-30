@@ -8,7 +8,92 @@ import {
   Download,
   X
 } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
+
+// Register ScrollTrigger client-side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+/* ─────────────────────────────────────────────
+   ILLUSTRATION SVG COMPONENTS (inline, animated)
+   Icon.svg  → 8-point star
+   shape.svg → flower/petal bloom
+   svgexport-5.svg → organic cross/orb
+───────────────────────────────────────────── */
+const IlluStar = ({ className = '' }: { className?: string }) => (
+  <svg viewBox="0 0 116 116" xmlns="http://www.w3.org/2000/svg" fill="none" className={`illu-svg ${className}`}>
+    <path fill="currentColor" d="m58 0 1.865 53.499 39.147-36.511-36.51 39.148L116 58l-53.499 1.865 36.511 39.147-39.147-36.51L58 116l-1.864-53.499-39.148 36.511 36.51-39.147L0 58l53.499-1.864-36.511-39.148 39.148 36.51L58 0Z"/>
+  </svg>
+);
+
+const IlluShape = ({ className = '' }: { className?: string }) => (
+  <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" fill="none" className={`illu-svg ${className}`}>
+    <path fill="currentColor" d="M75 0c2.546 40.32 34.68 72.454 75 75-40.32 2.546-72.454 34.68-75 75-2.546-40.32-34.68-72.454-75-75 40.32-2.546 72.454-34.68 75-75Z"/>
+  </svg>
+);
+
+const IlluOrb = ({ className = '' }: { className?: string }) => (
+  <svg viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg" fill="none" className={`illu-svg ${className}`}>
+    <path fill="currentColor" d="M29 58C28.16 30.526 27.474 29.844 0 29 27.474 28.16 28.156 27.474 29 0c.84 27.474 1.526 28.156 29 29-28.474.84-29.156 1.526-29 29Z"/>
+  </svg>
+);
+
+// Custom Geometric SVG Icons for the Services Expanding columns
+const ServiceIcon01 = () => (
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <rect x="25" y="10" width="50" height="80" rx="4" />
+    <line x1="25" y1="20" x2="75" y2="20" />
+    <circle cx="50" cy="15" r="2" />
+    <circle cx="50" cy="82" r="3" />
+    <rect x="33" y="28" width="34" height="20" />
+    <circle cx="50" cy="38" r="4" />
+    <line x1="33" y1="56" x2="67" y2="56" />
+    <line x1="33" y1="64" x2="57" y2="64" />
+    <line x1="33" y1="72" x2="47" y2="72" />
+  </svg>
+);
+
+const ServiceIcon02 = () => (
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <circle cx="30" cy="30" r="5" />
+    <circle cx="70" cy="35" r="5" />
+    <circle cx="45" cy="70" r="5" />
+    <line x1="34" y1="31" x2="66" y2="34" />
+    <line x1="42" y1="66" x2="32" y2="34" />
+    <line x1="68" y1="38" x2="48" y2="67" />
+    <circle cx="60" cy="55" r="16" stroke="var(--pentos-lime)" strokeWidth="1.8" />
+    <line x1="71" y1="66" x2="88" y2="83" stroke="var(--pentos-lime)" strokeWidth="1.8" />
+  </svg>
+);
+
+const ServiceIcon03 = () => (
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <path d="M50 15 L85 35 L85 75 L50 95 L15 75 L15 35 Z" />
+    <line x1="50" y1="15" x2="50" y2="95" />
+    <line x1="15" y1="35" x2="50" y2="55" />
+    <line x1="85" y1="35" x2="50" y2="55" />
+    <circle cx="50" cy="55" r="3" fill="var(--pentos-lime)" />
+    <path d="M25 60 L45 75 L75 45" stroke="var(--pentos-lime)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <polygon points="75,45 67,46 73,53" fill="var(--pentos-lime)" />
+  </svg>
+);
+
+const ServiceIcon04 = () => (
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <path d="M30 35 L12 50 L30 65" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M70 35 L88 50 L70 65" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <line x1="55" y1="30" x2="45" y2="70" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="20" cy="20" r="2" fill="var(--pentos-lime)" />
+    <circle cx="80" cy="80" r="2" fill="var(--pentos-lime)" />
+    <circle cx="85" cy="25" r="2.5" />
+    <circle cx="15" cy="75" r="2.5" />
+  </svg>
+);
+
+const serviceIcons = [ServiceIcon01, ServiceIcon02, ServiceIcon03, ServiceIcon04];
 
 interface CaseStudyData {
   title: string;
@@ -78,7 +163,7 @@ const CaseStudy = ({
       title: "eHadj",
       subtitle: "Orchestration digitale du pèlerinage au Bénin",
       label: "Product Design & Strategy",
-      color: "#3B82F6", // Blue
+      color: "#C9F31D", // Lime green
       bgImage: "/imgs/ehadj_cs.jpg",
       context: "L'eHadj est piloté par l'Agence pour la Gestion de la Logistique des Officiels (AGLO). Avant eHadj, le système reposait sur des processus manuels et fragmentés, entraînant des erreurs de quotas et de visas.",
       problem: "Le système reposait sur des processus manuels. Les erreurs de saisie sur 2300 dossiers créaient des doublons et des blocages de visas critiques au niveau national.",
@@ -682,21 +767,111 @@ function App() {
   const [activeProject, setActiveProject] = useState(0);
   const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'cv'>('home');
   const [lang, setLang] = useState<'en' | 'fr'>('en');
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+  const mousePos = { x: 50, y: 50 };
   const [activeSection, setActiveSection] = useState('home');
-  const [domSections, setDomSections] = useState<string[]>([]);
   const [time, setTime] = useState(new Date());
 
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            setLoading(false);
+          }, 400);
+          return 100;
+        }
+        return prev + Math.floor(Math.random() * 12) + 4;
+      });
+    }, 60);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || loading) return;
+
+    // Scroll progress bar indicator
+    gsap.to('.scroll-progress-bar', {
+      width: '100%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.1,
+      }
+    });
+
+    // Magnetic effect for buttons and CTAs
+    const magneticElements = document.querySelectorAll('.magnetic-button');
+    magneticElements.forEach((el) => {
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        gsap.to(el, {
+          x: x * 0.35,
+          y: y * 0.35,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      };
+      
+      const handleMouseLeave = () => {
+        gsap.to(el, {
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: 'elastic.out(1, 0.3)',
+        });
+      };
+      
+      el.addEventListener('mousemove', handleMouseMove as EventListener);
+      el.addEventListener('mouseleave', handleMouseLeave as EventListener);
+    });
+
+    // Reveal headers scroll triggers
+    const revealTitles = document.querySelectorAll('.gsap-reveal-title');
+    revealTitles.forEach((title) => {
+      const parent = title.parentElement;
+      if (parent) {
+        parent.style.overflow = 'hidden';
+      }
+      
+      gsap.fromTo(title, 
+        {
+          y: 50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          }
+        }
+      );
+    });
+  }, [loading]);
+
+  useEffect(() => {
     // Select all sections that have an id
     const sectionElements = Array.from(document.querySelectorAll('section')).filter(s => s.id);
-    const sectionIds = sectionElements.map(s => s.id);
-    setDomSections(sectionIds);
 
     const observerOptions = {
       root: null,
@@ -761,7 +936,7 @@ function App() {
             subtitle: 'Interfaces & Experience',
             desc: 'Creating seamless user journeys and high-fidelity interfaces that prioritize clarity and user engagement.',
             tags: ['Figma', 'UX Research', 'Prototyping'],
-            color: '#3B82F6'
+            color: '#C9F31D'
           },
           {
             id: '02',
@@ -815,7 +990,7 @@ function App() {
             date: 'FEBRUARY 2024 — SEPTEMBER 2025',
             desc: 'Evolved from a design-focused to a product-focused approach, working on integrations for the Beans loyalty program. Defined features, structured user journeys, and ensured global product consistency.',
             skills: ['PRD & Specs', 'Beans Journey', 'Dev Coordination', 'QA Validation'],
-            color: '#3B82F6'
+            color: '#C9F31D'
           },
           {
             id: '03',
@@ -937,7 +1112,7 @@ function App() {
             subtitle: 'Interfaces & Expérience',
             desc: 'Création de parcours fluides et d\'interfaces haute fidélité privilégiant la clarté et l\'engagement.',
             tags: ['Figma', 'UX Research', 'Prototypage'],
-            color: '#3B82F6'
+            color: '#C9F31D'
           },
           {
             id: '02',
@@ -991,7 +1166,7 @@ function App() {
             date: 'FÉVRIER 2024 — SEPTEMBRE 2025',
             desc: 'Évolution vers une approche produit structurée sur le programme Beans. Définition des fonctionnalités et coordination avec l\'équipe dev.',
             skills: ['PRD & Specs', 'Parcours Beans', 'Coordination Dev', 'Validation QA'],
-            color: '#3B82F6'
+            color: '#C9F31D'
           },
           {
             id: '03',
@@ -1078,15 +1253,7 @@ function App() {
 
   const t = translations[lang];
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      setMousePos({ x, y });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1120,16 +1287,30 @@ function App() {
   const projects: any[] = t.projects.items;
 
 
-  if (currentView === 'cv') {
-    return <CVView setCurrentView={setCurrentView} />;
-  }
-
-  if (currentView !== 'home') {
-    return <CaseStudy id={currentView as any} mousePos={mousePos} setCurrentView={setCurrentView} />;
-  }
-
   return (
-    <div className="app anim-fade-in">
+    <>
+      {/* Scroll Progress Indicator */}
+      <div className="scroll-progress-bar"></div>
+
+      {/* Intro Preloader */}
+      {(loading || progress < 100) && (
+        <div className={`preloader-overlay ${!loading ? 'hide' : ''}`}>
+          <div className="preloader-content">
+            <div className="preloader-title">Sacca Dafia // Portfolio</div>
+            <div className="preloader-percentage">{Math.min(progress, 100)}%</div>
+            <div className="preloader-bar-outer">
+              <div className="preloader-bar-inner" style={{ width: `${Math.min(progress, 100)}%` }}></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {currentView === 'cv' && <CVView setCurrentView={setCurrentView} />}
+      {currentView !== 'home' && currentView !== 'cv' && (
+        <CaseStudy id={currentView as any} mousePos={mousePos} setCurrentView={setCurrentView} />
+      )}
+      {currentView === 'home' && (
+        <div className="app anim-fade-in">
       {/* Navigation */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container-new">
@@ -1162,8 +1343,8 @@ function App() {
                 <img src="https://flagcdn.com/w20/fr.png" alt="FR" /> FR
               </button>
             </div>
-            <button onClick={openCalendly} className="nav-contact-btn-pentos hide-mobile">
-              {t.nav.contact} <span className="arrow">↗</span>
+            <button onClick={openCalendly} className="nav-contact-cta-pentos hide-mobile magnetic-button">
+              {t.nav.contact} ↗
             </button>
             <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span>
@@ -1174,21 +1355,7 @@ function App() {
         </div>
       </nav>
 
-      {/* Dynamic Side Indicator */}
-      <div className="side-indicator no-print">
-        {domSections.map((id) => (
-          <a
-            key={id}
-            href={`#${id}`}
-            className={`dot ${activeSection === id ? 'active' : ''}`}
-            title={id.charAt(0).toUpperCase() + id.slice(1)}
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          />
-        ))}
-      </div>
+
 
       <div className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}>
         <div className="mobile-nav-noise"></div>
@@ -1284,61 +1451,123 @@ function App() {
         '--mouse-x': `${mousePos.x}%`, 
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
-        <div className="hero-gradient-overlay"></div>
+        <div className="hero-gradient-pentos"></div>
+
+        {/* Illustration decorations – Hero */}
+        <IlluStar className="illu-hero-star1" />
+        <IlluShape className="illu-hero-shape1" />
+        <IlluOrb className="illu-hero-orb1" />
+        <IlluStar className="illu-hero-star2" />
+        
         <div className="container hero-container-pentos">
           <div className="hero-content-pentos">
+
+
             <motion.h1 
+              className="hero-title-pentos"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="hero-title-pentos"
             >
-              {t.hero.title}
+              <span className="hero-title-line-1">
+                {lang === 'en' ? 'Your product deserves' : 'Votre produit mérite'}
+                <span className="pentos-star-wrapper">
+                  <svg viewBox="0 0 100 100" className="pentos-star-icon">
+                    <path 
+                      d="M50 0 L50 100 M0 50 L100 50 M15 15 L85 85 M15 85 L85 15" 
+                      stroke="var(--pentos-lime)" 
+                      strokeWidth="5" 
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </span>
+              <span className="hero-title-line-2">
+                <span className="pentos-circles-wrapper">
+                  <svg viewBox="0 0 160 80" className="pentos-circles-icon">
+                    <circle cx="35" cy="40" r="24" stroke="var(--pentos-lime)" strokeWidth="2.5" fill="none" />
+                    <circle cx="65" cy="40" r="24" stroke="var(--pentos-lime)" strokeWidth="2.5" fill="none" />
+                    <circle cx="95" cy="40" r="24" stroke="var(--pentos-lime)" strokeWidth="2.5" fill="none" />
+                  </svg>
+                </span>
+                <span className="highlight">
+                  {lang === 'en' ? 'better design decisions.' : 'de meilleures décisions design.'}
+                </span>
+              </span>
             </motion.h1>
-            <motion.div 
-              className="hero-tagline-pentos"
+
+            <motion.p 
+              className="hero-subtitle-pentos"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               {t.hero.subtitle}
-            </motion.div>
+            </motion.p>
+
             <motion.div 
               className="hero-actions-pentos"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <a href="#projects" className="btn-primary-pentos">{t.hero.viewProjects}</a>
-              <button onClick={openCalendly} className="btn-secondary-pentos">{t.hero.contactMe}</button>
+              <a href="#projects" className="btn-primary-pentos magnetic-button">{t.hero.viewProjects}</a>
+              <button onClick={openCalendly} className="btn-secondary-pentos magnetic-button">{t.hero.contactMe}</button>
             </motion.div>
+          </div>
+
+          <div className="hero-sculpture-container">
+            <motion.img 
+              src="/imgs/hero.svg" 
+              alt="Pentos Halftone Sculpture" 
+              className="hero-sculpture-pentos"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 0.85, scale: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+            />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="about-section-new" style={{ 
-        '--mouse-x': `${mousePos.x}%`, 
-        '--mouse-y': `${mousePos.y}%` 
-      } as any}>
-        <div className="about-gradient-overlay"></div>
-        <div className="container about-container-new">
-          <div className="about-header-new">
-            <span className="about-label-new">{t.about.label}</span>
-            <motion.h2 
-              className="about-title-large"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              {t.about.title}
-            </motion.h2>
+      <section id="about" className="about-pentos">
+        {/* Illustration decorations – About */}
+        <IlluShape className="illu-about-shape" />
+        <IlluOrb className="illu-about-orb" />
+        <div className="container about-container-pentos">
+          <div className="about-header-pentos">
+            <div className="about-header-left">
+
+              <motion.h2 
+                className="about-title-pentos gsap-reveal-title"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                {t.about.title}
+              </motion.h2>
+            </div>
+            
+            <div className="about-chevron-wrapper">
+              <svg viewBox="0 0 100 100" className="about-chevron-icon" fill="var(--pentos-lime)">
+                <polygon points="20,20 70,20 90,40 40,40" />
+                <polygon points="10,50 60,50 80,70 30,70" />
+              </svg>
+            </div>
           </div>
           
-          <div className="about-content-refined">
-            <div className="about-text-narrative">
+          <div className="about-layout-pentos">
+            <div className="about-profile-frame">
+              <img 
+                src="/imgs/cv-profile.jpg" 
+                alt="Sacca Dafia Profile" 
+                className="about-profile-img" 
+              />
+            </div>
+            
+            <div className="about-right-pentos">
               <motion.p 
-                className="about-bio-massive"
+                className="about-bio-pentos"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1346,8 +1575,9 @@ function App() {
               >
                 {t.about.bio}
               </motion.p>
+              
               <motion.p 
-                className="about-approach-soft"
+                className="about-approach-pentos"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1355,15 +1585,26 @@ function App() {
               >
                 {t.about.approach}
               </motion.p>
-            </div>
-            <div className="about-stats-mini hide-mobile">
-              <div className="stat-item">
-                <span className="stat-num">+3</span>
-                <span className="stat-label">Years of<br/>Experience</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-num">50+ Projects</span>
-                <span className="stat-label">Delivered with<br/>Excellence</span>
+              
+              <div className="about-stats-pentos">
+                <div className="about-stat-item">
+                  <span className="about-stat-num">+3</span>
+                  <span className="about-stat-label">
+                    {lang === 'en' ? 'Years of Experience' : "Ans d'expérience"}
+                  </span>
+                </div>
+                <div className="about-stat-item">
+                  <span className="about-stat-num">50+</span>
+                  <span className="about-stat-label">
+                    {lang === 'en' ? 'Projects Delivered' : 'Projets livrés'}
+                  </span>
+                </div>
+                <div className="about-stat-item">
+                  <span className="about-stat-num">100%</span>
+                  <span className="about-stat-label">
+                    {lang === 'en' ? 'Satisfaction Rate' : 'Satisfaction client'}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -1372,10 +1613,14 @@ function App() {
 
       {/* Services Section */}
       <section id="services" className="services-section-new">
+        {/* Illustration decorations – Services */}
+        <IlluStar className="illu-services-star" />
+        <IlluOrb className="illu-services-orb" />
         <div className="container">
           <div className="services-header-new">
-            <span className="services-label-new">{t.services.label}</span>
+
             <motion.h2 
+              className="gsap-reveal-title"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -1393,33 +1638,39 @@ function App() {
             </motion.p>
           </div>
           
-          <div className="services-grid-new">
+          <div className="services-deck-new">
             {t.services.items.map((service : any, index : number) => (
               <motion.div 
                 key={service.id}
-                className="service-card-new"
+                className="service-column-new"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="card-header-new">
-                  <span className="card-index-new">{service.id}</span>
-                  <div className="card-dot-new" style={{ backgroundColor: service.color }}></div>
+                <div className="column-header-new">
+                  <span className="column-index-new">{service.id}</span>
+                  <div className="column-dot-new" style={{ backgroundColor: service.color }}></div>
                 </div>
-                <div className="card-body-new">
+                <div className="column-illustration-wrapper">
+                  {(() => {
+                    const Icon = serviceIcons[index];
+                    return <Icon />;
+                  })()}
+                </div>
+                <div className="column-body-new">
                   <h3>{service.title}</h3>
-                  <p className="card-subtitle-new">{service.subtitle}</p>
-                  <p className="card-desc-new">{service.desc}</p>
+                  <p className="column-subtitle-new">{service.subtitle}</p>
+                  <p className="column-desc-new">{service.desc}</p>
                 </div>
-                <div className="card-footer-new">
-                  <div className="card-tags-new">
+                <div className="column-footer-new">
+                  <div className="column-tags-new">
                     {service.tags.map((tag: string) => (
-                      <span key={tag} className="tag-pill-new">{tag}</span>
+                      <span key={tag} className="column-tag-pill-new">{tag}</span>
                     ))}
                   </div>
                 </div>
-                {index === 0 && <div className="card-glow-new" style={{ '--glow-color': service.color } as any}></div>}
+                {index === 0 && <div className="column-glow-new" style={{ '--glow-color': service.color } as any}></div>}
               </motion.div>
             ))}
           </div>
@@ -1432,10 +1683,14 @@ function App() {
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
         <div className="experience-gradient-overlay"></div>
+        {/* Illustration decorations – Experience */}
+        <IlluShape className="illu-exp-shape" />
+        <IlluStar className="illu-exp-star" />
         <div className="container experience-container-new">
           <div className="experience-header-new">
-            <span className="experience-label-new">{t.experience.label}</span>
+
             <motion.h2 
+              className="gsap-reveal-title"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -1485,58 +1740,109 @@ function App() {
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
         <div className="saas-gradient-overlay"></div>
-        <div className="container saas-container-new">
-          <div className="saas-header-new">
-            <span className="saas-label-new">05 / Focus</span>
+        {/* Illustration decorations – SaaS */}
+        <IlluOrb className="illu-saas-orb" />
+        <IlluStar className="illu-saas-star" />
+        <div className="saas-container-new">
+
+          {/* Top header bar */}
+          <div className="saas-top-bar">
+            <span className="saas-eyebrow">05 / Focus</span>
             <motion.h2 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="saas-section-title gsap-reveal-title"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              Produits & <span className="highlight">SaaS.</span>
+              Produits &amp; <span className="highlight">SaaS.</span>
             </motion.h2>
+            <p className="saas-section-sub">
+              {lang === 'en'
+                ? 'Complex B2B platforms designed from strategy to final delivery.'
+                : 'Des plateformes B2B complexes conçues de la stratégie jusqu\'à la livraison finale.'}
+            </p>
           </div>
-          
-          <div className="saas-grid-new">
+
+          {/* Editorial rows */}
+          <div className="saas-rows">
             {[
               {
                 id: 'ehadj',
+                index: '01',
                 label: 'Process Orchestration',
                 title: 'eHadj',
-                desc: 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
-                view: 'ehadj',
-                color: '#10B981'
+                year: '2024',
+                tags: ['UX Design', 'Product Strategy', 'B2B SaaS'],
+                desc: lang === 'en'
+                  ? 'Digitalisation of pilgrimage organisation: registrations, logistics, transport and centralised financial flows.'
+                  : 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
+                image: '/imgs/ehadj_cs.jpg',
+                color: '#C9F31D',
+                view: 'ehadj'
               },
               {
                 id: 'asset-iq',
+                index: '02',
                 label: 'Product Design & Strategy',
                 title: 'Asset IQ',
-                desc: 'Système intelligent de suivi et de gouvernance opérationnelle des ressources physiques.',
-                view: 'asset-iq',
-                color: '#34D399'
+                year: '2025',
+                tags: ['Product Design', 'UX Strategy', 'Dashboard'],
+                desc: lang === 'en'
+                  ? 'Intelligent system for tracking and operational governance of physical resources across multi-site infrastructures.'
+                  : 'Système intelligent de suivi et de gouvernance opérationnelle des ressources physiques.',
+                image: '/imgs/assetiQ_cs.jpg',
+                color: '#A855F7',
+                view: 'asset-iq'
               }
             ].map((product, index) => (
-              <motion.div 
+              <motion.div
                 key={product.id}
-                className="saas-card-new"
-                initial={{ opacity: 0, y: 30 }}
+                className="saas-row-item"
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.15, duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 onClick={() => setCurrentView(product.view as any)}
               >
-                <div className="saas-card-content">
-                  <span className="saas-card-label">{product.label}</span>
-                  <h3>{product.title}</h3>
-                  <p>{product.desc}</p>
-                  <div className="saas-card-footer">
-                    <span className="saas-cta-text">VOIR L'ÉTUDE DE CAS</span>
-                    <div className="saas-cta-circle">
-                      <ArrowRight size={20} style={{ transform: 'rotate(-45deg)' }} />
+                {/* Background image revealed on hover */}
+                <div
+                  className="saas-row-bg"
+                  style={{ backgroundImage: `url(${product.image})` }}
+                />
+                <div className="saas-row-bg-overlay" />
+
+                {/* Left: giant index */}
+                <div className="saas-row-left">
+                  <span className="saas-row-index">{product.index}</span>
+                </div>
+
+                {/* Center: content */}
+                <div className="saas-row-center">
+                  <span className="saas-row-label">{product.label}</span>
+                  <h3 className="saas-row-title">{product.title}</h3>
+                  <p className="saas-row-desc">{product.desc}</p>
+                  <div className="saas-row-tags">
+                    {product.tags.map(tag => (
+                      <span key={tag} className="saas-row-tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right: CTA + year */}
+                <div className="saas-row-right">
+                  <span className="saas-row-year">{product.year}</span>
+                  <div className="saas-row-cta">
+                    <span className="saas-row-cta-label">
+                      {lang === 'en' ? 'View Case Study' : "Voir l'étude"}
+                    </span>
+                    <div className="saas-row-arrow">
+                      <ArrowRight size={18} style={{ transform: 'rotate(-45deg)' }} />
                     </div>
                   </div>
                 </div>
-                <div className="saas-card-glow" style={{ backgroundColor: product.color }}></div>
+
+                {/* Accent line that fills on hover */}
+                <div className="saas-row-line" style={{ '--accent': product.color } as any} />
               </motion.div>
             ))}
           </div>
@@ -1551,8 +1857,9 @@ function App() {
         <div className="projects-gradient-overlay"></div>
         <div className="container">
           <div className="projects-header-new">
-            <span className="projects-label-new">{t.projects.label}</span>
+
             <motion.h2 
+              className="gsap-reveal-title"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -1577,7 +1884,7 @@ function App() {
               <div className="proj-actions-new" style={{ display: 'flex', gap: '16px', marginTop: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
                 <motion.button
                   onClick={() => setCurrentView(projects[activeProject].id as any)}
-                  className="btn-primary-new"
+                  className="btn-primary-new magnetic-button"
                   style={{ padding: '12px 24px', fontSize: '0.9rem', border: 'none', cursor: 'pointer' }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -1589,7 +1896,7 @@ function App() {
                     href={projects[activeProject].link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-secondary-new"
+                    className="btn-secondary-new magnetic-button"
                     style={{ padding: '12px 24px', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer', textDecoration: 'none' }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -1644,10 +1951,15 @@ function App() {
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
         <div className="methodology-gradient-overlay"></div>
+        {/* Illustration decorations – Process */}
+        <IlluShape className="illu-process-shape" />
+        <IlluOrb className="illu-process-orb" />
+        <IlluStar className="illu-process-star" />
         <div className="container methodology-container-new">
           <div className="methodology-header-new">
-            <span className="methodology-label-new">{t.process.label}</span>
+
             <motion.h2 
+              className="gsap-reveal-title"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -1686,11 +1998,14 @@ function App() {
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
         <div className="contact-gradient-overlay"></div>
+        {/* Illustration decorations – Contact */}
+        <IlluStar className="illu-contact-star" />
+        <IlluShape className="illu-contact-shape" />
         <div className="container contact-container-new">
           <div className="contact-header-new">
-            <span className="contact-label-new">{t.contact.label}</span>
+
             <motion.h2 
-              className="contact-title-large"
+              className="contact-title-large gsap-reveal-title"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1700,7 +2015,7 @@ function App() {
           </div>
           
           <div className="contact-grid-new">
-            <div className="book-card-premium" onClick={openCalendly}>
+            <div className="book-card-premium magnetic-button" onClick={openCalendly}>
               <div className="book-card-left">
                 <div className="book-icon-wrapper">
                   <Calendar size={24} />
@@ -1764,7 +2079,9 @@ function App() {
           </div>
         </div>
       </section>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 
