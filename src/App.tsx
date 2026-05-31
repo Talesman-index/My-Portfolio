@@ -920,10 +920,10 @@ function App() {
       },
       hero: {
         label: '00 / Home',
-        title: <>Your product deserves<br /><span className="highlight">better design decisions.</span></>,
-        subtitle: 'CLEAR. USEFUL. SCALABLE.',
-        viewProjects: 'View my projects',
-        contactMe: 'Contact me',
+        title: <>Building scalable<br /><span className="highlight">digital products.</span></>,
+        subtitle: 'CLEAR. USEFUL. SUSTAINABLE.',
+        viewProjects: 'VIEW MY PROJECTS',
+        contactMe: 'CONTACT ME',
       },
       services: {
         label: '03 / Services',
@@ -1096,10 +1096,10 @@ function App() {
       },
       hero: {
         label: '00 / Accueil',
-        title: <>Votre produit mérite<br /><span className="highlight">de meilleures décisions design.</span></>,
-        subtitle: 'CLAIR. UTILE. SCALABLE.',
-        viewProjects: 'Voir mes projets',
-        contactMe: 'Me contacter',
+        title: <>Concevoir des produits<br /><span className="highlight">numériques évolutifs.</span></>,
+        subtitle: 'CLAIRS. UTILES. DURABLES.',
+        viewProjects: 'VOIR MES PROJETS',
+        contactMe: 'ME CONTACTER',
       },
       services: {
         label: '03 / Services',
@@ -1417,17 +1417,14 @@ function App() {
               ))}
             </div>
 
-            <div className="mobile-nav-aside hide-mobile">
-              <div className="aside-box">
-                <span className="aside-label">READY TO SHIP?</span>
-                <button 
-                  className="aside-cta"
-                  onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
-                >
-                  {t.nav.contact}
-                  <ArrowRight size={20} style={{ transform: 'rotate(-45deg)' }} />
-                </button>
-              </div>
+            {/* CTA button – Book a call */}
+            <div className="mobile-nav-cta">
+              <button
+                className="mobile-nav-cta-btn"
+                onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
+              >
+                {t.nav.contact} <ArrowRight size={14} style={{ transform: 'rotate(-45deg)' }} />
+              </button>
             </div>
           </div>
 
@@ -1451,7 +1448,12 @@ function App() {
         '--mouse-x': `${mousePos.x}%`, 
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
-        <div className="hero-gradient-pentos"></div>
+        {/* Background layers */}
+        <div className="hero-gradient-pentos" />
+        <div className="hero-pentos-scan" />
+        <div className="hero-pentos-noise" />
+        <div className="hero-pentos-rings" />
+        <div className="hero-pentos-accent" />
 
         {/* Illustration decorations – Hero */}
         <IlluStar className="illu-hero-star1" />
@@ -1470,28 +1472,11 @@ function App() {
               transition={{ duration: 0.8 }}
             >
               <span className="hero-title-line-1">
-                {lang === 'en' ? 'Your product deserves' : 'Votre produit mérite'}
-                <span className="pentos-star-wrapper">
-                  <svg viewBox="0 0 100 100" className="pentos-star-icon">
-                    <path 
-                      d="M50 0 L50 100 M0 50 L100 50 M15 15 L85 85 M15 85 L85 15" 
-                      stroke="var(--pentos-lime)" 
-                      strokeWidth="5" 
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>
+                {lang === 'en' ? 'Building scalable' : 'Concevoir des produits'}
               </span>
               <span className="hero-title-line-2">
-                <span className="pentos-circles-wrapper">
-                  <svg viewBox="0 0 160 80" className="pentos-circles-icon">
-                    <circle cx="35" cy="40" r="24" stroke="var(--pentos-lime)" strokeWidth="2.5" fill="none" />
-                    <circle cx="65" cy="40" r="24" stroke="var(--pentos-lime)" strokeWidth="2.5" fill="none" />
-                    <circle cx="95" cy="40" r="24" stroke="var(--pentos-lime)" strokeWidth="2.5" fill="none" />
-                  </svg>
-                </span>
                 <span className="highlight">
-                  {lang === 'en' ? 'better design decisions.' : 'de meilleures décisions design.'}
+                  {lang === 'en' ? 'digital products.' : 'numériques évolutifs.'}
                 </span>
               </span>
             </motion.h1>
@@ -1532,7 +1517,6 @@ function App() {
       {/* About Section */}
       <section id="about" className="about-pentos">
         {/* Illustration decorations – About */}
-        <IlluShape className="illu-about-shape" />
         <IlluOrb className="illu-about-orb" />
         <div className="container about-container-pentos">
           <div className="about-header-pentos">

@@ -368,47 +368,145 @@ section {
   opacity: 0.2;
 }
 
-/* Pentos Hero Styles */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO — PENTOS CINEMATIC BACKGROUND
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hero-pentos {
   position: relative;
   min-height: 100vh;
-  background-color: var(--pentos-black);
+  background-color: #000;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 120px 0 96px 0;
+  padding: 120px 0 96px;
   z-index: 10;
   --mouse-x: 50%;
   --mouse-y: 50%;
 }
 
-.hero-gradient-pentos {
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(201, 243, 29, 0.05) 0%, transparent 60%),
-    linear-gradient(135deg, var(--pentos-black) 0%, var(--pentos-near-black) 100%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Concentric circular lines in background for high-end graphic design feel */
+/* ─ Layer 1: dot grid ─ */
 .hero-pentos::before {
   content: '';
   position: absolute;
-  right: -10%;
-  top: -10%;
-  width: 80vw;
-  height: 80vw;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.02);
-  box-shadow: 
-    0 0 0 40px rgba(255, 255, 255, 0.008),
-    0 0 0 80px rgba(255, 255, 255, 0.004),
-    0 0 0 120px rgba(255, 255, 255, 0.002);
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(201,243,29,0.18) 1px, transparent 1px);
+  background-size: 36px 36px;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 1;
+  /* vignette mask — dots fade to black at edges */
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* ─ Layer 2: animated lime glow orb ─ */
+.hero-gradient-pentos {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 55% at var(--mouse-x) var(--mouse-y), rgba(201,243,29,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201,243,29,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 20%, rgba(201,243,29,0.03) 0%, transparent 60%),
+    linear-gradient(160deg, #0a0a0a 0%, #000 60%, #050505 100%);
   pointer-events: none;
   z-index: 2;
+  animation: heroGlowDrift 12s ease-in-out infinite alternate;
 }
+
+@keyframes heroGlowDrift {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+/* ─ Layer 3: horizontal scanlines ─ */
+.hero-pentos-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255,255,255,0.012) 3px,
+    rgba(255,255,255,0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 3;
+  animation: scanShift 8s linear infinite;
+}
+
+@keyframes scanShift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(40px); }
+}
+
+/* ─ Layer 4: film grain noise ─ */
+.hero-pentos-noise {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 4;
+  animation: grainShift 0.15s steps(1) infinite;
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-2%, -3%); }
+  20%  { transform: translate(3%, 1%); }
+  30%  { transform: translate(-1%, 4%); }
+  40%  { transform: translate(4%, -2%); }
+  50%  { transform: translate(-3%, 3%); }
+  60%  { transform: translate(2%, -4%); }
+  70%  { transform: translate(-4%, 2%); }
+  80%  { transform: translate(3%, -1%); }
+  90%  { transform: translate(-2%, 4%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ─ Layer 5: concentric ellipse rings (top-right, behind statue) ─ */
+.hero-pentos-rings {
+  position: absolute;
+  right: -8%;
+  top: -15%;
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+  border: 1px solid rgba(201,243,29,0.06);
+  box-shadow:
+    0 0 0 40px  rgba(201,243,29,0.028),
+    0 0 0 90px  rgba(201,243,29,0.018),
+    0 0 0 150px rgba(201,243,29,0.008),
+    0 0 0 220px rgba(201,243,29,0.003);
+  pointer-events: none;
+  z-index: 2;
+  animation: ringsBreath 8s ease-in-out infinite alternate;
+}
+
+@keyframes ringsBreath {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(1.04); opacity: 0.7; }
+}
+
+/* ─ Thin diagonal accent line ─ */
+.hero-pentos-accent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,243,29,0.15) 30%, rgba(201,243,29,0.06) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+  transform: rotate(-6deg) scaleX(1.2);
+  transform-origin: center;
+  opacity: 0.5;
+}
+
 
 .hero-container-pentos {
   position: relative;
@@ -691,14 +789,18 @@ section {
   }
 }
 
-/* ── Mobile ≤ 768px — Full redesign ── */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO — MOBILE REDESIGN (UX/UI optimised)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 768px) {
-  /* --- Navbar --- */
-  .nav-center-links {
-    display: none;
-  }
+  /* — Navbar: slimmer on mobile — */
+  .navbar { padding: 14px 0; }
+  .navbar.scrolled { padding: 10px 0; }
+  .nav-container-new { padding: 0 20px; }
+  .nav-center-links { display: none !important; }
+  .logo-img-new { height: 28px; }
 
-  /* --- Section shell --- */
+  /* — Hero shell: full viewport height — */
   .hero-pentos {
     padding: 0;
     min-height: 100dvh;
@@ -707,199 +809,199 @@ section {
     overflow: hidden;
   }
 
-  /* --- Container becomes a column that fills viewport --- */
-  .hero-container-pentos {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;   /* text sits low */
-    text-align: left;
-    padding: 0 24px 56px;
-    min-height: 100dvh;
-    position: relative;
-    gap: 0;
-  }
-
-  /* --- Sculpture: absolute background, centered, faded --- */
+  /* — Statue: top-right, large atmospheric ghost — */
   .hero-sculpture-container {
     position: absolute;
-    right: -20px;
-    bottom: 0;
-    width: 78%;
-    height: 80%;
+    top: 0;
+    right: -5%;
+    width: 72%;
+    height: 82%;
     min-height: unset;
     margin-top: 0;
+    display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-start;
     pointer-events: none;
     z-index: 0;
   }
   .hero-sculpture-pentos {
     width: 100%;
-    max-width: 380px;
     height: 100%;
+    max-width: 340px;
     object-fit: contain;
-    object-position: bottom right;
-    opacity: 0.55;
-    filter: drop-shadow(0 0 40px rgba(201, 243, 29, 0.06));
+    object-position: top right;
+    opacity: 0.4;
+    filter:
+      drop-shadow(0 0 60px rgba(201, 243, 29, 0.08))
+      drop-shadow(0 0 120px rgba(201, 243, 29, 0.04));
   }
-  /* gradient fade at bottom so text is readable */
+
+  /* Radial lime glow behind statue */
+  .hero-pentos::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(201, 243, 29, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Bottom gradient for readability under content */
   .hero-pentos::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 40%;
-    background: linear-gradient(to top, #000000 0%, transparent 100%);
+    height: 55%;
+    background: linear-gradient(to top, #000 20%, rgba(0,0,0,0.7) 60%, transparent 100%);
     pointer-events: none;
     z-index: 1;
   }
 
-  /* --- Content: z above sculpture --- */
+  /* — Container: centred layout, content as focus — */
+  .hero-container-pentos {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;      /* anchor content to lower third */
+    text-align: left;
+    padding: 0 22px 48px;
+    min-height: 100dvh;
+    position: relative;
+    gap: 0;
+  }
+
+  /* — Content sits above gradients — */
   .hero-content-pentos {
     position: relative;
     z-index: 2;
     align-items: flex-start;
     text-align: left;
     max-width: 100%;
+    width: 100%;
   }
 
-  /* --- Tagline row --- */
+  /* — Tagline label — */
   .hero-tagline-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
-  .hero-tagline-line {
-    display: none;
+  .hero-tagline-line { display: none; }
+  .hero-tag-pentos {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--pentos-lime);
+    opacity: 1;
   }
 
-  /* --- Title: hide inline SVGs, clean stacked text --- */
+  /* Lime accent bar left of label */
+  .hero-tagline-group::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--pentos-lime);
+    flex-shrink: 0;
+  }
+
+  /* — Headline: LARGE, visible immediately — */
   .hero-title-pentos {
-    font-size: clamp(30px, 8vw, 48px);
-    gap: 4px;
-    margin-bottom: 16px;
-    line-height: 1.15;
+    font-size: clamp(34px, 9.5vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    gap: 2px;
+    margin-bottom: 14px;
     flex-direction: column;
     align-items: flex-start;
   }
-  .hero-title-line-1 {
-    white-space: normal;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: flex-start;
-    align-items: center;
-  }
+  .hero-title-line-1,
   .hero-title-line-2 {
-    padding-left: 0;
     white-space: normal;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     justify-content: flex-start;
-    align-items: center;
+    align-items: baseline;
   }
+  .hero-title-line-2 { padding-left: 0; }
 
-  /* Hide decorative SVGs on mobile — they break the title flow */
+  /* Hide decorative SVGs — break the title on mobile */
   .pentos-star-wrapper,
-  .pentos-circles-wrapper {
-    display: none;
-  }
+  .pentos-circles-wrapper { display: none; }
 
-  /* --- Subtitle --- */
+  /* — Subtitle: readable, not too long — */
   .hero-subtitle-pentos {
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    margin-bottom: 28px;
-    color: rgba(255, 255, 255, 0.5);
-    max-width: 280px;
+    font-size: 11.5px;
+    line-height: 1.65;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 24px;
+    max-width: 260px;
   }
 
-  /* --- Buttons: side by side, compact --- */
+  /* — CTAs: stacked — primary full-width, secondary outline — */
   .hero-actions-pentos {
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction: column;
     gap: 10px;
     width: 100%;
+    max-width: 320px;
   }
   .btn-primary-pentos {
-    flex: 1;
-    height: 46px;
-    padding: 0 16px;
+    width: 100%;
+    height: 50px;
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
+    background: var(--pentos-lime);
+    padding: 0 20px;
+    justify-content: center;
   }
   .btn-secondary-pentos {
-    flex: 1;
-    height: 46px;
-    padding: 0 16px;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-  }
-}
-
-/* ── Very small phones ≤ 480px ── */
-@media (max-width: 480px) {
-  .hero-container-pentos {
-    padding: 0 18px 48px;
-  }
-  .hero-title-pentos {
-    font-size: clamp(26px, 8.5vw, 38px);
-  }
-  .hero-sculpture-container {
-    width: 85%;
-    height: 70%;
-  }
-  .hero-sculpture-pentos {
-    max-width: 320px;
-    opacity: 0.45;
-  }
-  .btn-primary-pentos,
-  .btn-secondary-pentos {
+    width: 100%;
     height: 44px;
-    font-size: 10px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    background: transparent;
+    border-color: rgba(255,255,255,0.25);
+    padding: 0 20px;
+    justify-content: center;
   }
 }
 
-/* ── Tiny phones ≤ 380px ── */
+/* — 480px: small phones — */
+@media (max-width: 480px) {
+  .hero-container-pentos { padding: 0 18px 40px; }
+  .hero-title-pentos     { font-size: clamp(30px, 9vw, 44px); }
+  .hero-sculpture-container { width: 78%; height: 72%; }
+  .hero-sculpture-pentos { opacity: 0.35; max-width: 300px; }
+  .btn-primary-pentos    { height: 48px; }
+  .btn-secondary-pentos  { height: 42px; }
+  .hero-actions-pentos   { max-width: 100%; }
+}
+
+/* — 380px: tiny phones — */
 @media (max-width: 380px) {
-  .hero-container-pentos {
-    padding: 0 14px 40px;
-  }
-  .hero-title-pentos {
-    font-size: clamp(22px, 9vw, 32px);
-  }
-  .hero-subtitle-pentos {
-    font-size: 10px;
-    max-width: 240px;
-  }
+  .hero-container-pentos { padding: 0 14px 36px; }
+  .hero-title-pentos     { font-size: clamp(26px, 9vw, 36px); }
+  .hero-subtitle-pentos  { font-size: 10.5px; max-width: 220px; }
 }
 
-/* ── Landscape phones ── */
+/* — Landscape orientation — */
 @media (max-height: 480px) and (orientation: landscape) {
-  .hero-pentos {
-    min-height: 100dvh;
-  }
-  .hero-container-pentos {
-    padding: 0 24px 36px;
-    justify-content: flex-end;
-  }
-  .hero-title-pentos {
-    font-size: clamp(20px, 5vw, 32px);
-    gap: 2px;
-    margin-bottom: 12px;
-  }
-  .hero-subtitle-pentos {
-    margin-bottom: 16px;
-  }
-  .hero-sculpture-container {
-    width: 45%;
-    height: 90%;
-    right: 0;
-  }
+  .hero-pentos           { min-height: 100dvh; }
+  .hero-container-pentos { padding: 0 24px 28px; justify-content: flex-end; }
+  .hero-title-pentos     { font-size: clamp(20px, 5vw, 30px); gap: 2px; margin-bottom: 10px; }
+  .hero-subtitle-pentos  { margin-bottom: 14px; font-size: 10px; }
+  .hero-sculpture-container { width: 40%; height: 90%; top: 0; right: 0; }
   .btn-primary-pentos,
-  .btn-secondary-pentos {
-    height: 40px;
-    font-size: 10px;
-  }
+  .btn-secondary-pentos  { height: 40px; font-size: 10px; }
+  .hero-actions-pentos   { flex-direction: row; max-width: 100%; }
+  .btn-primary-pentos,
+  .btn-secondary-pentos  { flex: 1; width: auto; }
 }
 
 
@@ -926,38 +1028,55 @@ section {
   color: var(--btn-yellow);
 }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HAMBURGER BUTTON — Pentos Sharp Style
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .menu-icon-btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.05); /* Soft circle */
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border-radius: 0;          /* Sharp — Pentos rule */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0;
   cursor: pointer;
   z-index: 5100;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 
 .menu-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--pentos-lime);
+  background: rgba(201, 243, 29, 0.06);
 }
 
 .menu-icon-btn span {
-  width: 20px;
+  display: block;
+  width: 18px;
   height: 1.5px;
   background-color: #fff;
-  margin: 2.5px 0;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   transform-origin: center;
 }
 
+/* Only 2 bars visible normally, middle hides on open */
+.menu-icon-btn span:nth-child(3) {
+  width: 12px;               /* shorter 3rd bar for asymmetry */
+  align-self: flex-end;
+  margin-right: 4px;
+}
+
+.menu-icon-btn.open {
+  border-color: var(--pentos-lime);
+  background: rgba(201, 243, 29, 0.08);
+}
+
 .menu-icon-btn.open span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
+  background-color: var(--pentos-lime);
 }
 
 .menu-icon-btn.open span:nth-child(2) {
@@ -966,8 +1085,12 @@ section {
 }
 
 .menu-icon-btn.open span:nth-child(3) {
+  width: 18px;               /* expand to full */
+  margin-right: 0;
   transform: translateY(-6.5px) rotate(-45deg);
+  background-color: var(--pentos-lime);
 }
+
 
 /* Hero */
 .hero {
@@ -1055,48 +1178,34 @@ section {
   to { opacity: 1; transform: scale(1.1); }
 }
 
-/* Mobile Nav Overlay - High End Editorial Design */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE NAV OVERLAY — Full Pentos Redesign
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .mobile-nav-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   z-index: 5000;
   visibility: hidden;
   pointer-events: none;
-  transition: visibility 0.6s;
+  transition: visibility 0s 0.7s;
 }
 
 .mobile-nav-overlay.open {
   visibility: visible;
   pointer-events: auto;
+  transition: visibility 0s 0s;
 }
 
-.mobile-nav-noise {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  opacity: 0.05;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-.mobile-nav-bg-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.4) 100%);
-  pointer-events: none;
-}
-
+/* Sliding black panel */
 .mobile-nav-bg {
   position: absolute;
   inset: 0;
-  background: #050505;
-  backdrop-filter: blur(30px);
+  background: #000000;
   transform: translateY(-100%);
-  transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+  transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
   z-index: 0;
 }
 
@@ -1104,44 +1213,106 @@ section {
   transform: translateY(0);
 }
 
+/* Lime accent stripe at top of overlay */
+.mobile-nav-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--pentos-lime);
+}
+
+/* Subtle noise texture */
+.mobile-nav-noise {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.mobile-nav-bg-vignette { display: none; } /* removed */
+
+/* ── Container layout ── */
 .mobile-nav-container {
   position: relative;
   z-index: 10;
   height: 100%;
-  padding: clamp(40px, 8vh, 80px) 0;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
 }
 
+/* ── Header row ── */
 .mobile-nav-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 60px;
+  height: 72px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 0;
 }
 
 .mobile-brand {
   font-family: var(--font-main);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: #fff;
 }
 
 .mobile-nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
 }
 
-.mobile-close-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* ── Lang pills — square Pentos style ── */
+.mobile-nav-lang {
+  display: flex;
+  gap: 4px;
+  background: transparent;
+  padding: 0;
+}
+
+.lang-pill {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.4);
+  padding: 6px 14px;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 0;          /* Sharp */
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.lang-pill.active {
+  background: var(--pentos-lime);
+  border-color: var(--pentos-lime);
+  color: #000;
+}
+
+.lang-pill:not(.active):hover {
+  border-color: rgba(255,255,255,0.4);
   color: #fff;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
+}
+
+/* ── Close button — square lime ── */
+.mobile-close-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0;          /* Sharp */
+  color: #fff;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1150,231 +1321,223 @@ section {
 }
 
 .mobile-close-btn:hover {
-  background: var(--btn-yellow);
+  background: var(--pentos-lime);
+  border-color: var(--pentos-lime);
   color: #000;
   transform: rotate(90deg);
 }
 
-.mobile-nav-lang {
-  display: flex;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4px;
-  border-radius: 100px;
-}
-
-.lang-pill {
-  border: none;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.4);
-  padding: 6px 16px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  border-radius: 100px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.lang-pill.active {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-/* Meta Top Section */
+/* ── Meta info row (location / time) ── */
 .mobile-nav-meta-top {
   display: flex;
-  gap: 60px;
-  margin-bottom: 80px;
+  gap: 40px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 0;
 }
 
 .meta-item-new {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .meta-label-new {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.3);
-  letter-spacing: 1px;
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .meta-value-new {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: #fff;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.04em;
 }
 
-/* Content Grid */
+/* ── Nav links — big editorial list ── */
 .mobile-nav-content {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 40px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 0;
 }
 
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
+}
+
+.mobile-link-wrapper {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .mobile-link-item {
   display: flex;
-  align-items: baseline;
-  gap: 20px;
+  align-items: center;
+  gap: 16px;
   text-decoration: none;
   position: relative;
-  padding: 10px 0;
+  padding: 14px 0;
+  transition: padding-left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mobile-link-item:hover,
+.mobile-link-item.active {
+  padding-left: 8px;
+}
+
+/* Lime accent bar on left */
+.mobile-link-item::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--pentos-lime);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mobile-link-item:hover::before,
+.mobile-link-item.active::before {
+  transform: scaleY(1);
 }
 
 .mobile-link-num {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--accent);
-  opacity: 0.5;
-  transition: all 0.4s ease;
-}
-
-.mobile-link-text {
   font-family: var(--font-main);
-  font-size: clamp(40px, 10vw, 84px);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.mobile-link-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.4s ease;
-}
-
-.mobile-link-item:hover .mobile-link-text,
-.mobile-link-item.active .mobile-link-text {
-  color: #fff;
-  transform: translateX(15px);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--pentos-lime);
+  letter-spacing: 0.1em;
+  min-width: 28px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
 .mobile-link-item:hover .mobile-link-num,
 .mobile-link-item.active .mobile-link-num {
   opacity: 1;
-  transform: scale(1.2);
 }
 
-.mobile-link-item:hover .mobile-link-line,
-.mobile-link-item.active .mobile-link-line {
-  width: 100px;
+.mobile-link-text {
+  font-family: var(--font-main);
+  font-size: clamp(32px, 9vw, 64px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.18);    /* dim by default */
+  transition: color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Aside Box */
-.aside-box {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 40px;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.mobile-link-item:hover .mobile-link-text {
+  color: #ffffff;                    /* full white on hover */
 }
 
-.aside-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 2px;
+.mobile-link-item.active .mobile-link-text {
+  color: var(--pentos-lime);         /* lime for active page */
 }
 
-.aside-cta {
-  background: #fff;
+.mobile-link-line { display: none; } /* removed, using ::before instead */
+
+/* ── CTA at bottom of links ── */
+.mobile-nav-cta {
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.mobile-nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--pentos-lime);
   color: #000;
   border: none;
-  padding: 18px 24px;
-  border-radius: 12px;
+  border-radius: 0;
+  padding: 14px 28px;
   font-family: var(--font-main);
+  font-size: 11px;
   font-weight: 700;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
-.aside-cta:hover {
-  background: var(--accent);
-  transform: translateY(-5px);
+.mobile-nav-cta-btn:hover {
+  opacity: 0.85;
 }
 
-/* Footer New */
+/* ── Aside box (desktop menu fallback — hidden on mobile) ── */
+.mobile-nav-aside { display: none; }
+.aside-box, .aside-label, .aside-cta { /* kept for reference */ }
+
+/* ── Footer ── */
 .mobile-nav-footer-new {
-  margin-top: auto;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 0 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mobile-socials-new {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .social-links-row {
   display: flex;
-  gap: 24px;
-  margin-top: 12px;
+  gap: 20px;
 }
 
 .social-links-row a {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: #fff;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
   text-decoration: none;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .social-links-row a:hover {
-  opacity: 1;
+  color: var(--pentos-lime);
 }
 
 .mobile-copyright-new p {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.2);
-  letter-spacing: 1px;
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-@media (max-width: 900px) {
-  .mobile-nav-content {
-    grid-template-columns: 1fr;
-  }
-  .mobile-nav-aside {
-    display: none;
-  }
-  .mobile-nav-meta-top {
-    display: none;
-  }
-}
-
+/* ── Responsive: very small phones ── */
 @media (max-width: 480px) {
-  .mobile-nav-links {
-    gap: 0;
-  }
-  .mobile-link-text {
-    font-size: 48px;
-  }
-  .mobile-nav-footer-new {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 30px;
-  }
+  .mobile-link-text   { font-size: clamp(26px, 8.5vw, 44px); }
+  .mobile-nav-meta-top { display: none; } /* save space */
+  .mobile-nav-footer-new { flex-direction: column; align-items: flex-start; }
 }
+
+@media (max-width: 380px) {
+  .mobile-link-text   { font-size: clamp(22px, 8vw, 36px); }
+  .mobile-nav-container { padding: 0 16px; }
+}
+
 
 .mobile-nav-footer {
   margin-top: auto;
@@ -6036,4 +6199,224 @@ section {
   .hero-sculpture-pentos  { max-width: 160px; }
   .preloader-percentage   { font-size: 60px; }
   .about-profile-frame    { aspect-ratio: 16/9; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VIVID SECTION BACKGROUNDS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ── */
+@keyframes meshShift {
+  0%   { background-position: 0% 0%, 100% 100%, 50% 0%, 0% 50%; }
+  33%  { background-position: 50% 100%, 0% 50%, 100% 50%, 100% 0%; }
+  66%  { background-position: 100% 50%, 50% 0%, 0% 100%, 50% 100%; }
+  100% { background-position: 0% 0%, 100% 100%, 50% 0%, 0% 50%; }
+}
+@keyframes scanlineDrift {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 0 40px, 0 0, 0 0, 0 0; }
+}
+@keyframes diagDrift {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 60px 60px, 0 0, 0 0, 0 0; }
+}
+@keyframes glowPulseHero {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 0.95; transform: scale(1.15); }
+}
+@keyframes glowPulseB {
+  0%, 100% { opacity: 0.3; transform: scale(1) translateX(0); }
+  50%       { opacity: 0.65; transform: scale(1.1) translateX(15px); }
+}
+@keyframes glowPulseBg {
+  0%, 100% { opacity: 0.6; transform: translate(0, 0) scale(1); }
+  50%       { opacity: 0.95; transform: translate(12px, -8px) scale(1.04); }
+}
+@keyframes gridBlink {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 0.45; }
+}
+
+/* ── 1. HERO — Animated mesh gradient ── */
+.hero-gradient-pentos {
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 30%,  rgba(201,243,29,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 80% 10%,  rgba(201,243,29,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 40% at 50% 90%,  rgba(80,180,80, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 60%,  rgba(20,120,20, 0.03) 0%, transparent 70%),
+    linear-gradient(160deg, #060806 0%, #000000 40%, #040604 70%, #000000 100%);
+  background-size: 200% 200%, 180% 180%, 220% 220%, 160% 160%, 100% 100%;
+  animation: meshShift 20s ease-in-out infinite;
+}
+
+/* Dot-grid on hero (override ::before kept from before; use a pseudo on gradient div instead) */
+.hero-gradient-pentos::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(201,243,29,0.14) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: gridBlink 7s ease-in-out infinite;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+}
+
+/* Lime glow orbs on hero */
+.hero-gradient-pentos::after {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201,243,29,0.07) 0%, transparent 65%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: glowPulseHero 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── 2. ABOUT — Diagonal stripes + spotlight ── */
+.about-pentos {
+  background:
+    repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 38px,
+      rgba(201,243,29,0.018) 38px,
+      rgba(201,243,29,0.018) 39px
+    ),
+    radial-gradient(ellipse 65% 80% at 85% 15%, rgba(201,243,29,0.045) 0%, transparent 58%),
+    radial-gradient(ellipse 50% 50% at 5%  90%, rgba(100,200,50, 0.02)  0%, transparent 55%),
+    linear-gradient(180deg, #020202 0%, #050505 50%, #020202 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  animation: diagDrift 22s linear infinite;
+}
+
+/* ── 3. SERVICES — Dot matrix ── */
+.services-section-new {
+  background:
+    radial-gradient(circle 1px at 1px 1px, rgba(201,243,29,0.2) 0%, transparent 0%),
+    radial-gradient(ellipse 70% 50% at 10% 80%, rgba(201,243,29,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 70% at 90% 20%, rgba(100,200,50, 0.03) 0%, transparent 55%),
+    linear-gradient(180deg, #030303 0%, #060606 100%);
+  background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%;
+}
+
+/* ── 4. EXPERIENCE — Scanlines + deep gradient ── */
+.experience-section-new {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(255,255,255,0.014) 3px,
+      rgba(255,255,255,0.014) 4px
+    ),
+    radial-gradient(ellipse 80% 55% at 50% 0%,   rgba(201,243,29,0.055) 0%, transparent 58%),
+    radial-gradient(ellipse 60% 80% at 100% 100%, rgba(60,160,30, 0.03)  0%, transparent 60%),
+    linear-gradient(180deg, #000000 0%, #040804 45%, #000000 100%);
+  animation: scanlineDrift 5s linear infinite;
+}
+
+/* ── 5. SAAS/FOCUS — Grid mesh + purple-lime tension ── */
+.saas-section-new {
+  background:
+    linear-gradient(rgba(201,243,29,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,243,29,0.055) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 50% at 15% 50%,  rgba(201,243,29,0.05)  0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 85%,  rgba(168,85, 247,0.04)  0%, transparent 60%),
+    linear-gradient(160deg, #020202 0%, #050305 50%, #020202 100%);
+  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%;
+}
+
+/* ── 6. PROJECTS — Fine cross-hatch ── */
+.projects-section-new {
+  background-color: #020202;
+}
+.projects-gradient-overlay {
+  background:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+    radial-gradient(ellipse 65% 65% at 50% 50%,  rgba(201,243,29,0.035) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 40% at 0%  100%, rgba(201,243,29,0.04)  0%, transparent 60%),
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 243, 29, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #020202 0%, #030303 100%);
+  background-size: 56px 56px, 56px 56px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  animation: gridBlink 9s ease-in-out infinite;
+}
+
+/* ── 7. PROCESS — Vertical bands + lime glow ── */
+.methodology-section-new {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 78px,
+      rgba(201,243,29,0.014) 78px,
+      rgba(201,243,29,0.014) 79px
+    ),
+    radial-gradient(ellipse 100% 40% at 50% 50%, rgba(201,243,29,0.04)  0%, transparent 60%),
+    radial-gradient(ellipse 80%  80% at 100% 0%, rgba(100,200,50, 0.025) 0%, transparent 55%),
+    linear-gradient(180deg, #030303 0%, #000000 100%);
+}
+
+/* ── 8. CONTACT — Radial lime bloom ── */
+.contact-section-new {
+  background-color: #020202;
+}
+.contact-gradient-overlay {
+  background:
+    radial-gradient(ellipse 75% 65% at 50% 110%, rgba(201, 243, 29, 0.07)  0%, transparent 55%),
+    radial-gradient(ellipse 45% 45% at 85% 8%,   rgba(201, 243, 29, 0.035) 0%, transparent 58%),
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 243, 29, 0.03) 0%, transparent 60%),
+    linear-gradient(180deg, #020202 0%, #000000 60%, #030603 100%);
+  z-index: 1;
+  animation: glowPulseBg 12s ease-in-out infinite;
+}
+
+/* ── Global grain noise on all sections ── */
+.about-pentos::after,
+.services-section-new::after,
+.experience-section-new::after,
+.saas-section-new::after,
+.projects-section-new::after,
+.methodology-section-new::after,
+.contact-section-new::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep inner content above grain */
+.about-container-pentos,
+.services-section-new > .container,
+.experience-container-new,
+.saas-container-new,
+.projects-section-new > .container,
+.methodology-container-new,
+.contact-container-new {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Perf: reduce animations on mobile ── */
+@media (max-width: 768px) {
+  .hero-gradient-pentos  { animation-duration: 40s; }
+  .about-pentos          { animation: none; }
+  .experience-section-new { animation: none; }
+  .projects-section-new  { animation: none; }
+  .contact-section-new   { animation: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient-pentos, .about-pentos,
+  .experience-section-new, .saas-section-new,
+  .projects-section-new, .contact-section-new {
+    animation: none !important;
+  }
 }
