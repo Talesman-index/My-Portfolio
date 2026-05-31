@@ -1553,7 +1553,7 @@ function App() {
 
           <div className="hero-sculpture-container">
             <motion.img 
-              src="/imgs/hero_sculpture.png" 
+              src="/imgs/hero.svg" 
               alt="Pentos Halftone Sculpture" 
               className="hero-sculpture-pentos"
               initial={{ opacity: 0, scale: 0.95 }}

@@ -721,7 +721,6 @@ section {
   filter: drop-shadow(0 0 30px rgba(201, 243, 29, 0.03));
   pointer-events: none;
   animation: subtleFloat 6s ease-in-out infinite alternate;
-  mix-blend-mode: screen;
 }
 
 @keyframes subtleFloat {
