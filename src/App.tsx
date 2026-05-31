@@ -768,7 +768,6 @@ function App() {
   const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'cv'>('home');
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const mousePos = { x: 50, y: 50 };
-  const [activeSection, setActiveSection] = useState('home');
   const [time, setTime] = useState(new Date());
 
   const [loading, setLoading] = useState(true);
@@ -870,6 +869,8 @@ function App() {
   }, [loading]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     // Select all sections that have an id
     const sectionElements = Array.from(document.querySelectorAll('section')).filter(s => s.id);
 
@@ -882,7 +883,25 @@ function App() {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          const id = entry.target.id;
+
+          // Update desktop nav links active class directly in DOM to avoid page re-renders
+          document.querySelectorAll('.nav-center-links a').forEach(a => {
+            if (a.getAttribute('href') === `#${id}`) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
+
+          // Update mobile nav links active class directly in DOM to avoid page re-renders
+          document.querySelectorAll('.mobile-link-item').forEach(a => {
+            if (a.getAttribute('href') === `#${id}`) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
         }
       });
     };
@@ -1296,11 +1315,42 @@ function App() {
       {(loading || progress < 100) && (
         <div className={`preloader-overlay ${!loading ? 'hide' : ''}`}>
           <div className="preloader-content">
-            <div className="preloader-title">Sacca Dafia // Portfolio</div>
-            <div className="preloader-percentage">{Math.min(progress, 100)}%</div>
-            <div className="preloader-bar-outer">
-              <div className="preloader-bar-inner" style={{ width: `${Math.min(progress, 100)}%` }}></div>
+            <div className="preloader-logo-wrapper">
+              <svg className="preloader-logo-svg" width="90" height="90" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Background track path */}
+                <path 
+                  fillRule="evenodd" 
+                  clipRule="evenodd" 
+                  d="M20.8333 16.6667C20.8333 7.46192 28.2953 0 37.5 0C46.7047 0 54.1667 7.46192 54.1667 16.6667V20.8333H58.3333C67.5381 20.8333 75 28.2953 75 37.5C75 46.7047 67.5381 54.1667 58.3333 54.1667H54.1667V58.3333C54.1667 67.5381 46.7047 75 37.5 75C28.2953 75 20.8333 67.5381 20.8333 58.3333V54.1667H16.6667C7.46192 54.1667 0 46.7047 0 37.5C0 28.2953 7.46192 20.8333 16.6667 20.8333H20.8333V16.6667ZM19.7917 38.0208C26.5306 39.6159 35.509 49.3697 37.5 57.2917C39.491 49.3697 48.4694 39.6159 55.2083 38.0208C48.4694 36.4257 39.491 26.6719 37.5 18.75C35.509 26.6719 26.5306 36.4257 19.7917 38.0208Z" 
+                  stroke="rgba(201, 243, 29, 0.08)" 
+                  strokeWidth="1.5"
+                />
+                {/* Active animated drawing path */}
+                <path 
+                  className="preloader-active-path"
+                  fillRule="evenodd" 
+                  clipRule="evenodd" 
+                  d="M20.8333 16.6667C20.8333 7.46192 28.2953 0 37.5 0C46.7047 0 54.1667 7.46192 54.1667 16.6667V20.8333H58.3333C67.5381 20.8333 75 28.2953 75 37.5C75 46.7047 67.5381 54.1667 58.3333 54.1667H54.1667V58.3333C54.1667 67.5381 46.7047 75 37.5 75C28.2953 75 20.8333 67.5381 20.8333 58.3333V54.1667H16.6667C7.46192 54.1667 0 46.7047 0 37.5C0 28.2953 7.46192 20.8333 16.6667 20.8333H20.8333V16.6667ZM19.7917 38.0208C26.5306 39.6159 35.509 49.3697 37.5 57.2917C39.491 49.3697 48.4694 39.6159 55.2083 38.0208C48.4694 36.4257 39.491 26.6719 37.5 18.75C35.509 26.6719 26.5306 36.4257 19.7917 38.0208Z" 
+                  stroke="var(--pentos-lime)" 
+                  strokeWidth="1.5"
+                  strokeDasharray="600"
+                  strokeDashoffset={600 - (600 * progress) / 100}
+                  strokeLinecap="round"
+                  style={{
+                    fill: progress >= 100 ? 'url(#paint0_radial_preloader)' : 'transparent',
+                    transition: 'stroke-dashoffset 0.08s ease, fill 0.4s ease'
+                  }}
+                />
+                <defs>
+                  <radialGradient id="paint0_radial_preloader" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.5 37.5) rotate(90) scale(37.5)">
+                    <stop stopColor="#C9F31D"/>
+                    <stop offset="1" stopColor="#C9F31D" stopOpacity="0.8"/>
+                  </radialGradient>
+                </defs>
+              </svg>
             </div>
+            <div className="preloader-percentage">{Math.min(progress, 100)}%</div>
+            <div className="preloader-title">Sacca Dafia // Portfolio</div>
           </div>
         </div>
       )}
@@ -1319,12 +1369,12 @@ function App() {
           </div>
           
           <div className="nav-center-links hide-mobile">
-            <a href="#about" className={activeSection === 'about' ? 'active' : ''}>{t.nav.about}</a>
-            <a href="#services" className={activeSection === 'services' ? 'active' : ''}>{t.nav.services}</a>
-            <a href="#experience" className={activeSection === 'experience' ? 'active' : ''}>{t.nav.experience}</a>
-            <a href="#saas" className={activeSection === 'saas' ? 'active' : ''}>{t.nav.focus}</a>
-            <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>{t.nav.projects}</a>
-            <a href="#process" className={activeSection === 'process' ? 'active' : ''}>{t.nav.process}</a>
+            <a href="#about" className="active">{t.nav.about}</a>
+            <a href="#services">{t.nav.services}</a>
+            <a href="#experience">{t.nav.experience}</a>
+            <a href="#saas">{t.nav.focus}</a>
+            <a href="#projects">{t.nav.projects}</a>
+            <a href="#process">{t.nav.process}</a>
           </div>
 
           <div className="nav-right-new">
@@ -1406,7 +1456,7 @@ function App() {
                 >
                   <a
                     href={`#${link.id}`}
-                    className={`mobile-link-item ${activeSection === link.id ? 'active' : ''}`}
+                    className={`mobile-link-item ${i === 0 ? 'active' : ''}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <span className="mobile-link-num">0{i+1}</span>
