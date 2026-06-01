@@ -163,7 +163,7 @@ const CaseStudy = ({
       title: "eHadj",
       subtitle: "Orchestration digitale du pèlerinage au Bénin",
       label: "Product Design & Strategy",
-      color: "#C9F31D", // Lime green
+      color: "#2ec9c4", // Cyan/Teal
       bgImage: "/imgs/ehadj_cs.jpg",
       context: "L'eHadj est piloté par l'Agence pour la Gestion de la Logistique des Officiels (AGLO). Avant eHadj, le système reposait sur des processus manuels et fragmentés, entraînant des erreurs de quotas et de visas.",
       problem: "Le système reposait sur des processus manuels. Les erreurs de saisie sur 2300 dossiers créaient des doublons et des blocages de visas critiques au niveau national.",
@@ -955,7 +955,7 @@ function App() {
             subtitle: 'Interfaces & Experience',
             desc: 'Creating seamless user journeys and high-fidelity interfaces that prioritize clarity and user engagement.',
             tags: ['Figma', 'UX Research', 'Prototyping'],
-            color: '#C9F31D'
+            color: '#2ec9c4'
           },
           {
             id: '02',
@@ -1009,7 +1009,7 @@ function App() {
             date: 'FEBRUARY 2024 — SEPTEMBER 2025',
             desc: 'Evolved from a design-focused to a product-focused approach, working on integrations for the Beans loyalty program. Defined features, structured user journeys, and ensured global product consistency.',
             skills: ['PRD & Specs', 'Beans Journey', 'Dev Coordination', 'QA Validation'],
-            color: '#C9F31D'
+            color: '#2ec9c4'
           },
           {
             id: '03',
@@ -1131,7 +1131,7 @@ function App() {
             subtitle: 'Interfaces & Expérience',
             desc: 'Création de parcours fluides et d\'interfaces haute fidélité privilégiant la clarté et l\'engagement.',
             tags: ['Figma', 'UX Research', 'Prototypage'],
-            color: '#C9F31D'
+            color: '#2ec9c4'
           },
           {
             id: '02',
@@ -1185,7 +1185,7 @@ function App() {
             date: 'FÉVRIER 2024 — SEPTEMBRE 2025',
             desc: 'Évolution vers une approche produit structurée sur le programme Beans. Définition des fonctionnalités et coordination avec l\'équipe dev.',
             skills: ['PRD & Specs', 'Parcours Beans', 'Coordination Dev', 'Validation QA'],
-            color: '#C9F31D'
+            color: '#2ec9c4'
           },
           {
             id: '03',
@@ -1343,8 +1343,8 @@ function App() {
                 />
                 <defs>
                   <radialGradient id="paint0_radial_preloader" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.5 37.5) rotate(90) scale(37.5)">
-                    <stop stopColor="#C9F31D"/>
-                    <stop offset="1" stopColor="#C9F31D" stopOpacity="0.8"/>
+                    <stop stopColor="#2ec9c4"/>
+                    <stop offset="1" stopColor="#27cabc" stopOpacity="0.8"/>
                   </radialGradient>
                 </defs>
               </svg>
@@ -1811,7 +1811,7 @@ function App() {
                   ? 'Digitalisation of pilgrimage organisation: registrations, logistics, transport and centralised financial flows.'
                   : 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
                 image: '/imgs/ehadj_cs.jpg',
-                color: '#C9F31D',
+                color: '#2ec9c4',
                 view: 'ehadj'
               },
               {
