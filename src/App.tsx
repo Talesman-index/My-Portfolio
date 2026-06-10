@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { 
   ArrowRight,
@@ -750,6 +750,7 @@ function App() {
   const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'cv'>('home');
   const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
   const [lang, setLang] = useState<'en' | 'fr'>('en');
+  const [activeExpIndex, setActiveExpIndex] = useState(0);
   const mousePos = { x: 50, y: 50 };
   const [time, setTime] = useState(new Date());
 
@@ -1802,45 +1803,68 @@ function App() {
             </motion.h2>
           </div>
           
-          <div className="experience-grid-cards">
-            {t.experience.items.map((exp: any, index: number) => (
-              <motion.div 
-                key={index} 
-                className="experience-card-premium"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15, duration: 0.6 }}
-              >
-                {/* Index tag background */}
-                <div className="exp-card-index">0{index + 1}</div>
-                
-                {/* Card Glow */}
-                <div className="exp-card-glow" />
-                
-                {/* Card Top: Date & Rotating Dot */}
-                <div className="exp-card-header">
-                  <span className="exp-card-date">{exp.date}</span>
-                  <div className="exp-card-dot"></div>
-                </div>
-                
-                {/* Card Middle: Company & Role */}
-                <div className="exp-card-body">
-                  <span className="exp-card-company">{exp.company}</span>
-                  <h3 className="exp-card-role">{exp.role}</h3>
-                  <p className="exp-card-desc">{exp.desc}</p>
-                </div>
-                
-                {/* Card Bottom: Skills */}
-                <div className="exp-card-footer">
-                  <div className="exp-card-skills">
-                    {exp.skills.map((skill: string) => (
-                      <span key={skill} className="exp-card-skill-tag">{skill}</span>
-                    ))}
+          <div className="experience-interactive-tabs-container">
+            {/* Left Column: Tab Buttons */}
+            <div className="exp-tabs-column">
+              {t.experience.items.map((exp: any, index: number) => (
+                <button
+                  key={index}
+                  className={`exp-tab-button ${activeExpIndex === index ? 'active' : ''}`}
+                  onClick={() => setActiveExpIndex(index)}
+                >
+                  {activeExpIndex === index && (
+                    <motion.div
+                      layoutId="activeExpTabPill"
+                      className="exp-tab-active-pill"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="exp-tab-number">0{index + 1}</span>
+                  <span className="exp-tab-company">{exp.company}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Right Column: Animated Details Panel */}
+            <div className="exp-content-column">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeExpIndex}
+                  className="exp-content-panel"
+                  initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="exp-panel-glow" />
+                  <div className="exp-panel-header">
+                    <span className="exp-panel-date">{t.experience.items[activeExpIndex].date}</span>
+                    <h3 className="exp-panel-role">
+                      {t.experience.items[activeExpIndex].role}
+                    </h3>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+
+                  <p className="exp-panel-desc">{t.experience.items[activeExpIndex].desc}</p>
+
+                  <div className="exp-panel-footer">
+                    <span className="exp-panel-tag-label">Key Focus & Skills</span>
+                    <div className="exp-panel-skills">
+                      {t.experience.items[activeExpIndex].skills.map((skill: string, idx: number) => (
+                        <motion.span
+                          key={skill}
+                          className="exp-panel-skill-tag"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: idx * 0.05 + 0.1, duration: 0.3 }}
+                        >
+                          {skill}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </section>
