@@ -47,20 +47,20 @@ const ServiceIcon01 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="pdGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#051a0b" />
-        <stop offset="100%" stopColor="#031006" />
+        <stop offset="0%" stopColor="#031806" />
+        <stop offset="100%" stopColor="#010f03" />
       </linearGradient>
       <linearGradient id="pdGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgba(201, 243, 29, 0.3)" />
+        <stop offset="0%" stopColor="rgba(57, 255, 20, 0.3)" />
         <stop offset="100%" stopColor="rgba(255, 255, 255, 0.05)" />
       </linearGradient>
       <linearGradient id="pdGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#C9F31D" />
-        <stop offset="100%" stopColor="#C9F31D" />
+        <stop offset="0%" stopColor="#39FF14" />
+        <stop offset="100%" stopColor="#39FF14" />
       </linearGradient>
       <radialGradient id="pdGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#C9F31D" stopOpacity="0.45" />
-        <stop offset="100%" stopColor="#C9F31D" stopOpacity="0" />
+        <stop offset="0%" stopColor="#39FF14" stopOpacity="0.45" />
+        <stop offset="100%" stopColor="#39FF14" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -71,7 +71,7 @@ const ServiceIcon01 = () => (
     <circle cx="50" cy="45" r="22" fill="url(#pdGlow)" />
     
     {/* Bottom Layer: Base grid canvas */}
-    <path d="M50 72 L88 53 L50 34 L12 53 Z" fill="url(#pdGradBg)" stroke="rgba(201, 243, 29, 0.25)" strokeWidth="1.2" />
+    <path d="M50 72 L88 53 L50 34 L12 53 Z" fill="url(#pdGradBg)" stroke="rgba(57, 255, 20, 0.25)" strokeWidth="1.2" />
     
     {/* Middle Layer: Floating glassmorphic wireframe screen */}
     <path d="M50 54 L88 35 L50 16 L12 35 Z" fill="url(#pdGradGlass)" stroke="rgba(255, 255, 255, 0.45)" strokeWidth="1.2" />
@@ -95,21 +95,21 @@ const ServiceIcon02 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="uxGradTarget" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#031006" />
-        <stop offset="100%" stopColor="#051a0b" />
+        <stop offset="0%" stopColor="#010f03" />
+        <stop offset="100%" stopColor="#031806" />
       </linearGradient>
       <linearGradient id="uxGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgba(201, 243, 29, 0.25)" />
-        <stop offset="100%" stopColor="rgba(201, 243, 29, 0.08)" />
+        <stop offset="0%" stopColor="rgba(57, 255, 20, 0.25)" />
+        <stop offset="100%" stopColor="rgba(57, 255, 20, 0.08)" />
       </linearGradient>
       <linearGradient id="uxGradMetal" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0.65" />
-        <stop offset="50%" stopColor="#C9F31D" stopOpacity="0.8" />
-        <stop offset="100%" stopColor="#051a0b" stopOpacity="0.95" />
+        <stop offset="50%" stopColor="#39FF14" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#031806" stopOpacity="0.95" />
       </linearGradient>
       <radialGradient id="uxGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#C9F31D" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#C9F31D" stopOpacity="0" />
+        <stop offset="0%" stopColor="#39FF14" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#39FF14" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -117,19 +117,19 @@ const ServiceIcon02 = () => (
     <ellipse cx="50" cy="85" rx="34" ry="7" fill="rgba(0,0,0,0.5)" filter="blur(4px)" />
     
     {/* Radar/Sonar Target Base Plate */}
-    <path d="M50 76 L86 58 L50 40 L14 58 Z" fill="url(#uxGradTarget)" stroke="rgba(201, 243, 29, 0.3)" strokeWidth="1.5" />
-    <ellipse cx="50" cy="58" rx="24" ry="12" stroke="rgba(201, 243, 29, 0.18)" strokeWidth="1.2" fill="none" />
-    <ellipse cx="50" cy="58" rx="14" ry="7" stroke="rgba(201, 243, 29, 0.3)" strokeWidth="1.2" fill="none" />
+    <path d="M50 76 L86 58 L50 40 L14 58 Z" fill="url(#uxGradTarget)" stroke="rgba(57, 255, 20, 0.3)" strokeWidth="1.5" />
+    <ellipse cx="50" cy="58" rx="24" ry="12" stroke="rgba(57, 255, 20, 0.18)" strokeWidth="1.2" fill="none" />
+    <ellipse cx="50" cy="58" rx="14" ry="7" stroke="rgba(57, 255, 20, 0.3)" strokeWidth="1.2" fill="none" />
     
     {/* Floating 3D Column 1 (Left-back, teal) */}
-    <path d="M30 46 L36 43 L42 46 L36 49 Z" fill="#C9F31D" />
-    <path d="M30 46 L30 62 L36 65 L36 49 Z" fill="#6f880f" />
-    <path d="M36 49 L36 65 L42 62 L42 46 Z" fill="#8ca814" />
+    <path d="M30 46 L36 43 L42 46 L36 49 Z" fill="#39FF14" />
+    <path d="M30 46 L30 62 L36 65 L36 49 Z" fill="#0c3f03" />
+    <path d="M36 49 L36 65 L42 62 L42 46 Z" fill="#105403" />
     
     {/* Floating 3D Column 2 (Right-front, taller, neon green) */}
-    <path d="M46 32 L52 29 L58 32 L52 35 Z" fill="#C9F31D" />
-    <path d="M46 32 L46 54 L52 57 L52 35 Z" fill="#75910b" />
-    <path d="M52 35 L52 57 L58 54 L58 32 Z" fill="#9fc414" />
+    <path d="M46 32 L52 29 L58 32 L52 35 Z" fill="#39FF14" />
+    <path d="M46 32 L46 54 L52 57 L52 35 Z" fill="#0b4c03" />
+    <path d="M52 35 L52 57 L58 54 L58 32 Z" fill="#126f03" />
     
     {/* Shadow of magnifying glass on base */}
     <ellipse cx="52" cy="54" rx="14" ry="7" fill="rgba(0,0,0,0.4)" filter="blur(3px)" />
@@ -142,7 +142,7 @@ const ServiceIcon02 = () => (
     
     {/* Magnifying glass handle */}
     <path d="M55 45 L74 63 L71 66 L52 48 Z" fill="url(#uxGradMetal)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.3))" />
-    <circle cx="72.5" cy="64.5" r="2" fill="#C9F31D" />
+    <circle cx="72.5" cy="64.5" r="2" fill="#39FF14" />
   </svg>
 );
 
@@ -150,16 +150,16 @@ const ServiceIcon03 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="stGradTop" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#f3fcd4" />
-        <stop offset="100%" stopColor="#C9F31D" />
+        <stop offset="0%" stopColor="#dffcd4" />
+        <stop offset="100%" stopColor="#39FF14" />
       </linearGradient>
       <linearGradient id="stGradLeft" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#09220f" />
-        <stop offset="100%" stopColor="#030c05" />
+        <stop offset="0%" stopColor="#04200c" />
+        <stop offset="100%" stopColor="#010b03" />
       </linearGradient>
       <linearGradient id="stGradRight" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#163b1e" />
-        <stop offset="100%" stopColor="#071f0d" />
+        <stop offset="0%" stopColor="#0a3315" />
+        <stop offset="100%" stopColor="#031a0a" />
       </linearGradient>
     </defs>
     
@@ -182,13 +182,13 @@ const ServiceIcon03 = () => (
     <path d="M52 45 L52 63 L66 56 L66 38 Z" fill="url(#stGradRight)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
     
     {/* Connectors & Nodes representing strategy/roadmap logic overlay */}
-    <line x1="52" y1="31" x2="64" y2="57" stroke="#C9F31D" strokeWidth="1.5" strokeDasharray="3 2" />
-    <line x1="52" y1="31" x2="40" y2="49" stroke="#C9F31D" strokeWidth="1.5" strokeDasharray="3 2" />
+    <line x1="52" y1="31" x2="64" y2="57" stroke="#39FF14" strokeWidth="1.5" strokeDasharray="3 2" />
+    <line x1="52" y1="31" x2="40" y2="49" stroke="#39FF14" strokeWidth="1.5" strokeDasharray="3 2" />
     
     {/* Glowing Nodes */}
-    <circle cx="52" cy="31" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 3px #C9F31D)" />
-    <circle cx="64" cy="57" r="3" fill="#C9F31D" />
-    <circle cx="40" cy="49" r="3" fill="#C9F31D" />
+    <circle cx="52" cy="31" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 3px #39FF14)" />
+    <circle cx="64" cy="57" r="3" fill="#39FF14" />
+    <circle cx="40" cy="49" r="3" fill="#39FF14" />
   </svg>
 );
 
@@ -196,16 +196,16 @@ const ServiceIcon04 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="devGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#030a05" />
-        <stop offset="100%" stopColor="#061d0c" />
+        <stop offset="0%" stopColor="#010a03" />
+        <stop offset="100%" stopColor="#021a08" />
       </linearGradient>
       <linearGradient id="devGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#C9F31D" />
-        <stop offset="100%" stopColor="#C9F31D" />
+        <stop offset="0%" stopColor="#39FF14" />
+        <stop offset="100%" stopColor="#39FF14" />
       </linearGradient>
       <radialGradient id="devGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#C9F31D" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#C9F31D" stopOpacity="0" />
+        <stop offset="0%" stopColor="#39FF14" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#39FF14" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -217,7 +217,7 @@ const ServiceIcon04 = () => (
     <path d="M59 23 L60 25 L60 59 L59 57 Z" fill="rgba(0,0,0,0.3)" />
     
     {/* Window front face */}
-    <path d="M20 45 L59 23 L59 57 L20 79 Z" fill="url(#devGradBg)" stroke="rgba(201, 243, 29, 0.35)" strokeWidth="1.2" />
+    <path d="M20 45 L59 23 L59 57 L20 79 Z" fill="url(#devGradBg)" stroke="rgba(57, 255, 20, 0.35)" strokeWidth="1.2" />
     
     {/* Terminal buttons (Red, Yellow, Green in perspective) */}
     <circle cx="27" cy="41.5" r="1.5" fill="#ff5f56" />
@@ -226,7 +226,7 @@ const ServiceIcon04 = () => (
     
     {/* Syntax code bars */}
     <line x1="27" y1="50" x2="44" y2="40.5" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
-    <line x1="27" y1="56" x2="48" y2="44" stroke="#C9F31D" strokeWidth="2" strokeLinecap="round" />
+    <line x1="27" y1="56" x2="48" y2="44" stroke="#39FF14" strokeWidth="2" strokeLinecap="round" />
     <line x1="33" y1="60" x2="45" y2="53" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
     <line x1="27" y1="66" x2="40" y2="58.5" stroke="url(#devGradAccent)" strokeWidth="2" strokeLinecap="round" />
     
@@ -627,7 +627,7 @@ const ProjectsView = ({
 }) => {
   return (
     <div className="projects-page-view">
-      <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(201, 243, 29, 0.05) 0%, transparent 60%)' }} />
+      <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.05) 0%, transparent 60%)' }} />
       
       <nav className="cs-nav-new">
         <div className="container cs-nav-flex">
@@ -944,7 +944,7 @@ function App() {
             subtitle: 'Interfaces & Experience',
             desc: 'Creating seamless user journeys and high-fidelity interfaces that prioritize clarity and user engagement.',
             tags: ['Figma', 'UX Research', 'Prototyping'],
-            color: '#C9F31D'
+            color: '#39FF14'
           },
           {
             id: '02',
@@ -998,7 +998,7 @@ function App() {
             date: 'FEBRUARY 2024 — SEPTEMBER 2025',
             desc: 'Evolved from a design-focused to a product-focused approach, working on integrations for the Beans loyalty program. Defined features, structured user journeys, and ensured global product consistency.',
             skills: ['PRD & Specs', 'Beans Journey', 'Dev Coordination', 'QA Validation'],
-            color: '#C9F31D'
+            color: '#39FF14'
           },
           {
             id: '03',
@@ -1089,7 +1089,7 @@ function App() {
             description: "A digital portal and real-time impact tracker for a Christian humanitarian organization in Cotonou, Benin. We built a responsive web application that features custom donation flows (FCFA/Mobile Money), volunteer recruitment, and visual progress gauges tracking meals and active social reinsertion.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
-            color: '#C9F31D',
+            color: '#39FF14',
             linkType: 'site',
           },
         ]
@@ -1140,7 +1140,7 @@ function App() {
             subtitle: 'Interfaces & Expérience',
             desc: 'Création de parcours fluides et d\'interfaces haute fidélité privilégiant la clarté et l\'engagement.',
             tags: ['Figma', 'UX Research', 'Prototypage'],
-            color: '#C9F31D'
+            color: '#39FF14'
           },
           {
             id: '02',
@@ -1194,7 +1194,7 @@ function App() {
             date: 'FÉVRIER 2024 — SEPTEMBRE 2025',
             desc: 'Évolution vers une approche produit structurée sur le programme Beans. Définition des fonctionnalités et coordination avec l\'équipe dev.',
             skills: ['PRD & Specs', 'Parcours Beans', 'Coordination Dev', 'Validation QA'],
-            color: '#C9F31D'
+            color: '#39FF14'
           },
           {
             id: '03',
@@ -1285,7 +1285,7 @@ function App() {
             description: "Portail numérique et suivi d'impact en temps réel pour une organisation chrétienne humanitaire à Cotonou (Bénin). Nous avons conçu une application web responsive intégrant des tunnels de don (FCFA & Mobile Money), le recrutement de bénévoles, et des jauges d'avancement pour le suivi des repas distribués et des réinsertions sociales.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
-            color: '#C9F31D',
+            color: '#39FF14',
             linkType: 'site',
           },
         ]
@@ -1371,7 +1371,7 @@ function App() {
                   fillRule="evenodd" 
                   clipRule="evenodd" 
                   d="M20.8333 16.6667C20.8333 7.46192 28.2953 0 37.5 0C46.7047 0 54.1667 7.46192 54.1667 16.6667V20.8333H58.3333C67.5381 20.8333 75 28.2953 75 37.5C75 46.7047 67.5381 54.1667 58.3333 54.1667H54.1667V58.3333C54.1667 67.5381 46.7047 75 37.5 75C28.2953 75 20.8333 67.5381 20.8333 58.3333V54.1667H16.6667C7.46192 54.1667 0 46.7047 0 37.5C0 28.2953 7.46192 20.8333 16.6667 20.8333H20.8333V16.6667ZM19.7917 38.0208C26.5306 39.6159 35.509 49.3697 37.5 57.2917C39.491 49.3697 48.4694 39.6159 55.2083 38.0208C48.4694 36.4257 39.491 26.6719 37.5 18.75C35.509 26.6719 26.5306 36.4257 19.7917 38.0208Z" 
-                  stroke="rgba(201, 243, 29, 0.08)" 
+                  stroke="rgba(57, 255, 20, 0.08)" 
                   strokeWidth="1.5"
                 />
                 {/* Active animated drawing path */}
@@ -1392,8 +1392,8 @@ function App() {
                 />
                 <defs>
                   <radialGradient id="paint0_radial_preloader" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.5 37.5) rotate(90) scale(37.5)">
-                    <stop stopColor="#C9F31D"/>
-                    <stop offset="1" stopColor="#9CC414" stopOpacity="0.8"/>
+                    <stop stopColor="#39FF14"/>
+                    <stop offset="1" stopColor="#00E676" stopOpacity="0.8"/>
                   </radialGradient>
                 </defs>
               </svg>
@@ -1630,7 +1630,7 @@ function App() {
               <span className="showreel-text">{lang === 'en' ? 'Quick' : 'Rapide'}</span>
               <div className="showreel-play-btn">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="play-icon">
-                  <path d="M8 5V19L19 12L8 5Z" fill="var(--pentos-lime, #C9F31D)" />
+                  <path d="M8 5V19L19 12L8 5Z" fill="var(--pentos-lime, #39FF14)" />
                 </svg>
                 <div className="play-btn-pulse" />
               </div>
@@ -1802,32 +1802,40 @@ function App() {
             </motion.h2>
           </div>
           
-          <div className="experience-list-new">
+          <div className="experience-grid-cards">
             {t.experience.items.map((exp: any, index: number) => (
               <motion.div 
                 key={index} 
-                className="experience-item-new"
+                className="experience-card-premium"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.15, duration: 0.6 }}
               >
-                <div className="exp-left-new">
-                  <span className="exp-date-new">{exp.date}</span>
-                  <div className="exp-connector-new">
-                    <div className="exp-dot-new" style={{ backgroundColor: exp.color }}></div>
-                    <div className="exp-line-new"></div>
-                  </div>
+                {/* Index tag background */}
+                <div className="exp-card-index">0{index + 1}</div>
+                
+                {/* Card Glow */}
+                <div className="exp-card-glow" />
+                
+                {/* Card Top: Date & Rotating Dot */}
+                <div className="exp-card-header">
+                  <span className="exp-card-date">{exp.date}</span>
+                  <div className="exp-card-dot"></div>
                 </div>
-                <div className="exp-right-new">
-                  <div className="exp-info-new">
-                    <h3>{exp.role}</h3>
-                    <span className="exp-company-new">{exp.company}</span>
-                  </div>
-                  <p className="exp-desc-new">{exp.desc}</p>
-                  <div className="exp-skills-new">
+                
+                {/* Card Middle: Company & Role */}
+                <div className="exp-card-body">
+                  <span className="exp-card-company">{exp.company}</span>
+                  <h3 className="exp-card-role">{exp.role}</h3>
+                  <p className="exp-card-desc">{exp.desc}</p>
+                </div>
+                
+                {/* Card Bottom: Skills */}
+                <div className="exp-card-footer">
+                  <div className="exp-card-skills">
                     {exp.skills.map((skill: string) => (
-                      <span key={skill} className="skill-tag-new">{skill}</span>
+                      <span key={skill} className="exp-card-skill-tag">{skill}</span>
                     ))}
                   </div>
                 </div>
@@ -1885,7 +1893,7 @@ function App() {
                   : 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
                 image: '/imgs/ehadj/cover_Ehadj.jpg',
                 mockup: '/imgs/ehadj/cover_Ehadj.jpg',
-                color: '#C9F31D',
+                color: '#39FF14',
                 view: 'ehadj'
               },
               {
