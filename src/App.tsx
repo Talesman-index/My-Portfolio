@@ -11,6 +11,7 @@ import {
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
+import { caseStudiesData } from './caseStudiesData';
 
 // Register ScrollTrigger client-side
 if (typeof window !== 'undefined') {
@@ -41,374 +42,220 @@ const IlluOrb = ({ className = '' }: { className?: string }) => (
   </svg>
 );
 
-// Custom Geometric SVG Icons for the Services Expanding columns
+// Custom Premium 3D Isometric SVG Icons for the Services Cards
 const ServiceIcon01 = () => (
-  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <rect x="25" y="10" width="50" height="80" rx="4" />
-    <line x1="25" y1="20" x2="75" y2="20" />
-    <circle cx="50" cy="15" r="2" />
-    <circle cx="50" cy="82" r="3" />
-    <rect x="33" y="28" width="34" height="20" />
-    <circle cx="50" cy="38" r="4" />
-    <line x1="33" y1="56" x2="67" y2="56" />
-    <line x1="33" y1="64" x2="57" y2="64" />
-    <line x1="33" y1="72" x2="47" y2="72" />
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
+    <defs>
+      <linearGradient id="pdGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#08221c" />
+        <stop offset="100%" stopColor="#051412" />
+      </linearGradient>
+      <linearGradient id="pdGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="rgba(46, 201, 196, 0.3)" />
+        <stop offset="100%" stopColor="rgba(255, 255, 255, 0.05)" />
+      </linearGradient>
+      <linearGradient id="pdGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#2ec9c4" />
+        <stop offset="100%" stopColor="#00E676" />
+      </linearGradient>
+      <radialGradient id="pdGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#2ec9c4" stopOpacity="0.45" />
+        <stop offset="100%" stopColor="#2ec9c4" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    
+    {/* Base shadow */}
+    <ellipse cx="50" cy="85" rx="32" ry="8" fill="rgba(0,0,0,0.5)" filter="blur(4px)" />
+    
+    {/* Center radial glow */}
+    <circle cx="50" cy="45" r="22" fill="url(#pdGlow)" />
+    
+    {/* Bottom Layer: Base grid canvas */}
+    <path d="M50 72 L88 53 L50 34 L12 53 Z" fill="url(#pdGradBg)" stroke="rgba(46, 201, 196, 0.25)" strokeWidth="1.2" />
+    
+    {/* Middle Layer: Floating glassmorphic wireframe screen */}
+    <path d="M50 54 L88 35 L50 16 L12 35 Z" fill="url(#pdGradGlass)" stroke="rgba(255, 255, 255, 0.45)" strokeWidth="1.2" />
+    
+    {/* Wireframe details on the glass pane */}
+    <path d="M30 35 L50 45 L70 35" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" fill="none" />
+    <path d="M35 30 L50 37 L65 30" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" fill="none" />
+    <path d="M50 22 L70 32" stroke="url(#pdGradAccent)" strokeWidth="1.5" fill="none" opacity="0.6" />
+    
+    {/* Top floating elements */}
+    <ellipse cx="50" cy="32" rx="10" ry="5" fill="url(#pdGradAccent)" />
+    <circle cx="50" cy="29" r="2.5" fill="#ffffff" opacity="0.75" />
+    
+    {/* Floating 3D Cursor Arrow */}
+    <path d="M60 40 L68 32 L62 48 L59 43 Z" fill="#ffffff" filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.4))" />
+    <path d="M68 32 L69 33 L63 49 L62 48 Z" fill="rgba(0,0,0,0.25)" />
   </svg>
 );
 
 const ServiceIcon02 = () => (
-  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <circle cx="30" cy="30" r="5" />
-    <circle cx="70" cy="35" r="5" />
-    <circle cx="45" cy="70" r="5" />
-    <line x1="34" y1="31" x2="66" y2="34" />
-    <line x1="42" y1="66" x2="32" y2="34" />
-    <line x1="68" y1="38" x2="48" y2="67" />
-    <circle cx="60" cy="55" r="16" stroke="var(--pentos-lime)" strokeWidth="1.8" />
-    <line x1="71" y1="66" x2="88" y2="83" stroke="var(--pentos-lime)" strokeWidth="1.8" />
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
+    <defs>
+      <linearGradient id="uxGradTarget" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#051412" />
+        <stop offset="100%" stopColor="#08221c" />
+      </linearGradient>
+      <linearGradient id="uxGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="rgba(46, 201, 196, 0.25)" />
+        <stop offset="100%" stopColor="rgba(0, 230, 118, 0.08)" />
+      </linearGradient>
+      <linearGradient id="uxGradMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.65" />
+        <stop offset="50%" stopColor="#2ec9c4" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#08221c" stopOpacity="0.95" />
+      </linearGradient>
+      <radialGradient id="uxGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#2ec9c4" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#2ec9c4" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    
+    {/* Base shadow */}
+    <ellipse cx="50" cy="85" rx="34" ry="7" fill="rgba(0,0,0,0.5)" filter="blur(4px)" />
+    
+    {/* Radar/Sonar Target Base Plate */}
+    <path d="M50 76 L86 58 L50 40 L14 58 Z" fill="url(#uxGradTarget)" stroke="rgba(46, 201, 196, 0.3)" strokeWidth="1.5" />
+    <ellipse cx="50" cy="58" rx="24" ry="12" stroke="rgba(46, 201, 196, 0.18)" strokeWidth="1.2" fill="none" />
+    <ellipse cx="50" cy="58" rx="14" ry="7" stroke="rgba(0, 230, 118, 0.3)" strokeWidth="1.2" fill="none" />
+    
+    {/* Floating 3D Column 1 (Left-back, teal) */}
+    <path d="M30 46 L36 43 L42 46 L36 49 Z" fill="#2ec9c4" />
+    <path d="M30 46 L30 62 L36 65 L36 49 Z" fill="#166260" />
+    <path d="M36 49 L36 65 L42 62 L42 46 Z" fill="#1b7875" />
+    
+    {/* Floating 3D Column 2 (Right-front, taller, neon green) */}
+    <path d="M46 32 L52 29 L58 32 L52 35 Z" fill="#00E676" />
+    <path d="M46 32 L46 54 L52 57 L52 35 Z" fill="#008a47" />
+    <path d="M52 35 L52 57 L58 54 L58 32 Z" fill="#00b85f" />
+    
+    {/* Shadow of magnifying glass on base */}
+    <ellipse cx="52" cy="54" rx="14" ry="7" fill="rgba(0,0,0,0.4)" filter="blur(3px)" />
+    
+    {/* 3D Magnifying glass ring */}
+    <ellipse cx="43" cy="36" rx="17" ry="12" fill="url(#uxGradGlass)" stroke="url(#uxGradMetal)" strokeWidth="2.5" />
+    
+    {/* Lens reflection glare */}
+    <path d="M29 33 A 17 12 0 0 1 55 28" stroke="#ffffff" strokeWidth="1.2" fill="none" opacity="0.6" />
+    
+    {/* Magnifying glass handle */}
+    <path d="M55 45 L74 63 L71 66 L52 48 Z" fill="url(#uxGradMetal)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.3))" />
+    <circle cx="72.5" cy="64.5" r="2" fill="#2ec9c4" />
   </svg>
 );
 
 const ServiceIcon03 = () => (
-  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M50 15 L85 35 L85 75 L50 95 L15 75 L15 35 Z" />
-    <line x1="50" y1="15" x2="50" y2="95" />
-    <line x1="15" y1="35" x2="50" y2="55" />
-    <line x1="85" y1="35" x2="50" y2="55" />
-    <circle cx="50" cy="55" r="3" fill="var(--pentos-lime)" />
-    <path d="M25 60 L45 75 L75 45" stroke="var(--pentos-lime)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    <polygon points="75,45 67,46 73,53" fill="var(--pentos-lime)" />
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
+    <defs>
+      <linearGradient id="stGradTop" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6ffffc" />
+        <stop offset="100%" stopColor="#2ec9c4" />
+      </linearGradient>
+      <linearGradient id="stGradLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#0c2422" />
+        <stop offset="100%" stopColor="#05100f" />
+      </linearGradient>
+      <linearGradient id="stGradRight" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#1c5f5b" />
+        <stop offset="100%" stopColor="#0a2422" />
+      </linearGradient>
+    </defs>
+    
+    {/* Base shadow */}
+    <ellipse cx="50" cy="88" rx="34" ry="7" fill="rgba(0,0,0,0.6)" filter="blur(5px)" />
+    
+    {/* Cube 1 (Left base block) */}
+    <path d="M26 56 L40 49 L54 56 L40 63 Z" fill="url(#stGradTop)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.8" />
+    <path d="M26 56 L26 74 L40 81 L40 63 Z" fill="url(#stGradLeft)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
+    <path d="M40 63 L40 81 L54 74 L54 56 Z" fill="url(#stGradRight)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
+    
+    {/* Cube 2 (Right base block) */}
+    <path d="M50 64 L64 57 L78 64 L64 71 Z" fill="url(#stGradTop)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.8" />
+    <path d="M50 64 L50 82 L64 89 L64 71 Z" fill="url(#stGradLeft)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
+    <path d="M64 71 L64 89 L78 82 L78 64 Z" fill="url(#stGradRight)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
+    
+    {/* Cube 3 (Center top growth block) */}
+    <path d="M38 38 L52 31 L66 38 L52 45 Z" fill="url(#stGradTop)" stroke="rgba(255,255,255,0.35)" strokeWidth="0.8" />
+    <path d="M38 38 L38 56 L52 63 L52 45 Z" fill="url(#stGradLeft)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
+    <path d="M52 45 L52 63 L66 56 L66 38 Z" fill="url(#stGradRight)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
+    
+    {/* Connectors & Nodes representing strategy/roadmap logic overlay */}
+    <line x1="52" y1="31" x2="64" y2="57" stroke="#00E676" strokeWidth="1.5" strokeDasharray="3 2" />
+    <line x1="52" y1="31" x2="40" y2="49" stroke="#00E676" strokeWidth="1.5" strokeDasharray="3 2" />
+    
+    {/* Glowing Nodes */}
+    <circle cx="52" cy="31" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 3px #00E676)" />
+    <circle cx="64" cy="57" r="3" fill="#2ec9c4" />
+    <circle cx="40" cy="49" r="3" fill="#2ec9c4" />
   </svg>
 );
 
 const ServiceIcon04 = () => (
-  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M30 35 L12 50 L30 65" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M70 35 L88 50 L70 65" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    <line x1="55" y1="30" x2="45" y2="70" strokeWidth="1.8" strokeLinecap="round" />
-    <circle cx="20" cy="20" r="2" fill="var(--pentos-lime)" />
-    <circle cx="80" cy="80" r="2" fill="var(--pentos-lime)" />
-    <circle cx="85" cy="25" r="2.5" />
-    <circle cx="15" cy="75" r="2.5" />
+  <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
+    <defs>
+      <linearGradient id="devGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#04100d" />
+        <stop offset="100%" stopColor="#09221c" />
+      </linearGradient>
+      <linearGradient id="devGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#2ec9c4" />
+        <stop offset="100%" stopColor="#00E676" />
+      </linearGradient>
+      <radialGradient id="devGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#2ec9c4" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#2ec9c4" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    
+    {/* Base shadow */}
+    <ellipse cx="50" cy="85" rx="30" ry="7" fill="rgba(0,0,0,0.5)" filter="blur(4px)" />
+    
+    {/* 3D Isometric Terminal Window back extrusion (adds depth) */}
+    <path d="M19 45 L59 23 L60 25 L20 47 Z" fill="rgba(255,255,255,0.15)" />
+    <path d="M59 23 L60 25 L60 59 L59 57 Z" fill="rgba(0,0,0,0.3)" />
+    
+    {/* Window front face */}
+    <path d="M20 45 L59 23 L59 57 L20 79 Z" fill="url(#devGradBg)" stroke="rgba(46, 201, 196, 0.35)" strokeWidth="1.2" />
+    
+    {/* Terminal buttons (Red, Yellow, Green in perspective) */}
+    <circle cx="27" cy="41.5" r="1.5" fill="#ff5f56" />
+    <circle cx="32" cy="38.7" r="1.5" fill="#ffbd2e" />
+    <circle cx="37" cy="36" r="1.5" fill="#27c93f" />
+    
+    {/* Syntax code bars */}
+    <line x1="27" y1="50" x2="44" y2="40.5" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
+    <line x1="27" y1="56" x2="48" y2="44" stroke="#2ec9c4" strokeWidth="2" strokeLinecap="round" />
+    <line x1="33" y1="60" x2="45" y2="53" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
+    <line x1="27" y1="66" x2="40" y2="58.5" stroke="url(#devGradAccent)" strokeWidth="2" strokeLinecap="round" />
+    
+    {/* Glowing background behind brackets */}
+    <circle cx="50" cy="45" r="12" fill="url(#devGlow)" />
+    
+    {/* Floating 3D Code Brackets and slash */}
+    <path d="M48 41 L40 50 L48 59" stroke="url(#devGradAccent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))" />
+    <path d="M60 34 L52 43 L60 52" stroke="url(#devGradAccent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))" />
+    <line x1="56" y1="36" x2="44" y2="57" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))" />
   </svg>
 );
 
 const serviceIcons = [ServiceIcon01, ServiceIcon02, ServiceIcon03, ServiceIcon04];
 
-interface CaseStudyData {
-  title: string;
-  subtitle: string;
-  label: string;
-  color: string;
-  bgImage: string;
-  context: string;
-  contextTitle?: string;
-  contextImg?: string;
-  problem?: string;
-  problemTitle?: string;
-  challenge: string;
-  challengeTitle?: string;
-  challengeImg: string;
-  decisions?: Array<{ title: string; desc: string; why: string }>;
-  solution: string;
-  solutionTitle?: string;
-  uxSolutions?: string;
-  dashboardImg: string;
-  features: Array<{ title: string; desc: string }>;
-  insight: string;
-  impact: string[];
-  conclusion: string;
-  externalLink?: string;
-}
-
 const CaseStudy = ({ 
   id, 
   mousePos, 
-  setCurrentView 
+  setCurrentView,
+  onBack,
+  lang
 }: { 
-  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares', 
+  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge', 
   mousePos: { x: number, y: number }, 
-  setCurrentView: any 
+  setCurrentView: any,
+  onBack?: () => void,
+  lang: 'en' | 'fr'
 }) => {
-  const caseStudiesData: Record<typeof id, CaseStudyData> = {
-    'asset-iq': {
-      title: "Asset IQ",
-      subtitle: "Gouvernance et pilotage opérationnel des actifs physiques",
-      label: "Product Design & Strategy",
-      color: "#10B981", // Emerald
-      bgImage: "/imgs/assetiQ_cs.jpg",
-      context: "Dans l'industrie, la dispersion géographique des équipements génère des pertes massives et une absence totale de traçabilité. Le problème n'est pas le manque de données, mais leur fragmentation.",
-      challenge: "Transformer un inventaire passif en un outil d'aide à la décision. Le défi UX : permettre à des opérateurs terrain de capter de l'information fiable sans friction.",
-      solution: "AssetIQ centralise le cycle de vie complet de l'actif. Chaque équipement possède une identité digitale unique (QR Code), fusionnant l'inventaire physique et le carnet de maintenance actif.",
-      insight: "La data n'est utile que si elle est saisie par ceux qui sont sur le terrain. Nous avons réduit le flow de saisie à 3 actions critiques pour garantir l'adoption.",
-      contextImg: "/imgs/assetiQ/tech2.jpg",
-      challengeImg: "/imgs/assetiQ/military2.jpg",
-      dashboardImg: "/imgs/assetiQ/Dashboard_asset.png",
-      features: [
-        { title: "Traçabilité Native", desc: "Identification par QR code pour un accès immédiat à l'historique complet." },
-        { title: "Maintenance Préventive", desc: "Planification automatisée pour allonger la durée de vie des actifs." },
-        { title: "Hiérarchie Multi-Sites", desc: "Structure organisationnelle flexible (Sites > Départements > Individus)." },
-        { title: "Analytics Décisionnels", desc: "Rapports de dépréciation et de ROI basés sur l'usage réel." }
-      ],
-      impact: [
-        "Réduction de 30% des pertes d'équipements",
-        "Optimisation massive des coûts opérationnels",
-        "Traçabilité juridique et responsabilité individuelle",
-        "Prise de décision basée sur des données de terrain fiables"
-      ],
-      conclusion: "AssetIQ redéfinit la gestion matérielle en passant d'un simple listing à une véritable gouvernance opérationnelle structurée.",
-      externalLink: "https://www.assetiQ.com"
-    },
-    'ehadj': {
-      title: "eHadj",
-      subtitle: "Orchestration digitale du pèlerinage au Bénin",
-      label: "Product Design & Strategy",
-      color: "#2ec9c4", // Cyan/Teal
-      bgImage: "/imgs/ehadj_cs.jpg",
-      context: "L'eHadj est piloté par l'Agence pour la Gestion de la Logistique des Officiels (AGLO). Avant eHadj, le système reposait sur des processus manuels et fragmentés, entraînant des erreurs de quotas et de visas.",
-      problem: "Le système reposait sur des processus manuels. Les erreurs de saisie sur 2300 dossiers créaient des doublons et des blocages de visas critiques au niveau national.",
-      challenge: "Éliminer les erreurs de saisie sur 2300 dossiers dès le point d'entrée et gérer en temps réel la répartition dynamique des places entre les agences.",
-      decisions: [
-        { 
-          title: "ID-First Onboarding", 
-          desc: "Imposer la saisie du numéro NPI (Identifiant National) comme première étape.",
-          why: "Auto-remplit les données certifiées et élimine les doublons instantanément."
-        },
-        { 
-          title: "Health-Check View", 
-          desc: "Une vue pilotée par les statuts plutôt que par des listes de noms.",
-          why: "Permet d'identifier les goulots d'étranglement opérationnels en un coup d'œil."
-        }
-      ],
-      solution: "Un workflow linéaire où chaque étape (Santé, Paiement, Visa) fait office de 'gatekeeper' strict pour assurer l'intégrité du processus.",
-      uxSolutions: "Logic de validation séquentielle : impossible de générer un reçu de paiement sans le feu vert du médecin certificateur.",
-      contextImg: "/imgs/ehadj/hadj2.png",
-      challengeImg: "/imgs/ehadj/hadj.png",
-      dashboardImg: "/imgs/ehadj/Dashboard_ehadj.png",
-      features: [
-        { title: "Paramétrage Métier", desc: "Configuration granulaire des sociétés agréées et des catégories gérées." },
-        { title: "Monitoring Quotas", desc: "Suivi en temps réel de la consommation des places et gestion des reports." },
-        { title: "Paiements Intégrés", desc: "Consolidation des flux financiers agences-pèlerins haute-sécurité." },
-        { title: "Contrôle Global", desc: "Tableau de bord décisionnel interactif pour le pilotage de la saison Hadj." }
-      ],
-      impact: [
-        "Élimination totale des erreurs de double-inscription",
-        "Réduction de 90% des dossiers rejetés pour erreur matérielle",
-        "Transparence totale sur la consommation du quota national",
-        "Fluidité majeure dans la coordination entre les 30+ agences"
-      ],
-      insight: "L’intégrité de la donnée n’est pas une option, c’est le moteur du système. L'onboarding basé sur le NPI a été la clé de voûte de la réussite.",
-      conclusion: "eHadj a transformé une logistique complexe en un processus industriel fiable, sécurisant le voyage sacré de milliers de Béninois.",
-      externalLink: "https://ehadj.aglo.bj/"
-    },
-    'sagana': {
-      title: "Sagana",
-      subtitle: "Identité et performance web pour une agence digitale premium",
-      label: "Creative Direction & Web Development",
-      color: "#DFFF00",
-      bgImage: "/imgs/sagana.png",
-      context: "Sagana est une agence digitale premium qui avait besoin d'un site web à la hauteur de son positionnement haut de gamme. Le site existant manquait de fluidité, d'impact visuel et de conversion.",
-      contextTitle: "Le positionnement d'une marque haut de gamme.",
-      challenge: "Créer une expérience de marque immersive avec des animations sophistiquées sans sacrifier les performances de chargement et le référencement naturel (SEO).",
-      challengeTitle: "Allier esthétique premium et performance pure.",
-      challengeImg: "/imgs/sagana.png",
-      decisions: [
-        {
-          title: "Micro-animations fluides",
-          desc: "Intégration d'animations interactives sur les survols de cartes et les transitions de pages.",
-          why: "Renforce le sentiment de qualité premium et de maîtrise technique."
-        },
-        {
-          title: "Dark Mode par défaut",
-          desc: "Palette sombre accentuée par des touches néon pour un style moderne et technologique.",
-          why: "Donne une impression de modernité immédiate et réduit la fatigue oculaire."
-        }
-      ],
-      solution: "Une architecture basée sur React et Framer Motion, optimisant chaque transition. Le site utilise des techniques de chargement progressif pour offrir une fluidité absolue.",
-      solutionTitle: "Optimisation de bout en bout et Framer Motion.",
-      dashboardImg: "/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png",
-      features: [
-        { title: "Animations 60fps", desc: "Transitions fluides basées sur Framer Motion et CSS transitions." },
-        { title: "Performance brute", desc: "Score Lighthouse de 95+ grâce à l'optimisation des images et du code." },
-        { title: "SEO Structuré", desc: "Balisage sémantique rigoureux pour maximiser la visibilité organique." },
-        { title: "Responsive Adaptatif", desc: "Mise en page fluide adaptée à tous les types d'écrans." }
-      ],
-      insight: "La performance est un élément de design. Un site esthétique mais lent perd ses visiteurs avant même qu'ils ne voient les visuels.",
-      impact: [
-        "Augmentation de 40% du temps passé sur le site",
-        "Hausse de 25% des demandes de contact qualifiées",
-        "Une image de marque renforcée et alignée avec le positionnement premium"
-      ],
-      conclusion: "Sagana dispose désormais d'un site vitrine d'excellence qui fait écho à la qualité de ses services et attire des clients haut de gamme.",
-      externalLink: "https://www.sagana-agency.com/"
-    },
-    'vortex': {
-      title: "Vortex",
-      subtitle: "Application mobile d'achat de carburant et de gestion de portefeuille",
-      label: "Product Design & UX Research",
-      color: "#FFD700",
-      bgImage: "/imgs/vortex.webp",
-      context: "L'approvisionnement en carburant pour les flottes et particuliers en mobilité manque de fluidité. L'attente en station et la gestion de la facturation papier génèrent des frictions importantes.",
-      contextTitle: "Les frictions logistiques de l'approvisionnement en carburant.",
-      challenge: "Simplifier le parcours d'achat de carburant en le réduisant à quelques clics directement depuis le volant, tout en intégrant un portefeuille numérique sécurisé.",
-      challengeTitle: "Concevoir pour un usage rapide en situation de mobilité.",
-      challengeImg: "/vortex_preview.png",
-      decisions: [
-        {
-          title: "Boutons d'action agrandis",
-          desc: "Agrandissement des cibles de clic de 30% par rapport aux standards mobiles.",
-          why: "Évite les erreurs de saisie lorsque l'utilisateur est pressé ou en extérieur."
-        },
-        {
-          title: "Mode Haute Clarté",
-          desc: "Sélection de couleurs à haut contraste avec un fond sombre optimisé pour l'extérieur.",
-          why: "Garantit la lisibilité de l'écran même en plein soleil en station-service."
-        }
-      ],
-      solution: "Vortex propose une interface épurée avec un onboarding rapide et une intégration de wallet. Le design met l'accent sur les contrastes élevés et de grands boutons d'action adaptés.",
-      solutionTitle: "Interface mobile contrastée et accès en un clic.",
-      dashboardImg: "/imgs/vortex.webp",
-      features: [
-        { title: "Paiement en 1-Clic", desc: "Achat instantané de carburant via le wallet sécurisé intégré." },
-        { title: "QR Code Station", desc: "Génération de codes de validation rapides pour les terminaux de pompes." },
-        { title: "Reçus Automatiques", desc: "Génération et envoi automatique des factures dématérialisées." },
-        { title: "Suivi Consommation", desc: "Historique clair des dépenses et analyses des volumes consommés." }
-      ],
-      insight: "En situation de mobilité (conduite, station-service), l'attention de l'utilisateur est divisée. L'interface doit être conçue pour être lue et actionnée en moins de 3 secondes.",
-      impact: [
-        "Temps de transaction divisé par 3 en station",
-        "Taux d'onboarding réussi de 92% dès la première tentative",
-        "Adoption massive par les gestionnaires de flottes de véhicules"
-      ],
-      conclusion: "Vortex transforme la corvée de la station-service en un parcours digital fluide, sécurisé et extrêmement rapide.",
-      externalLink: "https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel"
-    },
-    'sport-advisor': {
-      title: "Sport Advisor",
-      subtitle: "Plateforme d'analyse et de pronostics sportifs basés sur l'IA",
-      label: "Product Design & Visual Strategy",
-      color: "#00FA9A",
-      bgImage: "/imgs/advisor.webp",
-      context: "Les plateformes d'analyses sportives souffrent d'une surcharge d'informations. La profusion de statistiques brutes, de graphiques complexes et de cotes rend la prise de décision confuse et intimidante.",
-      contextTitle: "La surcharge cognitive dans la visualisation de données sportives.",
-      challenge: "Organiser une quantité massive de données statistiques temps réel dans une hiérarchie visuelle intuitive, et concevoir un storytelling montrant la valeur des analyses IA.",
-      challengeTitle: "Simplifier des statistiques complexes pour tous.",
-      challengeImg: "/sport_advisor_preview.png",
-      decisions: [
-        {
-          title: "Visualisation par jauge",
-          desc: "Remplacement des tableaux de chiffres bruts par des jauges de probabilité colorées.",
-          why: "Permet une lecture instantanée de la tendance d'un match."
-        },
-        {
-          title: "Filtres Contextuels",
-          desc: "Système de filtres par pertinence, sport, et fiabilité des pronostics.",
-          why: "Aide les utilisateurs à trouver rapidement les opportunités clés."
-        }
-      ],
-      solution: "Une interface structurée sous forme de tableaux clairs, avec des indicateurs de confiance basés sur l'IA (en pourcentages) et des graphiques épurés facilitant la comparaison.",
-      solutionTitle: "Storytelling visuel et indicateurs de confiance IA.",
-      dashboardImg: "/imgs/advisor.webp",
-      features: [
-        { title: "Moteur de Prédiction", desc: "Recommandations quotidiennes générées par des modèles de deep learning." },
-        { title: "Comparateur de Cotes", desc: "Intégration en temps réel des meilleures cotes du marché." },
-        { title: "Alertes de Confiance", desc: "Notifications push lorsque des anomalies de cotes sont détectées par l'IA." },
-        { title: "Stats Comparatives", desc: "Historique des face-à-face et formes des équipes visualisés simplement." }
-      ],
-      insight: "L'IA ne doit pas juste donner une réponse, elle doit expliquer son raisonnement de manière visuelle et transparente pour créer de la confiance.",
-      impact: [
-        "Augmentation de 50% du taux d'engagement des utilisateurs",
-        "Une lisibilité des données saluée par les bêta-testeurs",
-        "Une conversion d'abonnés Premium en hausse de 35%"
-      ],
-      conclusion: "Sport Advisor simplifie la donnée sportive complexe en la rendant accessible, interactive et actionnable grâce au design.",
-      externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive"
-    },
-    'forum-grandes-ecoles': {
-      title: "Forum Grandes Écoles",
-      subtitle: "Plateforme d'orientation académique et d'inscription événementielle",
-      label: "Fullstack Development & UX",
-      color: "#E63946",
-      bgImage: "/imgs/forum.png",
-      context: "L'organisation d'un forum étudiant physique implique une logistique complexe : gestion des stands, plannings des conférences, inscriptions et transmission des données de contact.",
-      contextTitle: "La logistique des événements étudiants à grande échelle.",
-      challenge: "Créer une plateforme numérique capable de gérer l'inscription de milliers d'étudiants, de centraliser le calendrier des présentations et de faciliter la collecte de CV.",
-      challengeTitle: "Garantir la stabilité sous charge et simplifier les flux.",
-      challengeImg: "/imgs/forum.png",
-      decisions: [
-        {
-          title: "Agenda Personnalisé",
-          desc: "Permettre à l'étudiant de composer son propre programme de conférences.",
-          why: "Évite les conflits d'horaires et maximise la participation aux événements."
-        },
-        {
-          title: "Badges QR Code",
-          desc: "Génération d'un pass étudiant avec QR code pour un scan rapide à l'entrée.",
-          why: "Réduit le temps d'attente à l'entrée du forum physique de 80%."
-        }
-      ],
-      solution: "Développement d'une application web sous Next.js avec un système d'authentification robuste, un agenda dynamique et interactif, et un module d'exportation de CV pour les écoles.",
-      solutionTitle: "Application Next.js avec base de données relationnelle et QR code.",
-      dashboardImg: "/imgs/forum.png",
-      features: [
-        { title: "Inscription Simplifiée", desc: "Flow d'inscription en moins d'une minute avec intégration de profil." },
-        { title: "Calendrier Dynamique", desc: "Suivi en temps réel des horaires et des places disponibles en conférences." },
-        { title: "Espace Écoles", desc: "Dashboard dédié aux écoles pour collecter les candidatures et CV." },
-        { title: "Notifications SMS", desc: "Rappels automatiques avant le début des sessions réservées." }
-      ],
-      insight: "L'expérience événementielle se prépare avant, se vit pendant et se prolonge après. La plateforme doit accompagner l'utilisateur à chaque étape de ce cycle.",
-      impact: [
-        "Plus de 5000 inscriptions d'étudiants gérées sans bug",
-        "Temps d'attente à l'entrée réduit à moins de 5 secondes par personne",
-        "Une fluidité d'échange de contacts saluée par 100% des écoles"
-      ],
-      conclusion: "La plateforme a modernisé l'expérience du forum, facilitant l'accès à l'information et sécurisant les inscriptions à grande échelle.",
-      externalLink: "https://forum-grandes-ecoles.vercel.app/"
-    },
-    'tavares': {
-      title: "Tavares",
-      subtitle: "Portfolio cinématographique interactif pour réalisateur",
-      label: "Creative Web Design & Development",
-      color: "#E50914",
-      bgImage: "/imgs/tavares.png",
-      context: "Le réalisateur Tavares recherchait un portfolio numérique unique, capable de refléter son univers cinématographique. Les portfolios traditionnels surchargent l'interface, détournant l'attention des vidéos.",
-      contextTitle: "Sublimer le travail cinématographique sans distraction.",
-      challenge: "Créer un site web ultra-minimaliste et moderne, servant d'écrin esthétique et fluide, où l'interface s'efface pour laisser les projets et les vidéos être le point focal unique.",
-      challengeTitle: "Concevoir une interface invisible au service de l'image.",
-      challengeImg: "/imgs/tavares.png",
-      decisions: [
-        {
-          title: "Lecteur plein écran",
-          desc: "Ouverture des vidéos en immersion totale (light box) au clic.",
-          why: "Permet d'apprécier la qualité cinématographique sans distraction."
-        },
-        {
-          title: "Transitions fluides",
-          desc: "Micro-animations basées sur le défilement et le survol.",
-          why: "Crée un rythme visuel rappelant le montage de films."
-        }
-      ],
-      solution: "Un site web épuré avec des transitions fluides, un chargement vidéo optimisé, et un lecteur vidéo immersif intégré. L'identité graphique repose sur une typographie forte et un design noir absolu.",
-      solutionTitle: "Espace immersif, streaming optimisé et contrastes intenses.",
-      dashboardImg: "/imgs/tavares.png",
-      features: [
-        { title: "Showreel Immersif", desc: "Bande-démo jouée en arrière-plan avec contrôle du son discret." },
-        { title: "Galerie de projets", desc: "Mise en page asymétrique mettant en valeur les affiches de films." },
-        { title: "Optimisation vidéo", desc: "Streaming vidéo fluide adapté aux connexions mobiles." },
-        { title: "Contact direct", desc: "Formulaire de contact épuré pour la production et les collaborations." }
-      ],
-      insight: "Dans le domaine créatif, l'interface doit servir le contenu et non l'inverse. L'invisibilité du design est sa plus grande force.",
-      impact: [
-        "Engagement accru des producteurs sur le portfolio",
-        "Temps de lecture moyen de la bande-démo supérieur à 70%",
-        "Une identité numérique forte qui se démarque dans le milieu du cinéma"
-      ],
-      conclusion: "Le site de Tavares allie avec succès minimalisme, esthétique premium et performance technique pour sublimer son art cinématographique.",
-      externalLink: "https://portfolio-tavares.vercel.app/"
-    }
-  };
-
-  const data = caseStudiesData[id];
+  const data = caseStudiesData[lang][id];
 
   return (
     <div className="cs-view-new" style={{ 
@@ -416,43 +263,46 @@ const CaseStudy = ({
       '--mouse-y': `${mousePos.y}%` 
     } as any}>
       <div className="cs-gradient-overlay" style={{ '--glow-color': data.color } as any}></div>
-      
-      <nav className="cs-nav-new">
-        <div className="container cs-nav-flex">
-          <button onClick={() => setCurrentView('home')} className="cs-back-btn">
-            <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
-            <span>RETOUR</span>
-          </button>
-          <div className="cs-nav-label">{data.title} — {data.label}</div>
-        </div>
-      </nav>
 
       <header className="cs-hero-new">
         <div className="container">
+          <button onClick={onBack || (() => setCurrentView('home'))} className="cs-back-link-inline">
+            <ArrowRight size={18} style={{ transform: 'rotate(180deg)', marginRight: '8px' }} />
+            <span>{lang === 'fr' ? 'RETOUR' : 'BACK'}</span>
+          </button>
           <div className="cs-hero-content">
             <span className="cs-hero-tag">{data.label}</span>
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              {data.title}.
+              {data.title}
             </motion.h1>
-            <p className="cs-hero-subtitle">{data.subtitle}</p>
+            <motion.p 
+              className="cs-hero-subtitle"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {data.subtitle}
+            </motion.p>
             {data.externalLink && data.externalLink !== '#' && (
               <motion.a 
-                href={data.externalLink} 
-                target="_blank" 
+                href={data.externalLink}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="cs-external-cta"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                style={{ '--accent-color': data.color } as any}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                VOIR LE PRODUIT <ExternalLink size={16} />
+                <span>{lang === 'fr' ? 'VISITER LE SITE' : 'VISIT SITE'}</span>
+                <ArrowRight size={16} />
               </motion.a>
             )}
           </div>
-          
         </div>
       </header>
 
@@ -466,8 +316,8 @@ const CaseStudy = ({
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                <label className="cs-section-label">01 / CONTEXTE</label>
-                <h3>{data.contextTitle || "La fragmentation des données opérationnelles."}</h3>
+                <label className="cs-section-label">{lang === 'fr' ? '01 / CONTEXTE' : '01 / CONTEXT'}</label>
+                <h3>{data.contextTitle || (lang === 'fr' ? "La fragmentation des données opérationnelles." : "Fragmentation of operational data.")}</h3>
                 <p>{data.context}</p>
                 {data.contextImg && (
                   <div className="cs-inline-mockup">
@@ -483,8 +333,8 @@ const CaseStudy = ({
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  <label className="cs-section-label">02 / LE PROBLÈME</label>
-                  <h3>{data.problemTitle || "Processus manuels et erreurs critiques."}</h3>
+                  <label className="cs-section-label">{lang === 'fr' ? '02 / LE PROBLÈME' : '02 / THE PROBLEM'}</label>
+                  <h3>{data.problemTitle || (lang === 'fr' ? "Processus manuels et erreurs critiques." : "Manual processes and critical errors.")}</h3>
                   <p>{data.problem}</p>
                 </motion.div>
               )}
@@ -496,8 +346,8 @@ const CaseStudy = ({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <label className="cs-section-label">03 / CHALLENGE</label>
-                <h3>{data.challengeTitle || "Sécuriser le parcours de 2300 utilisateurs."}</h3>
+                <label className="cs-section-label">{lang === 'fr' ? '03 / CHALLENGE' : '03 / CHALLENGE'}</label>
+                <h3>{data.challengeTitle || (lang === 'fr' ? "Sécuriser le parcours de 2300 utilisateurs." : "Securing the onboarding of 2,300 users.")}</h3>
                 <p>{data.challenge}</p>
                 <div className="cs-inline-mockup">
                   <img src={data.challengeImg} alt="Challenge" />
@@ -506,7 +356,7 @@ const CaseStudy = ({
 
               {data.decisions && (
                 <div className="cs-section-new">
-                  <label className="cs-section-label">04 / DÉCISIONS PRODUIT</label>
+                  <label className="cs-section-label">{lang === 'fr' ? '04 / DÉCISIONS PRODUIT' : '04 / PRODUCT DECISIONS'}</label>
                   <div className="cs-decisions-grid-new">
                     {data.decisions.map((d: any, i: number) => (
                       <div key={i} className="cs-decision-card-new">
@@ -520,8 +370,8 @@ const CaseStudy = ({
               )}
 
               <div className="cs-section-new">
-                <label className="cs-section-label">05 / SOLUTION UX</label>
-                <h3>{data.solutionTitle || "Intégrité par le design et validation stricte."}</h3>
+                <label className="cs-section-label">{lang === 'fr' ? '05 / SOLUTION UX' : '05 / UX SOLUTION'}</label>
+                <h3>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h3>
                 <p>{data.solution}</p>
                 {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
                 <div className="cs-dashboard-frame-new">
@@ -552,12 +402,12 @@ const CaseStudy = ({
             <aside className="cs-sidebar-new">
               <div className="cs-sidebar-sticky">
                 <div className="cs-sidebar-block">
-                  <label>INSIGHT PRODUIT</label>
+                  <label>{lang === 'fr' ? 'INSIGHT PRODUIT' : 'PRODUCT INSIGHT'}</label>
                   <p>{data.insight}</p>
                 </div>
                 
                 <div className="cs-sidebar-block">
-                  <label>IMPACT CLÉ</label>
+                  <label>{lang === 'fr' ? 'IMPACT CLÉ' : 'KEY IMPACT'}</label>
                   <ul className="cs-impact-list">
                     {data.impact.map((item, i) => (
                       <li key={i}>{item}</li>
@@ -565,8 +415,8 @@ const CaseStudy = ({
                   </ul>
                 </div>
 
-                <button onClick={() => setCurrentView('home')} className="cs-final-back-btn">
-                  RETOUR AU PORTFOLIO
+                <button onClick={onBack || (() => setCurrentView('home'))} className="cs-final-back-btn">
+                  {lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}
                 </button>
               </div>
             </aside>
@@ -761,11 +611,144 @@ const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
       </div>
     );
   };
+
+const ProjectsView = ({
+  projects,
+  setCurrentView,
+  setPreviousView,
+  t,
+  lang
+}: {
+  projects: any[];
+  setCurrentView: any;
+  setPreviousView: any;
+  t: any;
+  lang: 'en' | 'fr';
+}) => {
+  return (
+    <div className="projects-page-view">
+      <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(46, 201, 196, 0.05) 0%, transparent 60%)' }} />
+      
+      <nav className="cs-nav-new">
+        <div className="container cs-nav-flex">
+          <button onClick={() => { setCurrentView('home'); }} className="cs-back-btn">
+            <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
+            <span>{t.projects.backToHome}</span>
+          </button>
+          <div className="cs-nav-label">{lang === 'en' ? 'All Projects' : 'Tous les projets'}</div>
+        </div>
+      </nav>
+
+      <header className="projects-page-header">
+        <div className="container">
+          <span className="saas-eyebrow">06 / Projects</span>
+          <h1 className="projects-page-title">
+            {lang === 'en' ? <>All <span className="highlight">Projects.</span></> : <>Tous les <span className="highlight">Projets.</span></>}
+          </h1>
+          <p className="projects-page-subtitle">
+            {lang === 'en' 
+              ? 'Explore my work across product design, mobile apps, B2B SaaS, and digital strategies.' 
+              : 'Explorez mon travail en product design, applications mobiles, SaaS B2B et stratégies digitales.'}
+          </p>
+        </div>
+      </header>
+
+      <div className="container" style={{ paddingBottom: '120px' }}>
+        <div className="projects-grid-dznr">
+          {projects.map((project: any, i: number) => (
+            <motion.div 
+              key={project.id}
+              className="project-card-dznr"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* 1. Image Showcase Container */}
+              <div 
+                className="project-card-image-wrapper"
+                onClick={() => {
+                  setPreviousView('projects');
+                  setCurrentView(project.id);
+                }}
+              >
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="project-card-image" 
+                />
+                <div className="project-card-overlay-dznr" />
+                
+                {/* Floating Category Tag */}
+                <span className="project-card-category-tag">{project.category}</span>
+              </div>
+              
+              {/* 2. Detailed Metadata & Content Container */}
+              <div className="project-card-info-dznr">
+                <div className="project-card-meta-row">
+                  <span className="project-card-index">0{i + 1} /</span>
+                  <span className="project-card-role">{project.role}</span>
+                </div>
+                
+                <h3 
+                  className="project-card-title-detailed"
+                  onClick={() => {
+                    setPreviousView('projects');
+                    setCurrentView(project.id);
+                  }}
+                >
+                  {project.title}
+                </h3>
+                
+                <p className="project-card-desc-detailed">
+                  {project.description}
+                </p>
+                
+                {/* Tech stack pills */}
+                <div className="project-card-tech-pills">
+                  {project.techs.map((tech: string) => (
+                    <span key={tech} className="project-card-tech-pill">{tech}</span>
+                  ))}
+                </div>
+                
+                {/* Interactive Action Footer */}
+                <div className="project-card-actions">
+                  <button 
+                    onClick={() => {
+                      setPreviousView('projects');
+                      setCurrentView(project.id);
+                    }}
+                    className="project-action-btn-primary"
+                  >
+                    {t.projects.viewCaseStudy}
+                    <ArrowRight size={16} />
+                  </button>
+                  
+                  {project.link && project.link !== '#' && (
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-action-link-secondary"
+                    >
+                      {project.linkType === 'behance' ? t.projects.viewProject : t.projects.visitSite}
+                      <ExternalLink size={14} />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeProject, setActiveProject] = useState(0);
-  const [currentView, setCurrentView] = useState<'home' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'cv'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'cv'>('home');
+  const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const mousePos = { x: 50, y: 50 };
   const [time, setTime] = useState(new Date());
@@ -943,10 +926,16 @@ function App() {
         subtitle: 'CLEAR. USEFUL. SUSTAINABLE.',
         viewProjects: 'VIEW MY PROJECTS',
         contactMe: 'CONTACT ME',
+        topText: 'DEDICATED TO BUILDING EXCELLENT DIGITAL PRODUCTS, I AM A',
+        titleLine1: 'PRODUCT & DIGITAL',
+        titleLine2: 'EXPERIENCE',
+        titleHighlight: 'DESIGNER',
+        bottomText: 'focused on creating clear, useful, and sustainable digital systems from strategy to code.',
+        ctaText: 'Book a Discovery Call'
       },
       services: {
         label: '03 / Services',
-        title: 'My Services',
+        title: <>What <span className="highlight-green">Services</span> do I provide?</>,
         subtitle: 'Comprehensive solutions for your digital projects.',
         items: [
           {
@@ -1024,10 +1013,12 @@ function App() {
       },
       projects: {
         label: '06 / Projects',
-        title: <>Selected <span className="highlight">Works.</span></>,
+        title: <>Quick look at <span className="highlight-green">My work.</span></>,
         viewCaseStudy: 'View Case Study',
         visitSite: 'Visit Site',
         viewProject: 'View Project',
+        seeMore: 'See more projects',
+        backToHome: 'Back to Home',
         items: [
           {
             id: 'tavares',
@@ -1089,6 +1080,18 @@ function App() {
             color: '#E63946',
             linkType: 'site',
           },
+          {
+            id: 'the-refuge',
+            title: 'The Refuge',
+            role: 'Web Designer & Developer',
+            category: 'Website',
+            image: '/imgs/your-refuge.jpg',
+            description: "A digital portal and real-time impact tracker for a Christian humanitarian organization in Cotonou, Benin. We built a responsive web application that features custom donation flows (FCFA/Mobile Money), volunteer recruitment, and visual progress gauges tracking meals and active social reinsertion.",
+            techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
+            link: 'https://your-refuge.vercel.app/',
+            color: '#2ec9c4',
+            linkType: 'site',
+          },
         ]
       }
     },
@@ -1119,10 +1122,16 @@ function App() {
         subtitle: 'CLAIRS. UTILES. DURABLES.',
         viewProjects: 'VOIR MES PROJETS',
         contactMe: 'ME CONTACTER',
+        topText: 'DÉDIÉ À LA CONCEPTION DE PRODUITS EXCELLENTS, JE SUIS UN',
+        titleLine1: 'DESIGNER PRODUIT',
+        titleLine2: '& EXPÉRIENCES',
+        titleHighlight: 'DIGITALES',
+        bottomText: 'axé sur la création de systèmes numériques clairs, utiles et durables, de la stratégie au code.',
+        ctaText: 'Réserver un appel découverte'
       },
       services: {
         label: '03 / Services',
-        title: 'Mes Services',
+        title: <>Quels <span className="highlight-green">services</span> puis-je vous offrir ?</>,
         subtitle: 'Des solutions complètes pour vos projets digitaux.',
         items: [
           {
@@ -1200,10 +1209,12 @@ function App() {
       },
       projects: {
         label: '06 / Projets',
-        title: <>Projets <span className="highlight">Sélectionnés.</span></>,
+        title: <>Un coup d'œil sur <span className="highlight-green">mon travail.</span></>,
         viewCaseStudy: "Voir l'étude de cas",
         visitSite: 'Visiter le site',
         viewProject: 'Visualiser le projet',
+        seeMore: 'Voir plus de projets',
+        backToHome: "Retour à l'accueil",
         items: [
           {
             id: 'tavares',
@@ -1265,6 +1276,18 @@ function App() {
             color: '#E63946',
             linkType: 'site',
           },
+          {
+            id: 'the-refuge',
+            title: 'Le Refuge',
+            role: 'Web Designer & Développeur',
+            category: 'Site Web',
+            image: '/imgs/your-refuge.jpg',
+            description: "Portail numérique et suivi d'impact en temps réel pour une organisation chrétienne humanitaire à Cotonou (Bénin). Nous avons conçu une application web responsive intégrant des tunnels de don (FCFA & Mobile Money), le recrutement de bénévoles, et des jauges d'avancement pour le suivi des repas distribués et des réinsertions sociales.",
+            techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
+            link: 'https://your-refuge.vercel.app/',
+            color: '#2ec9c4',
+            linkType: 'site',
+          },
         ]
       }
     }
@@ -1294,6 +1317,32 @@ function App() {
       document.body.style.overflow = 'auto';
     }
   }, [isMenuOpen]);
+
+  const handleNavClick = (sectionId: string) => {
+    if (currentView === 'home') {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setCurrentView('home');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleLogoClick = () => {
+    if (currentView === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setCurrentView('home');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
+    setIsMenuOpen(false);
+  };
 
   // Calendly Integration
   const openCalendly = (e: React.MouseEvent) => {
@@ -1355,212 +1404,239 @@ function App() {
         </div>
       )}
 
+      {/* Global Navigation */}
+      {currentView !== 'cv' && (
+        <>
+          <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+            <div className="container nav-container-new">
+              <div className="logo-new" onClick={handleLogoClick}>
+                <img src="/imgs/Logo.png" alt="Logo" className="logo-img-new" />
+              </div>
+              
+              <div className="nav-center-links hide-mobile">
+                <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}>{t.nav.about}</a>
+                <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }}>{t.nav.services}</a>
+                <a href="#experience" onClick={(e) => { e.preventDefault(); handleNavClick('experience'); }}>{t.nav.experience}</a>
+                <a href="#saas" onClick={(e) => { e.preventDefault(); handleNavClick('saas'); }}>{t.nav.focus}</a>
+                <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>{t.nav.projects}</a>
+                <a href="#process" onClick={(e) => { e.preventDefault(); handleNavClick('process'); }}>{t.nav.process}</a>
+              </div>
+
+              <div className="nav-right-new">
+                <div className="lang-switch hide-mobile">
+                  <button 
+                    className={`lang-btn ${lang === 'en' ? 'active' : ''}`} 
+                    onClick={() => setLang('en')}
+                  >
+                    <img src="https://flagcdn.com/w20/gb.png" alt="EN" /> EN
+                  </button>
+                  <span className="lang-sep">|</span>
+                  <button 
+                    className={`lang-btn ${lang === 'fr' ? 'active' : ''}`} 
+                    onClick={() => setLang('fr')}
+                  >
+                    <img src="https://flagcdn.com/w20/fr.png" alt="FR" /> FR
+                  </button>
+                </div>
+                <button onClick={openCalendly} className="nav-contact-cta-pentos hide-mobile magnetic-button">
+                  {t.nav.contact} ↗
+                </button>
+                <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          <div className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}>
+            <div className="mobile-nav-noise"></div>
+            <div className="mobile-nav-bg-vignette"></div>
+            <div className="mobile-nav-bg"></div>
+            
+            <div className="container mobile-nav-container">
+              <div className="mobile-nav-header">
+                <div className="mobile-brand">SACCA DAFIA.</div>
+                <div className="mobile-nav-right">
+                  <div className="mobile-nav-lang">
+                    <button className={`lang-pill ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+                    <button className={`lang-pill ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>FR</button>
+                  </div>
+                  <button className="mobile-close-btn" onClick={() => setIsMenuOpen(false)}>
+                    <X size={28} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="mobile-nav-meta-top hide-mobile-small">
+                <div className="meta-item-new">
+                  <span className="meta-label-new">LOCATION</span>
+                  <span className="meta-value-new">COTONOU, BENIN</span>
+                </div>
+                <div className="meta-item-new">
+                  <span className="meta-label-new">LOCAL TIME</span>
+                  <span className="meta-value-new">{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
+                </div>
+              </div>
+              
+              <div className="mobile-nav-content">
+                <div className="mobile-nav-links">
+                  {[
+                    { id: 'about', label: t.nav.about },
+                    { id: 'services', label: t.nav.services },
+                    { id: 'experience', label: t.nav.experience },
+                    { id: 'saas', label: t.nav.focus },
+                    { id: 'projects', label: t.nav.projects },
+                    { id: 'process', label: t.nav.process }
+                  ].map((link, i) => (
+                    <motion.div 
+                      key={link.id}
+                      className="mobile-link-wrapper"
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={isMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                      transition={{ delay: i * 0.08 + 0.2, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                    >
+                      <a
+                        href={`#${link.id}`}
+                        className={`mobile-link-item ${i === 0 ? 'active' : ''}`}
+                        onClick={(e) => { e.preventDefault(); handleNavClick(link.id); }}
+                      >
+                        <span className="mobile-link-num">0{i+1}</span>
+                        <span className="mobile-link-text">{link.label}</span>
+                        <div className="mobile-link-line"></div>
+                      </a>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* CTA button – Book a call */}
+                <div className="mobile-nav-cta">
+                  <button
+                    className="mobile-nav-cta-btn"
+                    onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
+                  >
+                    {t.nav.contact} <ArrowRight size={14} style={{ transform: 'rotate(-45deg)' }} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="mobile-nav-footer-new">
+                <div className="mobile-socials-new">
+                  <span className="meta-label-new">SOCIALS</span>
+                  <div className="social-links-row">
+                    <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+                    <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer">BEHANCE</a>
+                  </div>
+                </div>
+                <div className="mobile-copyright-new">
+                  <p>© 2026 SACCA DAFIA. ALL RIGHTS RESERVED.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       {currentView === 'cv' && <CVView setCurrentView={setCurrentView} />}
-      {currentView !== 'home' && currentView !== 'cv' && (
-        <CaseStudy id={currentView as any} mousePos={mousePos} setCurrentView={setCurrentView} />
+      {currentView === 'projects' && (
+        <ProjectsView 
+          projects={projects} 
+          setCurrentView={setCurrentView} 
+          setPreviousView={setPreviousView} 
+          t={t} 
+          lang={lang} 
+        />
+      )}
+      {currentView !== 'home' && currentView !== 'cv' && currentView !== 'projects' && (
+        <CaseStudy 
+          id={currentView as any} 
+          mousePos={mousePos} 
+          setCurrentView={setCurrentView} 
+          onBack={() => setCurrentView(previousView)} 
+          lang={lang}
+        />
       )}
       {currentView === 'home' && (
         <div className="app anim-fade-in">
-      {/* Navigation */}
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="container nav-container-new">
-          <div className="logo-new" onClick={() => { setCurrentView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-            <img src="/imgs/Logo.png" alt="Logo" className="logo-img-new" />
-          </div>
-          
-          <div className="nav-center-links hide-mobile">
-            <a href="#about" className="active">{t.nav.about}</a>
-            <a href="#services">{t.nav.services}</a>
-            <a href="#experience">{t.nav.experience}</a>
-            <a href="#saas">{t.nav.focus}</a>
-            <a href="#projects">{t.nav.projects}</a>
-            <a href="#process">{t.nav.process}</a>
-          </div>
+          {/* Hero Section */}
+          <section id="home" className="hero-dznr" style={{ 
+            '--mouse-x': `${mousePos.x}%`, 
+            '--mouse-y': `${mousePos.y}%` 
+          } as any}>
+            {/* Background layers */}
+            <div className="hero-gradient-dznr" />
+            <div className="hero-noise-dznr" />
 
-          <div className="nav-right-new">
-            <div className="lang-switch hide-mobile">
-              <button 
-                className={`lang-btn ${lang === 'en' ? 'active' : ''}`} 
-                onClick={() => setLang('en')}
-              >
-                <img src="https://flagcdn.com/w20/gb.png" alt="EN" /> EN
-              </button>
-              <span className="lang-sep">|</span>
-              <button 
-                className={`lang-btn ${lang === 'fr' ? 'active' : ''}`} 
-                onClick={() => setLang('fr')}
-              >
-                <img src="https://flagcdn.com/w20/fr.png" alt="FR" /> FR
-              </button>
-            </div>
-            <button onClick={openCalendly} className="nav-contact-cta-pentos hide-mobile magnetic-button">
-              {t.nav.contact} ↗
-            </button>
-            <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-        </div>
-      </nav>
-
-
-
-      <div className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}>
-        <div className="mobile-nav-noise"></div>
-        <div className="mobile-nav-bg-vignette"></div>
-        <div className="mobile-nav-bg"></div>
-        
-        <div className="container mobile-nav-container">
-          <div className="mobile-nav-header">
-            <div className="mobile-brand">SACCA DAFIA.</div>
-            <div className="mobile-nav-right">
-              <div className="mobile-nav-lang">
-                <button className={`lang-pill ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
-                <button className={`lang-pill ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>FR</button>
-              </div>
-              <button className="mobile-close-btn" onClick={() => setIsMenuOpen(false)}>
-                <X size={28} />
-              </button>
-            </div>
-          </div>
-
-          <div className="mobile-nav-meta-top hide-mobile-small">
-            <div className="meta-item-new">
-              <span className="meta-label-new">LOCATION</span>
-              <span className="meta-value-new">COTONOU, BENIN</span>
-            </div>
-            <div className="meta-item-new">
-              <span className="meta-label-new">LOCAL TIME</span>
-              <span className="meta-value-new">{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
-            </div>
-          </div>
-          
-          <div className="mobile-nav-content">
-            <div className="mobile-nav-links">
-              {[
-                { id: 'about', label: t.nav.about },
-                { id: 'services', label: t.nav.services },
-                { id: 'experience', label: t.nav.experience },
-                { id: 'saas', label: t.nav.focus },
-                { id: 'projects', label: t.nav.projects },
-                { id: 'process', label: t.nav.process }
-              ].map((link, i) => (
-                <motion.div 
-                  key={link.id}
-                  className="mobile-link-wrapper"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                  transition={{ delay: i * 0.08 + 0.2, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                >
-                  <a
-                    href={`#${link.id}`}
-                    className={`mobile-link-item ${i === 0 ? 'active' : ''}`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="mobile-link-num">0{i+1}</span>
-                    <span className="mobile-link-text">{link.label}</span>
-                    <div className="mobile-link-line"></div>
-                  </a>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* CTA button – Book a call */}
-            <div className="mobile-nav-cta">
-              <button
-                className="mobile-nav-cta-btn"
-                onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
-              >
-                {t.nav.contact} <ArrowRight size={14} style={{ transform: 'rotate(-45deg)' }} />
-              </button>
-            </div>
-          </div>
-
-          <div className="mobile-nav-footer-new">
-            <div className="mobile-socials-new">
-              <span className="meta-label-new">SOCIALS</span>
-              <div className="social-links-row">
-                <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-                <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer">BEHANCE</a>
-              </div>
-            </div>
-            <div className="mobile-copyright-new">
-              <p>© 2026 SACCA DAFIA. ALL RIGHTS RESERVED.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <section id="home" className="hero-pentos" style={{ 
-        '--mouse-x': `${mousePos.x}%`, 
-        '--mouse-y': `${mousePos.y}%` 
-      } as any}>
-        {/* Background layers */}
-        <div className="hero-gradient-pentos" />
-        <div className="hero-pentos-scan" />
-        <div className="hero-pentos-noise" />
-        <div className="hero-pentos-rings" />
-        <div className="hero-pentos-accent" />
-
-        {/* Illustration decorations – Hero */}
-        <IlluStar className="illu-hero-star1" />
-        <IlluShape className="illu-hero-shape1" />
-        <IlluOrb className="illu-hero-orb1" />
-        <IlluStar className="illu-hero-star2" />
-        
-        <div className="container hero-container-pentos">
-          <div className="hero-content-pentos">
-
-
-            <motion.h1 
-              className="hero-title-pentos"
-              initial={{ opacity: 0, y: 30 }}
+            <div className="container hero-container-dznr">
+          <div className="hero-content-dznr">
+            <motion.span 
+              className="hero-top-text-dznr"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="hero-title-line-1">
-                {lang === 'en' ? 'Building scalable' : 'Concevoir des produits'}
-              </span>
-              <span className="hero-title-line-2">
-                <span className="highlight">
-                  {lang === 'en' ? 'digital products.' : 'numériques évolutifs.'}
-                </span>
+              {t.hero.topText}
+            </motion.span>
+
+            <motion.h1 
+              className="hero-title-dznr"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+            >
+              <span className="hero-title-row-1">{t.hero.titleLine1}</span>
+              <span className="hero-title-row-2">
+                {t.hero.titleLine2} <span className="highlight-dznr">{t.hero.titleHighlight}</span>
               </span>
             </motion.h1>
 
             <motion.p 
-              className="hero-subtitle-pentos"
+              className="hero-bottom-text-dznr"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              {t.hero.subtitle}
+              {t.hero.bottomText}
             </motion.p>
 
             <motion.div 
-              className="hero-actions-pentos"
+              className="hero-cta-wrapper-dznr"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.45 }}
             >
-              <a href="#projects" className="btn-primary-pentos magnetic-button">{t.hero.viewProjects}</a>
-              <button onClick={openCalendly} className="btn-secondary-pentos magnetic-button">{t.hero.contactMe}</button>
+              <button onClick={openCalendly} className="hero-cta-btn-dznr">
+                {t.hero.ctaText} <span className="arrow-dznr">→</span>
+              </button>
             </motion.div>
           </div>
 
-          <div className="hero-sculpture-container">
-            <motion.img 
-              src="/imgs/hero.svg" 
-              alt="Pentos Halftone Sculpture" 
-              className="hero-sculpture-pentos"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 0.85, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.3 }}
-            />
-          </div>
+          {/* Peeking Showreel Mockup Card */}
+          <motion.div 
+            className="hero-peeking-card-dznr showreel-card-dznr"
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            {/* Grid pattern background inside showreel */}
+            <div className="showreel-grid-bg" />
+            
+            <div className="showreel-content">
+              <span className="showreel-text">{lang === 'en' ? 'Quick' : 'Rapide'}</span>
+              <div className="showreel-play-btn">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="play-icon">
+                  <path d="M8 5V19L19 12L8 5Z" fill="var(--pentos-lime, #C9F31D)" />
+                </svg>
+                <div className="play-btn-pulse" />
+              </div>
+              <span className="showreel-text">{lang === 'en' ? 'at my work.' : 'sur mon travail.'}</span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1646,65 +1722,58 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="services-section-new">
-        {/* Illustration decorations – Services */}
-        <IlluStar className="illu-services-star" />
-        <IlluOrb className="illu-services-orb" />
+      <section id="services" className="services-section-dznr">
         <div className="container">
-          <div className="services-header-new">
-
+          <div className="services-header-dznr">
             <motion.h2 
-              className="gsap-reveal-title"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="services-title-dznr"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
             >
               {t.services.title}
             </motion.h2>
-            <motion.p 
-              className="services-subtitle-new"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              {t.services.subtitle}
-            </motion.p>
           </div>
           
-          <div className="services-deck-new">
+          <div className="services-grid-dznr">
             {t.services.items.map((service : any, index : number) => (
               <motion.div 
                 key={service.id}
-                className="service-column-new"
+                className="service-card-dznr"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="column-header-new">
-                  <span className="column-index-new">{service.id}</span>
-                  <div className="column-dot-new" style={{ backgroundColor: service.color }}></div>
-                </div>
-                <div className="column-illustration-wrapper">
+                <div className="service-card-icon-wrapper-dznr">
                   {(() => {
                     const Icon = serviceIcons[index];
                     return <Icon />;
                   })()}
                 </div>
-                <div className="column-body-new">
-                  <h3>{service.title}</h3>
-                  <p className="column-subtitle-new">{service.subtitle}</p>
-                  <p className="column-desc-new">{service.desc}</p>
+                
+                <h3 className="service-card-title-dznr">
+                  {(() => {
+                    const words = service.title.split(' ');
+                    if (words.length <= 1) return service.title;
+                    const lastWord = words[words.length - 1];
+                    const rest = words.slice(0, words.length - 1).join(' ');
+                    return (
+                      <>
+                        {rest} <span className="highlight-green">{lastWord}</span>
+                      </>
+                    );
+                  })()}
+                </h3>
+                
+                <p className="service-card-desc-dznr">{service.desc}</p>
+                
+                <div className="service-card-tags-dznr">
+                  {service.tags.map((tag: string) => (
+                    <span key={tag} className="service-card-tag-pill-dznr">{tag}</span>
+                  ))}
                 </div>
-                <div className="column-footer-new">
-                  <div className="column-tags-new">
-                    {service.tags.map((tag: string) => (
-                      <span key={tag} className="column-tag-pill-new">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-                {index === 0 && <div className="column-glow-new" style={{ '--glow-color': service.color } as any}></div>}
               </motion.div>
             ))}
           </div>
@@ -1797,8 +1866,8 @@ function App() {
             </p>
           </div>
 
-          {/* Editorial rows */}
-          <div className="saas-rows">
+          {/* Showcase grid cards */}
+          <div className="saas-showcase-container">
             {[
               {
                 id: 'ehadj',
@@ -1806,11 +1875,16 @@ function App() {
                 label: 'Process Orchestration',
                 title: 'eHadj',
                 year: '2024',
+                role: lang === 'en' ? 'Lead Product Designer' : 'Lead Product Designer',
+                metrics: lang === 'en' 
+                  ? ['+45% scheduling efficiency', 'Centralized booking flow', 'Real-time sync']
+                  : ['+45% d\'efficacité logistique', 'Flux de réservation centralisé', 'Synchro en temps réel'],
                 tags: ['UX Design', 'Product Strategy', 'B2B SaaS'],
                 desc: lang === 'en'
                   ? 'Digitalisation of pilgrimage organisation: registrations, logistics, transport and centralised financial flows.'
                   : 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
-                image: '/imgs/ehadj_cs.jpg',
+                image: '/imgs/ehadj/cover_Ehadj.jpg',
+                mockup: '/imgs/ehadj/cover_Ehadj.jpg',
                 color: '#2ec9c4',
                 view: 'ehadj'
               },
@@ -1820,63 +1894,92 @@ function App() {
                 label: 'Product Design & Strategy',
                 title: 'Asset IQ',
                 year: '2025',
+                role: lang === 'en' ? 'Product & UX Strategist' : 'Stratégiste Produit & UX',
+                metrics: lang === 'en'
+                  ? ['30% downtime reduction', 'Automated resource audit', 'Real-time telemetry']
+                  : ['-30% de temps d\'arrêt', 'Audit automatisé des ressources', 'Télémétrie en temps réel'],
                 tags: ['Product Design', 'UX Strategy', 'Dashboard'],
                 desc: lang === 'en'
                   ? 'Intelligent system for tracking and operational governance of physical resources across multi-site infrastructures.'
                   : 'Système intelligent de suivi et de gouvernance opérationnelle des ressources physiques.',
-                image: '/imgs/assetiQ_cs.jpg',
+                image: '/imgs/assetiQ/cover_Asset.jpg',
+                mockup: '/imgs/assetiQ/cover_Asset.jpg',
                 color: '#A855F7',
                 view: 'asset-iq'
               }
             ].map((product, index) => (
               <motion.div
                 key={product.id}
-                className="saas-row-item"
-                initial={{ opacity: 0, y: 40 }}
+                className="saas-showcase-card"
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15, duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: index * 0.15, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                 onClick={() => setCurrentView(product.view as any)}
               >
-                {/* Background image revealed on hover */}
-                <div
-                  className="saas-row-bg"
-                  style={{ backgroundImage: `url(${product.image})` }}
-                />
-                <div className="saas-row-bg-overlay" />
+                {/* Glowing spot background */}
+                <div className="saas-card-glow" style={{ '--accent-glow': product.color } as any} />
+                
+                {/* Left side: details */}
+                <div className="saas-card-left">
+                  <div className="saas-card-meta">
+                    <span className="saas-card-index">{product.index}</span>
+                    <span className="saas-card-label">{product.label}</span>
+                    <span className="saas-card-year">{product.year}</span>
+                  </div>
 
-                {/* Left: giant index */}
-                <div className="saas-row-left">
-                  <span className="saas-row-index">{product.index}</span>
-                </div>
+                  <h3 className="saas-card-title">{product.title}</h3>
+                  <div className="saas-card-role">
+                    <span className="role-label">{lang === 'en' ? 'Role:' : 'Rôle :'}</span>
+                    <span className="role-val">{product.role}</span>
+                  </div>
 
-                {/* Center: content */}
-                <div className="saas-row-center">
-                  <span className="saas-row-label">{product.label}</span>
-                  <h3 className="saas-row-title">{product.title}</h3>
-                  <p className="saas-row-desc">{product.desc}</p>
-                  <div className="saas-row-tags">
-                    {product.tags.map(tag => (
-                      <span key={tag} className="saas-row-tag">{tag}</span>
+                  <p className="saas-card-desc">{product.desc}</p>
+
+                  <div className="saas-card-metrics">
+                    {product.metrics.map((metric, i) => (
+                      <div key={i} className="saas-metric-item">
+                        <span className="metric-dot" style={{ backgroundColor: product.color }} />
+                        <span className="metric-text">{metric}</span>
+                      </div>
                     ))}
                   </div>
-                </div>
 
-                {/* Right: CTA + year */}
-                <div className="saas-row-right">
-                  <span className="saas-row-year">{product.year}</span>
-                  <div className="saas-row-cta">
-                    <span className="saas-row-cta-label">
+                  <div className="saas-card-tags">
+                    {product.tags.map(tag => (
+                      <span key={tag} className="saas-card-tag">{tag}</span>
+                    ))}
+                  </div>
+
+                  <div className="saas-card-cta">
+                    <span className="saas-cta-text">
                       {lang === 'en' ? 'View Case Study' : "Voir l'étude"}
                     </span>
-                    <div className="saas-row-arrow">
-                      <ArrowRight size={18} style={{ transform: 'rotate(-45deg)' }} />
+                    <div className="saas-cta-arrow" style={{ backgroundColor: product.color }}>
+                      <ArrowRight size={16} />
                     </div>
                   </div>
                 </div>
 
-                {/* Accent line that fills on hover */}
-                <div className="saas-row-line" style={{ '--accent': product.color } as any} />
+                {/* Right side: Mockup */}
+                <div className="saas-card-right">
+                  <div className="browser-mockup">
+                    <div className="browser-header">
+                      <div className="browser-dots">
+                        <span className="dot red"></span>
+                        <span className="dot yellow"></span>
+                        <span className="dot green"></span>
+                      </div>
+                      <div className="browser-address">
+                        <span className="address-protocol">https://</span>
+                        <span className="address-url">{product.title.toLowerCase()}.design</span>
+                      </div>
+                    </div>
+                    <div className="browser-body">
+                      <img src={product.mockup} alt={`${product.title} Mockup`} loading="lazy" />
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -1884,97 +1987,134 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="projects-section-new" style={{ 
+      <section id="projects" className="projects-section-dznr" style={{ 
         '--mouse-x': `${mousePos.x}%`, 
         '--mouse-y': `${mousePos.y}%` 
       } as any}>
-        <div className="projects-gradient-overlay"></div>
         <div className="container">
-          <div className="projects-header-new">
-
+          <div className="projects-header-dznr">
             <motion.h2 
-              className="gsap-reveal-title"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="projects-title-dznr"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
             >
               {t.projects.title}
             </motion.h2>
           </div>
 
-          <div className="proj-showcase-new">
-            <div className="proj-left-new">
-              <div className="proj-meta-new">
-                <span className="proj-index-new">{String(activeProject + 1).padStart(2, '0')}</span>
-                <span className="proj-role-new">{projects[activeProject].role.toUpperCase()}</span>
-              </div>
-              <h3 className="proj-title-new">{projects[activeProject].title}</h3>
-              <p className="proj-desc-new">{projects[activeProject].description}</p>
-              <div className="proj-techs-new">
-                {projects[activeProject].techs.map((tech: string, i: number) => (
-                  <span key={i} className="tech-pill-new">{tech}</span>
-                ))}
-              </div>
-              <div className="proj-actions-new" style={{ display: 'flex', gap: '16px', marginTop: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
-                <motion.button
-                  onClick={() => setCurrentView(projects[activeProject].id as any)}
-                  className="btn-primary-new magnetic-button"
-                  style={{ padding: '12px 24px', fontSize: '0.9rem', border: 'none', cursor: 'pointer' }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {t.projects.viewCaseStudy}
-                </motion.button>
-                {projects[activeProject].link && projects[activeProject].link !== '#' && (
-                  <motion.a
-                    href={projects[activeProject].link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary-new magnetic-button"
-                    style={{ padding: '12px 24px', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer', textDecoration: 'none' }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {projects[activeProject].linkType === 'behance' ? t.projects.viewProject : t.projects.visitSite} <ExternalLink size={16} />
-                  </motion.a>
-                )}
-              </div>
-            </div>
+          <div className="projects-grid-dznr">
+            {(() => {
+              const homepageIds = ['vortex', 'sport-advisor', 'tavares', 'the-refuge'];
+              const homepageProjects = homepageIds
+                .map(id => projects.find((p: any) => p.id === id))
+                .filter(Boolean) as any[];
 
-            <div className="proj-right-new">
-              <div className="mockup-frame-new">
-                <div className="mockup-header-new">
-                  <span className="mockup-dot" />
-                  <span className="mockup-dot" />
-                  <span className="mockup-dot" />
-                </div>
-                <div className="mockup-screen-new">
-                  <motion.img
-                    key={activeProject}
-                    src={projects[activeProject].image}
-                    alt={projects[activeProject].title}
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </div>
-              </div>
-              
-              <div className="proj-nav-new">
-                <button
-                  className="proj-nav-btn-new"
-                  onClick={() => setActiveProject(p => (p - 1 + projects.length) % projects.length)}
+              return homepageProjects.map((project: any, i: number) => (
+                <motion.div 
+                  key={project.id}
+                  className="project-card-dznr"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} />
-                </button>
-                <button
-                  className="proj-nav-btn-new"
-                  onClick={() => setActiveProject(p => (p + 1) % projects.length)}
-                >
-                  <ArrowRight size={20} />
-                </button>
-              </div>
-            </div>
+                  {/* 1. Image Showcase Container */}
+                  <div 
+                    className="project-card-image-wrapper"
+                    onClick={() => {
+                      setPreviousView('home');
+                      setCurrentView(project.id);
+                    }}
+                  >
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="project-card-image" 
+                    />
+                    <div className="project-card-overlay-dznr" />
+                    
+                    {/* Floating Category Tag */}
+                    <span className="project-card-category-tag">{project.category}</span>
+                  </div>
+                  
+                  {/* 2. Detailed Metadata & Content Container */}
+                  <div className="project-card-info-dznr">
+                    <div className="project-card-meta-row">
+                      <span className="project-card-index">0{i + 1} /</span>
+                      <span className="project-card-role">{project.role}</span>
+                    </div>
+                    
+                    <h3 
+                      className="project-card-title-detailed"
+                      onClick={() => {
+                        setPreviousView('home');
+                        setCurrentView(project.id);
+                      }}
+                    >
+                      {project.title}
+                    </h3>
+                    
+                    <p className="project-card-desc-detailed">
+                      {project.description}
+                    </p>
+                    
+                    {/* Tech stack pills */}
+                    <div className="project-card-tech-pills">
+                      {project.techs.map((tech: string) => (
+                        <span key={tech} className="project-card-tech-pill">{tech}</span>
+                      ))}
+                    </div>
+                    
+                    {/* Interactive Action Footer */}
+                    <div className="project-card-actions">
+                      <button 
+                        onClick={() => {
+                          setPreviousView('home');
+                          setCurrentView(project.id);
+                        }}
+                        className="project-action-btn-primary"
+                      >
+                        {t.projects.viewCaseStudy}
+                        <ArrowRight size={16} />
+                      </button>
+                      
+                      {project.link && project.link !== '#' && (
+                        <a 
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-action-link-secondary"
+                        >
+                          {project.linkType === 'behance' ? t.projects.viewProject : t.projects.visitSite}
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              ));
+            })()}
+          </div>
+
+          {/* See More Button */}
+          <div className="projects-see-more-container">
+            <motion.button
+              className="projects-see-more-btn"
+              onClick={() => {
+                setCurrentView('projects');
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.4 }}
+            >
+              <span>{t.projects.seeMore}</span>
+              <ArrowRight size={16} />
+            </motion.button>
           </div>
         </div>
       </section>
