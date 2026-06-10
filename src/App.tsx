@@ -47,20 +47,20 @@ const ServiceIcon01 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="pdGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#08221c" />
-        <stop offset="100%" stopColor="#051412" />
+        <stop offset="0%" stopColor="#051a0b" />
+        <stop offset="100%" stopColor="#031006" />
       </linearGradient>
       <linearGradient id="pdGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgba(46, 201, 196, 0.3)" />
+        <stop offset="0%" stopColor="rgba(201, 243, 29, 0.3)" />
         <stop offset="100%" stopColor="rgba(255, 255, 255, 0.05)" />
       </linearGradient>
       <linearGradient id="pdGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#2ec9c4" />
-        <stop offset="100%" stopColor="#00E676" />
+        <stop offset="0%" stopColor="#C9F31D" />
+        <stop offset="100%" stopColor="#C9F31D" />
       </linearGradient>
       <radialGradient id="pdGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#2ec9c4" stopOpacity="0.45" />
-        <stop offset="100%" stopColor="#2ec9c4" stopOpacity="0" />
+        <stop offset="0%" stopColor="#C9F31D" stopOpacity="0.45" />
+        <stop offset="100%" stopColor="#C9F31D" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -71,7 +71,7 @@ const ServiceIcon01 = () => (
     <circle cx="50" cy="45" r="22" fill="url(#pdGlow)" />
     
     {/* Bottom Layer: Base grid canvas */}
-    <path d="M50 72 L88 53 L50 34 L12 53 Z" fill="url(#pdGradBg)" stroke="rgba(46, 201, 196, 0.25)" strokeWidth="1.2" />
+    <path d="M50 72 L88 53 L50 34 L12 53 Z" fill="url(#pdGradBg)" stroke="rgba(201, 243, 29, 0.25)" strokeWidth="1.2" />
     
     {/* Middle Layer: Floating glassmorphic wireframe screen */}
     <path d="M50 54 L88 35 L50 16 L12 35 Z" fill="url(#pdGradGlass)" stroke="rgba(255, 255, 255, 0.45)" strokeWidth="1.2" />
@@ -95,21 +95,21 @@ const ServiceIcon02 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="uxGradTarget" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#051412" />
-        <stop offset="100%" stopColor="#08221c" />
+        <stop offset="0%" stopColor="#031006" />
+        <stop offset="100%" stopColor="#051a0b" />
       </linearGradient>
       <linearGradient id="uxGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgba(46, 201, 196, 0.25)" />
-        <stop offset="100%" stopColor="rgba(0, 230, 118, 0.08)" />
+        <stop offset="0%" stopColor="rgba(201, 243, 29, 0.25)" />
+        <stop offset="100%" stopColor="rgba(201, 243, 29, 0.08)" />
       </linearGradient>
       <linearGradient id="uxGradMetal" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0.65" />
-        <stop offset="50%" stopColor="#2ec9c4" stopOpacity="0.8" />
-        <stop offset="100%" stopColor="#08221c" stopOpacity="0.95" />
+        <stop offset="50%" stopColor="#C9F31D" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#051a0b" stopOpacity="0.95" />
       </linearGradient>
       <radialGradient id="uxGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#2ec9c4" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#2ec9c4" stopOpacity="0" />
+        <stop offset="0%" stopColor="#C9F31D" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#C9F31D" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -117,19 +117,19 @@ const ServiceIcon02 = () => (
     <ellipse cx="50" cy="85" rx="34" ry="7" fill="rgba(0,0,0,0.5)" filter="blur(4px)" />
     
     {/* Radar/Sonar Target Base Plate */}
-    <path d="M50 76 L86 58 L50 40 L14 58 Z" fill="url(#uxGradTarget)" stroke="rgba(46, 201, 196, 0.3)" strokeWidth="1.5" />
-    <ellipse cx="50" cy="58" rx="24" ry="12" stroke="rgba(46, 201, 196, 0.18)" strokeWidth="1.2" fill="none" />
-    <ellipse cx="50" cy="58" rx="14" ry="7" stroke="rgba(0, 230, 118, 0.3)" strokeWidth="1.2" fill="none" />
+    <path d="M50 76 L86 58 L50 40 L14 58 Z" fill="url(#uxGradTarget)" stroke="rgba(201, 243, 29, 0.3)" strokeWidth="1.5" />
+    <ellipse cx="50" cy="58" rx="24" ry="12" stroke="rgba(201, 243, 29, 0.18)" strokeWidth="1.2" fill="none" />
+    <ellipse cx="50" cy="58" rx="14" ry="7" stroke="rgba(201, 243, 29, 0.3)" strokeWidth="1.2" fill="none" />
     
     {/* Floating 3D Column 1 (Left-back, teal) */}
-    <path d="M30 46 L36 43 L42 46 L36 49 Z" fill="#2ec9c4" />
-    <path d="M30 46 L30 62 L36 65 L36 49 Z" fill="#166260" />
-    <path d="M36 49 L36 65 L42 62 L42 46 Z" fill="#1b7875" />
+    <path d="M30 46 L36 43 L42 46 L36 49 Z" fill="#C9F31D" />
+    <path d="M30 46 L30 62 L36 65 L36 49 Z" fill="#6f880f" />
+    <path d="M36 49 L36 65 L42 62 L42 46 Z" fill="#8ca814" />
     
     {/* Floating 3D Column 2 (Right-front, taller, neon green) */}
-    <path d="M46 32 L52 29 L58 32 L52 35 Z" fill="#00E676" />
-    <path d="M46 32 L46 54 L52 57 L52 35 Z" fill="#008a47" />
-    <path d="M52 35 L52 57 L58 54 L58 32 Z" fill="#00b85f" />
+    <path d="M46 32 L52 29 L58 32 L52 35 Z" fill="#C9F31D" />
+    <path d="M46 32 L46 54 L52 57 L52 35 Z" fill="#75910b" />
+    <path d="M52 35 L52 57 L58 54 L58 32 Z" fill="#9fc414" />
     
     {/* Shadow of magnifying glass on base */}
     <ellipse cx="52" cy="54" rx="14" ry="7" fill="rgba(0,0,0,0.4)" filter="blur(3px)" />
@@ -142,7 +142,7 @@ const ServiceIcon02 = () => (
     
     {/* Magnifying glass handle */}
     <path d="M55 45 L74 63 L71 66 L52 48 Z" fill="url(#uxGradMetal)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.3))" />
-    <circle cx="72.5" cy="64.5" r="2" fill="#2ec9c4" />
+    <circle cx="72.5" cy="64.5" r="2" fill="#C9F31D" />
   </svg>
 );
 
@@ -150,16 +150,16 @@ const ServiceIcon03 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="stGradTop" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#6ffffc" />
-        <stop offset="100%" stopColor="#2ec9c4" />
+        <stop offset="0%" stopColor="#f3fcd4" />
+        <stop offset="100%" stopColor="#C9F31D" />
       </linearGradient>
       <linearGradient id="stGradLeft" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#0c2422" />
-        <stop offset="100%" stopColor="#05100f" />
+        <stop offset="0%" stopColor="#09220f" />
+        <stop offset="100%" stopColor="#030c05" />
       </linearGradient>
       <linearGradient id="stGradRight" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#1c5f5b" />
-        <stop offset="100%" stopColor="#0a2422" />
+        <stop offset="0%" stopColor="#163b1e" />
+        <stop offset="100%" stopColor="#071f0d" />
       </linearGradient>
     </defs>
     
@@ -182,13 +182,13 @@ const ServiceIcon03 = () => (
     <path d="M52 45 L52 63 L66 56 L66 38 Z" fill="url(#stGradRight)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
     
     {/* Connectors & Nodes representing strategy/roadmap logic overlay */}
-    <line x1="52" y1="31" x2="64" y2="57" stroke="#00E676" strokeWidth="1.5" strokeDasharray="3 2" />
-    <line x1="52" y1="31" x2="40" y2="49" stroke="#00E676" strokeWidth="1.5" strokeDasharray="3 2" />
+    <line x1="52" y1="31" x2="64" y2="57" stroke="#C9F31D" strokeWidth="1.5" strokeDasharray="3 2" />
+    <line x1="52" y1="31" x2="40" y2="49" stroke="#C9F31D" strokeWidth="1.5" strokeDasharray="3 2" />
     
     {/* Glowing Nodes */}
-    <circle cx="52" cy="31" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 3px #00E676)" />
-    <circle cx="64" cy="57" r="3" fill="#2ec9c4" />
-    <circle cx="40" cy="49" r="3" fill="#2ec9c4" />
+    <circle cx="52" cy="31" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 3px #C9F31D)" />
+    <circle cx="64" cy="57" r="3" fill="#C9F31D" />
+    <circle cx="40" cy="49" r="3" fill="#C9F31D" />
   </svg>
 );
 
@@ -196,16 +196,16 @@ const ServiceIcon04 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="devGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#04100d" />
-        <stop offset="100%" stopColor="#09221c" />
+        <stop offset="0%" stopColor="#030a05" />
+        <stop offset="100%" stopColor="#061d0c" />
       </linearGradient>
       <linearGradient id="devGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#2ec9c4" />
-        <stop offset="100%" stopColor="#00E676" />
+        <stop offset="0%" stopColor="#C9F31D" />
+        <stop offset="100%" stopColor="#C9F31D" />
       </linearGradient>
       <radialGradient id="devGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#2ec9c4" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#2ec9c4" stopOpacity="0" />
+        <stop offset="0%" stopColor="#C9F31D" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#C9F31D" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -217,7 +217,7 @@ const ServiceIcon04 = () => (
     <path d="M59 23 L60 25 L60 59 L59 57 Z" fill="rgba(0,0,0,0.3)" />
     
     {/* Window front face */}
-    <path d="M20 45 L59 23 L59 57 L20 79 Z" fill="url(#devGradBg)" stroke="rgba(46, 201, 196, 0.35)" strokeWidth="1.2" />
+    <path d="M20 45 L59 23 L59 57 L20 79 Z" fill="url(#devGradBg)" stroke="rgba(201, 243, 29, 0.35)" strokeWidth="1.2" />
     
     {/* Terminal buttons (Red, Yellow, Green in perspective) */}
     <circle cx="27" cy="41.5" r="1.5" fill="#ff5f56" />
@@ -226,7 +226,7 @@ const ServiceIcon04 = () => (
     
     {/* Syntax code bars */}
     <line x1="27" y1="50" x2="44" y2="40.5" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
-    <line x1="27" y1="56" x2="48" y2="44" stroke="#2ec9c4" strokeWidth="2" strokeLinecap="round" />
+    <line x1="27" y1="56" x2="48" y2="44" stroke="#C9F31D" strokeWidth="2" strokeLinecap="round" />
     <line x1="33" y1="60" x2="45" y2="53" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
     <line x1="27" y1="66" x2="40" y2="58.5" stroke="url(#devGradAccent)" strokeWidth="2" strokeLinecap="round" />
     
@@ -627,7 +627,7 @@ const ProjectsView = ({
 }) => {
   return (
     <div className="projects-page-view">
-      <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(46, 201, 196, 0.05) 0%, transparent 60%)' }} />
+      <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(201, 243, 29, 0.05) 0%, transparent 60%)' }} />
       
       <nav className="cs-nav-new">
         <div className="container cs-nav-flex">
@@ -944,7 +944,7 @@ function App() {
             subtitle: 'Interfaces & Experience',
             desc: 'Creating seamless user journeys and high-fidelity interfaces that prioritize clarity and user engagement.',
             tags: ['Figma', 'UX Research', 'Prototyping'],
-            color: '#2ec9c4'
+            color: '#C9F31D'
           },
           {
             id: '02',
@@ -998,7 +998,7 @@ function App() {
             date: 'FEBRUARY 2024 — SEPTEMBER 2025',
             desc: 'Evolved from a design-focused to a product-focused approach, working on integrations for the Beans loyalty program. Defined features, structured user journeys, and ensured global product consistency.',
             skills: ['PRD & Specs', 'Beans Journey', 'Dev Coordination', 'QA Validation'],
-            color: '#2ec9c4'
+            color: '#C9F31D'
           },
           {
             id: '03',
@@ -1089,7 +1089,7 @@ function App() {
             description: "A digital portal and real-time impact tracker for a Christian humanitarian organization in Cotonou, Benin. We built a responsive web application that features custom donation flows (FCFA/Mobile Money), volunteer recruitment, and visual progress gauges tracking meals and active social reinsertion.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
-            color: '#2ec9c4',
+            color: '#C9F31D',
             linkType: 'site',
           },
         ]
@@ -1140,7 +1140,7 @@ function App() {
             subtitle: 'Interfaces & Expérience',
             desc: 'Création de parcours fluides et d\'interfaces haute fidélité privilégiant la clarté et l\'engagement.',
             tags: ['Figma', 'UX Research', 'Prototypage'],
-            color: '#2ec9c4'
+            color: '#C9F31D'
           },
           {
             id: '02',
@@ -1194,7 +1194,7 @@ function App() {
             date: 'FÉVRIER 2024 — SEPTEMBRE 2025',
             desc: 'Évolution vers une approche produit structurée sur le programme Beans. Définition des fonctionnalités et coordination avec l\'équipe dev.',
             skills: ['PRD & Specs', 'Parcours Beans', 'Coordination Dev', 'Validation QA'],
-            color: '#2ec9c4'
+            color: '#C9F31D'
           },
           {
             id: '03',
@@ -1285,7 +1285,7 @@ function App() {
             description: "Portail numérique et suivi d'impact en temps réel pour une organisation chrétienne humanitaire à Cotonou (Bénin). Nous avons conçu une application web responsive intégrant des tunnels de don (FCFA & Mobile Money), le recrutement de bénévoles, et des jauges d'avancement pour le suivi des repas distribués et des réinsertions sociales.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
-            color: '#2ec9c4',
+            color: '#C9F31D',
             linkType: 'site',
           },
         ]
@@ -1392,8 +1392,8 @@ function App() {
                 />
                 <defs>
                   <radialGradient id="paint0_radial_preloader" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.5 37.5) rotate(90) scale(37.5)">
-                    <stop stopColor="#2ec9c4"/>
-                    <stop offset="1" stopColor="#27cabc" stopOpacity="0.8"/>
+                    <stop stopColor="#C9F31D"/>
+                    <stop offset="1" stopColor="#9CC414" stopOpacity="0.8"/>
                   </radialGradient>
                 </defs>
               </svg>
@@ -1885,7 +1885,7 @@ function App() {
                   : 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
                 image: '/imgs/ehadj/cover_Ehadj.jpg',
                 mockup: '/imgs/ehadj/cover_Ehadj.jpg',
-                color: '#2ec9c4',
+                color: '#C9F31D',
                 view: 'ehadj'
               },
               {

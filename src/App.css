@@ -4,13 +4,13 @@
   --bg-dark: #050505;
   --bg-light: #F8FAF9;
   --text-white: #FFFFFF;
-  --text-dark: #060E0A;
+  --text-dark: #050505;
   --text-gray: rgba(255, 255, 255, 0.6);
-  --accent: #2ec9c4;
-  --accent-yellow: #2ec9c4;
-  --accent-blue: #2ec9c4;
-  --accent-lime: #2ec9c4;
-  --accent-lime-tr: rgba(46, 201, 196, 0.3);
+  --accent: #C9F31D;
+  --accent-yellow: #C9F31D;
+  --accent-blue: #C9F31D;
+  --accent-lime: #C9F31D;
+  --accent-lime-tr: rgba(201, 243, 29, 0.3);
   --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   --font-main: 'Outfit', sans-serif;
   --font-mono: 'Space Mono', monospace;
@@ -21,18 +21,18 @@
   --fs-h3: clamp(24px, 4vw, 36px);
   --fs-body: 18px;
   --fs-index: clamp(60px, 10vw, 120px);
-  --yellow-glow: rgba(46, 201, 196, 0.12);
-  --btn-yellow: #2ec9c4;
+  --yellow-glow: rgba(201, 243, 29, 0.12);
+  --btn-yellow: #C9F31D;
 
   /* Pentos Design System Variables */
-  --pentos-lime: #2ec9c4;
-  --pentos-lime: #2ec9c4;
-  --pentos-teal: #27cabc;
-  --pentos-lime-gradient: linear-gradient(135deg, #2ec9c4, #27cabc);
-  --pentos-lime-gradient-hover: linear-gradient(135deg, #27cabc, #2ec9c4);
+  --pentos-lime: #C9F31D;
+  --pentos-lime: #C9F31D;
+  --pentos-teal: #9CC414;
+  --pentos-lime-gradient: linear-gradient(135deg, #C9F31D, #9CC414);
+  --pentos-lime-gradient-hover: linear-gradient(135deg, #9CC414, #C9F31D);
   --pentos-lime-rgb: 46, 201, 196;
-  --pentos-blue: #2ec9c4;
-  --pentos-cyan: #2ec9c4;
+  --pentos-blue: #C9F31D;
+  --pentos-cyan: #C9F31D;
   --pentos-black: #000000;
   --pentos-near-black: #0D0D0D;
   --pentos-deep-black: #020202;
@@ -82,7 +82,7 @@ section {
 }
 
 .section.light .section-number {
-  color: #060E0A;
+  color: #050505;
   opacity: 0.5;
 }
 
@@ -143,7 +143,7 @@ section {
 }
 
 .section.light .service-icon {
-  color: #060E0A;
+  color: #050505;
 }
 
 .service-card h3 {
@@ -153,7 +153,7 @@ section {
 }
 
 .section.light .service-card h3 {
-  color: #060E0A;
+  color: #050505;
 }
 
 .service-card p {
@@ -163,13 +163,13 @@ section {
 }
 
 .section.light .service-card p {
-  color: #060E0A;
+  color: #050505;
   opacity: 0.8;
 }
 
 .section.light h2, 
 .section.light .section-subtitle {
-  color: #060E0A !important;
+  color: #050505 !important;
 }
 
 /* Responsive Utilities */
@@ -275,7 +275,7 @@ section {
 }
 
 .nav-contact-cta-pentos {
-  background: var(--pentos-lime, #2ec9c4) !important;
+  background: var(--pentos-lime, #C9F31D) !important;
   color: #030804 !important;
   border: none !important;
   border-radius: 100px !important;
@@ -294,7 +294,7 @@ section {
 .nav-contact-cta-pentos:hover {
   background: #ffffff !important;
   color: #000000 !important;
-  box-shadow: 0 4px 15px rgba(46, 201, 196, 0.35);
+  box-shadow: 0 4px 15px rgba(201, 243, 29, 0.35);
   transform: translateY(-1.5px);
 }
 
@@ -966,8 +966,8 @@ section {
 
 .menu-icon-btn:hover {
   border-color: var(--pentos-lime) !important;
-  background: rgba(46, 201, 196, 0.08) !important;
-  box-shadow: 0 0 10px rgba(46, 201, 196, 0.2);
+  background: rgba(201, 243, 29, 0.08) !important;
+  box-shadow: 0 0 10px rgba(201, 243, 29, 0.2);
 }
 
 .menu-icon-btn span {
@@ -988,7 +988,7 @@ section {
 
 .menu-icon-btn.open {
   border-color: var(--pentos-lime) !important;
-  background: rgba(46, 201, 196, 0.1) !important;
+  background: rgba(201, 243, 29, 0.1) !important;
 }
 
 .menu-icon-btn.open span:nth-child(1) {
@@ -1046,7 +1046,7 @@ section {
 }
 
 .hero h1 .highlight {
-  color: #2ec9c4; /* Updated to requested color #2ec9c4 */
+  color: #C9F31D; /* Updated to requested color #C9F31D */
 }
 
 .hero-subtitle {
@@ -1392,7 +1392,7 @@ section {
 .mobile-nav-cta-btn:hover {
   background: #ffffff !important;
   color: #000000 !important;
-  box-shadow: 0 4px 15px rgba(46, 201, 196, 0.35);
+  box-shadow: 0 4px 15px rgba(201, 243, 29, 0.35);
 }
 
 /* ── Aside box (desktop menu fallback — hidden on mobile) ── */
@@ -1881,7 +1881,7 @@ section {
   bottom: 0;
   background: radial-gradient(
     circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(46, 201, 196, 0.08) 0%,
+    rgba(201, 243, 29, 0.08) 0%,
     transparent 60%
   );
   pointer-events: none;
@@ -1961,9 +1961,9 @@ section {
 
 .saas-showcase-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(46, 201, 196, 0.25);
+  border-color: rgba(201, 243, 29, 0.25);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-              0 0 50px rgba(46, 201, 196, 0.04);
+              0 0 50px rgba(201, 243, 29, 0.04);
 }
 
 .saas-card-glow {
@@ -1974,7 +1974,7 @@ section {
   height: 80%;
   background: radial-gradient(
     circle,
-    var(--accent-glow, #2ec9c4) 0%,
+    var(--accent-glow, #C9F31D) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -2008,7 +2008,7 @@ section {
   font-size: 13px;
   font-weight: 800;
   color: var(--pentos-lime);
-  background: rgba(46, 201, 196, 0.1);
+  background: rgba(201, 243, 29, 0.1);
   padding: 4px 10px;
   border-radius: 6px;
   letter-spacing: 0.05em;
@@ -2043,7 +2043,7 @@ section {
 
 .saas-showcase-card:hover .saas-card-title {
   color: var(--pentos-lime);
-  text-shadow: 0 0 20px rgba(46, 201, 196, 0.15);
+  text-shadow: 0 0 20px rgba(201, 243, 29, 0.15);
 }
 
 .saas-card-role {
@@ -2124,9 +2124,9 @@ section {
 }
 
 .saas-showcase-card:hover .saas-card-tag {
-  border-color: rgba(46, 201, 196, 0.25);
+  border-color: rgba(201, 243, 29, 0.25);
   color: var(--pentos-lime);
-  background: rgba(46, 201, 196, 0.05);
+  background: rgba(201, 243, 29, 0.05);
 }
 
 .saas-card-cta {
@@ -2351,7 +2351,7 @@ section {
 .illu-hero-orb1 {
   width: 48px; height: 48px;
   bottom: 18%; left: 5%;
-  color: rgba(46, 201, 196, 0.7);
+  color: rgba(201, 243, 29, 0.7);
   animation: illu-drift 9s ease-in-out infinite;
 }
 .illu-hero-star2 {
@@ -2373,7 +2373,7 @@ section {
 .illu-about-orb {
   width: 56px; height: 56px;
   bottom: 10%;  left: 3%;
-  color: rgba(46, 201, 196, 0.5);
+  color: rgba(201, 243, 29, 0.5);
   animation: illu-float 7s ease-in-out infinite;
 }
 
@@ -2403,7 +2403,7 @@ section {
 .illu-exp-star {
   width: 40px; height: 40px;
   bottom: 12%; right: 8%;
-  color: rgba(46, 201, 196, 0.55);
+  color: rgba(201, 243, 29, 0.55);
   animation: illu-pulse-scale 4s ease-in-out infinite;
 }
 
@@ -2411,7 +2411,7 @@ section {
 .illu-saas-orb {
   width: 80px; height: 80px;
   top: 15%; right: 3%;
-  color: rgba(46, 201, 196, 0.35);
+  color: rgba(201, 243, 29, 0.35);
   animation: illu-float 10s ease-in-out infinite;
 }
 .illu-saas-star {
@@ -2426,7 +2426,7 @@ section {
 .illu-process-shape {
   width: 180px; height: 180px;
   top: -20px; left: -30px;
-  color: rgba(46, 201, 196, 0.06);
+  color: rgba(201, 243, 29, 0.06);
   animation: illu-spin-slow 40s linear infinite;
 }
 .illu-process-orb {
@@ -2454,7 +2454,7 @@ section {
 .illu-contact-shape {
   width: 140px; height: 140px;
   bottom: 12%; left: 3%;
-  color: rgba(46, 201, 196, 0.1);
+  color: rgba(201, 243, 29, 0.1);
   animation: illu-float 9s ease-in-out infinite 1s;
 }
 
@@ -2585,7 +2585,7 @@ section {
   bottom: 0;
   background: radial-gradient(
     circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(46, 201, 196, 0.08) 0%,
+    rgba(201, 243, 29, 0.08) 0%,
     transparent 60%
   );
   pointer-events: none;
@@ -3169,9 +3169,9 @@ section {
   transition: var(--transition-smooth);
 }
 
-.exp-dot.purple { background: var(--pentos-lime); box-shadow: 0 0 15px rgba(46, 201, 196, 0.3); }
-.exp-dot.blue { background: var(--pentos-lime); box-shadow: 0 0 15px rgba(46, 201, 196, 0.3); }
-.exp-dot.yellow { background: var(--pentos-lime); box-shadow: 0 0 15px rgba(46, 201, 196, 0.3); }
+.exp-dot.purple { background: var(--pentos-lime); box-shadow: 0 0 15px rgba(201, 243, 29, 0.3); }
+.exp-dot.blue { background: var(--pentos-lime); box-shadow: 0 0 15px rgba(201, 243, 29, 0.3); }
+.exp-dot.yellow { background: var(--pentos-lime); box-shadow: 0 0 15px rgba(201, 243, 29, 0.3); }
 
 .experience-item:hover .exp-dot {
   transform: scale(1.4);
@@ -3272,7 +3272,7 @@ section {
   bottom: 0;
   background: radial-gradient(
     circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(46, 201, 196, 0.04) 0%,
+    rgba(201, 243, 29, 0.04) 0%,
     transparent 60%
   );
   pointer-events: none;
@@ -4858,7 +4858,7 @@ section {
   position: relative;
   padding: 140px 0;
   background-color: #030804; /* deep black-green */
-  background-image: radial-gradient(circle at 80% 20%, rgba(46, 201, 196, 0.08) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 80% 20%, rgba(201, 243, 29, 0.08) 0%, transparent 60%);
   color: var(--pentos-white);
   overflow: hidden;
   z-index: 10;
@@ -5133,7 +5133,7 @@ section {
   bottom: 0;
   background: radial-gradient(
     circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(46, 201, 196, 0.03) 0%,
+    rgba(201, 243, 29, 0.03) 0%,
     transparent 65%
   );
   pointer-events: none;
@@ -5182,7 +5182,7 @@ section {
 
 /* Hover row highlighting */
 .experience-item-new:hover {
-  background-color: rgba(46, 201, 196, 0.015);
+  background-color: rgba(201, 243, 29, 0.015);
   border-left-color: var(--pentos-lime);
   padding-left: 48px;
 }
@@ -5228,7 +5228,7 @@ section {
 .experience-item-new:hover .exp-dot-new {
   transform: rotate(45deg); /* Spin to diamond shape */
   background: var(--pentos-lime-gradient, var(--pentos-lime)) !important;
-  box-shadow: 0 0 15px rgba(46, 201, 196, 0.6);
+  box-shadow: 0 0 15px rgba(201, 243, 29, 0.6);
 }
 
 .exp-line-new {
@@ -5305,7 +5305,7 @@ section {
 }
 
 .skill-tag-new:hover {
-  background: rgba(46, 201, 196, 0.05);
+  background: rgba(201, 243, 29, 0.05);
   border-color: var(--pentos-lime);
   color: var(--pentos-lime);
 }
@@ -5696,7 +5696,7 @@ section {
 .contact-gradient-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(46, 201, 196, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 243, 29, 0.08) 0%, transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -5863,7 +5863,7 @@ section {
   height: 10px;
   border-radius: 50%;
   background: var(--pentos-lime);
-  box-shadow: 0 0 10px rgba(46, 201, 196, 0.5);
+  box-shadow: 0 0 10px rgba(201, 243, 29, 0.5);
   animation: pulse 2s infinite;
 }
 
@@ -5983,11 +5983,11 @@ section {
 }
 
 .preloader-logo-svg {
-  filter: drop-shadow(0 0 12px rgba(46, 201, 196, 0.35));
+  filter: drop-shadow(0 0 12px rgba(201, 243, 29, 0.35));
 }
 
 .preloader-active-path {
-  filter: drop-shadow(0 0 5px rgba(46, 201, 196, 0.55));
+  filter: drop-shadow(0 0 5px rgba(201, 243, 29, 0.55));
 }
 
 @keyframes logoPulse {
@@ -6317,8 +6317,8 @@ section {
 /* ── 1. HERO — Animated mesh gradient (accented for higher contrast and glow) ── */
 .hero-gradient-pentos {
   background:
-    radial-gradient(ellipse 70% 60% at 20% 30%,  rgba(46, 201, 196,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 70% at 80% 10%,  rgba(46, 201, 196,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 20% 30%,  rgba(201, 243, 29,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 80% 10%,  rgba(201, 243, 29,0.12) 0%, transparent 55%),
     radial-gradient(ellipse 80% 40% at 50% 90%,  rgba(80,180,80, 0.08) 0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 90% 60%,  rgba(20,120,20, 0.06) 0%, transparent 70%),
     linear-gradient(160deg, #040604 0%, #000000 35%, #030503 65%, #000000 100%);
@@ -6331,7 +6331,7 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(46, 201, 196,0.28) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(circle, rgba(201, 243, 29,0.28) 1.2px, transparent 1.2px);
   background-size: 30px 30px;
   animation: gridBlink 6s ease-in-out infinite;
   pointer-events: none;
@@ -6347,7 +6347,7 @@ section {
   left: 0%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(46, 201, 196,0.18) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(201, 243, 29,0.18) 0%, transparent 65%);
   border-radius: 50%;
   filter: blur(60px);
   animation: glowPulseHero 7s ease-in-out infinite;
@@ -6357,7 +6357,7 @@ section {
 /* ── 2. ABOUT — Diagonal stripes + spotlight ── */
 .about-pentos {
   background:
-    radial-gradient(ellipse 65% 80% at 85% 15%, rgba(46, 201, 196,0.045) 0%, transparent 58%),
+    radial-gradient(ellipse 65% 80% at 85% 15%, rgba(201, 243, 29,0.045) 0%, transparent 58%),
     radial-gradient(ellipse 50% 50% at 5%  90%, rgba(100,200,50, 0.02)  0%, transparent 55%),
     linear-gradient(180deg, #020202 0%, #050505 50%, #020202 100%);
   background-size: 100% 100%, 100% 100%, 100% 100%;
@@ -6370,8 +6370,8 @@ section {
     -55deg,
     transparent,
     transparent 38px,
-    rgba(46, 201, 196,0.018) 38px,
-    rgba(46, 201, 196,0.018) 39px
+    rgba(201, 243, 29,0.018) 38px,
+    rgba(201, 243, 29,0.018) 39px
   );
   pointer-events: none;
   z-index: 1;
@@ -6382,8 +6382,8 @@ section {
 /* ── 3. SERVICES — Dot matrix ── */
 .services-section-new {
   background:
-    radial-gradient(circle 1px at 1px 1px, rgba(46, 201, 196,0.2) 0%, transparent 0%),
-    radial-gradient(ellipse 70% 50% at 10% 80%, rgba(46, 201, 196,0.04) 0%, transparent 55%),
+    radial-gradient(circle 1px at 1px 1px, rgba(201, 243, 29,0.2) 0%, transparent 0%),
+    radial-gradient(ellipse 70% 50% at 10% 80%, rgba(201, 243, 29,0.04) 0%, transparent 55%),
     radial-gradient(ellipse 50% 70% at 90% 20%, rgba(100,200,50, 0.03) 0%, transparent 55%),
     linear-gradient(180deg, #030303 0%, #060606 100%);
   background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%;
@@ -6392,7 +6392,7 @@ section {
 /* ── 4. EXPERIENCE — Scanlines + deep gradient ── */
 .experience-section-new {
   background:
-    radial-gradient(ellipse 80% 55% at 50% 0%,   rgba(46, 201, 196,0.055) 0%, transparent 58%),
+    radial-gradient(ellipse 80% 55% at 50% 0%,   rgba(201, 243, 29,0.055) 0%, transparent 58%),
     radial-gradient(ellipse 60% 80% at 100% 100%, rgba(60,160,30, 0.03)  0%, transparent 60%),
     linear-gradient(180deg, #000000 0%, #040804 45%, #000000 100%);
 }
@@ -6416,9 +6416,9 @@ section {
 /* ── 5. SAAS/FOCUS — Grid mesh + purple-lime tension ── */
 .saas-section-new {
   background:
-    linear-gradient(rgba(46, 201, 196,0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(46, 201, 196,0.055) 1px, transparent 1px),
-    radial-gradient(ellipse 80% 50% at 15% 50%,  rgba(46, 201, 196,0.05)  0%, transparent 60%),
+    linear-gradient(rgba(201, 243, 29,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 243, 29,0.055) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 50% at 15% 50%,  rgba(201, 243, 29,0.05)  0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 90% 85%,  rgba(168,85, 247,0.04)  0%, transparent 60%),
     linear-gradient(160deg, #020202 0%, #050305 50%, #020202 100%);
   background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%;
@@ -6432,9 +6432,9 @@ section {
   background:
     linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
-    radial-gradient(ellipse 65% 65% at 50% 50%,  rgba(46, 201, 196,0.035) 0%, transparent 65%),
-    radial-gradient(ellipse 80% 40% at 0%  100%, rgba(46, 201, 196,0.04)  0%, transparent 60%),
-    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(46, 201, 196, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 50% 50%,  rgba(201, 243, 29,0.035) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 40% at 0%  100%, rgba(201, 243, 29,0.04)  0%, transparent 60%),
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 243, 29, 0.04) 0%, transparent 60%),
     linear-gradient(180deg, #020202 0%, #030303 100%);
   background-size: 56px 56px, 56px 56px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
   animation: gridBlink 9s ease-in-out infinite;
@@ -6448,10 +6448,10 @@ section {
       90deg,
       transparent,
       transparent 78px,
-      rgba(46, 201, 196,0.014) 78px,
-      rgba(46, 201, 196,0.014) 79px
+      rgba(201, 243, 29,0.014) 78px,
+      rgba(201, 243, 29,0.014) 79px
     ),
-    radial-gradient(ellipse 100% 40% at 50% 50%, rgba(46, 201, 196,0.04)  0%, transparent 60%),
+    radial-gradient(ellipse 100% 40% at 50% 50%, rgba(201, 243, 29,0.04)  0%, transparent 60%),
     radial-gradient(ellipse 80%  80% at 100% 0%, rgba(100,200,50, 0.025) 0%, transparent 55%),
     linear-gradient(180deg, #030303 0%, #000000 100%);
 }
@@ -6462,9 +6462,9 @@ section {
 }
 .contact-gradient-overlay {
   background:
-    radial-gradient(ellipse 75% 65% at 50% 110%, rgba(46, 201, 196, 0.07)  0%, transparent 55%),
-    radial-gradient(ellipse 45% 45% at 85% 8%,   rgba(46, 201, 196, 0.035) 0%, transparent 58%),
-    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(46, 201, 196, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 75% 65% at 50% 110%, rgba(201, 243, 29, 0.07)  0%, transparent 55%),
+    radial-gradient(ellipse 45% 45% at 85% 8%,   rgba(201, 243, 29, 0.035) 0%, transparent 58%),
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 243, 29, 0.03) 0%, transparent 60%),
     linear-gradient(180deg, #020202 0%, #000000 60%, #030603 100%);
   z-index: 1;
   animation: glowPulseBg 12s ease-in-out infinite;
@@ -6547,7 +6547,7 @@ body::after {
   background: var(--pentos-lime);
   border-color: var(--pentos-lime);
   color: var(--pentos-black);
-  box-shadow: 0 0 30px rgba(46, 201, 196, 0.35);
+  box-shadow: 0 0 30px rgba(201, 243, 29, 0.35);
   transform: translateY(-2px);
 }
 
