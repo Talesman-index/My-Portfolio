@@ -12,7 +12,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
 import { caseStudiesData } from './caseStudiesData';
-import ShootingStarsBackground from './components/ShootingStarsBackground';
 
 // Register ScrollTrigger client-side
 if (typeof window !== 'undefined') {
@@ -1589,7 +1588,6 @@ function App() {
             '--mouse-y': `${mousePos.y}%` 
           } as any}>
             {/* Background layers */}
-            <ShootingStarsBackground />
             <div className="hero-gradient-dznr" />
             <div className="hero-grid-overlay-dznr" />
             <div className="hero-noise-dznr" />
