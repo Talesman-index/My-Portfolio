@@ -751,29 +751,7 @@ function App() {
   const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [activeExpIndex, setActiveExpIndex] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    let frameId: number;
-    const handleMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(frameId);
-      frameId = requestAnimationFrame(() => {
-        setMousePos({
-          x: (e.clientX / window.innerWidth) * 100,
-          y: (e.clientY / window.innerHeight) * 100
-        });
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(frameId);
-    };
-  }, []);
-
+  const mousePos = { x: 50, y: 50 };
   const [time, setTime] = useState(new Date());
 
   const [loading, setLoading] = useState(true);
@@ -1589,7 +1567,6 @@ function App() {
           } as any}>
             {/* Background layers */}
             <div className="hero-gradient-dznr" />
-            <div className="hero-grid-overlay-dznr" />
             <div className="hero-noise-dznr" />
 
             <div className="container hero-container-dznr">
