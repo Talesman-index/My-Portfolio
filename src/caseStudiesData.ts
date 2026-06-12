@@ -17,6 +17,7 @@ export interface CaseStudyData {
   solutionTitle?: string;
   uxSolutions?: string;
   dashboardImg: string;
+  interfaceImg?: string;
   features: Array<{ title: string; desc: string }>;
   insight: string;
   impact: string[];
@@ -91,6 +92,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
       dashboardImg: "/imgs/ehadj/cover_Ehadj.jpg",
+      interfaceImg: "/imgs/ehadj/Dashboard_ehadj.png",
       features: [
         { title: "Paramétrage Métier", desc: "Configuration granulaire des sociétés agréées et des catégories gérées." },
         { title: "Monitoring Quotas", desc: "Suivi en temps réel de la consommation des places et gestion des reports." },
@@ -410,6 +412,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
       dashboardImg: "/imgs/ehadj/cover_Ehadj.jpg",
+      interfaceImg: "/imgs/ehadj/Dashboard_ehadj.png",
       features: [
         { title: "Business Setup", desc: "Granular configuration of certified agencies and pilgrim categories." },
         { title: "Quota Tracking", desc: "Real-time monitoring of seat consumption and rollover options." },

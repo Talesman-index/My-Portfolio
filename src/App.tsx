@@ -389,6 +389,25 @@ const CaseStudy = ({
                 </div>
               </div>
 
+              {data.interfaceImg && (
+                <div className="cs-section-new">
+                  <label className="cs-section-label">{lang === 'fr' ? '06 / INTERFACE UTILISATEUR' : '06 / USER INTERFACE'}</label>
+                  <h3>{lang === 'fr' ? "L'application de pilotage centralisée." : "The centralized orchestration dashboard."}</h3>
+                  <div className="cs-dashboard-frame-new">
+                    <div className="mockup-frame-new">
+                      <div className="mockup-header-new">
+                        <span className="mockup-dot" />
+                        <span className="mockup-dot" />
+                        <span className="mockup-dot" />
+                      </div>
+                      <div className="mockup-screen-new">
+                        <img src={data.interfaceImg} alt="Interface" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div className="cs-features-grid-new">
                 {data.features.map((f, i) => (
                   <div key={i} className="cs-feature-box-new">
