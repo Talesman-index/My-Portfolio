@@ -720,6 +720,16 @@ const ProjectsView = ({
   t: any;
   lang: 'en' | 'fr';
 }) => {
+  const [activeFilter, setActiveFilter] = useState<'all' | 'design' | 'dev'>('all');
+
+  const filteredProjects = projects.filter((project: any) => {
+    if (activeFilter === 'all') return true;
+    const isDesign = project.id === 'vortex' || project.id === 'sport-advisor';
+    if (activeFilter === 'design') return isDesign;
+    if (activeFilter === 'dev') return !isDesign;
+    return true;
+  });
+
   return (
     <div className="projects-page-view">
       <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.05) 0%, transparent 60%)' }} />
@@ -740,100 +750,133 @@ const ProjectsView = ({
           <h1 className="projects-page-title">
             {lang === 'en' ? <>All <span className="highlight">Projects.</span></> : <>Tous les <span className="highlight">Projets.</span></>}
           </h1>
-          <p className="projects-page-subtitle">
+          <p className="projects-page-subtitle" style={{ marginBottom: '32px' }}>
             {lang === 'en' 
               ? 'Explore my work across product design, mobile apps, B2B SaaS, and digital strategies.' 
               : 'Explorez mon travail en product design, applications mobiles, SaaS B2B et stratégies digitales.'}
           </p>
+
+          {/* Dynamic Filter Tabs */}
+          <div className="filter-tabs-container" style={{ display: 'inline-flex', marginTop: '8px' }}>
+            {[
+              { id: 'all', label: lang === 'en' ? 'All Work' : 'Tous les projets' },
+              { id: 'design', label: 'Product Design' },
+              { id: 'dev', label: 'Web Design' }
+            ].map((tab) => {
+              const isActive = activeFilter === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveFilter(tab.id as any)}
+                  className={`filter-tab-btn ${isActive ? 'active' : ''}`}
+                  style={{ position: 'relative' }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeFilterPill"
+                      className="filter-active-pill"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="filter-tab-label">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </header>
 
+
       <div className="container" style={{ paddingBottom: '120px' }}>
-        <div className="projects-grid-dznr">
-          {projects.map((project: any, i: number) => (
-            <motion.div 
-              key={project.id}
-              className="project-card-dznr"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {/* 1. Image Showcase Container */}
-              <div 
-                className="project-card-image-wrapper"
-                onClick={() => {
-                  setPreviousView('projects');
-                  setCurrentView(project.id);
-                }}
+        <motion.div layout className="projects-grid-dznr">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project: any, i: number) => (
+              <motion.div 
+                layout
+                key={project.id}
+                className="project-card-dznr"
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="project-card-image" 
-                />
-                <div className="project-card-overlay-dznr" />
-                
-                {/* Floating Category Tag */}
-                <span className="project-card-category-tag">{project.category}</span>
-              </div>
-              
-              {/* 2. Detailed Metadata & Content Container */}
-              <div className="project-card-info-dznr">
-                <div className="project-card-meta-row">
-                  <span className="project-card-index">0{i + 1} /</span>
-                  <span className="project-card-role">{project.role}</span>
-                </div>
-                
-                <h3 
-                  className="project-card-title-detailed"
+                {/* 1. Image Showcase Container */}
+                <div 
+                  className="project-card-image-wrapper"
                   onClick={() => {
                     setPreviousView('projects');
                     setCurrentView(project.id);
                   }}
                 >
-                  {project.title}
-                </h3>
-                
-                <p className="project-card-desc-detailed">
-                  {project.description}
-                </p>
-                
-                {/* Tech stack pills */}
-                <div className="project-card-tech-pills">
-                  {project.techs.map((tech: string) => (
-                    <span key={tech} className="project-card-tech-pill">{tech}</span>
-                  ))}
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="project-card-image" 
+                  />
+                  <div className="project-card-overlay-dznr" />
+                  
+                  {/* Floating Category Tag */}
+                  <span className="project-card-category-tag">{project.category}</span>
                 </div>
                 
-                {/* Interactive Action Footer */}
-                <div className="project-card-actions">
-                  <button 
+                {/* 2. Detailed Metadata & Content Container */}
+                <div className="project-card-info-dznr">
+                  <div className="project-card-meta-row">
+                    <span className="project-card-index">0{i + 1} /</span>
+                    <span className="project-card-role">{project.role}</span>
+                  </div>
+                  
+                  <h3 
+                    className="project-card-title-detailed"
                     onClick={() => {
                       setPreviousView('projects');
                       setCurrentView(project.id);
                     }}
-                    className="project-action-btn-primary"
                   >
-                    {t.projects.viewCaseStudy}
-                    <ArrowRight size={16} />
-                  </button>
+                    {project.title}
+                  </h3>
                   
-                  {project.link && project.link !== '#' && (
-                    <a 
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-action-link-secondary"
+                  <p className="project-card-desc-detailed">
+                    {project.description}
+                  </p>
+                  
+                  {/* Tech stack pills */}
+                  <div className="project-card-tech-pills">
+                    {project.techs.map((tech: string) => (
+                      <span key={tech} className="project-card-tech-pill">{tech}</span>
+                    ))}
+                  </div>
+                  
+                  {/* Interactive Action Footer */}
+                  <div className="project-card-actions">
+                    <button 
+                      onClick={() => {
+                        setPreviousView('projects');
+                        setCurrentView(project.id);
+                      }}
+                      className="project-action-btn-primary"
                     >
-                      {project.linkType === 'behance' ? t.projects.viewProject : t.projects.visitSite}
-                      <ExternalLink size={14} />
-                    </a>
-                  )}
+                      {t.projects.viewCaseStudy}
+                      <ArrowRight size={16} />
+                    </button>
+                    
+                    {project.link && project.link !== '#' && (
+                      <a 
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-action-link-secondary"
+                      >
+                        {project.linkType === 'behance' ? t.projects.viewProject : t.projects.visitSite}
+                        <ExternalLink size={14} />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );
@@ -1171,7 +1214,7 @@ function App() {
             role: 'Fullstack Developer',
             category: 'Education Platform',
             image: '/imgs/forum.png',
-            description: "Event platform for academic orientation and student success. Complex agenda management, online registrations, and direct matchmaking between students and top schools.",
+            description: "MVP for an academic orientation and event registration platform. Built to validate core features like student onboarding, custom conference schedules, and simple school dashboards.",
             techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
             link: 'https://forum-grandes-ecoles.vercel.app/',
             color: '#E63946',
@@ -1183,7 +1226,7 @@ function App() {
             role: 'Web Designer & Developer',
             category: 'Website',
             image: '/imgs/your-refuge.jpg',
-            description: "A digital portal and real-time impact tracker for a Christian humanitarian organization in Cotonou, Benin. We built a responsive web application that features custom donation flows (FCFA/Mobile Money), volunteer recruitment, and visual progress gauges tracking meals and active social reinsertion.",
+            description: "A digital portal and real-time impact tracker for a Christian humanitarian organization in Cotonou, Benin. We built a responsive web application that features custom donation flows (FCFA/Mobile Money), volunteer recruitment, and visual progress gauges tracking clothing donations, menstrual hygiene kits for women in need, and active social reinsertion.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
             color: '#39FF14',
@@ -1367,7 +1410,7 @@ function App() {
             role: 'Développeur Fullstack',
             category: 'Plateforme Éducative',
             image: '/imgs/forum.png',
-            description: "Plateforme événementielle dédiée à l'orientation et à la réussite académique. Gestion d'agendas complexes, inscriptions en ligne et mise en relation directe entre étudiants et grandes écoles.",
+            description: "MVP d'une plateforme d'orientation et d'inscription événementielle. Conçu pour valider les fonctionnalités clés telles que l'onboarding des étudiants, la planification simplifiée et un tableau de bord école basique.",
             techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
             link: 'https://forum-grandes-ecoles.vercel.app/',
             color: '#E63946',
@@ -1379,7 +1422,7 @@ function App() {
             role: 'Web Designer & Développeur',
             category: 'Site Web',
             image: '/imgs/your-refuge.jpg',
-            description: "Portail numérique et suivi d'impact en temps réel pour une organisation chrétienne humanitaire à Cotonou (Bénin). Nous avons conçu une application web responsive intégrant des tunnels de don (FCFA & Mobile Money), le recrutement de bénévoles, et des jauges d'avancement pour le suivi des repas distribués et des réinsertions sociales.",
+            description: "Portail numérique et suivi d'impact en temps réel pour une organisation chrétienne humanitaire à Cotonou (Bénin). Nous avons conçu une application web responsive intégrant des tunnels de don (FCFA & Mobile Money), le recrutement de bénévoles, et des jauges d'avancement pour le suivi des vêtements distribués, des kits d'hygiène menstruelle pour femmes démunies, et des réinsertions sociales.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
             color: '#39FF14',

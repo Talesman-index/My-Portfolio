@@ -236,14 +236,14 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
     },
     'forum-grandes-ecoles': {
       title: "Forum Grandes Écoles",
-      subtitle: "Plateforme d'orientation académique et d'inscription événementielle",
+      subtitle: "MVP d'une plateforme d'orientation académique et d'inscription événementielle",
       label: "Fullstack Development & UX",
       color: "#E63946",
       bgImage: "/imgs/forum.png",
-      context: "L'organisation d'un forum étudiant physique implique une logistique complexe : gestion des stands, plannings des conférences, inscriptions et transmission des données de contact.",
+      context: "L'organisation d'un forum étudiant physique implique une logistique complexe : gestion des stands, plannings des conférences, inscriptions et transmission des données de contact. Pour tester rapidement une transition numérique et fluidifier l'expérience, nous avons initié la conception d'un MVP.",
       contextTitle: "La logistique des événements étudiants à grande échelle.",
-      challenge: "Créer une plateforme numérique capable de gérer l'inscription de milliers d'étudiants, de centraliser le calendrier des présentations et de faciliter la collecte de CV.",
-      challengeTitle: "Garantir la stabilité sous charge et simplifier les flux.",
+      challenge: "Créer un MVP fonctionnel capable de gérer l'inscription de milliers d'étudiants, de centraliser le calendrier des présentations et de valider le flux de transmission de données de contact sans complexité excessive.",
+      challengeTitle: "Valider les flux clés et simplifier l'organisation.",
       challengeImg: "/imgs/forum.png",
       decisions: [
         {
@@ -257,8 +257,8 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
           why: "Réduit le temps d'attente à l'entrée du forum physique de 80%."
         }
       ],
-      solution: "Développement d'une application web sous Next.js avec un système d'authentification robuste, un agenda dynamique et interactif, et un module d'exportation de CV pour les écoles.",
-      solutionTitle: "Application Next.js avec base de données relationnelle et QR code.",
+      solution: "Développement d'un MVP d'application web sous Next.js intégrant les fonctionnalités minimales viables : authentification des profils, agenda dynamique interactif, et un module d'exportation de CV pour les écoles.",
+      solutionTitle: "Application Next.js agile avec base de données relationnelle et QR code.",
       dashboardImg: "/imgs/forum.png",
       features: [
         { title: "Inscription Simplifiée", desc: "Flow d'inscription en moins d'une minute avec intégration de profil." },
@@ -266,13 +266,13 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         { title: "Espace Écoles", desc: "Dashboard dédié aux écoles pour collecter les candidatures et CV." },
         { title: "Notifications SMS", desc: "Rappels automatiques avant le début des sessions réservées." }
       ],
-      insight: "L'expérience événementielle se prépare avant, se vit pendant et se prolonge après. La plateforme doit accompagner l'utilisateur à chaque étape de ce cycle.",
+      insight: "Un MVP doit se concentrer sur les hypothèses les plus risquées. La fluidité de l'onboarding et de la collecte de CV a été notre priorité absolue.",
       impact: [
-        "Plus de 5000 inscriptions d'étudiants gérées sans bug",
-        "Temps d'attente à l'entrée réduit à moins de 5 secondes par personne",
-        "Une fluidité d'échange de contacts saluée par 100% des écoles"
+        "Validation du concept avec plus de 5000 inscriptions d'étudiants sur le MVP",
+        "Temps d'accès aux conférences fluidifié lors du test terrain",
+        "Collecte et transmission de CV validées avec succès par 100% des écoles partenaires"
       ],
-      conclusion: "La plateforme a modernisé l'expérience du forum, facilitant l'accès à l'information et sécurisant les inscriptions à grande échelle.",
+      conclusion: "Ce MVP a prouvé la viabilité d'un portail numérique, ouvrant la voie à des itérations futures basées sur les retours utilisateurs du terrain.",
       externalLink: "https://forum-grandes-ecoles.vercel.app/"
     },
     'tavares': {
@@ -322,9 +322,9 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       label: "Web Design & Development",
       color: "#39FF14",
       bgImage: "/imgs/your-refuge.jpg",
-      context: "Située à Cotonou au Bénin, The Refuge est une organisation chrétienne humanitaire dédiée à apporter une aide matérielle, un accompagnement spirituel et de la dignité aux personnes les plus vulnérables de la rue. Afin d'amplifier son impact, l'organisation nécessitait un portail en ligne moderne capable de fédérer donateurs et bénévoles autour d'actions de terrain concrètes, fidèles et quotidiennes.",
+      context: "Située à Cotonou au Bénin, The Refuge est une organisation chrétienne humanitaire dédiée à apporter une aide matérielle (dons de vêtements et kits d'hygiène menstruelle pour les femmes démunies), un accompagnement spirituel et de la dignité aux personnes les plus vulnérables de la rue. Afin d'amplifier son impact, l'organisation nécessitait un portail en ligne moderne capable de fédérer donateurs et bénévoles autour d'actions de terrain concrètes, fidèles et quotidiennes.",
       contextTitle: "Une aide d'urgence et un accompagnement à Cotonou.",
-      challenge: "Traduire la compassion et l'engagement de terrain en une interface digitale captivante et digne de confiance. Le défi principal consistait à éliminer le scepticisme lié aux dons en ligne en intégrant un suivi transparent et en temps réel des indicateurs clés (repas distribués, kits d'hygiène offerts, personnes réinsérées) ainsi que des récits de maraudes inspirants.",
+      challenge: "Traduire la compassion et l'engagement de terrain en une interface digitale captivante et digne de confiance. Le défi principal consistait à éliminer le scepticisme lié aux dons en ligne en intégrant un suivi transparent et en temps réel des indicateurs clés (vêtements distribués, kits d'hygiène menstruelle offerts aux femmes sans moyens, personnes réinsérées) ainsi que des récits de maraudes inspirants.",
       challengeTitle: "Fédérer les dons et structurer l'action bénévole.",
       solution: "Nous avons conçu et développé une application web responsive dotée de jauges de financement en direct, d'un module d'inscription simplifié pour les bénévoles et d'un tunnel de don sécurisé optimisé pour le contexte ouest-africain (Mobile Money et cartes de crédit). L'identité visuelle est rehaussée de doodles manuscrits apportant une touche humaine unique au design.",
       solutionTitle: "Un portail d'impact moderne, transparent et humain.",
@@ -333,14 +333,14 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       challengeImg: "/imgs/your-refuge.jpg",
       dashboardImg: "/imgs/your-refuge.jpg",
       features: [
-        { title: "Suivi d'Impact en Direct", desc: "Affichage transparent des repas distribués (15 200 / 20 000 repas), heures d'écoute et réinsertions actives sous forme de jauges dynamiques." },
+        { title: "Suivi d'Impact en Direct", desc: "Affichage transparent des vêtements distribués (1 240+ vêtements), des kits d'hygiène menstruelle offerts, et des réinsertions actives sous forme de jauges dynamiques." },
         { title: "Formulaire de Don en FCFA", desc: "Tunnel de paiement sécurisé adapté aux donateurs locaux et internationaux, supportant Mobile Money (MTN, Moov) et cartes bancaires." },
-        { title: "Espace d'Engagement Bénévoles", desc: "Processus d'onboarding fluide pour les maraudes hebdomadaires et les ateliers d'écoute psychologique dans les quartiers de Cotonou." },
-        { title: "Récits de Maraudes & News", desc: "Publication simplifiée de témoignages vécus sur le terrain (comme le parcours de Marie ou de Luc 9:13) pour maintenir un lien humain fort." }
+        { title: "Espace d'Engagement Bénévoles", desc: "Processus d'onboarding fluide pour les maraudes de distribution de vêtements/kits et les ateliers d'écoute psychologique." },
+        { title: "Récits de Maraudes & News", desc: "Publication simplifiée de témoignages vécus sur le terrain (comme le parcours de Marie ou Luc 3:11) pour maintenir un lien humain fort." }
       ],
       impact: [
-        "15 200+ repas chauds distribués et suivis avec une transparence financière totale",
-        "82+ heures d'accompagnement psycho-spirituel et d'écoute active enregistrées",
+        "1 240+ vêtements de première nécessité distribués et suivis avec une transparence financière totale",
+        "850+ kits d'hygiène menstruelle offerts aux femmes sans ressources à Cotonou pour préserver leur dignité",
         "12+ personnes vulnérables réinsérées professionnellement grâce aux programmes de formation",
         "Augmentation de 60% des dons réguliers suite à la mise en ligne du système de suivi d'impact"
       ],
@@ -557,14 +557,14 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
     },
     'forum-grandes-ecoles': {
       title: "Forum Grandes Écoles",
-      subtitle: "Academic orientation and event registration platform",
+      subtitle: "MVP of an academic orientation and event registration platform",
       label: "Fullstack Development & UX",
       color: "#E63946",
       bgImage: "/imgs/forum.png",
-      context: "Organizing a large physical student forum involves complex logistics: managing booths, scheduling conferences, handle registrations, and transferring contact data.",
+      context: "Organizing a large physical student forum involves complex logistics: managing booths, scheduling conferences, handling registrations, and transferring contact data. To validate a digital transition, we designed a swift MVP.",
       contextTitle: "Logistics of large-scale student orientation events.",
-      challenge: "Create a digital platform capable of handling registrations for thousands of students, centralizing talk schedules, and facilitating resume submission.",
-      challengeTitle: "Ensuring stability under load and smooth registration flows.",
+      challenge: "Create an MVP capable of handling registrations, centralizing conference schedules, and validating basic student-school contact sharing features under realistic user traffic.",
+      challengeTitle: "Validating key user journeys and simplifying organization.",
       challengeImg: "/imgs/forum.png",
       decisions: [
         {
@@ -578,8 +578,8 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
           why: "Reduces check-in wait times at the physical event by 80%."
         }
       ],
-      solution: "Developed a robust Next.js web application featuring secure authentication, a dynamic interactive agenda, and a resume export system for schools.",
-      solutionTitle: "Next.js application with relational database and QR code integrations.",
+      solution: "Developed a Next.js web application MVP focusing on core viable features: user authentication, dynamic interactive agenda, and a simple school resume export dashboard.",
+      solutionTitle: "Next.js MVP with relational database and QR code integrations.",
       dashboardImg: "/imgs/forum.png",
       features: [
         { title: "Fast Registration", desc: "Under-a-minute sign-up flow with integrated profile setup." },
@@ -587,13 +587,13 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         { title: "School Dashboard", desc: "Dedicated panel for schools to collect applications and download resumes." },
         { title: "SMS Notifications", desc: "Automatic text reminders before reserved talk sessions begin." }
       ],
-      insight: "An event experience starts before, happens during, and extends after the event. The platform must support users at every phase of this cycle.",
+      insight: "An MVP should focus on validating the riskiest assumptions. Ensuring a friction-free signup and simple school resume export was our highest priority.",
       impact: [
-        "Over 5,000 student registrations managed with zero downtime",
-        "Check-in check times reduced to under 5 seconds per person",
-        "Seamless contact exchanges praised by 100% of participating schools"
+        "Concept validated with over 5,000 student registrations managed on the MVP",
+        "Check-in flow validated at under 5 seconds per person during initial testing",
+        "Resume gathering flow validated and praised by 100% of participating schools"
       ],
-      conclusion: "The platform modernized the forum experience, facilitating access to orientation information and securing registrations at scale.",
+      conclusion: "The MVP successfully validated the demand for a digital forum portal, paving the way for future iterations based on real-world user feedback.",
       externalLink: "https://forum-grandes-ecoles.vercel.app/"
     },
     'tavares': {
@@ -643,9 +643,9 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       label: "Web Design & Development",
       color: "#39FF14",
       bgImage: "/imgs/your-refuge.jpg",
-      context: "Based in Cotonou, Benin, The Refuge is a Christian humanitarian organization dedicated to providing hot meals, spiritual support, and dignity to vulnerable street populations. To expand its reach, the association needed a modern digital platform to connect donors and volunteers with concrete, daily field operations.",
+      context: "Based in Cotonou, Benin, The Refuge is a Christian humanitarian organization dedicated to providing clothing, menstrual hygiene kits for underprivileged women, spiritual support, and dignity to vulnerable street populations. To expand its reach, the association needed a modern digital platform to connect donors and volunteers with concrete, daily field operations.",
       contextTitle: "Emergency humanitarian aid and counseling in Cotonou.",
-      challenge: "Translate real field compassion and social impact into a reliable, engaging web application. The core UX challenge was to address donation skepticism by displaying real-time impact metrics (meals served, counseling hours, active reinsertions) alongside transparent stories.",
+      challenge: "Translate real field compassion and social impact into a reliable, engaging web application. The core UX challenge was to address donation skepticism by displaying real-time impact metrics (clothing items distributed, menstrual hygiene kits provided, active reinsertions) alongside transparent stories.",
       challengeTitle: "Fostering trust and coordinating volunteer efforts.",
       solution: "We designed and developed a responsive web application featuring live impact progress gauges, a simplified volunteer onboarding portal, and a secure checkout flow tailored for West African Mobile Money and cards. The visual design is accented by custom hand-drawn doodles to bring a warm, human touch.",
       solutionTitle: "A modern, transparent, and human-centric portal.",
@@ -654,14 +654,14 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       challengeImg: "/imgs/your-refuge.jpg",
       dashboardImg: "/imgs/your-refuge.jpg",
       features: [
-        { title: "Live Impact Gauges", desc: "Visual progress tracking for meals distributed (15,200 / 20,000 meals), counseling hours, and professional reinsertions." },
+        { title: "Live Impact Gauges", desc: "Visual progress tracking for clothing distributed (1,240+ clothing items), menstrual hygiene kits provided to women in need, and professional reinsertions." },
         { title: "Local Currency Donations", desc: "Secure, seamless donation form supporting West African Mobile Money (MTN, Moov) and international credit cards." },
-        { title: "Volunteer Coordination", desc: "Streamlined sign-up forms for local weekend food outreaches (maraudes) and active listening rooms." },
-        { title: "Stories from the Field", desc: "A clean blog section showcasing true stories from Cotonou (like Marie's journey or reflections on Luke 9:13) to highlight the human impact." }
+        { title: "Volunteer Coordination", desc: "Streamlined sign-up forms for local weekend distribution outreaches (clothing & hygiene kits) and active listening rooms." },
+        { title: "Stories from the Field", desc: "A clean blog section showcasing true stories from Cotonou (like Marie's journey or reflections on Luke 3:11) to highlight the human impact." }
       ],
       impact: [
-        "15,200+ hot meals tracked and distributed with total transparency",
-        "82+ hours of documented counseling and social support registered",
+        "1,240+ clothing items tracked and distributed with total financial transparency",
+        "850+ menstrual hygiene kits provided to underprivileged women to restore dignity",
         "12+ street beneficiaries professionally trained and reinserted into society",
         "60% increase in recurring donations due to transparent impact tracking"
       ],

@@ -6694,3 +6694,58 @@ body::after {
   max-width: 650px;
   margin: 0;
 }
+
+/* Projects Page Filter Tabs */
+.filter-tabs-container {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px;
+  border-radius: 100px;
+  backdrop-filter: blur(10px);
+  gap: 4px;
+}
+
+.filter-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-tab-btn:hover {
+  color: var(--pentos-white);
+}
+
+.filter-tab-btn.active {
+  color: var(--pentos-black) !important;
+}
+
+.filter-active-pill {
+  position: absolute;
+  inset: 0;
+  background: var(--pentos-lime);
+  border-radius: 100px;
+  z-index: 1;
+}
+
+.filter-tab-label {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure the layout has a smooth transition */
+.projects-grid-dznr {
+  transition: all 0.5s ease-in-out;
+}
