@@ -299,7 +299,7 @@ const CaseStudy = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <span>{lang === 'fr' ? 'VISITER LE SITE' : 'VISIT SITE'}</span>
+                <span>{data.ctaLabel || (lang === 'fr' ? 'VISITER LE SITE' : 'VISIT SITE')}</span>
                 <ArrowRight size={16} />
               </motion.a>
             )}

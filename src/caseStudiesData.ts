@@ -23,6 +23,7 @@ export interface CaseStudyData {
   impact: string[];
   conclusion: string;
   externalLink?: string;
+  ctaLabel?: string;
 }
 
 export type CaseStudyId = 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge';
@@ -188,7 +189,8 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "Adoption massive par les gestionnaires de flottes de véhicules"
       ],
       conclusion: "Vortex transforme la corvée de la station-service en un parcours digital fluide, sécurisé et extrêmement rapide.",
-      externalLink: "https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel"
+      externalLink: "https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel",
+      ctaLabel: "VOIR LE PROJET"
     },
     'sport-advisor': {
       title: "Sport Advisor",
@@ -229,7 +231,8 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "Une conversion d'abonnés Premium en hausse de 35%"
       ],
       conclusion: "Sport Advisor simplifie la donnée sportive complexe en la rendant accessible, interactive et actionnable grâce au design.",
-      externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive"
+      externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive",
+      ctaLabel: "VOIR LE PROJET"
     },
     'forum-grandes-ecoles': {
       title: "Forum Grandes Écoles",
@@ -507,7 +510,8 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "Massive adoption among vehicle fleet managers"
       ],
       conclusion: "Vortex transforms the chore of refueling into a fluid, secure, and incredibly fast digital journey.",
-      externalLink: "https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel"
+      externalLink: "https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel",
+      ctaLabel: "VIEW PROJECT"
     },
     'sport-advisor': {
       title: "Sport Advisor",
@@ -548,7 +552,8 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "35% increase in Premium subscription conversions"
       ],
       conclusion: "Sport Advisor simplifies complex sports data, making it accessible, interactive and actionable through intentional design.",
-      externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive"
+      externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive",
+      ctaLabel: "VIEW PROJECT"
     },
     'forum-grandes-ecoles': {
       title: "Forum Grandes Écoles",
