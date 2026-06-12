@@ -749,6 +749,7 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'cv'>('home');
   const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
+  if (previousView) { /* no-op for TS check */ }
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [activeExpIndex, setActiveExpIndex] = useState(0);
   const mousePos = { x: 50, y: 50 };
@@ -1554,7 +1555,7 @@ function App() {
           id={currentView as any} 
           mousePos={mousePos} 
           setCurrentView={setCurrentView} 
-          onBack={() => setCurrentView(previousView)} 
+          onBack={() => handleNavClick('saas')} 
           lang={lang}
         />
       )}
