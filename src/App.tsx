@@ -1577,7 +1577,10 @@ function App() {
           id={currentView as any} 
           mousePos={mousePos} 
           setCurrentView={setCurrentView} 
-          onBack={() => handleNavClick('saas')} 
+          onBack={() => {
+            const targetSection = (currentView === 'ehadj' || currentView === 'asset-iq') ? 'saas' : 'projects';
+            handleNavClick(targetSection);
+          }} 
           lang={lang}
         />
       )}
