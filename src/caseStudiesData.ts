@@ -16,7 +16,7 @@ export interface CaseStudyData {
   solution: string;
   solutionTitle?: string;
   uxSolutions?: string;
-  dashboardImg: string;
+  dashboardImg?: string;
   interfaceImg?: string;
   features: Array<{ title: string; desc: string }>;
   insight: string;
@@ -41,7 +41,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       insight: "La data n'est utile que si elle est saisie par ceux qui sont sur le terrain. Nous avons réduit le flow de saisie à 3 actions critiques pour garantir l'adoption.",
       contextImg: "/imgs/assetiQ/tech2.jpg",
       challengeImg: "/imgs/assetiQ/military2.jpg",
-      dashboardImg: "/imgs/assetiQ/cover_Asset.jpg",
+      interfaceImg: "/imgs/assetiQ/Dashboard_asset.png",
       features: [
         { title: "Traçabilité Native", desc: "Identification par QR code pour un accès immédiat à l'historique complet." },
         { title: "Maintenance Préventive", desc: "Planification automatisée pour allonger la durée de vie des actifs." },
@@ -91,7 +91,6 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       uxSolutions: "Validation procédurale connectée : impossible de générer un reçu de paiement ou d'émettre un visa sans le feu vert du médecin certificateur.",
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
-      dashboardImg: "/imgs/ehadj/cover_Ehadj.jpg",
       interfaceImg: "/imgs/ehadj/Dashboard_ehadj.png",
       features: [
         { title: "Paramétrage Métier", desc: "Configuration granulaire des sociétés agréées et des catégories gérées." },
@@ -360,7 +359,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       challengeImg: "/imgs/assetiQ/military2.jpg",
       solution: "AssetIQ centralizes the full lifecycle of assets. Each piece of equipment gets a unique digital identity (QR Code), merging physical inventory with an active maintenance log.",
       solutionTitle: "End-to-end asset tracking and QR code integration.",
-      dashboardImg: "/imgs/assetiQ/cover_Asset.jpg",
+      interfaceImg: "/imgs/assetiQ/Dashboard_asset.png",
       features: [
         { title: "Native Traceability", desc: "QR code identification for immediate access to full maintenance history." },
         { title: "Preventive Maintenance", desc: "Automated scheduling to extend equipment lifespan." },
@@ -411,7 +410,6 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       uxSolutions: "Connected validation rules: a pilgrim's record status transitions dynamically across health check, banking, and visa checkpoints without manual intervention.",
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
-      dashboardImg: "/imgs/ehadj/cover_Ehadj.jpg",
       interfaceImg: "/imgs/ehadj/Dashboard_ehadj.png",
       features: [
         { title: "Business Setup", desc: "Granular configuration of certified agencies and pilgrim categories." },

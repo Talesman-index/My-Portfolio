@@ -375,18 +375,20 @@ const CaseStudy = ({
                 <h3>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h3>
                 <p>{data.solution}</p>
                 {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
-                <div className="cs-dashboard-frame-new">
-                  <div className="mockup-frame-new">
-                    <div className="mockup-header-new">
-                      <span className="mockup-dot" />
-                      <span className="mockup-dot" />
-                      <span className="mockup-dot" />
-                    </div>
-                    <div className="mockup-screen-new">
-                      <img src={data.dashboardImg} alt="Dashboard" />
+                {data.dashboardImg && (
+                  <div className="cs-dashboard-frame-new">
+                    <div className="mockup-frame-new">
+                      <div className="mockup-header-new">
+                        <span className="mockup-dot" />
+                        <span className="mockup-dot" />
+                        <span className="mockup-dot" />
+                      </div>
+                      <div className="mockup-screen-new">
+                        <img src={data.dashboardImg} alt="Dashboard" />
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
 
               {data.interfaceImg && (
