@@ -62,23 +62,32 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       label: "Product Design & Strategy",
       color: "#39FF14",
       bgImage: "/imgs/ehadj/cover_Ehadj.jpg",
-      context: "L'eHadj est piloté par l'Agence pour la Gestion de la Logistique des Officiels (AGLO). Avant eHadj, le système reposait sur des processus manuels et fragmentés, entraînant des erreurs de quotas et de visas.",
-      problem: "Le système reposait sur des processus manuels. Les erreurs de saisie sur 2300 dossiers créaient des doublons et des blocages de visas critiques au niveau national.",
-      challenge: "Éliminer les erreurs de saisie sur 2300 dossiers dès le point d'entrée et gérer en temps réel la répartition dynamique des places entre les agences.",
+      context: "Le projet eHadj fait intervenir de multiples entités publiques et privées dans le traitement des dossiers de pèlerins : le Ministère de la Santé (bilan médical), les banques (aspect financier), les sociétés agréées (enregistrement des pèlerins), le Ministère des Affaires Étrangères (attribution des visas) et l'AGLO (superviseur général). Auparavant, ces acteurs opéraient de manière cloisonnée et manuelle, générant des goulots d'étranglement critiques.",
+      contextTitle: "La complexité d'un écosystème multi-acteurs.",
+      problem: "Le manque de connectivité entre les différentes entités empêchait tout suivi réel. Les banques pouvaient valider des paiements pour des pèlerins inaptes médicalement, et les visas étaient demandés sur la base de données erronées. Cette fragmentation créait des doublons, des fraudes d'identité et des pertes de quotas critiques au niveau national.",
+      problemTitle: "Le défi de la décentralisation sans connexion.",
+      challenge: "Mettre en place un flux UX connecté et procédural qui unifie toutes ces entités au sein d'une plateforme unique. L'objectif était de centraliser tout le processus pour assurer un suivi clair, instantané et réel, tout en garantissant une visibilité totale sur l'identité et le statut de chaque dossier de pèlerin.",
+      challengeTitle: "Centraliser et fluidifier un workflow inter-organisationnel.",
       decisions: [
         { 
           title: "ID-First Onboarding", 
-          desc: "Imposer la saisie du numéro NPI (Identifiant National) comme première étape.",
-          why: "Auto-remplit les données certifiées et élimine les doublons instantanément."
+          desc: "Imposer la saisie du numéro NPI (Identifiant National) comme première étape d'inscription.",
+          why: "Auto-remplit les données d'identité certifiées et élimine instantanément tout risque de doublons."
         },
         { 
-          title: "Health-Check View", 
-          desc: "Une vue pilotée par les statuts plutôt que par des listes de noms.",
-          why: "Permet d'identifier les goulots d'étranglement opérationnels en un coup d'œil."
+          title: "Connected Workflow", 
+          desc: "Concevoir un tunnel séquentiel strict reliant la Santé, les banques et le Ministère des Affaires Étrangères.",
+          why: "Assure le respect absolu de la procédure : impossible de payer ou de demander un visa sans validation médicale."
+        },
+        { 
+          title: "Real-Time Identity Tracker", 
+          desc: "Créer un tableau de bord partagé avec des droits d'accès granulaires pour chaque organisation.",
+          why: "Donne à l'AGLO et aux agences une vue claire et en direct de la progression de chaque dossier."
         }
       ],
-      solution: "Un workflow linéaire où chaque étape (Santé, Paiement, Visa) fait office de 'gatekeeper' strict pour assurer l'intégrité du processus.",
-      uxSolutions: "Logic de validation séquentielle : impossible de générer un reçu de paiement sans le feu vert du médecin certificateur.",
+      solution: "Une plateforme d'orchestration unifiée où chaque acteur intervient de manière connectée et procédurale. Le dossier d'un pèlerin progresse automatiquement : le feu vert médical débloque l'étape de paiement, qui débloque ensuite l'attribution du visa, sous le contrôle global de l'AGLO.",
+      solutionTitle: "Orchestration unifiée et validation procédurale.",
+      uxSolutions: "Validation procédurale connectée : impossible de générer un reçu de paiement ou d'émettre un visa sans le feu vert du médecin certificateur.",
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
       dashboardImg: "/imgs/ehadj/cover_Ehadj.jpg",
@@ -372,27 +381,32 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       label: "Product Design & Strategy",
       color: "#39FF14",
       bgImage: "/imgs/ehadj/cover_Ehadj.jpg",
-      context: "eHadj is driven by the Agency for the Management of Logistics of Officials (AGLO). Before eHadj, the system relied on manual processes, leading to quota errors and critical visa blockages at the national level.",
-      contextTitle: "Manual logistics of pilgrimage planning.",
-      problem: "The system relied on manual processes. Data entry errors across 2,300 files created duplicates and critical visa blocks at the national level.",
-      problemTitle: "Manual workflows and critical errors.",
-      challenge: "Eliminate data entry errors for 2,300 records right at the onboarding step and manage the dynamic allocation of pilgrim quotas across agencies in real-time.",
-      challengeTitle: "Securing the onboarding flow for 2,300 users.",
+      context: "The eHadj project involves multiple public and private entities in processing pilgrim records: the Ministry of Health (medical assessment), banks (financial transactions), certified travel agencies (pilgrim registrations), the Ministry of Foreign Affairs (visa issuance), and AGLO (global supervisor). Previously, these stakeholders worked in disconnected silos, resulting in massive operational friction.",
+      contextTitle: "The complexity of a multi-stakeholder ecosystem.",
+      problem: "The complete lack of connectivity between organizations prevented real-time status tracking. Financial payments were processed for medically unfit pilgrims, and visas were requested based on faulty manual data. This fragmentation led to identity duplication, errors in quotas, and critical visa blocks at the national level.",
+      problemTitle: "The challenge of disconnected decentralization.",
+      challenge: "Design a highly procedural, connected UX flow that unifies all distinct entities within a single platform. The goal was to centralize the entire process to ensure transparent, real-time tracking, while guaranteeing absolute visibility over pilgrim identities and status.",
+      challengeTitle: "Orchestrating a connected inter-organizational workflow.",
       decisions: [
         { 
           title: "ID-First Onboarding", 
           desc: "Requiring NPI (National Identifier) input as the first onboarding step.",
-          why: "Auto-populates verified identity data and instantly eliminates duplicates."
+          why: "Auto-populates verified identity data and instantly eliminates duplicates and identity fraud."
         },
         { 
-          title: "Health-Check View", 
-          desc: "A dashboard view driven by statuses rather than plain alphabetical lists.",
-          why: "Allows managers to identify bottleneck status points at a single glance."
+          title: "Connected Workflow", 
+          desc: "Designing a strict sequential pipeline between the Ministry of Health, banks, and Foreign Affairs.",
+          why: "Ensures absolute procedural integrity: impossible to make payments or request a visa without medical clearance."
+        },
+        { 
+          title: "Real-Time Identity Tracker", 
+          desc: "Creating a shared, permission-based tracking interface with granular roles for each organization.",
+          why: "Provides AGLO and agencies with real-time, transparent progress metrics and clear identity auditing."
         }
       ],
-      solution: "A linear workflow where each phase (Health clearance, Payment verification, Visa approval) acts as a strict 'gatekeeper' to ensure data integrity.",
-      solutionTitle: "Sequential validation logic and status gatekeepers.",
-      uxSolutions: "Sequential validation logic: it is impossible to generate a payment receipt without the medical certifier's approval.",
+      solution: "A unified orchestration platform where stakeholders interact sequentially. A pilgrim's record progresses automatically: medical approval unlocks the payment gateway, which then unlocks visa submission, all under the global supervision of AGLO.",
+      solutionTitle: "Unified orchestration and procedural validation.",
+      uxSolutions: "Connected validation rules: a pilgrim's record status transitions dynamically across health check, banking, and visa checkpoints without manual intervention.",
       contextImg: "/imgs/ehadj/hadj2.png",
       challengeImg: "/imgs/ehadj/hadj.png",
       dashboardImg: "/imgs/ehadj/cover_Ehadj.jpg",
