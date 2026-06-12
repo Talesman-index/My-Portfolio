@@ -3351,6 +3351,30 @@ section {
   padding: clamp(120px, 15vw, 220px) 0 60px;
   position: relative;
   z-index: 2;
+  overflow: hidden;
+}
+
+.cs-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.18;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cs-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 8, 4, 0.3) 0%,
+    rgba(3, 8, 4, 0.8) 60%,
+    rgba(3, 8, 4, 1) 100%
+  );
 }
 
 .cs-hero-tag {

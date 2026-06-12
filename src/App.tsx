@@ -265,6 +265,7 @@ const CaseStudy = ({
       <div className="cs-gradient-overlay" style={{ '--glow-color': data.color } as any}></div>
 
       <header className="cs-hero-new">
+        <div className="cs-hero-bg" style={{ backgroundImage: `url(${data.bgImage})` }} />
         <div className="container">
           <button onClick={onBack || (() => setCurrentView('home'))} className="cs-back-link-inline">
             <ArrowRight size={18} style={{ transform: 'rotate(180deg)', marginRight: '8px' }} />
