@@ -256,6 +256,7 @@ const CaseStudy = ({
   lang: 'en' | 'fr'
 }) => {
   const data = caseStudiesData[lang][id];
+  const isConcise = id === 'tavares' || id === 'the-refuge';
 
   return (
     <div className="cs-view-new" style={{ 
@@ -288,7 +289,7 @@ const CaseStudy = ({
             >
               {data.subtitle}
             </motion.p>
-            {data.externalLink && data.externalLink !== '#' && (
+            {!isConcise && data.externalLink && data.externalLink !== '#' && (
               <motion.a 
                 href={data.externalLink}
                 target="_blank"
@@ -310,132 +311,204 @@ const CaseStudy = ({
       <section className="cs-body-new">
         <div className="container">
           <div className="cs-layout-new">
-            <div className="cs-main-content">
-              <motion.div 
-                className="cs-section-new"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                <label className="cs-section-label">{lang === 'fr' ? '01 / CONTEXTE' : '01 / CONTEXT'}</label>
-                <h3>{data.contextTitle || (lang === 'fr' ? "La fragmentation des données opérationnelles." : "Fragmentation of operational data.")}</h3>
-                <p>{data.context}</p>
-                {data.contextImg && (
-                  <div className="cs-inline-mockup">
-                    <img src={data.contextImg} alt="Context" />
-                  </div>
-                )}
-              </motion.div>
-
-              {data.problem && (
+            {isConcise ? (
+              <div className="cs-main-content">
+                {/* Section 01: Context & Challenge Combined */}
                 <motion.div 
                   className="cs-section-new"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  <label className="cs-section-label">{lang === 'fr' ? '02 / LE PROBLÈME' : '02 / THE PROBLEM'}</label>
-                  <h3>{data.problemTitle || (lang === 'fr' ? "Processus manuels et erreurs critiques." : "Manual processes and critical errors.")}</h3>
-                  <p>{data.problem}</p>
+                  <label className="cs-section-label">{lang === 'fr' ? '01 / CONTEXTE & DÉFI' : '01 / CONTEXT & CHALLENGE'}</label>
+                  <h3>{data.contextTitle || (lang === 'fr' ? "Le Projet & Le Défi." : "Overview & Challenge.")}</h3>
+                  <p>{data.context}</p>
+                  <p style={{ marginTop: '16px' }}>{data.challenge}</p>
                 </motion.div>
-              )}
 
-              <motion.div 
-                className="cs-section-new highlighted-section"
-                style={{ borderLeftColor: data.color }}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <label className="cs-section-label">{lang === 'fr' ? '03 / CHALLENGE' : '03 / CHALLENGE'}</label>
-                <h3>{data.challengeTitle || (lang === 'fr' ? "Sécuriser le parcours de 2300 utilisateurs." : "Securing the onboarding of 2,300 users.")}</h3>
-                <p>{data.challenge}</p>
-                <div className="cs-inline-mockup">
-                  <img src={data.challengeImg} alt="Challenge" />
-                </div>
-              </motion.div>
-
-              {data.decisions && (
-                <div className="cs-section-new">
-                  <label className="cs-section-label">{lang === 'fr' ? '04 / DÉCISIONS PRODUIT' : '04 / PRODUCT DECISIONS'}</label>
-                  <div className="cs-decisions-grid-new">
-                    {data.decisions.map((d: any, i: number) => (
-                      <div key={i} className="cs-decision-card-new">
-                        <h4>{d.title}</h4>
-                        <p>{d.desc}</p>
-                        <div className="cs-why-pill" style={{ color: data.color }}>{d.why}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="cs-section-new">
-                <label className="cs-section-label">{lang === 'fr' ? '05 / SOLUTION UX' : '05 / UX SOLUTION'}</label>
-                <h3>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h3>
-                <p>{data.solution}</p>
-                {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
+                {/* Main Showcase Image */}
                 {data.dashboardImg && (
-                  <div className="cs-dashboard-frame-new">
-                    <div className="mockup-frame-new">
-                      <div className="mockup-header-new">
-                        <span className="mockup-dot" />
-                        <span className="mockup-dot" />
-                        <span className="mockup-dot" />
+                  <motion.div 
+                    className="cs-section-new"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="cs-dashboard-frame-new" style={{ marginTop: '12px' }}>
+                      <div className="mockup-frame-new">
+                        <div className="mockup-header-new">
+                          <span className="mockup-dot" />
+                          <span className="mockup-dot" />
+                          <span className="mockup-dot" />
+                        </div>
+                        <div className="mockup-screen-new" style={{ height: '480px' }}>
+                          <img src={data.dashboardImg} alt="Dashboard Showcase" />
+                        </div>
                       </div>
-                      <div className="mockup-screen-new">
-                        <img src={data.dashboardImg} alt="Dashboard" />
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Section 02: Solution UX/UI */}
+                <motion.div 
+                  className="cs-section-new"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="cs-section-label">{lang === 'fr' ? '02 / RÉPONSE UX & EXPÉRIENCE' : '02 / UX RESPONSE & EXPERIENCE'}</label>
+                  <h3>{data.solutionTitle || (lang === 'fr' ? "La réponse apportée." : "The solution.")}</h3>
+                  <p>{data.solution}</p>
+                </motion.div>
+              </div>
+            ) : (
+              <div className="cs-main-content">
+                <motion.div 
+                  className="cs-section-new"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="cs-section-label">{lang === 'fr' ? '01 / CONTEXTE' : '01 / CONTEXT'}</label>
+                  <h3>{data.contextTitle || (lang === 'fr' ? "La fragmentation des données opérationnelles." : "Fragmentation of operational data.")}</h3>
+                  <p>{data.context}</p>
+                  {data.contextImg && (
+                    <div className="cs-inline-mockup">
+                      <img src={data.contextImg} alt="Context" />
+                    </div>
+                  )}
+                </motion.div>
+
+                {data.problem && (
+                  <motion.div 
+                    className="cs-section-new"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                  >
+                    <label className="cs-section-label">{lang === 'fr' ? '02 / LE PROBLÈME' : '02 / THE PROBLEM'}</label>
+                    <h3>{data.problemTitle || (lang === 'fr' ? "Processus manuels et erreurs critiques." : "Manual processes and critical errors.")}</h3>
+                    <p>{data.problem}</p>
+                  </motion.div>
+                )}
+
+                <motion.div 
+                  className="cs-section-new highlighted-section"
+                  style={{ borderLeftColor: data.color }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <label className="cs-section-label">{lang === 'fr' ? '03 / CHALLENGE' : '03 / CHALLENGE'}</label>
+                  <h3>{data.challengeTitle || (lang === 'fr' ? "Sécuriser le parcours de 2300 utilisateurs." : "Securing the onboarding of 2,300 users.")}</h3>
+                  <p>{data.challenge}</p>
+                  <div className="cs-inline-mockup">
+                    <img src={data.challengeImg} alt="Challenge" />
+                  </div>
+                </motion.div>
+
+                {data.decisions && (
+                  <div className="cs-section-new">
+                    <label className="cs-section-label">{lang === 'fr' ? '04 / DÉCISIONS PRODUIT' : '04 / PRODUCT DECISIONS'}</label>
+                    <div className="cs-decisions-grid-new">
+                      {data.decisions.map((d: any, i: number) => (
+                        <div key={i} className="cs-decision-card-new">
+                          <h4>{d.title}</h4>
+                          <p>{d.desc}</p>
+                          <div className="cs-why-pill" style={{ color: data.color }}>{d.why}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="cs-section-new">
+                  <label className="cs-section-label">{lang === 'fr' ? '05 / SOLUTION UX' : '05 / UX SOLUTION'}</label>
+                  <h3>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h3>
+                  <p>{data.solution}</p>
+                  {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
+                  {data.dashboardImg && (
+                    <div className="cs-dashboard-frame-new">
+                      <div className="mockup-frame-new">
+                        <div className="mockup-header-new">
+                          <span className="mockup-dot" />
+                          <span className="mockup-dot" />
+                          <span className="mockup-dot" />
+                        </div>
+                        <div className="mockup-screen-new">
+                          <img src={data.dashboardImg} alt="Dashboard" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {data.interfaceImg && (
+                  <div className="cs-section-new">
+                    <label className="cs-section-label">{lang === 'fr' ? '06 / INTERFACE UTILISATEUR' : '06 / USER INTERFACE'}</label>
+                    <h3>{lang === 'fr' ? "L'application de pilotage centralisée." : "The centralized orchestration dashboard."}</h3>
+                    <div className="cs-dashboard-frame-new">
+                      <div className="mockup-frame-new">
+                        <div className="mockup-header-new">
+                          <span className="mockup-dot" />
+                          <span className="mockup-dot" />
+                          <span className="mockup-dot" />
+                        </div>
+                        <div className="mockup-screen-new">
+                          <img src={data.interfaceImg} alt="Interface" />
+                        </div>
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
 
-              {data.interfaceImg && (
-                <div className="cs-section-new">
-                  <label className="cs-section-label">{lang === 'fr' ? '06 / INTERFACE UTILISATEUR' : '06 / USER INTERFACE'}</label>
-                  <h3>{lang === 'fr' ? "L'application de pilotage centralisée." : "The centralized orchestration dashboard."}</h3>
-                  <div className="cs-dashboard-frame-new">
-                    <div className="mockup-frame-new">
-                      <div className="mockup-header-new">
-                        <span className="mockup-dot" />
-                        <span className="mockup-dot" />
-                        <span className="mockup-dot" />
-                      </div>
-                      <div className="mockup-screen-new">
-                        <img src={data.interfaceImg} alt="Interface" />
-                      </div>
+                <div className="cs-features-grid-new">
+                  {data.features.map((f, i) => (
+                    <div key={i} className="cs-feature-box-new">
+                      <span className="feature-num-new">0{i+1}</span>
+                      <h4>{f.title}</h4>
+                      <p>{f.desc}</p>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              )}
-
-              <div className="cs-features-grid-new">
-                {data.features.map((f, i) => (
-                  <div key={i} className="cs-feature-box-new">
-                    <span className="feature-num-new">0{i+1}</span>
-                    <h4>{f.title}</h4>
-                    <p>{f.desc}</p>
-                  </div>
-                ))}
               </div>
-            </div>
+            )}
 
             <aside className="cs-sidebar-new">
               <div className="cs-sidebar-sticky">
-                <div className="cs-sidebar-block">
-                  <label>{lang === 'fr' ? 'INSIGHT PRODUIT' : 'PRODUCT INSIGHT'}</label>
-                  <p>{data.insight}</p>
-                </div>
+                {data.insight && (
+                  <div className="cs-sidebar-block">
+                    <label>{lang === 'fr' ? 'INSIGHT PRODUIT' : 'PRODUCT INSIGHT'}</label>
+                    <p>{data.insight}</p>
+                  </div>
+                )}
                 
-                <div className="cs-sidebar-block">
-                  <label>{lang === 'fr' ? 'IMPACT CLÉ' : 'KEY IMPACT'}</label>
-                  <ul className="cs-impact-list">
-                    {data.impact.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                {data.impact && data.impact.length > 0 && (
+                  <div className="cs-sidebar-block">
+                    <label>{lang === 'fr' ? 'IMPACT CLÉ' : 'KEY IMPACT'}</label>
+                    <ul className="cs-impact-list">
+                      {data.impact.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {isConcise && data.externalLink && data.externalLink !== '#' && (
+                  <div className="cs-sidebar-block">
+                    <label>{lang === 'fr' ? 'LIEN DU PROJET' : 'PROJECT LINK'}</label>
+                    <a 
+                      href={data.externalLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cs-external-cta"
+                      style={{ '--accent-color': data.color, width: '100%', justifyContent: 'center' } as any}
+                    >
+                      <span>{data.ctaLabel || (lang === 'fr' ? 'VISITER LE SITE' : 'VISIT SITE')}</span>
+                      <ArrowRight size={16} />
+                    </a>
+                  </div>
+                )}
 
                 <button onClick={onBack || (() => setCurrentView('home'))} className="cs-final-back-btn">
                   {lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}
