@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { 
   ArrowRight,
+  ArrowLeft,
   ExternalLink,
   Calendar,
   Linkedin,
@@ -268,9 +269,9 @@ const CaseStudy = ({
       <header className="cs-hero-new">
         <div className="cs-hero-bg" style={{ backgroundImage: `url(${data.bgImage})` }} />
         <div className="container">
-          <button onClick={onBack || (() => setCurrentView('home'))} className="cs-back-link-inline">
-            <ArrowRight size={18} style={{ transform: 'rotate(180deg)', marginRight: '8px' }} />
-            <span>{lang === 'fr' ? 'RETOUR' : 'BACK'}</span>
+          <button onClick={onBack || (() => setCurrentView('home'))} className="cs-back-btn">
+            <ArrowLeft size={18} style={{ marginRight: '8px' }} />
+            <span>{lang === 'fr' ? 'Retour au Portfolio' : 'Back to Portfolio'}</span>
           </button>
           <div className="cs-hero-content">
             <span className="cs-hero-tag">{data.label}</span>
@@ -415,7 +416,16 @@ const CaseStudy = ({
                         <div key={i} className="cs-decision-card-new">
                           <h4>{d.title}</h4>
                           <p>{d.desc}</p>
-                          <div className="cs-why-pill" style={{ color: data.color }}>{d.why}</div>
+                          <div className="cs-why-box-new">
+                            <span className="cs-why-badge-new" style={{ 
+                              backgroundColor: `${data.color}15`, 
+                              color: data.color,
+                              borderColor: `${data.color}30`
+                            }}>
+                              {lang === 'fr' ? 'POURQUOI' : 'WHY'}
+                            </span>
+                            <p className="cs-why-text-new">{d.why}</p>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -734,18 +744,12 @@ const ProjectsView = ({
     <div className="projects-page-view">
       <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.05) 0%, transparent 60%)' }} />
       
-      <nav className="cs-nav-new">
-        <div className="container cs-nav-flex">
-          <button onClick={() => { setCurrentView('home'); }} className="cs-back-btn">
-            <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
-            <span>{t.projects.backToHome}</span>
-          </button>
-          <div className="cs-nav-label">{lang === 'en' ? 'All Projects' : 'Tous les projets'}</div>
-        </div>
-      </nav>
-
       <header className="projects-page-header">
         <div className="container">
+          <button onClick={() => { setCurrentView('home'); }} className="cs-back-btn">
+            <ArrowLeft size={18} style={{ marginRight: '8px' }} />
+            <span>{lang === 'fr' ? 'Retour au Portfolio' : 'Back to Portfolio'}</span>
+          </button>
           <span className="saas-eyebrow">06 / Projects</span>
           <h1 className="projects-page-title">
             {lang === 'en' ? <>All <span className="highlight">Projects.</span></> : <>Tous les <span className="highlight">Projets.</span></>}
@@ -1045,10 +1049,11 @@ function App() {
         label: '07 / Process',
         title: <>My <span className="highlight">Methodology.</span></>,
         items: [
-          { num: '01', title: 'Discovery', desc: 'I start by understanding the product, its users, and the real business constraints. Before touching Figma.' },
-          { num: '02', title: 'UX Audit', desc: "On an existing product, I identify friction, flow inconsistencies, and interfaces that create confusion." },
-          { num: '03', title: 'Product Thinking', desc: "I structure user journeys and define the product logic: what should happen first, why, and for whom." },
-          { num: '04', title: 'Design & Delivery', desc: "I design high-fidelity interfaces, write specs if necessary, and follow implementation through to final QA." }
+          { num: '01', title: 'Competitor Analysis & Benchmarking', desc: 'I analyze market solutions, dissect competitor user flows, and identify industry best practices to define a clear product positioning.' },
+          { num: '02', title: 'Discovery & UX Audit', desc: 'I gather user insights, pinpoint usability issues and friction points in existing products, and align user needs with business goals.' },
+          { num: '03', title: 'Product Thinking & IA', desc: 'I map complex user flows, establish clear information architecture, and structure product requirements (PRD) to guide visual design.' },
+          { num: '04', title: 'High-Fidelity UI Design', desc: 'I craft beautiful, accessible, responsive interface designs and interactive prototypes using scalable Design Systems.' },
+          { num: '05', title: 'QA & Implementation Review', desc: 'I don\'t just hand off Figma links. I work closely with engineers and run comprehensive QA reviews to ensure pixel-perfect deployment.' }
         ]
       },
       contact: {
@@ -1114,8 +1119,8 @@ function App() {
       },
       about: {
         title: <>What I <br/><span className="highlight">really do.</span></>,
-        bio: 'Product Designer with +3 years of experience. I design B2B SaaS, mobile apps & complex platforms, from UX strategy to final delivery.',
-        approach: 'My approach: combining product vision with technical rigor to ensure interfaces are not just aesthetic, but primarily usable, performant, and truly ready to ship.',
+        bio: 'Product Designer with +3 years of experience. I design B2B SaaS, mobile apps & complex platforms, from competitor research to final QA delivery.',
+        approach: 'My approach: combining product vision, Design Thinking (from competitor benchmarking to prototyping), and technical rigor (pixel-perfect QA) to deliver aesthetic, high-performing, and launch-ready interfaces.',
         label: '02 / About'
       },
       experience: {
@@ -1241,10 +1246,11 @@ function App() {
         label: '07 / Process',
         title: <>Ma <span className="highlight">Méthodologie.</span></>,
         items: [
-          { num: '01', title: 'Discovery', desc: 'Je commence par comprendre le produit, ses utilisateurs et les vraies contraintes business. Avant de toucher à Figma.' },
-          { num: '02', title: 'UX Audit', desc: "Sur un produit existant, j'identifie les frictions, les incohérences de flow et les interfaces qui créent de la confusion." },
-          { num: '03', title: 'Product Thinking', desc: "Je structure les parcours et définis la logique produit : qu'est-ce qui doit arriver en premier, pourquoi, et pour qui." },
-          { num: '04', title: 'Design & Delivery', desc: "Je conçois les interfaces haute-fidélité, rédige les specs si nécessaire et suis l'implémentation jusqu'au QA final." }
+          { num: '01', title: 'Analyse Concurrentielle & Benchmark', desc: 'J\'étudie les solutions du marché, dissèque les flux concurrents et identifie les meilleures pratiques pour définir un positionnement produit clair.' },
+          { num: '02', title: 'Discovery & Audit UX', desc: 'J\'analyse le comportement des utilisateurs, repère les points de friction sur le produit existant et aligne les objectifs business avec les besoins réels.' },
+          { num: '03', title: 'Product Thinking & Architecture', desc: 'Je structure les parcours utilisateurs, définis l\'architecture de l\'information et pose la logique produit (PRD) avant de concevoir l\'interface.' },
+          { num: '04', title: 'Design UI & Prototypage', desc: 'Je conçois des interfaces haute-fidélité modernes, interactives et responsives en m\'appuyant sur un Design System structuré et évolutif.' },
+          { num: '05', title: 'Recette QA & Suivi Dev', desc: 'Je ne me limite pas à livrer des maquettes. Je collabore étroitement avec les développeurs et réalise une recette QA rigoureuse (pixel-perfect) avant la mise en ligne.' }
         ]
       },
       contact: {
@@ -1310,8 +1316,8 @@ function App() {
       },
       about: {
         title: <>Ce que je fais <br/><span className="highlight">vraiment.</span></>,
-        bio: 'Product Designer avec +3 ans d\'expérience. Je conçois des SaaS B2B, applications mobiles et plateformes complexes, de la stratégie UX à la livraison finale.',
-        approach: 'Mon approche : allier vision produit et rigueur technique pour garantir des interfaces non seulement esthétiques, mais surtout utilisables, performantes et réellement prêtes à être livrées.',
+        bio: 'Product Designer avec +3 ans d\'expérience. Je conçois des SaaS B2B, applications mobiles et plateformes complexes, de la recherche concurrentielle à la recette QA finale.',
+        approach: 'Mon approche : allier vision produit, Design Thinking (de l\'analyse concurrentielle au prototypage) et rigueur technique (QA pixel-perfect) pour garantir des interfaces esthétiques, performantes et prêtes pour la production.',
         label: '02 / À propos'
       },
       experience: {

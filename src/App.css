@@ -248,6 +248,44 @@ section {
   gap: 28px;
 }
 
+.nav-center-links-back {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.nav-back-portfolio-btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #030804;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: 100px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-main);
+}
+
+.nav-back-portfolio-btn:hover {
+  background: var(--pentos-lime);
+  border-color: var(--pentos-lime);
+  color: #030804;
+}
+
+.nav-back-portfolio-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.nav-back-portfolio-btn:hover svg {
+  transform: translateX(-3px);
+}
+
 .nav-center-links a {
   color: var(--pentos-white);
   text-decoration: none;
@@ -3316,25 +3354,28 @@ section {
 }
 
 .cs-back-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  display: flex;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #030804;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-main);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
-  opacity: 0.7;
-  transition: all 0.3s ease;
+  padding: 8px 18px;
+  border-radius: 100px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 24px;
 }
 
 .cs-back-btn:hover {
-  opacity: 1;
-  color: var(--pentos-lime);
+  background: var(--pentos-lime);
+  border-color: var(--pentos-lime);
+  color: #030804;
   transform: translateX(-4px);
 }
 
@@ -3609,6 +3650,38 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   color: var(--pentos-lime);
+}
+
+.cs-why-box-new {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cs-why-badge-new {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.cs-why-text-new {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  font-weight: 500;
+  opacity: 0.95;
 }
 
 .cs-pull-quote {
@@ -6668,7 +6741,7 @@ body::after {
 }
 
 .projects-page-header {
-  padding: 80px 0 60px;
+  padding: 140px 0 60px;
   position: relative;
   z-index: 2;
 }
