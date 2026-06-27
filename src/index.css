@@ -26,6 +26,11 @@ body {
   color: var(--text-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Permanently prevent horizontal layout shift */
+}
+
+html {
+  overflow-x: hidden; /* Prevent any element animation from causing page-level horizontal scroll */
 }
 
 h1, h2, h3, h4, h5, h6 {
