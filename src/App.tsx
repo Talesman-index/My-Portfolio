@@ -1579,7 +1579,7 @@ function App() {
                   fillRule="evenodd" 
                   clipRule="evenodd" 
                   d="M20.8333 16.6667C20.8333 7.46192 28.2953 0 37.5 0C46.7047 0 54.1667 7.46192 54.1667 16.6667V20.8333H58.3333C67.5381 20.8333 75 28.2953 75 37.5C75 46.7047 67.5381 54.1667 58.3333 54.1667H54.1667V58.3333C54.1667 67.5381 46.7047 75 37.5 75C28.2953 75 20.8333 67.5381 20.8333 58.3333V54.1667H16.6667C7.46192 54.1667 0 46.7047 0 37.5C0 28.2953 7.46192 20.8333 16.6667 20.8333H20.8333V16.6667ZM19.7917 38.0208C26.5306 39.6159 35.509 49.3697 37.5 57.2917C39.491 49.3697 48.4694 39.6159 55.2083 38.0208C48.4694 36.4257 39.491 26.6719 37.5 18.75C35.509 26.6719 26.5306 36.4257 19.7917 38.0208Z" 
-                  stroke="var(--pentos-lime)" 
+                  stroke="#0d3479" 
                   strokeWidth="1.5"
                   strokeDasharray="600"
                   strokeDashoffset={600 - (600 * progress) / 100}
@@ -1592,7 +1592,7 @@ function App() {
                 <defs>
                   <radialGradient id="paint0_radial_preloader" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.5 37.5) rotate(90) scale(37.5)">
                     <stop stopColor="#eeede4"/>
-                    <stop offset="1" stopColor="#00E676" stopOpacity="0.8"/>
+                    <stop offset="1" stopColor="#0d3479" stopOpacity="0.8"/>
                   </radialGradient>
                 </defs>
               </svg>
@@ -1769,7 +1769,7 @@ function App() {
             <div className="hero-portrait-container">
               {/* Profile Portrait */}
               <motion.img 
-                src="/imgs/hero.png" 
+                src="/imgs/hero_image.png" 
                 alt="Sacca Dafia Profile" 
                 className="hero-portrait-img"
                 initial={{ opacity: 0, y: 40 }}
