@@ -1,10 +1,10 @@
 :root {
-  --bg-dark: #050805;
-  --bg-light: #F5F7FA;
-  --accent: #39FF14;
+  --bg-dark: #0d3479;
+  --bg-light: #eeede4;
+  --accent: #eeede4;
   --text-white: #FFFFFF;
-  --text-gray: #A0A0A0;
-  --text-dark: #050805;
+  --text-gray: #B0C4DE; /* Light blue-gray for secondary text on blue backdrops */
+  --text-dark: #0d3479;
   
   --font-main: 'Manrope', sans-serif;
   --font-body: 'Inter', sans-serif;

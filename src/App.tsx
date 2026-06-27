@@ -7,7 +7,26 @@ import {
   Calendar,
   Linkedin,
   Download,
-  X
+  X,
+  Sparkles,
+  ShieldCheck,
+  QrCode,
+  Layers,
+  BarChart3,
+  Smartphone,
+  Globe,
+  Zap,
+  Paintbrush,
+  Code,
+  Cpu,
+  Target,
+  Shield,
+  Award,
+  Users,
+  FileText,
+  Activity,
+  RefreshCw,
+  LayoutDashboard
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -42,26 +61,25 @@ const IlluOrb = ({ className = '' }: { className?: string }) => (
     <path fill="currentColor" d="M29 58C28.16 30.526 27.474 29.844 0 29 27.474 28.16 28.156 27.474 29 0c.84 27.474 1.526 28.156 29 29-28.474.84-29.156 1.526-29 29Z"/>
   </svg>
 );
-
 // Custom Premium 3D Isometric SVG Icons for the Services Cards
 const ServiceIcon01 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="pdGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#031806" />
-        <stop offset="100%" stopColor="#010f03" />
+        <stop offset="0%" stopColor="#051b3d" />
+        <stop offset="100%" stopColor="#031129" />
       </linearGradient>
       <linearGradient id="pdGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgba(57, 255, 20, 0.3)" />
+        <stop offset="0%" stopColor="rgba(238, 237, 228, 0.3)" />
         <stop offset="100%" stopColor="rgba(255, 255, 255, 0.05)" />
       </linearGradient>
       <linearGradient id="pdGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#39FF14" />
-        <stop offset="100%" stopColor="#39FF14" />
+        <stop offset="0%" stopColor="#eeede4" />
+        <stop offset="100%" stopColor="#eeede4" />
       </linearGradient>
       <radialGradient id="pdGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#39FF14" stopOpacity="0.45" />
-        <stop offset="100%" stopColor="#39FF14" stopOpacity="0" />
+        <stop offset="0%" stopColor="#eeede4" stopOpacity="0.45" />
+        <stop offset="100%" stopColor="#eeede4" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -72,7 +90,7 @@ const ServiceIcon01 = () => (
     <circle cx="50" cy="45" r="22" fill="url(#pdGlow)" />
     
     {/* Bottom Layer: Base grid canvas */}
-    <path d="M50 72 L88 53 L50 34 L12 53 Z" fill="url(#pdGradBg)" stroke="rgba(57, 255, 20, 0.25)" strokeWidth="1.2" />
+    <path d="M50 72 L88 53 L50 34 L12 53 Z" fill="url(#pdGradBg)" stroke="rgba(238, 237, 228, 0.25)" strokeWidth="1.2" />
     
     {/* Middle Layer: Floating glassmorphic wireframe screen */}
     <path d="M50 54 L88 35 L50 16 L12 35 Z" fill="url(#pdGradGlass)" stroke="rgba(255, 255, 255, 0.45)" strokeWidth="1.2" />
@@ -96,21 +114,21 @@ const ServiceIcon02 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="uxGradTarget" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#010f03" />
-        <stop offset="100%" stopColor="#031806" />
+        <stop offset="0%" stopColor="#031129" />
+        <stop offset="100%" stopColor="#051b3d" />
       </linearGradient>
       <linearGradient id="uxGradGlass" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgba(57, 255, 20, 0.25)" />
-        <stop offset="100%" stopColor="rgba(57, 255, 20, 0.08)" />
+        <stop offset="0%" stopColor="rgba(238, 237, 228, 0.25)" />
+        <stop offset="100%" stopColor="rgba(238, 237, 228, 0.08)" />
       </linearGradient>
       <linearGradient id="uxGradMetal" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0.65" />
-        <stop offset="50%" stopColor="#39FF14" stopOpacity="0.8" />
-        <stop offset="100%" stopColor="#031806" stopOpacity="0.95" />
+        <stop offset="50%" stopColor="#eeede4" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#051b3d" stopOpacity="0.95" />
       </linearGradient>
       <radialGradient id="uxGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#39FF14" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#39FF14" stopOpacity="0" />
+        <stop offset="0%" stopColor="#eeede4" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#eeede4" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -118,19 +136,19 @@ const ServiceIcon02 = () => (
     <ellipse cx="50" cy="85" rx="34" ry="7" fill="rgba(0,0,0,0.5)" filter="blur(4px)" />
     
     {/* Radar/Sonar Target Base Plate */}
-    <path d="M50 76 L86 58 L50 40 L14 58 Z" fill="url(#uxGradTarget)" stroke="rgba(57, 255, 20, 0.3)" strokeWidth="1.5" />
-    <ellipse cx="50" cy="58" rx="24" ry="12" stroke="rgba(57, 255, 20, 0.18)" strokeWidth="1.2" fill="none" />
-    <ellipse cx="50" cy="58" rx="14" ry="7" stroke="rgba(57, 255, 20, 0.3)" strokeWidth="1.2" fill="none" />
+    <path d="M50 76 L86 58 L50 40 L14 58 Z" fill="url(#uxGradTarget)" stroke="rgba(238, 237, 228, 0.3)" strokeWidth="1.5" />
+    <ellipse cx="50" cy="58" rx="24" ry="12" stroke="rgba(238, 237, 228, 0.18)" strokeWidth="1.2" fill="none" />
+    <ellipse cx="50" cy="58" rx="14" ry="7" stroke="rgba(238, 237, 228, 0.3)" strokeWidth="1.2" fill="none" />
     
     {/* Floating 3D Column 1 (Left-back, teal) */}
-    <path d="M30 46 L36 43 L42 46 L36 49 Z" fill="#39FF14" />
-    <path d="M30 46 L30 62 L36 65 L36 49 Z" fill="#0c3f03" />
-    <path d="M36 49 L36 65 L42 62 L42 46 Z" fill="#105403" />
+    <path d="M30 46 L36 43 L42 46 L36 49 Z" fill="#eeede4" />
+    <path d="M30 46 L30 62 L36 65 L36 49 Z" fill="#092454" />
+    <path d="M36 49 L36 65 L42 62 L42 46 Z" fill="#0d3479" />
     
     {/* Floating 3D Column 2 (Right-front, taller, neon green) */}
-    <path d="M46 32 L52 29 L58 32 L52 35 Z" fill="#39FF14" />
-    <path d="M46 32 L46 54 L52 57 L52 35 Z" fill="#0b4c03" />
-    <path d="M52 35 L52 57 L58 54 L58 32 Z" fill="#126f03" />
+    <path d="M46 32 L52 29 L58 32 L52 35 Z" fill="#eeede4" />
+    <path d="M46 32 L46 54 L52 57 L52 35 Z" fill="#051b3d" />
+    <path d="M52 35 L52 57 L58 54 L58 32 Z" fill="#0d3479" />
     
     {/* Shadow of magnifying glass on base */}
     <ellipse cx="52" cy="54" rx="14" ry="7" fill="rgba(0,0,0,0.4)" filter="blur(3px)" />
@@ -143,7 +161,7 @@ const ServiceIcon02 = () => (
     
     {/* Magnifying glass handle */}
     <path d="M55 45 L74 63 L71 66 L52 48 Z" fill="url(#uxGradMetal)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.3))" />
-    <circle cx="72.5" cy="64.5" r="2" fill="#39FF14" />
+    <circle cx="72.5" cy="64.5" r="2" fill="#eeede4" />
   </svg>
 );
 
@@ -151,16 +169,16 @@ const ServiceIcon03 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="stGradTop" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#dffcd4" />
-        <stop offset="100%" stopColor="#39FF14" />
+        <stop offset="0%" stopColor="#eeede4" />
+        <stop offset="100%" stopColor="#eeede4" />
       </linearGradient>
       <linearGradient id="stGradLeft" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#04200c" />
-        <stop offset="100%" stopColor="#010b03" />
+        <stop offset="0%" stopColor="#051b3d" />
+        <stop offset="100%" stopColor="#031129" />
       </linearGradient>
       <linearGradient id="stGradRight" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#0a3315" />
-        <stop offset="100%" stopColor="#031a0a" />
+        <stop offset="0%" stopColor="#092454" />
+        <stop offset="100%" stopColor="#051b3d" />
       </linearGradient>
     </defs>
     
@@ -183,13 +201,13 @@ const ServiceIcon03 = () => (
     <path d="M52 45 L52 63 L66 56 L66 38 Z" fill="url(#stGradRight)" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
     
     {/* Connectors & Nodes representing strategy/roadmap logic overlay */}
-    <line x1="52" y1="31" x2="64" y2="57" stroke="#39FF14" strokeWidth="1.5" strokeDasharray="3 2" />
-    <line x1="52" y1="31" x2="40" y2="49" stroke="#39FF14" strokeWidth="1.5" strokeDasharray="3 2" />
+    <line x1="52" y1="31" x2="64" y2="57" stroke="#eeede4" strokeWidth="1.5" strokeDasharray="3 2" />
+    <line x1="52" y1="31" x2="40" y2="49" stroke="#eeede4" strokeWidth="1.5" strokeDasharray="3 2" />
     
     {/* Glowing Nodes */}
-    <circle cx="52" cy="31" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 3px #39FF14)" />
-    <circle cx="64" cy="57" r="3" fill="#39FF14" />
-    <circle cx="40" cy="49" r="3" fill="#39FF14" />
+    <circle cx="52" cy="31" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 3px #eeede4)" />
+    <circle cx="64" cy="57" r="3" fill="#eeede4" />
+    <circle cx="40" cy="49" r="3" fill="#eeede4" />
   </svg>
 );
 
@@ -197,16 +215,16 @@ const ServiceIcon04 = () => (
   <svg viewBox="0 0 100 100" className="service-svg-illustration" fill="none">
     <defs>
       <linearGradient id="devGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#010a03" />
-        <stop offset="100%" stopColor="#021a08" />
+        <stop offset="0%" stopColor="#031129" />
+        <stop offset="100%" stopColor="#051b3d" />
       </linearGradient>
       <linearGradient id="devGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#39FF14" />
-        <stop offset="100%" stopColor="#39FF14" />
+        <stop offset="0%" stopColor="#eeede4" />
+        <stop offset="100%" stopColor="#eeede4" />
       </linearGradient>
       <radialGradient id="devGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#39FF14" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#39FF14" stopOpacity="0" />
+        <stop offset="0%" stopColor="#eeede4" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#eeede4" stopOpacity="0" />
       </radialGradient>
     </defs>
     
@@ -218,7 +236,7 @@ const ServiceIcon04 = () => (
     <path d="M59 23 L60 25 L60 59 L59 57 Z" fill="rgba(0,0,0,0.3)" />
     
     {/* Window front face */}
-    <path d="M20 45 L59 23 L59 57 L20 79 Z" fill="url(#devGradBg)" stroke="rgba(57, 255, 20, 0.35)" strokeWidth="1.2" />
+    <path d="M20 45 L59 23 L59 57 L20 79 Z" fill="url(#devGradBg)" stroke="rgba(238, 237, 228, 0.35)" strokeWidth="1.2" />
     
     {/* Terminal buttons (Red, Yellow, Green in perspective) */}
     <circle cx="27" cy="41.5" r="1.5" fill="#ff5f56" />
@@ -227,7 +245,7 @@ const ServiceIcon04 = () => (
     
     {/* Syntax code bars */}
     <line x1="27" y1="50" x2="44" y2="40.5" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
-    <line x1="27" y1="56" x2="48" y2="44" stroke="#39FF14" strokeWidth="2" strokeLinecap="round" />
+    <line x1="27" y1="56" x2="48" y2="44" stroke="#eeede4" strokeWidth="2" strokeLinecap="round" />
     <line x1="33" y1="60" x2="45" y2="53" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
     <line x1="27" y1="66" x2="40" y2="58.5" stroke="url(#devGradAccent)" strokeWidth="2" strokeLinecap="round" />
     
@@ -240,6 +258,35 @@ const ServiceIcon04 = () => (
     <line x1="56" y1="36" x2="44" y2="57" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))" />
   </svg>
 );
+
+const getFeatureIcon = (projectId: string, index: number) => {
+  if (projectId === 'asset-iq') {
+    const icons = [QrCode, Calendar, Layers, BarChart3];
+    return icons[index] || Sparkles;
+  }
+  if (projectId === 'ehadj') {
+    const icons = [ShieldCheck, RefreshCw, LayoutDashboard];
+    return icons[index] || Sparkles;
+  }
+  if (projectId === 'sagana') {
+    const icons = [Smartphone, Globe, Zap];
+    return icons[index] || Sparkles;
+  }
+  if (projectId === 'vortex') {
+    const icons = [Paintbrush, Code, Cpu];
+    return icons[index] || Sparkles;
+  }
+  if (projectId === 'sport-advisor') {
+    const icons = [Target, Shield, Award];
+    return icons[index] || Sparkles;
+  }
+  if (projectId === 'forum-grandes-ecoles') {
+    const icons = [Users, Calendar, FileText];
+    return icons[index] || Sparkles;
+  }
+  const defaultIcons = [Sparkles, Shield, Zap, Activity];
+  return defaultIcons[index % defaultIcons.length] || Sparkles;
+};
 
 const serviceIcons = [ServiceIcon01, ServiceIcon02, ServiceIcon03, ServiceIcon04];
 
@@ -475,7 +522,12 @@ const CaseStudy = ({
                 <div className="cs-features-grid-new">
                   {data.features.map((f, i) => (
                     <div key={i} className="cs-feature-box-new">
-                      <span className="feature-num-new">0{i+1}</span>
+                      <div className="feature-icon-wrapper-new">
+                        {(() => {
+                          const IconComponent = getFeatureIcon(id, i);
+                          return <IconComponent size={20} className="feature-icon-new" />;
+                        })()}
+                      </div>
                       <h4>{f.title}</h4>
                       <p>{f.desc}</p>
                     </div>
@@ -742,7 +794,7 @@ const ProjectsView = ({
 
   return (
     <div className="projects-page-view">
-      <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.05) 0%, transparent 60%)' }} />
+      <div className="saas-gradient-overlay" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(238, 237, 228, 0.05) 0%, transparent 60%)' }} />
       
       <header className="projects-page-header">
         <div className="container">
@@ -894,6 +946,7 @@ function App() {
   if (previousView) { /* no-op for TS check */ }
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [activeExpIndex, setActiveExpIndex] = useState(0);
+  const [activeProcessStep, setActiveProcessStep] = useState(0);
   const mousePos = { x: 50, y: 50 };
   const [time, setTime] = useState(new Date());
 
@@ -1089,7 +1142,7 @@ function App() {
             subtitle: 'Interfaces & Experience',
             desc: 'Creating seamless user journeys and high-fidelity interfaces that prioritize clarity and user engagement.',
             tags: ['Figma', 'UX Research', 'Prototyping'],
-            color: '#39FF14'
+            color: '#0d3479'
           },
           {
             id: '02',
@@ -1113,14 +1166,14 @@ function App() {
             subtitle: 'Design Systems & Front-End',
             desc: 'Bridging the gap between design and code by building reusable component libraries and clean, interactive React/Next.js interfaces.',
             tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
-            color: '#10B981'
+            color: '#eeede4'
           }
         ]
       },
       about: {
         title: <>What I <br/><span className="highlight">really do.</span></>,
         bio: 'Product Designer with +3 years of experience. I design B2B SaaS, mobile apps & complex platforms, from competitor research to final QA delivery.',
-        approach: 'My approach: combining product vision, Design Thinking (from competitor benchmarking to prototyping), and technical rigor (pixel-perfect QA) to deliver aesthetic, high-performing, and launch-ready interfaces.',
+        approach: 'My approach: Translating complex visions into obvious interfaces. I combine empirical research, high-fidelity prototyping, and technical rigor to craft products that perform as beautifully as they look.',
         label: '02 / About'
       },
       experience: {
@@ -1143,7 +1196,7 @@ function App() {
             date: 'FEBRUARY 2024 — SEPTEMBER 2025',
             desc: 'Evolved from a design-focused to a product-focused approach, working on integrations for the Beans loyalty program. Defined features, structured user journeys, and ensured global product consistency.',
             skills: ['PRD & Specs', 'Beans Journey', 'Dev Coordination', 'QA Validation'],
-            color: '#39FF14'
+            color: '#0d3479'
           },
           {
             id: '03',
@@ -1234,7 +1287,7 @@ function App() {
             description: "A digital portal and real-time impact tracker for a Christian humanitarian organization in Cotonou, Benin. We built a responsive web application that features custom donation flows (FCFA/Mobile Money), volunteer recruitment, and visual progress gauges tracking clothing donations, menstrual hygiene kits for women in need, and active social reinsertion.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
-            color: '#39FF14',
+            color: '#0d3479',
             linkType: 'site',
           },
         ]
@@ -1286,7 +1339,7 @@ function App() {
             subtitle: 'Interfaces & Expérience',
             desc: 'Création de parcours fluides et d\'interfaces haute fidélité privilégiant la clarté et l\'engagement.',
             tags: ['Figma', 'UX Research', 'Prototypage'],
-            color: '#39FF14'
+            color: '#0d3479'
           },
           {
             id: '02',
@@ -1310,14 +1363,14 @@ function App() {
             subtitle: 'Design Systems & Front-End',
             desc: 'Faire le pont entre le design et le code en concevant des systèmes de composants réutilisables et des interfaces React/Next.js propres, interactives et performantes.',
             tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
-            color: '#10B981'
+            color: '#eeede4'
           }
         ]
       },
       about: {
         title: <>Ce que je fais <br/><span className="highlight">vraiment.</span></>,
         bio: 'Product Designer avec +3 ans d\'expérience. Je conçois des SaaS B2B, applications mobiles et plateformes complexes, de la recherche concurrentielle à la recette QA finale.',
-        approach: 'Mon approche : allier vision produit, Design Thinking (de l\'analyse concurrentielle au prototypage) et rigueur technique (QA pixel-perfect) pour garantir des interfaces esthétiques, performantes et prêtes pour la production.',
+        approach: 'Mon approche : Traduire des visions complexes en interfaces évidentes. Je combine recherche empirique, prototypage de haute fidélité et rigueur technique pour concevoir des produits qui fonctionnent aussi bien qu\'ils en ont l\'air.',
         label: '02 / À propos'
       },
       experience: {
@@ -1340,7 +1393,7 @@ function App() {
             date: 'FÉVRIER 2024 — SEPTEMBRE 2025',
             desc: 'Évolution vers une approche produit structurée sur le programme Beans. Définition des fonctionnalités et coordination avec l\'équipe dev.',
             skills: ['PRD & Specs', 'Parcours Beans', 'Coordination Dev', 'Validation QA'],
-            color: '#39FF14'
+            color: '#0d3479'
           },
           {
             id: '03',
@@ -1431,7 +1484,7 @@ function App() {
             description: "Portail numérique et suivi d'impact en temps réel pour une organisation chrétienne humanitaire à Cotonou (Bénin). Nous avons conçu une application web responsive intégrant des tunnels de don (FCFA & Mobile Money), le recrutement de bénévoles, et des jauges d'avancement pour le suivi des vêtements distribués, des kits d'hygiène menstruelle pour femmes démunies, et des réinsertions sociales.",
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
-            color: '#39FF14',
+            color: '#0d3479',
             linkType: 'site',
           },
         ]
@@ -1517,7 +1570,7 @@ function App() {
                   fillRule="evenodd" 
                   clipRule="evenodd" 
                   d="M20.8333 16.6667C20.8333 7.46192 28.2953 0 37.5 0C46.7047 0 54.1667 7.46192 54.1667 16.6667V20.8333H58.3333C67.5381 20.8333 75 28.2953 75 37.5C75 46.7047 67.5381 54.1667 58.3333 54.1667H54.1667V58.3333C54.1667 67.5381 46.7047 75 37.5 75C28.2953 75 20.8333 67.5381 20.8333 58.3333V54.1667H16.6667C7.46192 54.1667 0 46.7047 0 37.5C0 28.2953 7.46192 20.8333 16.6667 20.8333H20.8333V16.6667ZM19.7917 38.0208C26.5306 39.6159 35.509 49.3697 37.5 57.2917C39.491 49.3697 48.4694 39.6159 55.2083 38.0208C48.4694 36.4257 39.491 26.6719 37.5 18.75C35.509 26.6719 26.5306 36.4257 19.7917 38.0208Z" 
-                  stroke="rgba(57, 255, 20, 0.08)" 
+                  stroke="rgba(238, 237, 228, 0.08)" 
                   strokeWidth="1.5"
                 />
                 {/* Active animated drawing path */}
@@ -1538,7 +1591,7 @@ function App() {
                 />
                 <defs>
                   <radialGradient id="paint0_radial_preloader" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.5 37.5) rotate(90) scale(37.5)">
-                    <stop stopColor="#39FF14"/>
+                    <stop stopColor="#eeede4"/>
                     <stop offset="1" stopColor="#00E676" stopOpacity="0.8"/>
                   </radialGradient>
                 </defs>
@@ -1603,7 +1656,9 @@ function App() {
             
             <div className="container mobile-nav-container">
               <div className="mobile-nav-header">
-                <div className="mobile-brand">SACCA DAFIA.</div>
+                <div className="logo-new" onClick={() => { setIsMenuOpen(false); handleLogoClick(); }}>
+                  <img src="/imgs/Logo.png" alt="Logo" className="logo-img-new" />
+                </div>
                 <div className="mobile-nav-right">
                   <div className="mobile-nav-lang">
                     <button className={`lang-pill ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
@@ -1648,9 +1703,7 @@ function App() {
                         className={`mobile-link-item ${i === 0 ? 'active' : ''}`}
                         onClick={(e) => { e.preventDefault(); handleNavClick(link.id); }}
                       >
-                        <span className="mobile-link-num">0{i+1}</span>
                         <span className="mobile-link-text">{link.label}</span>
-                        <div className="mobile-link-line"></div>
                       </a>
                     </motion.div>
                   ))}
@@ -1709,85 +1762,86 @@ function App() {
       {currentView === 'home' && (
         <div className="app anim-fade-in">
           {/* Hero Section */}
-          <section id="home" className="hero-dznr" style={{ 
+          <section id="home" className="hero-premium" style={{ 
             '--mouse-x': `${mousePos.x}%`, 
             '--mouse-y': `${mousePos.y}%` 
           } as any}>
-            {/* Background layers */}
-            <div className="hero-gradient-dznr" />
-            <div className="hero-noise-dznr" />
+            <div className="hero-portrait-container">
+              {/* Profile Portrait */}
+              <motion.img 
+                src="/imgs/hero.png" 
+                alt="Sacca Dafia Profile" 
+                className="hero-portrait-img"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              />
 
-            <div className="container hero-container-dznr">
-          <div className="hero-content-dznr">
-            <motion.span 
-              className="hero-top-text-dznr"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {t.hero.topText}
-            </motion.span>
+              {/* Bottom Green Glow */}
+              <div className="hero-glow-green" />
 
-            <motion.h1 
-              className="hero-title-dznr"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-            >
-              <span className="hero-title-row-1">{t.hero.titleLine1}</span>
-              <span className="hero-title-row-2">
-                {t.hero.titleLine2} <span className="highlight-dznr">{t.hero.titleHighlight}</span>
-              </span>
-            </motion.h1>
-
-            <motion.p 
-              className="hero-bottom-text-dznr"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              {t.hero.bottomText}
-            </motion.p>
-
-            <motion.div 
-              className="hero-cta-wrapper-dznr"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
-            >
-              <button onClick={openCalendly} className="hero-cta-btn-dznr">
-                {t.hero.ctaText} <span className="arrow-dznr">→</span>
-              </button>
-            </motion.div>
-          </div>
-
-          {/* Peeking Showreel Mockup Card */}
-          <motion.div 
-            className="hero-peeking-card-dznr showreel-card-dznr"
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            {/* Grid pattern background inside showreel */}
-            <div className="showreel-grid-bg" />
-            
-            <div className="showreel-content">
-              <span className="showreel-text">{lang === 'en' ? 'Quick' : 'Rapide'}</span>
-              <div className="showreel-play-btn">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="play-icon">
-                  <path d="M8 5V19L19 12L8 5Z" fill="var(--pentos-lime, #39FF14)" />
+              {/* Sketch Arrow and Text */}
+              <motion.div 
+                className="sketch-arrow-wrapper"
+                initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              >
+                <span className="sketch-arrow-text">
+                  {lang === 'fr' ? 'Concevons votre prochain produit !' : "Let's design your next product!"}
+                </span>
+                <svg className="sketch-arrow-svg" viewBox="0 0 100 60">
+                  <motion.path 
+                    d="M10,10 C40,20 60,10 90,30 M90,30 L80,20 M90,30 L85,42" 
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.5, delay: 1.0, ease: "easeInOut" }}
+                    stroke="#111111"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
                 </svg>
-                <div className="play-btn-pulse" />
+              </motion.div>
+
+              {/* Bio text overlay */}
+              <div className="hero-greeting-overlay">
+                <motion.h1 
+                  className="hero-greeting-text"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  {lang === 'fr' ? 'Je suis Sacca, Product & Experience Designer.' : "I'm Sacca, a Product & Experience Designer."}
+                </motion.h1>
+                
+                <motion.p 
+                  className="hero-greeting-subtext"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.55 }}
+                >
+                  {lang === 'fr' 
+                    ? 'Axé sur la création de systèmes numériques clairs, utiles et durables, de la stratégie au code.' 
+                    : 'Focused on creating clear, useful, and sustainable digital systems, from strategy to code.'}
+                </motion.p>
               </div>
-              <span className="showreel-text">{lang === 'en' ? 'at my work.' : 'sur mon travail.'}</span>
+
+              {/* Scroll Down Indicator */}
+              <motion.div 
+                className="scroll-down-indicator"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+              >
+                <span className="scroll-text">
+                  {lang === 'fr' ? 'Défiler' : 'Scroll'}
+                </span>
+                <div className="scroll-mouse">
+                  <div className="scroll-wheel" />
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </section>
 
       {/* About Section */}
       <section id="about" className="about-pentos">
@@ -1816,12 +1870,19 @@ function App() {
           </div>
           
           <div className="about-layout-pentos">
-            <div className="about-profile-frame">
-              <img 
-                src="/imgs/cv-profile.jpg" 
-                alt="Sacca Dafia Profile" 
-                className="about-profile-img" 
-              />
+            <div className="about-image-wrapper-new">
+              <div className="about-illu-background">
+                <div className="about-illu-circle about-illu-circle-1" />
+                <div className="about-illu-circle about-illu-circle-2" />
+                <div className="about-illu-dots" />
+              </div>
+              <div className="about-profile-frame">
+                <img 
+                  src="/imgs/cv-profile.jpg" 
+                  alt="Sacca Dafia Profile" 
+                  className="about-profile-img" 
+                />
+              </div>
             </div>
             
             <div className="about-right-pentos">
@@ -1847,18 +1908,27 @@ function App() {
               
               <div className="about-stats-pentos">
                 <div className="about-stat-item">
+                  <div className="about-stat-icon-wrapper">
+                    <Award size={18} />
+                  </div>
                   <span className="about-stat-num">+3</span>
                   <span className="about-stat-label">
                     {lang === 'en' ? 'Years of Experience' : "Ans d'expérience"}
                   </span>
                 </div>
                 <div className="about-stat-item">
+                  <div className="about-stat-icon-wrapper">
+                    <Layers size={18} />
+                  </div>
                   <span className="about-stat-num">50+</span>
                   <span className="about-stat-label">
                     {lang === 'en' ? 'Projects Delivered' : 'Projets livrés'}
                   </span>
                 </div>
                 <div className="about-stat-item">
+                  <div className="about-stat-icon-wrapper">
+                    <ShieldCheck size={18} />
+                  </div>
                   <span className="about-stat-num">100%</span>
                   <span className="about-stat-label">
                     {lang === 'en' ? 'Satisfaction Rate' : 'Satisfaction client'}
@@ -2065,7 +2135,7 @@ function App() {
                   : 'Digitalisation de l\'organisation du pèlerinage : inscriptions, logistique, transports et flux financiers centralisés.',
                 image: '/imgs/ehadj/cover_Ehadj.jpg',
                 mockup: '/imgs/ehadj/cover_Ehadj.jpg',
-                color: '#39FF14',
+                color: '#eeede4',
                 view: 'ehadj'
               },
               {
@@ -2309,39 +2379,174 @@ function App() {
         <IlluShape className="illu-process-shape" />
         <IlluOrb className="illu-process-orb" />
         <IlluStar className="illu-process-star" />
+        
         <div className="container methodology-container-new">
           <div className="methodology-header-new">
-
             <motion.h2 
               className="gsap-reveal-title"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               {t.process.title}
             </motion.h2>
           </div>
 
-          <div className="methodology-list-new">
-            {t.process.items.map((step, i) => (
-              <motion.div 
-                key={i} 
-                className="methodology-item-new"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="methodology-num-new">{step.num}</div>
-                <div className="methodology-content-new">
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
-                </div>
-                <div className="methodology-arrow-new">
-                  <ArrowRight size={32} />
-                </div>
-              </motion.div>
-            ))}
+          <div className="methodology-dashboard-new">
+            {/* Left Column: List of Steps */}
+            <div className="methodology-nav-new">
+              {t.process.items.map((step: any, i: number) => {
+                const isActive = activeProcessStep === i;
+                return (
+                  <motion.div
+                    key={i}
+                    className={`methodology-nav-item-new ${isActive ? 'active' : ''}`}
+                    onClick={() => setActiveProcessStep(i)}
+                    onMouseEnter={() => setActiveProcessStep(i)}
+                    whileHover={{ x: 6 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div className="nav-item-num-new">{step.num}</div>
+                    <div className="nav-item-meta-new">
+                      <h4>{step.title}</h4>
+                    </div>
+                    {isActive && (
+                      <motion.div 
+                        className="nav-active-bar-new"
+                        layoutId="activeProcessBar"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Right Column: Active Step Details Panel */}
+            <div className="methodology-panel-new">
+              <div className="methodology-panel-bg-new"></div>
+              
+              {(() => {
+                const currentStep = t.process.items[activeProcessStep] as any;
+                const stepTags = [
+                  ['Market Audit', 'Competitor Flows', 'Benchmark'],
+                  ['UX Audit', 'Friction Mapping', 'User Feedback'],
+                  ['Sitemaps', 'Info Architecture', 'Flow Diagrams'],
+                  ['Figma Prototypes', 'Design Systems', 'Accessibility'],
+                  ['Implementation review', 'Pixel QA', 'Code alignment']
+                ][activeProcessStep] || [];
+
+                return (
+                  <motion.div
+                    key={activeProcessStep}
+                    className="methodology-panel-content-new"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <div className="panel-header-new">
+                      <span className="panel-tag-new">0{activeProcessStep + 1} / METHODOLOGY</span>
+                    </div>
+
+                    <h3 className="panel-title-new">{currentStep.title}</h3>
+                    <p className="panel-desc-new">{currentStep.desc}</p>
+
+                    {/* Step illustration */}
+                    <div className="panel-visual-new">
+                      {activeProcessStep === 0 && (
+                        <div className="visual-analysis-new">
+                          <div className="visual-row-new visual-header-new">
+                            <span>COMPETITOR</span>
+                            <span>FLOWS</span>
+                            <span>SCORE</span>
+                          </div>
+                          <div className="visual-row-new">
+                            <span>SaaS Platform A</span>
+                            <span className="visual-progress-line-new"><span style={{ width: '60%' }}></span></span>
+                            <span className="visual-score-new text-red">60%</span>
+                          </div>
+                          <div className="visual-row-new active">
+                            <span>My Optimized Architecture</span>
+                            <span className="visual-progress-line-new active"><span style={{ width: '94%' }}></span></span>
+                            <span className="visual-score-new text-green">94%</span>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {activeProcessStep === 1 && (
+                        <div className="visual-audit-new">
+                          <div className="visual-node-new bad">
+                            <span className="visual-node-icon-new">✕</span>
+                            <div className="visual-node-text-new">
+                              <strong>Usability Friction</strong>
+                              <span>4-step complex form flow</span>
+                            </div>
+                          </div>
+                          <div className="visual-node-arrow-new">↓</div>
+                          <div className="visual-node-new good">
+                            <span className="visual-node-icon-new">✓</span>
+                            <div className="visual-node-text-new">
+                              <strong>UX Optimization</strong>
+                              <span>Single page multi-step stepper</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {activeProcessStep === 2 && (
+                        <div className="visual-ia-new">
+                          <div className="ia-card-node-new root">Dashboard</div>
+                          <div className="ia-card-branches-new">
+                            <div className="ia-card-node-new">Analytics</div>
+                            <div className="ia-card-node-new">Access Control</div>
+                            <div className="ia-card-node-new">Settings</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {activeProcessStep === 3 && (
+                        <div className="visual-ui-new">
+                          <div className="ui-header-bar-new">
+                            <span className="ui-dot-new"></span>
+                            <span className="ui-dot-new"></span>
+                            <span className="ui-dot-new"></span>
+                          </div>
+                          <div className="ui-body-mockup-new">
+                            <div className="ui-card-mockup-new">
+                              <span className="ui-avatar-mockup-new"></span>
+                              <span className="ui-text-mockup-new"></span>
+                            </div>
+                            <div className="ui-system-lines-new">
+                              <span className="sys-line-new select">Button // Primary</span>
+                              <span className="sys-line-new token">#0d3479</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {activeProcessStep === 4 && (
+                        <div className="visual-qa-new">
+                          <div className="qa-terminal-header-new">RECETTE QA TERMINAL</div>
+                          <div className="qa-terminal-body-new">
+                            <span className="qa-log-line-new pass">[PASS] Layout container width matches 1400px specification</span>
+                            <span className="qa-log-line-new pass">[PASS] Typography sizing fluid clamp checks completed</span>
+                            <span className="qa-log-line-new warn">[WARN] Accessibility color contrast check passed (AAA)</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Step Tags */}
+                    <div className="panel-tags-new">
+                      {stepTags.map((tag: string, index: number) => (
+                        <span key={index} className="panel-skill-tag-new">{tag}</span>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })()}
+            </div>
           </div>
         </div>
       </section>

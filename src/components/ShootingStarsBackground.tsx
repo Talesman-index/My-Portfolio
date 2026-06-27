@@ -104,7 +104,7 @@ const ShootingStarsBackground: React.FC = () => {
 
         const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
         gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-        gradient.addColorStop(0.2, `rgba(57, 255, 20, ${this.opacity * 0.8})`); // Cyan/Teal #2ec9c4
+        gradient.addColorStop(0.2, `rgba(238, 237, 228, ${this.opacity * 0.8})`); // Warm sand glow
         gradient.addColorStop(1, 'transparent');
 
         ctx.save();
@@ -114,7 +114,7 @@ const ShootingStarsBackground: React.FC = () => {
         
         // Add glow to the head of the streak
         ctx.shadowBlur = 12;
-        ctx.shadowColor = 'rgba(57, 255, 20, 0.6)';
+        ctx.shadowColor = 'rgba(238, 237, 228, 0.6)';
         
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
