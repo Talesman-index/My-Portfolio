@@ -259,6 +259,87 @@ const ServiceIcon04 = () => (
   </svg>
 );
 
+// Custom Premium 3D Isometric SVG Illustrations for the Bento Grid cards
+const BentoIconBio = () => (
+  <svg viewBox="0 0 120 120" className="bento-svg-illustration" fill="none">
+    <defs>
+      <linearGradient id="bioBaseGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="rgba(13, 52, 121, 0.05)" />
+        <stop offset="100%" stopColor="rgba(13, 52, 121, 0.01)" />
+      </linearGradient>
+      <linearGradient id="bioFloatGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="rgba(13, 52, 121, 0.1)" />
+        <stop offset="100%" stopColor="rgba(13, 52, 121, 0.02)" />
+      </linearGradient>
+      <radialGradient id="bioGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#0d3479" stopOpacity="0.06" />
+        <stop offset="100%" stopColor="#0d3479" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    
+    {/* Soft background glow */}
+    <circle cx="60" cy="55" r="45" fill="url(#bioGlow)" />
+    <ellipse cx="60" cy="98" rx="40" ry="8" fill="rgba(13, 52, 121, 0.06)" filter="blur(3px)" />
+    
+    {/* Isometric base plate (lower screen/dashboard) */}
+    <path d="M60 88 L104 68 L60 48 L16 68 Z" fill="url(#bioBaseGlass)" stroke="rgba(13, 52, 121, 0.15)" strokeWidth="1" />
+    <path d="M40 76 L84 56" stroke="rgba(13, 52, 121, 0.08)" strokeWidth="1" />
+    <path d="M30 71 L74 51" stroke="rgba(13, 52, 121, 0.08)" strokeWidth="1" />
+    
+    {/* Isometric floating glass window */}
+    <path d="M60 68 L96 52 L60 36 L24 52 Z" fill="url(#bioFloatGlass)" stroke="rgba(13, 52, 121, 0.35)" strokeWidth="1.2" />
+    
+    {/* Floating elements inside window */}
+    <path d="M40 52 L52 46" stroke="#0d3479" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M40 58 L72 44" stroke="rgba(13, 52, 121, 0.3)" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="84" cy="46" r="2.5" fill="#0d3479" />
+    
+    {/* UI controls in the corner */}
+    <circle cx="34" cy="48" r="1.2" fill="rgba(13, 52, 121, 0.4)" />
+    <circle cx="38" cy="45.5" r="1.2" fill="rgba(13, 52, 121, 0.4)" />
+    <circle cx="42" cy="43" r="1.2" fill="rgba(13, 52, 121, 0.4)" />
+    
+    {/* 3D Floating Arrow cursor */}
+    <path d="M72 56 L82 48 L76 66 L72 59 Z" fill="#0d3479" />
+  </svg>
+);
+
+const BentoIconApproach = () => (
+  <svg viewBox="0 0 120 120" className="bento-svg-illustration" fill="none">
+    <defs>
+      <linearGradient id="appBaseGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="rgba(13, 52, 121, 0.05)" />
+        <stop offset="100%" stopColor="rgba(13, 52, 121, 0.01)" />
+      </linearGradient>
+      <radialGradient id="appGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#0d3479" stopOpacity="0.06" />
+        <stop offset="100%" stopColor="#0d3479" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    
+    {/* Soft background glow */}
+    <circle cx="60" cy="55" r="45" fill="url(#appGlow)" />
+    <ellipse cx="60" cy="98" rx="40" ry="8" fill="rgba(13, 52, 121, 0.06)" filter="blur(3px)" />
+    
+    {/* Isometric base target plate */}
+    <path d="M60 88 L100 68 L60 48 L20 68 Z" fill="url(#appBaseGlass)" stroke="rgba(13, 52, 121, 0.18)" strokeWidth="1" />
+    <ellipse cx="60" cy="68" rx="28" ry="13" stroke="rgba(13, 52, 121, 0.12)" strokeWidth="1" fill="none" />
+    <ellipse cx="60" cy="68" rx="16" ry="7.5" stroke="rgba(13, 52, 121, 0.25)" strokeWidth="1.2" fill="none" />
+    
+    {/* Isometric connecting layout lines */}
+    <line x1="42" y1="58" x2="60" y2="42" stroke="#0d3479" strokeWidth="1.2" strokeDasharray="3 2" />
+    <line x1="60" y1="42" x2="78" y2="58" stroke="#0d3479" strokeWidth="1.2" strokeDasharray="3 2" />
+    <line x1="42" y1="58" x2="78" y2="58" stroke="rgba(13, 52, 121, 0.2)" strokeWidth="1" />
+    
+    {/* Floating isometric node points */}
+    <circle cx="42" cy="58" r="4" fill="#0d3479" />
+    <circle cx="78" cy="58" r="4" fill="#0d3479" />
+    <circle cx="60" cy="42" r="5.5" fill="#0d3479" />
+  </svg>
+);
+
+
+
 const getFeatureIcon = (projectId: string, index: number) => {
   if (projectId === 'asset-iq') {
     const icons = [QrCode, Calendar, Layers, BarChart3];
@@ -1046,6 +1127,92 @@ function App() {
         }
       );
     });
+
+    // Parallax on hero portrait image
+    gsap.to('.hero-portrait-img', {
+      y: '10%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#home',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    // Stagger reveal of Editorial Sheet columns
+    gsap.fromTo('.sheet-col', 
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.about-editorial-sheet',
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    // Stagger reveal of Services cards with a slight 3D rotation
+    gsap.fromTo('.service-card-dznr',
+      { y: 80, opacity: 0, rotateX: -8 },
+      {
+        y: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration: 1.2,
+        stagger: 0.08,
+        ease: 'power4.out',
+        transformPerspective: 1000,
+        scrollTrigger: {
+          trigger: '.services-grid-dznr',
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    // Stagger reveal of Projects cards
+    gsap.fromTo('.project-card-dznr',
+      { y: 70, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.projects-grid-dznr',
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    // Parallax scrolling on Project card images
+    const projectCards = document.querySelectorAll('.project-card-dznr');
+    projectCards.forEach((card) => {
+      const img = card.querySelector('.project-card-image');
+      if (img) {
+        gsap.fromTo(img, 
+          { y: '-6%' },
+          {
+            y: '6%',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          }
+        );
+      }
+    });
   }, [loading]);
 
   useEffect(() => {
@@ -1067,7 +1234,16 @@ function App() {
 
           // Update desktop nav links active class directly in DOM to avoid page re-renders
           document.querySelectorAll('.nav-center-links a').forEach(a => {
-            if (a.getAttribute('href') === `#${id}`) {
+            const href = a.getAttribute('href');
+            let isCurrent = href === `#${id}`;
+            if (href === '#saas' && (id === 'saas' || id === 'projects')) {
+              isCurrent = true;
+            }
+            if (href === '#services' && id === 'experience') {
+              isCurrent = true;
+            }
+            
+            if (isCurrent) {
               a.classList.add('active');
             } else {
               a.classList.remove('active');
@@ -1076,7 +1252,16 @@ function App() {
 
           // Update mobile nav links active class directly in DOM to avoid page re-renders
           document.querySelectorAll('.mobile-link-item').forEach(a => {
-            if (a.getAttribute('href') === `#${id}`) {
+            const href = a.getAttribute('href');
+            let isCurrent = href === `#${id}`;
+            if (href === '#saas' && (id === 'saas' || id === 'projects')) {
+              isCurrent = true;
+            }
+            if (href === '#services' && id === 'experience') {
+              isCurrent = true;
+            }
+
+            if (isCurrent) {
               a.classList.add('active');
             } else {
               a.classList.remove('active');
@@ -1172,8 +1357,8 @@ function App() {
       },
       about: {
         title: <>What I <br/><span className="highlight">really do.</span></>,
-        bio: 'Product Designer with +3 years of experience. I design B2B SaaS, mobile apps & complex platforms, from competitor research to final QA delivery.',
-        approach: 'My approach: Translating complex visions into obvious interfaces. I combine empirical research, high-fidelity prototyping, and technical rigor to craft products that perform as beautifully as they look.',
+        bio: 'Web & Product Designer. I design websites and SaaS products using a single, unified process: Competitor Analysis → Discovery → Information Architecture → High-Fidelity Design → QA. This direct methodology ensures every interface is clear, useful, and fully optimized for development.',
+        approach: 'Translating complex visions into obvious interfaces. I combine empirical research, high-fidelity prototyping, and technical rigor to craft products that perform as beautifully as they look.',
         label: '02 / About'
       },
       experience: {
@@ -1369,8 +1554,8 @@ function App() {
       },
       about: {
         title: <>Ce que je fais <br/><span className="highlight">vraiment.</span></>,
-        bio: 'Product Designer avec +3 ans d\'expérience. Je conçois des SaaS B2B, applications mobiles et plateformes complexes, de la recherche concurrentielle à la recette QA finale.',
-        approach: 'Mon approche : Traduire des visions complexes en interfaces évidentes. Je combine recherche empirique, prototypage de haute fidélité et rigueur technique pour concevoir des produits qui fonctionnent aussi bien qu\'ils en ont l\'air.',
+        bio: 'Designer Web & Produit. Je conçois des sites web et des produits SaaS à travers un processus unique et structuré : Analyse concurrentielle → Discovery → Architecture de l\'information → Design Haute-Fidélité → QA. Une méthodologie directe qui garantit des interfaces claires, utiles et prêtes pour le développement.',
+        approach: 'Traduire des visions complexes en interfaces évidentes. Je combine recherche empirique, prototypage de haute fidélité et rigueur technique pour concevoir des produits qui fonctionnent aussi bien qu\'ils en ont l\'air.',
         label: '02 / À propos'
       },
       experience: {
@@ -1615,9 +1800,7 @@ function App() {
               <div className="nav-center-links hide-mobile">
                 <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}>{t.nav.about}</a>
                 <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }}>{t.nav.services}</a>
-                <a href="#experience" onClick={(e) => { e.preventDefault(); handleNavClick('experience'); }}>{t.nav.experience}</a>
-                <a href="#saas" onClick={(e) => { e.preventDefault(); handleNavClick('saas'); }}>{t.nav.focus}</a>
-                <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>{t.nav.projects}</a>
+                <a href="#saas" onClick={(e) => { e.preventDefault(); handleNavClick('saas'); }}>{t.nav.projects}</a>
                 <a href="#process" onClick={(e) => { e.preventDefault(); handleNavClick('process'); }}>{t.nav.process}</a>
               </div>
 
@@ -1627,14 +1810,14 @@ function App() {
                     className={`lang-btn ${lang === 'en' ? 'active' : ''}`} 
                     onClick={() => setLang('en')}
                   >
-                    <img src="https://flagcdn.com/w20/gb.png" alt="EN" /> EN
+                    EN
                   </button>
-                  <span className="lang-sep">|</span>
+                  <span className="lang-sep">/</span>
                   <button 
                     className={`lang-btn ${lang === 'fr' ? 'active' : ''}`} 
                     onClick={() => setLang('fr')}
                   >
-                    <img src="https://flagcdn.com/w20/fr.png" alt="FR" /> FR
+                    FR
                   </button>
                 </div>
                 <button onClick={openCalendly} className="nav-contact-cta-pentos hide-mobile magnetic-button">
@@ -1662,6 +1845,7 @@ function App() {
                 <div className="mobile-nav-right">
                   <div className="mobile-nav-lang">
                     <button className={`lang-pill ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+                    <span className="lang-sep" style={{ opacity: 0.3, color: '#fff', fontSize: '12px' }}>/</span>
                     <button className={`lang-pill ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>FR</button>
                   </div>
                   <button className="mobile-close-btn" onClick={() => setIsMenuOpen(false)}>
@@ -1686,9 +1870,7 @@ function App() {
                   {[
                     { id: 'about', label: t.nav.about },
                     { id: 'services', label: t.nav.services },
-                    { id: 'experience', label: t.nav.experience },
-                    { id: 'saas', label: t.nav.focus },
-                    { id: 'projects', label: t.nav.projects },
+                    { id: 'saas', label: t.nav.projects },
                     { id: 'process', label: t.nav.process }
                   ].map((link, i) => (
                     <motion.div 
@@ -1768,14 +1950,16 @@ function App() {
           } as any}>
             <div className="hero-portrait-container">
               {/* Profile Portrait */}
-              <motion.img 
-                src="/imgs/hero_image.png" 
-                alt="Sacca Dafia Profile" 
-                className="hero-portrait-img"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              />
+              <div className="hero-portrait-parallax-wrapper" style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 'inherit' }}>
+                <motion.img 
+                  src="/imgs/hero_image.png" 
+                  alt="Sacca Dafia Profile" 
+                  className="hero-portrait-img"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                />
+              </div>
 
               {/* Bottom Green Glow */}
               <div className="hero-glow-green" />
@@ -1811,7 +1995,7 @@ function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  {lang === 'fr' ? 'Je suis Sacca, Product & Experience Designer.' : "I'm Sacca, a Product & Experience Designer."}
+                  {lang === 'fr' ? "Je suis SACCA Dafia, Product & Experience Designer." : "I'm SACCA Dafia, a Product & Experience Designer."}
                 </motion.h1>
                 
                 <motion.p 
@@ -1869,71 +2053,67 @@ function App() {
             </div>
           </div>
           
-          <div className="about-layout-pentos">
-            <div className="about-image-wrapper-new">
-              <div className="about-illu-background">
-                <div className="about-illu-circle about-illu-circle-1" />
-                <div className="about-illu-circle about-illu-circle-2" />
-                <div className="about-illu-dots" />
-              </div>
-              <div className="about-profile-frame">
+          <div className="about-editorial-sheet">
+            {/* Column 1: Profile & Bio */}
+            <div className="sheet-col sheet-col-profile">
+              <div className="sheet-profile-container">
                 <img 
                   src="/imgs/cv-profile.jpg" 
                   alt="Sacca Dafia Profile" 
-                  className="about-profile-img" 
+                  className="sheet-profile-img" 
                 />
               </div>
+              <div className="sheet-bio-wrapper">
+                <span className="sheet-label">01 // {lang === 'en' ? 'IDENTITY' : 'IDENTITÉ'}</span>
+                <h3 className="sheet-headline">{lang === 'en' ? 'Web & Product Designer' : 'Designer Web & Produit'}</h3>
+                <p className="sheet-text">{t.about.bio}</p>
+              </div>
             </div>
-            
-            <div className="about-right-pentos">
-              <motion.p 
-                className="about-bio-pentos"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                {t.about.bio}
-              </motion.p>
+
+            {/* Column 2: Approach & Stack */}
+            <div className="sheet-col sheet-col-approach">
+              <div className="sheet-approach-wrapper">
+                <span className="sheet-label">02 // {lang === 'en' ? 'PHILOSOPHY' : 'PHILOSOPHIE'}</span>
+                <h3 className="sheet-headline">{lang === 'en' ? 'Method & Clarity' : 'Méthode & Clarté'}</h3>
+                <p className="sheet-text">{t.about.approach}</p>
+              </div>
+              <div className="sheet-approach-illu">
+                <BentoIconApproach />
+              </div>
+              <div className="sheet-stack-wrapper">
+                <span className="sheet-label">03 // {lang === 'en' ? 'CORE TOOLBOX' : 'BOÎTE À OUTILS'}</span>
+                <div className="sheet-stack-list">
+                  <span className="sheet-stack-item">Figma</span>
+                  <span className="sheet-stack-item">Webflow</span>
+                  <span className="sheet-stack-item">Notion</span>
+                  <span className="sheet-stack-item">Linear</span>
+                  <span className="sheet-stack-item">Framer</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 3: Metrics & Creative Illustration */}
+            <div className="sheet-col sheet-col-metrics">
+              <div className="sheet-metrics-wrapper">
+                <span className="sheet-label">04 // {lang === 'en' ? 'METRICS' : 'CHIFFRES'}</span>
+                <div className="sheet-metrics-list">
+                  <div className="sheet-metric-item">
+                    <span className="sheet-metric-val">+3</span>
+                    <span className="sheet-metric-lbl">{lang === 'en' ? 'Years of Experience' : "Ans d'expérience"}</span>
+                  </div>
+                  <div className="sheet-metric-item">
+                    <span className="sheet-metric-val">50+</span>
+                    <span className="sheet-metric-lbl">{lang === 'en' ? 'Projects Delivered' : 'Projets livrés'}</span>
+                  </div>
+                  <div className="sheet-metric-item">
+                    <span className="sheet-metric-val">+15</span>
+                    <span className="sheet-metric-lbl">{lang === 'en' ? 'Clients Supported' : 'Clients accompagnés'}</span>
+                  </div>
+                </div>
+              </div>
               
-              <motion.p 
-                className="about-approach-pentos"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                {t.about.approach}
-              </motion.p>
-              
-              <div className="about-stats-pentos">
-                <div className="about-stat-item">
-                  <div className="about-stat-icon-wrapper">
-                    <Award size={18} />
-                  </div>
-                  <span className="about-stat-num">+3</span>
-                  <span className="about-stat-label">
-                    {lang === 'en' ? 'Years of Experience' : "Ans d'expérience"}
-                  </span>
-                </div>
-                <div className="about-stat-item">
-                  <div className="about-stat-icon-wrapper">
-                    <Layers size={18} />
-                  </div>
-                  <span className="about-stat-num">50+</span>
-                  <span className="about-stat-label">
-                    {lang === 'en' ? 'Projects Delivered' : 'Projets livrés'}
-                  </span>
-                </div>
-                <div className="about-stat-item">
-                  <div className="about-stat-icon-wrapper">
-                    <ShieldCheck size={18} />
-                  </div>
-                  <span className="about-stat-num">100%</span>
-                  <span className="about-stat-label">
-                    {lang === 'en' ? 'Satisfaction Rate' : 'Satisfaction client'}
-                  </span>
-                </div>
+              <div className="sheet-art-wrapper">
+                <BentoIconBio />
               </div>
             </div>
           </div>
@@ -1957,13 +2137,9 @@ function App() {
           
           <div className="services-grid-dznr">
             {t.services.items.map((service : any, index : number) => (
-              <motion.div 
+              <div 
                 key={service.id}
                 className="service-card-dznr"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="service-card-icon-wrapper-dznr">
                   {(() => {
@@ -1993,7 +2169,7 @@ function App() {
                     <span key={tag} className="service-card-tag-pill-dznr">{tag}</span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -2262,13 +2438,9 @@ function App() {
                 .filter(Boolean) as any[];
 
               return homepageProjects.map((project: any, i: number) => (
-                <motion.div 
+                <div 
                   key={project.id}
                   className="project-card-dznr"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
                   {/* 1. Image Showcase Container */}
                   <div 
@@ -2343,7 +2515,7 @@ function App() {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ));
             })()}
           </div>
