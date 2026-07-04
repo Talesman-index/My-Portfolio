@@ -371,6 +371,46 @@ const getFeatureIcon = (projectId: string, index: number) => {
 
 const serviceIcons = [ServiceIcon01, ServiceIcon02, ServiceIcon03, ServiceIcon04];
 
+const serviceButtonLabels: Record<'en' | 'fr', string[]> = {
+  en: [
+    "Let's design your product",
+    "Optimize your experience",
+    "Define your strategy",
+    "Build your website"
+  ],
+  fr: [
+    "Concevons votre produit",
+    "Optimisez votre expérience",
+    "Définissez votre stratégie",
+    "Développez votre site"
+  ]
+};
+
+const vortexScreens = [
+  { src: '/imgs/Vortex_gallery/Welcome.png', alt: 'Welcome Screen', title: 'Welcome Screen' },
+  { src: '/imgs/Vortex_gallery/Login - Mobile Phone.png', alt: 'Login', title: 'Login & Verification' },
+  { src: '/imgs/Vortex_gallery/Welcome Screen-2.png', alt: 'OTP verification', title: 'OTP Verification' },
+  { src: '/imgs/Vortex_gallery/Screen 5.png', alt: 'Profile Details', title: 'Onboarding - Profile' },
+  { src: '/imgs/Vortex_gallery/Screen - 5.png', alt: 'Skills Selection', title: 'Onboarding - Skills' },
+  { src: '/imgs/Vortex_gallery/Screen - 6.png', alt: 'Sign Up', title: 'Onboarding - Sign Up' },
+  { src: '/imgs/Vortex_gallery/Home.png', alt: 'Home Dashboard', title: 'Main Dashboard' },
+  { src: '/imgs/Vortex_gallery/Home-1.png', alt: 'Wallet Details', title: 'Wallet & Profile' },
+  { src: '/imgs/Vortex_gallery/Scan.jpg', alt: 'Scan QR Code', title: 'QR Scan Payment' },
+  { src: '/imgs/Vortex_gallery/Frame 1410103881.png', alt: 'Profile View', title: 'Profile Summary' },
+  { src: '/imgs/Vortex_gallery/Frame 1410103882.png', alt: 'Edit Profile', title: 'Profile Management' }
+];
+
+const getContrastBadgeColor = (color: string) => {
+  const c = color.toLowerCase();
+  if (c === '#ffd700' || c === '#ffd800' || c === 'yellow') {
+    return '#876600'; // Darker gold/ochre for high contrast readability
+  }
+  if (c === '#00e5ff') {
+    return '#007b8f'; // Darker cyan
+  }
+  return color;
+};
+
 const CaseStudy = ({ 
   id, 
   mousePos, 
@@ -410,14 +450,6 @@ const CaseStudy = ({
             >
               {data.title}
             </motion.h1>
-            <motion.p 
-              className="cs-hero-subtitle"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {data.subtitle}
-            </motion.p>
             {!isConcise && data.externalLink && data.externalLink !== '#' && (
               <motion.a 
                 href={data.externalLink}
@@ -449,8 +481,7 @@ const CaseStudy = ({
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  <label className="cs-section-label">{lang === 'fr' ? '01 / CONTEXTE & DÉFI' : '01 / CONTEXT & CHALLENGE'}</label>
-                  <h3>{data.contextTitle || (lang === 'fr' ? "Le Projet & Le Défi." : "Overview & Challenge.")}</h3>
+                  <h2>{data.contextTitle || (lang === 'fr' ? "Le Projet & Le Défi." : "Overview & Challenge.")}</h2>
                   <p>{data.context}</p>
                   <p style={{ marginTop: '16px' }}>{data.challenge}</p>
                 </motion.div>
@@ -485,8 +516,7 @@ const CaseStudy = ({
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  <label className="cs-section-label">{lang === 'fr' ? '02 / RÉPONSE UX & EXPÉRIENCE' : '02 / UX RESPONSE & EXPERIENCE'}</label>
-                  <h3>{data.solutionTitle || (lang === 'fr' ? "La réponse apportée." : "The solution.")}</h3>
+                  <h2>{data.solutionTitle || (lang === 'fr' ? "La réponse apportée." : "The solution.")}</h2>
                   <p>{data.solution}</p>
                 </motion.div>
               </div>
@@ -498,8 +528,7 @@ const CaseStudy = ({
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  <label className="cs-section-label">{lang === 'fr' ? '01 / CONTEXTE' : '01 / CONTEXT'}</label>
-                  <h3>{data.contextTitle || (lang === 'fr' ? "La fragmentation des données opérationnelles." : "Fragmentation of operational data.")}</h3>
+                  <h2>{data.contextTitle || (lang === 'fr' ? "La fragmentation des données opérationnelles." : "Fragmentation of operational data.")}</h2>
                   <p>{data.context}</p>
                   {data.contextImg && (
                     <div className="cs-inline-mockup">
@@ -515,8 +544,7 @@ const CaseStudy = ({
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                   >
-                    <label className="cs-section-label">{lang === 'fr' ? '02 / LE PROBLÈME' : '02 / THE PROBLEM'}</label>
-                    <h3>{data.problemTitle || (lang === 'fr' ? "Processus manuels et erreurs critiques." : "Manual processes and critical errors.")}</h3>
+                    <h2>{data.problemTitle || (lang === 'fr' ? "Processus manuels et erreurs critiques." : "Manual processes and critical errors.")}</h2>
                     <p>{data.problem}</p>
                   </motion.div>
                 )}
@@ -528,8 +556,7 @@ const CaseStudy = ({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <label className="cs-section-label">{lang === 'fr' ? '03 / CHALLENGE' : '03 / CHALLENGE'}</label>
-                  <h3>{data.challengeTitle || (lang === 'fr' ? "Sécuriser le parcours de 2300 utilisateurs." : "Securing the onboarding of 2,300 users.")}</h3>
+                  <h2>{data.challengeTitle || (lang === 'fr' ? "Sécuriser le parcours de 2300 utilisateurs." : "Securing the onboarding of 2,300 users.")}</h2>
                   <p>{data.challenge}</p>
                   <div className="cs-inline-mockup">
                     <img src={data.challengeImg} alt="Challenge" />
@@ -538,17 +565,16 @@ const CaseStudy = ({
 
                 {data.decisions && (
                   <div className="cs-section-new">
-                    <label className="cs-section-label">{lang === 'fr' ? '04 / DÉCISIONS PRODUIT' : '04 / PRODUCT DECISIONS'}</label>
                     <div className="cs-decisions-grid-new">
                       {data.decisions.map((d: any, i: number) => (
                         <div key={i} className="cs-decision-card-new">
-                          <h4>{d.title}</h4>
+                          <h3>{d.title}</h3>
                           <p>{d.desc}</p>
                           <div className="cs-why-box-new">
                             <span className="cs-why-badge-new" style={{ 
                               backgroundColor: `${data.color}15`, 
-                              color: data.color,
-                              borderColor: `${data.color}30`
+                              color: getContrastBadgeColor(data.color),
+                              borderColor: `${getContrastBadgeColor(data.color)}30`
                             }}>
                               {lang === 'fr' ? 'POURQUOI' : 'WHY'}
                             </span>
@@ -561,8 +587,7 @@ const CaseStudy = ({
                 )}
 
                 <div className="cs-section-new">
-                  <label className="cs-section-label">{lang === 'fr' ? '05 / SOLUTION UX' : '05 / UX SOLUTION'}</label>
-                  <h3>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h3>
+                  <h2>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h2>
                   <p>{data.solution}</p>
                   {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
                   {data.dashboardImg && (
@@ -583,8 +608,7 @@ const CaseStudy = ({
 
                 {data.interfaceImg && (
                   <div className="cs-section-new">
-                    <label className="cs-section-label">{lang === 'fr' ? '06 / INTERFACE UTILISATEUR' : '06 / USER INTERFACE'}</label>
-                    <h3>{lang === 'fr' ? "L'application de pilotage centralisée." : "The centralized orchestration dashboard."}</h3>
+                    <h2>{lang === 'fr' ? "L'application de pilotage centralisée." : "The centralized orchestration dashboard."}</h2>
                     <div className="cs-dashboard-frame-new">
                       <div className="mockup-frame-new">
                         <div className="mockup-header-new">
@@ -609,7 +633,7 @@ const CaseStudy = ({
                           return <IconComponent size={20} className="feature-icon-new" />;
                         })()}
                       </div>
-                      <h4>{f.title}</h4>
+                      <h3>{f.title}</h3>
                       <p>{f.desc}</p>
                     </div>
                   ))}
@@ -659,6 +683,43 @@ const CaseStudy = ({
               </div>
             </aside>
           </div>
+
+          {id === 'vortex' && (
+            <div className="cs-gallery-section-new">
+              <h2 className="cs-section-title-center-new" style={{ display: 'block', margin: '0 auto clamp(24px, 4vw, 48px) auto', textAlign: 'center', maxWidth: '1200px', padding: '0 24px' }}>
+                {lang === 'fr' ? 'Galerie des écrans' : 'Screen Gallery'}
+              </h2>
+              
+              <div className="cs-gallery-ticker-wrapper">
+                <div className="cs-gallery-ticker">
+                  <span>{Array(12).fill(lang === 'fr' ? 'Galerie •' : 'Gallery •').join('  ')}</span>
+                  <span>{Array(12).fill(lang === 'fr' ? 'Galerie •' : 'Gallery •').join('  ')}</span>
+                </div>
+              </div>
+
+              <div className="cs-gallery-grid-new">
+                <div className="cs-gallery-track">
+                  {vortexScreens.map((screen, idx) => (
+                    <div key={idx} className="cs-gallery-card-new">
+                      <div className="cs-gallery-img-wrapper">
+                        <img src={screen.src} alt={screen.alt} loading="lazy" />
+                      </div>
+                      <span className="cs-gallery-card-title">{screen.title}</span>
+                    </div>
+                  ))}
+                  {/* Duplicate for infinite loop */}
+                  {vortexScreens.map((screen, idx) => (
+                    <div key={`dup-${idx}`} className="cs-gallery-card-new">
+                      <div className="cs-gallery-img-wrapper">
+                        <img src={screen.src} alt={screen.alt} loading="lazy" />
+                      </div>
+                      <span className="cs-gallery-card-title">{screen.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -887,11 +948,6 @@ const ProjectsView = ({
           <h1 className="projects-page-title">
             {lang === 'en' ? <>All <span className="highlight">Projects.</span></> : <>Tous les <span className="highlight">Projets.</span></>}
           </h1>
-          <p className="projects-page-subtitle" style={{ marginBottom: '32px' }}>
-            {lang === 'en' 
-              ? 'Explore my work across product design, mobile apps, B2B SaaS, and digital strategies.' 
-              : 'Explorez mon travail en product design, applications mobiles, SaaS B2B et stratégies digitales.'}
-          </p>
 
           {/* Dynamic Filter Tabs */}
           <div className="filter-tabs-container" style={{ display: 'inline-flex', marginTop: '8px' }}>
@@ -1952,7 +2008,7 @@ function App() {
               {/* Profile Portrait */}
               <div className="hero-portrait-parallax-wrapper" style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 'inherit' }}>
                 <motion.img 
-                  src="/imgs/hero_image.png" 
+                  src="/imgs/hero.png" 
                   alt="Sacca Dafia Profile" 
                   className="hero-portrait-img"
                   initial={{ opacity: 0, y: 40 }}
@@ -1997,17 +2053,6 @@ function App() {
                 >
                   {lang === 'fr' ? "Je suis SACCA Dafia, Product & Experience Designer." : "I'm SACCA Dafia, a Product & Experience Designer."}
                 </motion.h1>
-                
-                <motion.p 
-                  className="hero-greeting-subtext"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.55 }}
-                >
-                  {lang === 'fr' 
-                    ? 'Axé sur la création de systèmes numériques clairs, utiles et durables, de la stratégie au code.' 
-                    : 'Focused on creating clear, useful, and sustainable digital systems, from strategy to code.'}
-                </motion.p>
               </div>
 
               {/* Scroll Down Indicator */}
@@ -2139,35 +2184,45 @@ function App() {
             {t.services.items.map((service : any, index : number) => (
               <div 
                 key={service.id}
-                className="service-card-dznr"
+                className={`service-card-dznr ${index === 0 ? 'featured-card' : ''}`}
               >
-                <div className="service-card-icon-wrapper-dznr">
+                <div className="service-card-content-dznr">
+                  <h3 className="service-card-title-dznr">
+                    {(() => {
+                      const words = service.title.split(' ');
+                      if (words.length <= 1) return service.title;
+                      const lastWord = words[words.length - 1];
+                      const rest = words.slice(0, words.length - 1).join(' ');
+                      return (
+                        <>
+                          {rest} <span className="highlight-green">{lastWord}</span>
+                        </>
+                      );
+                    })()}
+                  </h3>
+                  
+                  <p className="service-card-desc-dznr">{service.desc}</p>
+                  
+                  <div className="service-card-tags-dznr">
+                    {service.tags.map((tag: string) => (
+                      <span key={tag} className="service-card-tag-pill-dznr">{tag}</span>
+                    ))}
+                  </div>
+
+                  <button 
+                    className="service-card-btn-dznr"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    <span>{serviceButtonLabels[lang][index]}</span>
+                    <ArrowRight size={16} className="service-card-btn-arrow-dznr" />
+                  </button>
+                </div>
+
+                <div className="service-card-graphic-dznr">
                   {(() => {
                     const Icon = serviceIcons[index];
                     return <Icon />;
                   })()}
-                </div>
-                
-                <h3 className="service-card-title-dznr">
-                  {(() => {
-                    const words = service.title.split(' ');
-                    if (words.length <= 1) return service.title;
-                    const lastWord = words[words.length - 1];
-                    const rest = words.slice(0, words.length - 1).join(' ');
-                    return (
-                      <>
-                        {rest} <span className="highlight-green">{lastWord}</span>
-                      </>
-                    );
-                  })()}
-                </h3>
-                
-                <p className="service-card-desc-dznr">{service.desc}</p>
-                
-                <div className="service-card-tags-dznr">
-                  {service.tags.map((tag: string) => (
-                    <span key={tag} className="service-card-tag-pill-dznr">{tag}</span>
-                  ))}
                 </div>
               </div>
             ))}
@@ -2285,11 +2340,6 @@ function App() {
             >
               Produits &amp; <span className="highlight">SaaS.</span>
             </motion.h2>
-            <p className="saas-section-sub">
-              {lang === 'en'
-                ? 'Complex B2B platforms designed from strategy to final delivery.'
-                : 'Des plateformes B2B complexes conçues de la stratégie jusqu\'à la livraison finale.'}
-            </p>
           </div>
 
           {/* Showcase grid cards */}
