@@ -7740,11 +7740,18 @@ h1, h2, h3, h4, h5, h6 {
     gap: 24px !important;
     padding: 0 20px !important;
   }
-  .service-card-dznr {
-    grid-column: span 12 !important;
+  /* Reset ALL nth-child spans so every card is full-width on mobile */
+  .service-card-dznr,
+  .service-card-dznr:nth-child(1),
+  .service-card-dznr:nth-child(2),
+  .service-card-dznr:nth-child(3),
+  .service-card-dznr:nth-child(4) {
+    grid-column: 1 / -1 !important;
     min-height: auto !important;
     padding: 36px !important;
     flex-direction: column !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .service-card-content-dznr {
     max-width: 100% !important;
