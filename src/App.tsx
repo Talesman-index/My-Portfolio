@@ -400,13 +400,20 @@ const vortexScreens = [
   { src: '/imgs/Vortex_gallery/Frame 1410103882.png', alt: 'Edit Profile', title: 'Profile Management' }
 ];
 
+
 const getContrastBadgeColor = (color: string) => {
   const c = color.toLowerCase();
-  if (c === '#ffd700' || c === '#ffd800' || c === 'yellow') {
+  if (c === '#ffd700' || c === '#ffd800' || c === '#ffe600' || c === 'yellow') {
     return '#876600'; // Darker gold/ochre for high contrast readability
   }
   if (c === '#00e5ff') {
     return '#007b8f'; // Darker cyan
+  }
+  if (c === '#00fa9a') {
+    return '#00804b'; // Darker spring green for Sport Advisor badge
+  }
+  if (c === '#10b981') {
+    return '#047857'; // Darker emerald green
   }
   return color;
 };
@@ -510,15 +517,17 @@ const CaseStudy = ({
                 )}
 
                 {/* Section 02: Solution UX/UI */}
-                <motion.div 
-                  className="cs-section-new"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                >
-                  <h2>{data.solutionTitle || (lang === 'fr' ? "La réponse apportée." : "The solution.")}</h2>
-                  <p>{data.solution}</p>
-                </motion.div>
+                {data.solution && (
+                  <motion.div 
+                    className="cs-section-new"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                  >
+                    <h2>{data.solutionTitle || (lang === 'fr' ? "La réponse apportée." : "The solution.")}</h2>
+                    <p>{data.solution}</p>
+                  </motion.div>
+                )}
               </div>
             ) : (
               <div className="cs-main-content">
@@ -558,9 +567,11 @@ const CaseStudy = ({
                 >
                   <h2>{data.challengeTitle || (lang === 'fr' ? "Sécuriser le parcours de 2300 utilisateurs." : "Securing the onboarding of 2,300 users.")}</h2>
                   <p>{data.challenge}</p>
-                  <div className="cs-inline-mockup">
-                    <img src={data.challengeImg} alt="Challenge" />
-                  </div>
+                  {data.challengeImg && (
+                    <div className="cs-inline-mockup">
+                      <img src={data.challengeImg} alt="Challenge" />
+                    </div>
+                  )}
                 </motion.div>
 
                 {data.decisions && (
@@ -586,25 +597,27 @@ const CaseStudy = ({
                   </div>
                 )}
 
-                <div className="cs-section-new">
-                  <h2>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h2>
-                  <p>{data.solution}</p>
-                  {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
-                  {data.dashboardImg && (
-                    <div className="cs-dashboard-frame-new">
-                      <div className="mockup-frame-new">
-                        <div className="mockup-header-new">
-                          <span className="mockup-dot" />
-                          <span className="mockup-dot" />
-                          <span className="mockup-dot" />
-                        </div>
-                        <div className="mockup-screen-new">
-                          <img src={data.dashboardImg} alt="Dashboard" />
+                {data.solution && (
+                  <div className="cs-section-new">
+                    <h2>{data.solutionTitle || (lang === 'fr' ? "Intégrité par le design et validation stricte." : "Design integrity and strict validation.")}</h2>
+                    <p>{data.solution}</p>
+                    {data.uxSolutions && <div className="cs-pull-quote">{data.uxSolutions}</div>}
+                    {data.dashboardImg && (
+                      <div className="cs-dashboard-frame-new">
+                        <div className="mockup-frame-new">
+                          <div className="mockup-header-new">
+                            <span className="mockup-dot" />
+                            <span className="mockup-dot" />
+                            <span className="mockup-dot" />
+                          </div>
+                          <div className="mockup-screen-new">
+                            <img src={data.dashboardImg} alt="Dashboard" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </div>
+                    )}
+                  </div>
+                )}
 
                 {data.interfaceImg && (
                   <div className="cs-section-new">
@@ -2008,7 +2021,7 @@ function App() {
               {/* Profile Portrait */}
               <div className="hero-portrait-parallax-wrapper" style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 'inherit' }}>
                 <motion.img 
-                  src="/imgs/hero.png" 
+                  src="/imgs/hero_image.png" 
                   alt="Sacca Dafia Profile" 
                   className="hero-portrait-img"
                   initial={{ opacity: 0, y: 40 }}

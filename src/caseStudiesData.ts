@@ -11,9 +11,9 @@ export interface CaseStudyData {
   problemTitle?: string;
   challenge: string;
   challengeTitle?: string;
-  challengeImg: string;
+  challengeImg?: string;
   decisions?: Array<{ title: string; desc: string; why: string }>;
-  solution: string;
+  solution?: string;
   solutionTitle?: string;
   uxSolutions?: string;
   dashboardImg?: string;
