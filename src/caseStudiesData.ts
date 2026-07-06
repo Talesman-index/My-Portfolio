@@ -26,7 +26,7 @@ export interface CaseStudyData {
   ctaLabel?: string;
 }
 
-export type CaseStudyId = 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge';
+export type CaseStudyId = 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena';
 
 export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyData>> = {
   fr: {
@@ -346,6 +346,35 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       ],
       conclusion: "Le nouveau portail de The Refuge prouve que le design numérique peut être un vecteur puissant d'action sociale. En alliant transparence de l'impact et simplicité d'interaction, le site comble avec succès le fossé entre la génélovisité en ligne et les vies restaurées dans les rues de Cotonou.",
       externalLink: "https://your-refuge.vercel.app/"
+    },
+    'strategy-arena': {
+      title: "Strategy Arena",
+      subtitle: "Cabinet de conseil en stratégie, organisation et transformation digitale pour PME",
+      label: "Branding, Design & Développement Web",
+      color: "#F4E723",
+      bgImage: "/imgs/Strategy-Arena.png",
+      context: "Strategy Arena est un cabinet de conseil en stratégie et organisation basé à Cotonou, au Bénin. Face à la digitalisation rapide et aux besoins de structuration des PME en Afrique de l'Ouest, le cabinet propose des audits opérationnels et des accompagnements pragmatiques. Pour affirmer sa crédibilité et attirer des PME en phase de croissance, Strategy Arena nécessitait une identité de marque forte et une présence en ligne premium à la hauteur de son expertise.",
+      contextTitle: "Un diagnostic juste, avant toute solution.",
+      challenge: "Le défi majeur consistait à concevoir un branding moderne et minimaliste rompant avec les codes traditionnels et ternes du conseil. Il fallait créer un site vitrine ultra-performant, fluide et hautement interactif, reflétant la rigueur méthodologique du cabinet tout en offrant une expérience utilisateur (UX) irréprochable sur mobile et desktop.",
+      challengeTitle: "Allier branding moderne, fluidité et performance.",
+      solution: "Nous avons élaboré une identité visuelle complète (logo, typographies, palette chromatique jaune canari et noir absolu) et développé un site vitrine moderne et asymétrique. L'interface intègre des micro-animations interactives fluides, un préchargeur dynamique, et des pages de services détaillées structurées pour maximiser la conversion des PME.",
+      solutionTitle: "Branding distinctif, micro-animations et conversion.",
+      insight: "Le design haut de gamme et la fluidité technique sont des gages de confiance immédiats dans le secteur du conseil. Un site rapide et esthétique convertit les prospects qualifiés bien avant le premier rendez-vous.",
+      dashboardImg: "/imgs/Strategy-Arena.png",
+      features: [
+        { title: "Identité de Marque Unique", desc: "Logo moderne et palette de couleurs contrastée jaune canari/noir." },
+        { title: "Préchargeur Interactif", desc: "Une animation d'accueil fluide optimisant le chargement initial." },
+        { title: "Services Structurés", desc: "Présentation des quatre offres clés (Diagnostic, Structure, Transformation, Croissance)." },
+        { title: "Résultats Opérationnels", desc: "Présentation des études de cas concrètes pour Bénin Distribution, Sahel Foods et Atlantique Logistique." }
+      ],
+      impact: [
+        "Une image de marque haut de gamme immédiatement reconnaissable",
+        "Taux d'engagement et temps de visite en hausse sur le site",
+        "Génération de leads simplifiée grâce à un tunnel de contact fluide",
+        "Vitrine technologique validant l'expertise en transformation digitale"
+      ],
+      conclusion: "Le nouveau site de Strategy Arena positionne le cabinet comme un partenaire moderne et incontournable pour la digitalisation et la restructuration des PME en Afrique de l'Ouest.",
+      externalLink: "https://strategie-arena.com/"
     }
   },
   en: {
@@ -667,6 +696,35 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       ],
       conclusion: "The new web portal for The Refuge demonstrates how digital design and transparent data tracking can empower social causes, successfully bridging the gap between online donors and lives transformed on the streets of Cotonou.",
       externalLink: "https://your-refuge.vercel.app/"
+    },
+    'strategy-arena': {
+      title: "Strategy Arena",
+      subtitle: "Strategy, organization, and digital transformation consulting for SMEs in West Africa",
+      label: "Branding, Web Design & Development",
+      color: "#F4E723",
+      bgImage: "/imgs/Strategy-Arena.png",
+      context: "Strategy Arena is a strategy and organization consulting firm based in Cotonou, Benin. With the rapid digitization and structural needs of West African SMEs, the firm provides operational audits and pragmatic support. To establish its credibility and attract growing SMEs, Strategy Arena required a strong brand identity and a premium online presence matching its expertise.",
+      contextTitle: "A precise diagnosis, before any solution.",
+      challenge: "The main challenge was to design a modern, minimalist branding that breaks away from traditional, dull consulting codes. We needed to create a high-performance, smooth, and highly interactive showcase website that reflects the firm's methodological rigor while delivering a flawless user experience (UX) on both mobile and desktop.",
+      challengeTitle: "Blending modern branding, smoothness, and performance.",
+      solution: "We crafted a complete visual identity (logo, typography, canary yellow and absolute black color palette) and developed a modern, asymmetrical showcase website. The interface features smooth interactive micro-animations, a dynamic preloader, and detailed service pages structured to maximize conversions.",
+      solutionTitle: "Distinctive branding, micro-animations, and conversion.",
+      insight: "High-end design and technical smoothness are immediate trust signals in the consulting sector. A fast, aesthetic website converts qualified prospects long before the first meeting.",
+      dashboardImg: "/imgs/Strategy-Arena.png",
+      features: [
+        { title: "Unique Brand Identity", desc: "Modern logo and high-contrast canary yellow/black color palette." },
+        { title: "Interactive Preloader", desc: "A smooth intro animation optimizing initial loading times." },
+        { title: "Structured Services", desc: "Clear display of the four core offerings (Diagnosis, Structure, Transformation, Growth)." },
+        { title: "Operational Results", desc: "Concrete results showcased for Benin Distribution, Sahel Foods, and Atlantique Logistique." }
+      ],
+      impact: [
+        "Immediately recognizable high-end brand identity",
+        "Increased user engagement and session duration on the website",
+        "Simplified lead generation through a seamless contact funnel",
+        "A digital showcase validating the firm's digital transformation expertise"
+      ],
+      conclusion: "Strategy Arena's new website positions the firm as a modern and essential partner for the digitization and restructuring of SMEs in West Africa.",
+      externalLink: "https://strategie-arena.com/"
     }
   }
 };

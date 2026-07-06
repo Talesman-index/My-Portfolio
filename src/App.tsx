@@ -425,14 +425,14 @@ const CaseStudy = ({
   onBack,
   lang
 }: { 
-  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge', 
+  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena', 
   mousePos: { x: number, y: number }, 
   setCurrentView: any,
   onBack?: () => void,
   lang: 'en' | 'fr'
 }) => {
   const data = caseStudiesData[lang][id];
-  const isConcise = id === 'tavares' || id === 'the-refuge';
+  const isConcise = id === 'tavares' || id === 'the-refuge' || id === 'strategy-arena';
 
   return (
     <div className="cs-view-new" style={{ 
@@ -1091,7 +1091,7 @@ const ProjectsView = ({
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'cv'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'cv'>('home');
   const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
   if (previousView) { /* no-op for TS check */ }
   const [lang, setLang] = useState<'en' | 'fr'>('en');
@@ -1485,15 +1485,15 @@ function App() {
             linkType: 'site',
           },
           {
-            id: 'sagana',
-            title: 'Sagana',
+            id: 'strategy-arena',
+            title: 'Strategy Arena',
             role: 'Web Designer & Developer',
-            category: 'Digital Agency',
-            image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
-            description: "Full design and development of Sagana's website. A modern platform combining premium design and performance to support businesses in their digital growth.",
-            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
-            link: 'https://www.sagana-agency.com/',
-            color: '#DFFF00',
+            category: 'Consulting Website',
+            image: '/imgs/Strategy-Arena.png',
+            description: "Full branding, visual identity, and development of Strategy Arena's showcase website. A modern, high-performance platform featuring interactive micro-animations, structured services, and business cases to attract growing SMEs in West Africa.",
+            techs: ['Branding', 'Figma', 'Vite', 'HTML5', 'CSS3'],
+            link: 'https://strategie-arena.com/',
+            color: '#F4E723',
             linkType: 'site',
           },
           {
@@ -1542,6 +1542,18 @@ function App() {
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
             color: '#0d3479',
+            linkType: 'site',
+          },
+          {
+            id: 'sagana',
+            title: 'Sagana',
+            role: 'Web Designer & Developer',
+            category: 'Digital Agency',
+            image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
+            description: "Full design and development of Sagana's website. A modern platform combining premium design and performance to support businesses in their digital growth.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: 'https://www.sagana-agency.com/',
+            color: '#DFFF00',
             linkType: 'site',
           },
         ]
@@ -1682,15 +1694,15 @@ function App() {
             linkType: 'site',
           },
           {
-            id: 'sagana',
-            title: 'Sagana',
+            id: 'strategy-arena',
+            title: 'Strategy Arena',
             role: 'Web Designer & Développeur',
-            category: 'Agence Digitale',
-            image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
-            description: "Conception et développement intégral du site web de Sagana. Une plateforme moderne alliant design premium et performance pour accompagner les entreprises dans leur croissance digitale.",
-            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
-            link: 'https://www.sagana-agency.com/',
-            color: '#DFFF00',
+            category: 'Site Cabinet de Conseil',
+            image: '/imgs/Strategy-Arena.png',
+            description: "Branding complet, identité visuelle et développement du site vitrine de Strategy Arena. Une plateforme moderne, ultra-performante et asymétrique, avec des micro-animations fluides et des pages de services structurées pour attirer les PME d'Afrique de l'Ouest.",
+            techs: ['Branding', 'Figma', 'Vite', 'HTML5', 'CSS3'],
+            link: 'https://strategie-arena.com/',
+            color: '#F4E723',
             linkType: 'site',
           },
           {
@@ -1739,6 +1751,18 @@ function App() {
             techs: ['Figma', 'UX Research', 'Design System', 'Prototyping'],
             link: 'https://your-refuge.vercel.app/',
             color: '#0d3479',
+            linkType: 'site',
+          },
+          {
+            id: 'sagana',
+            title: 'Sagana',
+            role: 'Web Designer & Développeur',
+            category: 'Agence Digitale',
+            image: '/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png',
+            description: "Conception et développement intégral du site web de Sagana. Une plateforme moderne alliant design premium et performance pour accompagner les entreprises dans leur croissance digitale.",
+            techs: ['Figma', 'React', 'Tailwind', 'Framer Motion'],
+            link: 'https://www.sagana-agency.com/',
+            color: '#DFFF00',
             linkType: 'site',
           },
         ]
@@ -2495,7 +2519,7 @@ function App() {
 
           <div className="projects-grid-dznr">
             {(() => {
-              const homepageIds = ['vortex', 'sport-advisor', 'tavares', 'the-refuge'];
+              const homepageIds = ['vortex', 'sport-advisor', 'tavares', 'the-refuge', 'strategy-arena'];
               const homepageProjects = homepageIds
                 .map(id => projects.find((p: any) => p.id === id))
                 .filter(Boolean) as any[];
