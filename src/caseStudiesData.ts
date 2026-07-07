@@ -26,7 +26,7 @@ export interface CaseStudyData {
   ctaLabel?: string;
 }
 
-export type CaseStudyId = 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena';
+export type CaseStudyId = 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera';
 
 export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyData>> = {
   fr: {
@@ -375,6 +375,53 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       ],
       conclusion: "Le nouveau site de Strategy Arena positionne le cabinet comme un partenaire moderne et incontournable pour la digitalisation et la restructuration des PME en Afrique de l'Ouest.",
       externalLink: "https://strategie-arena.com/"
+    },
+    'dolce-riviera': {
+      title: "Dolce Riviera",
+      subtitle: "Concept de landing page premium pour l'hôtellerie de luxe sur la Riviera",
+      label: "Product Design & UI Design",
+      color: "#C5A059",
+      bgImage: "/imgs/dolce_cover.png",
+      context: "Dolce Riviera est un concept de landing page conçu pour une marque de luxe inspirée par l'élégance intemporelle de la Riviera méditerranéenne. L'objectif était de créer une expérience immersive qui met en avant le raffinement, l'exclusivité et l'art de vivre à travers une interface moderne et minimaliste.",
+      contextTitle: "L'élégance intemporelle de la Riviera.",
+      challenge: "Structurer une hiérarchie visuelle claire orientée vers la conversion tout en préservant une direction artistique premium et épurée. L'interface devait allier narration visuelle immersive et expérience utilisateur fluide sur tous les supports.",
+      challengeTitle: "Équilibre entre esthétique haut de gamme et conversion.",
+      decisions: [
+        {
+          title: "Direction Artistique Sobre",
+          desc: "Utilisation d'une palette chromatique sobre accentuée par des tons or chaud et sable.",
+          why: "Évoque le prestige discret de la côte d'Azur tout en renforçant la crédibilité de la marque."
+        },
+        {
+          title: "Espaces et Respiration",
+          desc: "Intégration d'espacements généreux et d'une typographie à fort contraste.",
+          why: "Laisse respirer les visuels immersifs et structure l'information sans surcharger l'utilisateur."
+        },
+        {
+          title: "Parcours de Réservation Simplifié",
+          desc: "Conception d'un tunnel de réservation direct et intuitif accessible en continu.",
+          why: "Maximise les opportunités de conversion sans perturber la narration visuelle."
+        }
+      ],
+      solution: "Une interface minimaliste et élégante mettant l'accent sur le storytelling visuel et la fluidité des parcours de réservation. La mise en page asymétrique et la gestion rigoureuse de la typographie guident naturellement l'utilisateur vers la découverte et la conversion.",
+      solutionTitle: "Narration visuelle et parcours de conversion intégrés.",
+      uxSolutions: "Hiérarchie de l'information : chaque section est conçue comme un chapitre d'une expérience exclusive, incitant à l'action par des micro-interactions soignées.",
+      dashboardImg: "/imgs/dolce_cover.png",
+      features: [
+        { title: "Hiérarchie Visuelle Claire", desc: "Mise en page optimisée pour structurer le contenu et guider l'utilisateur vers les actions clés." },
+        { title: "Direction Artistique Premium", desc: "Palette sobre, typographie soignée et visuels haute qualité évoquant le prestige." },
+        { title: "UX Fluide & Responsive", desc: "Expérience utilisateur optimisée assurant un confort de navigation idéal sur desktop et mobile." },
+        { title: "Narration Visuelle", desc: "Mise en valeur soignée des espaces, des services exclusifs et des offres de la marque." }
+      ],
+      insight: "Dans le design de luxe, la simplicité est le raffinement suprême. L'équilibre visuel et la sobriété des animations créent un sentiment de calme et d'exclusivité.",
+      impact: [
+        "Identité de marque forte et crédibilité renforcée par le design",
+        "Hiérarchie visuelle fluide optimisant les flux de réservation",
+        "Expérience immersive incitant à la découverte des offres exclusives"
+      ],
+      conclusion: "Dolce Riviera réconcilie les impératifs de conversion et la sobriété du design haut de gamme à travers un parcours utilisateur élégant et efficace.",
+      externalLink: "https://www.behance.net/gallery/252335895/Dolce-Riviera-Luxury-Hospitality-Landing-Page-Concept",
+      ctaLabel: "VOIR LE PROJET"
     }
   },
   en: {
@@ -725,6 +772,53 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       ],
       conclusion: "Strategy Arena's new website positions the firm as a modern and essential partner for the digitization and restructuring of SMEs in West Africa.",
       externalLink: "https://strategie-arena.com/"
+    },
+    'dolce-riviera': {
+      title: "Dolce Riviera",
+      subtitle: "Premium landing page concept for luxury hospitality on the Riviera",
+      label: "Product Design & UI Design",
+      color: "#C5A059",
+      bgImage: "/imgs/dolce_cover.png",
+      context: "Dolce Riviera is a landing page concept designed for a luxury brand inspired by the timeless elegance of the Mediterranean Riviera. The goal was to create an immersive experience showcasing refinement, exclusivity, and art de vivre through a modern and minimalist interface.",
+      contextTitle: "The timeless elegance of the Riviera.",
+      challenge: "Structuring a clear visual hierarchy oriented towards conversion while preserving a premium and clean art direction. The interface had to balance immersive visual storytelling and smooth user experience across desktop and mobile devices.",
+      challengeTitle: "Balancing high-end aesthetics with conversion goals.",
+      decisions: [
+        {
+          title: "Sober Art Direction",
+          desc: "Using a refined color palette accented with warm gold and sand tones.",
+          why: "Evokes the understated prestige of the French Riviera while reinforcing brand credibility."
+        },
+        {
+          title: "Whitespace Integration",
+          desc: "Implementing generous spacing and high-contrast typography.",
+          why: "Allows immersive visuals to breathe and structures information without overloading the user."
+        },
+        {
+          title: "Simplified Booking Flow",
+          desc: "Designing a direct and intuitive booking path accessible at all times.",
+          why: "Maximizes conversion opportunities without disrupting the visual narrative."
+        }
+      ],
+      solution: "A minimalist and elegant interface focusing on visual storytelling and fluid booking paths. The asymmetrical layout and careful typography guide the user naturally from discovery to action.",
+      solutionTitle: "Immersive visual storytelling and integrated booking paths.",
+      uxSolutions: "Information hierarchy: each section acts as a chapter of an exclusive experience, prompting action through detailed micro-interactions.",
+      dashboardImg: "/imgs/dolce_cover.png",
+      features: [
+        { title: "Clear Visual Hierarchy", desc: "Optimized layout designed to structure content and guide users to key actions." },
+        { title: "Premium Art Direction", desc: "Sober palette, curated typography, and high-quality visuals evoking prestige." },
+        { title: "Fluid Responsive UX", desc: "Optimized user experience ensuring seamless navigation on both desktop and mobile." },
+        { title: "Visual Storytelling", desc: "Careful presentation of spaces, premium services, and exclusive lifestyle offers." }
+      ],
+      insight: "In luxury design, simplicity is the ultimate sophistication. Visual balance and understated animations create a sense of calm and exclusivity.",
+      impact: [
+        "Strong brand identity and elevated credibility through design",
+        "Seamless visual hierarchy optimizing booking flows",
+        "Immersive experience inviting users to discover exclusive offers"
+      ],
+      conclusion: "Dolce Riviera harmonizes high-end aesthetics with transactional conversion goals through a refined and effective user journey.",
+      externalLink: "https://www.behance.net/gallery/252335895/Dolce-Riviera-Luxury-Hospitality-Landing-Page-Concept",
+      ctaLabel: "VIEW PROJECT"
     }
   }
 };

@@ -365,6 +365,10 @@ const getFeatureIcon = (projectId: string, index: number) => {
     const icons = [Users, Calendar, FileText];
     return icons[index] || Sparkles;
   }
+  if (projectId === 'dolce-riviera') {
+    const icons = [Layers, Paintbrush, Smartphone, Sparkles];
+    return icons[index] || Sparkles;
+  }
   const defaultIcons = [Sparkles, Shield, Zap, Activity];
   return defaultIcons[index % defaultIcons.length] || Sparkles;
 };
@@ -425,7 +429,7 @@ const CaseStudy = ({
   onBack,
   lang
 }: { 
-  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena', 
+  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera', 
   mousePos: { x: number, y: number }, 
   setCurrentView: any,
   onBack?: () => void,
@@ -941,7 +945,7 @@ const ProjectsView = ({
 
   const filteredProjects = projects.filter((project: any) => {
     if (activeFilter === 'all') return true;
-    const isDesign = project.id === 'vortex' || project.id === 'sport-advisor';
+    const isDesign = project.id === 'vortex' || project.id === 'sport-advisor' || project.id === 'dolce-riviera';
     if (activeFilter === 'design') return isDesign;
     if (activeFilter === 'dev') return !isDesign;
     return true;
@@ -1091,7 +1095,7 @@ const ProjectsView = ({
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'cv'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv'>('home');
   const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
   if (previousView) { /* no-op for TS check */ }
   const [lang, setLang] = useState<'en' | 'fr'>('en');
@@ -1556,6 +1560,18 @@ function App() {
             color: '#DFFF00',
             linkType: 'site',
           },
+          {
+            id: 'dolce-riviera',
+            title: 'Dolce Riviera',
+            role: 'Product Designer (UX/UI)',
+            category: 'Landing Page',
+            image: '/imgs/dolce_cover.png',
+            description: "Immersive luxury landing page concept inspired by the Mediterranean Riviera. Designed to elevate brand exclusivity and credibility through a clean visual hierarchy, premium art direction, and a conversion-oriented user journey.",
+            techs: ['Figma', 'UX/UI Design', 'Art Direction', 'Prototyping'],
+            link: 'https://www.behance.net/gallery/252335895/Dolce-Riviera-Luxury-Hospitality-Landing-Page-Concept',
+            color: '#C5A059',
+            linkType: 'behance',
+          },
         ]
       }
     },
@@ -1764,6 +1780,18 @@ function App() {
             link: 'https://www.sagana-agency.com/',
             color: '#DFFF00',
             linkType: 'site',
+          },
+          {
+            id: 'dolce-riviera',
+            title: 'Dolce Riviera',
+            role: 'Product Designer (UX/UI)',
+            category: 'Landing Page',
+            image: '/imgs/dolce_cover.png',
+            description: "Concept de landing page immersive haut de gamme inspirée de la Riviera méditerranéenne. Conçu pour valoriser l'exclusivité et la crédibilité de la marque à travers une hiérarchie visuelle claire, une direction artistique premium et un parcours utilisateur orienté conversion.",
+            techs: ['Figma', 'UX/UI Design', 'Art Direction', 'Prototyping'],
+            link: 'https://www.behance.net/gallery/252335895/Dolce-Riviera-Luxury-Hospitality-Landing-Page-Concept',
+            color: '#C5A059',
+            linkType: 'behance',
           },
         ]
       }
@@ -2519,7 +2547,7 @@ function App() {
 
           <div className="projects-grid-dznr">
             {(() => {
-              const homepageIds = ['vortex', 'sport-advisor', 'tavares', 'the-refuge', 'strategy-arena'];
+              const homepageIds = ['dolce-riviera', 'vortex', 'sport-advisor', 'tavares'];
               const homepageProjects = homepageIds
                 .map(id => projects.find((p: any) => p.id === id))
                 .filter(Boolean) as any[];
