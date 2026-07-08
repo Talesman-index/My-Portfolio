@@ -1423,7 +1423,7 @@ function App() {
             title: 'Design & Development',
             subtitle: 'Design Systems & Front-End',
             desc: 'Bridging the gap between design and code by building reusable component libraries and clean, interactive React/Next.js interfaces.',
-            tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
+            tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Vibe Coding'],
             color: '#eeede4'
           }
         ]
@@ -1644,7 +1644,7 @@ function App() {
             title: 'Design & Développement',
             subtitle: 'Design Systems & Front-End',
             desc: 'Faire le pont entre le design et le code en concevant des systèmes de composants réutilisables et des interfaces React/Next.js propres, interactives et performantes.',
-            tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
+            tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Vibe Coding'],
             color: '#eeede4'
           }
         ]
