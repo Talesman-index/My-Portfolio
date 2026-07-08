@@ -2207,7 +2207,7 @@ function App() {
                 <span className="sheet-label">03 // {lang === 'en' ? 'CORE TOOLBOX' : 'BOÎTE À OUTILS'}</span>
                 <div className="sheet-stack-list">
                   <span className="sheet-stack-item">Figma</span>
-                  <span className="sheet-stack-item">Webflow</span>
+                  <span className="sheet-stack-item">Antigravity</span>
                   <span className="sheet-stack-item">Notion</span>
                   <span className="sheet-stack-item">Linear</span>
                   <span className="sheet-stack-item">Framer</span>
