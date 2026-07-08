@@ -763,8 +763,8 @@ const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
             </button>
             <div className="cv-nav-actions">
               <motion.a 
-                href="/sacca_dafia-cv.pdf" 
-                download 
+                href="/CV Dafia.pdf" 
+                download="CV Dafia .pdf" 
                 className="cv-download-pill"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -908,8 +908,8 @@ const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
               <div className="cv-contact-row">
                 <a href="mailto:dafiashalom@gmail.com" className="cv-email-link">dafiashalom@gmail.com</a>
                 <motion.a 
-                  href="/sacca_dafia-cv.pdf" 
-                  download 
+                  href="/CV Dafia.pdf" 
+                  download="CV Dafia .pdf" 
                   className="cv-cta-premium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -2177,6 +2177,19 @@ function App() {
                 <span className="sheet-label">01 // {lang === 'en' ? 'IDENTITY' : 'IDENTITÉ'}</span>
                 <h3 className="sheet-headline">{lang === 'en' ? 'Web & Product Designer' : 'Designer Web & Produit'}</h3>
                 <p className="sheet-text">{t.about.bio}</p>
+                <div style={{ marginTop: '24px' }}>
+                  <motion.a 
+                    href="https://drive.google.com/file/d/1A-KuGRxX0EJIFUhBBmY8ZCRzNETBovgy/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-cv-btn"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <Download size={14} />
+                    <span>{lang === 'en' ? 'Download CV' : 'Télécharger CV'}</span>
+                  </motion.a>
+                </div>
               </div>
             </div>
 
