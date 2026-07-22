@@ -6,6 +6,8 @@ import {
   ExternalLink,
   Calendar,
   Linkedin,
+  Github,
+  Mail,
   Download,
   X,
   Sparkles,
@@ -1911,11 +1913,11 @@ function App() {
 
       {/* Global Navigation */}
       {currentView !== 'cv' && (
-        <>
-          <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <header role="banner" className="site-header">
+          <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} aria-label="Navigation principale">
             <div className="container nav-container-new">
               <div className="logo-new" onClick={handleLogoClick}>
-                <img src="/imgs/Logo.png" alt="Logo" className="logo-img-new" />
+                <img src="/imgs/Logo.png" alt="Logo Sacca Dafia" className="logo-img-new" />
               </div>
               
               <div className="nav-center-links hide-mobile">
@@ -1923,6 +1925,7 @@ function App() {
                 <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }}>{t.nav.services}</a>
                 <a href="#saas" onClick={(e) => { e.preventDefault(); handleNavClick('saas'); }}>{t.nav.projects}</a>
                 <a href="#process" onClick={(e) => { e.preventDefault(); handleNavClick('process'); }}>{t.nav.process}</a>
+                <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>{t.nav.contact}</a>
               </div>
 
               <div className="nav-right-new">
@@ -1941,10 +1944,13 @@ function App() {
                     FR
                   </button>
                 </div>
+                <a href="mailto:dafiashalom@gmail.com" className="nav-direct-email hide-mobile" rel="me" itemProp="email" title="Me contacter par Email">
+                  <Mail size={14} /> <span>Email</span>
+                </a>
                 <button onClick={openCalendly} className="nav-contact-cta-pentos hide-mobile magnetic-button">
                   {t.nav.contact} ↗
                 </button>
-                <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Ouvrir le menu">
                   <span></span>
                   <span></span>
                   <span></span>
@@ -1961,7 +1967,7 @@ function App() {
             <div className="container mobile-nav-container">
               <div className="mobile-nav-header">
                 <div className="logo-new" onClick={() => { setIsMenuOpen(false); handleLogoClick(); }}>
-                  <img src="/imgs/Logo.png" alt="Logo" className="logo-img-new" />
+                  <img src="/imgs/Logo.png" alt="Logo Sacca Dafia" className="logo-img-new" />
                 </div>
                 <div className="mobile-nav-right">
                   <div className="mobile-nav-lang">
@@ -1969,7 +1975,7 @@ function App() {
                     <span className="lang-sep" style={{ opacity: 0.3, color: '#fff', fontSize: '12px' }}>/</span>
                     <button className={`lang-pill ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>FR</button>
                   </div>
-                  <button className="mobile-close-btn" onClick={() => setIsMenuOpen(false)}>
+                  <button className="mobile-close-btn" onClick={() => setIsMenuOpen(false)} aria-label="Fermer le menu">
                     <X size={28} />
                   </button>
                 </div>
@@ -1992,7 +1998,8 @@ function App() {
                     { id: 'about', label: t.nav.about },
                     { id: 'services', label: t.nav.services },
                     { id: 'saas', label: t.nav.projects },
-                    { id: 'process', label: t.nav.process }
+                    { id: 'process', label: t.nav.process },
+                    { id: 'contact', label: t.nav.contact }
                   ].map((link, i) => (
                     <motion.div 
                       key={link.id}
@@ -2025,10 +2032,12 @@ function App() {
 
               <div className="mobile-nav-footer-new">
                 <div className="mobile-socials-new">
-                  <span className="meta-label-new">SOCIALS</span>
+                  <span className="meta-label-new">PROFILS &amp; CONTACT</span>
                   <div className="social-links-row">
-                    <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-                    <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer">BEHANCE</a>
+                    <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer me">LINKEDIN</a>
+                    <a href="https://github.com/shalomtalesman" target="_blank" rel="noopener noreferrer me">GITHUB</a>
+                    <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer me">BEHANCE</a>
+                    <a href="mailto:dafiashalom@gmail.com" rel="me" itemProp="email">EMAIL</a>
                   </div>
                 </div>
                 <div className="mobile-copyright-new">
@@ -2037,7 +2046,7 @@ function App() {
               </div>
             </div>
           </div>
-        </>
+        </header>
       )}
 
       {currentView === 'cv' && <CVView setCurrentView={setCurrentView} />}
@@ -2063,79 +2072,105 @@ function App() {
         />
       )}
       {currentView === 'home' && (
-        <div className="app anim-fade-in">
-          {/* Hero Section */}
-          <section id="home" className="hero-premium" style={{ 
-            '--mouse-x': `${mousePos.x}%`, 
-            '--mouse-y': `${mousePos.y}%` 
-          } as any}>
-            <div className="hero-portrait-container">
-              {/* Profile Portrait */}
-              <div className="hero-portrait-parallax-wrapper" style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 'inherit' }}>
-                <motion.img 
-                  src="/imgs/hero_image.png" 
-                  alt="Sacca Dafia Profile" 
-                  className="hero-portrait-img"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                />
-              </div>
-
-              {/* Bottom Green Glow */}
-              <div className="hero-glow-green" />
-
-              {/* Sketch Arrow and Text */}
-              <motion.div 
-                className="sketch-arrow-wrapper"
-                initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-              >
-                <span className="sketch-arrow-text">
-                  {lang === 'fr' ? 'Concevons votre prochain produit !' : "Let's design your next product!"}
-                </span>
-                <svg className="sketch-arrow-svg" viewBox="0 0 100 60">
-                  <motion.path 
-                    d="M10,10 C40,20 60,10 90,30 M90,30 L80,20 M90,30 L85,42" 
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 1.5, delay: 1.0, ease: "easeInOut" }}
-                    stroke="#111111"
-                    strokeWidth="2"
-                    strokeLinecap="round"
+        <main id="main-content" className="main-content" role="main">
+          <div className="app anim-fade-in">
+            {/* Hero Section */}
+            <section id="home" className="hero-premium" style={{ 
+              '--mouse-x': `${mousePos.x}%`, 
+              '--mouse-y': `${mousePos.y}%` 
+            } as any}>
+              <div className="hero-portrait-container">
+                {/* Profile Portrait */}
+                <div className="hero-portrait-parallax-wrapper" style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 'inherit' }}>
+                  <motion.img 
+                    src="/imgs/hero_image.png" 
+                    alt="Sacca Dafia Profile" 
+                    className="hero-portrait-img"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                   />
-                </svg>
-              </motion.div>
-
-              {/* Bio text overlay */}
-              <div className="hero-greeting-overlay">
-                <motion.h1 
-                  className="hero-greeting-text"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                  {lang === 'fr' ? "Je suis SACCA Dafia, Product & Experience Designer." : "I'm SACCA Dafia, a Product & Experience Designer."}
-                </motion.h1>
-              </div>
-
-              {/* Scroll Down Indicator */}
-              <motion.div 
-                className="scroll-down-indicator"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-              >
-                <span className="scroll-text">
-                  {lang === 'fr' ? 'Défiler' : 'Scroll'}
-                </span>
-                <div className="scroll-mouse">
-                  <div className="scroll-wheel" />
                 </div>
-              </motion.div>
-            </div>
-          </section>
+
+                {/* Bottom Green Glow */}
+                <div className="hero-glow-green" />
+
+                {/* Sketch Arrow and Text */}
+                <motion.div 
+                  className="sketch-arrow-wrapper"
+                  initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                >
+                  <span className="sketch-arrow-text">
+                    {lang === 'fr' ? 'Concevons votre prochain produit !' : "Let's design your next product!"}
+                  </span>
+                  <svg className="sketch-arrow-svg" viewBox="0 0 100 60">
+                    <motion.path 
+                      d="M10,10 C40,20 60,10 90,30 M90,30 L80,20 M90,30 L85,42" 
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.5, delay: 1.0, ease: "easeInOut" }}
+                      stroke="#111111"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* Bio text overlay & Recruiter Presentation */}
+                <div className="hero-greeting-overlay">
+                  <motion.h1 
+                    className="hero-greeting-text"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
+                    {lang === 'fr' ? "Je suis SACCA Dafia, Product & Experience Designer." : "I'm SACCA Dafia, a Product & Experience Designer."}
+                  </motion.h1>
+                  <motion.p
+                    className="hero-presentation-desc"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                  >
+                    {lang === 'fr' 
+                      ? "Je conçois des produits numériques intuitifs, des SaaS B2B performants et des expériences web sur mesure pour entreprises et startups."
+                      : "I design intuitive digital products, B2B SaaS platforms, and tailored web experiences for ambitious companies."}
+                  </motion.p>
+                  <motion.div
+                    className="hero-contact-actions"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                  >
+                    <a href="mailto:dafiashalom@gmail.com" className="hero-cta-contact-btn" rel="me" itemProp="email" title="Me contacter par Email">
+                      <Mail size={16} />
+                      <span>{lang === 'fr' ? 'Me contacter par Email' : 'Contact me via Email'}</span>
+                    </a>
+                    <button onClick={openCalendly} className="hero-cta-call-btn" title="Réserver un appel">
+                      <Calendar size={16} />
+                      <span>{t.contact.bookCall}</span>
+                    </button>
+                  </motion.div>
+                </div>
+
+                {/* Scroll Down Indicator */}
+                <motion.div 
+                  className="scroll-down-indicator"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2, duration: 0.8 }}
+                >
+                  <span className="scroll-text">
+                    {lang === 'fr' ? 'Défiler' : 'Scroll'}
+                  </span>
+                  <div className="scroll-mouse">
+                    <div className="scroll-wheel" />
+                  </div>
+                </motion.div>
+              </div>
+            </section>
 
       {/* About Section */}
       <section id="about" className="about-pentos">
@@ -2903,23 +2938,29 @@ function App() {
             </div>
           </div>
 
-          <div className="footer-bottom-bar">
+          <footer className="footer-bottom-bar" role="contentinfo">
             <div className="footer-bottom-left">
               <span className="footer-brand-logo">SACCA DAFIA.</span>
               <div className="social-simple-links">
-                <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer me" title="LinkedIn">
                   <Linkedin size={20} />
                 </a>
-                <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <a href="https://github.com/shalomtalesman" target="_blank" rel="noopener noreferrer me" title="GitHub">
+                  <Github size={20} />
+                </a>
+                <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer me" className="social-icon" title="Behance">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.011.022 3.038-2.998.05-3.016z"/>
                   </svg>
+                </a>
+                <a href="mailto:dafiashalom@gmail.com" rel="me" itemProp="email" title="Me contacter par Email">
+                  <Mail size={20} />
                 </a>
               </div>
             </div>
             
             <div className="footer-bottom-right">
-              <nav className="footer-nav-simple">
+              <nav className="footer-nav-simple" aria-label="Navigation secondaire de pied de page">
                 <a href="#projects" onClick={(e) => {
                   e.preventDefault();
                   document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
@@ -2932,13 +2973,15 @@ function App() {
                   e.preventDefault();
                   document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
                 }}>{t.nav.about}</a>
+                <a href="mailto:dafiashalom@gmail.com" rel="me">Contact</a>
               </nav>
               <span className="copyright">© 2026 Sacca Dafia. {t.contact.rights}</span>
             </div>
-          </div>
+          </footer>
         </div>
       </section>
         </div>
+      </main>
       )}
     </>
   );
