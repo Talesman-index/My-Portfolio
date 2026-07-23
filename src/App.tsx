@@ -2552,7 +2552,7 @@ function App() {
                 index: '01',
                 label: 'Process Orchestration',
                 title: 'eHadj',
-                year: '2024',
+                year: '2026',
                 role: lang === 'en' ? 'Lead Product Designer' : 'Lead Product Designer',
                 metrics: lang === 'en' 
                   ? ['+45% scheduling efficiency', 'Centralized booking flow', 'Real-time sync']
@@ -2571,7 +2571,7 @@ function App() {
                 index: '02',
                 label: 'Product Design & Strategy',
                 title: 'Asset IQ',
-                year: '2025',
+                year: '2026',
                 role: lang === 'en' ? 'Product & UX Strategist' : 'Stratégiste Produit & UX',
                 metrics: lang === 'en'
                   ? ['30% downtime reduction', 'Automated resource audit', 'Real-time telemetry']
@@ -2590,7 +2590,7 @@ function App() {
                 index: '03',
                 label: 'Loyalty & Customer Engagement',
                 title: 'Beans',
-                year: '2025 / 2026',
+                year: '2024 - 2025',
                 role: lang === 'en' ? 'Integration Lead Project Manager & Product Designer' : 'Chef de Projet Intégrations & Lead Designer',
                 metrics: lang === 'en'
                   ? ['Competitor Analysis & PRDs', 'Feature Visuals & UX Flow', 'Dev Supervision & QA Testing']
