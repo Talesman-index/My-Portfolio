@@ -8009,6 +8009,78 @@ h1, h2, h3, h4, h5, h6 {
   color: #0d3479 !important;
 }
 
+/* Card 3: Beans (Rich Dark Charcoal & Yellow Gold) */
+.saas-showcase-card:nth-child(3) {
+  background: #111318 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(245, 158, 11, 0.25) !important;
+}
+.saas-showcase-card:nth-child(3):hover {
+  transform: translateY(-5px) !important;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.4),
+    0 14px 35px rgba(245, 158, 11, 0.2),
+    0 30px 60px rgba(0, 0, 0, 0.6) !important;
+  border-color: rgba(245, 158, 11, 0.5) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-index {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #F59E0B !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-year {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: #F59E0B !important;
+  border: 1px solid rgba(245, 158, 11, 0.25) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-title {
+  color: #FFFFFF !important;
+}
+.saas-showcase-card:nth-child(3):hover .saas-card-title {
+  color: #F59E0B !important;
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.3) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-role .role-label {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-role .role-val {
+  color: #F59E0B !important;
+  font-weight: 600 !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-desc {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-metric-item .metric-text {
+  color: #FFFFFF !important;
+}
+.saas-showcase-card:nth-child(3) .saas-card-tag {
+  background: rgba(255, 255, 255, 0.07) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+.saas-showcase-card:nth-child(3) .saas-cta-text {
+  color: #F59E0B !important;
+}
+.saas-showcase-card:nth-child(3) .saas-cta-arrow {
+  background: #F59E0B !important;
+  color: #111318 !important;
+}
+.saas-showcase-card:nth-child(3) .browser-mockup {
+  background: #1A1C23 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.saas-showcase-card:nth-child(3) .browser-header {
+  background: #14161C !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.saas-showcase-card:nth-child(3) .browser-address {
+  background: #111318 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
 /* 7. Projects Section overrides */
 .projects-section-dznr,
 .projects-section-new {
