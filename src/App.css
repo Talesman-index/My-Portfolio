@@ -3587,17 +3587,23 @@ section {
 
 .mockup-screen-new {
   width: 100%;
-  height: 550px;
+  height: auto;
+  min-height: 350px;
+  max-height: 800px;
   overflow: hidden;
-  background: #030804;
+  background: transparent;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mockup-screen-new img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain !important;
+  object-position: center;
   display: block;
 }
 
@@ -9450,6 +9456,19 @@ h1, h2, h3, h4, h5, h6 {
   border-color: rgba(255, 255, 255, 0.3);
   color: #ffffff;
   transform: translateY(-1px);
+}
+
+/* Global Uncropped Image Display Rules: Preserve full original image proportions without zooming or cropping */
+.cs-view-new img,
+.cs-hero-new img,
+.cs-media img,
+.cs-section-new img,
+.browser-body img,
+.cs-image-box img,
+.mockup-screen-new img {
+  object-fit: contain !important;
+  max-height: 100% !important;
+  border-radius: inherit;
 }
 
 
