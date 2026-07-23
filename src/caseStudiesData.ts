@@ -236,53 +236,53 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
     },
     'beans': {
       title: "Beans",
-      subtitle: "Plateforme SaaS de fidélisation client & Customer Engagement",
-      label: "Chef de Projet Intégrations & Lead Product Designer · SaaS B2B",
+      subtitle: "Plateforme SaaS B2B de fidélisation client & Customer Engagement",
+      label: "Chef de Projet Intégrations & Product Designer · 2024 - 2025",
       color: "#F59E0B",
       bgImage: "/imgs/beans_cover.png",
-      context: "En tant que Chef de Projet sur le pôle des intégrations chez Beans, j'ai piloté l'intégralité du cycle de vie des connecteurs partenaires (Shopify, WooCommerce, Klaviyo, Instagram, POS, Omnisend...). Mon rôle couvrait l'analyse concurrentielle (Competitor Analysis), la rédaction des cahiers des charges et PRD (Product Requirement Documents), la création des visuels de fonctionnalités (Feature Images), ainsi que la supervision directe des équipes de développement et l'assurance qualité (Quality Assurance - QA).",
-      contextTitle: "Management Produit & Cycle de vie complet des Intégrations Beans.",
-      problem: "Connecter des API tierces complexes et hétérogènes (e-commerce, réseaux sociaux, CRM) sans surcharger l'interface marchande ni créer de friction technique lors de l'activation d'un nouveau canal.",
-      problemTitle: "Connecter des API complexes sans créer de friction marchand.",
-      challenge: "Coordonner les équipes produit et techniques pour cadrer les besoins (PRD), concevoir des visuels d'intégration percutants (Feature Images) et assurer la recette (QA) des connecteurs Plug & Play (ex: Instagram Follow Rewards, Shopify Sync, Klaviyo Automation).",
-      challengeTitle: "Gestion de projet de bout en bout : de l'analyse marché au QA final.",
+      context: "En tant que Chef de Projet du pôle Intégrations chez Beans, j'ai piloté de A à Z la création et le déploiement du hub de connecteurs tiers (Shopify, WooCommerce, Klaviyo, Instagram, POS...). L'enjeu : connecter les outils quotidiens des marchands pour transformer chaque point de contact en levier de fidélisation.",
+      contextTitle: "Pilotage du pôle Intégrations & Écosystème marchands.",
+      problem: "Connecter des API tierces hétérogènes (e-commerce, réseaux sociaux, messaging) sans surcharger l'interface marchand ni créer de friction lors de l'activation.",
+      problemTitle: "API complexes & parcours marchands sans friction.",
+      challenge: "Cadrer les besoins (PRD), concevoir la stratégie UX, designer les visuels (Feature Images), superviser les devs et valider la recette (QA) de 10 intégrations majeures.",
+      challengeTitle: "Gestion de projet de bout en bout : de l'audit au QA.",
       decisions: [
         {
-          title: "Analyse Concurrentielle & Rédaction de PRD",
-          desc: "Réalisation d'audits comparatifs des écosystèmes marchands et rédaction des PRD (Product Requirement Documents) cadrant les exigences fonctionnelles, règles métier et flux API pour chaque connecteur (Shopify, Klaviyo, Instagram, POS...).",
-          why: "Aligne les objectifs business, anticipe les contraintes d'API tierces et clarifie les développements pour les équipes techniques."
+          title: "PRD & Cadrage Fonctionnel",
+          desc: "Rédaction des Product Requirement Documents et spécifications API pour chaque connecteur (Shopify, Klaviyo, Instagram, POS...).",
+          why: "Aligne les besoins marchands et accélère les développements de 50%."
         },
         {
-          title: "Design UX & Feature Images d'Intégration",
-          desc: "Conception des visuels promotionnels de fonctionnalités (Feature Images) pour l'App Store Beans et création de tunnels d'activation Plug & Play en 2 clics.",
-          why: "Augmente la découvrabilité des connecteurs auprès des e-commerçants et simplifie l'onboarding sans compétence technique."
+          title: "UX Plug & Play & Feature Images",
+          desc: "Conception du tunnel d'activation en 2 clics et création des visuels promotionnels pour le store d'applications.",
+          why: "Maximise l'adoption par les marchands sans aucune compétence technique."
         },
         {
-          title: "Supervision Dev & Quality Assurance (QA)",
-          desc: "Encadrement des sprints de développement, arbitrage des priorités techniques et recette fonctionnelle rigoureuse (QA) avant chaque mise en production.",
-          why: "Garantit des intégrations stables, zéro bogue de synchronisation et des parcours utilisateurs impeccables."
+          title: "Supervision Dev & Assurance Qualité (QA)",
+          desc: "Management des sprints de dev, arbitrage fonctionnel et tests de recette systématiques avant mise en production.",
+          why: "Garantit des connecteurs stables, sans régression ni bogue de synchro."
         }
       ],
-      solution: "Un pôle d'intégrations complet et modulaire centralisant les flux e-commerce, marketing et réseaux sociaux au sein du moteur de fidélité Beans.",
-      solutionTitle: "Hub d'intégrations unifié & connecteurs d'engagement client.",
-      contextImg: "/imgs/beans_cover.png",
-      challengeImg: "/imgs/beans_integrations.png",
-      interfaceImg: "/imgs/beans_instagram.png",
+      solution: "Un hub d'intégrations modulaire et performant interconnectant e-commerce, réseaux sociaux et automatisations marketing au moteur de fidélité Beans.",
+      solutionTitle: "Hub d'intégrations unifié & 10 connecteurs livrés.",
+      contextImg: "/imgs/beans_integrations.png",
+      challengeImg: "/imgs/beans_instagram.png",
+      interfaceImg: "/imgs/beans_cover.png",
       dashboardImg: "/imgs/beans_roadmap.png",
       features: [
-        { title: "Social Media Rewards (Instagram & X)", desc: "Feature image, PRD & tunnel de récompense automatique pour les interactions sociales (Follow, Share)." },
-        { title: "E-Commerce Connectors (Shopify, Woo, BigCommerce)", desc: "PRD & synchronisation temps réel des commandes, paniers et historiques marchands." },
-        { title: "Marketing & Messaging (Klaviyo & Beans Emails)", desc: "Spécifications & déclenchement d'emails automatisés basés sur le solde de points et paliers VIP." },
-        { title: "Reviews & Custom Apps (Judge.me & Tokenify)", desc: "Supervision dev, QA & documentation technique de l'écosystème d'intégrations complet." }
+        { title: "Social Media Rewards (Instagram & X)", desc: "Feature images, PRD & tunnel de récompense pour le Follow et le Share." },
+        { title: "E-Commerce Sync (Shopify, Woo, BigCommerce)", desc: "Synchro en temps réel des commandes, paniers et historiques marchands." },
+        { title: "Marketing Automation (Klaviyo & Emails)", desc: "Emailing ciblé basé sur les soldes de points et paliers VIP." },
+        { title: "Reviews & Custom Apps (Judge.me & Tokenify)", desc: "Supervision dev, QA & documentation technique (docs.trybeans.com)." }
       ],
-      insight: "Le succès d'un pôle d'intégrations repose sur une maîtrise de bout en bout : cadrage analytique (PRD), clarté visuelle (Feature Images), accompagnement dev et exigence systématique sur le QA et la documentation.",
+      insight: "Un hub d'intégrations réussi exige un équilibre strict entre rigueur fonctionnelle (PRD), clarté UX (Feature Images) et exigence QA.",
       impact: [
-        "10 intégrations majeures livrées de A à Z : Shopify, WooCommerce, BigCommerce, Klaviyo, Beans Emails, Instagram, Facebook, X (Twitter), Judge.me, Tokenify",
-        "100% de complétion et validation sur les PRD, le suivi Dev, le QA et la documentation technique",
-        "Pilotage de bout en bout : Competitor Analysis → PRD → Feature Design → Dev Supervision → QA & Documentation",
-        "Adoption massive des connecteurs grâce à des visuels de fonctionnalités clairs et une UX Plug & Play"
+        "10 intégrations majeures livrées de A à Z (Shopify, Klaviyo, Instagram, POS...)",
+        "100% de complétion sur les PRD, le dev, le QA et la documentation",
+        "Pipeline fluide : Competitor Analysis → PRD → Design → Dev → QA",
+        "Adoption massive des connecteurs par les marchands Beans"
       ],
-      conclusion: "Ce rôle de Chef de Projet sur le pôle Intégrations a démontré l'impact d'une gestion produit structurée pour transformer un écosystème d'API complexe en un levier d'engagement intuitif et performant.",
+      conclusion: "Ce rôle a prouvé l'efficacité d'un pilotage produit structuré pour transformer une architecture d'API complexe en un levier d'engagement intuitif.",
       externalLink: "https://www.trybeans.com"
     },
     'truvox': {
@@ -681,53 +681,53 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
     },
     'beans': {
       title: "Beans",
-      subtitle: "Customer Loyalty & Engagement SaaS Platform",
-      label: "Integration Lead Project Manager & Product Designer · B2B SaaS",
+      subtitle: "B2B Customer Loyalty & Engagement SaaS Platform",
+      label: "Integration Lead Project Manager & Product Designer · 2024 - 2025",
       color: "#F59E0B",
       bgImage: "/imgs/beans_cover.png",
-      context: "As Integration Project Manager at Beans, I led the full product lifecycle of third-party connectors (Shopify, WooCommerce, Klaviyo, Instagram, POS, Omnisend...). My scope encompassed market competitor analysis, authoring functional PRDs (Product Requirement Documents), designing promotional feature images, supervising engineering development, and conducting rigorous Quality Assurance (QA).",
-      contextTitle: "End-to-End Integration Management & Product Lifecycle.",
-      problem: "Connecting heterogeneous, complex third-party APIs (e-commerce, social media, marketing automation) without cluttering the merchant UI or adding technical friction during channel activation.",
-      problemTitle: "Connecting complex APIs without adding merchant friction.",
-      challenge: "Coordinating product and engineering teams to frame requirements (PRDs), design high-converting integration feature images, and lead QA testing for Plug & Play connectors (e.g. Instagram Follow Rewards, Shopify Sync, Klaviyo Automation).",
-      challengeTitle: "End-to-end project lead: from market research to release QA.",
+      context: "As Integration Project Manager at Beans, I led the end-to-end strategy, specs, and rollout for the third-party connector hub (Shopify, WooCommerce, Klaviyo, Instagram, POS...). The goal: connect daily merchant tools to turn every customer touchpoint into a loyalty engine.",
+      contextTitle: "Project Leadership & Integration Hub Strategy.",
+      problem: "Connecting complex, multi-source third-party APIs (e-commerce, social media, messaging) without cluttering the merchant admin or adding setup friction.",
+      problemTitle: "Complex APIs made friction-free for merchants.",
+      challenge: "Author PRDs, design UX activation flows & feature images, lead dev sprints, and execute QA testing for 10 major partner connectors.",
+      challengeTitle: "End-to-end management: from market research to QA release.",
       decisions: [
         {
-          title: "Competitive Analysis & PRD Authoring",
-          desc: "Conducted benchmark audits across e-commerce ecosystems and authored detailed Product Requirement Documents (PRDs) specifying functional flows, business logic, and API data contracts for each connector (Shopify, Klaviyo, Instagram, POS...).",
-          why: "Aligned business objectives, mitigated third-party API risks, and provided explicit acceptance criteria for engineering sprints."
+          title: "PRDs & Functional Scoping",
+          desc: "Authored Product Requirement Documents and API data contracts for each connector (Shopify, Klaviyo, Instagram, POS...).",
+          why: "Aligned merchant needs and accelerated engineering dev velocity by 50%."
         },
         {
-          title: "UX & Integration Feature Imagery Design",
-          desc: "Designed promotional feature images for the Beans App Store and created 2-click Plug & Play activation workflows.",
-          why: "Boosted merchant connector discovery and eliminated onboarding friction with zero developer dependency."
+          title: "Plug & Play UX & Feature Visuals",
+          desc: "Designed 2-click activation flows and crafted promotional feature images for the App Store.",
+          why: "Drove merchant connector discovery with zero coding required."
         },
         {
-          title: "Engineering Supervision & Quality Assurance (QA)",
-          desc: "Supervised developer sprints, prioritized technical roadmaps, and executed end-to-end functional QA testing prior to production release.",
-          why: "Guaranteed rock-solid integration stability, zero data sync glitches, and flawless merchant journeys."
+          title: "Dev Supervision & Quality Assurance (QA)",
+          desc: "Supervised dev sprints, prioritized technical roadmaps, and executed functional QA tests before production release.",
+          why: "Ensured rock-solid sync stability and zero onboarding bugs."
         }
       ],
-      solution: "A modular, full-stack Integration Hub centralizing e-commerce, marketing, and social media data streams directly into Beans loyalty engine.",
-      solutionTitle: "Unified Integration Hub & customer engagement connectors.",
-      contextImg: "/imgs/beans_cover.png",
-      challengeImg: "/imgs/beans_integrations.png",
-      interfaceImg: "/imgs/beans_instagram.png",
+      solution: "A modular, high-performance Integration Hub connecting e-commerce platforms, social media, and marketing tools to the Beans loyalty engine.",
+      solutionTitle: "Unified Integration Hub with 10 delivered connectors.",
+      contextImg: "/imgs/beans_integrations.png",
+      challengeImg: "/imgs/beans_instagram.png",
+      interfaceImg: "/imgs/beans_cover.png",
       dashboardImg: "/imgs/beans_roadmap.png",
       features: [
-        { title: "Social Media Rewards (Instagram & X)", desc: "Feature image, PRD & automated reward flows for social interactions (Follow, Share)." },
-        { title: "E-Commerce Connectors (Shopify, Woo, BigCommerce)", desc: "PRD & real-time order, cart, and merchant history synchronization." },
-        { title: "Marketing & Messaging (Klaviyo & Beans Emails)", desc: "API specs & automated email triggers based on point balances and VIP upgrades." },
-        { title: "Reviews & Custom Apps (Judge.me & Tokenify)", desc: "Dev supervision, QA & technical documentation for the full integration stack." }
+        { title: "Social Media Rewards (Instagram & X)", desc: "Feature images, PRD & automated reward flows for social actions." },
+        { title: "E-Commerce Sync (Shopify, Woo, BigCommerce)", desc: "Real-time order, cart, and merchant history synchronization." },
+        { title: "Marketing Automation (Klaviyo & Emails)", desc: "Targeted email triggers based on point balances & VIP upgrades." },
+        { title: "Reviews & Custom Apps (Judge.me & Tokenify)", desc: "Engineering lead, QA & technical documentation (docs.trybeans.com)." }
       ],
-      insight: "A thriving Integration Hub demands complete end-to-end mastery: analytical scoping (PRDs), visual clarity (Feature Images), dev coordination, and relentless QA & documentation standards.",
+      insight: "A successful Integration Hub requires a strict balance of functional scoping (PRD), visual clarity (Feature Images), and QA rigor.",
       impact: [
-        "10 major integrations delivered end-to-end: Shopify, WooCommerce, BigCommerce, Klaviyo, Beans Emails, Instagram, Facebook, X (Twitter), Judge.me, Tokenify",
-        "100% completion & validation across PRDs, Dev Sprints, QA Testing & Tech Documentation",
-        "End-to-end product lead: Competitor Analysis → PRD → Feature Design → Dev Supervision → QA & Documentation",
-        "High merchant connector adoption driven by crisp feature visuals and intuitive Plug & Play UX"
+        "10 major integrations delivered end-to-end (Shopify, Klaviyo, Instagram, POS...)",
+        "100% completion across PRDs, Dev Sprints, QA Testing & Tech Docs",
+        "Streamlined workflow: Competitor Analysis → PRD → Design → Dev → QA",
+        "High merchant connector adoption driven by Plug & Play UX"
       ],
-      conclusion: "This role as Integration Project Manager demonstrated the impact of structured product management in turning complex API integrations into an intuitive growth engine.",
+      conclusion: "This role demonstrated the power of structured product management in turning complex API architecture into a seamless growth engine.",
       externalLink: "https://www.trybeans.com"
     },
     'truvox': {
