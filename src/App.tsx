@@ -2591,14 +2591,14 @@ function App() {
                 label: 'Loyalty & Customer Engagement',
                 title: 'Beans',
                 year: '2025 / 2026',
-                role: lang === 'en' ? 'Integration Lead Project Manager & Product Designer' : 'Chef de Projet Intégrations & Product Designer',
+                role: lang === 'en' ? 'Integration Lead Project Manager & Product Designer' : 'Chef de Projet Intégrations & Lead Designer',
                 metrics: lang === 'en'
-                  ? ['Integration Hub Leadership', 'Shopify, Klaviyo & Social Sync', 'Plug & Play Integration Flow']
-                  : ['Pilotage du pôle Intégrations', 'Synchro Shopify, Klaviyo & Social', 'Parcours Intégrations Plug & Play'],
-                tags: ['Project Management', 'SaaS Integrations', 'Product Strategy', 'UX/UI'],
+                  ? ['Competitor Analysis & PRDs', 'Feature Visuals & UX Flow', 'Dev Supervision & QA Testing']
+                  : ['Competitor Analysis & PRDs', 'Feature Images & Design UX', 'Supervision Dev & QA Testing'],
+                tags: ['Project Management', 'PRD & Specs', 'QA & Dev Lead', 'Feature Images'],
                 desc: lang === 'en'
-                  ? 'Strategic management & UX design of Beans Integration Hub: connecting e-commerce platforms, social media (Instagram), and marketing stacks to the loyalty engine.'
-                  : 'Pilotage stratégique et design UX du pôle d\'intégrations Beans : connexion des plateformes e-commerce, réseaux sociaux (Instagram) et stacks marketing au moteur de fidélité.',
+                  ? 'End-to-end management of Beans Integration Hub: competitor analysis, writing PRDs, designing feature images, supervising engineering dev teams, and leading Quality Assurance (QA).'
+                  : 'Pilotage de bout en bout du pôle d\'intégrations Beans : analyse concurrentielle, rédaction des PRD, design des feature images, supervision dev et Quality Assurance (QA).',
                 image: '/imgs/beans_cover.png',
                 mockup: '/imgs/beans_cover.png',
                 color: '#F59E0B',
