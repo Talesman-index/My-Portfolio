@@ -65,7 +65,74 @@ import '../App.css';
   </head>
   <body>
     <div id="app-root">
-      <App client:only="react" />
+      {/* Semantic fallback container for SEO, Recruiter Audits, and Crawlers */}
+      <div className="sr-only recruiter-clarity-meta" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;" itemscope itemtype="https://schema.org/Person">
+        <h1 itemprop="name">Sacca Dafia | Product & Experience Designer</h1>
+        <p itemprop="description">Je conçois des produits numériques intuitifs, des SaaS B2B performants et des expériences web sur mesure (+3 ans d'expérience).</p>
+        
+        {/* Contact info & Social links */}
+        <a href="mailto:dafiashalom@gmail.com" itemprop="email" rel="me">dafiashalom@gmail.com</a>
+        <a href="tel:+2290160359022" itemprop="telephone" rel="me">+229 01 60 35 90 22</a>
+        <a href="https://www.linkedin.com/in/dafia-s-860290218/" itemprop="sameAs" rel="me">LinkedIn: https://www.linkedin.com/in/dafia-s-860290218/</a>
+        <a href="https://github.com/shalomtalesman" itemprop="sameAs" rel="me">GitHub: https://github.com/shalomtalesman</a>
+        <a href="https://www.behance.net/shalomsacca" itemprop="sameAs" rel="me">Behance: https://www.behance.net/shalomsacca</a>
+
+        {/* Section Projets et Liens de preuve */}
+        <section id="projets" aria-label="Section Projets et Études de cas">
+          <h2>Projets & Études de cas</h2>
+          <ul>
+            <li>
+              <h3>Asset IQ - Plateforme SaaS B2B & Dashboard</h3>
+              <p>Contexte &amp; Contribution : Système intelligent de suivi et gouvernance opérationnelle de ressources physiques multi-sites. Rôle : Stratégiste Produit &amp; UX.</p>
+              <p>Résultat : -30% de temps d'arrêt, télémétrie en temps réel.</p>
+              <a href="#asset-iq" rel="bookmark">Preuve / Étude de cas Asset IQ</a>
+            </li>
+            <li>
+              <h3>eHadj - SaaS d'Orchestration Logistique</h3>
+              <p>Contexte &amp; Contribution : Digitalisation globale de l'organisation du pèlerinage (inscriptions, logistique, transports, flux financiers). Rôle : Lead Product Designer.</p>
+              <p>Résultat : +45% d'efficacité logistique et réservation centralisée.</p>
+              <a href="#ehadj" rel="bookmark">Preuve / Étude de cas eHadj</a>
+            </li>
+            <li>
+              <h3>Dolce Riviera - E-commerce & Luxe</h3>
+              <p>Contexte &amp; Contribution : Expérience de marque haut de gamme et boutique e-commerce immersive. Rôle : Product &amp; UI Designer.</p>
+              <a href="#dolce-riviera" rel="bookmark">Preuve / Étude de cas Dolce Riviera</a>
+            </li>
+            <li>
+              <h3>Sagana - Agence Digitale & Design System</h3>
+              <p>Contexte &amp; Contribution : Plateforme web et design system modulable pour agence digitale. Rôle : UX/UI Designer.</p>
+              <a href="#sagana" rel="bookmark">Preuve / Étude de cas Sagana</a>
+            </li>
+            <li>
+              <h3>Vortex Gallery - Expérience Immersive Web3</h3>
+              <p>Contexte &amp; Contribution : Galerie d'art numérique interactive. Rôle : Lead Designer.</p>
+              <a href="#vortex" rel="bookmark">Preuve / Étude de cas Vortex Gallery</a>
+            </li>
+            <li>
+              <h3>Sport Advisor - App & Plateforme Sportive</h3>
+              <p>Contexte &amp; Contribution : Application de recommandation et coaching sportif personnalisé. Rôle : UX Designer.</p>
+              <a href="#sport-advisor" rel="bookmark">Preuve / Étude de cas Sport Advisor</a>
+            </li>
+          </ul>
+        </section>
+
+        {/* Section Stack Technique & Compétences */}
+        <section id="stack-technique" aria-label="Stack technique et compétences">
+          <h2>Stack Technique &amp; Compétences</h2>
+          <ul className="stack-technique">
+            <li>Figma (UI/UX, Prototypage, Design Systems)</li>
+            <li>React.js / Next.js / TypeScript</li>
+            <li>Tailwind CSS / HTML5 / CSS3</li>
+            <li>GSAP / Framer Motion (Animations Web)</li>
+            <li>Astro / Vite</li>
+            <li>Git / GitHub (Contrôle de version)</li>
+            <li>Architecture de l'information &amp; Product Thinking</li>
+            <li>Audit UX &amp; Tests utilisateurs</li>
+          </ul>
+        </section>
+      </div>
+
+      <App client:load />
     </div>
   </body>
 </html>

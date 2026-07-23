@@ -1094,10 +1094,33 @@ const ProjectsView = ({
   );
 };
 
+const VALID_PROJECT_IDS = [
+  'asset-iq',
+  'ehadj',
+  'sagana',
+  'vortex',
+  'sport-advisor',
+  'forum-grandes-ecoles',
+  'tavares',
+  'the-refuge',
+  'strategy-arena',
+  'dolce-riviera'
+];
+
+const getViewFromHash = (): 'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv' => {
+  if (typeof window === 'undefined') return 'home';
+  const hash = window.location.hash.replace('#', '').trim();
+  if (hash === 'projects') return 'projects';
+  if (hash === 'cv') return 'cv';
+  if (VALID_PROJECT_IDS.includes(hash)) return hash as any;
+  return 'home';
+};
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv'>('home');
+  if (scrolled) { /* no-op for TS check */ }
+  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv'>(() => getViewFromHash());
   const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
   if (previousView) { /* no-op for TS check */ }
   const [lang, setLang] = useState<'en' | 'fr'>('en');
@@ -1812,10 +1835,42 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll to top on view change
+  // Sync currentView changes with URL hash & browser history
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const targetHash = currentView === 'home' ? '' : `#${currentView}`;
+    const currentHash = window.location.hash;
+    
+    if (currentHash !== targetHash && !(currentView === 'home' && (currentHash === '' || currentHash === '#home'))) {
+      window.history.pushState({ view: currentView }, '', targetHash || window.location.pathname);
+    }
     window.scrollTo(0, 0);
   }, [currentView]);
+
+  // Handle browser Back / Forward buttons & URL hash changes
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handlePopState = () => {
+      const view = getViewFromHash();
+      setCurrentView(view);
+      if (view === 'home') {
+        const section = window.location.hash.replace('#', '');
+        if (section && section !== 'home' && !VALID_PROJECT_IDS.includes(section)) {
+          setTimeout(() => {
+            const el = document.getElementById(section);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
+  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -1829,8 +1884,10 @@ function App() {
     if (currentView === 'home') {
       const el = document.getElementById(sectionId);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', `#${sectionId}`);
     } else {
       setCurrentView('home');
+      window.history.pushState(null, '', `#${sectionId}`);
       setTimeout(() => {
         const el = document.getElementById(sectionId);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -1842,8 +1899,10 @@ function App() {
   const handleLogoClick = () => {
     if (currentView === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', window.location.pathname);
     } else {
       setCurrentView('home');
+      window.history.pushState(null, '', window.location.pathname);
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 100);
@@ -1944,11 +2003,8 @@ function App() {
                     FR
                   </button>
                 </div>
-                <a href="mailto:dafiashalom@gmail.com" className="nav-direct-email hide-mobile" rel="me" itemProp="email" title="Me contacter par Email">
-                  <Mail size={14} /> <span>Email</span>
-                </a>
                 <button onClick={openCalendly} className="nav-contact-cta-pentos hide-mobile magnetic-button">
-                  {t.nav.contact} ↗
+                  {lang === 'fr' ? 'Me contacter' : 'Contact me'} ↗
                 </button>
                 <button className={`menu-icon-btn hide-desktop ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Ouvrir le menu">
                   <span></span>
@@ -2025,7 +2081,7 @@ function App() {
                     className="mobile-nav-cta-btn"
                     onClick={(e) => { setIsMenuOpen(false); openCalendly(e); }}
                   >
-                    {t.nav.contact} <ArrowRight size={14} style={{ transform: 'rotate(-45deg)' }} />
+                    {lang === 'fr' ? 'Me contacter' : 'Contact me'} <ArrowRight size={14} style={{ transform: 'rotate(-45deg)' }} />
                   </button>
                 </div>
               </div>
@@ -2146,7 +2202,11 @@ function App() {
                   >
                     <a href="mailto:dafiashalom@gmail.com" className="hero-cta-contact-btn" rel="me" itemProp="email" title="Me contacter par Email">
                       <Mail size={16} />
-                      <span>{lang === 'fr' ? 'Me contacter par Email' : 'Contact me via Email'}</span>
+                      <span>dafiashalom@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer me" itemProp="sameAs" className="hero-cta-profile-btn" title="Voir mon profil LinkedIn">
+                      <Linkedin size={16} />
+                      <span>LinkedIn</span>
                     </a>
                     <button onClick={openCalendly} className="hero-cta-call-btn" title="Réserver un appel">
                       <Calendar size={16} />
@@ -2203,7 +2263,7 @@ function App() {
             <div className="sheet-col sheet-col-profile">
               <div className="sheet-profile-container">
                 <img 
-                  src="/imgs/cv-profile.jpg" 
+                  src="/imgs/hero_image.png" 
                   alt="Sacca Dafia Profile" 
                   className="sheet-profile-img" 
                 />
@@ -2497,14 +2557,16 @@ function App() {
                 view: 'asset-iq'
               }
             ].map((product, index) => (
-              <motion.div
+              <motion.a
                 key={product.id}
+                href={`#${product.view}`}
                 className="saas-showcase-card"
+                style={{ textDecoration: 'none', color: 'inherit' }}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: index * 0.15, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-                onClick={() => setCurrentView(product.view as any)}
+                onClick={(e) => { e.preventDefault(); setCurrentView(product.view as any); }}
               >
                 {/* Glowing spot background */}
                 <div className="saas-card-glow" style={{ '--accent-glow': product.color } as any} />
@@ -2569,7 +2631,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -2654,16 +2716,19 @@ function App() {
                     
                     {/* Interactive Action Footer */}
                     <div className="project-card-actions">
-                      <button 
-                        onClick={() => {
+                      <a 
+                        href={`#${project.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
                           setPreviousView('home');
                           setCurrentView(project.id);
                         }}
                         className="project-action-btn-primary"
+                        style={{ textDecoration: 'none' }}
                       >
                         {t.projects.viewCaseStudy}
                         <ArrowRight size={16} />
-                      </button>
+                      </a>
                       
                       {project.link && project.link !== '#' && (
                         <a 
