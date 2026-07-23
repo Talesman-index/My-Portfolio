@@ -2601,7 +2601,7 @@ function App() {
                   : 'Plateforme SaaS de fidélisation permettant aux marques e-commerce de créer des programmes de récompenses personnalisés et de stimuler les achats récurrents.',
                 image: '/imgs/beans_cover.png',
                 mockup: '/imgs/beans_cover.png',
-                color: '#10B981',
+                color: '#F59E0B',
                 view: 'beans'
               }
             ].map((product, index) => (
