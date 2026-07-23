@@ -237,52 +237,52 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
     'beans': {
       title: "Beans",
       subtitle: "Plateforme SaaS de fidélisation client & Customer Engagement",
-      label: "Lead Product Designer · SaaS B2B",
+      label: "Chef de Projet Intégrations & Product Designer · SaaS B2B",
       color: "#F59E0B",
       bgImage: "/imgs/beans_cover.png",
-      context: "Dans un environnement e-commerce et retail où l'acquisition client devient de plus en plus coûteuse, les marques cherchent à construire des relations durables avec leurs consommateurs. Beans est une plateforme SaaS de fidélisation permettant de déployer des programmes de récompenses sur-mesure intégrés à l'écosystème marchand (Shopify, WooCommerce, Klaviyo, POS).",
-      contextTitle: "Transformer chaque transaction en relation durable.",
-      problem: "Les programmes de fidélité impliquent de nombreux paramètres complexes : règles d'accumulation de points, conditions de récompenses, segmentation client, intégrations tierces et suivi des performances. Sans outil intuitif, la configuration devient un goulot d'étranglement pour les marchands.",
-      problemTitle: "Concevoir une expérience SaaS simple pour un système complexe.",
-      challenge: "Créer une expérience d'administration fluide permettant aux e-commerçants de configurer leurs règles de fidélité, de connecter leurs outils quotidiens et d'optimiser leur stratégie de rétention sans complexité technique.",
-      challengeTitle: "Simplifier l'administration tout en maximisant la rétention client.",
+      context: "En tant que Chef de Projet sur le pôle des intégrations chez Beans, j'ai piloté la structuration fonctionnelle, le design et le déploiement de l'écosystème de connecteurs tiers (Shopify, WooCommerce, Klaviyo, Instagram, POS, Omnisend...). L'objectif majeur était de permettre aux marchands de connecter leurs applications quotidiennes et de récompenser leurs clients sur tous les points de contact digitaux et physiques.",
+      contextTitle: "Pilotage & Orchestration du pôle Intégrations Beans.",
+      problem: "Connecter des API tierces complexes et hétérogènes (e-commerce, réseaux sociaux, CRM) sans surcharger l'interface marchande ni créer de friction technique lors de l'activation d'un nouveau canal.",
+      problemTitle: "Connecter des API complexes sans créer de friction marchand.",
+      challenge: "Coordonner les équipes produit et techniques pour concevoir des parcours d'intégration 'Plug & Play' réutilisables pour chaque nouveau partenaire (ex: Instagram Follow Rewards, Shopify Sync, Klaviyo Automation).",
+      challengeTitle: "Gestion de projet & UX design d'un écosystème d'intégrations scalable.",
       decisions: [
         {
-          title: "No-Code Program Builder",
-          desc: "Un tunnel séquentiel intuitif pour paramétrer règles d'accumulation, péremption de points et paliers VIP.",
-          why: "Permet aux marchands de déployer un programme complet et opérationnel en moins de 15 minutes."
+          title: "Framework d'Intégration Standardisé",
+          desc: "Définition de spécifications fonctionnelles et de composants UI réutilisables pour accélérer l'intégration de chaque nouveau partenaire (Instagram, TikTok, Klaviyo...).",
+          why: "Réduit de 50% le temps de développement et de mise sur le marché des nouveaux connecteurs."
         },
         {
-          title: "Connected Ecosystem Hub",
-          desc: "Hub d'intégrations clé en main avec Shopify, WooCommerce, Klaviyo, POS et outils marketing.",
-          why: "Centralise la synchronisation des données d'achat et d'engagement sans nécessiter de développeur."
+          title: "Parcours 'Add Integration' Plug & Play",
+          desc: "Tunnel d'activation en 2 clics avec pré-configuration des règles d'attribution de points selon les interactions (ex: suivre la marque sur Instagram, commander via Shopify).",
+          why: "Permet aux e-commerçants d'étendre leur programme de fidélité sans aucune compétence technique."
         },
         {
-          title: "Analytics & Customer Insights",
-          desc: "Tableau de bord axé sur la valeur générée et l'évolution des achats récurrents.",
-          why: "Transforme la donnée de fidélité en décisions stratégiques directement lisibles par le marchand."
+          title: "Coordination Produit & Roadmap Partenaires",
+          desc: "Pilotage des priorités de développement en fonction de l'impact marchand, des contraintes d'API tierces et des besoins de rétention.",
+          why: "Assure un alignement stratégique permanent entre valeur business, attentes marchands et faisabilité technique."
         }
       ],
-      solution: "Une plateforme SaaS B2B complète qui centralise la gestion des récompenses, les programmes VIP, le parrainage, les intégrations e-commerce et l'analyse comportementale client.",
-      solutionTitle: "Expérience SaaS unifiée de fidélisation et d'engagement client.",
+      solution: "Un pôle d'intégrations complet et modulaire centralisant les flux e-commerce, marketing et réseaux sociaux au sein du moteur de fidélité Beans.",
+      solutionTitle: "Hub d'intégrations unifié & connecteurs d'engagement client.",
       contextImg: "/imgs/beans_cover.png",
       challengeImg: "/imgs/beans_integrations.png",
-      interfaceImg: "/imgs/beans_cover.png",
+      interfaceImg: "/imgs/beans_instagram.png",
       dashboardImg: "/imgs/beans_integrations.png",
       features: [
-        { title: "Loyalty Program", desc: "Création de systèmes de points sur-mesure avec règles d'éligibilité et d'expiration." },
-        { title: "VIP Tiers", desc: "Paliers VIP et avantages exclusifs pour valoriser les clients les plus engagés." },
-        { title: "Analytics & Insights", desc: "Suivi des performances et impact direct des récompenses sur le panier moyen." },
-        { title: "Seamless Integrations", desc: "Connectivité native avec Shopify, Klaviyo, POS et l'écosystème e-commerce." }
+        { title: "Social Media Rewards (Instagram)", desc: "Récompense automatique des clients pour les interactions sociales (Follow, Share)." },
+        { title: "E-Commerce Sync (Shopify & Woo)", desc: "Synchronisation temps réel des commandes, paniers et historiques clients." },
+        { title: "Marketing Automation (Klaviyo)", desc: "Déclenchement d'emails personnalisés basés sur le solde de points et paliers VIP." },
+        { title: "Omnichannel & POS Integration", desc: "Unification de la fidélité en magasin physique et sur la boutique en ligne." }
       ],
-      insight: "Un produit SaaS B2B performant doit équilibrer trois dimensions : le Business (générer de la rétention), l'Utilisateur (simplifier le complexe) et la Technologie (construire du scalable).",
+      insight: "Le succès d'un pôle d'intégrations repose sur un trépied : la rigueur de la gestion de projet fonctionnelle, la clarté UX des flux d'activation et la scalabilité de l'architecture API.",
       impact: [
-        "Augmentation significative de la rétention et des achats récurrents pour les marchands",
-        "Réduction du churn grâce à des programmes VIP et de parrainage ciblés",
-        "Configuration rapide sans compétences techniques ou développement sur-mesure",
-        "Interface scalable prête pour l'intégration de nouvelles fonctionnalités marketing"
+        "Déploiement réussi de l'écosystème d'intégrations (Shopify, Klaviyo, Instagram, POS...)",
+        "Adoption massive des connecteurs sociaux et e-commerce par les marchands Beans",
+        "Réduction drastique du temps d'activation d'un connecteur par l'utilisateur",
+        "Augmentation significative de l'engagement client multi-canal"
       ],
-      conclusion: "Beans redéfinit l'expérience de fidélisation marchande en transformant un paramétrage technique complexe en un levier de croissance fluide et mesurable.",
+      conclusion: "Ce rôle de Chef de Projet sur le pôle Intégrations a démontré l'impact d'une gestion produit structurée pour transformer un écosystème d'API complexe en un levier d'engagement intuitif et performant.",
       externalLink: "https://www.trybeans.com"
     },
     'truvox': {
@@ -682,52 +682,52 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
     'beans': {
       title: "Beans",
       subtitle: "Customer Loyalty & Engagement SaaS Platform",
-      label: "Lead Product Designer · B2B SaaS",
+      label: "Integration Lead Project Manager & Product Designer · B2B SaaS",
       color: "#F59E0B",
       bgImage: "/imgs/beans_cover.png",
-      context: "In an e-commerce landscape where customer acquisition is increasingly costly, brands need to build lasting relationships with consumers. Beans is a customer loyalty SaaS platform empowering e-commerce and retail brands to launch custom reward programs integrated into their existing stack (Shopify, WooCommerce, Klaviyo, POS).",
-      contextTitle: "Turning every transaction into a lasting relationship.",
-      problem: "Loyalty programs involve complex variables: point earning rules, reward conditions, customer tiers, third-party integrations, and performance tracking. Without an intuitive tool, merchant setup becomes a technical bottleneck.",
-      problemTitle: "Designing a simple SaaS experience for a complex system.",
-      challenge: "Create a seamless admin dashboard enabling merchants to configure loyalty rules, connect daily marketing tools, and optimize retention strategy without technical friction.",
-      challengeTitle: "Simplifying management while maximizing customer retention.",
+      context: "As Integration Project Manager at Beans, I led the strategic structuring, UX design, and rollout of the third-party connector ecosystem (Shopify, WooCommerce, Klaviyo, Instagram, POS, Omnisend...). The main goal was empowering merchants to seamlessly connect their daily tech stack and reward customer interactions across all digital and physical touchpoints.",
+      contextTitle: "Project Management & Orchestration of Beans Integration Hub.",
+      problem: "Connecting heterogeneous, complex third-party APIs (e-commerce, social media, marketing automation) without cluttering the merchant UI or adding technical friction during channel activation.",
+      problemTitle: "Connecting complex APIs without adding merchant friction.",
+      challenge: "Coordinating product and engineering teams to design reusable 'Plug & Play' integration workflows for every new ecosystem partner (e.g. Instagram Follow Rewards, Shopify Sync, Klaviyo Automation).",
+      challengeTitle: "Project management & UX design for a scalable integration ecosystem.",
       decisions: [
         {
-          title: "No-Code Program Builder",
-          desc: "An intuitive step-by-step workflow to set point earning rules, expiration dates, and VIP tiers.",
-          why: "Enables merchants to deploy a complete loyalty program in under 15 minutes."
+          title: "Standardized Integration Framework",
+          desc: "Defined functional specifications and reusable UI components to accelerate rollout speed for new partner connectors (Instagram, TikTok, Klaviyo...).",
+          why: "Reduced time-to-market and engineering dev time by 50% per connector."
         },
         {
-          title: "Connected Ecosystem Hub",
-          desc: "Plug-and-play integration hub for Shopify, WooCommerce, Klaviyo, POS, and marketing tools.",
-          why: "Centralizes purchasing and engagement data sync without developer overhead."
+          title: "Plug & Play 'Add Integration' Workflow",
+          desc: "Designed 2-click activation flows with pre-configured point earning rules tailored to channel actions (e.g., follow on Instagram, purchase via Shopify).",
+          why: "Enabled merchants to expand their loyalty reach with zero coding or technical skill required."
         },
         {
-          title: "Analytics & Customer Insights",
-          desc: "Actionable dashboard focusing on generated revenue and repeat purchase evolution.",
-          why: "Transforms loyalty data into clear, strategic merchant decisions."
+          title: "Product & Partner Roadmap Alignment",
+          desc: "Prioritized feature delivery based on merchant business impact, third-party API constraints, and retention goals.",
+          why: "Ensured constant strategic alignment between business value, merchant expectations, and technical feasibility."
         }
       ],
-      solution: "A comprehensive B2B SaaS platform centralizing rewards management, VIP tiers, referral programs, e-commerce integrations, and customer behavior analytics.",
-      solutionTitle: "Unified SaaS experience for customer loyalty & engagement.",
+      solution: "A modular, full-stack Integration Hub centralizing e-commerce, marketing, and social media data streams directly into Beans loyalty engine.",
+      solutionTitle: "Unified Integration Hub & customer engagement connectors.",
       contextImg: "/imgs/beans_cover.png",
       challengeImg: "/imgs/beans_integrations.png",
-      interfaceImg: "/imgs/beans_cover.png",
+      interfaceImg: "/imgs/beans_instagram.png",
       dashboardImg: "/imgs/beans_integrations.png",
       features: [
-        { title: "Loyalty Program", desc: "Custom point systems with eligibility rules and point expiration schedules." },
-        { title: "VIP Tiers", desc: "Exclusive VIP levels and perks to reward highest-value customers." },
-        { title: "Analytics & Insights", desc: "Real-time performance tracking and reward impact on average order value." },
-        { title: "Seamless Integrations", desc: "Native connectivity with Shopify, Klaviyo, POS, and marketing tools." }
+        { title: "Social Media Rewards (Instagram)", desc: "Automatically rewards customers for social engagement (Follow, Share)." },
+        { title: "E-Commerce Sync (Shopify & Woo)", desc: "Real-time synchronization of orders, carts, and customer history." },
+        { title: "Marketing Automation (Klaviyo)", desc: "Trigger personalized emails based on point balances and VIP tier upgrades." },
+        { title: "Omnichannel & POS Integration", desc: "Unifies physical store and online store loyalty experience." }
       ],
-      insight: "A successful B2B SaaS product must balance three dimensions: Business (drive retention & value), User (simplify the complex), and Technology (build for scalability).",
+      insight: "The success of an Integration Hub relies on three pillars: rigorous functional project management, crystal-clear UX activation flows, and scalable API architecture.",
       impact: [
-        "Measurable increase in repeat purchases and customer retention for merchants",
-        "Churn reduction through targeted VIP tiers and referral campaigns",
-        "Rapid deployment with zero technical overhead or custom dev required",
-        "Scalable design architecture prepared for future marketing feature rollouts"
+        "Successful deployment of Beans integration ecosystem (Shopify, Klaviyo, Instagram, POS...)",
+        "Massive adoption of social and e-commerce connectors by active merchants",
+        "Drastic reduction in merchant setup and connector onboarding duration",
+        "Significant boost in multi-channel customer retention and repeat orders"
       ],
-      conclusion: "Beans redefines merchant loyalty management by turning complex technical rules into a seamless, high-converting growth engine.",
+      conclusion: "This role as Integration Project Manager demonstrated the impact of structured product management in turning complex API integrations into an intuitive growth engine.",
       externalLink: "https://www.trybeans.com"
     },
     'truvox': {

@@ -1557,13 +1557,13 @@ function App() {
           {
             id: 'beans',
             title: 'Beans',
-            role: 'Lead Product Designer',
-            category: 'B2B SaaS Platform',
+            role: 'Integration Project Manager & Designer',
+            category: 'SaaS Integrations Hub',
             image: '/imgs/beans_cover.png',
-            description: "Customer loyalty & engagement SaaS platform empowering e-commerce and retail brands to build custom reward programs and boost customer retention.",
-            techs: ['Figma', 'UX Strategy', 'B2B SaaS', 'Design System'],
+            description: "Led functional project management and UX design for Beans Integration Hub: connecting Shopify, WooCommerce, Klaviyo, Instagram, and POS into the customer loyalty platform.",
+            techs: ['Project Management', 'SaaS Integrations', 'Figma', 'API Spec'],
             link: 'https://www.trybeans.com',
-            color: '#10B981',
+            color: '#F59E0B',
             linkType: 'site',
           },
           {
@@ -1790,13 +1790,13 @@ function App() {
           {
             id: 'beans',
             title: 'Beans',
-            role: 'Lead Product Designer',
-            category: 'Plateforme SaaS B2B',
+            role: 'Chef de Projet Intégrations & Designer',
+            category: 'Hub d\'Intégrations SaaS',
             image: '/imgs/beans_cover.png',
-            description: "Plateforme SaaS de fidélisation client et customer engagement permettant aux marques e-commerce et retail de créer des programmes de récompenses personnalisés.",
-            techs: ['Figma', 'UX Strategy', 'B2B SaaS', 'Design System'],
+            description: "Pilotage fonctionnel et design UX du pôle d'intégrations Beans : connexion des écosystèmes Shopify, WooCommerce, Klaviyo, Instagram et POS à la plateforme de fidélisation.",
+            techs: ['Gestion de projet', 'Intégrations SaaS', 'Figma', 'Spécifications API'],
             link: 'https://www.trybeans.com',
-            color: '#10B981',
+            color: '#F59E0B',
             linkType: 'site',
           },
           {
@@ -2591,14 +2591,14 @@ function App() {
                 label: 'Loyalty & Customer Engagement',
                 title: 'Beans',
                 year: '2025 / 2026',
-                role: lang === 'en' ? 'Lead Product Designer' : 'Lead Product Designer',
+                role: lang === 'en' ? 'Integration Lead Project Manager & Product Designer' : 'Chef de Projet Intégrations & Product Designer',
                 metrics: lang === 'en'
-                  ? ['Loyalty & VIP Tiers', 'Shopify & Klaviyo sync', 'Retention analytics']
-                  : ['Programmes fidélité & VIP', 'Synchro Shopify & Klaviyo', 'Analytics de rétention'],
-                tags: ['Product Design', 'B2B SaaS', 'E-commerce', 'Loyalty'],
+                  ? ['Integration Hub Leadership', 'Shopify, Klaviyo & Social Sync', 'Plug & Play Integration Flow']
+                  : ['Pilotage du pôle Intégrations', 'Synchro Shopify, Klaviyo & Social', 'Parcours Intégrations Plug & Play'],
+                tags: ['Project Management', 'SaaS Integrations', 'Product Strategy', 'UX/UI'],
                 desc: lang === 'en'
-                  ? 'Customer loyalty & engagement SaaS platform empowering e-commerce brands to build personalized reward programs and boost repeat purchases.'
-                  : 'Plateforme SaaS de fidélisation permettant aux marques e-commerce de créer des programmes de récompenses personnalisés et de stimuler les achats récurrents.',
+                  ? 'Strategic management & UX design of Beans Integration Hub: connecting e-commerce platforms, social media (Instagram), and marketing stacks to the loyalty engine.'
+                  : 'Pilotage stratégique et design UX du pôle d\'intégrations Beans : connexion des plateformes e-commerce, réseaux sociaux (Instagram) et stacks marketing au moteur de fidélité.',
                 image: '/imgs/beans_cover.png',
                 mockup: '/imgs/beans_cover.png',
                 color: '#F59E0B',
