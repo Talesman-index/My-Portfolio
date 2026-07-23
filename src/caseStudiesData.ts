@@ -26,7 +26,7 @@ export interface CaseStudyData {
   ctaLabel?: string;
 }
 
-export type CaseStudyId = 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera';
+export type CaseStudyId = 'asset-iq' | 'ehadj' | 'beans' | 'sagana' | 'vortex' | 'sport-advisor' | 'truvox' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera';
 
 export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyData>> = {
   fr: {
@@ -234,46 +234,91 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive",
       ctaLabel: "VOIR LE PROJET"
     },
-    'forum-grandes-ecoles': {
-      title: "Forum Grandes Écoles",
-      subtitle: "MVP d'une plateforme d'orientation académique et d'inscription événementielle",
-      label: "Fullstack Development & UX",
-      color: "#E63946",
-      bgImage: "/imgs/forum.png",
-      context: "L'organisation d'un forum étudiant physique implique une logistique complexe : gestion des stands, plannings des conférences, inscriptions et transmission des données de contact. Pour tester rapidement une transition numérique et fluidifier l'expérience, nous avons initié la conception d'un MVP.",
-      contextTitle: "La logistique des événements étudiants à grande échelle.",
-      challenge: "Créer un MVP fonctionnel capable de gérer l'inscription de milliers d'étudiants, de centraliser le calendrier des présentations et de valider le flux de transmission de données de contact sans complexité excessive.",
-      challengeTitle: "Valider les flux clés et simplifier l'organisation.",
-      challengeImg: "/imgs/forum.png",
+    'beans': {
+      title: "Beans",
+      subtitle: "Plateforme SaaS de fidélisation client & Customer Engagement",
+      label: "Lead Product Designer · SaaS B2B",
+      color: "#10B981",
+      bgImage: "/imgs/beans_cover.png",
+      context: "Dans un environnement e-commerce et retail où l'acquisition client devient de plus en plus coûteuse, les marques cherchent à construire des relations durables avec leurs consommateurs. Beans est une plateforme SaaS de fidélisation permettant de déployer des programmes de récompenses sur-mesure intégrés à l'écosystème marchand (Shopify, WooCommerce, Klaviyo, POS).",
+      contextTitle: "Transformer chaque transaction en relation durable.",
+      problem: "Les programmes de fidélité impliquent de nombreux paramètres complexes : règles d'accumulation de points, conditions de récompenses, segmentation client, intégrations tierces et suivi des performances. Sans outil intuitif, la configuration devient un goulot d'étranglement pour les marchands.",
+      problemTitle: "Concevoir une expérience SaaS simple pour un système complexe.",
+      challenge: "Créer une expérience d'administration fluide permettant aux e-commerçants de configurer leurs règles de fidélité, de connecter leurs outils quotidiens et d'optimiser leur stratégie de rétention sans complexité technique.",
+      challengeTitle: "Simplifier l'administration tout en maximisant la rétention client.",
       decisions: [
         {
-          title: "Agenda Personnalisé",
-          desc: "Permettre à l'étudiant de composer son propre programme de conférences.",
-          why: "Évite les conflits d'horaires et maximise la participation aux événements."
+          title: "No-Code Program Builder",
+          desc: "Un tunnel séquentiel intuitif pour paramétrer règles d'accumulation, péremption de points et paliers VIP.",
+          why: "Permet aux marchands de déployer un programme complet et opérationnel en moins de 15 minutes."
         },
         {
-          title: "Badges QR Code",
-          desc: "Génération d'un pass étudiant avec QR code pour un scan rapide à l'entrée.",
-          why: "Réduit le temps d'attente à l'entrée du forum physique de 80%."
+          title: "Connected Ecosystem Hub",
+          desc: "Hub d'intégrations clé en main avec Shopify, WooCommerce, Klaviyo, POS et outils marketing.",
+          why: "Centralise la synchronisation des données d'achat et d'engagement sans nécessiter de développeur."
+        },
+        {
+          title: "Analytics & Customer Insights",
+          desc: "Tableau de bord axé sur la valeur générée et l'évolution des achats récurrents.",
+          why: "Transforme la donnée de fidélité en décisions stratégiques directement lisibles par le marchand."
         }
       ],
-      solution: "Développement d'un MVP d'application web sous Next.js intégrant les fonctionnalités minimales viables : authentification des profils, agenda dynamique interactif, et un module d'exportation de CV pour les écoles.",
-      solutionTitle: "Application Next.js agile avec base de données relationnelle et QR code.",
-      dashboardImg: "/imgs/forum.png",
+      solution: "Une plateforme SaaS B2B complète qui centralise la gestion des récompenses, les programmes VIP, le parrainage, les intégrations e-commerce et l'analyse comportementale client.",
+      solutionTitle: "Expérience SaaS unifiée de fidélisation et d'engagement client.",
+      interfaceImg: "/imgs/beans_cover.png",
       features: [
-        { title: "Inscription Simplifiée", desc: "Flow d'inscription en moins d'une minute avec intégration de profil." },
-        { title: "Calendrier Dynamique", desc: "Suivi en temps réel des horaires et des places disponibles en conférences." },
-        { title: "Espace Écoles", desc: "Dashboard dédié aux écoles pour collecter les candidatures et CV." },
-        { title: "Notifications SMS", desc: "Rappels automatiques avant le début des sessions réservées." }
+        { title: "Loyalty Program", desc: "Création de systèmes de points sur-mesure avec règles d'éligibilité et d'expiration." },
+        { title: "VIP Tiers", desc: "Paliers VIP et avantages exclusifs pour valoriser les clients les plus engagés." },
+        { title: "Analytics & Insights", desc: "Suivi des performances et impact direct des récompenses sur le panier moyen." },
+        { title: "Seamless Integrations", desc: "Connectivité native avec Shopify, Klaviyo, POS et l'écosystème e-commerce." }
       ],
-      insight: "Un MVP doit se concentrer sur les hypothèses les plus risquées. La fluidité de l'onboarding et de la collecte de CV a été notre priorité absolue.",
+      insight: "Un produit SaaS B2B performant doit équilibrer trois dimensions : le Business (générer de la rétention), l'Utilisateur (simplifier le complexe) et la Technologie (construire du scalable).",
       impact: [
-        "Validation du concept avec plus de 5000 inscriptions d'étudiants sur le MVP",
-        "Temps d'accès aux conférences fluidifié lors du test terrain",
-        "Collecte et transmission de CV validées avec succès par 100% des écoles partenaires"
+        "Augmentation significative de la rétention et des achats récurrents pour les marchands",
+        "Réduction du churn grâce à des programmes VIP et de parrainage ciblés",
+        "Configuration rapide sans compétences techniques ou développement sur-mesure",
+        "Interface scalable prête pour l'intégration de nouvelles fonctionnalités marketing"
       ],
-      conclusion: "Ce MVP a prouvé la viabilité d'un portail numérique, ouvrant la voie à des itérations futures basées sur les retours utilisateurs du terrain.",
-      externalLink: "https://forum-grandes-ecoles.vercel.app/"
+      conclusion: "Beans redéfinit l'expérience de fidélisation marchande en transformant un paramétrage technique complexe en un levier de croissance fluide et mesurable.",
+      externalLink: "https://www.trybeans.com"
+    },
+    'truvox': {
+      title: "Truvox Studio",
+      subtitle: "Expériences numériques d'exception : Stratégie, Design & Développement",
+      label: "Web Design & Brand Experience",
+      color: "#10B981",
+      bgImage: "/imgs/truvox_cover.png",
+      context: "Truvox est un studio de création digitale qui conçoit des expériences numériques d'exception conçues pour apporter de la clarté, renforce la confiance et soutient la croissance des entreprises (Stratégie, Design, Développement).",
+      contextTitle: "Allier clarté stratégique et excellence visuelle.",
+      challenge: "Créer un univers de marque moderne et un site studio épuré, interactif et hautement performant qui reflète la précision et le savoir-faire de l'équipe Truvox.",
+      challengeTitle: "Incarner la qualité créative et technique.",
+      decisions: [
+        {
+          title: "Direction Artistique Épurée",
+          desc: "Typographies affirmées, contrastes profonds et animations minimalistes.",
+          why: "Valorise immédiatement le savoir-faire design du studio dès les premières secondes."
+        },
+        {
+          title: "Structure Orientée Conversion",
+          desc: "Tunnel clair entre vision stratégique, réalisations (See Our Work) et demande de devis (Request a Quote).",
+          why: "Facilite la prise de contact pour les prospects qualifiés."
+        }
+      ],
+      solution: "Un site studio moderne avec une identité visuelle forte, combinant direction artistique haut de gamme et développement web réactif.",
+      solutionTitle: "Vitrine digitale haut de gamme pour Truvox Studio.",
+      features: [
+        { title: "Stratégie & Positioning", desc: "Clarté du message de marque et alignement avec les objectifs business." },
+        { title: "Design d'Expérience", desc: "Interfaces modernes et interactives pensées pour l'engagement." },
+        { title: "Développement & Performance", desc: "Intégration web fluide, réactive et optimisée pour tous les écrans." }
+      ],
+      insight: "La vitrine d'un studio créatif doit être la première preuve de son excellence d'exécution.",
+      impact: [
+        "Identité de marque forte et mémorable",
+        "Navigation fluide et expérience utilisateur haut de gamme",
+        "Génération de contacts qualifiés et demandes de devis"
+      ],
+      conclusion: "Truvox Studio illustre l'alliance entre vision créative, rigueur stratégique et performance web.",
+      externalLink: "https://www.truvox.studio/"
     },
     'tavares': {
       title: "Tavares",
@@ -631,46 +676,91 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       externalLink: "https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive",
       ctaLabel: "VIEW PROJECT"
     },
-    'forum-grandes-ecoles': {
-      title: "Forum Grandes Écoles",
-      subtitle: "MVP of an academic orientation and event registration platform",
-      label: "Fullstack Development & UX",
-      color: "#E63946",
-      bgImage: "/imgs/forum.png",
-      context: "Organizing a large physical student forum involves complex logistics: managing booths, scheduling conferences, handling registrations, and transferring contact data. To validate a digital transition, we designed a swift MVP.",
-      contextTitle: "Logistics of large-scale student orientation events.",
-      challenge: "Create an MVP capable of handling registrations, centralizing conference schedules, and validating basic student-school contact sharing features under realistic user traffic.",
-      challengeTitle: "Validating key user journeys and simplifying organization.",
-      challengeImg: "/imgs/forum.png",
+    'beans': {
+      title: "Beans",
+      subtitle: "Customer Loyalty & Engagement SaaS Platform",
+      label: "Lead Product Designer · B2B SaaS",
+      color: "#10B981",
+      bgImage: "/imgs/beans_cover.png",
+      context: "In an e-commerce landscape where customer acquisition is increasingly costly, brands need to build lasting relationships with consumers. Beans is a customer loyalty SaaS platform empowering e-commerce and retail brands to launch custom reward programs integrated into their existing stack (Shopify, WooCommerce, Klaviyo, POS).",
+      contextTitle: "Turning every transaction into a lasting relationship.",
+      problem: "Loyalty programs involve complex variables: point earning rules, reward conditions, customer tiers, third-party integrations, and performance tracking. Without an intuitive tool, merchant setup becomes a technical bottleneck.",
+      problemTitle: "Designing a simple SaaS experience for a complex system.",
+      challenge: "Create a seamless admin dashboard enabling merchants to configure loyalty rules, connect daily marketing tools, and optimize retention strategy without technical friction.",
+      challengeTitle: "Simplifying management while maximizing customer retention.",
       decisions: [
         {
-          title: "Personalized Schedule",
-          desc: "Allowing students to build their own personalized list of talks.",
-          why: "Prevents scheduling conflicts and maximizes talk attendance."
+          title: "No-Code Program Builder",
+          desc: "An intuitive step-by-step workflow to set point earning rules, expiration dates, and VIP tiers.",
+          why: "Enables merchants to deploy a complete loyalty program in under 15 minutes."
         },
         {
-          title: "QR Code Badges",
-          desc: "Generating a student pass with a QR code for rapid on-site scanning.",
-          why: "Reduces check-in wait times at the physical event by 80%."
+          title: "Connected Ecosystem Hub",
+          desc: "Plug-and-play integration hub for Shopify, WooCommerce, Klaviyo, POS, and marketing tools.",
+          why: "Centralizes purchasing and engagement data sync without developer overhead."
+        },
+        {
+          title: "Analytics & Customer Insights",
+          desc: "Actionable dashboard focusing on generated revenue and repeat purchase evolution.",
+          why: "Transforms loyalty data into clear, strategic merchant decisions."
         }
       ],
-      solution: "Developed a Next.js web application MVP focusing on core viable features: user authentication, dynamic interactive agenda, and a simple school resume export dashboard.",
-      solutionTitle: "Next.js MVP with relational database and QR code integrations.",
-      dashboardImg: "/imgs/forum.png",
+      solution: "A comprehensive B2B SaaS platform centralizing rewards management, VIP tiers, referral programs, e-commerce integrations, and customer behavior analytics.",
+      solutionTitle: "Unified SaaS experience for customer loyalty & engagement.",
+      interfaceImg: "/imgs/beans_cover.png",
       features: [
-        { title: "Fast Registration", desc: "Under-a-minute sign-up flow with integrated profile setup." },
-        { title: "Dynamic Calendar", desc: "Real-time monitoring of schedules and seat availability for conferences." },
-        { title: "School Dashboard", desc: "Dedicated panel for schools to collect applications and download resumes." },
-        { title: "SMS Notifications", desc: "Automatic text reminders before reserved talk sessions begin." }
+        { title: "Loyalty Program", desc: "Custom point systems with eligibility rules and point expiration schedules." },
+        { title: "VIP Tiers", desc: "Exclusive VIP levels and perks to reward highest-value customers." },
+        { title: "Analytics & Insights", desc: "Real-time performance tracking and reward impact on average order value." },
+        { title: "Seamless Integrations", desc: "Native connectivity with Shopify, Klaviyo, POS, and marketing tools." }
       ],
-      insight: "An MVP should focus on validating the riskiest assumptions. Ensuring a friction-free signup and simple school resume export was our highest priority.",
+      insight: "A successful B2B SaaS product must balance three dimensions: Business (drive retention & value), User (simplify the complex), and Technology (build for scalability).",
       impact: [
-        "Concept validated with over 5,000 student registrations managed on the MVP",
-        "Check-in flow validated at under 5 seconds per person during initial testing",
-        "Resume gathering flow validated and praised by 100% of participating schools"
+        "Measurable increase in repeat purchases and customer retention for merchants",
+        "Churn reduction through targeted VIP tiers and referral campaigns",
+        "Rapid deployment with zero technical overhead or custom dev required",
+        "Scalable design architecture prepared for future marketing feature rollouts"
       ],
-      conclusion: "The MVP successfully validated the demand for a digital forum portal, paving the way for future iterations based on real-world user feedback.",
-      externalLink: "https://forum-grandes-ecoles.vercel.app/"
+      conclusion: "Beans redefines merchant loyalty management by turning complex technical rules into a seamless, high-converting growth engine.",
+      externalLink: "https://www.trybeans.com"
+    },
+    'truvox': {
+      title: "Truvox Studio",
+      subtitle: "Digital experiences that bring clarity, build trust, and support business growth",
+      label: "Web Design & Brand Experience",
+      color: "#10B981",
+      bgImage: "/imgs/truvox_cover.png",
+      context: "Truvox is a digital design studio crafting exceptional digital experiences that bring clarity, build trust, and support business growth through Strategy, Design, and Development.",
+      contextTitle: "Combining strategic clarity with visual excellence.",
+      challenge: "Design a modern brand identity and sleek, interactive studio website reflecting Truvox's commitment to quality craftsmanship and technical precision.",
+      challengeTitle: "Embodying creative and technical excellence.",
+      decisions: [
+        {
+          title: "Sleek Art Direction",
+          desc: "Bold typography, deep dark contrast, and minimalist motion design.",
+          why: "Instantly showcases the studio's design mastery within seconds."
+        },
+        {
+          title: "Conversion-Oriented Flow",
+          desc: "Clear path connecting strategic positioning, work portfolio, and quote requests.",
+          why: "Streamlines lead generation for high-intent clients."
+        }
+      ],
+      solution: "A modern studio website featuring a striking visual identity, combining high-end art direction with responsive, performant web development.",
+      solutionTitle: "High-end digital showcase for Truvox Studio.",
+      features: [
+        { title: "Strategy & Positioning", desc: "Clear brand messaging aligned with business growth goals." },
+        { title: "Experience Design", desc: "Modern interactive interfaces crafted for user engagement." },
+        { title: "Development & Motion", desc: "Smooth, responsive, and performance-optimized web build." }
+      ],
+      insight: "A creative studio's digital presence must serve as the primary proof of its execution quality.",
+      impact: [
+        "Memorable and distinct brand identity",
+        "Fluid navigation and premium user experience",
+        "Increased inbound client leads and quote requests"
+      ],
+      conclusion: "Truvox Studio demonstrates the harmony between creative vision, strategic rigor, and web performance.",
+      externalLink: "https://www.truvox.studio/"
     },
     'tavares': {
       title: "Tavares",

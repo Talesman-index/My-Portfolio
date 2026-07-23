@@ -24,8 +24,8 @@ import {
   Target,
   Shield,
   Award,
-  Users,
-  FileText,
+  Compass,
+  Layout,
   Activity,
   RefreshCw,
   LayoutDashboard
@@ -363,8 +363,12 @@ const getFeatureIcon = (projectId: string, index: number) => {
     const icons = [Target, Shield, Award];
     return icons[index] || Sparkles;
   }
-  if (projectId === 'forum-grandes-ecoles') {
-    const icons = [Users, Calendar, FileText];
+  if (projectId === 'beans') {
+    const icons = [Award, Zap, Activity, Layers];
+    return icons[index] || Sparkles;
+  }
+  if (projectId === 'truvox') {
+    const icons = [Globe, Compass, Code, Layout];
     return icons[index] || Sparkles;
   }
   if (projectId === 'dolce-riviera') {
@@ -431,7 +435,7 @@ const CaseStudy = ({
   onBack,
   lang
 }: { 
-  id: 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera', 
+  id: 'asset-iq' | 'ehadj' | 'beans' | 'sagana' | 'vortex' | 'sport-advisor' | 'truvox' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera', 
   mousePos: { x: number, y: number }, 
   setCurrentView: any,
   onBack?: () => void,
@@ -1097,17 +1101,18 @@ const ProjectsView = ({
 const VALID_PROJECT_IDS = [
   'asset-iq',
   'ehadj',
+  'beans',
   'sagana',
   'vortex',
   'sport-advisor',
-  'forum-grandes-ecoles',
+  'truvox',
   'tavares',
   'the-refuge',
   'strategy-arena',
   'dolce-riviera'
 ];
 
-const getViewFromHash = (): 'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv' => {
+const getViewFromHash = (): 'home' | 'projects' | 'asset-iq' | 'ehadj' | 'beans' | 'sagana' | 'vortex' | 'sport-advisor' | 'truvox' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv' => {
   if (typeof window === 'undefined') return 'home';
   const hash = window.location.hash.replace('#', '').trim();
   if (hash === 'projects') return 'projects';
@@ -1120,7 +1125,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   if (scrolled) { /* no-op for TS check */ }
-  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'sagana' | 'vortex' | 'sport-advisor' | 'forum-grandes-ecoles' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv'>(() => getViewFromHash());
+  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'asset-iq' | 'ehadj' | 'beans' | 'sagana' | 'vortex' | 'sport-advisor' | 'truvox' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera' | 'cv'>(() => getViewFromHash());
   const [previousView, setPreviousView] = useState<'home' | 'projects'>('home');
   if (previousView) { /* no-op for TS check */ }
   const [lang, setLang] = useState<'en' | 'fr'>('en');
@@ -1550,15 +1555,27 @@ function App() {
             linkType: 'behance',
           },
           {
-            id: 'forum-grandes-ecoles',
-            title: 'Forum Grandes Écoles',
-            role: 'Fullstack Developer',
-            category: 'Education Platform',
-            image: '/imgs/forum.png',
-            description: "MVP for an academic orientation and event registration platform. Built to validate core features like student onboarding, custom conference schedules, and simple school dashboards.",
-            techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
-            link: 'https://forum-grandes-ecoles.vercel.app/',
-            color: '#E63946',
+            id: 'beans',
+            title: 'Beans',
+            role: 'Lead Product Designer',
+            category: 'B2B SaaS Platform',
+            image: '/imgs/beans_cover.png',
+            description: "Customer loyalty & engagement SaaS platform empowering e-commerce and retail brands to build custom reward programs and boost customer retention.",
+            techs: ['Figma', 'UX Strategy', 'B2B SaaS', 'Design System'],
+            link: 'https://www.trybeans.com',
+            color: '#10B981',
+            linkType: 'site',
+          },
+          {
+            id: 'truvox',
+            title: 'Truvox Studio',
+            role: 'Product & Web Designer',
+            category: 'Brand & Web Studio',
+            image: '/imgs/truvox_cover.png',
+            description: "Digital design studio crafting exceptional digital experiences that bring clarity, build trust, and support business growth through Strategy, Design, and Development.",
+            techs: ['Brand Strategy', 'Web Design', 'Development', 'Framer Motion'],
+            link: 'https://www.truvox.studio/',
+            color: '#10B981',
             linkType: 'site',
           },
           {
@@ -1771,15 +1788,27 @@ function App() {
             linkType: 'behance',
           },
           {
-            id: 'forum-grandes-ecoles',
-            title: 'Forum Grandes Écoles',
-            role: 'Développeur Fullstack',
-            category: 'Plateforme Éducative',
-            image: '/imgs/forum.png',
-            description: "MVP d'une plateforme d'orientation et d'inscription événementielle. Conçu pour valider les fonctionnalités clés telles que l'onboarding des étudiants, la planification simplifiée et un tableau de bord école basique.",
-            techs: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
-            link: 'https://forum-grandes-ecoles.vercel.app/',
-            color: '#E63946',
+            id: 'beans',
+            title: 'Beans',
+            role: 'Lead Product Designer',
+            category: 'Plateforme SaaS B2B',
+            image: '/imgs/beans_cover.png',
+            description: "Plateforme SaaS de fidélisation client et customer engagement permettant aux marques e-commerce et retail de créer des programmes de récompenses personnalisés.",
+            techs: ['Figma', 'UX Strategy', 'B2B SaaS', 'Design System'],
+            link: 'https://www.trybeans.com',
+            color: '#10B981',
+            linkType: 'site',
+          },
+          {
+            id: 'truvox',
+            title: 'Truvox Studio',
+            role: 'Product & Web Designer',
+            category: 'Brand & Web Studio',
+            image: '/imgs/truvox_cover.png',
+            description: "Studio de création digitale qui conçoit des expériences numériques d'exception pour apporter de la clarté, renforcer la confiance et soutenir la croissance des entreprises.",
+            techs: ['Brand Strategy', 'Web Design', 'Development', 'Framer Motion'],
+            link: 'https://www.truvox.studio/',
+            color: '#10B981',
             linkType: 'site',
           },
           {
@@ -2555,6 +2584,25 @@ function App() {
                 mockup: '/imgs/assetiQ/cover_Asset.jpg',
                 color: '#A855F7',
                 view: 'asset-iq'
+              },
+              {
+                id: 'beans',
+                index: '03',
+                label: 'Loyalty & Customer Engagement',
+                title: 'Beans',
+                year: '2025 / 2026',
+                role: lang === 'en' ? 'Lead Product Designer' : 'Lead Product Designer',
+                metrics: lang === 'en'
+                  ? ['Loyalty & VIP Tiers', 'Shopify & Klaviyo sync', 'Retention analytics']
+                  : ['Programmes fidélité & VIP', 'Synchro Shopify & Klaviyo', 'Analytics de rétention'],
+                tags: ['Product Design', 'B2B SaaS', 'E-commerce', 'Loyalty'],
+                desc: lang === 'en'
+                  ? 'Customer loyalty & engagement SaaS platform empowering e-commerce brands to build personalized reward programs and boost repeat purchases.'
+                  : 'Plateforme SaaS de fidélisation permettant aux marques e-commerce de créer des programmes de récompenses personnalisés et de stimuler les achats récurrents.',
+                image: '/imgs/beans_cover.png',
+                mockup: '/imgs/beans_cover.png',
+                color: '#10B981',
+                view: 'beans'
               }
             ].map((product, index) => (
               <motion.a
