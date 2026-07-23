@@ -265,7 +265,10 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       ],
       solution: "Une plateforme SaaS B2B complète qui centralise la gestion des récompenses, les programmes VIP, le parrainage, les intégrations e-commerce et l'analyse comportementale client.",
       solutionTitle: "Expérience SaaS unifiée de fidélisation et d'engagement client.",
+      contextImg: "/imgs/beans_cover.png",
+      challengeImg: "/imgs/beans_integrations.png",
       interfaceImg: "/imgs/beans_cover.png",
+      dashboardImg: "/imgs/beans_integrations.png",
       features: [
         { title: "Loyalty Program", desc: "Création de systèmes de points sur-mesure avec règles d'éligibilité et d'expiration." },
         { title: "VIP Tiers", desc: "Paliers VIP et avantages exclusifs pour valoriser les clients les plus engagés." },
@@ -707,7 +710,10 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       ],
       solution: "A comprehensive B2B SaaS platform centralizing rewards management, VIP tiers, referral programs, e-commerce integrations, and customer behavior analytics.",
       solutionTitle: "Unified SaaS experience for customer loyalty & engagement.",
+      contextImg: "/imgs/beans_cover.png",
+      challengeImg: "/imgs/beans_integrations.png",
       interfaceImg: "/imgs/beans_cover.png",
+      dashboardImg: "/imgs/beans_integrations.png",
       features: [
         { title: "Loyalty Program", desc: "Custom point systems with eligibility rules and point expiration schedules." },
         { title: "VIP Tiers", desc: "Exclusive VIP levels and perks to reward highest-value customers." },
