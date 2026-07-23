@@ -3587,23 +3587,17 @@ section {
 
 .mockup-screen-new {
   width: 100%;
-  height: auto;
-  min-height: 350px;
-  max-height: 800px;
+  height: 550px;
   overflow: hidden;
-  background: transparent;
+  background: #030804;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .mockup-screen-new img {
   width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain !important;
-  object-position: center;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
   display: block;
 }
 
@@ -9458,17 +9452,32 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px);
 }
 
-/* Global Uncropped Image Display Rules: Preserve full original image proportions without zooming or cropping */
-.cs-view-new img,
-.cs-hero-new img,
-.cs-media img,
-.cs-section-new img,
-.browser-body img,
-.cs-image-box img,
-.mockup-screen-new img {
+/* Ensure 100% full image display without cropping, zooming or clipping on all project detail pages */
+.cs-view-new .mockup-screen-new {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.cs-view-new .mockup-screen-new img,
+.cs-view-new .cs-inline-mockup img,
+.cs-view-new .cs-section-new img,
+.cs-view-new img {
   object-fit: contain !important;
-  max-height: 100% !important;
-  border-radius: inherit;
+  object-position: center !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  transform: none !important;
+  border-radius: 8px;
+}
+
+.cs-view-new .cs-inline-mockup,
+.cs-view-new .mockup-frame-new {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 
