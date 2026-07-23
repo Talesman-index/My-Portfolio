@@ -268,18 +268,18 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       contextImg: "/imgs/beans_cover.png",
       challengeImg: "/imgs/beans_integrations.png",
       interfaceImg: "/imgs/beans_instagram.png",
-      dashboardImg: "/imgs/beans_integrations.png",
+      dashboardImg: "/imgs/beans_roadmap.png",
       features: [
-        { title: "Social Media Rewards (Instagram)", desc: "Feature image & tunnel de récompense automatique des clients pour les interactions sociales (Follow, Share)." },
-        { title: "E-Commerce Sync (Shopify & Woo)", desc: "PRD & synchronisation temps réel des commandes, paniers et historiques clients." },
-        { title: "Marketing Automation (Klaviyo)", desc: "Spécifications & déclenchement d'emails personnalisés basés sur le solde de points et paliers VIP." },
-        { title: "Omnichannel & POS Integration", desc: "Supervision dev & QA de l'unification de la fidélité en magasin physique et e-commerce." }
+        { title: "Social Media Rewards (Instagram & X)", desc: "Feature image, PRD & tunnel de récompense automatique pour les interactions sociales (Follow, Share)." },
+        { title: "E-Commerce Connectors (Shopify, Woo, BigCommerce)", desc: "PRD & synchronisation temps réel des commandes, paniers et historiques marchands." },
+        { title: "Marketing & Messaging (Klaviyo & Beans Emails)", desc: "Spécifications & déclenchement d'emails automatisés basés sur le solde de points et paliers VIP." },
+        { title: "Reviews & Custom Apps (Judge.me & Tokenify)", desc: "Supervision dev, QA & documentation technique de l'écosystème d'intégrations complet." }
       ],
-      insight: "Le succès d'un pôle d'intégrations repose sur une maîtrise de bout en bout : cadrage analytique (PRD), clarté visuelle (Feature Images), accompagnement dev et exigence sur le QA.",
+      insight: "Le succès d'un pôle d'intégrations repose sur une maîtrise de bout en bout : cadrage analytique (PRD), clarté visuelle (Feature Images), accompagnement dev et exigence systématique sur le QA et la documentation.",
       impact: [
-        "Pilotage de bout en bout : Competitor Analysis → PRD → Feature Design → Dev Supervision → QA",
-        "Déploiement fluide et sans régression de l'écosystème de connecteurs (Shopify, Klaviyo, Instagram, POS...)",
-        "Documentation produit et critères d'acceptation unifiés pour les équipes techniques",
+        "10 intégrations majeures livrées de A à Z : Shopify, WooCommerce, BigCommerce, Klaviyo, Beans Emails, Instagram, Facebook, X (Twitter), Judge.me, Tokenify",
+        "100% de complétion et validation sur les PRD, le suivi Dev, le QA et la documentation technique",
+        "Pilotage de bout en bout : Competitor Analysis → PRD → Feature Design → Dev Supervision → QA & Documentation",
         "Adoption massive des connecteurs grâce à des visuels de fonctionnalités clairs et une UX Plug & Play"
       ],
       conclusion: "Ce rôle de Chef de Projet sur le pôle Intégrations a démontré l'impact d'une gestion produit structurée pour transformer un écosystème d'API complexe en un levier d'engagement intuitif et performant.",
@@ -713,18 +713,18 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       contextImg: "/imgs/beans_cover.png",
       challengeImg: "/imgs/beans_integrations.png",
       interfaceImg: "/imgs/beans_instagram.png",
-      dashboardImg: "/imgs/beans_integrations.png",
+      dashboardImg: "/imgs/beans_roadmap.png",
       features: [
-        { title: "Social Media Rewards (Instagram)", desc: "Feature image & automated reward flow for social interactions (Follow, Share)." },
-        { title: "E-Commerce Sync (Shopify & Woo)", desc: "PRD & real-time order, cart, and customer history synchronization." },
-        { title: "Marketing Automation (Klaviyo)", desc: "API specs & automated email triggers based on point balances and VIP upgrades." },
-        { title: "Omnichannel & POS Integration", desc: "Engineering supervision & QA unifying in-store and online loyalty." }
+        { title: "Social Media Rewards (Instagram & X)", desc: "Feature image, PRD & automated reward flows for social interactions (Follow, Share)." },
+        { title: "E-Commerce Connectors (Shopify, Woo, BigCommerce)", desc: "PRD & real-time order, cart, and merchant history synchronization." },
+        { title: "Marketing & Messaging (Klaviyo & Beans Emails)", desc: "API specs & automated email triggers based on point balances and VIP upgrades." },
+        { title: "Reviews & Custom Apps (Judge.me & Tokenify)", desc: "Dev supervision, QA & technical documentation for the full integration stack." }
       ],
-      insight: "A thriving Integration Hub demands complete end-to-end mastery: analytical scoping (PRDs), visual clarity (Feature Images), dev coordination, and relentless QA standards.",
+      insight: "A thriving Integration Hub demands complete end-to-end mastery: analytical scoping (PRDs), visual clarity (Feature Images), dev coordination, and relentless QA & documentation standards.",
       impact: [
-        "End-to-end project lead: Competitor Analysis → PRD → Feature Design → Dev Supervision → QA",
-        "Seamless, regression-free rollout of the integration ecosystem (Shopify, Klaviyo, Instagram, POS...)",
-        "Unified product documentation and clear acceptance criteria for dev teams",
+        "10 major integrations delivered end-to-end: Shopify, WooCommerce, BigCommerce, Klaviyo, Beans Emails, Instagram, Facebook, X (Twitter), Judge.me, Tokenify",
+        "100% completion & validation across PRDs, Dev Sprints, QA Testing & Tech Documentation",
+        "End-to-end product lead: Competitor Analysis → PRD → Feature Design → Dev Supervision → QA & Documentation",
         "High merchant connector adoption driven by crisp feature visuals and intuitive Plug & Play UX"
       ],
       conclusion: "This role as Integration Project Manager demonstrated the impact of structured product management in turning complex API integrations into an intuitive growth engine.",
