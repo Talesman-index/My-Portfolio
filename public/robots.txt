@@ -1,0 +1,6 @@
+# Robots.txt for Sacca Dafia Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://saccadafia.com/sitemap.xml

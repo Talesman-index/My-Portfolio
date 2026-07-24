@@ -11,6 +11,15 @@ import '../App.css';
     <link rel="icon" type="image/svg+xml" href="/imgs/Exclude.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Canonical & Alternate Languages -->
+    <link rel="canonical" href="https://saccadafia.com/" />
+    <link rel="alternate" hreflang="fr" href="https://saccadafia.com/" />
+    <link rel="alternate" hreflang="en" href="https://saccadafia.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://saccadafia.com/" />
+
+    <!-- Robots & Indexing Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
     <!-- Title & Meta Description (Recruiter Clarity & SEO) -->
     <title>Sacca Dafia | Portfolio - Product & Experience Designer</title>
     <meta name="description" content="Sacca Dafia, Product & Experience Designer (+3 ans d'expérience). Concepteur d'interfaces Web & SaaS B2B intuitives et performantes pour entreprises et startups. Contact: dafiashalom@gmail.com" />
@@ -25,15 +34,19 @@ import '../App.css';
 
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sacca Dafia | Portfolio" />
+    <meta property="og:url" content="https://saccadafia.com/" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:title" content="Sacca Dafia | Portfolio - Product & Experience Designer" />
-    <meta property="og:description" content="Product & Experience Designer avec 3+ ans d'expérience en design de SaaS B2B et produits numériques." />
-    <meta property="og:image" content="/imgs/hero_image.png" />
+    <meta property="og:description" content="Product & Experience Designer avec plus de 3 ans d'expérience en design de SaaS B2B et produits numériques." />
+    <meta property="og:image" content="https://saccadafia.com/imgs/hero_image.png" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sacca Dafia | Portfolio - Product & Experience Designer" />
     <meta name="twitter:description" content="Product & Experience Designer. Découvrez mes études de cas SaaS B2B et projets web." />
-    <meta name="twitter:image" content="/imgs/hero_image.png" />
+    <meta name="twitter:image" content="https://saccadafia.com/imgs/hero_image.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,22 +57,89 @@ import '../App.css';
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     
-    <!-- JSON-LD Structured Data for Person & Recruiter Discovery -->
+    <!-- JSON-LD Structured Data Graph for Person, WebSite & Case Studies -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Sacca Dafia",
-        "jobTitle": "Product Designer & Experience Designer",
-        "email": "dafiashalom@gmail.com",
-        "telephone": "+2290160359022",
-        "url": "https://saccadafia.com",
-        "sameAs": [
-          "https://www.linkedin.com/in/dafia-s-860290218/",
-          "https://github.com/shalomtalesman",
-          "https://www.behance.net/shalomsacca"
-        ],
-        "knowsAbout": ["Product Design", "UX/UI Design", "SaaS B2B", "Web Design", "Design Systems"]
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://saccadafia.com/#person",
+            "name": "Sacca Dafia",
+            "jobTitle": "Product & Experience Designer",
+            "description": "Product & Experience Designer spécialisé dans la conception de SaaS B2B, interfaces complexes et expériences web sur mesure.",
+            "email": "dafiashalom@gmail.com",
+            "telephone": "+2290160359022",
+            "url": "https://saccadafia.com",
+            "image": "https://saccadafia.com/imgs/hero_image.png",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Cotonou",
+              "addressCountry": "BJ"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/dafia-s-860290218/",
+              "https://github.com/shalomtalesman",
+              "https://www.behance.net/shalomsacca"
+            ],
+            "knowsAbout": [
+              "Product Design",
+              "UX/UI Design",
+              "SaaS B2B",
+              "Web Design",
+              "Design Systems",
+              "Prototyping",
+              "Information Architecture"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://saccadafia.com/#website",
+            "url": "https://saccadafia.com/",
+            "name": "Sacca Dafia | Portfolio - Product & Experience Designer",
+            "description": "Portfolio de Sacca Dafia, Product & Experience Designer avec plus de 3 ans d'expérience.",
+            "inLanguage": ["fr", "en"],
+            "publisher": {
+              "@id": "https://saccadafia.com/#person"
+            }
+          },
+          {
+            "@type": "ItemList",
+            "name": "Études de cas & Projets SaaS B2B",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Asset IQ - Plateforme SaaS B2B & Dashboard",
+                "url": "https://saccadafia.com/#asset-iq"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "eHadj - SaaS d'Orchestration Logistique",
+                "url": "https://saccadafia.com/#ehadj"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Beans - SaaS B2B de Fidélisation Client",
+                "url": "https://saccadafia.com/#beans"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Truvox Studio - Web Design & Brand Experience",
+                "url": "https://www.truvox.studio/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "Sagana - Agence Digitale & Design System",
+                "url": "https://saccadafia.com/#sagana"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>

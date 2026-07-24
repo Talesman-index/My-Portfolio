@@ -519,7 +519,7 @@ const CaseStudy = ({
                           <span className="mockup-dot" />
                         </div>
                         <div className="mockup-screen-new" style={{ height: '480px' }}>
-                          <img src={data.dashboardImg} alt="Dashboard Showcase" />
+                          <img src={data.dashboardImg} alt={`${data.title} - ${data.label} Dashboard Showcase`} />
                         </div>
                       </div>
                     </div>
@@ -551,7 +551,7 @@ const CaseStudy = ({
                   <p>{data.context}</p>
                   {data.contextImg && (
                     <div className="cs-inline-mockup">
-                      <img src={data.contextImg} alt="Context" />
+                      <img src={data.contextImg} alt={`${data.title} - ${lang === 'fr' ? 'Contexte & Présentation' : 'Project Context'}`} />
                     </div>
                   )}
                 </motion.div>
@@ -579,7 +579,7 @@ const CaseStudy = ({
                   <p>{data.challenge}</p>
                   {data.challengeImg && (
                     <div className="cs-inline-mockup">
-                      <img src={data.challengeImg} alt="Challenge" />
+                      <img src={data.challengeImg} alt={`${data.title} - ${lang === 'fr' ? 'Défi Produit & UX' : 'Product & UX Challenge'}`} />
                     </div>
                   )}
                 </motion.div>
@@ -621,7 +621,7 @@ const CaseStudy = ({
                             <span className="mockup-dot" />
                           </div>
                           <div className="mockup-screen-new">
-                            <img src={data.dashboardImg} alt="Dashboard" />
+                            <img src={data.dashboardImg} alt={`${data.title} - ${lang === 'fr' ? 'Dashboard & Solution UX' : 'Dashboard & UX Solution'}`} />
                           </div>
                         </div>
                       </div>
@@ -640,7 +640,7 @@ const CaseStudy = ({
                           <span className="mockup-dot" />
                         </div>
                         <div className="mockup-screen-new">
-                          <img src={data.interfaceImg} alt="Interface" />
+                          <img src={data.interfaceImg} alt={`${data.title} - ${lang === 'fr' ? 'Interface Principale' : 'Main Interface Overview'}`} />
                         </div>
                       </div>
                     </div>
@@ -1136,6 +1136,100 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    document.documentElement.lang = lang;
+
+    // Dynamic Title & Meta Description for SEO and Recruiter Clarity
+    const viewTitles: Record<string, { en: string; fr: string; descEn: string; descFr: string }> = {
+      home: {
+        en: "Sacca Dafia | Portfolio - Product & Experience Designer",
+        fr: "Sacca Dafia | Portfolio - Product & Experience Designer",
+        descEn: "Sacca Dafia, Product & Experience Designer (+3 years exp). Designing intuitive Web & B2B SaaS interfaces for high-growth tech teams.",
+        descFr: "Sacca Dafia, Product & Experience Designer (+3 ans d'expérience). Concepteur d'interfaces Web & SaaS B2B intuitives et performantes."
+      },
+      projects: {
+        en: "Projects & Selected Works | Sacca Dafia",
+        fr: "Projets & Travaux Sélectionnés | Sacca Dafia",
+        descEn: "Explore case studies and web design projects designed by Sacca Dafia.",
+        descFr: "Découvrez les études de cas et projets de design web conçus par Sacca Dafia."
+      },
+      'asset-iq': {
+        en: "Asset IQ — B2B SaaS Case Study | Sacca Dafia",
+        fr: "Asset IQ — Étude de Cas SaaS B2B | Sacca Dafia",
+        descEn: "Asset IQ: Intelligent multi-site resource tracking and operational governance platform. Product Strategy & UX design by Sacca Dafia.",
+        descFr: "Asset IQ : Système intelligent de suivi et gouvernance de ressources physiques multi-sites. Stratégie Produit & UX par Sacca Dafia."
+      },
+      ehadj: {
+        en: "eHadj — Logistics Orchestration Case Study | Sacca Dafia",
+        fr: "eHadj — Étude de Cas Orchestration Logistique | Sacca Dafia",
+        descEn: "eHadj: Digitalization and process orchestration for national pilgrimage logistics. Lead Product Designer Sacca Dafia.",
+        descFr: "eHadj : Digitalisation et orchestration logistique globale du pèlerinage. Lead Product Designer Sacca Dafia."
+      },
+      beans: {
+        en: "Beans — Customer Loyalty B2B SaaS Case Study | Sacca Dafia",
+        fr: "Beans — Étude de Cas SaaS B2B Fidélisation | Sacca Dafia",
+        descEn: "Beans Integration Hub: End-to-end PRDs, UX flow design, integration specs, and engineering team lead by Sacca Dafia.",
+        descFr: "Pôle d'intégrations Beans : Rédaction de PRD, flow UX, spécifications et supervision technique par Sacca Dafia."
+      },
+      sagana: {
+        en: "Sagana — Digital Agency & Design System Case Study | Sacca Dafia",
+        fr: "Sagana — Agence Digitale & Design System | Sacca Dafia",
+        descEn: "Sagana digital agency showcase & design system. Brand experience and high performance web design.",
+        descFr: "Site vitrine et design system pour l'agence digitale Sagana. Performance et esthétique haut de gamme."
+      },
+      vortex: {
+        en: "Vortex Gallery — Web3 Immersive Experience | Sacca Dafia",
+        fr: "Vortex Gallery — Expérience Immersive Web3 | Sacca Dafia",
+        descEn: "Vortex Gallery: Interactive digital art gallery interface design by Sacca Dafia.",
+        descFr: "Vortex Gallery : Interface interactive de galerie d'art numérique par Sacca Dafia."
+      },
+      'sport-advisor': {
+        en: "Sport Advisor — Mobile & Web Platform Case Study | Sacca Dafia",
+        fr: "Sport Advisor — Application & Plateforme Sportive | Sacca Dafia",
+        descEn: "Sport Advisor UX/UI design: Personalized athletic recommendation engine.",
+        descFr: "Design UX/UI Sport Advisor : Application de recommandation et coaching sportif personnalisé."
+      },
+      truvox: {
+        en: "Truvox Studio — Brand & Web Experience | Sacca Dafia",
+        fr: "Truvox Studio — Design Web & Identité | Sacca Dafia",
+        descEn: "Truvox Studio: Web experience and digital product studio identity designed by Sacca Dafia.",
+        descFr: "Truvox Studio : Studio d'expériences numériques apportant clarté et croissance."
+      },
+      'the-refuge': {
+        en: "The Refuge — Social Impact Web Portal | Sacca Dafia",
+        fr: "The Refuge — Portail Web à Impact Social | Sacca Dafia",
+        descEn: "The Refuge: Transparent live impact tracking and donation flow web portal.",
+        descFr: "The Refuge : Portails web d'action sociale avec suivi d'impact en direct et dons."
+      },
+      'strategy-arena': {
+        en: "Strategy Arena — Consulting & Digital Transformation | Sacca Dafia",
+        fr: "Strategy Arena — Conseil en Stratégie & Web Design | Sacca Dafia",
+        descEn: "Strategy Arena consulting firm branding, web design, and digital showcase.",
+        descFr: "Strategy Arena : Cabinet de conseil en stratégie et transformation digitale pour PME."
+      },
+      'dolce-riviera': {
+        en: "Dolce Riviera — Luxury E-Commerce Case Study | Sacca Dafia",
+        fr: "Dolce Riviera — E-Commerce Luxe | Sacca Dafia",
+        descEn: "Dolce Riviera: Immersive luxury brand e-commerce experience designed by Sacca Dafia.",
+        descFr: "Dolce Riviera : Boutique e-commerce et expérience de marque haut de gamme."
+      },
+      cv: {
+        en: "Curriculum Vitae & Journey | Sacca Dafia - Product Designer",
+        fr: "Parcours & Curriculum Vitae | Sacca Dafia - Product Designer",
+        descEn: "Detailed career narrative, technical skills, and design philosophies of Sacca Dafia.",
+        descFr: "Parcours professionnel détaillé, compétences techniques et philosophie design de Sacca Dafia."
+      }
+    };
+
+    const info = viewTitles[currentView] || viewTitles.home;
+    document.title = info[lang];
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', info[lang === 'fr' ? 'descFr' : 'descEn']);
+    }
+  }, [currentView, lang]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -2330,11 +2424,11 @@ function App() {
               <div className="sheet-stack-wrapper">
                 <span className="sheet-label">03 // {lang === 'en' ? 'CORE TOOLBOX' : 'BOÎTE À OUTILS'}</span>
                 <div className="sheet-stack-list">
-                  <span className="sheet-stack-item">Figma</span>
-                  <span className="sheet-stack-item">Antigravity</span>
-                  <span className="sheet-stack-item">Notion</span>
-                  <span className="sheet-stack-item">Linear</span>
-                  <span className="sheet-stack-item">Framer</span>
+                  <span className="sheet-stack-item notranslate" translate="no">Figma</span>
+                  <span className="sheet-stack-item notranslate" translate="no">Antigravity</span>
+                  <span className="sheet-stack-item notranslate" translate="no">Notion</span>
+                  <span className="sheet-stack-item notranslate" translate="no">Linear</span>
+                  <span className="sheet-stack-item notranslate" translate="no">Framer</span>
                 </div>
               </div>
             </div>
@@ -2345,15 +2439,15 @@ function App() {
                 <span className="sheet-label">04 // {lang === 'en' ? 'METRICS' : 'CHIFFRES'}</span>
                 <div className="sheet-metrics-list">
                   <div className="sheet-metric-item">
-                    <span className="sheet-metric-val">+3</span>
+                    <span className="sheet-metric-val notranslate" translate="no">+3</span>
                     <span className="sheet-metric-lbl">{lang === 'en' ? 'Years of Experience' : "Ans d'expérience"}</span>
                   </div>
                   <div className="sheet-metric-item">
-                    <span className="sheet-metric-val">50+</span>
+                    <span className="sheet-metric-val notranslate" translate="no">+50</span>
                     <span className="sheet-metric-lbl">{lang === 'en' ? 'Projects Delivered' : 'Projets livrés'}</span>
                   </div>
                   <div className="sheet-metric-item">
-                    <span className="sheet-metric-val">+15</span>
+                    <span className="sheet-metric-val notranslate" translate="no">+15</span>
                     <span className="sheet-metric-lbl">{lang === 'en' ? 'Clients Supported' : 'Clients accompagnés'}</span>
                   </div>
                 </div>

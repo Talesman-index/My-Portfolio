@@ -103,7 +103,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "Élimination totale des erreurs de double-inscription",
         "Réduction de 90% des dossiers rejetés pour erreur matérielle",
         "Transparence totale sur la consommation du quota national",
-        "Fluidité majeure dans la coordination entre les 30+ agences"
+        "Fluidité majeure dans la coordination entre plus de 30 agences"
       ],
       insight: "L’intégrité de la donnée n’est pas une option, c’est le moteur du système. L'onboarding basé sur le NPI a été la clé de voûte de la réussite.",
       conclusion: "eHadj a transformé une logistique complexe en un processus industriel fiable, sécurisant le voyage sacré de milliers de Béninois.",
@@ -137,7 +137,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       dashboardImg: "/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png",
       features: [
         { title: "Animations 60fps", desc: "Transitions fluides basées sur Framer Motion et CSS transitions." },
-        { title: "Performance brute", desc: "Score Lighthouse de 95+ grâce à l'optimisation des images et du code." },
+        { title: "Performance brute", desc: "Score Lighthouse supérieur à 95 grâce à l'optimisation des images et du code." },
         { title: "SEO Structuré", desc: "Balisage sémantique rigoureux pour maximiser la visibilité organique." },
         { title: "Responsive Adaptatif", desc: "Mise en page fluide adaptée à tous les types d'écrans." }
       ],
@@ -381,15 +381,15 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       challengeImg: "/imgs/your-refuge.jpg",
       dashboardImg: "/imgs/your-refuge.jpg",
       features: [
-        { title: "Suivi d'Impact en Direct", desc: "Affichage transparent des vêtements distribués (1 240+ vêtements), des kits d'hygiène menstruelle offerts, et des réinsertions actives sous forme de jauges dynamiques." },
+        { title: "Suivi d'Impact en Direct", desc: "Affichage transparent des vêtements distribués (plus de 1 240 vêtements), des kits d'hygiène menstruelle offerts, et des réinsertions actives sous forme de jauges dynamiques." },
         { title: "Formulaire de Don en FCFA", desc: "Tunnel de paiement sécurisé adapté aux donateurs locaux et internationaux, supportant Mobile Money (MTN, Moov) et cartes bancaires." },
         { title: "Espace d'Engagement Bénévoles", desc: "Processus d'onboarding fluide pour les maraudes de distribution de vêtements/kits et les ateliers d'écoute psychologique." },
         { title: "Récits de Maraudes & News", desc: "Publication simplifiée de témoignages vécus sur le terrain (comme le parcours de Marie ou Luc 3:11) pour maintenir un lien humain fort." }
       ],
       impact: [
-        "1 240+ vêtements de première nécessité distribués et suivis avec une transparence financière totale",
-        "850+ kits d'hygiène menstruelle offerts aux femmes sans ressources à Cotonou pour préserver leur dignité",
-        "12+ personnes vulnérables réinsérées professionnellement grâce aux programmes de formation",
+        "Plus de 1 240 vêtements de première nécessité distribués et suivis avec une transparence financière totale",
+        "Plus de 850 kits d'hygiène menstruelle offerts aux femmes sans ressources à Cotonou pour préserver leur dignité",
+        "Plus de 12 personnes vulnérables réinsérées professionnellement grâce aux programmes de formation",
         "Augmentation de 60% des dons réguliers suite à la mise en ligne du système de suivi d'impact"
       ],
       conclusion: "Le nouveau portail de The Refuge prouve que le design numérique peut être un vecteur puissant d'action sociale. En alliant transparence de l'impact et simplicité d'interaction, le site comble avec succès le fossé entre la génélovisité en ligne et les vies restaurées dans les rues de Cotonou.",
@@ -548,7 +548,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "Complete elimination of double-registration errors",
         "90% reduction in dossiers rejected due to material errors",
         "Total transparency over national quota consumption",
-        "Major coordination improvements across 30+ travel agencies"
+        "Major coordination improvements across over 30 travel agencies"
       ],
       insight: "Data integrity is not an option; it is the core engine of the system. The NPI-based onboarding was the key to this success.",
       conclusion: "eHadj transformed a complex logistics operation into a reliable industrial process, securing the sacred journey of thousands of Beninese pilgrims.",
@@ -582,7 +582,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       dashboardImg: "/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png",
       features: [
         { title: "60fps Animations", desc: "Fluid transitions based on Framer Motion and CSS transitions." },
-        { title: "Raw Performance", desc: "95+ Lighthouse score achieved through image and code optimization." },
+        { title: "Raw Performance", desc: "Lighthouse score of 95+ achieved through image and code optimization." },
         { title: "SEO Structuré", desc: "Rigorous semantic markup to maximize organic search visibility." },
         { title: "Responsive Design", desc: "Fluid layouts adapted to all screen resolutions." }
       ],
@@ -826,15 +826,15 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       challengeImg: "/imgs/your-refuge.jpg",
       dashboardImg: "/imgs/your-refuge.jpg",
       features: [
-        { title: "Live Impact Gauges", desc: "Visual progress tracking for clothing distributed (1,240+ clothing items), menstrual hygiene kits provided to women in need, and professional reinsertions." },
+        { title: "Live Impact Gauges", desc: "Visual progress tracking for clothing distributed (over 1,240 clothing items), menstrual hygiene kits provided to women in need, and professional reinsertions." },
         { title: "Local Currency Donations", desc: "Secure, seamless donation form supporting West African Mobile Money (MTN, Moov) and international credit cards." },
         { title: "Volunteer Coordination", desc: "Streamlined sign-up forms for local weekend distribution outreaches (clothing & hygiene kits) and active listening rooms." },
         { title: "Stories from the Field", desc: "A clean blog section showcasing true stories from Cotonou (like Marie's journey or reflections on Luke 3:11) to highlight the human impact." }
       ],
       impact: [
-        "1,240+ clothing items tracked and distributed with total financial transparency",
-        "850+ menstrual hygiene kits provided to underprivileged women to restore dignity",
-        "12+ street beneficiaries professionally trained and reinserted into society",
+        "Over 1,240 clothing items tracked and distributed with total financial transparency",
+        "Over 850 menstrual hygiene kits provided to underprivileged women to restore dignity",
+        "Over 12 street beneficiaries professionally trained and reinserted into society",
         "60% increase in recurring donations due to transparent impact tracking"
       ],
       conclusion: "The new web portal for The Refuge demonstrates how digital design and transparent data tracking can empower social causes, successfully bridging the gap between online donors and lives transformed on the streets of Cotonou.",
