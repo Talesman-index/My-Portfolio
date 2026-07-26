@@ -769,8 +769,9 @@ const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
             </button>
             <div className="cv-nav-actions">
               <motion.a 
-                href="/CV Dafia.pdf" 
-                download="CV Dafia .pdf" 
+                href="https://drive.google.com/file/d/14q3ARxXM3rk82VKS6dKYmyGJCk9UWruu/view?usp=sharing" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cv-download-pill"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -914,8 +915,9 @@ const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
               <div className="cv-contact-row">
                 <a href="mailto:dafiashalom@gmail.com" className="cv-email-link">dafiashalom@gmail.com</a>
                 <motion.a 
-                  href="/CV Dafia.pdf" 
-                  download="CV Dafia .pdf" 
+                  href="https://drive.google.com/file/d/14q3ARxXM3rk82VKS6dKYmyGJCk9UWruu/view?usp=sharing" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="cv-cta-premium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -2397,7 +2399,7 @@ function App() {
                 <p className="sheet-text">{t.about.bio}</p>
                 <div style={{ marginTop: '24px' }}>
                   <motion.a 
-                    href="https://drive.google.com/file/d/1A-KuGRxX0EJIFUhBBmY8ZCRzNETBovgy/view?usp=sharing"
+                    href="https://drive.google.com/file/d/14q3ARxXM3rk82VKS6dKYmyGJCk9UWruu/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="about-cv-btn"

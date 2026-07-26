@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      background-color: #031129;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 52px 64px;
+    }
+
+    /* Ambient Lighting & Royal Blue Radial Gradients */
+    .bg-glow-top {
+      position: absolute;
+      top: -180px;
+      left: -120px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(13, 52, 121, 0.65) 0%, rgba(3, 17, 41, 0) 70%);
+      pointer-events: none;
+    }
+
+    .bg-glow-right {
+      position: absolute;
+      bottom: -150px;
+      right: -100px;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(13, 52, 121, 0.45) 0%, rgba(3, 17, 41, 0) 70%);
+      pointer-events: none;
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(238, 237, 228, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(238, 237, 228, 0.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      mask-image: radial-gradient(circle at 65% 50%, black 40%, transparent 85%);
+    }
+
+    /* Left Content Layout */
+    .left-content {
+      position: relative;
+      z-index: 10;
+      max-width: 610px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    /* Brand Header */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo-img {
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .brand-divider {
+      width: 1px;
+      height: 26px;
+      background: rgba(238, 237, 228, 0.25);
+    }
+
+    .brand-tagline {
+      font-size: 13px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #B0C4DE;
+      text-transform: uppercase;
+    }
+
+    /* Main Section */
+    .main-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 100px;
+      background: rgba(238, 237, 228, 0.12);
+      border: 1px solid rgba(238, 237, 228, 0.3);
+      color: #eeede4;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #eeede4;
+      box-shadow: 0 0 12px #eeede4;
+    }
+
+    .author-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 62px;
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+    }
+
+    .author-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 27px;
+      font-weight: 700;
+      color: #eeede4;
+      line-height: 1.25;
+    }
+
+    .author-desc {
+      font-size: 16px;
+      color: #B0C4DE;
+      line-height: 1.55;
+      max-width: 530px;
+    }
+
+    /* Skill Tag Pills */
+    .pills-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .pill {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(238, 237, 228, 0.18);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-icon {
+      color: #eeede4;
+    }
+
+    /* Footer URL Pill */
+    .footer-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(238, 237, 228, 0.1);
+      border: 1px solid rgba(238, 237, 228, 0.25);
+      padding: 10px 24px;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .footer-url {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #eeede4;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-glow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #eeede4;
+      box-shadow: 0 0 10px #eeede4;
+    }
+
+    /* Right Section Card & Photo */
+    .right-content {
+      position: relative;
+      z-index: 10;
+      width: 440px;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Background Mockup Card */
+    .bg-mockup-card {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+      width: 380px;
+      height: 480px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(13, 52, 121, 0.8) 0%, rgba(238, 237, 228, 0.1) 100%);
+      border: 1px solid rgba(238, 237, 228, 0.25);
+      transform: rotate(4deg);
+      pointer-events: none;
+    }
+
+    /* Main Portrait Card */
+    .photo-card {
+      position: relative;
+      width: 375px;
+      height: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(238, 237, 228, 0.3);
+      background: #051b3d;
+      box-shadow: 
+        0 24px 60px rgba(3, 17, 41, 0.85),
+        0 0 40px rgba(13, 52, 121, 0.6);
+      transform: rotate(-1.5deg);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      filter: contrast(1.06) brightness(1.02);
+    }
+
+    .photo-card-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(3, 17, 41, 0.9) 0%, rgba(3, 17, 41, 0.2) 50%, rgba(3, 17, 41, 0) 100%);
+    }
+
+    /* Floating Overlay Card */
+    .floating-card-tag {
+      position: absolute;
+      bottom: 22px;
+      left: 18px;
+      right: 18px;
+      background: rgba(5, 27, 61, 0.9);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(238, 237, 228, 0.35);
+      border-radius: 18px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tag-text-main {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .tag-text-sub {
+      font-size: 12px;
+      color: #eeede4;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .tag-avail-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(238, 237, 228, 0.15);
+      border: 1px solid rgba(238, 237, 228, 0.4);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #eeede4;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* Metric Badge */
+    .floating-stat-badge {
+      position: absolute;
+      top: 30px;
+      left: -20px;
+      background: rgba(5, 27, 61, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(238, 237, 228, 0.25);
+      border-radius: 16px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 20;
+    }
+
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #eeede4;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #B0C4DE;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-top"></div>
+  <div class="bg-glow-right"></div>
+  <div class="bg-grid"></div>
+
+  <!-- Left Content -->
+  <div class="left-content">
+    
+    <div class="brand-header">
+      <img src="imgs/Logo.png" alt="Talesman Webcraft Logo" class="brand-logo-img">
+      <div class="brand-divider"></div>
+      <div class="brand-tagline">Product Design Studio</div>
+    </div>
+
+    <div class="main-info">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        Portfolio 2026
+      </div>
+
+      <h1 class="author-name">Sacca Dafia</h1>
+      <h2 class="author-title">Product & Experience Designer</h2>
+
+      <p class="author-desc">
+        Concepteur d'interfaces Web & SaaS B2B intuitives et performantes pour entreprises et startups d'innovation.
+      </p>
+
+      <div class="pills-row">
+        <div class="pill"><span class="pill-icon">✦</span> SaaS B2B</div>
+        <div class="pill"><span class="pill-icon">✦</span> UX / UI Design</div>
+        <div class="pill"><span class="pill-icon">✦</span> Design Systems</div>
+        <div class="pill"><span class="pill-icon">✦</span> Multi-Plateforme</div>
+      </div>
+    </div>
+
+    <!-- Footer URL -->
+    <div class="footer-bar">
+      <div class="footer-link">
+        <div class="footer-glow-dot"></div>
+        <div class="footer-url">talesmanwebcraft.com</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right Side Profile Photo Card -->
+  <div class="right-content">
+    <div class="bg-mockup-card"></div>
+
+    <div class="floating-stat-badge">
+      <div class="stat-number">+3 Ans</div>
+      <div class="stat-label">D'Expérience<br>Product Design</div>
+    </div>
+
+    <div class="photo-card">
+      <img src="imgs/sacca_headshot.jpg" alt="Sacca Dafia">
+      <div class="photo-card-gradient"></div>
+      
+      <div class="floating-card-tag">
+        <div>
+          <div class="tag-text-main">Sacca Dafia</div>
+          <div class="tag-text-sub">Product Designer</div>
+        </div>
+        <div class="tag-avail-badge">
+          Open for projects
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
