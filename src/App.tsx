@@ -1146,10 +1146,10 @@ function App() {
     // Dynamic Title & Meta Description for SEO and Recruiter Clarity
     const viewTitles: Record<string, { en: string; fr: string; descEn: string; descFr: string }> = {
       home: {
-        en: "Sacca Dafia | Portfolio - Product & Experience Designer",
-        fr: "Sacca Dafia | Portfolio - Product & Experience Designer",
-        descEn: "Sacca Dafia, Product & Experience Designer (+4 years exp). Designing intuitive Web & B2B SaaS interfaces for high-growth tech teams.",
-        descFr: "Sacca Dafia, Product & Experience Designer (+4 ans d'expérience). Concepteur d'interfaces Web & SaaS B2B intuitives et performantes."
+        en: "Sacca Dafia | Digital Solution & Product Designer",
+        fr: "Sacca Dafia | Conception de Solutions & Produits Numériques",
+        descEn: "Sacca Dafia, Digital Solution & Product Designer (+4 years exp). Designing intuitive digital products, B2B SaaS platforms & web solutions.",
+        descFr: "Sacca Dafia, Conception de Solutions & Produits Numériques (+4 ans d'expérience). Création de produits numériques complets & SaaS B2B."
       },
       projects: {
         en: "Projects & Selected Works | Sacca Dafia",
@@ -2307,7 +2307,7 @@ function App() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                   >
-                    {lang === 'fr' ? "Je suis SACCA Dafia, Product & Experience Designer." : "I'm SACCA Dafia, a Product & Experience Designer."}
+                    {lang === 'fr' ? "Je suis SACCA Dafia, Designer de Solutions & Produits Numériques." : "I'm SACCA Dafia, a Digital Solution & Product Designer."}
                   </motion.h1>
                   <motion.p
                     className="hero-presentation-desc"
@@ -2316,8 +2316,8 @@ function App() {
                     transition={{ duration: 0.8, delay: 0.5 }}
                   >
                     {lang === 'fr' 
-                      ? "Je conçois des produits numériques intuitifs, des SaaS B2B performants et des expériences web sur mesure pour entreprises et startups."
-                      : "I design intuitive digital products, B2B SaaS platforms, and tailored web experiences for ambitious companies."}
+                      ? "Spécialisé dans la conception de solutions digitales sur mesure, de produits numériques complets et de plateformes SaaS B2B intuitives et performantes."
+                      : "Specialized in designing tailored digital solutions, complete digital products, and intuitive B2B SaaS platforms."}
                   </motion.p>
                   <motion.div
                     className="hero-contact-actions"
