@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://saccadafia.com/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://saccadafia.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://saccadafia.com/" />
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://talesmanwebcraft.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://talesmanwebcraft.vercel.app/" />
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#about</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#about</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#services</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#services</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#saas</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#saas</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#ehadj</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#ehadj</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#asset-iq</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#asset-iq</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#beans</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#beans</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#projects</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#projects</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#process</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#process</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://saccadafia.com/#contact</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://talesmanwebcraft.vercel.app/#contact</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
