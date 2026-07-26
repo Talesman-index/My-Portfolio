@@ -1148,8 +1148,8 @@ function App() {
       home: {
         en: "Sacca Dafia | Portfolio - Product & Experience Designer",
         fr: "Sacca Dafia | Portfolio - Product & Experience Designer",
-        descEn: "Sacca Dafia, Product & Experience Designer (+3 years exp). Designing intuitive Web & B2B SaaS interfaces for high-growth tech teams.",
-        descFr: "Sacca Dafia, Product & Experience Designer (+3 ans d'expérience). Concepteur d'interfaces Web & SaaS B2B intuitives et performantes."
+        descEn: "Sacca Dafia, Product & Experience Designer (+4 years exp). Designing intuitive Web & B2B SaaS interfaces for high-growth tech teams.",
+        descFr: "Sacca Dafia, Product & Experience Designer (+4 ans d'expérience). Concepteur d'interfaces Web & SaaS B2B intuitives et performantes."
       },
       projects: {
         en: "Projects & Selected Works | Sacca Dafia",
@@ -2441,7 +2441,7 @@ function App() {
                 <span className="sheet-label">04 // {lang === 'en' ? 'METRICS' : 'CHIFFRES'}</span>
                 <div className="sheet-metrics-list">
                   <div className="sheet-metric-item">
-                    <span className="sheet-metric-val notranslate" translate="no">+3</span>
+                    <span className="sheet-metric-val notranslate" translate="no">+4</span>
                     <span className="sheet-metric-lbl">{lang === 'en' ? 'Years of Experience' : "Ans d'expérience"}</span>
                   </div>
                   <div className="sheet-metric-item">

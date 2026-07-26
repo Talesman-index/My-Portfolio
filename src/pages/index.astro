@@ -22,7 +22,7 @@ import '../App.css';
 
     <!-- Title & Meta Description (Recruiter Clarity & SEO) -->
     <title>Sacca Dafia | Portfolio - Product & Experience Designer</title>
-    <meta name="description" content="Sacca Dafia, Product & Experience Designer (+3 ans d'expérience). Concepteur d'interfaces Web & SaaS B2B intuitives et performantes pour entreprises et startups. Contact: dafiashalom@gmail.com" />
+    <meta name="description" content="Sacca Dafia, Product & Experience Designer (+4 ans d'expérience). Concepteur d'interfaces Web & SaaS B2B intuitives et performantes pour entreprises et startups. Contact: dafiashalom@gmail.com" />
     <meta name="author" content="Sacca Dafia" />
     <meta name="keywords" content="Sacca Dafia, Product Designer, UX Designer, UI Designer, Web Designer, SaaS B2B, Portfolio, Design System" />
     
@@ -39,7 +39,7 @@ import '../App.css';
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:title" content="Sacca Dafia | Portfolio - Product & Experience Designer" />
-    <meta property="og:description" content="Product & Experience Designer avec plus de 3 ans d'expérience en design de SaaS B2B et produits numériques." />
+    <meta property="og:description" content="Product & Experience Designer avec plus de 4 ans d'expérience en design de SaaS B2B et produits numériques." />
     <meta property="og:image" content="https://saccadafia.com/imgs/hero_image.png" />
 
     <!-- Twitter Card -->
@@ -144,11 +144,14 @@ import '../App.css';
     </script>
   </head>
   <body>
-    <div id="app-root">
-      {/* Semantic fallback container for SEO, Recruiter Audits, and Crawlers */}
-      <div className="sr-only recruiter-clarity-meta" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;" itemscope itemtype="https://schema.org/Person">
-        <h2 itemprop="name">Sacca Dafia | Product & Experience Designer</h2>
-        <p itemprop="description">Je conçois des produits numériques intuitifs, des SaaS B2B performants et des expériences web sur mesure (+3 ans d'expérience).</p>
+    <!-- Accessibility Skip Link & Semantic Main Landmark Wrapper -->
+    <a href="#main-content" className="skip-to-content-btn">Aller au contenu principal</a>
+    
+    <div style="display: none;">
+      <article itemscope itemtype="https://schema.org/Person">
+        <h1 itemprop="name">Sacca Dafia</h1>
+        <h2 itemprop="jobTitle">Product & Experience Designer</h2>
+        <p itemprop="description">Je conçois des produits numériques intuitifs, des SaaS B2B performants et des expériences web sur mesure (+4 ans d'expérience).</p>
         
         {/* Contact info & Social links */}
         <a href="mailto:dafiashalom@gmail.com" itemprop="email" rel="me">dafiashalom@gmail.com</a>
