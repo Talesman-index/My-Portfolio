@@ -833,11 +833,11 @@ const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
                     company: "CACTUCE",
                     role: "Product Designer",
                     date: "OCT. 25 — PRÉSENT",
-                    desc: "Orchestration des parcours utilisateurs pour des produits SaaS complexes tels que eHadj et Asset IQ.",
+                    desc: "Design Produit & UX Strategy sur des plateformes SaaS à forte technicité et portée institutionnelle (eHadj et Asset IQ). Cartographie des parcours critiques, résolution des frictions d'usage et supervision de la recette QA jusqu'à la mise en production.",
                     points: [
-                      "Optimisation UX/UI et identification des frictions.",
-                      "Définition de la logique produit et parcours critiques.",
-                      "Supervision QA et accompagnement technique."
+                      "eHadj (Orchestration Nationale) : Conception du système multi-acteurs unifiant ministères, banques et agences agréées. Tunnel séquentiel ID-First (NPI), réduction de 90% des erreurs de dossier et contrôle des quotas en temps réel.",
+                      "Asset IQ (Gouvernance d'Actifs) : Modélisation des workflows de traçabilité terrain par QR Code (inventaire en 3 étapes), tableaux de bord de maintenance préventive et analytics (-30% de pertes d'équipements).",
+                      "Rigueur & Assurance Qualité : Rédaction de spécifications UI/UX exhaustives, création d'interfaces réutilisables et supervision QA stricte."
                     ],
                     active: true
                   },
@@ -845,18 +845,23 @@ const CVView = ({ setCurrentView }: { setCurrentView: any }) => {
                     company: "TRELLIX",
                     role: "Product Designer Lead",
                     date: "FÉV. 24 — SEP. 25",
-                    desc: "Pilotage du programme de fidélité Beans. Coordination entre design, technique et produit.",
+                    desc: "Pilotage stratégique et design produit du hub d'intégrations tierces de la plateforme SaaS Beans. Cadrage fonctionnel, rédaction des PRD et création d'expériences marchands Plug & Play.",
                     points: [
-                      "Rédaction de PRDs et spécifications fonctionnelles.",
-                      "Conception de systèmes de fidélisation innovants.",
-                      "Leadership de projet et coordination d’équipe."
+                      "Pilotage Hub d'Intégrations : Cadrage et livraison de A à Z de 10 connecteurs majeurs (Shopify, Klaviyo, Instagram, POS...). Réduction de 50% des délais dev via des PRD ultra-détaillés.",
+                      "UX Plug & Play & App Store : Conception de tunnels d'activation sans friction (2 clics) et réalisation des visuels promotionnels (Feature Images) pour le store d'applications.",
+                      "Leadership Sprint & Documentation : Management des sprints de dev, recettes QA systématiques et rédaction de la documentation technique officielle (docs.trybeans.com)."
                     ]
                   },
                   {
                     company: "CREAFIX",
                     role: "Web Designer",
                     date: "AOÛT 22 — FÉV. 24",
-                    desc: "Focus sur l’identité visuelle et la hiérarchie de l’information pour des interfaces orientées conversion."
+                    desc: "Direction artistique, création d'interfaces web sur-mesure et optimisation de conversion pour marques et produits digitaux. Élaboration de design systems et de chartes visuelles digitales.",
+                    points: [
+                      "Direction Artistique & Web Design : Conception de maquettes haute-fidélité captivantes et structurées sous Figma, alliées à des chartes visuelles digitales épurées.",
+                      "Hiérarchie Visuelle & UX Writing : Optimisation du parcours de lecture et de la mise en valeur des CTA pour maximiser l'engagement et les taux de conversion.",
+                      "Design Systems & Hand-off Dev : Élaboration de composants UI modulaires et livrables pixel-perfect pour l'intégration front-end."
+                    ]
                   }
                 ].map((exp, i) => (
                   <motion.div 
@@ -1569,17 +1574,27 @@ function App() {
             role: 'Product Designer',
             company: 'CACTUCE',
             date: 'OCTOBER 2025 — PRESENT',
-            desc: 'Working on the structuring and optimization of complex products like eHadj and Asset IQ. Identifying friction points, defining user journeys, and overseeing QA to ensure execution matches the product vision.',
-            skills: ['Interfaces Logic', 'UX Analysis', 'Hi-Fi Design', 'QA Oversight'],
+            desc: 'Product Design & UX Strategy for complex, high-stakes SaaS platforms (eHadj & Asset IQ). Fully structuring information architecture and user journeys for national-scale platforms and industrial asset governance tools.',
+            points: [
+              'eHadj (National Orchestration): Designed multi-entity workflows unifying ministries, banks, and agencies with an ID-First (NPI) sequential onboarding, reducing dossier errors by 90%.',
+              'Asset IQ (Asset Governance): Modeled 3-step QR Code field inventory workflows, preventive maintenance schedules, and depreciation analytics (reducing equipment loss by 30%).',
+              'Rigor & QA Oversight: Authored exhaustive UI/UX specifications, built reusable component libraries, and enforced strict QA validation to ensure pixel-perfect delivery.'
+            ],
+            skills: ['Interfaces Logic', 'SaaS Architecture', 'Multi-entity Workflows', 'Design Systems', 'QA Oversight'],
             color: '#A855F7'
           },
           {
             id: '02',
-            role: 'Product Designer',
+            role: 'Product Designer Lead',
             company: 'TRELLIX',
             date: 'FEBRUARY 2024 — SEPTEMBER 2025',
-            desc: 'Evolved from a design-focused to a product-focused approach, working on integrations for the Beans loyalty program. Defined features, structured user journeys, and ensured global product consistency.',
-            skills: ['PRD & Specs', 'Beans Journey', 'Dev Coordination', 'QA Validation'],
+            desc: 'Strategic leadership & product design for the Beans third-party integration hub (Shopify, Klaviyo, Instagram, POS...). Led the product roadmap, authored PRDs, and designed Plug & Play merchant experiences.',
+            points: [
+              'Integration Hub Lead: Delivered 10 major third-party connectors end-to-end. Reduced dev delivery time by 50% through comprehensive PRDs and engineering alignment.',
+              'Plug & Play UX & Store Assets: Designed frictionless 2-click activation onboarding for non-technical merchants alongside high-converting Feature Images for app stores.',
+              'Sprint Leadership & Technical Docs: Managed dev sprints, conducted functional QA validation, and authored technical documentation (docs.trybeans.com).'
+            ],
+            skills: ['PRD & Specs', 'Integration Hub', 'Plug & Play UX', 'Dev Leadership', 'QA Validation'],
             color: '#0d3479'
           },
           {
@@ -1587,8 +1602,13 @@ function App() {
             role: 'Web Designer',
             company: 'CREAFIX',
             date: 'AUGUST 2022 — FEBRUARY 2024',
-            desc: 'Started in digital design with a focus on creating web interfaces and visual execution. Developed visual hierarchy, readability, and graphic coherence for various client websites.',
-            skills: ['Visual Design', 'Info Hierarchy', 'Web Layouts', 'Project Delivery'],
+            desc: 'Art direction, custom web interface design, and conversion rate optimization for showcase sites and e-commerce platforms. Deep focus on visual hierarchy, accessibility, and digital design systems.',
+            points: [
+              'Art Direction & Web Design: Crafted high-fidelity, visually striking Figma mockups paired with refined digital design systems.',
+              'Visual Hierarchy & UX Writing: Optimized content scanning and CTA placement to boost user engagement and conversion rates.',
+              'Design Systems & Dev Hand-off: Built modular UI component libraries and delivered pixel-perfect assets tailored for front-end integration.'
+            ],
+            skills: ['Art Direction', 'UI/UX Design', 'Visual Hierarchy', 'Design Systems', 'Dev Hand-off'],
             color: '#F97316'
           }
         ]
@@ -1802,17 +1822,27 @@ function App() {
             role: 'Product Designer',
             company: 'CACTUCE',
             date: 'OCTOBRE 2025 — PRÉSENT',
-            desc: 'Intervention sur la structuration et l\'optimisation de produits complexes comme eHadj et Asset IQ. Identification des points de friction et supervision de la phase de QA.',
-            skills: ['Logique d\'interfaces', 'Analyse UX', 'Design Haute-fidélité', 'Supervision QA'],
+            desc: 'Design Produit & UX Strategy sur des solutions SaaS à forte technicité et portée institutionnelle (eHadj et Asset IQ). Structuration complète de l\'architecture d\'information et des parcours utilisateurs pour des plateformes d\'envergure nationale et industrielle.',
+            points: [
+              'eHadj (Orchestration Nationale) : Conception du système multi-acteurs unifiant ministères, banques et agences agréées. Tunnel séquentiel ID-First (NPI), réduction de 90% des erreurs de dossier et suivi des quotas.',
+              'Asset IQ (Gouvernance d\'Actifs) : Modélisation des workflows de traçabilité terrain par QR Code (inventaire en 3 étapes), tableaux de bord de maintenance préventive et analytics (-30% de pertes d\'équipements).',
+              'Rigueur & Assurance Qualité : Rédaction de spécifications UI/UX exhaustives, création d\'interfaces réutilisables et supervision QA stricte jusqu\'au déploiement.'
+            ],
+            skills: ['Logique d\'interfaces', 'Architecture SaaS', 'Orchestration Multi-acteurs', 'Design System', 'Supervision QA'],
             color: '#A855F7'
           },
           {
             id: '02',
-            role: 'Product Designer',
+            role: 'Product Designer Lead',
             company: 'TRELLIX',
             date: 'FÉVRIER 2024 — SEPTEMBRE 2025',
-            desc: 'Évolution vers une approche produit structurée sur le programme Beans. Définition des fonctionnalités et coordination avec l\'équipe dev.',
-            skills: ['PRD & Specs', 'Parcours Beans', 'Coordination Dev', 'Validation QA'],
+            desc: 'Pilotage stratégique et design produit du hub d\'intégrations tierces de la plateforme SaaS Beans (Shopify, Klaviyo, Instagram, POS...). Définition de la roadmap, rédaction des PRD et création d\'expériences marchands Plug & Play.',
+            points: [
+              'Pilotage Hub d\'Intégrations : Cadrage et livraison de A à Z de 10 connecteurs majeurs. Réduction de 50% des délais dev grâce à des PRD ultra-détaillés et un alignement engineering.',
+              'UX Plug & Play & App Store : Conception de tunnels d\'activation sans friction (2 clics) et réalisation des visuels promotionnels (Feature Images) pour le store d\'applications.',
+              'Leadership Sprint & Documentation : Management des sprints de dev, recettes QA systématiques et rédaction de la documentation technique officielle (docs.trybeans.com).'
+            ],
+            skills: ['PRD & Spécifications', 'Hub d\'Intégrations', 'UX Plug & Play', 'Coordination Dev', 'Validation QA'],
             color: '#0d3479'
           },
           {
@@ -1820,8 +1850,13 @@ function App() {
             role: 'Web Designer',
             company: 'CREAFIX',
             date: 'AOÛT 2022 — FÉVRIER 2024',
-            desc: 'Création d\'interfaces web et exécution visuelle. Travail sur la hiérarchie visuelle, la lisibilité et la cohérence graphique.',
-            skills: ['Visual Design', 'Hiérarchie Info', 'Web Layouts', 'Livraison Projet'],
+            desc: 'Direction artistique, création d\'interfaces web sur-mesure et optimisation du taux de conversion pour des clients variés (marques premium, e-commerce, portfolios). Travail approfondi sur la hiérarchie de l\'information et l\'accessibilité visuelle.',
+            points: [
+              'Direction Artistique & Web Design : Conception de maquettes haute-fidélité captivantes et structurées sous Figma, alliées à des chartes visuelles digitales épurées.',
+              'Hiérarchie Visuelle & UX Writing : Optimisation du parcours de lecture et de la mise en valeur des CTA pour maximiser l\'engagement et la conversion.',
+              'Design Systems & Hand-off Dev : Élaboration de composants UI modulaires et livrables pixel-perfect prêts pour l\'intégration front-end.'
+            ],
+            skills: ['Direction Artistique', 'Design d\'Interfaces', 'Hiérarchie Visuelle', 'Design Systems', 'Livraison & Hand-off'],
             color: '#F97316'
           }
         ]
@@ -2592,6 +2627,21 @@ function App() {
                   </div>
 
                   <p className="exp-panel-desc">{t.experience.items[activeExpIndex].desc}</p>
+
+                  {t.experience.items[activeExpIndex].points && (
+                    <ul className="exp-panel-points">
+                      {t.experience.items[activeExpIndex].points.map((pt: string, idx: number) => (
+                        <motion.li 
+                          key={idx}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.06 + 0.1, duration: 0.3 }}
+                        >
+                          {pt}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  )}
 
                   <div className="exp-panel-footer">
                     <span className="exp-panel-tag-label">Key Focus & Skills</span>
