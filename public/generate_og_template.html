@@ -30,7 +30,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 48px 60px;
+      padding: 56px 64px;
     }
 
     /* Ambient Subtle Grid & Vignette */
@@ -72,7 +72,8 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 28px;
     }
 
     .logo-badge {
@@ -83,7 +84,7 @@
 
     .logo-title {
       font-family: 'Anton', sans-serif;
-      font-size: 32px;
+      font-size: 34px;
       letter-spacing: 0.06em;
       color: #FFFFFF;
       line-height: 1;
@@ -118,9 +119,17 @@
       gap: 8px;
     }
 
+    .archive-dot {
+      width: 6px;
+      height: 6px;
+      background: #DC2626;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
     .hero-name {
       font-family: 'Anton', sans-serif;
-      font-size: 82px;
+      font-size: 86px;
       line-height: 0.95;
       letter-spacing: 0.02em;
       color: #FFFFFF;
@@ -130,9 +139,9 @@
     .hero-title-sub {
       font-family: 'Signifier Light', Georgia, serif;
       font-weight: 300;
-      font-size: 24px;
+      font-size: 25px;
       color: #E5E7EB;
-      line-height: 1.35;
+      line-height: 1.38;
       max-width: 580px;
     }
 
@@ -140,7 +149,7 @@
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     .skill-tag {
@@ -152,32 +161,6 @@
       color: #D1D5DB;
       border-radius: 2px;
       letter-spacing: 0.05em;
-    }
-
-    .footer-bar {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .footer-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #FFFFFF;
-      color: #000000;
-      padding: 8px 20px;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .footer-dot {
-      width: 8px;
-      height: 8px;
-      background: #DC2626;
-      border-radius: 50%;
     }
 
     /* Right Section Physical Filing Cabinet Folders */
@@ -337,7 +320,7 @@
 
     <div class="main-text-group">
       <div class="archive-number-badge">
-        <span>●</span> REGISTRE D'ARCHIVES 2026
+        <span class="archive-dot"></span> REGISTRE D'ARCHIVES 2026
       </div>
 
       <h1 class="hero-name">SACCA DAFIA</h1>
@@ -350,14 +333,6 @@
         <div class="skill-tag">01. PRODUCT DESIGN B2B</div>
         <div class="skill-tag">02. WEB DESIGN &amp; ART DIRECTION</div>
         <div class="skill-tag">03. VIBE CODING &amp; MVPS</div>
-      </div>
-    </div>
-
-    <!-- Footer URL -->
-    <div class="footer-bar">
-      <div class="footer-pill">
-        <div class="footer-dot"></div>
-        <span>talesmanwebcraft.vercel.app</span>
       </div>
     </div>
 
