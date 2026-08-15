@@ -567,7 +567,7 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#059669' }}>SPEC 03</div>
               <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Vibe Coding &amp; Rapid MVP</div>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', color: '#444' }}>
-                Prototypage interactif fonctionnel permettant aux clients de tester rapidement leurs concepts et valider leur produit auprès d'utilisateurs réels.
+                Prototypage interactif fonctionnel permettant aux clients de tester rapidement leurs concepts et de valider leur produit auprès d'utilisateurs réels.
               </p>
             </div>
           </div>
@@ -768,7 +768,7 @@ export default function App() {
             <h1 className="mosby-hero-title">SACCA DAFIA</h1>
             <p className="mosby-hero-subtitle">
               {lang === 'fr'
-                ? 'Un archive de projets Web Design & Product Design : plateformes SaaS B2B complexes, expériences e-commerce sur mesure et design systems conçus sur +4 ans.'
+                ? 'Une archive de projets Web Design & Product Design : plateformes SaaS B2B complexes, expériences e-commerce sur mesure et design systems conçus sur +4 ans.'
                 : 'An archive of Web Design & Product Design projects: complex B2B SaaS platforms, custom e-commerce experiences, and design systems crafted over 4+ years.'}
             </p>
           </section>

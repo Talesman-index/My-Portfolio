@@ -291,7 +291,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       label: "Web Design & Brand Experience",
       color: "#10B981",
       bgImage: "/imgs/truvox_cover.png",
-      context: "Truvox est un studio de création digitale qui conçoit des expériences numériques d'exception conçues pour apporter de la clarté, renforce la confiance et soutient la croissance des entreprises (Stratégie, Design, Développement).",
+      context: "Truvox est un studio de création digitale qui conçoit des expériences numériques d'exception destinées à apporter de la clarté, renforcer la confiance et soutenir la croissance des entreprises (Stratégie, Design, Développement).",
       contextTitle: "Allier clarté stratégique et excellence visuelle.",
       challenge: "Créer un univers de marque moderne et un site studio épuré, interactif et hautement performant qui reflète la précision et le savoir-faire de l'équipe Truvox.",
       challengeTitle: "Incarner la qualité créative et technique.",
@@ -392,7 +392,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "Plus de 12 personnes vulnérables réinsérées professionnellement grâce aux programmes de formation",
         "Augmentation de 60% des dons réguliers suite à la mise en ligne du système de suivi d'impact"
       ],
-      conclusion: "Le nouveau portail de The Refuge prouve que le design numérique peut être un vecteur puissant d'action sociale. En alliant transparence de l'impact et simplicité d'interaction, le site comble avec succès le fossé entre la génélovisité en ligne et les vies restaurées dans les rues de Cotonou.",
+      conclusion: "Le nouveau portail de The Refuge prouve que le design numérique peut être un vecteur puissant d'action sociale. En alliant transparence de l'impact et simplicité d'interaction, le site comble avec succès le fossé entre la générosité en ligne et les vies restaurées dans les rues de Cotonou.",
       externalLink: "https://your-refuge.vercel.app/"
     },
     'strategy-arena': {
