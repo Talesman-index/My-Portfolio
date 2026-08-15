@@ -550,8 +550,8 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
             <a href="mailto:dafiashalom@gmail.com" className="mosby-footer-link">
               <Mail size={14} /> dafiashalom@gmail.com
             </a>
-            <a href="tel:+2290160359022" className="mosby-footer-link">
-              <Phone size={14} /> +229 01 60 35 90 22
+            <a href="tel:+2290154921801" className="mosby-footer-link">
+              <Phone size={14} /> +229 01 54 92 18 01
             </a>
             <a 
               href="https://assets.calendly.com" 
@@ -576,13 +576,13 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
           <div className="mosby-footer-col-title">02. SOCIAL ARCHIVES</div>
           <div className="mosby-footer-links-list">
             <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <Linkedin size={14} /> LinkedIn (@dafia-s)
+              <Linkedin size={14} /> LinkedIn
             </a>
             <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <ExternalLink size={14} /> Behance (@shalomsacca)
+              <ExternalLink size={14} /> Behance
             </a>
             <a href="https://github.com/shalomtalesman" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <ExternalLink size={14} /> GitHub (@shalomtalesman)
+              <ExternalLink size={14} /> GitHub
             </a>
           </div>
         </div>
@@ -629,7 +629,7 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
 };
 
 /* ─────────────────────────────────────────────
-   MAIN HOMEPAGE (WITH ANIMATED FILING CABINET COLLAPSE & EXPAND)
+   MAIN HOMEPAGE
 ───────────────────────────────────────────── */
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | CaseStudyId>(() => getViewFromHash());
@@ -924,4 +924,4 @@ export default function App() {
 with open('src/App.tsx', 'w') as f:
     f.write(app_content)
 
-print("Updated App.tsx with physical opening and closing animations for drawers and modals successfully.")
+print("Updated App.tsx with corrected phone number (+229 01 54 92 18 01) and removed fake handles.")
