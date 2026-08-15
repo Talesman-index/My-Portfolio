@@ -30,7 +30,7 @@
   /* Typography Matrix (Exact match to Mosby's Files) */
   --font-anton: 'Anton', 'Bebas Neue', sans-serif;
   --font-bebas: 'Bebas Neue', 'Anton', sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-serif: 'Signifier Light', 'Signifier', 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-hand: 'Caveat', cursive;
   --font-body: 'Inter', sans-serif;
