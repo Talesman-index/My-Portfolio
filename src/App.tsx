@@ -14,7 +14,9 @@ import {
   Download,
   Layers,
   Sparkles,
-  Home
+  Home,
+  Building2,
+  Briefcase
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
@@ -402,7 +404,7 @@ const CaseStudy = ({
 };
 
 /* ─────────────────────────────────────────────
-   EXPERIENCES DOSSIER VIEW
+   EXPERIENCES DOSSIER VIEW (CREAFIX, TRELLIX, CACTUCE)
 ───────────────────────────────────────────── */
 const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
   return (
@@ -415,38 +417,120 @@ const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
           <ArrowLeft size={16} /> <span>← RETURN TO ARCHIVE HOME</span>
         </button>
 
-        <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>EXPERIENCES &amp; FIELD LOGS</h1>
+        <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>CAREER &amp; COMPANY LOGS</h1>
 
         <div className="mosby-paper-sheet" style={{ maxWidth: '1050px' }}>
           <BinderHoles />
 
-          <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.2rem', marginBottom: '24px' }}>
-            CHRONOLOGICAL FIELD REPORTS (2022 - 2026)
+          <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.2rem', marginBottom: '28px', letterSpacing: '0.02em', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Building2 size={26} color="#DC2626" />
+            <span>EXPÉRIENCE EN ENTREPRISE (CREAFIX, TRELLIX, CACTUCE)</span>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ padding: '24px', background: '#FFF', borderLeft: '6px solid #1D4ED8', boxShadow: '0 4px 14px rgba(0,0,0,0.1)' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#1D4ED8', fontWeight: 'bold' }}>2024 - 2025 • BEANS (SAAS B2B CUSTOMER ENGAGEMENT)</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.4rem', margin: '6px 0' }}>Chef de Projet Intégrations &amp; Lead Product Designer</div>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: '#444' }}>
-                Rédaction des PRD, élaboration des spécifications d'intégration Shopify &amp; POS, conception des tunnels UX sans friction, supervision des équipes d'ingénierie dev et QA testing.
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+            {/* COMPANY 01: CREAFIX */}
+            <div style={{ padding: '28px', background: '#FFF', borderLeft: '6px solid #DC2626', boxShadow: '0 6px 18px rgba(0,0,0,0.08)', borderRadius: '2px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
+                <div>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', background: '#DC2626', color: '#FFF', padding: '3px 8px', borderRadius: '2px', fontWeight: 'bold' }}>
+                    ENTREPRISE / AGENCE
+                  </span>
+                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.1rem', margin: '8px 0 2px 0', color: '#121212' }}>
+                    CREAFIX
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: '#DC2626', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Briefcase size={14} /> Lead Product &amp; Web Designer
+                  </div>
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#666', background: '#F5F5F5', padding: '6px 12px', border: '1px solid #DDD' }}>
+                  2024 - Présent
+                </div>
+              </div>
+
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#222', marginTop: '16px', lineHeight: '1.6' }}>
+                Direction complète du design produit et web au sein de CreaFix. Conception des architectures d'information, création des interfaces interactives et élaboration des design systems pour les produits digitaux et plateformes web.
               </p>
+
+              <div style={{ marginTop: '16px', paddingTop: '14px', borderTop: '1px solid #EEE' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 'bold', color: '#444', marginBottom: '8px' }}>
+                  RESPONSABILITÉS &amp; RÉALISATIONS AU SEIN DE L'ENTREPRISE :
+                </div>
+                <ul style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: '#555', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <li>Supervision de la direction artistique et alignement avec les équipes de développement frontend/backend.</li>
+                  <li>Rédaction des cahiers des charges fonctionnels (PRDs), wireframing et prototypage interactif rapide.</li>
+                  <li>Mise en place de composants de design modulaires assurant cohérence et scalabilité.</li>
+                </ul>
+              </div>
             </div>
 
-            <div style={{ padding: '24px', background: '#FFF', borderLeft: '6px solid #DC2626', boxShadow: '0 4px 14px rgba(0,0,0,0.1)' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#DC2626', fontWeight: 'bold' }}>2025 - 2026 • eHADJ (ORCHESTRATION LOGISTIQUE NATIONALE)</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.4rem', margin: '6px 0' }}>Lead Product Designer</div>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: '#444' }}>
-                Digitalisation globale du workflow de pèlerinage au Bénin. Unification multi-acteurs (Ministère de la Santé, Banques, Ministère des Affaires Étrangères, AGLO).
+            {/* COMPANY 02: TRELLIX */}
+            <div style={{ padding: '28px', background: '#FFF', borderLeft: '6px solid #1D4ED8', boxShadow: '0 6px 18px rgba(0,0,0,0.08)', borderRadius: '2px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
+                <div>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', background: '#1D4ED8', color: '#FFF', padding: '3px 8px', borderRadius: '2px', fontWeight: 'bold' }}>
+                    ENTREPRISE TECH &amp; SAAS
+                  </span>
+                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.1rem', margin: '8px 0 2px 0', color: '#121212' }}>
+                    TRELLIX
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: '#1D4ED8', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Briefcase size={14} /> Product Designer &amp; UX Strategist
+                  </div>
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#666', background: '#F5F5F5', padding: '6px 12px', border: '1px solid #DDD' }}>
+                  2023 - 2024
+                </div>
+              </div>
+
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#222', marginTop: '16px', lineHeight: '1.6' }}>
+                Product Design au sein de Trellix pour la conception de solutions SaaS B2B complexes, tableaux de bord de gestion et tunnels d'activation sans friction.
               </p>
+
+              <div style={{ marginTop: '16px', paddingTop: '14px', borderTop: '1px solid #EEE' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 'bold', color: '#444', marginBottom: '8px' }}>
+                  RESPONSABILITÉS &amp; RÉALISATIONS AU SEIN DE L'ENTREPRISE :
+                </div>
+                <ul style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: '#555', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <li>Optimisation des workflows utilisateurs et réduction des taux d'abandon lors des parcours d'onboarding.</li>
+                  <li>Création de tableaux de bord de données analytiques et télémétrie complexes avec une UX épurée.</li>
+                  <li>Conduite des tests d'usabilité et itérations produit en collaboration avec les Product Managers.</li>
+                </ul>
+              </div>
             </div>
 
-            <div style={{ padding: '24px', background: '#FFF', borderLeft: '6px solid #059669', boxShadow: '0 4px 14px rgba(0,0,0,0.1)' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#059669', fontWeight: 'bold' }}>2025 - 2026 • ASSET IQ (GOUVERNANCE D'ACTIFS MULTI-SITES)</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.4rem', margin: '6px 0' }}>Product &amp; UX Strategist</div>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: '#444' }}>
-                Système intelligent de suivi et gouvernance opérationnelle de ressources physiques multi-sites par QR Code et télémétrie.
+            {/* COMPANY 03: CACTUCE */}
+            <div style={{ padding: '28px', background: '#FFF', borderLeft: '6px solid #059669', boxShadow: '0 6px 18px rgba(0,0,0,0.08)', borderRadius: '2px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
+                <div>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', background: '#059669', color: '#FFF', padding: '3px 8px', borderRadius: '2px', fontWeight: 'bold' }}>
+                    ENTREPRISE &amp; STUDIO CREATIF
+                  </span>
+                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.1rem', margin: '8px 0 2px 0', color: '#121212' }}>
+                    CACTUCE
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: '#059669', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Briefcase size={14} /> UI/UX Designer &amp; Art Director
+                  </div>
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#666', background: '#F5F5F5', padding: '6px 12px', border: '1px solid #DDD' }}>
+                  2022 - 2023
+                </div>
+              </div>
+
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#222', marginTop: '16px', lineHeight: '1.6' }}>
+                Élaboration des chartes graphiques, direction artistique web et conception des interfaces digitales pour Cactuce.
               </p>
+
+              <div style={{ marginTop: '16px', paddingTop: '14px', borderTop: '1px solid #EEE' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 'bold', color: '#444', marginBottom: '8px' }}>
+                  RESPONSABILITÉS &amp; RÉALISATIONS AU SEIN DE L'ENTREPRISE :
+                </div>
+                <ul style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: '#555', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <li>Création de sites vitrines d'exception et interfaces web sur mesure axées sur la conversion.</li>
+                  <li>Création et gouvernance de la librairie de composants UI Figma.</li>
+                  <li>Accompagnement de l'équipe créative sur les micro-interactions et l'expérience de marque.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
