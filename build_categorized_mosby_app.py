@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import re
+
+app_content = r'''import { useState, useEffect } from 'react';
 import { 
   ArrowRight,
   ArrowLeft,
@@ -915,3 +917,9 @@ export default function App() {
     </>
   );
 }
+'''
+
+with open('src/App.tsx', 'w') as f:
+    f.write(app_content)
+
+print("Updated App.tsx with reframed Vibe Coding narrative for rapid MVP prototyping.")

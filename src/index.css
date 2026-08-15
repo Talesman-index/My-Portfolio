@@ -1,44 +1,39 @@
 :root {
-  --bg-dark: #0d3479;
-  --bg-light: #eeede4;
-  --accent: #eeede4;
+  /* Dark Charcoal & Pitch Backgrounds */
+  --bg-dark: #121212;
+  --bg-surface: #181818;
+  --bg-card: #202020;
+  
+  /* Mosby's Files Primary Palette */
+  --mosby-blue: #1D4ED8;
+  --mosby-green: #059669;
+  --mosby-purple: #7C3AED;
+  --mosby-red: #DC2626;
+  --mosby-yellow: #EAB308;
+  --mosby-black: #000000;
+  --mosby-amber: #D97706;
+  --mosby-cyan: #0284C7;
+  
+  /* Paper & Sticky Note Colors */
+  --paper-white: #F7F7F4;
+  --paper-cream: #F5EFE6;
+  --note-pink: #F472B6;
+  --note-yellow: #FEF08A;
+  --note-blue: #93C5FD;
+  --note-green: #A7F3D0;
+  
+  /* Text & Labels */
   --text-white: #FFFFFF;
-  --text-gray: #B0C4DE; /* Light blue-gray for secondary text on blue backdrops */
-  --text-dark: #0d3479;
+  --text-muted: #999999;
+  --text-dark: #121212;
   
-  --font-main: 'Manrope', sans-serif;
+  /* Typography Matrix (Exact match to Mosby's Files) */
+  --font-anton: 'Anton', 'Bebas Neue', sans-serif;
+  --font-bebas: 'Bebas Neue', 'Anton', sans-serif;
+  --font-serif: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-hand: 'Caveat', cursive;
   --font-body: 'Inter', sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  
-  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  --section-padding: 120px 0;
-}
-
-/* Accessibility Skip Link - Hidden offscreen by default, visible on keyboard focus */
-.skip-to-content-btn,
-.skip-link {
-  position: absolute;
-  top: -100px;
-  left: 16px;
-  z-index: 99999;
-  padding: 10px 20px;
-  background: #0d3479;
-  color: #ffffff;
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: top 0.2s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-}
-
-.skip-to-content-btn:focus,
-.skip-to-content-btn:focus-visible,
-.skip-link:focus,
-.skip-link:focus-visible {
-  top: 16px;
-  outline: 2px solid #eeede4;
 }
 
 * {
@@ -47,34 +42,32 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-dark);
   color: var(--text-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Permanently prevent horizontal layout shift */
-}
-
-html {
-  overflow-x: hidden; /* Prevent any element animation from causing page-level horizontal scroll */
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-main);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-family: var(--font-anton);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: var(--transition-smooth);
-}
-
-ul {
-  list-style: none;
 }
 
 button {
@@ -82,75 +75,16 @@ button {
   border: none;
   background: none;
   font-family: inherit;
-  transition: var(--transition-smooth);
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 6%;
+  padding: 0 4%;
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 5%;
+    padding: 0 16px;
   }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 20px;
-  }
-}
-
-.pill-button {
-  display: inline-flex;
-  align-items: center;
-  padding: 14px 34px;
-  border-radius: 100px;
-  font-weight: 600;
-  font-size: 16px;
-  transition: var(--transition-smooth);
-  font-family: var(--font-main);
-}
-
-.pill-button.primary {
-  background-color: var(--accent);
-  color: var(--text-dark);
-}
-
-.pill-button.primary:hover {
-  transform: scale(1.05);
-  background-color: #fff;
-}
-
-.pill-button.outline {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--text-white);
-}
-
-.pill-button.outline:hover {
-  background-color: rgba(255, 255, 255, 1);
-  color: var(--text-dark);
-  border-color: #fff;
-}
-
-.pill-button.lg {
-  padding: 20px 44px;
-  font-size: 18px;
-}
-
-.pill-button.xl {
-  padding: 30px 60px;
-  font-size: 24px;
-}
-
-.pill-button.dark {
-  border: 1px solid rgba(6, 14, 10, 0.2);
-  color: var(--text-dark);
-}
-
-.pill-button.dark:hover {
-  background-color: var(--text-dark);
-  color: #fff;
 }

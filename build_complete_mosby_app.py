@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import re
+
+app_content = r'''import { useState, useEffect } from 'react';
 import { 
   ArrowRight,
   ArrowLeft,
@@ -13,8 +15,7 @@ import {
   FileText,
   Download,
   Layers,
-  Sparkles,
-  Home
+  Sparkles
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
@@ -51,30 +52,19 @@ function getViewFromHash(): 'home' | 'cv' | 'experiences' | 'services' | CaseStu
   return 'home';
 }
 
-const navigateToHome = (setCurrentView: any) => {
-  setCurrentView('home');
-  if (typeof window !== 'undefined') {
-    window.history.pushState({ view: 'home' }, '', window.location.pathname);
-    window.scrollTo(0, 0);
-  }
-};
-
 const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLabel: string; year: string; externalLink?: string }> = {
   'asset-iq': { title: 'Asset IQ', color: '#1D4ED8', categoryLabel: 'B2B SaaS & Resource Telemetry', year: '2026', externalLink: 'https://www.assetiQ.com' },
-  'ehadj': { title: 'eHadj', color: '#DC2626', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://ehadj.aglo.bj/' },
+  'ehadj': { title: 'eHadj', color: '#DC2626', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#ehadj' },
   'beans': { title: 'Beans', color: '#059669', categoryLabel: 'Customer Engagement & Integrations', year: '2025', externalLink: 'https://trybeans.com' },
-  'truvox': { title: 'Truvox Studio', color: '#059669', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
-  'tavares': { title: 'Tavares', color: '#E50914', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://portfolio-tavares.vercel.app/' },
-  'strategy-arena': { title: 'Strategy Arena', color: '#1E3A8A', categoryLabel: 'Strategic Consulting & Transformation', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#strategy-arena' },
-  'dolce-riviera': { title: 'Dolce Riviera', color: '#1D4ED8', categoryLabel: 'Luxury E-Commerce & Editorial UI', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' },
-  'sagana': { title: 'Sagana', color: '#7C3AED', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://www.sagana-agency.com/' },
-  'the-refuge': { title: 'The Refuge', color: '#0D3479', categoryLabel: 'Humanitarian Impact Portal', year: '2025', externalLink: 'https://your-refuge.vercel.app/' },
-  'vortex': { title: 'Vortex Gallery', color: '#EAB308', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel' },
-  'sport-advisor': { title: 'Sport Advisor', color: '#000000', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive' }
+  'sagana': { title: 'Sagana', color: '#7C3AED', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#sagana' },
+  'vortex': { title: 'Vortex Gallery', color: '#EAB308', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://talesmanwebcraft.vercel.app/#vortex' },
+  'sport-advisor': { title: 'Sport Advisor', color: '#000000', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://talesmanwebcraft.vercel.app/#sport-advisor' },
+  'truvox': { title: 'Truvox Studio', color: '#DC2626', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
+  'dolce-riviera': { title: 'Dolce Riviera', color: '#1D4ED8', categoryLabel: 'Luxury E-Commerce & Editorial UI', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' }
 };
 
 /* ─────────────────────────────────────────────
-   ABOUT SHEET MODAL (BALANCED PRODUCT & WEB DESIGN + RAPID MVP VIBE CODING)
+   ABOUT SHEET MODAL (MOSBY'S FILES SCREENSHOT 3 DIRECT REPRODUCTION)
 ───────────────────────────────────────────── */
 const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: () => void; lang: 'en' | 'fr' }) => {
   if (!isOpen) return null;
@@ -87,78 +77,58 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
         </button>
 
         <div className="mosby-about-grid">
-          {/* Left Column: Big Bold Quote + Dual Photo Cards */}
+          {/* Left Column: Big Bold Quote + Photo */}
           <div>
             <h2 className="mosby-about-quote-title">
               {lang === 'fr' 
-                ? "LE DESIGN NUMÉRIQUE EST L'ALLIANCE DE LA RIGUEUR PRODUIT ET DE L'ÉLÉGANCE WEB."
-                : "DIGITAL DESIGN IS THE FUSION OF PRODUCT RIGOR AND WEB ELEGANCE."}
+                ? "LE DESIGN SYSTÉMIQUE N'EST PAS UN POLI ESTHÉTIQUE. C'EST LA RÉDUCTION DU BRUIT COGNITIF."
+                : "SYSTEMIC DESIGN IS NOT AESTHETIC POLISH. IT IS THE REDUCTION OF COGNITIVE NOISE."}
             </h2>
 
-            <div className="mosby-about-photo-grid">
-              {/* Photo 1: B&W Executive Office */}
-              <div className="mosby-about-photo-card" style={{ transform: 'rotate(-1deg)' }}>
-                <PaperclipSVG style={{ top: '-14px', right: '14px' }} />
-                <img src="/imgs/hero_image.png" alt="Sacca Dafia Executive" className="mosby-about-photo-img" style={{ filter: 'grayscale(100%) contrast(110%)' }} />
-                <div className="mosby-about-caption">
-                  <strong>01. EXECUTIVE DOSSIER</strong> <br />
-                  Web &amp; Product Designer (+4 ans exp)
-                </div>
-              </div>
-
-              {/* Photo 2: Warm Ambient Workspace */}
-              <div className="mosby-about-photo-card" style={{ transform: 'rotate(1.5deg)' }}>
-                <PaperclipSVG style={{ top: '-14px', left: '14px' }} />
-                <span className="mosby-about-vibe-badge">⚡ RAPID MVP &amp; VIBE CODING</span>
-                <img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding Setup" className="mosby-about-photo-img" />
-                <div className="mosby-about-caption">
-                  <strong>02. PROTOTYPING WORKSPACE</strong> <br />
-                  Vibe Coding &amp; Rapid MVP Prototyping
-                </div>
+            <div className="mosby-about-photo-wrapper">
+              <img src="/imgs/hero_image.png" alt="Sacca Dafia" className="mosby-about-photo-img" />
+              <div className="mosby-about-caption">
+                Sacca Dafia, Product &amp; Solution Designer (+4 ans exp) <br />
+                Archive of Digital Products, Cotonou / Remote
               </div>
             </div>
           </div>
 
-          {/* Right Column: Editorial Text + Core Skills + Signature */}
+          {/* Right Column: Editorial Serif Text + Bullets + Signature */}
           <div>
             <p className="mosby-about-serif-text">
               {lang === 'fr'
-                ? "En tant que Web Designer & Product Designer, je façonne des produits numériques à la fois beaux, intuitifs et hautement fonctionnels. En complément, ma maîtrise du Vibe Coding me permet de proposer des MVPs rapides et interactifs, offrant ainsi aux clients une meilleure validation terrain et un test utilisateur réel dès les premières phases du projet."
-                : "As a Web Designer & Product Designer, I craft digital products that are elegant, intuitive, and highly functional. As a value-added skill, my Vibe Coding capabilities allow me to quickly deliver interactive MVPs to clients for faster user validation and real-world testing."}
+                ? "Ce portfolio a été conçu pour répliquer le sentiment d'ouvrir un dossier d'archives physiques — une collection rigoureuse appartenant à un designer passionné par la clarté, l'architecture d'information et les logiciels d'entreprise complexes."
+                : "We built this archive to replicate the feeling of opening an old physical design folder — a carefully assembled collection belonging to someone obsessed with clarity, systemic architecture, and enterprise software."}
             </p>
 
             <ul className="mosby-about-bullets">
               <li>
                 {lang === 'fr' 
-                  ? "Product Design : Plateformes SaaS B2B complexes, architecture d'information et rédaction de PRDs."
-                  : "Product Design: Complex B2B SaaS platforms, information architecture, and PRD specifications."}
+                  ? "Conception de solutions digitales sur mesure et de plateformes SaaS B2B complexes."
+                  : "Design of tailored digital solutions and complex B2B SaaS platforms."}
               </li>
               <li>
                 {lang === 'fr'
-                  ? "Web Design : Direction artistique haut de gamme, vitrines d'exception et e-commerce sur mesure."
-                  : "Web Design: High-end art direction, luxury showcase sites, and custom e-commerce experiences."}
-              </li>
-              <li>
-                {lang === 'fr' 
-                  ? "Vibe Coding &amp; MVPs Rapides : Prototypage interactif fonctionnel pour permettre aux clients de tester rapidement leurs concepts auprès d'utilisateurs réels."
-                  : "Vibe Coding &amp; Rapid MVPs: Functional interactive prototyping allowing clients to quickly validate concepts with real users."}
+                  ? "Rédaction de PRDs, spécifications techniques et supervision des équipes d'ingénierie dev."
+                  : "Writing PRDs, technical integration specs, and supervising engineering dev teams."}
               </li>
               <li>
                 {lang === 'fr'
-                  ? "Design Systems &amp; Leadership : Composants modulaires Figma/React et supervision technique dev."
-                  : "Design Systems &amp; Leadership: Modular Figma/React UI systems and dev team supervision."}
+                  ? "Design systems modulables, hiérarchie visuelle stricte et recherche utilisateur terrain."
+                  : "Modular design systems, strict visual hierarchy, and real-world field research."}
               </li>
             </ul>
 
             <p className="mosby-about-serif-text" style={{ marginTop: '20px' }}>
               {lang === 'fr' 
-                ? "Explorez l'archive de projets ci-dessous."
-                : "Explore the archive of projects below."}
+                ? "Le dossier est ouvert. Explorez les études de cas ci-dessous."
+                : "The folder's open. We won't tell you where to start."}
             </p>
 
             <div className="mosby-signature-block">
               <div className="mosby-signature-text">Sacca Dafia</div>
-              <div className="mosby-signature-sub">Web Designer &amp; Product Designer · Rapid MVP Prototyping</div>
+              <div className="mosby-signature-sub">Sacca Dafia, Product Designer</div>
             </div>
           </div>
         </div>
@@ -168,7 +138,7 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
 };
 
 /* ─────────────────────────────────────────────
-   CASE STUDY DOSSIER VIEW
+   CASE STUDY DOSSIER VIEW (RICH DETAILS & LIVE CTA ENHANCEMENT)
 ───────────────────────────────────────────── */
 const CaseStudy = ({ 
   id, 
@@ -190,18 +160,8 @@ const CaseStudy = ({
 
   return (
     <div className="mosby-dossier-view">
-      {/* Top Navigation Bar with Back Button */}
-      <div className="container" style={{ paddingTop: '30px' }}>
-        <button 
-          onClick={() => navigateToHome(setCurrentView)} 
-          className="mosby-back-btn"
-        >
-          <ArrowLeft size={16} /> <span>← RETURN TO ARCHIVE HOME</span>
-        </button>
-      </div>
-
       {/* Huge White Title (Mosby's Files Header) */}
-      <h1 className="mosby-dossier-giant-title" style={{ paddingTop: '10px' }}>{data.title}</h1>
+      <h1 className="mosby-dossier-giant-title">{data.title}</h1>
 
       {/* Main Folder Backdrop Container */}
       <div className="mosby-dossier-folder-container">
@@ -246,7 +206,7 @@ const CaseStudy = ({
                 <div className="mosby-specs-metadata-grid">
                   <div>
                     <div className="mosby-spec-item-title">DESIGNER ROLE</div>
-                    <div className="mosby-spec-item-val">Web &amp; Product Designer</div>
+                    <div className="mosby-spec-item-val">Lead Product Designer</div>
                   </div>
                   <div>
                     <div className="mosby-spec-item-title">PROJECT SCOPE</div>
@@ -254,7 +214,7 @@ const CaseStudy = ({
                   </div>
                   <div>
                     <div className="mosby-spec-item-title">DELIVERABLES</div>
-                    <div className="mosby-spec-item-val">Art Direction, UI/UX &amp; Specs</div>
+                    <div className="mosby-spec-item-val">PRD, Workflows &amp; UI System</div>
                   </div>
                 </div>
               </div>
@@ -345,7 +305,7 @@ const CaseStudy = ({
 
         {/* Right Edge Vertical Folder Tabs */}
         <div className="mosby-vertical-tabs-col">
-          {allKeys.slice(0, 6).map(k => {
+          {allKeys.slice(0, 5).map(k => {
             const cfg = PROJECT_CONFIGS[k];
             return (
               <div 
@@ -374,15 +334,6 @@ const CaseStudy = ({
         <ArrowRight size={32} color="#FFF" />
       </div>
 
-      {/* Floating Back to Home Badge */}
-      <div 
-        className="mosby-floating-scroll-badge" 
-        onClick={() => navigateToHome(setCurrentView)}
-        style={{ right: 'auto', left: '24px', background: '#FFFFFF', color: '#000000' }}
-      >
-        ← RETURN HOME
-      </div>
-
       {/* Floating Scroll Pill Button */}
       <div className="mosby-floating-scroll-badge" onClick={() => setCurrentView(nextId)}>
         Scroll for next file ↓
@@ -398,11 +349,8 @@ const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
   return (
     <div className="mosby-dossier-view" style={{ paddingTop: '40px' }}>
       <div className="container">
-        <button 
-          onClick={() => navigateToHome(setCurrentView)} 
-          className="mosby-back-btn"
-        >
-          <ArrowLeft size={16} /> <span>← RETURN TO ARCHIVE HOME</span>
+        <button onClick={() => setCurrentView('home')} style={{ color: '#999', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <ArrowLeft size={16} /> <span>RETURN TO ARCHIVE HOME</span>
         </button>
 
         <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>EXPERIENCES &amp; FIELD LOGS</h1>
@@ -452,11 +400,8 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
   return (
     <div className="mosby-dossier-view" style={{ paddingTop: '40px' }}>
       <div className="container">
-        <button 
-          onClick={() => navigateToHome(setCurrentView)} 
-          className="mosby-back-btn"
-        >
-          <ArrowLeft size={16} /> <span>← RETURN TO ARCHIVE HOME</span>
+        <button onClick={() => setCurrentView('home')} style={{ color: '#999', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <ArrowLeft size={16} /> <span>RETURN TO ARCHIVE HOME</span>
         </button>
 
         <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>CAPABILITIES &amp; SERVICES SPECS</h1>
@@ -467,25 +412,25 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
             <div style={{ padding: '24px', background: '#FFF', border: '1px solid #DDD', borderRadius: '4px' }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#DC2626' }}>SPEC 01</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Web &amp; Art Direction</div>
+              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Product &amp; UX Strategy</div>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', color: '#444' }}>
-                Direction artistique Web Design d'exception, sites vitrines haut de gamme, e-commerce sur mesure et typographie éditoriale.
+                Architecture d'information, tunnels d'activation sans friction, audit d'utilisabilité et stratégie SaaS B2B.
               </p>
             </div>
 
             <div style={{ padding: '24px', background: '#FFF', border: '1px solid #DDD', borderRadius: '4px' }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#1D4ED8' }}>SPEC 02</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Product &amp; SaaS B2B Strategy</div>
+              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>PRDs &amp; Dev Lead</div>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', color: '#444' }}>
-                Architecture d'information, rédaction de PRDs, tunnels d'activation sans friction et supervision d'ingénierie dev.
+                Rédaction de cahiers des charges, spécifications API/POS, coordination des équipes d'ingénierie et Quality Assurance (QA).
               </p>
             </div>
 
             <div style={{ padding: '24px', background: '#FFF', border: '1px solid #DDD', borderRadius: '4px' }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#059669' }}>SPEC 03</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Vibe Coding &amp; Rapid MVP</div>
+              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Design Systems &amp; Web</div>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', color: '#444' }}>
-                Prototypage interactif fonctionnel permettant aux clients de tester rapidement leurs concepts et valider leur produit auprès d'utilisateurs réels.
+                Systèmes de composants modulaires Figma/React, sites vitrines haut de gamme et expériences e-commerce immersives.
               </p>
             </div>
           </div>
@@ -496,7 +441,7 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
 };
 
 /* ─────────────────────────────────────────────
-   ARCHIVAL FOOTER SYSTEM
+   ARCHIVAL FOOTER SYSTEM (DIRECT MOSBY'S FILES REPRODUCTION)
 ───────────────────────────────────────────── */
 const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrentView: any; setIsAboutModalOpen: any; lang: 'en' | 'fr' }) => {
   return (
@@ -579,9 +524,6 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
         <div>
           <div className="mosby-footer-col-title">03. CORE DOSSIERS</div>
           <div className="mosby-footer-links-list">
-            <span className="mosby-footer-link" onClick={() => navigateToHome(setCurrentView)} style={{ cursor: 'pointer', color: '#FEF08A' }}>
-              <Home size={14} /> ← Return to Archive Home
-            </span>
             <span className="mosby-footer-link" onClick={() => setIsAboutModalOpen(true)} style={{ cursor: 'pointer' }}>
               <FileText size={14} /> Personnel File (About Sacca)
             </span>
@@ -607,23 +549,31 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
       <div className="mosby-footer-bottom-bar">
         <div className="mosby-footer-scale-key">
           <span style={{ height: '2px', width: '40px', background: '#FFF', display: 'inline-block' }} />
-          <span>0 4 8 16 32 • WEB &amp; PRODUCT DESIGN STRATEGY</span>
+          <span>0 4 8 16 32 • PRODUCT DESIGN &amp; UX STRATEGY</span>
         </div>
 
         <div>© 2026 SACCA DAFIA — ALL RIGHTS RESERVED</div>
+
+        <div className="mosby-footer-credit">
+          <span>CRAFTED WITH ♥ BY</span>
+          <span style={{ fontWeight: 'bold', fontFamily: 'var(--font-anton)', fontSize: '0.9rem', color: '#FFF' }}>SACCA DAFIA</span>
+          <svg width="18" height="18" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M20.8333 16.6667C20.8333 7.46192 28.2953 0 37.5 0C46.7047 0 54.1667 7.46192 54.1667 16.6667V20.8333H58.3333C67.5381 20.8333 75 28.2953 75 37.5C75 46.7047 67.5381 54.1667 58.3333 54.1667H54.1667V58.3333C54.1667 67.5381 46.7047 75 37.5 75C28.2953 75 20.8333 67.5381 20.8333 58.3333V54.1667H16.6667C7.46192 54.1667 0 46.7047 0 37.5C0 28.2953 7.46192 20.8333 16.6667 20.8333H20.8333V16.6667ZM19.7917 38.0208C26.5306 39.6159 35.509 49.3697 37.5 57.2917C39.491 49.3697 48.4694 39.6159 55.2083 38.0208C48.4694 36.4257 39.491 26.6719 37.5 18.75C35.509 26.6719 26.5306 36.4257 19.7917 38.0208Z" fill="#FFFFFF"/>
+          </svg>
+        </div>
       </div>
     </footer>
   );
 };
 
 /* ─────────────────────────────────────────────
-   MAIN HOMEPAGE
+   MAIN HOMEPAGE (DIRECT MOSBY'S FILES SCREENSHOT 1 REPRODUCTION WITH ADAPTED LOGO & FOOTER)
 ───────────────────────────────────────────── */
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | CaseStudyId>(() => getViewFromHash());
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
-  const [activeExpandedFolderRow, setActiveExpandedFolderRow] = useState<number | null>(0);
+  const [activeExpandedFolderRow, setActiveExpandedFolderRow] = useState<number | null>(3);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -644,20 +594,19 @@ export default function App() {
     if (typeof window === 'undefined') return;
     const handlePopState = () => setCurrentView(getViewFromHash());
     window.addEventListener('popstate', handlePopState);
-    window.addEventListener('hashchange', handlePopState);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-      window.removeEventListener('hashchange', handlePopState);
-    };
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   return (
     <>
-      {/* Header with Pure Minimal TALESMAN FILES Typography Logo */}
+      {/* Mosby's Files Centered Header with Adapted Sacca Dafia Brand Logo */}
       <header className="mosby-header">
         <div style={{ width: '60px' }} />
-        <div className="mosby-header-logo-container" onClick={() => navigateToHome(setCurrentView)}>
-          <span className="mosby-logo-text">TALESMAN</span>
+        <div className="mosby-header-logo-container" onClick={() => setCurrentView('home')}>
+          <svg width="28" height="28" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg" className="mosby-logo-svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M20.8333 16.6667C20.8333 7.46192 28.2953 0 37.5 0C46.7047 0 54.1667 7.46192 54.1667 16.6667V20.8333H58.3333C67.5381 20.8333 75 28.2953 75 37.5C75 46.7047 67.5381 54.1667 58.3333 54.1667H54.1667V58.3333C54.1667 67.5381 46.7047 75 37.5 75C28.2953 75 20.8333 67.5381 20.8333 58.3333V54.1667H16.6667C7.46192 54.1667 0 46.7047 0 37.5C0 28.2953 7.46192 20.8333 16.6667 20.8333H20.8333V16.6667ZM19.7917 38.0208C26.5306 39.6159 35.509 49.3697 37.5 57.2917C39.491 49.3697 48.4694 39.6159 55.2083 38.0208C48.4694 36.4257 39.491 26.6719 37.5 18.75C35.509 26.6719 26.5306 36.4257 19.7917 38.0208Z" fill="#FFFFFF"/>
+          </svg>
+          <span className="mosby-logo-text">SACCA DAFIA</span>
           <span className="mosby-logo-tag">FILES</span>
         </div>
         <div className="mosby-header-nav">
@@ -668,7 +617,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* About Sheet Modal */}
+      {/* About Sheet Modal (Screenshot 3 Direct Reproduction) */}
       <AboutSheetModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} lang={lang} />
 
       {/* Render Active View */}
@@ -686,14 +635,14 @@ export default function App() {
             <h1 className="mosby-hero-title">SACCA DAFIA</h1>
             <p className="mosby-hero-subtitle">
               {lang === 'fr'
-                ? 'Un archive de projets Web Design & Product Design : plateformes SaaS B2B complexes, expériences e-commerce sur mesure et design systems conçus sur +4 ans.'
-                : 'An archive of Web Design & Product Design projects: complex B2B SaaS platforms, custom e-commerce experiences, and design systems crafted over 4+ years.'}
+                ? 'Un archive de produits numériques, de plateformes SaaS B2B et de design systems conçus au cours de plus de 4 ans de conception produit.'
+                : 'A project exploring intuitive digital products, B2B SaaS platforms, and software design systems crafted over 4+ years of product design engineering.'}
             </p>
           </section>
 
-          {/* STRICTLY CATEGORIZED FILING CABINET (PROMINENTLY FEATURING TAVARES & STRATEGY ARENA) */}
+          {/* Interactive Stacked Filing Cabinet (Exact Mosby's Files Screenshot 1 Reproduction) */}
           <section className="mosby-filing-cabinet">
-            {/* ROW 1: BLUE FOLDER (#1D4ED8) — CATEGORY 01: B2B SAAS PLATFORMS & LOGISTICS */}
+            {/* ROW 1: Blue Folder (#1D4ED8) — PROJECTS & CASE STUDIES */}
             <div className="mosby-folder-group">
               <div className="mosby-tabs-bar">
                 <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('asset-iq')}>
@@ -713,7 +662,7 @@ export default function App() {
                 onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 0 ? null : 0)}
               >
                 <div className="mosby-folder-category-label">
-                  01. B2B SAAS &amp; ENTERPRISE PLATFORMS &lt;
+                  B2B SaaS &amp; Process Orchestration &lt;
                 </div>
               </div>
 
@@ -722,12 +671,12 @@ export default function App() {
                   <div className="mosby-expanded-grid">
                     <div>
                       <p className="mosby-expanded-desc">
-                        Product Design &amp; Architecture SaaS B2B : Gouvernance d'actifs industriels multi-sites par QR code (Asset IQ), digitalisation et orchestration logistique nationale du pèlerinage (eHadj), et plateforme SaaS de fidélisation e-commerce avec intégrations POS/Shopify (Beans).
+                        Systemic digital products for operational resource governance, national-scale multi-organization logistics orchestration, and Shopify/Klaviyo integration hubs.
                       </p>
 
                       <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                         <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('asset-iq')}>
-                          <span>DOSSIER COMPLET: ASSET IQ →</span>
+                          <span>OPEN FILE: ASSET IQ →</span>
                         </button>
                         <a 
                           href="https://www.assetiQ.com" 
@@ -736,32 +685,29 @@ export default function App() {
                           className="mosby-expanded-open-btn"
                           style={{ background: 'var(--mosby-yellow)', color: '#000' }}
                         >
-                          <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
+                          <ExternalLink size={14} /> <span>VISITER LE SITE LIVE ↗</span>
                         </a>
                       </div>
                     </div>
                     <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ SaaS B2B" />
+                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" />
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* ROW 2: GREEN FOLDER (#059669) — CATEGORY 02: WEB DESIGN & CINEMATIC SHOWCASE (FEATURING TAVARES) */}
+            {/* ROW 2: Green Folder (#059669) — DESIGN SYSTEMS & IMMERSIVE WEB */}
             <div className="mosby-folder-group">
               <div className="mosby-tabs-bar">
-                <div className="mosby-tab mosby-tab-red" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', color: '#FFF', fontWeight: 'bold' }}>
-                  ★ Tavares (Cinema)
-                </div>
-                <div className="mosby-tab mosby-tab-green" onClick={() => setCurrentView('truvox')}>
-                  Truvox Studio
-                </div>
-                <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('dolce-riviera')}>
-                  Dolce Riviera
-                </div>
                 <div className="mosby-tab mosby-tab-purple" onClick={() => setCurrentView('sagana')}>
                   Sagana
+                </div>
+                <div className="mosby-tab mosby-tab-yellow" onClick={() => setCurrentView('vortex')}>
+                  Vortex Gallery
+                </div>
+                <div className="mosby-tab mosby-tab-black" onClick={() => setCurrentView('sport-advisor')}>
+                  Sport Advisor
                 </div>
               </div>
 
@@ -771,7 +717,7 @@ export default function App() {
                 onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 1 ? null : 1)}
               >
                 <div className="mosby-folder-category-label">
-                  02. WEB DESIGN &amp; CINEMATIC EXPERIENCES (TAVARES &amp; TRUVOX) &lt;
+                  Modular Design Systems &amp; Immersive Web &lt;
                 </div>
               </div>
 
@@ -780,46 +726,28 @@ export default function App() {
                   <div className="mosby-expanded-grid">
                     <div>
                       <p className="mosby-expanded-desc">
-                        Web Design &amp; Direction Artistique Épurée : Portfolio cinématographique interactif et immersif pour réalisateur (Tavares), vitrine d'agence digitale haut de gamme (Truvox Studio), et e-commerce éditorial de luxe (Dolce Riviera).
+                        High-performance modular design systems, digital agency showcase sites, Web3 interactive art galleries, and athletic coaching mobile apps.
                       </p>
-
-                      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', color: '#FFF' }}>
-                          <span>DOSSIER COMPLET: TAVARES →</span>
-                        </button>
-                        <a 
-                          href="https://portfolio-tavares.vercel.app/" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="mosby-expanded-open-btn"
-                          style={{ background: 'var(--mosby-yellow)', color: '#000' }}
-                        >
-                          <ExternalLink size={14} /> <span>VISITER TAVARES LIVE ↗</span>
-                        </a>
-                      </div>
+                      <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('sagana')}>
+                        <span>OPEN FILE: SAGANA →</span>
+                      </button>
                     </div>
                     <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/tavares.png" alt="Tavares Cinema Web Design" />
+                      <img src="/imgs/SAGANA-—-Agence-Digitale-Premium-04-26-2026_10_55_AM.png" alt="Sagana" />
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* ROW 3: PURPLE FOLDER (#7C3AED) — CATEGORY 03: STRATEGY CONSULTING & INTERACTIVE PRODUCTS (FEATURING STRATEGY ARENA) */}
+            {/* ROW 3: Purple Folder (#7C3AED) — SHOWCASE & E-COMMERCE */}
             <div className="mosby-folder-group">
               <div className="mosby-tabs-bar">
-                <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('strategy-arena')} style={{ background: '#1E3A8A', color: '#FFF', fontWeight: 'bold' }}>
-                  ★ Strategy Arena
+                <div className="mosby-tab mosby-tab-red" onClick={() => setCurrentView('truvox')}>
+                  Truvox Studio
                 </div>
-                <div className="mosby-tab mosby-tab-yellow" onClick={() => setCurrentView('vortex')}>
-                  Vortex Gallery
-                </div>
-                <div className="mosby-tab mosby-tab-black" onClick={() => setCurrentView('sport-advisor')}>
-                  Sport Advisor
-                </div>
-                <div className="mosby-tab mosby-tab-green" onClick={() => setCurrentView('the-refuge')}>
-                  The Refuge
+                <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('dolce-riviera')}>
+                  Dolce Riviera
                 </div>
               </div>
 
@@ -829,7 +757,7 @@ export default function App() {
                 onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 2 ? null : 2)}
               >
                 <div className="mosby-folder-category-label">
-                  03. STRATEGIC CONSULTING &amp; INTERACTIVE PRODUCTS (STRATEGY ARENA) &lt;
+                  Digital Studio Showcase &amp; Luxury E-Commerce &lt;
                 </div>
               </div>
 
@@ -838,33 +766,32 @@ export default function App() {
                   <div className="mosby-expanded-grid">
                     <div>
                       <p className="mosby-expanded-desc">
-                        Stratégie &amp; Produits Numériques : Cabinet de conseil en stratégie, organisation et transformation digitale pour PME (Strategy Arena), exposition d'art virtuelle Web3 (Vortex Gallery), et application mobile de coaching sportif (Sport Advisor).
+                        Crafting high-end luxury e-commerce brand experiences, landing page concepts, and digital product studio showcase portals.
                       </p>
-                      
                       <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('strategy-arena')} style={{ background: '#1E3A8A', color: '#FFF' }}>
-                          <span>DOSSIER COMPLET: STRATEGY ARENA →</span>
+                        <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('truvox')}>
+                          <span>OPEN FILE: TRUVOX STUDIO →</span>
                         </button>
                         <a 
-                          href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
+                          href="https://www.truvox.studio/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="mosby-expanded-open-btn"
                           style={{ background: 'var(--mosby-yellow)', color: '#000' }}
                         >
-                          <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
+                          <ExternalLink size={14} /> <span>VISITER LE SITE LIVE ↗</span>
                         </a>
                       </div>
                     </div>
                     <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/strategy_cover.png" alt="Strategy Arena Consulting" />
+                      <img src="/imgs/truvox_cover.png" alt="Truvox Studio" />
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* ROW 4: RED FOLDER (#DC2626) — CATEGORY 04: DESIGNER PROFILE & CAREER LOGS */}
+            {/* ROW 4: Red Folder (#DC2626 - DESIGNER PROFILE & CAREER) */}
             <div className="mosby-folder-group">
               <div className="mosby-tabs-bar">
                 <div className="mosby-tab mosby-tab-yellow" onClick={() => setIsAboutModalOpen(true)}>
@@ -884,7 +811,7 @@ export default function App() {
                 onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 3 ? null : 3)}
               >
                 <div className="mosby-folder-category-label">
-                  04. PERSONNEL FILE &amp; CAREER LOGS <ChevronDown size={14} style={{ marginLeft: '4px' }} />
+                  Personnel File &amp; Designer Profile <ChevronDown size={14} style={{ marginLeft: '4px' }} />
                 </div>
               </div>
 
@@ -893,14 +820,14 @@ export default function App() {
                   <div className="mosby-expanded-grid">
                     <div>
                       <p className="mosby-expanded-desc">
-                        Dossier Personnel de Sacca Dafia (Web Designer &amp; Product Designer, +4 ans d'exp). Consultez le profil complet, le registre chronologique des missions et les spécifications d'offres.
+                        Sacca Dafia — Product &amp; Solution Designer (+4 yrs exp). Explore detailed background, career experience logs, and core capability specifications.
                       </p>
                       <button className="mosby-expanded-open-btn" onClick={() => setIsAboutModalOpen(true)}>
-                        <span>OUVRIR LE DOSSIER PERSONNEL →</span>
+                        <span>OPEN ABOUT DOSSIER →</span>
                       </button>
                     </div>
                     <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Dafia Prototyping Workspace" />
+                      <img src="/imgs/hero_image.png" alt="Sacca Dafia Profile" />
                     </div>
                   </div>
                 </div>
@@ -908,10 +835,16 @@ export default function App() {
             </div>
           </section>
 
-          {/* Archival Footer System */}
+          {/* Mosby's Files Archival Footer System */}
           <MosbyFooter setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
         </main>
       )}
     </>
   );
 }
+'''
+
+with open('src/App.tsx', 'w') as f:
+    f.write(app_content)
+
+print("Updated App.tsx with rich project details, live CTA buttons, and wider cabinet layout.")
