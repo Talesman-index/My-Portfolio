@@ -210,7 +210,7 @@ const CaseStudy = ({
           onClick={() => navigateToHome(setCurrentView)} 
           className="mosby-back-btn"
         >
-          <ArrowLeft size={16} /> <span>← RETURN TO ARCHIVE HOME</span>
+          <ArrowLeft size={16} /> <span>← {lang === 'fr' ? 'RETOUR À L\'ACCUEIL DES ARCHIVES' : 'RETURN TO ARCHIVE HOME'}</span>
         </button>
       </div>
 
@@ -382,7 +382,7 @@ const CaseStudy = ({
         onClick={() => setCurrentView(nextId)}
       >
         <div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#FFF', opacity: 0.8, textTransform: 'uppercase' }}>NEXT FILE IN ARCHIVE →</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#FFF', opacity: 0.8, textTransform: 'uppercase' }}>{lang === 'fr' ? 'PROCHAIN DOSSIER →' : 'NEXT FILE IN ARCHIVE →'}</div>
           <div className="mosby-next-folder-title">{nextConfig.title}</div>
         </div>
         <ArrowRight size={32} color="#FFF" />
@@ -394,19 +394,19 @@ const CaseStudy = ({
         onClick={() => navigateToHome(setCurrentView)}
         style={{ right: 'auto', left: '24px', background: '#FFFFFF', color: '#000000' }}
       >
-        ← RETURN HOME
+        ← {lang === 'fr' ? 'RETOUR À L\'ACCUEIL' : 'RETURN HOME'}
       </div>
 
       {/* Floating Scroll Pill Button */}
       <div className="mosby-floating-scroll-badge" onClick={() => setCurrentView(nextId)}>
-        Scroll for next file ↓
+        {lang === 'fr' ? 'Faire défiler pour le dossier suivant ↓' : 'Scroll for next file ↓'}
       </div>
     </div>
   );
 };
 
 /* ─────────────────────────────────────────────
-   EXPERIENCES DOSSIER VIEW (EXACT USER SPECIFIED COPY)
+   EXPERIENCES DOSSIER VIEW
 ───────────────────────────────────────────── */
 const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
   return (
@@ -416,17 +416,17 @@ const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
           onClick={() => navigateToHome(setCurrentView)} 
           className="mosby-back-btn"
         >
-          <ArrowLeft size={16} /> <span>← RETURN TO ARCHIVE HOME</span>
+          <ArrowLeft size={16} /> <span>← RETOUR À L'ACCUEIL DES ARCHIVES</span>
         </button>
 
-        <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>CAREER &amp; EXPERIENCE LOGS</h1>
+        <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>REGISTRE DES EXPÉRIENCES</h1>
 
         <div className="mosby-paper-sheet" style={{ maxWidth: '1050px' }}>
           <BinderHoles />
 
           <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.2rem', marginBottom: '28px', letterSpacing: '0.02em', display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Building2 size={26} color="#DC2626" />
-            <span>REGISTRE DES EXPÉRIENCES EN ENTREPRISE</span>
+            <span>EXPÉRIENCES EN ENTREPRISE</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
@@ -540,7 +540,7 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
           onClick={() => navigateToHome(setCurrentView)} 
           className="mosby-back-btn"
         >
-          <ArrowLeft size={16} /> <span>← RETURN TO ARCHIVE HOME</span>
+          <ArrowLeft size={16} /> <span>← RETOUR À L'ACCUEIL DES ARCHIVES</span>
         </button>
 
         <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>CAPABILITIES &amp; SERVICES SPECS</h1>
@@ -705,7 +705,7 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
 ───────────────────────────────────────────── */
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | CaseStudyId>(() => getViewFromHash());
-  const [lang, setLang] = useState<'en' | 'fr'>('en');
+  const [lang, setLang] = useState<'en' | 'fr'>('fr');
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [activeExpandedFolderRow, setActiveExpandedFolderRow] = useState<number | null>(0);
 
@@ -996,4 +996,4 @@ export default function App() {
 with open('src/App.tsx', 'w') as f:
     f.write(app_content)
 
-print("Updated App.tsx with exact Cactuce, Trellix, and Creafix experience details successfully.")
+print("Updated App.tsx default language to FR successfully.")
