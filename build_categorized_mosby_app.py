@@ -76,15 +76,25 @@ const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLa
 };
 
 /* ─────────────────────────────────────────────
-   ABOUT SHEET MODAL (BALANCED PRODUCT & WEB DESIGN + RAPID MVP VIBE CODING)
+   ABOUT SHEET MODAL (WITH SMOOTH OPEN & CLOSE ANIMATIONS)
 ───────────────────────────────────────────── */
 const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: () => void; lang: 'en' | 'fr' }) => {
-  if (!isOpen) return null;
+  const [isClosing, setIsClosing] = useState(false);
+
+  if (!isOpen && !isClosing) return null;
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      onClose();
+    }, 280);
+  };
 
   return (
-    <div className="mosby-modal-overlay" onClick={onClose}>
-      <div className="mosby-about-sheet" onClick={(e) => e.stopPropagation()}>
-        <button className="mosby-modal-close-btn" onClick={onClose} aria-label="Fermer">
+    <div className={`mosby-modal-overlay ${isClosing ? 'is-closing' : ''}`} onClick={handleClose}>
+      <div className={`mosby-about-sheet ${isClosing ? 'is-closing' : ''}`} onClick={(e) => e.stopPropagation()}>
+        <button className="mosby-modal-close-btn" onClick={handleClose} aria-label="Fermer">
           <X size={20} />
         </button>
 
@@ -619,7 +629,7 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
 };
 
 /* ─────────────────────────────────────────────
-   MAIN HOMEPAGE
+   MAIN HOMEPAGE (WITH ANIMATED FILING CABINET COLLAPSE & EXPAND)
 ───────────────────────────────────────────── */
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | CaseStudyId>(() => getViewFromHash());
@@ -693,7 +703,7 @@ export default function App() {
             </p>
           </section>
 
-          {/* STRICTLY CATEGORIZED FILING CABINET (PROMINENTLY FEATURING TAVARES & STRATEGY ARENA) */}
+          {/* FILING CABINET WITH ANIMATED DRAWER COLLAPSE & EXPAND */}
           <section className="mosby-filing-cabinet">
             {/* ROW 1: BLUE FOLDER (#1D4ED8) — CATEGORY 01: B2B SAAS PLATFORMS & LOGISTICS */}
             <div className="mosby-folder-group">
@@ -719,35 +729,33 @@ export default function App() {
                 </div>
               </div>
 
-              {activeExpandedFolderRow === 0 && (
-                <div className="mosby-folder-expanded" style={{ backgroundColor: '#1D4ED8' }}>
-                  <div className="mosby-expanded-grid">
-                    <div>
-                      <p className="mosby-expanded-desc">
-                        Product Design &amp; Architecture SaaS B2B : Gouvernance d'actifs industriels multi-sites par QR code (Asset IQ), digitalisation et orchestration logistique nationale du pèlerinage (eHadj), et plateforme SaaS de fidélisation e-commerce avec intégrations POS/Shopify (Beans).
-                      </p>
+              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 0 ? 'is-open' : ''}`} style={{ backgroundColor: '#1D4ED8' }}>
+                <div className="mosby-expanded-grid">
+                  <div>
+                    <p className="mosby-expanded-desc">
+                      Product Design &amp; Architecture SaaS B2B : Gouvernance d'actifs industriels multi-sites par QR code (Asset IQ), digitalisation et orchestration logistique nationale du pèlerinage (eHadj), et plateforme SaaS de fidélisation e-commerce avec intégrations POS/Shopify (Beans).
+                    </p>
 
-                      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('asset-iq')}>
-                          <span>DOSSIER COMPLET: ASSET IQ →</span>
-                        </button>
-                        <a 
-                          href="https://www.assetiQ.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="mosby-expanded-open-btn"
-                          style={{ background: 'var(--mosby-yellow)', color: '#000' }}
-                        >
-                          <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ SaaS B2B" />
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                      <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('asset-iq')}>
+                        <span>DOSSIER COMPLET: ASSET IQ →</span>
+                      </button>
+                      <a 
+                        href="https://www.assetiQ.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="mosby-expanded-open-btn"
+                        style={{ background: 'var(--mosby-yellow)', color: '#000' }}
+                      >
+                        <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
+                      </a>
                     </div>
                   </div>
+                  <div className="mosby-expanded-preview-frame">
+                    <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ SaaS B2B" />
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* ROW 2: GREEN FOLDER (#059669) — CATEGORY 02: WEB DESIGN & CINEMATIC SHOWCASE (FEATURING TAVARES) */}
@@ -777,35 +785,33 @@ export default function App() {
                 </div>
               </div>
 
-              {activeExpandedFolderRow === 1 && (
-                <div className="mosby-folder-expanded" style={{ backgroundColor: '#059669' }}>
-                  <div className="mosby-expanded-grid">
-                    <div>
-                      <p className="mosby-expanded-desc">
-                        Web Design &amp; Direction Artistique Épurée : Portfolio cinématographique interactif et immersif pour réalisateur (Tavares), vitrine d'agence digitale haut de gamme (Truvox Studio), et e-commerce éditorial de luxe (Dolce Riviera).
-                      </p>
+              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 1 ? 'is-open' : ''}`} style={{ backgroundColor: '#059669' }}>
+                <div className="mosby-expanded-grid">
+                  <div>
+                    <p className="mosby-expanded-desc">
+                      Web Design &amp; Direction Artistique Épurée : Portfolio cinématographique interactif et immersif pour réalisateur (Tavares), vitrine d'agence digitale haut de gamme (Truvox Studio), et e-commerce éditorial de luxe (Dolce Riviera).
+                    </p>
 
-                      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', color: '#FFF' }}>
-                          <span>DOSSIER COMPLET: TAVARES →</span>
-                        </button>
-                        <a 
-                          href="https://portfolio-tavares.vercel.app/" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="mosby-expanded-open-btn"
-                          style={{ background: 'var(--mosby-yellow)', color: '#000' }}
-                        >
-                          <ExternalLink size={14} /> <span>VISITER TAVARES LIVE ↗</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/tavares.png" alt="Tavares Cinema Web Design" />
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                      <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', color: '#FFF' }}>
+                        <span>DOSSIER COMPLET: TAVARES →</span>
+                      </button>
+                      <a 
+                        href="https://portfolio-tavares.vercel.app/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="mosby-expanded-open-btn"
+                        style={{ background: 'var(--mosby-yellow)', color: '#000' }}
+                      >
+                        <ExternalLink size={14} /> <span>VISITER TAVARES LIVE ↗</span>
+                      </a>
                     </div>
                   </div>
+                  <div className="mosby-expanded-preview-frame">
+                    <img src="/imgs/tavares.png" alt="Tavares Cinema Web Design" />
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* ROW 3: PURPLE FOLDER (#7C3AED) — CATEGORY 03: STRATEGY CONSULTING & INTERACTIVE PRODUCTS (FEATURING STRATEGY ARENA) */}
@@ -835,35 +841,33 @@ export default function App() {
                 </div>
               </div>
 
-              {activeExpandedFolderRow === 2 && (
-                <div className="mosby-folder-expanded" style={{ backgroundColor: '#7C3AED' }}>
-                  <div className="mosby-expanded-grid">
-                    <div>
-                      <p className="mosby-expanded-desc">
-                        Stratégie &amp; Produits Numériques : Cabinet de conseil en stratégie, organisation et transformation digitale pour PME (Strategy Arena), exposition d'art virtuelle Web3 (Vortex Gallery), et application mobile de coaching sportif (Sport Advisor).
-                      </p>
-                      
-                      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                        <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('strategy-arena')} style={{ background: '#1E3A8A', color: '#FFF' }}>
-                          <span>DOSSIER COMPLET: STRATEGY ARENA →</span>
-                        </button>
-                        <a 
-                          href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="mosby-expanded-open-btn"
-                          style={{ background: 'var(--mosby-yellow)', color: '#000' }}
-                        >
-                          <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/strategy_cover.png" alt="Strategy Arena Consulting" />
+              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 2 ? 'is-open' : ''}`} style={{ backgroundColor: '#7C3AED' }}>
+                <div className="mosby-expanded-grid">
+                  <div>
+                    <p className="mosby-expanded-desc">
+                      Stratégie &amp; Produits Numériques : Cabinet de conseil en stratégie, organisation et transformation digitale pour PME (Strategy Arena), exposition d'art virtuelle Web3 (Vortex Gallery), et application mobile de coaching sportif (Sport Advisor).
+                    </p>
+                    
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                      <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('strategy-arena')} style={{ background: '#1E3A8A', color: '#FFF' }}>
+                        <span>DOSSIER COMPLET: STRATEGY ARENA →</span>
+                      </button>
+                      <a 
+                        href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="mosby-expanded-open-btn"
+                        style={{ background: 'var(--mosby-yellow)', color: '#000' }}
+                      >
+                        <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
+                      </a>
                     </div>
                   </div>
+                  <div className="mosby-expanded-preview-frame">
+                    <img src="/imgs/strategy_cover.png" alt="Strategy Arena Consulting" />
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* ROW 4: RED FOLDER (#DC2626) — CATEGORY 04: DESIGNER PROFILE & CAREER LOGS */}
@@ -890,23 +894,21 @@ export default function App() {
                 </div>
               </div>
 
-              {activeExpandedFolderRow === 3 && (
-                <div className="mosby-folder-expanded" style={{ backgroundColor: '#DC2626' }}>
-                  <div className="mosby-expanded-grid">
-                    <div>
-                      <p className="mosby-expanded-desc">
-                        Dossier Personnel de Sacca Dafia (Web Designer &amp; Product Designer, +4 ans d'exp). Consultez le profil complet, le registre chronologique des missions et les spécifications d'offres.
-                      </p>
-                      <button className="mosby-expanded-open-btn" onClick={() => setIsAboutModalOpen(true)}>
-                        <span>OUVRIR LE DOSSIER PERSONNEL →</span>
-                      </button>
-                    </div>
-                    <div className="mosby-expanded-preview-frame">
-                      <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Dafia Prototyping Workspace" />
-                    </div>
+              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 3 ? 'is-open' : ''}`} style={{ backgroundColor: '#DC2626' }}>
+                <div className="mosby-expanded-grid">
+                  <div>
+                    <p className="mosby-expanded-desc">
+                      Dossier Personnel de Sacca Dafia (Web Designer &amp; Product Designer, +4 ans d'exp). Consultez le profil complet, le registre chronologique des missions et les spécifications d'offres.
+                    </p>
+                    <button className="mosby-expanded-open-btn" onClick={() => setIsAboutModalOpen(true)}>
+                      <span>OUVRIR LE DOSSIER PERSONNEL →</span>
+                    </button>
+                  </div>
+                  <div className="mosby-expanded-preview-frame">
+                    <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Dafia Prototyping Workspace" />
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </section>
 
@@ -922,4 +924,4 @@ export default function App() {
 with open('src/App.tsx', 'w') as f:
     f.write(app_content)
 
-print("Updated App.tsx with reframed Vibe Coding narrative for rapid MVP prototyping.")
+print("Updated App.tsx with physical opening and closing animations for drawers and modals successfully.")

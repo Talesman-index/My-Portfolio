@@ -320,12 +320,28 @@
   gap: 8px;
 }
 
-/* Expanded Folder Container */
+/* Expanded Folder Container with Smooth Opening and Closing Transitions */
 .mosby-folder-expanded {
-  padding: 36px 32px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px) scale(0.99);
+  transition: 
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.35s ease;
+  padding: 0 32px;
   color: #FFFFFF;
   position: relative;
   z-index: 3;
+}
+
+.mosby-folder-expanded.is-open {
+  max-height: 850px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  padding: 36px 32px;
 }
 
 .mosby-expanded-grid {
@@ -387,11 +403,35 @@
 /* --------------------------------------------------------------------------
    4. CASE STUDY DOSSIER VIEW (MOSBY'S FILES PAGE 2 DIRECT REPRODUCTION)
    -------------------------------------------------------------------------- */
+/* Physical Opening & Fan-Out Keyframes */
+@keyframes mosbyDossierPullOut {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mosbySheetSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .mosby-dossier-view {
   min-height: 100vh;
   background-color: #121212;
   position: relative;
   padding-bottom: 120px;
+  animation: mosbyDossierPullOut 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Huge Case Study Title */
@@ -467,6 +507,7 @@
   padding: 50px 50px 80px 70px;
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: mosbySheetSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s backwards;
 }
 
 @media (max-width: 768px) {
@@ -632,15 +673,30 @@
    -------------------------------------------------------------------------- */
 .mosby-modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2000;
-  background-color: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px;
   overflow-y: auto;
+  opacity: 0;
+  animation: mosbyFadeIn 0.3s ease forwards;
+  transition: opacity 0.3s ease;
+}
+
+.mosby-modal-overlay.is-closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes mosbyFadeIn {
+  to { opacity: 1; }
 }
 
 .mosby-about-sheet {
@@ -653,6 +709,21 @@
   position: relative;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8);
   margin: auto;
+  transform: translateY(30px) scale(0.95);
+  animation: mosbyModalPopIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.mosby-about-sheet.is-closing {
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+}
+
+@keyframes mosbyModalPopIn {
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
