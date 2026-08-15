@@ -30,10 +30,28 @@
   /* Typography Matrix (Exact match to Mosby's Files) */
   --font-anton: 'Anton', 'Bebas Neue', sans-serif;
   --font-bebas: 'Bebas Neue', 'Anton', sans-serif;
-  --font-serif: 'Signifier Light', 'Signifier', 'Instrument Serif', Georgia, serif;
+  --font-serif: 'Signifier Light', 'Signifier', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-hand: 'Caveat', cursive;
   --font-body: 'Inter', sans-serif;
+}
+
+@font-face {
+  font-family: 'Signifier Light';
+  src: url('/fonts/Signifier-Light.woff2') format('woff2'),
+       url('/fonts/Signifier-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Signifier';
+  src: url('/fonts/Signifier-Light.woff2') format('woff2'),
+       url('/fonts/Signifier-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
