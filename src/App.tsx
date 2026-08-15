@@ -74,7 +74,7 @@ const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLa
 };
 
 /* ─────────────────────────────────────────────
-   ABOUT SHEET MODAL (WITH SMOOTH OPEN & CLOSE ANIMATIONS)
+   ABOUT SHEET MODAL (ZERO EMOJIS — PURE MINIMAL EDITORIAL)
 ───────────────────────────────────────────── */
 const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: () => void; lang: 'en' | 'fr' }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -119,7 +119,7 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
               {/* Photo 2: Warm Ambient Workspace */}
               <div className="mosby-about-photo-card" style={{ transform: 'rotate(1.5deg)' }}>
                 <PaperclipSVG style={{ top: '-14px', left: '14px' }} />
-                <span className="mosby-about-vibe-badge">⚡ RAPID MVP &amp; VIBE CODING</span>
+                <span className="mosby-about-vibe-badge">RAPID MVP &amp; VIBE CODING</span>
                 <img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding Setup" className="mosby-about-photo-img" />
                 <div className="mosby-about-caption">
                   <strong>02. PROTOTYPING WORKSPACE</strong> <br />
@@ -150,13 +150,13 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
               </li>
               <li>
                 {lang === 'fr' 
-                  ? "Vibe Coding &amp; MVPs Rapides : Prototypage interactif fonctionnel pour permettre aux clients de tester rapidement leurs concepts auprès d'utilisateurs réels."
-                  : "Vibe Coding &amp; Rapid MVPs: Functional interactive prototyping allowing clients to quickly validate concepts with real users."}
+                  ? "Vibe Coding & MVPs Rapides : Prototypage interactif fonctionnel pour permettre aux clients de tester rapidement leurs concepts auprès d'utilisateurs réels."
+                  : "Vibe Coding & Rapid MVPs: Functional interactive prototyping allowing clients to quickly validate concepts with real users."}
               </li>
               <li>
                 {lang === 'fr'
-                  ? "Design Systems &amp; Leadership : Composants modulaires Figma/React et supervision technique dev."
-                  : "Design Systems &amp; Leadership: Modular Figma/React UI systems and dev team supervision."}
+                  ? "Design Systems & Leadership : Composants modulaires Figma/React et supervision technique dev."
+                  : "Design Systems & Leadership: Modular Figma/React UI systems and dev team supervision."}
               </li>
             </ul>
 
