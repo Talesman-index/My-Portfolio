@@ -229,7 +229,7 @@
   margin-bottom: 2px;
 }
 
-/* Tabs Bar protruding above the folder body */
+/* Tabs Bar protruding above the folder body with mobile touch-swipe support */
 .mosby-tabs-bar {
   display: flex;
   align-items: flex-end;
@@ -237,12 +237,21 @@
   padding-left: 0;
   position: relative;
   z-index: 5;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+.mosby-tabs-bar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Individual Sloped Physical Folder Tab (Exact Mosby's Cutout Shape) */
 .mosby-tab {
   font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  font-size: clamp(1.4rem, 2.5vw, 2.25rem);
   color: #FFFFFF;
   padding: 16px 48px 14px 40px;
   border-top-left-radius: 32px;
@@ -256,6 +265,8 @@
   gap: 10px;
   position: relative;
   box-shadow: -4px -6px 16px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .mosby-tab:hover {
@@ -975,4 +986,65 @@
   align-items: center;
   gap: 8px;
   color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE MOBILE MEDIA QUERIES FOR FILING CABINET TABS & FOLDER BARS
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .mosby-tab {
+    font-size: clamp(1.05rem, 3.2vw, 1.45rem);
+    padding: 10px 24px 8px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-right: -6px;
+    gap: 6px;
+  }
+
+  .mosby-folder-bar {
+    padding: 14px 20px;
+    min-height: 52px;
+  }
+
+  .mosby-folder-category-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 600px) {
+  .mosby-filing-cabinet {
+    width: 100vw;
+    margin-left: -4%;
+    padding: 0 12px;
+  }
+
+  .mosby-tabs-bar {
+    padding-bottom: 2px;
+  }
+
+  .mosby-tab {
+    font-size: clamp(0.85rem, 3.6vw, 1.15rem);
+    padding: 8px 14px 6px 12px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    margin-right: -4px;
+    gap: 4px;
+  }
+
+  .mosby-folder-bar {
+    padding: 12px 14px;
+    min-height: 44px;
+  }
+
+  .mosby-folder-category-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+  }
+
+  .mosby-folder-expanded.is-open {
+    padding: 20px 14px 24px 14px;
+  }
 }
