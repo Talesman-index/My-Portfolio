@@ -1016,11 +1016,24 @@
 @media (max-width: 600px) {
   .mosby-filing-cabinet {
     width: 100vw;
-    margin-left: -4%;
-    padding: 0 12px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 0;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .mosby-folder-group {
+    width: 100vw;
+    max-width: 100vw;
   }
 
   .mosby-tabs-bar {
+    padding-left: 12px;
+    padding-right: 12px;
     padding-bottom: 2px;
   }
 
@@ -1034,8 +1047,11 @@
   }
 
   .mosby-folder-bar {
+    width: 100vw;
     padding: 14px 16px;
     min-height: 50px;
+    box-sizing: border-box;
+    border-radius: 0;
   }
 
   .mosby-folder-category-label {
@@ -1044,7 +1060,24 @@
     line-height: 1.3;
   }
 
+  .mosby-folder-expanded {
+    width: 100vw;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+
   .mosby-folder-expanded.is-open {
     padding: 24px 16px 28px 16px;
+  }
+
+  .mosby-expanded-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .mosby-expanded-preview-frame {
+    width: 100%;
+    max-width: 100%;
   }
 }
