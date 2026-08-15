@@ -76,7 +76,7 @@ const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLa
 };
 
 /* ─────────────────────────────────────────────
-   ABOUT SHEET MODAL (ZERO EMOJIS — PURE MINIMAL EDITORIAL)
+   ABOUT SHEET MODAL
 ───────────────────────────────────────────── */
 const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: () => void; lang: 'en' | 'fr' }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -762,7 +762,7 @@ export default function App() {
             <div className="mosby-folder-group">
               <div className="mosby-tabs-bar">
                 <div className="mosby-tab mosby-tab-red" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', color: '#FFF', fontWeight: 'bold' }}>
-                  ★ Tavares (Cinema)
+                  ★ Tavares
                 </div>
                 <div className="mosby-tab mosby-tab-green" onClick={() => setCurrentView('truvox')}>
                   Truvox Studio
@@ -924,4 +924,4 @@ export default function App() {
 with open('src/App.tsx', 'w') as f:
     f.write(app_content)
 
-print("Removed all emojis from AboutSheetModal in App.tsx successfully.")
+print("Updated App.tsx to use ★ Tavares instead of ★ Tavares (Cinema) on tab label successfully.")
