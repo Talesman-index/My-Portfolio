@@ -581,34 +581,151 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
    ARCHIVAL FOOTER SYSTEM
 ───────────────────────────────────────────── */
 const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrentView: any; setIsAboutModalOpen: any; lang: 'en' | 'fr' }) => {
+  const [activeDiagram, setActiveDiagram] = useState<number | null>(null);
+  const [compassAngle, setCompassAngle] = useState(0);
+  const [boxFlipped, setBoxFlipped] = useState(false);
+  const [pyramidPushed, setPyramidPushed] = useState(false);
+  const [dialSpinning, setDialSpinning] = useState(false);
+  const [tooltipText, setTooltipText] = useState<string | null>(null);
+
+  const handleDiagramClick = (index: number) => {
+    setActiveDiagram(index);
+    if (index === 0) {
+      setCompassAngle(prev => prev + 360);
+      setTooltipText("COMPASS: COTONOU, BJ (6.369° N, 2.418° E)");
+    } else if (index === 1) {
+      setBoxFlipped(prev => !prev);
+      setTooltipText(boxFlipped ? "BLUEPRINT: DEFAULT" : "BLUEPRINT: 12-COL GRID ACTIVE");
+    } else if (index === 2) {
+      setPyramidPushed(true);
+      setTimeout(() => setPyramidPushed(false), 500);
+      setTooltipText("PRISM: FIGMA DESIGN SYSTEM TOKENS");
+    } else if (index === 3) {
+      setDialSpinning(prev => !prev);
+      setTooltipText(dialSpinning ? "RADAR DIAL: PAUSED" : "RADAR DIAL: ROTATING");
+    } else if (index === 4) {
+      setTooltipText("SCROLLING TO TOP ↗");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="mosby-footer">
-      {/* Row of Architectural & Design Diagram Symbols (Mosby's Files Style) */}
+      {/* Row of Architectural & Design Diagram Symbols (Interactive Widgets) */}
       <div className="mosby-footer-diagrams-row">
-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="20" cy="20" r="16" />
-          <path d="M20 4 L20 36 M4 20 L36 20" strokeDasharray="2 2" />
-          <text x="20" y="10" fill="#FFF" fontSize="8" textAnchor="middle" fontFamily="monospace">N</text>
-        </svg>
+        {/* Widget 1: Compass Radar */}
+        <button 
+          className={`mosby-diagram-icon-btn ${activeDiagram === 0 ? 'is-active' : ''}`}
+          onClick={() => handleDiagramClick(0)}
+          onMouseEnter={() => setTooltipText("COMPASS RADAR")}
+          onMouseLeave={() => setTooltipText(null)}
+          aria-label="Compass radar widget"
+        >
+          <svg 
+            width="30" 
+            height="30" 
+            viewBox="0 0 40 40" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="1.8"
+            style={{ transform: `rotate(${compassAngle}deg)`, transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+          >
+            <circle cx="20" cy="20" r="16" />
+            <path d="M20 4 L20 36 M4 20 L36 20" strokeDasharray="2 2" />
+            <text x="20" y="11" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" fontWeight="bold">N</text>
+          </svg>
+          {tooltipText && (
+            <span className="mosby-diagram-tooltip">{tooltipText}</span>
+          )}
+        </button>
 
-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <rect x="6" y="6" width="28" height="28" />
-          <path d="M6 6 L34 34 M34 6 L6 34" strokeOpacity="0.4" />
-        </svg>
+        {/* Widget 2: Blueprint Box */}
+        <button 
+          className={`mosby-diagram-icon-btn ${activeDiagram === 1 ? 'is-active' : ''}`}
+          onClick={() => handleDiagramClick(1)}
+          onMouseEnter={() => setTooltipText("BLUEPRINT GRID")}
+          onMouseLeave={() => setTooltipText(null)}
+          aria-label="Blueprint box widget"
+        >
+          <svg 
+            width="30" 
+            height="30" 
+            viewBox="0 0 40 40" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="1.8"
+            style={{ transform: boxFlipped ? 'rotateY(180deg) scale(1.1)' : 'none', transition: 'transform 0.4s ease' }}
+          >
+            <rect x="6" y="6" width="28" height="28" strokeWidth="2" />
+            <path d="M6 6 L34 34 M34 6 L6 34" strokeOpacity={boxFlipped ? "1" : "0.5"} stroke={boxFlipped ? "var(--mosby-yellow)" : "currentColor"} />
+          </svg>
+        </button>
 
-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <polygon points="20,4 36,36 4,36" />
-          <line x1="20" y1="4" x2="20" y2="36" />
-        </svg>
+        {/* Widget 3: Prism Pyramid */}
+        <button 
+          className={`mosby-diagram-icon-btn ${activeDiagram === 2 ? 'is-active' : ''}`}
+          onClick={() => handleDiagramClick(2)}
+          onMouseEnter={() => setTooltipText("DESIGN PRISM")}
+          onMouseLeave={() => setTooltipText(null)}
+          aria-label="Design prism widget"
+        >
+          <svg 
+            width="30" 
+            height="30" 
+            viewBox="0 0 40 40" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="1.8"
+            style={{ transform: pyramidPushed ? 'translateY(-8px) scale(1.2)' : 'none', transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+          >
+            <polygon points="20,4 36,36 4,36" strokeWidth="2" />
+            <line x1="20" y1="4" x2="20" y2="36" />
+          </svg>
+        </button>
 
-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <circle cx="20" cy="20" r="14" />
-          <circle cx="20" cy="20" r="6" strokeDasharray="1 2" />
-        </svg>
+        {/* Widget 4: Dial Radar Circle */}
+        <button 
+          className={`mosby-diagram-icon-btn ${activeDiagram === 3 ? 'is-active' : ''}`}
+          onClick={() => handleDiagramClick(3)}
+          onMouseEnter={() => setTooltipText("DIAL RADAR")}
+          onMouseLeave={() => setTooltipText(null)}
+          aria-label="Dial radar widget"
+        >
+          <svg 
+            width="30" 
+            height="30" 
+            viewBox="0 0 40 40" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="1.8"
+            style={{ animation: dialSpinning ? 'spin 3s linear infinite' : 'none' }}
+          >
+            <circle cx="20" cy="20" r="14" />
+            <circle cx="20" cy="20" r="6" strokeDasharray="2 3" strokeWidth="2" />
+          </svg>
+        </button>
 
-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" stroke="#FFFFFF" strokeWidth="1.5">
-          <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
-        </svg>
+        {/* Widget 5: Arrow Top-Right Scroll Back ↗ */}
+        <button 
+          className={`mosby-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
+          onClick={() => handleDiagramClick(4)}
+          onMouseEnter={() => setTooltipText("RETURN TO TOP ↗")}
+          onMouseLeave={() => setTooltipText(null)}
+          aria-label="Scroll to top widget"
+        >
+          <svg 
+            width="30" 
+            height="30" 
+            viewBox="0 0 40 40" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
+          </svg>
+        </button>
       </div>
 
       {/* Useful Links & Contact Grid */}
