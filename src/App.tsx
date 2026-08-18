@@ -816,12 +816,97 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
 };
 
 /* ─────────────────────────────────────────────
+   ALL PROJECTS ARCHIVE SHEET MODAL
+───────────────────────────────────────────── */
+const AllProjectsModal = ({ 
+  isOpen, 
+  onClose, 
+  setCurrentView, 
+  lang 
+}: { 
+  isOpen: boolean; 
+  onClose: () => void; 
+  setCurrentView: (view: any) => void; 
+  lang: 'en' | 'fr' 
+}) => {
+  if (!isOpen) return null;
+
+  const allProjects = [
+    { id: 'asset-iq', title: 'Asset IQ', tag: 'Product Design & SaaS', date: 'MAR 2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.' },
+    { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: 'JAN 2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.' },
+    { id: 'beans', title: 'Beans', tag: 'B2B SaaS Engagement', date: 'DEC 2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS de fidélisation & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.' },
+    { id: 'vortex', title: 'Vortex', tag: 'Mobile UX & Wallet', date: 'MAR 2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et gestion de portefeuille.' : 'Mobile fuel purchasing & digital wallet management app.' },
+    { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: 'JAN 2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.' },
+    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web, vitrines cinématographiques & e-commerce.' : 'Cinematic showcase sites, editorial e-commerce & galleries.' },
+    { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: 'OCT 2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception & identité digitale de studio.' : 'High-end studio brand experience & digital showcase.' },
+    { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/assetiQ/advisor_image.png', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'IA.' : 'AI-driven sports analysis & data visualization platform.' },
+    { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana_cover.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for elite advisory agency.' },
+    { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Concept de landing page pour l\'hôtellerie de luxe sur la Riviera.' : 'Luxury hospitality landing page concept for Riviera resort.' },
+    { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: 'JUN 2025', img: '/imgs/your-refuge.jpg', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel à Cotonou.' : 'Humanitarian portal & real-time impact tracker in Cotonou.' }
+  ];
+
+  return (
+    <div className="robin-modal-overlay" onClick={onClose}>
+      <div className="robin-modal-sheet" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '1050px', maxHeight: '90vh', overflowY: 'auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', borderBottom: '2px solid #121212', paddingBottom: '16px' }}>
+          <div>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#666', textTransform: 'uppercase' }}>ARCHIVE COMPLÈTE ({allProjects.length} DOSSIERS)</span>
+            <h2 style={{ fontFamily: 'var(--font-anton)', fontSize: '2.4rem', color: '#121212', margin: '4px 0 0 0', lineHeight: 1 }}>
+              {lang === 'fr' ? 'INDEX TOUS LES PROJETS' : 'ALL PROJECTS ARCHIVE'}
+            </h2>
+          </div>
+          <button onClick={onClose} style={{ background: '#121212', color: '#FFF', border: 'none', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <X size={20} />
+          </button>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+          {allProjects.map((proj) => (
+            <div 
+              key={proj.id}
+              className="robin-service-card"
+              style={{ padding: '20px', cursor: 'pointer' }}
+              onClick={() => {
+                onClose();
+                setCurrentView(proj.id);
+              }}
+            >
+              <div style={{ position: 'relative', height: '160px', marginBottom: '14px', borderRadius: '4px', overflow: 'hidden', background: '#121212' }}>
+                <img src={proj.img} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <span style={{ position: 'absolute', top: '10px', left: '10px', background: proj.color, color: '#FFF', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 'bold', padding: '3px 8px', borderRadius: '3px' }}>
+                  {proj.date}
+                </span>
+              </div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#666', textTransform: 'uppercase', marginBottom: '4px' }}>
+                {proj.tag}
+              </div>
+              <h3 style={{ fontFamily: 'var(--font-anton)', fontSize: '1.6rem', color: '#121212', margin: '0 0 8px 0', lineHeight: 1 }}>
+                {proj.title}
+              </h3>
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.9rem', color: '#444', margin: '0 0 14px 0', lineHeight: 1.4 }}>
+                {proj.desc}
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', borderTop: '1px dashed #DDD', paddingTop: '10px' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 'bold', color: '#121212', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  VOIR LE PROJET <ArrowRight size={14} />
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ─────────────────────────────────────────────
    MAIN HOMEPAGE
 ───────────────────────────────────────────── */
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | CaseStudyId>(() => getViewFromHash());
   const [lang, setLang] = useState<'en' | 'fr'>('fr');
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isAllProjectsModalOpen, setIsAllProjectsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -924,8 +1009,9 @@ export default function App() {
         </header>
       )}
 
-      {/* About Sheet Modal */}
+      {/* About Sheet Modal & All Projects Archive Modal */}
       <AboutSheetModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} lang={lang} />
+      <AllProjectsModal isOpen={isAllProjectsModalOpen} onClose={() => setIsAllProjectsModalOpen(false)} setCurrentView={setCurrentView} lang={lang} />
 
       {/* Render Active View */}
       {currentView === 'experiences' && <ExperiencesView setCurrentView={setCurrentView} />}
@@ -1364,6 +1450,18 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* SEE ALL PROJECTS CTA BUTTON */}
+              <div style={{ marginTop: '40px', textAlign: 'center' }}>
+                <button 
+                  className="robin-cta-black-btn" 
+                  style={{ padding: '16px 36px', fontSize: '0.95rem' }}
+                  onClick={() => setIsAllProjectsModalOpen(true)}
+                >
+                  <span>{lang === 'fr' ? 'VOIR TOUS LES PROJETS' : 'VIEW ALL PROJECTS'}</span>
+                  <ArrowRight size={18} />
+                </button>
               </div>
             </section>
 
