@@ -1093,6 +1093,11 @@ export default function App() {
               <span className="robin-handwritten-lead">my name is</span>
 
               <div className="robin-hero-box-container">
+                {/* Big Outlined Boxed Name */}
+                <div className="robin-hero-boxed-name">
+                  SACCA DAFIA
+                </div>
+
                 {/* Floating Pills around Name Box */}
                 <span className="robin-badge-floating badge-green badge-pos-top-left">MADE THINGS</span>
                 <span className="robin-badge-floating badge-yellow badge-pos-top-right">SWEAT THE DETAILS</span>
@@ -1102,11 +1107,6 @@ export default function App() {
                   OPEN TO NEW WORK AND GOOD PROBLEMS
                 </span>
                 <span className="robin-badge-floating badge-green badge-pos-bottom-right">Cotonou, BJ</span>
-
-                {/* Big Outlined Boxed Name */}
-                <div className="robin-hero-boxed-name">
-                  SACCA DAFIA
-                </div>
               </div>
 
               {/* Tagline with Circular Avatars */}

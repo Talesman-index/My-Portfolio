@@ -2193,6 +2193,36 @@
     align-items: center;
     gap: 6px;
   }
+
+  .robin-hero-box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0 28px 0;
+  }
+
+  .badge-pos-top-left, .badge-pos-top-right, .badge-pos-bottom-left, .badge-pos-bottom-right, .badge-pos-bottom-mid {
+    position: static !important;
+    transform: none !important;
+    animation: none !important;
+    display: inline-block;
+    margin: 3px;
+  }
+
+  .robin-hero-tagline-wrapper {
+    padding: 0 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .robin-hero-tagline {
+    font-size: clamp(1.15rem, 4.2vw, 1.6rem);
+    line-height: 1.45;
+    padding: 0 4px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 
