@@ -3,7 +3,6 @@ import {
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
-  ChevronDown,
   X,
   Mail,
   Phone,
@@ -16,7 +15,8 @@ import {
   Sparkles,
   Home,
   Building2,
-  Briefcase
+  Briefcase,
+  Menu
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
@@ -705,12 +705,47 @@ export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | CaseStudyId>(() => getViewFromHash());
   const [lang, setLang] = useState<'en' | 'fr'>('fr');
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
-  const [activeExpandedFolderRow, setActiveExpandedFolderRow] = useState<number | null>(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     document.documentElement.lang = lang;
   }, [lang]);
+
+  // Scroll Progress & IntersectionObserver Reveal System
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const revealElems = document.querySelectorAll('.scroll-reveal');
+    revealElems.forEach((elem) => observer.observe(elem));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      revealElems.forEach((elem) => observer.unobserve(elem));
+      observer.disconnect();
+    };
+  }, [currentView]);
 
   // Sync hash
   useEffect(() => {
@@ -735,20 +770,22 @@ export default function App() {
 
   return (
     <>
-      {/* Header with Pure Minimal TALESMAN FILES Typography Logo */}
-      <header className="mosby-header">
-        <div style={{ width: '60px' }} />
-        <div className="mosby-header-logo-container" onClick={() => navigateToHome(setCurrentView)}>
-          <span className="mosby-logo-text">TALESMAN</span>
-          <span className="mosby-logo-tag">FILES</span>
-        </div>
-        <div className="mosby-header-nav">
-          <span className="mosby-nav-link" onClick={() => setIsAboutModalOpen(true)}>About</span>
-          <button className="mosby-lang-toggle" onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
-            {lang.toUpperCase()}
-          </button>
-        </div>
-      </header>
+      {/* Header with Pure Minimal TALESMAN FILES Typography Logo (Shown on detail & sub-pages) */}
+      {currentView !== 'home' && (
+        <header className="mosby-header">
+          <div style={{ width: '60px' }} />
+          <div className="mosby-header-logo-container" onClick={() => navigateToHome(setCurrentView)}>
+            <span className="mosby-logo-text">TALESMAN</span>
+            <span className="mosby-logo-tag">FILES</span>
+          </div>
+          <div className="mosby-header-nav">
+            <span className="mosby-nav-link" onClick={() => setIsAboutModalOpen(true)}>About</span>
+            <button className="mosby-lang-toggle" onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
+              {lang.toUpperCase()}
+            </button>
+          </div>
+        </header>
+      )}
 
       {/* About Sheet Modal */}
       <AboutSheetModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} lang={lang} />
@@ -760,231 +797,585 @@ export default function App() {
         <CaseStudy id={currentView as CaseStudyId} setCurrentView={setCurrentView} lang={lang} />
       )}
 
-      {/* Main Mosby's Files Homepage */}
+      {/* Main Robin / Mosby Notebook Paper Portfolio Homepage */}
       {currentView === 'home' && (
-        <main>
-          {/* Hero Section */}
-          <section className="mosby-hero container">
-            <h1 className="mosby-hero-title">SACCA DAFIA</h1>
-            <p className="mosby-hero-subtitle">
-              {lang === 'fr'
-                ? 'Une archive de projets Web Design & Product Design : plateformes SaaS B2B complexes, expériences e-commerce sur mesure et design systems conçus sur +4 ans.'
-                : 'An archive of Web Design & Product Design projects: complex B2B SaaS platforms, custom e-commerce experiences, and design systems crafted over 4+ years.'}
-            </p>
-          </section>
+        <div className="robin-notebook-outer">
+          {/* Scroll Progress Bar */}
+          <div className="robin-scroll-progress-bar" style={{ width: `${scrollProgress}%` }} />
 
-          {/* FILING CABINET WITH ANIMATED DRAWER COLLAPSE & EXPAND */}
-          <section className="mosby-filing-cabinet">
-            {/* ROW 1: BLUE FOLDER (#1D4ED8) — CATEGORY 01: B2B SAAS PLATFORMS & LOGISTICS */}
-            <div className="mosby-folder-group">
-              <div className="mosby-tabs-bar">
-                <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('asset-iq')}>
-                  Asset IQ
+          <main className="robin-notebook-page">
+            {/* TOP FLOATING NAVIGATION BAR */}
+            <nav className="robin-floating-nav">
+              {/* Mobile Brand Name */}
+              <div className="robin-nav-brand" onClick={() => setCurrentView('home')}>
+                SACCA DAFIA
+              </div>
+
+              {/* Desktop Nav Items */}
+              <div className="robin-nav-desktop-container">
+                <div className="robin-nav-items">
+                  <span className={`robin-nav-pill ${currentView === 'home' ? 'is-active' : ''}`} onClick={() => setCurrentView('home')}>
+                    HOME
+                  </span>
+                  <span className="robin-nav-pill" onClick={() => setIsAboutModalOpen(true)}>
+                    ABOUT
+                  </span>
+                  <span className="robin-nav-pill" onClick={() => {
+                    const elem = document.getElementById('featured-works');
+                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                  }}>
+                    CASE STUDY
+                  </span>
+                  <span className="robin-nav-pill" onClick={() => setCurrentView('services')}>
+                    SERVICES
+                  </span>
+                  <span className="robin-nav-pill" onClick={() => setCurrentView('experiences')}>
+                    CAREER
+                  </span>
                 </div>
-                <div className="mosby-tab mosby-tab-red" onClick={() => setCurrentView('ehadj')}>
-                  eHadj
-                </div>
-                <div className="mosby-tab mosby-tab-green" onClick={() => setCurrentView('beans')}>
-                  Beans
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <button className="robin-nav-pill" style={{ border: '1.5px solid #121212', background: '#FFFFFF', fontWeight: 'bold' }} onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
+                    {lang.toUpperCase()}
+                  </button>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '4px 10px' }}>
+                    <Linkedin size={15} />
+                  </a>
+                  <a href="mailto:dafiashalom@gmail.com" className="robin-nav-pill" style={{ padding: '4px 10px' }} title="dafiashalom@gmail.com">
+                    <Mail size={15} />
+                  </a>
+                  <button className="robin-nav-contact-btn" onClick={() => {
+                    if ((window as any).Calendly) {
+                      (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                    } else {
+                      window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                    }
+                  }}>
+                    CONTACT
+                  </button>
                 </div>
               </div>
 
-              <div 
-                className="mosby-folder-bar" 
-                style={{ backgroundColor: '#1D4ED8' }}
-                onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 0 ? null : 0)}
+              {/* Mobile Hamburger Toggle Button */}
+              <button 
+                className="robin-mobile-hamburger-btn" 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
               >
-                <div className="mosby-folder-category-label">
-                  01. B2B SAAS &amp; ENTERPRISE PLATFORMS &lt;
-                </div>
-              </div>
+                {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                <span>MENU</span>
+              </button>
+            </nav>
 
-              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 0 ? 'is-open' : ''}`} style={{ backgroundColor: '#1D4ED8' }}>
-                <div className="mosby-expanded-grid">
+            {/* Mobile Slide-out Notebook Paper Drawer Menu */}
+            {isMobileMenuOpen && (
+              <div className="robin-mobile-menu-overlay" onClick={() => setIsMobileMenuOpen(false)}>
+                <div className="robin-mobile-menu-drawer" onClick={(e) => e.stopPropagation()}>
                   <div>
-                    <p className="mosby-expanded-desc">
-                      Product Design &amp; Architecture SaaS B2B : Gouvernance d'actifs industriels multi-sites par QR code (Asset IQ), digitalisation et orchestration logistique nationale du pèlerinage (eHadj), et plateforme SaaS de fidélisation e-commerce avec intégrations POS/Shopify (Beans).
-                    </p>
-
-                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                      <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('asset-iq')}>
-                        <span>DOSSIER COMPLET: ASSET IQ →</span>
+                    <div className="robin-mobile-menu-header">
+                      <span className="robin-mobile-menu-title">SACCA DAFIA</span>
+                      <button className="robin-mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>
+                        <X size={18} />
                       </button>
-                      <a 
-                        href="https://www.assetiQ.com" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="mosby-expanded-open-btn"
-                        style={{ background: 'var(--mosby-yellow)', color: '#000' }}
+                    </div>
+
+                    <div className="robin-mobile-menu-links">
+                      <span 
+                        className="robin-mobile-nav-link" 
+                        onClick={() => { setCurrentView('home'); setIsMobileMenuOpen(false); }}
                       >
-                        <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
-                      </a>
+                        HOME
+                      </span>
+                      <span 
+                        className="robin-mobile-nav-link" 
+                        onClick={() => { setIsAboutModalOpen(true); setIsMobileMenuOpen(false); }}
+                      >
+                        ABOUT
+                      </span>
+                      <span 
+                        className="robin-mobile-nav-link" 
+                        onClick={() => { 
+                          setIsMobileMenuOpen(false);
+                          const elem = document.getElementById('featured-works');
+                          if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        CASE STUDY
+                      </span>
+                      <span 
+                        className="robin-mobile-nav-link" 
+                        onClick={() => { setCurrentView('services'); setIsMobileMenuOpen(false); }}
+                      >
+                        SERVICES
+                      </span>
+                      <span 
+                        className="robin-mobile-nav-link" 
+                        onClick={() => { setCurrentView('experiences'); setIsMobileMenuOpen(false); }}
+                      >
+                        CAREER
+                      </span>
                     </div>
                   </div>
-                  <div className="mosby-expanded-preview-frame">
-                    <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ SaaS B2B" />
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            {/* ROW 2: GREEN FOLDER (#059669) — CATEGORY 02: WEB DESIGN & CINEMATIC SHOWCASE (FEATURING TAVARES) */}
-            <div className="mosby-folder-group">
-              <div className="mosby-tabs-bar">
-                <div className="mosby-tab mosby-tab-red" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', color: '#FFF', fontWeight: 'bold' }}>
-                  ★ Tavares
-                </div>
-                <div className="mosby-tab mosby-tab-green" onClick={() => setCurrentView('truvox')}>
-                  Truvox Studio
-                </div>
-                <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('dolce-riviera')}>
-                  Dolce Riviera
-                </div>
-                <div className="mosby-tab mosby-tab-purple" onClick={() => setCurrentView('sagana')}>
-                  Sagana
-                </div>
-              </div>
+                  <div className="robin-mobile-menu-footer">
+                    <button className="robin-nav-pill" style={{ border: '1.5px solid #121212', background: '#FFFFFF', fontWeight: 'bold', width: '100%', marginBottom: '12px' }} onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
+                      LANGUE: {lang.toUpperCase()}
+                    </button>
 
-              <div 
-                className="mosby-folder-bar" 
-                style={{ backgroundColor: '#059669' }}
-                onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 1 ? null : 1)}
-              >
-                <div className="mosby-folder-category-label">
-                  02. WEB DESIGN &amp; CINEMATIC EXPERIENCES (TAVARES &amp; TRUVOX) &lt;
-                </div>
-              </div>
-
-              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 1 ? 'is-open' : ''}`} style={{ backgroundColor: '#059669' }}>
-                <div className="mosby-expanded-grid">
-                  <div>
-                    <p className="mosby-expanded-desc">
-                      Web Design &amp; Direction Artistique Épurée : Portfolio cinématographique interactif et immersif pour réalisateur (Tavares), vitrine d'agence digitale haut de gamme (Truvox Studio), et e-commerce éditorial de luxe (Dolce Riviera).
-                    </p>
-
-                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                      <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', color: '#FFF' }}>
-                        <span>DOSSIER COMPLET: TAVARES →</span>
-                      </button>
-                      <a 
-                        href="https://portfolio-tavares.vercel.app/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="mosby-expanded-open-btn"
-                        style={{ background: 'var(--mosby-yellow)', color: '#000' }}
-                      >
-                        <ExternalLink size={14} /> <span>VISITER TAVARES LIVE ↗</span>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
+                        <Linkedin size={15} /> LinkedIn
+                      </a>
+                      <a href="mailto:dafiashalom@gmail.com" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
+                        <Mail size={15} /> Mail
                       </a>
                     </div>
-                  </div>
-                  <div className="mosby-expanded-preview-frame">
-                    <img src="/imgs/tavares.png" alt="Tavares Cinema Web Design" />
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            {/* ROW 3: PURPLE FOLDER (#7C3AED) — CATEGORY 03: STRATEGY CONSULTING & INTERACTIVE PRODUCTS (FEATURING STRATEGY ARENA) */}
-            <div className="mosby-folder-group">
-              <div className="mosby-tabs-bar">
-                <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('strategy-arena')} style={{ background: '#1E3A8A', color: '#FFF', fontWeight: 'bold' }}>
-                  ★ Strategy Arena
-                </div>
-                <div className="mosby-tab mosby-tab-yellow" onClick={() => setCurrentView('vortex')}>
-                  Vortex Gallery
-                </div>
-                <div className="mosby-tab mosby-tab-black" onClick={() => setCurrentView('sport-advisor')}>
-                  Sport Advisor
-                </div>
-                <div className="mosby-tab mosby-tab-green" onClick={() => setCurrentView('the-refuge')}>
-                  The Refuge
-                </div>
-              </div>
-
-              <div 
-                className="mosby-folder-bar" 
-                style={{ backgroundColor: '#7C3AED' }}
-                onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 2 ? null : 2)}
-              >
-                <div className="mosby-folder-category-label">
-                  03. STRATEGIC CONSULTING &amp; INTERACTIVE PRODUCTS (STRATEGY ARENA) &lt;
-                </div>
-              </div>
-
-              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 2 ? 'is-open' : ''}`} style={{ backgroundColor: '#7C3AED' }}>
-                <div className="mosby-expanded-grid">
-                  <div>
-                    <p className="mosby-expanded-desc">
-                      Stratégie &amp; Produits Numériques : Cabinet de conseil en stratégie, organisation et transformation digitale pour PME (Strategy Arena), exposition d'art virtuelle Web3 (Vortex Gallery), et application mobile de coaching sportif (Sport Advisor).
-                    </p>
-                    
-                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                      <button className="mosby-expanded-open-btn" onClick={() => setCurrentView('strategy-arena')} style={{ background: '#1E3A8A', color: '#FFF' }}>
-                        <span>DOSSIER COMPLET: STRATEGY ARENA →</span>
-                      </button>
-                      <a 
-                        href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="mosby-expanded-open-btn"
-                        style={{ background: 'var(--mosby-yellow)', color: '#000' }}
-                      >
-                        <ExternalLink size={14} /> <span>DEMO LIVE ↗</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="mosby-expanded-preview-frame">
-                    <img src="/imgs/strategy_cover.png" alt="Strategy Arena Consulting" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ROW 4: RED FOLDER (#DC2626) — CATEGORY 04: DESIGNER PROFILE & CAREER LOGS */}
-            <div className="mosby-folder-group">
-              <div className="mosby-tabs-bar">
-                <div className="mosby-tab mosby-tab-yellow" onClick={() => setIsAboutModalOpen(true)}>
-                  About Sacca
-                </div>
-                <div className="mosby-tab mosby-tab-blue" onClick={() => setCurrentView('experiences')}>
-                  Experiences Log
-                </div>
-                <div className="mosby-tab mosby-tab-green" onClick={() => setCurrentView('services')}>
-                  Services Specs
-                </div>
-              </div>
-
-              <div 
-                className="mosby-folder-bar" 
-                style={{ backgroundColor: '#DC2626' }}
-                onClick={() => setActiveExpandedFolderRow(activeExpandedFolderRow === 3 ? null : 3)}
-              >
-                <div className="mosby-folder-category-label">
-                  04. PERSONNEL FILE &amp; CAREER LOGS <ChevronDown size={14} style={{ marginLeft: '4px' }} />
-                </div>
-              </div>
-
-              <div className={`mosby-folder-expanded ${activeExpandedFolderRow === 3 ? 'is-open' : ''}`} style={{ backgroundColor: '#DC2626' }}>
-                <div className="mosby-expanded-grid">
-                  <div>
-                    <p className="mosby-expanded-desc">
-                      Dossier Personnel de Sacca Dafia (Web Designer &amp; Product Designer, +4 ans d'exp). Consultez le profil complet, le registre chronologique des missions et les spécifications d'offres.
-                    </p>
-                    <button className="mosby-expanded-open-btn" onClick={() => setIsAboutModalOpen(true)}>
-                      <span>OUVRIR LE DOSSIER PERSONNEL →</span>
+                    <button 
+                      className="robin-cta-black-btn" 
+                      style={{ width: '100%', marginTop: '16px', justifyContent: 'center' }}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        if ((window as any).Calendly) {
+                          (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                        } else {
+                          window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                        }
+                      }}
+                    >
+                      <span>BOOK A CALL</span>
+                      <ArrowRight size={16} />
                     </button>
                   </div>
-                  <div className="mosby-expanded-preview-frame">
-                    <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Dafia Prototyping Workspace" />
+                </div>
+              </div>
+            )}
+
+            {/* SECTION 1: HERO & POSITIONING */}
+            <section className="robin-hero-section scroll-reveal">
+              <span className="robin-handwritten-lead">my name is</span>
+
+              <div className="robin-hero-box-container">
+                {/* Floating Pills around Name Box */}
+                <span className="robin-badge-floating badge-green badge-pos-top-left">MADE THINGS</span>
+                <span className="robin-badge-floating badge-yellow badge-pos-top-right">SWEAT THE DETAILS</span>
+                <span className="robin-badge-floating badge-yellow badge-pos-bottom-left">Product Designer</span>
+                <span className="robin-badge-floating badge-white badge-pos-bottom-mid">
+                  <span className="hero-status-dot" style={{ display: 'inline-block', marginRight: '6px' }} />
+                  OPEN TO NEW WORK AND GOOD PROBLEMS
+                </span>
+                <span className="robin-badge-floating badge-green badge-pos-bottom-right">Cotonou, BJ</span>
+
+                {/* Big Outlined Boxed Name */}
+                <div className="robin-hero-boxed-name">
+                  SACCA DAFIA
+                </div>
+              </div>
+
+              {/* Tagline with Circular Avatars */}
+              <div className="robin-hero-tagline-wrapper">
+                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar" className="robin-avatar-circle" />
+                <h1 className="robin-hero-tagline">
+                  {lang === 'fr'
+                    ? "Je conçois des produits numériques qui s'effacent pour laisser place à l'évidence."
+                    : "I design software that gets out of your way."}
+                </h1>
+                <img src="/imgs/hero_image.png" alt="Sacca Avatar 2" className="robin-avatar-circle" />
+              </div>
+
+              <div>
+                <button className="robin-cta-black-btn" onClick={() => {
+                  if ((window as any).Calendly) {
+                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                  } else {
+                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                  }
+                }}>
+                  <span>{lang === 'fr' ? 'ME CONTACTER' : 'CONTACT ME'}</span>
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </section>
+
+            {/* SECTION 2: ABOUT ("about me!" & "what's up") */}
+            <section className="robin-about-section scroll-reveal">
+              <span className="robin-handwritten-lead">about me!</span>
+              <div className="robin-stamped-title">what's up</div>
+
+              <div className="robin-about-grid">
+                {/* Left Taped Polaroid Card */}
+                <div className="robin-polaroid-card scroll-reveal delay-1">
+                  <div className="robin-washi-tape" />
+                  <img src="/imgs/hero_image.png" alt="Sacca Dafia Polaroid 1" />
+                  <div className="robin-polaroid-caption">2026 dossier</div>
+                </div>
+
+                {/* Center Handwritten Body Text */}
+                <div className="scroll-reveal delay-2">
+                  <p className="robin-about-body-text">
+                    {lang === 'fr'
+                      ? "Je suis un product designer passionné par la simplification des systèmes complexes. Je porte un soin obsessionnel aux détails, aux cas d'usage oubliés et à la création d'interfaces qui facilitent vraiment la vie de leurs utilisateurs."
+                      : "I'm a product designer who gets a little too excited about making complicated things feel simple. I care about the small details, the edge cases everyone forgets, and shipping work that genuinely makes someone's day easier."}
+                  </p>
+
+                  <div className="robin-stamp-pills-row">
+                    <span className="robin-stamp-pill badge-yellow">Product Design</span>
+                    <span className="robin-stamp-pill badge-green">Vibe Coding</span>
+                    <span className="robin-stamp-pill badge-pink">UX Strategy</span>
+                    <span className="robin-stamp-pill badge-blue">Design Systems</span>
+                  </div>
+                </div>
+
+                {/* Right Taped Polaroid Card */}
+                <div className="robin-polaroid-card scroll-reveal delay-3" style={{ transform: 'rotate(2.5deg)' }}>
+                  <div className="robin-washi-tape" style={{ left: 'auto', right: '20px', background: 'rgba(147, 197, 253, 0.85)' }} />
+                  <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Workspace Polaroid 2" />
+                  <div className="robin-polaroid-caption">by @shalomtalesman</div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 3: FEATURED WORKS (PHYSICAL SLOPED FOLDER DRAWERS STACK) */}
+            <section id="featured-works" className="robin-featured-section scroll-reveal">
+              <h2 className="robin-pixel-title">FEATURED WORKS</h2>
+
+              <div className="robin-folder-stack">
+                {/* FOLDER 01: ASSET IQ (BLUE TAB) */}
+                <div className="robin-folder-drawer scroll-reveal delay-1">
+                  <div className="robin-folder-tab" style={{ background: '#1D4ED8' }}>
+                    ◆ PROJECT 01
+                  </div>
+                  <div className="robin-folder-body">
+                    <div>
+                      <div className="robin-folder-date">• MAR 2, 2026</div>
+                      <h3 className="robin-folder-title">Asset IQ</h3>
+                      <p className="robin-folder-desc">
+                        {lang === 'fr'
+                          ? "Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code."
+                          : "Multi-site industrial physical asset governance and telemetry via QR codes."}
+                      </p>
+                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('asset-iq')} style={{ background: '#1D4ED8', borderColor: '#1D4ED8' }}>
+                        <span>VIEW PROJECT ↗</span>
+                      </button>
+                    </div>
+
+                    <div className="robin-folder-media" onClick={() => setCurrentView('asset-iq')} style={{ cursor: 'pointer' }}>
+                      <div className="robin-washi-tape" />
+                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ Preview" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* FOLDER 02: EHADJ (YELLOW TAB) */}
+                <div className="robin-folder-drawer scroll-reveal delay-2">
+                  <div className="robin-folder-tab" style={{ background: '#EAB308', color: '#121212' }}>
+                    ◆ PROJECT 02
+                  </div>
+                  <div className="robin-folder-body">
+                    <div>
+                      <div className="robin-folder-date">• JAN 2, 2026</div>
+                      <h3 className="robin-folder-title">eHadj</h3>
+                      <p className="robin-folder-desc">
+                        {lang === 'fr'
+                          ? "Orchestration digitale du pèlerinage au Bénin pour +30 agences et ministères."
+                          : "Digital orchestration of national pilgrimage logistics in Benin for 30+ agencies and ministries."}
+                      </p>
+                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('ehadj')} style={{ background: '#DC2626', borderColor: '#DC2626' }}>
+                        <span>VIEW PROJECT ↗</span>
+                      </button>
+                    </div>
+
+                    <div className="robin-folder-media" onClick={() => setCurrentView('ehadj')} style={{ cursor: 'pointer', transform: 'rotate(-1.5deg)' }}>
+                      <div className="robin-washi-tape" style={{ background: 'rgba(244, 114, 182, 0.85)' }} />
+                      <img src="/imgs/ehadj/cover_Ehadj.jpg" alt="eHadj Preview" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* FOLDER 03: BEANS (GREEN TAB) */}
+                <div className="robin-folder-drawer scroll-reveal delay-3">
+                  <div className="robin-folder-tab" style={{ background: '#059669' }}>
+                    ◆ PROJECT 03
+                  </div>
+                  <div className="robin-folder-body">
+                    <div>
+                      <div className="robin-folder-date">• DEC 15, 2025</div>
+                      <h3 className="robin-folder-title">Beans</h3>
+                      <p className="robin-folder-desc">
+                        {lang === 'fr'
+                          ? "Plateforme SaaS B2B de fidélisation client & hub de 10 connecteurs e-commerce et sociaux."
+                          : "B2B SaaS customer engagement platform & integration hub powering 10 major connectors."}
+                      </p>
+                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('beans')} style={{ background: '#059669', borderColor: '#059669' }}>
+                        <span>VIEW PROJECT ↗</span>
+                      </button>
+                    </div>
+
+                    <div className="robin-folder-media" onClick={() => setCurrentView('beans')} style={{ cursor: 'pointer', transform: 'rotate(1deg)' }}>
+                      <div className="robin-washi-tape" style={{ background: 'rgba(167, 243, 208, 0.85)' }} />
+                      <img src="/imgs/beans_cover.png" alt="Beans Preview" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* FOLDER 04: TAVARES & VISUAL ARCHIVE (RED TAB) */}
+                <div className="robin-folder-drawer scroll-reveal delay-4">
+                  <div className="robin-folder-tab" style={{ background: '#DC2626' }}>
+                    ◆ PROJECT 04
+                  </div>
+                  <div className="robin-folder-body">
+                    <div>
+                      <div className="robin-folder-date">• NOV 20, 2025</div>
+                      <h3 className="robin-folder-title">Tavares &amp; Visuals</h3>
+                      <p className="robin-folder-desc">
+                        {lang === 'fr'
+                          ? "Direction artistique web d'exception, vitrines cinématographiques et e-commerce éditorial."
+                          : "Curated collection of cinematic showcase sites, editorial e-commerce, and immersive web galleries."}
+                      </p>
+                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', borderColor: '#E50914' }}>
+                        <span>VIEW PROJECT ↗</span>
+                      </button>
+                    </div>
+
+                    <div className="robin-folder-media" onClick={() => setCurrentView('tavares')} style={{ cursor: 'pointer' }}>
+                      <div className="robin-washi-tape" />
+                      <img src="/imgs/tavares.png" alt="Tavares Preview" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          {/* Archival Footer System */}
-          <MosbyFooter setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
-        </main>
+            {/* SECTION 4: SERVICES & CAPABILITIES */}
+            <section className="robin-services-section scroll-reveal">
+              <h2 className="robin-pixel-title">SERVICES &amp; OFFERS</h2>
+
+              <div style={{ marginTop: '20px' }}>
+                <div className="robin-service-row">
+                  <span className="robin-service-num">01</span>
+                  <div className="robin-service-name">SaaS &amp; Platform Design</div>
+                  <div className="robin-service-desc">Interfaces complexes, design systems Figma modulaires &amp; parcours utilisateurs.</div>
+                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
+                    DETAILS ↗
+                  </button>
+                </div>
+
+                <div className="robin-service-row">
+                  <span className="robin-service-num">02</span>
+                  <div className="robin-service-name">UX Audit &amp; Conversion</div>
+                  <div className="robin-service-desc">Analyse heuristique, cartographie des frictions &amp; recommandations ciblées.</div>
+                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
+                    DETAILS ↗
+                  </button>
+                </div>
+
+                <div className="robin-service-row">
+                  <span className="robin-service-num">03</span>
+                  <div className="robin-service-name">Product Strategy &amp; PRDs</div>
+                  <div className="robin-service-desc">Cadrage des besoins, rédaction de PRDs complets &amp; recette assurance qualité (QA).</div>
+                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
+                    DETAILS ↗
+                  </button>
+                </div>
+
+                <div className="robin-service-row">
+                  <span className="robin-service-num">04</span>
+                  <div className="robin-service-name">Design &amp; Vibe Coding</div>
+                  <div className="robin-service-desc">Direction artistique web, vitrines haut de gamme &amp; prototypage rapide React/Vite.</div>
+                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
+                    DETAILS ↗
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 5: CAREER LOGS & DETAILED TIMELINE */}
+            <section className="robin-experience-section scroll-reveal">
+              <h2 className="robin-pixel-title">CAREER LOGS</h2>
+
+              <div className="robin-timeline-container">
+                {/* ROLE 01: CACTUCE */}
+                <div className="robin-timeline-card scroll-reveal delay-1">
+                  <div className="robin-timeline-node">
+                    <div className="robin-timeline-node-inner" />
+                  </div>
+
+                  <div className="robin-timeline-header">
+                    <div>
+                      <span className="robin-timeline-company">CACTUCE</span>
+                      <span className="robin-timeline-role-badge" style={{ marginLeft: '12px' }}>Product Designer</span>
+                    </div>
+                    <span className="robin-timeline-date">OCT 2025 — MAY 2026</span>
+                  </div>
+
+                  <div className="robin-timeline-tagline">
+                    B2B SAAS ARCHITECTURE &amp; PROCESS OPTIMIZATION
+                  </div>
+
+                  <ul className="robin-timeline-bullets">
+                    <li>
+                      {lang === 'fr'
+                        ? "Lead Product Designer chargé de l'optimisation et de la refonte UX des plateformes eHadj (logistique nationale) et Asset IQ (télémétrie industrielle)."
+                        : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ)."}
+                    </li>
+                    <li>
+                      {lang === 'fr'
+                        ? "Conception des flux multi-agences (+30 ministères et entités), création du Design System Figma Tokens et harmonisation des parcours."
+                        : "Designed end-to-end user flows for 30+ government agencies and health/bank gateways, establishing Figma Tokens & modular UI architecture."}
+                    </li>
+                    <li>
+                      {lang === 'fr'
+                        ? "Supervision complète de l'assurance qualité (recette QA), des audits d'accessibilité et des tests terrain auprès des opérateurs."
+                        : "Supervised complete QA recipe process, accessibility audits, and field usability testing on mobile devices."}
+                    </li>
+                  </ul>
+
+                  <div className="robin-timeline-impact-pill">
+                    {lang === 'fr' ? 'RÉSULTAT : 90% d\'erreurs en moins & zéro doublon de dossier' : 'IMPACT: 90% reduction in dossier errors & zero duplicate records'}
+                  </div>
+
+                  <div className="robin-timeline-tools-row">
+                    <span className="robin-timeline-tool-tag">Product Design</span>
+                    <span className="robin-timeline-tool-tag">Figma Tokens</span>
+                    <span className="robin-timeline-tool-tag">QA Recipe</span>
+                    <span className="robin-timeline-tool-tag">eHadj &amp; Asset IQ</span>
+                    <span className="robin-timeline-tool-tag">User Flows</span>
+                  </div>
+                </div>
+
+                {/* ROLE 02: TRELLIX */}
+                <div className="robin-timeline-card scroll-reveal delay-2">
+                  <div className="robin-timeline-node">
+                    <div className="robin-timeline-node-inner" style={{ background: '#1D4ED8' }} />
+                  </div>
+
+                  <div className="robin-timeline-header">
+                    <div>
+                      <span className="robin-timeline-company">TRELLIX</span>
+                      <span className="robin-timeline-role-badge" style={{ background: '#93C5FD', color: '#121212', marginLeft: '12px' }}>
+                        Lead Product Designer
+                      </span>
+                    </div>
+                    <span className="robin-timeline-date">FEB 2024 — SEP 2025</span>
+                  </div>
+
+                  <div className="robin-timeline-tagline" style={{ color: '#1D4ED8' }}>
+                    ENTERPRISE SAAS &amp; PRODUCT STRATEGY LEADERSHIP
+                  </div>
+
+                  <ul className="robin-timeline-bullets">
+                    <li>
+                      {lang === 'fr'
+                        ? "Direction et leadership de l'équipe design pour façonner des solutions SaaS B2B complexes centrées sur l'utilisateur."
+                        : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces."}
+                    </li>
+                    <li>
+                      {lang === 'fr'
+                        ? "Rédaction intégrale des Product Requirement Documents (PRDs), spécifications fonctionnelles & API, et gestion des cycles de recherche utilisateur."
+                        : "Authored complete PRDs, API functional specifications, and led comprehensive user research & heuristic evaluation sprints."}
+                    </li>
+                    <li>
+                      {lang === 'fr'
+                        ? "Mise en place de standards de livraison dev-handoff ayant augmenté la vélocité de développement de +50%."
+                        : "Established rigorous dev-handoff protocols and design tokens, boosting engineering delivery speed by +50%."}
+                    </li>
+                  </ul>
+
+                  <div className="robin-timeline-impact-pill" style={{ background: 'rgba(29, 78, 216, 0.1)', color: '#1D4ED8', borderColor: 'rgba(29, 78, 216, 0.3)' }}>
+                    {lang === 'fr' ? 'RÉSULTAT : +50% de vélocité de dev via PRDs & specs' : 'IMPACT: +50% dev velocity via PRDs & clear functional specs'}
+                  </div>
+
+                  <div className="robin-timeline-tools-row">
+                    <span className="robin-timeline-tool-tag">PRD Writing</span>
+                    <span className="robin-timeline-tool-tag">Team Leadership</span>
+                    <span className="robin-timeline-tool-tag">User Research</span>
+                    <span className="robin-timeline-tool-tag">B2B SaaS</span>
+                    <span className="robin-timeline-tool-tag">Dev Handoff</span>
+                  </div>
+                </div>
+
+                {/* ROLE 03: CREAFIX */}
+                <div className="robin-timeline-card scroll-reveal delay-3">
+                  <div className="robin-timeline-node">
+                    <div className="robin-timeline-node-inner" style={{ background: '#059669' }} />
+                  </div>
+
+                  <div className="robin-timeline-header">
+                    <div>
+                      <span className="robin-timeline-company">CREAFIX</span>
+                      <span className="robin-timeline-role-badge" style={{ background: '#A7F3D0', color: '#121212', marginLeft: '12px' }}>
+                        Web Designer
+                      </span>
+                    </div>
+                    <span className="robin-timeline-date">AUG 2022 — FEB 2024</span>
+                  </div>
+
+                  <div className="robin-timeline-tagline" style={{ color: '#059669' }}>
+                    WEB ART DIRECTION &amp; BRAND EXPERIENCE
+                  </div>
+
+                  <ul className="robin-timeline-bullets">
+                    <li>
+                      {lang === 'fr'
+                        ? "Conception d'interfaces web d'exception et de vitrines interactives pour +15 clients et agences internationales."
+                        : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ clients."}
+                    </li>
+                    <li>
+                      {lang === 'fr'
+                        ? "Direction artistique web, typographie éditoriale, animations 60fps et optimisation responsive multi-supports."
+                        : "Spearheaded web art direction, editorial typography, 60fps micro-animations, and multi-device responsive layouts."}
+                    </li>
+                    <li>
+                      {lang === 'fr'
+                        ? "Création d'actifs pour campagnes marketing digitales et optimisation du taux de conversion (CRO)."
+                        : "Created marketing campaign assets, promotional landing pages, and optimized conversion funnels."}
+                    </li>
+                  </ul>
+
+                  <div className="robin-timeline-impact-pill" style={{ background: 'rgba(5, 150, 105, 0.1)', color: '#059669', borderColor: 'rgba(5, 150, 105, 0.3)' }}>
+                    {lang === 'fr' ? 'RÉSULTAT : +15 vitrines web & e-commerce d\'exception livrées' : 'IMPACT: 15+ luxury showcase & e-commerce sites delivered'}
+                  </div>
+
+                  <div className="robin-timeline-tools-row">
+                    <span className="robin-timeline-tool-tag">Web Art Direction</span>
+                    <span className="robin-timeline-tool-tag">Responsive UI</span>
+                    <span className="robin-timeline-tool-tag">E-Commerce</span>
+                    <span className="robin-timeline-tool-tag">Micro-Animations</span>
+                    <span className="robin-timeline-tool-tag">CRO</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 6: CONTACT STICKY NOTE ("LET'S TALK") */}
+            <section className="robin-contact-section scroll-reveal">
+              <h2 className="robin-pixel-title">LET'S TALK</h2>
+
+              <div className="robin-sticky-note-box scroll-reveal delay-1">
+                <div className="robin-washi-tape" style={{ top: '-14px', left: '30px' }} />
+                <div className="robin-washi-tape" style={{ top: '-14px', right: '30px', left: 'auto' }} />
+
+                <p>
+                  "Got a project, a complex problem, or just want to say hi? I read every message."
+                </p>
+
+                <button className="robin-cta-black-btn" onClick={() => {
+                  if ((window as any).Calendly) {
+                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                  } else {
+                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                  }
+                }}>
+                  <span>SAY HELLO</span>
+                  <Mail size={16} />
+                </button>
+              </div>
+
+              {/* Archival Footer */}
+              <MosbyFooter setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
+            </section>
+          </main>
+        </div>
       )}
     </>
   );
