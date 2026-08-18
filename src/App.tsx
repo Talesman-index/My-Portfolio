@@ -1569,7 +1569,9 @@ export default function App() {
                 <div className="robin-washi-tape" style={{ top: '-14px', right: '30px', left: 'auto' }} />
 
                 <p>
-                  "Got a project, a complex problem, or just want to say hi? I read every message."
+                  {lang === 'fr'
+                    ? '"Vous avez un projet, un problème complexe ou souhaitez échanger ? Discutons-en directement lors d\'un appel."'
+                    : '"Got a project, a complex problem, or want to explore working together? Let\'s discuss it directly on a call."'}
                 </p>
 
                 <button className="robin-cta-black-btn" onClick={() => {
@@ -1579,8 +1581,8 @@ export default function App() {
                     window.open('https://calendly.com/dafiashalom/30min', '_blank');
                   }
                 }}>
-                  <span>SAY HELLO</span>
-                  <Mail size={16} />
+                  <span>{lang === 'fr' ? 'RÉSERVER UN APPEL' : 'BOOK A CALL'}</span>
+                  <Calendar size={16} />
                 </button>
               </div>
 
