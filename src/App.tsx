@@ -1051,7 +1051,7 @@ const AllProjectsModal = ({
 ───────────────────────────────────────────── */
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | 'all-projects' | CaseStudyId>(() => getViewFromHash());
-  const [lang, setLang] = useState<'en' | 'fr'>('fr');
+  const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isAllProjectsModalOpen, setIsAllProjectsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
