@@ -887,18 +887,38 @@ export default function App() {
 
   return (
     <>
-      {/* Header with Pure Minimal TALESMAN FILES Typography Logo (Shown on detail & sub-pages) */}
+      {/* Header for Detail & Sub-Pages */}
       {currentView !== 'home' && (
         <header className="mosby-header">
-          <div style={{ width: '60px' }} />
+          <button className="robin-nav-pill" style={{ border: '1.5px solid rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.1)', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px' }} onClick={() => navigateToHome(setCurrentView)}>
+            <ArrowLeft size={15} />
+            <span>{lang === 'fr' ? 'ACCUEIL' : 'HOME'}</span>
+          </button>
+
           <div className="mosby-header-logo-container" onClick={() => navigateToHome(setCurrentView)}>
-            <span className="mosby-logo-text">TALESMAN</span>
-            <span className="mosby-logo-tag">FILES</span>
+            <span className="mosby-logo-text">SACCA DAFIA</span>
+            <span className="mosby-logo-tag">
+              {currentView === 'experiences' ? 'CAREER' : currentView === 'services' ? 'SERVICES' : 'CASE STUDY'}
+            </span>
           </div>
+
           <div className="mosby-header-nav">
             <span className="mosby-nav-link" onClick={() => setIsAboutModalOpen(true)}>About</span>
             <button className="mosby-lang-toggle" onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
               {lang.toUpperCase()}
+            </button>
+            <button 
+              className="robin-nav-contact-btn" 
+              style={{ background: 'var(--mosby-yellow)', border: '1.5px solid #121212' }}
+              onClick={() => {
+                if ((window as any).Calendly) {
+                  (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                } else {
+                  window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                }
+              }}
+            >
+              CONTACT
             </button>
           </div>
         </header>
