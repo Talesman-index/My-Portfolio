@@ -1273,85 +1273,94 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 4: FEATURED WORKS (SHOWCASE & VISUAL ARCHIVE: VORTEX, STRATEGY ARENA, TAVARES) */}
+            {/* SECTION 4: FEATURED WORKS (3-COLUMN EDITORIAL CARDS: VORTEX, STRATEGY ARENA, TAVARES) */}
             <section id="featured-works" className="robin-featured-section scroll-reveal">
               <h2 className="robin-pixel-title">FEATURED WORKS</h2>
 
-              <div className="robin-folder-stack">
-                {/* FOLDER 01: VORTEX (AMBER TAB) */}
-                <div className="robin-folder-drawer scroll-reveal delay-1">
-                  <div className="robin-folder-tab" style={{ background: '#D97706', color: '#FFFFFF' }}>
-                    ◆ SHOWCASE 01
+              <div className="robin-featured-grid">
+                {/* CARD 01: VORTEX */}
+                <div className="robin-featured-card scroll-reveal delay-1" onClick={() => setCurrentView('vortex')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', left: '20px', background: 'rgba(254, 240, 138, 0.9)', zIndex: 20 }} />
+                  <div className="robin-featured-card-header">
+                    <span className="robin-featured-card-stamp badge-yellow">SHOWCASE 01</span>
+                    <img src="/imgs/vortex.webp" alt="Vortex Mobile App" className="robin-featured-card-image" />
                   </div>
-                  <div className="robin-folder-body">
+
+                  <div className="robin-featured-card-content">
                     <div>
-                      <div className="robin-folder-date">• MAR 2026</div>
-                      <h3 className="robin-folder-title">Vortex</h3>
-                      <p className="robin-folder-desc">
+                      <div className="robin-featured-card-date">• MAR 2026</div>
+                      <h3 className="robin-featured-card-title">Vortex</h3>
+                      <p className="robin-featured-card-desc">
                         {lang === 'fr'
-                          ? "Application mobile d'achat de carburant et de gestion de portefeuille numérique."
+                          ? "Application mobile d'achat de carburant & gestion de portefeuille numérique ultra-rapide."
                           : "Mobile fuel purchasing & digital wallet management app designed for speed."}
                       </p>
-                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('vortex')} style={{ background: '#D97706', borderColor: '#D97706' }}>
-                        <span>VIEW SHOWCASE ↗</span>
-                      </button>
                     </div>
 
-                    <div className="robin-folder-media" onClick={() => setCurrentView('vortex')} style={{ cursor: 'pointer' }}>
-                      <div className="robin-washi-tape" style={{ background: 'rgba(254, 240, 138, 0.85)' }} />
-                      <img src="/imgs/vortex.webp" alt="Vortex Preview" />
+                    <div className="robin-featured-card-footer">
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>MOBILE UX</span>
+                      <button className="robin-featured-cta-btn" style={{ background: '#D97706', borderColor: '#D97706' }}>
+                        <span>EXPLORE</span>
+                        <ArrowRight size={14} />
+                      </button>
                     </div>
                   </div>
                 </div>
 
-                {/* FOLDER 02: STRATEGY ARENA (YELLOW TAB) */}
-                <div className="robin-folder-drawer scroll-reveal delay-2">
-                  <div className="robin-folder-tab" style={{ background: '#EAB308', color: '#121212' }}>
-                    ◆ SHOWCASE 02
+                {/* CARD 02: STRATEGY ARENA */}
+                <div className="robin-featured-card scroll-reveal delay-2" onClick={() => setCurrentView('strategy-arena')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', right: '20px', left: 'auto', background: 'rgba(147, 197, 253, 0.9)', zIndex: 20 }} />
+                  <div className="robin-featured-card-header">
+                    <span className="robin-featured-card-stamp badge-blue">SHOWCASE 02</span>
+                    <img src="/imgs/Strategy-Arena.png" alt="Strategy Arena Platform" className="robin-featured-card-image" />
                   </div>
-                  <div className="robin-folder-body">
+
+                  <div className="robin-featured-card-content">
                     <div>
-                      <div className="robin-folder-date">• JAN 2026</div>
-                      <h3 className="robin-folder-title">Strategy Arena</h3>
-                      <p className="robin-folder-desc">
+                      <div className="robin-featured-card-date">• JAN 2026</div>
+                      <h3 className="robin-featured-card-title">Strategy Arena</h3>
+                      <p className="robin-featured-card-desc">
                         {lang === 'fr'
                           ? "Cabinet de conseil en stratégie, organisation & transformation digitale pour PME."
                           : "Strategy & digital transformation consulting agency platform for growing SMEs."}
                       </p>
-                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('strategy-arena')} style={{ background: '#EAB308', borderColor: '#EAB308', color: '#121212' }}>
-                        <span>VIEW SHOWCASE ↗</span>
-                      </button>
                     </div>
 
-                    <div className="robin-folder-media" onClick={() => setCurrentView('strategy-arena')} style={{ cursor: 'pointer', transform: 'rotate(-1deg)' }}>
-                      <div className="robin-washi-tape" style={{ background: 'rgba(147, 197, 253, 0.85)' }} />
-                      <img src="/imgs/Strategy-Arena.png" alt="Strategy Arena Preview" />
+                    <div className="robin-featured-card-footer">
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>BRANDING &amp; WEB</span>
+                      <button className="robin-featured-cta-btn" style={{ background: '#1D4ED8', borderColor: '#1D4ED8' }}>
+                        <span>EXPLORE</span>
+                        <ArrowRight size={14} />
+                      </button>
                     </div>
                   </div>
                 </div>
 
-                {/* FOLDER 03: TAVARES & VISUAL ARCHIVE (RED TAB) */}
-                <div className="robin-folder-drawer scroll-reveal delay-3">
-                  <div className="robin-folder-tab" style={{ background: '#DC2626' }}>
-                    ◆ SHOWCASE 03
+                {/* CARD 03: TAVARES & VISUALS */}
+                <div className="robin-featured-card scroll-reveal delay-3" onClick={() => setCurrentView('tavares')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', left: '30px', background: 'rgba(244, 114, 182, 0.9)', zIndex: 20 }} />
+                  <div className="robin-featured-card-header">
+                    <span className="robin-featured-card-stamp badge-pink">SHOWCASE 03</span>
+                    <img src="/imgs/tavares.png" alt="Tavares Showcase" className="robin-featured-card-image" />
                   </div>
-                  <div className="robin-folder-body">
+
+                  <div className="robin-featured-card-content">
                     <div>
-                      <div className="robin-folder-date">• NOV 20, 2025</div>
-                      <h3 className="robin-folder-title">Tavares &amp; Visuals</h3>
-                      <p className="robin-folder-desc">
+                      <div className="robin-featured-card-date">• NOV 2025</div>
+                      <h3 className="robin-featured-card-title">Tavares &amp; Visuals</h3>
+                      <p className="robin-featured-card-desc">
                         {lang === 'fr'
                           ? "Direction artistique web d'exception, vitrines cinématographiques et e-commerce éditorial."
-                          : "Curated collection of cinematic showcase sites, editorial e-commerce, and immersive web galleries."}
+                          : "Curated collection of cinematic showcase sites, editorial e-commerce, and immersive galleries."}
                       </p>
-                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', borderColor: '#E50914' }}>
-                        <span>VIEW SHOWCASE ↗</span>
-                      </button>
                     </div>
 
-                    <div className="robin-folder-media" onClick={() => setCurrentView('tavares')} style={{ cursor: 'pointer' }}>
-                      <div className="robin-washi-tape" />
-                      <img src="/imgs/tavares.png" alt="Tavares Preview" />
+                    <div className="robin-featured-card-footer">
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>ART DIRECTION</span>
+                      <button className="robin-featured-cta-btn" style={{ background: '#DC2626', borderColor: '#DC2626' }}>
+                        <span>EXPLORE</span>
+                        <ArrowRight size={14} />
+                      </button>
                     </div>
                   </div>
                 </div>

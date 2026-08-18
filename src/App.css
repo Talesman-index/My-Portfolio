@@ -1789,6 +1789,144 @@
   transform: scale(1.04);
 }
 
+/* 3-Column Editorial Grid System for Featured Works */
+.robin-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+@media (max-width: 1024px) {
+  .robin-featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .robin-featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.robin-featured-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 2.5px solid #121212;
+  border-radius: 6px;
+  box-shadow: 6px 6px 0px #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.robin-featured-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px #121212;
+}
+
+.robin-featured-card-header {
+  position: relative;
+  background: #121212;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.robin-featured-card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.robin-featured-card:hover .robin-featured-card-image {
+  transform: scale(1.05);
+}
+
+.robin-featured-card-stamp {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1.5px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  z-index: 10;
+}
+
+.robin-featured-card-content {
+  padding: 24px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.robin-featured-card-date {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: #777777;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.robin-featured-card-title {
+  font-family: var(--font-anton);
+  font-size: 2rem;
+  color: #121212;
+  line-height: 1.05;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+
+.robin-featured-card-desc {
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  color: #444444;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.robin-featured-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1.5px dashed rgba(0, 0, 0, 0.15);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.robin-featured-cta-btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: #121212;
+  color: #FFFFFF;
+  border: 1.5px solid #121212;
+  padding: 8px 16px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 3px 3px 0px var(--mosby-yellow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.robin-featured-card:hover .robin-featured-cta-btn {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--mosby-yellow);
+}
+
 /* Editorial Services Cards Grid System */
 .robin-services-section {
   padding: 80px 0;
