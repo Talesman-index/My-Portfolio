@@ -1343,13 +1343,13 @@ export default function App() {
 
               {/* Tagline with Circular Avatars */}
               <div className="robin-hero-tagline-wrapper">
-                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar" className="robin-avatar-circle" />
+                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar" className="robin-avatar-circle robin-avatar-first" />
                 <h1 className="robin-hero-tagline">
                   {lang === 'fr'
                     ? "Je conçois des produits numériques qui s'effacent pour laisser place à l'évidence."
                     : "I design software that gets out of your way."}
                 </h1>
-                <img src="/imgs/hero_image.png" alt="Sacca Avatar 2" className="robin-avatar-circle" />
+                <img src="/imgs/hero_image.png" alt="Sacca Avatar 2" className="robin-avatar-circle robin-avatar-second" />
               </div>
 
               <div>

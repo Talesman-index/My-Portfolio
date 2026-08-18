@@ -2458,6 +2458,10 @@
     box-sizing: border-box;
   }
 
+  .robin-avatar-first {
+    display: none !important;
+  }
+
   .robin-hero-tagline-wrapper {
     padding: 0 16px;
     max-width: 100%;
