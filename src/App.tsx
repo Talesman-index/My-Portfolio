@@ -43,12 +43,13 @@ const BinderHoles = () => (
 
 const VALID_PROJECT_IDS: CaseStudyId[] = ['asset-iq', 'ehadj', 'beans', 'sagana', 'vortex', 'sport-advisor', 'truvox', 'tavares', 'the-refuge', 'strategy-arena', 'dolce-riviera'];
 
-function getViewFromHash(): 'home' | 'cv' | 'experiences' | 'services' | CaseStudyId {
+function getViewFromHash(): 'home' | 'cv' | 'experiences' | 'services' | 'all-projects' | CaseStudyId {
   if (typeof window === 'undefined') return 'home';
   const hash = window.location.hash.replace('#', '');
   if (hash === 'cv') return 'cv';
   if (hash === 'experiences') return 'experiences';
   if (hash === 'services') return 'services';
+  if (hash === 'all-projects' || hash === 'projects') return 'all-projects';
   if (VALID_PROJECT_IDS.includes(hash as CaseStudyId)) return hash as CaseStudyId;
   return 'home';
 }
@@ -578,6 +579,139 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
 };
 
 /* ─────────────────────────────────────────────
+   ALL PROJECTS DOSSIER VIEW
+───────────────────────────────────────────── */
+const AllProjectsView = ({ 
+  setCurrentView, 
+  lang 
+}: { 
+  setCurrentView: any; 
+  lang: 'en' | 'fr' 
+}) => {
+  const [activeFilter, setActiveFilter] = useState<'all' | 'saas' | 'mobile' | 'web'>('all');
+
+  const allProjects = [
+    { id: 'asset-iq', title: 'Asset IQ', category: 'saas', tag: 'Product Design & SaaS', date: 'MAR 2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.', deliverables: ['QR Code Telemetry', 'Figma Tokens', 'Asset Governance'] },
+    { id: 'ehadj', title: 'eHadj', category: 'saas', tag: 'National Logistics SaaS', date: 'JAN 2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 agences et ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.', deliverables: ['Multi-agency Workflows', 'NPI Onboarding', 'Quota Tracking'] },
+    { id: 'beans', title: 'Beans', category: 'saas', tag: 'B2B SaaS Engagement', date: 'DEC 2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS B2B de fidélisation client & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.', deliverables: ['10 Connector Hub', 'Shopify & Klaviyo', 'PRD Specs & QA'] },
+    { id: 'vortex', title: 'Vortex', category: 'mobile', tag: 'Mobile UX & Fuel Wallet', date: 'MAR 2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et de gestion de portefeuille numérique.' : 'Mobile fuel purchasing & digital wallet management app.', deliverables: ['1-Click Purchasing', 'QR Station Code', 'High Contrast UI'] },
+    { id: 'strategy-arena', title: 'Strategy Arena', category: 'web', tag: 'Branding & Web Strategy', date: 'JAN 2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie, organisation & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.', deliverables: ['Canary Yellow Brand', 'Preloader Animation', 'CRO Tunnel'] },
+    { id: 'tavares', title: 'Tavares & Visuals', category: 'web', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web d\'exception, vitrines cinématographiques et e-commerce.' : 'Curated collection of cinematic showcase sites, editorial e-commerce & galleries.', deliverables: ['Showreel Player', 'Black Theme', 'Micro-animations'] },
+    { id: 'truvox', title: 'Truvox Studio', category: 'web', tag: 'Web Design & Studio', date: 'OCT 2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception, stratégie de marque & développement.' : 'High-end studio brand experience, web design & development.', deliverables: ['Brand Strategy', 'Quote Tunnel', 'Performance Web'] },
+    { id: 'sport-advisor', title: 'Sport Advisor', category: 'mobile', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/assetiQ/advisor_image.png', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'intelligence artificielle.' : 'AI-driven sports analysis & data visualization platform.', deliverables: ['AI Prediction Engine', 'Odds Comparer', 'Confidence Gauges'] },
+    { id: 'sagana', title: 'Sagana Agency', category: 'web', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana_cover.png', color: '#F59E0B', desc: lang === 'fr' ? 'Site vitrine d\'excellence pour agence de conseil stratégique haut de gamme.' : 'High-end showcase site for elite advisory agency.', deliverables: ['Editorial Layout', 'High-end Branding', 'Micro-interactions'] },
+    { id: 'dolce-riviera', title: 'Dolce Riviera', category: 'web', tag: 'Luxury Hospitality UI', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Concept de landing page premium pour l\'hôtellerie de luxe sur la Riviera.' : 'Luxury hospitality landing page concept for Riviera resort.', deliverables: ['Warm Gold Palette', 'Booking Tunnel', 'Fluid Typography'] },
+    { id: 'the-refuge', title: 'The Refuge', category: 'web', tag: 'Humanitarian Portal', date: 'JUN 2025', img: '/imgs/your-refuge.jpg', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel pour l\'ONG The Refuge.' : 'Humanitarian portal & real-time impact tracker in Cotonou.', deliverables: ['Real-time Tracker', 'Mobile Money FCFA', 'Human Touch Doodles'] }
+  ];
+
+  const filteredProjects = allProjects.filter(p => {
+    if (activeFilter === 'all') return true;
+    return p.category === activeFilter;
+  });
+
+  return (
+    <div className="mosby-dossier-view" style={{ paddingTop: '40px' }}>
+      <div className="container">
+        <button 
+          onClick={() => navigateToHome(setCurrentView)} 
+          className="mosby-back-btn"
+        >
+          <ArrowLeft size={16} /> <span>← RETOUR À L'ACCUEIL DES ARCHIVES</span>
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px', paddingBottom: '24px' }}>
+          <div>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#999999', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              INDEX DES ARCHIVES COMPLÈTES ({allProjects.length} DOSSIERS)
+            </span>
+            <h1 className="mosby-dossier-giant-title" style={{ padding: '8px 0 0 0' }}>
+              ALL PROJECTS &amp; DOSSIERS
+            </h1>
+          </div>
+
+          {/* Filter Pills */}
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <button 
+              className={`robin-nav-pill ${activeFilter === 'all' ? 'is-active' : ''}`}
+              onClick={() => setActiveFilter('all')}
+              style={{ border: '1.5px solid #FFFFFF' }}
+            >
+              {lang === 'fr' ? 'TOUS (11)' : 'ALL (11)'}
+            </button>
+            <button 
+              className={`robin-nav-pill ${activeFilter === 'saas' ? 'is-active' : ''}`}
+              onClick={() => setActiveFilter('saas')}
+              style={{ border: '1.5px solid #FFFFFF' }}
+            >
+              SAAS &amp; B2B
+            </button>
+            <button 
+              className={`robin-nav-pill ${activeFilter === 'mobile' ? 'is-active' : ''}`}
+              onClick={() => setActiveFilter('mobile')}
+              style={{ border: '1.5px solid #FFFFFF' }}
+            >
+              MOBILE UX
+            </button>
+            <button 
+              className={`robin-nav-pill ${activeFilter === 'web' ? 'is-active' : ''}`}
+              onClick={() => setActiveFilter('web')}
+              style={{ border: '1.5px solid #FFFFFF' }}
+            >
+              WEB &amp; BRANDING
+            </button>
+          </div>
+        </div>
+
+        {/* Projects Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '32px', marginTop: '20px' }}>
+          {filteredProjects.map((proj) => (
+            <div 
+              key={proj.id}
+              className="robin-service-card"
+              style={{ padding: '24px', cursor: 'pointer', background: '#FFFFFF' }}
+              onClick={() => setCurrentView(proj.id)}
+            >
+              <div style={{ position: 'relative', height: '190px', marginBottom: '18px', borderRadius: '4px', overflow: 'hidden', background: '#121212' }}>
+                <img src={proj.img} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} />
+                <span style={{ position: 'absolute', top: '12px', left: '12px', background: proj.color, color: '#FFFFFF', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 'bold', padding: '4px 10px', borderRadius: '3px', boxShadow: '2px 2px 0px #121212' }}>
+                  {proj.date}
+                </span>
+              </div>
+
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666', textTransform: 'uppercase', marginBottom: '6px' }}>
+                {proj.tag}
+              </div>
+
+              <h3 style={{ fontFamily: 'var(--font-anton)', fontSize: '2.1rem', color: '#121212', margin: '0 0 10px 0', lineHeight: 1.05 }}>
+                {proj.title}
+              </h3>
+
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.98rem', color: '#333', margin: '0 0 16px 0', lineHeight: 1.45 }}>
+                {proj.desc}
+              </p>
+
+              <ul className="robin-service-deliverables" style={{ paddingLeft: '14px', marginBottom: '20px' }}>
+                {proj.deliverables.map((item, idx) => (
+                  <li key={idx}>• {item}</li>
+                ))}
+              </ul>
+
+              <div className="robin-service-footer">
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#777' }}>DOSSIER #{proj.id.toUpperCase()}</span>
+                <button className="robin-service-cta-btn" style={{ background: '#121212', borderColor: '#121212' }}>
+                  <span>{lang === 'fr' ? 'DÉCOUVRIR' : 'EXPLORE'}</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ─────────────────────────────────────────────
    ARCHIVAL FOOTER SYSTEM
 ───────────────────────────────────────────── */
 const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrentView: any; setIsAboutModalOpen: any; lang: 'en' | 'fr' }) => {
@@ -903,7 +1037,7 @@ const AllProjectsModal = ({
    MAIN HOMEPAGE
 ───────────────────────────────────────────── */
 export default function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | CaseStudyId>(() => getViewFromHash());
+  const [currentView, setCurrentView] = useState<'home' | 'cv' | 'experiences' | 'services' | 'all-projects' | CaseStudyId>(() => getViewFromHash());
   const [lang, setLang] = useState<'en' | 'fr'>('fr');
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isAllProjectsModalOpen, setIsAllProjectsModalOpen] = useState(false);
@@ -983,7 +1117,7 @@ export default function App() {
           <div className="mosby-header-logo-container" onClick={() => navigateToHome(setCurrentView)}>
             <span className="mosby-logo-text">SACCA DAFIA</span>
             <span className="mosby-logo-tag">
-              {currentView === 'experiences' ? 'CAREER' : currentView === 'services' ? 'SERVICES' : 'CASE STUDY'}
+              {currentView === 'experiences' ? 'CAREER' : currentView === 'services' ? 'SERVICES' : currentView === 'all-projects' ? 'ALL PROJECTS' : 'CASE STUDY'}
             </span>
           </div>
 
@@ -1016,7 +1150,8 @@ export default function App() {
       {/* Render Active View */}
       {currentView === 'experiences' && <ExperiencesView setCurrentView={setCurrentView} />}
       {currentView === 'services' && <ServicesView setCurrentView={setCurrentView} />}
-      {currentView !== 'home' && currentView !== 'experiences' && currentView !== 'services' && (
+      {currentView === 'all-projects' && <AllProjectsView setCurrentView={setCurrentView} lang={lang} />}
+      {currentView !== 'home' && currentView !== 'experiences' && currentView !== 'services' && currentView !== 'all-projects' && (
         <CaseStudy id={currentView as CaseStudyId} setCurrentView={setCurrentView} lang={lang} />
       )}
 
@@ -1457,7 +1592,7 @@ export default function App() {
                 <button 
                   className="robin-cta-black-btn" 
                   style={{ padding: '16px 36px', fontSize: '0.95rem' }}
-                  onClick={() => setIsAllProjectsModalOpen(true)}
+                  onClick={() => setCurrentView('all-projects')}
                 >
                   <span>{lang === 'fr' ? 'VOIR TOUS LES PROJETS' : 'VIEW ALL PROJECTS'}</span>
                   <ArrowRight size={18} />
