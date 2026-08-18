@@ -1787,47 +1787,136 @@
   transform: scale(1.04);
 }
 
-/* Services & Capabilities Index Hover Rows */
+/* Editorial Services Cards Grid System */
 .robin-services-section {
   padding: 80px 0;
   border-top: 1px dashed rgba(0, 0, 0, 0.15);
 }
 
-.robin-service-row {
+.robin-services-grid {
   display: grid;
-  grid-template-columns: 80px 1.2fr 1.5fr 140px;
-  gap: 28px;
-  align-items: center;
-  padding: 28px 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 36px;
+}
+
+@media (max-width: 900px) {
+  .robin-services-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.robin-service-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 2px solid #121212;
   border-radius: 6px;
-  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 32px;
+  box-shadow: 6px 6px 0px #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
-.robin-service-row:hover {
-  background: rgba(0, 0, 0, 0.03);
-  transform: translateX(6px);
+.robin-service-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px #121212;
 }
 
-.robin-service-num {
+.robin-service-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.robin-service-stamp-num {
+  font-family: var(--font-anton);
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 6px 14px;
+  border: 1.5px solid #121212;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px #121212;
+  user-select: none;
+}
+
+.robin-service-tag {
   font-family: var(--font-mono);
-  font-size: 1.2rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  color: #121212;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 
-.robin-service-name {
-  font-family: var(--font-body);
-  font-weight: 800;
-  font-size: 1.35rem;
+.robin-service-title {
+  font-family: var(--font-anton);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   color: #121212;
+  line-height: 1.05;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
 }
 
-.robin-service-desc {
+.robin-service-body {
   font-family: var(--font-serif);
   font-size: 1.05rem;
+  color: #333333;
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.robin-service-deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-left: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   color: #444444;
-  line-height: 1.5;
+}
+
+.robin-service-deliverables li {
+  line-height: 1.4;
+}
+
+.robin-service-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1.5px dashed rgba(0,0,0,0.15);
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.robin-service-cta-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #121212;
+  color: #FFFFFF;
+  border: 1.5px solid #121212;
+  padding: 8px 18px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 3px 3px 0px var(--mosby-yellow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.robin-service-card:hover .robin-service-cta-btn {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--mosby-yellow);
 }
 
 /* Rich Visual Timeline System for Career Logs */

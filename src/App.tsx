@@ -1263,45 +1263,141 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 4: SERVICES & CAPABILITIES */}
+            {/* SECTION 4: SERVICES & CAPABILITIES — EDITORIAL CARDS */}
             <section className="robin-services-section scroll-reveal">
               <h2 className="robin-pixel-title">SERVICES &amp; OFFERS</h2>
 
-              <div style={{ marginTop: '20px' }}>
-                <div className="robin-service-row">
-                  <span className="robin-service-num">01</span>
-                  <div className="robin-service-name">SaaS &amp; Platform Design</div>
-                  <div className="robin-service-desc">Interfaces complexes, design systems Figma modulaires &amp; parcours utilisateurs.</div>
-                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
-                    DETAILS ↗
-                  </button>
+              <div className="robin-services-grid">
+                {/* OFFER 01 */}
+                <div className="robin-service-card scroll-reveal delay-1" onClick={() => setCurrentView('services')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', left: '20px' }} />
+                  <div>
+                    <div className="robin-service-card-header">
+                      <span className="robin-service-stamp-num badge-yellow">01</span>
+                      <span className="robin-service-tag">B2B &amp; ENTERPRISE SAAS</span>
+                    </div>
+
+                    <h3 className="robin-service-title">SaaS &amp; Platform Design</h3>
+
+                    <p className="robin-service-body">
+                      {lang === 'fr'
+                        ? "Architectures d'interfaces complexes, tableaux de bord de données et design systems Figma modulaires."
+                        : "Complex web application architectures, data-dense dashboards, and modular Figma Design Systems."}
+                    </p>
+
+                    <ul className="robin-service-deliverables">
+                      <li>• {lang === 'fr' ? 'Parcours utilisateurs multi-acteurs' : 'Multi-tenant user journeys'}</li>
+                      <li>• {lang === 'fr' ? 'Design Systems Figma avec Tokens' : 'Figma Design System with Tokens'}</li>
+                      <li>• {lang === 'fr' ? 'Spécifications de composants UI' : 'UI Component Specs & States'}</li>
+                    </ul>
+                  </div>
+
+                  <div className="robin-service-footer">
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: '#666' }}>DOSSIER #01</span>
+                    <button className="robin-service-cta-btn">
+                      <span>{lang === 'fr' ? 'DÉCOUVRIR' : 'EXPLORE'}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </div>
 
-                <div className="robin-service-row">
-                  <span className="robin-service-num">02</span>
-                  <div className="robin-service-name">UX Audit &amp; Conversion</div>
-                  <div className="robin-service-desc">Analyse heuristique, cartographie des frictions &amp; recommandations ciblées.</div>
-                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
-                    DETAILS ↗
-                  </button>
+                {/* OFFER 02 */}
+                <div className="robin-service-card scroll-reveal delay-2" onClick={() => setCurrentView('services')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', right: '20px', left: 'auto', background: 'rgba(147, 197, 253, 0.85)' }} />
+                  <div>
+                    <div className="robin-service-card-header">
+                      <span className="robin-service-stamp-num badge-blue">02</span>
+                      <span className="robin-service-tag">PRODUCT AUDIT &amp; CRO</span>
+                    </div>
+
+                    <h3 className="robin-service-title">UX Audit &amp; Conversion</h3>
+
+                    <p className="robin-service-body">
+                      {lang === 'fr'
+                        ? "Analyse heuristique poussée, cartographie des goulots d'étranglement et plan d'action d'optimisation du taux de conversion."
+                        : "Deep heuristic evaluation, friction point mapping, and prioritized quick-win conversion optimization roadmap."}
+                    </p>
+
+                    <ul className="robin-service-deliverables">
+                      <li>• {lang === 'fr' ? 'Audit heuristique complet' : 'Full Heuristic UX Review'}</li>
+                      <li>• {lang === 'fr' ? 'Cartographie des goulots d\'étranglement' : 'Friction & Bottleneck Mapping'}</li>
+                      <li>• {lang === 'fr' ? 'Plan d\'action rapide CRO' : 'Prioritized CRO Action Plan'}</li>
+                    </ul>
+                  </div>
+
+                  <div className="robin-service-footer">
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: '#666' }}>DOSSIER #02</span>
+                    <button className="robin-service-cta-btn" style={{ background: '#1D4ED8', borderColor: '#1D4ED8' }}>
+                      <span>{lang === 'fr' ? 'DÉCOUVRIR' : 'EXPLORE'}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </div>
 
-                <div className="robin-service-row">
-                  <span className="robin-service-num">03</span>
-                  <div className="robin-service-name">Product Strategy &amp; PRDs</div>
-                  <div className="robin-service-desc">Cadrage des besoins, rédaction de PRDs complets &amp; recette assurance qualité (QA).</div>
-                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
-                    DETAILS ↗
-                  </button>
+                {/* OFFER 03 */}
+                <div className="robin-service-card scroll-reveal delay-3" onClick={() => setCurrentView('services')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', left: '30px', background: 'rgba(244, 114, 182, 0.85)' }} />
+                  <div>
+                    <div className="robin-service-card-header">
+                      <span className="robin-service-stamp-num badge-pink">03</span>
+                      <span className="robin-service-tag">PRODUCT SPECIFICATIONS</span>
+                    </div>
+
+                    <h3 className="robin-service-title">Product Strategy &amp; PRDs</h3>
+
+                    <p className="robin-service-body">
+                      {lang === 'fr'
+                        ? "Cadrage stratégique des besoins, rédaction de PRDs complets, spécifications d'API et supervision de la recette QA."
+                        : "Strategic requirement scoping, detailed PRD authoring, functional API specs, and complete QA supervision."}
+                    </p>
+
+                    <ul className="robin-service-deliverables">
+                      <li>• {lang === 'fr' ? 'Rédaction de PRDs complets' : 'Complete PRD Documentation'}</li>
+                      <li>• {lang === 'fr' ? 'Spécifications fonctionnelles API' : 'Functional & API Specifications'}</li>
+                      <li>• {lang === 'fr' ? 'Grille de recette Assurance Qualité (QA)' : 'QA Recipe & Validation Checklist'}</li>
+                    </ul>
+                  </div>
+
+                  <div className="robin-service-footer">
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: '#666' }}>DOSSIER #03</span>
+                    <button className="robin-service-cta-btn" style={{ background: '#DC2626', borderColor: '#DC2626' }}>
+                      <span>{lang === 'fr' ? 'DÉCOUVRIR' : 'EXPLORE'}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </div>
 
-                <div className="robin-service-row">
-                  <span className="robin-service-num">04</span>
-                  <div className="robin-service-name">Design &amp; Vibe Coding</div>
-                  <div className="robin-service-desc">Direction artistique web, vitrines haut de gamme &amp; prototypage rapide React/Vite.</div>
-                  <button className="robin-nav-contact-btn" onClick={() => setCurrentView('services')}>
-                    DETAILS ↗
-                  </button>
+                {/* OFFER 04 */}
+                <div className="robin-service-card scroll-reveal delay-4" onClick={() => setCurrentView('services')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', right: '30px', left: 'auto', background: 'rgba(167, 243, 208, 0.85)' }} />
+                  <div>
+                    <div className="robin-service-card-header">
+                      <span className="robin-service-stamp-num badge-green">04</span>
+                      <span className="robin-service-tag">ART DIRECTION &amp; CODE</span>
+                    </div>
+
+                    <h3 className="robin-service-title">Design &amp; Vibe Coding</h3>
+
+                    <p className="robin-service-body">
+                      {lang === 'fr'
+                        ? "Direction artistique web d'exception, vitrines cinématographiques et prototypage rapide React/Vite 60fps."
+                        : "High-end web art direction, editorial showcase sites, and rapid production-ready React/Vite prototyping."}
+                    </p>
+
+                    <ul className="robin-service-deliverables">
+                      <li>• {lang === 'fr' ? 'Direction artistique web d\'exception' : 'Web Art Direction & Micro-animations'}</li>
+                      <li>• {lang === 'fr' ? 'Prototypage interactif React / Vite' : 'Production-grade React/Vite Prototypes'}</li>
+                      <li>• {lang === 'fr' ? 'Refonte de marque & Vitrines' : 'Brand Identity & Showcase Sites'}</li>
+                    </ul>
+                  </div>
+
+                  <div className="robin-service-footer">
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: '#666' }}>DOSSIER #04</span>
+                    <button className="robin-service-cta-btn" style={{ background: '#059669', borderColor: '#059669' }}>
+                      <span>{lang === 'fr' ? 'DÉCOUVRIR' : 'EXPLORE'}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </section>
