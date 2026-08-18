@@ -1401,7 +1401,7 @@ export default function App() {
 
               <div className="robin-about-grid">
                 {/* Left Taped Polaroid Card */}
-                <div className="robin-polaroid-card scroll-reveal delay-1">
+                <div className="robin-polaroid-card robin-polaroid-card-left scroll-reveal delay-1">
                   <div className="robin-washi-tape" />
                   <img src="/imgs/hero_image.png" alt="Sacca Dafia Polaroid 1" />
                   <div className="robin-polaroid-caption">2026 dossier</div>
@@ -1424,7 +1424,7 @@ export default function App() {
                 </div>
 
                 {/* Right Taped Polaroid Card */}
-                <div className="robin-polaroid-card scroll-reveal delay-3" style={{ transform: 'rotate(2.5deg)' }}>
+                <div className="robin-polaroid-card robin-polaroid-card-right scroll-reveal delay-3">
                   <div className="robin-washi-tape" style={{ left: 'auto', right: '20px', background: 'rgba(147, 197, 253, 0.85)' }} />
                   <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Workspace Polaroid 2" />
                   <div className="robin-polaroid-caption">by @misterthobis</div>

@@ -1644,21 +1644,41 @@
   margin-top: 30px;
 }
 
-/* Interactive Polaroid 3D Physics */
+/* Interactive Polaroid 3D Physics & Spring Rotation */
 .robin-polaroid-card {
   background: #FFFFFF;
   padding: 12px 12px 28px 12px;
   border: 1.5px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
   position: relative;
-  transform: rotate(-2deg);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
   cursor: pointer;
 }
 
+.robin-polaroid-card-left {
+  transform: rotate(-2.5deg);
+}
+
+.robin-polaroid-card-right {
+  transform: rotate(2.5deg);
+}
+
+.robin-polaroid-card-left:hover {
+  transform: translateY(-10px) rotate(2deg) scale(1.05) !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+  z-index: 20;
+}
+
+.robin-polaroid-card-right:hover {
+  transform: translateY(-10px) rotate(-3deg) scale(1.05) !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+  z-index: 20;
+}
+
 .robin-polaroid-card:hover {
-  transform: translateY(-8px) rotate(0deg) scale(1.04);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+  transform: translateY(-10px) rotate(-3deg) scale(1.05);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+  z-index: 20;
 }
 
 .robin-polaroid-card img {
