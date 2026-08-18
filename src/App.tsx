@@ -958,10 +958,16 @@ export default function App() {
                     ABOUT
                   </span>
                   <span className="robin-nav-pill" onClick={() => {
+                    const elem = document.getElementById('products-saas');
+                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                  }}>
+                    PRODUCTS &amp; SAAS
+                  </span>
+                  <span className="robin-nav-pill" onClick={() => {
                     const elem = document.getElementById('featured-works');
                     if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                   }}>
-                    CASE STUDY
+                    FEATURED WORKS
                   </span>
                   <span className="robin-nav-pill" onClick={() => setCurrentView('services')}>
                     SERVICES
@@ -1033,11 +1039,21 @@ export default function App() {
                         className="robin-mobile-nav-link" 
                         onClick={() => { 
                           setIsMobileMenuOpen(false);
+                          const elem = document.getElementById('products-saas');
+                          if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        PRODUCTS &amp; SAAS
+                      </span>
+                      <span 
+                        className="robin-mobile-nav-link" 
+                        onClick={() => { 
+                          setIsMobileMenuOpen(false);
                           const elem = document.getElementById('featured-works');
                           if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                         }}
                       >
-                        CASE STUDY
+                        FEATURED WORKS
                       </span>
                       <span 
                         className="robin-mobile-nav-link" 
@@ -1172,15 +1188,15 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 3: FEATURED WORKS (PHYSICAL SLOPED FOLDER DRAWERS STACK) */}
-            <section id="featured-works" className="robin-featured-section scroll-reveal">
-              <h2 className="robin-pixel-title">FEATURED WORKS</h2>
+            {/* SECTION 3: PRODUCTS & B2B SAAS (ASSET IQ, EHADJ, BEANS) */}
+            <section id="products-saas" className="robin-featured-section scroll-reveal">
+              <h2 className="robin-pixel-title">PRODUCTS &amp; B2B SAAS</h2>
 
               <div className="robin-folder-stack">
                 {/* FOLDER 01: ASSET IQ (BLUE TAB) */}
                 <div className="robin-folder-drawer scroll-reveal delay-1">
                   <div className="robin-folder-tab" style={{ background: '#1D4ED8' }}>
-                    ◆ PROJECT 01
+                    ◆ PRODUCT 01
                   </div>
                   <div className="robin-folder-body">
                     <div>
@@ -1192,7 +1208,7 @@ export default function App() {
                           : "Multi-site industrial physical asset governance and telemetry via QR codes."}
                       </p>
                       <button className="robin-cta-black-btn" onClick={() => setCurrentView('asset-iq')} style={{ background: '#1D4ED8', borderColor: '#1D4ED8' }}>
-                        <span>VIEW PROJECT ↗</span>
+                        <span>VIEW PRODUCT ↗</span>
                       </button>
                     </div>
 
@@ -1206,7 +1222,7 @@ export default function App() {
                 {/* FOLDER 02: EHADJ (YELLOW TAB) */}
                 <div className="robin-folder-drawer scroll-reveal delay-2">
                   <div className="robin-folder-tab" style={{ background: '#EAB308', color: '#121212' }}>
-                    ◆ PROJECT 02
+                    ◆ PRODUCT 02
                   </div>
                   <div className="robin-folder-body">
                     <div>
@@ -1218,7 +1234,7 @@ export default function App() {
                           : "Digital orchestration of national pilgrimage logistics in Benin for 30+ agencies and ministries."}
                       </p>
                       <button className="robin-cta-black-btn" onClick={() => setCurrentView('ehadj')} style={{ background: '#DC2626', borderColor: '#DC2626' }}>
-                        <span>VIEW PROJECT ↗</span>
+                        <span>VIEW PRODUCT ↗</span>
                       </button>
                     </div>
 
@@ -1232,7 +1248,7 @@ export default function App() {
                 {/* FOLDER 03: BEANS (GREEN TAB) */}
                 <div className="robin-folder-drawer scroll-reveal delay-3">
                   <div className="robin-folder-tab" style={{ background: '#059669' }}>
-                    ◆ PROJECT 03
+                    ◆ PRODUCT 03
                   </div>
                   <div className="robin-folder-body">
                     <div>
@@ -1244,7 +1260,7 @@ export default function App() {
                           : "B2B SaaS customer engagement platform & integration hub powering 10 major connectors."}
                       </p>
                       <button className="robin-cta-black-btn" onClick={() => setCurrentView('beans')} style={{ background: '#059669', borderColor: '#059669' }}>
-                        <span>VIEW PROJECT ↗</span>
+                        <span>VIEW PRODUCT ↗</span>
                       </button>
                     </div>
 
@@ -1254,11 +1270,18 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </section>
 
+            {/* SECTION 4: FEATURED WORKS (SHOWCASE & VISUAL ARCHIVE) */}
+            <section id="featured-works" className="robin-featured-section scroll-reveal">
+              <h2 className="robin-pixel-title">FEATURED WORKS</h2>
+
+              <div className="robin-folder-stack">
                 {/* FOLDER 04: TAVARES & VISUAL ARCHIVE (RED TAB) */}
-                <div className="robin-folder-drawer scroll-reveal delay-4">
+                <div className="robin-folder-drawer scroll-reveal delay-1">
                   <div className="robin-folder-tab" style={{ background: '#DC2626' }}>
-                    ◆ PROJECT 04
+                    ◆ SHOWCASE 01
                   </div>
                   <div className="robin-folder-body">
                     <div>
@@ -1270,7 +1293,7 @@ export default function App() {
                           : "Curated collection of cinematic showcase sites, editorial e-commerce, and immersive web galleries."}
                       </p>
                       <button className="robin-cta-black-btn" onClick={() => setCurrentView('tavares')} style={{ background: '#E50914', borderColor: '#E50914' }}>
-                        <span>VIEW PROJECT ↗</span>
+                        <span>VIEW SHOWCASE ↗</span>
                       </button>
                     </div>
 
