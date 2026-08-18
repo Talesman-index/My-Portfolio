@@ -1355,8 +1355,31 @@ export default function App() {
               <span className="robin-handwritten-lead">my name is</span>
 
               <div className="robin-hero-box-container">
-                {/* Big Outlined Boxed Name */}
+                {/* Big Outlined Boxed Name with Figma/Canvas Selection Bounding Box */}
                 <div className="robin-hero-boxed-name">
+                  {/* Selection Corner & Edge Drag Handles */}
+                  <span className="selection-handle handle-tl" />
+                  <span className="selection-handle handle-tr" />
+                  <span className="selection-handle handle-bl" />
+                  <span className="selection-handle handle-br" />
+                  <span className="selection-handle-edge handle-tm" />
+                  <span className="selection-handle-edge handle-bm" />
+                  <span className="selection-handle-edge handle-lm" />
+                  <span className="selection-handle-edge handle-rm" />
+
+                  {/* Designer Mouse Cursor Pointer Tag */}
+                  <div className="selection-cursor-badge">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFFFFF" className="selection-cursor-svg">
+                      <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
+                    </svg>
+                    <span>Sacca (Product Designer)</span>
+                  </div>
+
+                  {/* Figma Frame Label */}
+                  <div className="selection-frame-label">
+                    <span>FRAME: HERO_TITLE</span>
+                  </div>
+
                   SACCA DAFIA
                 </div>
 
