@@ -1385,12 +1385,12 @@ export default function App() {
 
                 {/* Floating Pills around Name Box */}
                 <div className="robin-hero-badges-wrapper">
-                  <span className="robin-badge-floating badge-yellow badge-pos-top-right">SWEAT THE DETAILS</span>
                   <span className="robin-badge-floating badge-yellow badge-pos-bottom-left">Product Designer</span>
                   <span className="robin-badge-floating badge-white badge-pos-bottom-mid">
                     <span className="hero-status-dot" style={{ display: 'inline-block', marginRight: '6px' }} />
                     OPEN TO NEW WORK AND GOOD PROBLEMS
                   </span>
+                  <span className="robin-badge-floating badge-yellow badge-pos-bottom-right">CRAFT &amp; PRECISION</span>
                 </div>
               </div>
 
