@@ -1107,11 +1107,6 @@ export default function App() {
       {/* Header for Detail & Sub-Pages */}
       {currentView !== 'home' && (
         <header className="mosby-header">
-          <button className="robin-nav-pill" style={{ border: '1.5px solid rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.1)', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px' }} onClick={() => navigateToHome(setCurrentView)}>
-            <ArrowLeft size={15} />
-            <span>{lang === 'fr' ? 'ACCUEIL' : 'HOME'}</span>
-          </button>
-
           <div className="mosby-header-logo-container" onClick={() => navigateToHome(setCurrentView)}>
             <span className="mosby-logo-text">SACCA DAFIA</span>
             <span className="mosby-logo-tag">
