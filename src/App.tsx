@@ -1133,12 +1133,138 @@ export default function App() {
               CONTACT
             </button>
           </div>
+
+          {/* Mobile Hamburger Toggle Button for Detail Pages */}
+          <button 
+            className="robin-mobile-hamburger-btn mosby-header-mobile-toggle" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            <span>MENU</span>
+          </button>
         </header>
       )}
 
       {/* About Sheet Modal & All Projects Archive Modal */}
       <AboutSheetModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} lang={lang} />
       <AllProjectsModal isOpen={isAllProjectsModalOpen} onClose={() => setIsAllProjectsModalOpen(false)} setCurrentView={setCurrentView} lang={lang} />
+
+      {/* Mobile Slide-out Notebook Paper Drawer Menu (Global) */}
+      {isMobileMenuOpen && (
+        <div className="robin-mobile-menu-overlay" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="robin-mobile-menu-drawer" onClick={(e) => e.stopPropagation()}>
+            <div>
+              <div className="robin-mobile-menu-header">
+                <span className="robin-mobile-menu-title">SACCA DAFIA</span>
+                <button className="robin-mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>
+                  <X size={18} />
+                </button>
+              </div>
+
+              <div className="robin-mobile-menu-links">
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => { setCurrentView('home'); setIsMobileMenuOpen(false); }}
+                >
+                  HOME
+                </span>
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => { setIsAboutModalOpen(true); setIsMobileMenuOpen(false); }}
+                >
+                  ABOUT
+                </span>
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => { setCurrentView('all-projects'); setIsMobileMenuOpen(false); }}
+                >
+                  ALL PROJECTS
+                </span>
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => { 
+                    setIsMobileMenuOpen(false);
+                    if (currentView !== 'home') {
+                      setCurrentView('home');
+                      setTimeout(() => {
+                        const elem = document.getElementById('products-saas');
+                        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    } else {
+                      const elem = document.getElementById('products-saas');
+                      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  PRODUCTS &amp; SAAS
+                </span>
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => { 
+                    setIsMobileMenuOpen(false);
+                    if (currentView !== 'home') {
+                      setCurrentView('home');
+                      setTimeout(() => {
+                        const elem = document.getElementById('featured-works');
+                        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    } else {
+                      const elem = document.getElementById('featured-works');
+                      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  FEATURED WORKS
+                </span>
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => { setCurrentView('services'); setIsMobileMenuOpen(false); }}
+                >
+                  SERVICES
+                </span>
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => { setCurrentView('experiences'); setIsMobileMenuOpen(false); }}
+                >
+                  CAREER
+                </span>
+              </div>
+            </div>
+
+            <div className="robin-mobile-menu-footer">
+              <button className="robin-nav-pill" style={{ border: '1.5px solid #121212', background: '#FFFFFF', fontWeight: 'bold', width: '100%', marginBottom: '12px' }} onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
+                LANGUE: {lang.toUpperCase()}
+              </button>
+
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
+                  <Linkedin size={15} /> LinkedIn
+                </a>
+                <a href="mailto:dafiashalom@gmail.com" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
+                  <Mail size={15} /> Mail
+                </a>
+              </div>
+
+              <button 
+                className="robin-cta-black-btn" 
+                style={{ width: '100%', marginTop: '16px', justifyContent: 'center' }}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if ((window as any).Calendly) {
+                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                  } else {
+                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                  }
+                }}
+              >
+                <span>BOOK A CALL</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Render Active View */}
       {currentView === 'experiences' && <ExperiencesView setCurrentView={setCurrentView} />}
@@ -1223,100 +1349,6 @@ export default function App() {
                 <span>MENU</span>
               </button>
             </nav>
-
-            {/* Mobile Slide-out Notebook Paper Drawer Menu */}
-            {isMobileMenuOpen && (
-              <div className="robin-mobile-menu-overlay" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="robin-mobile-menu-drawer" onClick={(e) => e.stopPropagation()}>
-                  <div>
-                    <div className="robin-mobile-menu-header">
-                      <span className="robin-mobile-menu-title">SACCA DAFIA</span>
-                      <button className="robin-mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>
-                        <X size={18} />
-                      </button>
-                    </div>
-
-                    <div className="robin-mobile-menu-links">
-                      <span 
-                        className="robin-mobile-nav-link" 
-                        onClick={() => { setCurrentView('home'); setIsMobileMenuOpen(false); }}
-                      >
-                        HOME
-                      </span>
-                      <span 
-                        className="robin-mobile-nav-link" 
-                        onClick={() => { setIsAboutModalOpen(true); setIsMobileMenuOpen(false); }}
-                      >
-                        ABOUT
-                      </span>
-                      <span 
-                        className="robin-mobile-nav-link" 
-                        onClick={() => { 
-                          setIsMobileMenuOpen(false);
-                          const elem = document.getElementById('products-saas');
-                          if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        PRODUCTS &amp; SAAS
-                      </span>
-                      <span 
-                        className="robin-mobile-nav-link" 
-                        onClick={() => { 
-                          setIsMobileMenuOpen(false);
-                          const elem = document.getElementById('featured-works');
-                          if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        FEATURED WORKS
-                      </span>
-                      <span 
-                        className="robin-mobile-nav-link" 
-                        onClick={() => { setCurrentView('services'); setIsMobileMenuOpen(false); }}
-                      >
-                        SERVICES
-                      </span>
-                      <span 
-                        className="robin-mobile-nav-link" 
-                        onClick={() => { setCurrentView('experiences'); setIsMobileMenuOpen(false); }}
-                      >
-                        CAREER
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="robin-mobile-menu-footer">
-                    <button className="robin-nav-pill" style={{ border: '1.5px solid #121212', background: '#FFFFFF', fontWeight: 'bold', width: '100%', marginBottom: '12px' }} onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
-                      LANGUE: {lang.toUpperCase()}
-                    </button>
-
-                    <div style={{ display: 'flex', gap: '10px' }}>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
-                        <Linkedin size={15} /> LinkedIn
-                      </a>
-                      <a href="mailto:dafiashalom@gmail.com" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
-                        <Mail size={15} /> Mail
-                      </a>
-                    </div>
-
-                    <button 
-                      className="robin-cta-black-btn" 
-                      style={{ width: '100%', marginTop: '16px', justifyContent: 'center' }}
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        if ((window as any).Calendly) {
-                          (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-                        } else {
-                          window.open('https://calendly.com/dafiashalom/30min', '_blank');
-                        }
-                      }}
-                    >
-                      <span>BOOK A CALL</span>
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
 
             {/* SECTION 1: HERO & POSITIONING */}
             <section className="robin-hero-section scroll-reveal">

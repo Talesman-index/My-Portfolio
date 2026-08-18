@@ -2409,7 +2409,21 @@
   }
 }
 
+.mosby-header-mobile-toggle {
+  display: none;
+}
+
 @media (max-width: 850px) {
+  .mosby-header-nav {
+    display: none !important;
+  }
+
+  .mosby-header-mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+
   .robin-nav-brand {
     display: block;
   }
