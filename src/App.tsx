@@ -634,28 +634,24 @@ const AllProjectsView = ({
             <button 
               className={`robin-nav-pill ${activeFilter === 'all' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('all')}
-              style={{ border: '1.5px solid #FFFFFF' }}
             >
               {lang === 'fr' ? 'TOUS (11)' : 'ALL (11)'}
             </button>
             <button 
               className={`robin-nav-pill ${activeFilter === 'saas' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('saas')}
-              style={{ border: '1.5px solid #FFFFFF' }}
             >
               SAAS &amp; B2B
             </button>
             <button 
               className={`robin-nav-pill ${activeFilter === 'mobile' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('mobile')}
-              style={{ border: '1.5px solid #FFFFFF' }}
             >
               MOBILE UX
             </button>
             <button 
               className={`robin-nav-pill ${activeFilter === 'web' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('web')}
-              style={{ border: '1.5px solid #FFFFFF' }}
             >
               WEB &amp; BRANDING
             </button>

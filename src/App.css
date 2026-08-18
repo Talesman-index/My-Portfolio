@@ -1376,6 +1376,21 @@
   transform: translateY(-2px);
 }
 
+/* High Contrast Pill System for Dark Theme Dossier Views */
+.mosby-dossier-view .robin-nav-pill {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.mosby-dossier-view .robin-nav-pill.is-active {
+  color: #121212;
+  background: var(--mosby-yellow);
+  border: 1.5px solid #121212;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
+}
+
 .robin-nav-contact-btn {
   font-family: var(--font-mono);
   font-size: 0.8rem;
