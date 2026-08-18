@@ -1364,6 +1364,34 @@ export default function App() {
                   <ArrowRight size={16} />
                 </button>
               </div>
+
+              {/* Hand-Drawn Pencil Sketch Scroll Down Indicator */}
+              <div 
+                className="robin-pencil-scroll-container" 
+                onClick={() => {
+                  const elem = document.querySelector('.robin-about-section');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <span className="robin-pencil-scroll-text">
+                  {lang === 'fr' ? 'défiler vers le bas' : 'scroll down'}
+                </span>
+                <svg 
+                  className="robin-pencil-scroll-svg" 
+                  width="30" 
+                  height="46" 
+                  viewBox="0 0 30 46" 
+                  fill="none" 
+                  stroke="#121212" 
+                  strokeWidth="2.2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path d="M15 4 C14.2 14 15.8 24 15 35" strokeDasharray="5 3 2 2" />
+                  <path d="M7 27 C10 32 13 36 15 39 C17 36 20 32 23 27" strokeWidth="2.4" />
+                  <path d="M11 41 C13 43 17 43 19 41" strokeWidth="1.6" strokeOpacity="0.7" />
+                </svg>
+              </div>
             </section>
 
             {/* SECTION 2: ABOUT ("about me!" & "what's up") */}
