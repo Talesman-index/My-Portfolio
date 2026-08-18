@@ -17,12 +17,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .mosby-header-logo-container {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
   cursor: pointer;
   user-select: none;
   transition: transform 0.15s ease, opacity 0.15s ease;
@@ -64,12 +65,16 @@
   font-size: 0.68rem;
   background: var(--mosby-red);
   color: #FFFFFF;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 3px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   font-weight: 700;
   text-transform: uppercase;
   box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .mosby-back-btn {

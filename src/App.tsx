@@ -209,7 +209,7 @@ const CaseStudy = ({
           onClick={() => navigateToHome(setCurrentView)} 
           className="mosby-back-btn"
         >
-          <ArrowLeft size={16} /> <span>← {lang === 'fr' ? 'RETOUR À L\'ACCUEIL DES ARCHIVES' : 'RETURN TO ARCHIVE HOME'}</span>
+          <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR À L\'ACCUEIL DES ARCHIVES' : 'RETURN TO ARCHIVE HOME'}</span>
         </button>
       </div>
 
@@ -415,7 +415,7 @@ const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
           onClick={() => navigateToHome(setCurrentView)} 
           className="mosby-back-btn"
         >
-          <ArrowLeft size={16} /> <span>← RETOUR À L'ACCUEIL DES ARCHIVES</span>
+          <ArrowLeft size={16} /> <span>RETOUR À L'ACCUEIL DES ARCHIVES</span>
         </button>
 
         <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>REGISTRE DES EXPÉRIENCES</h1>
@@ -539,7 +539,7 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
           onClick={() => navigateToHome(setCurrentView)} 
           className="mosby-back-btn"
         >
-          <ArrowLeft size={16} /> <span>← RETOUR À L'ACCUEIL DES ARCHIVES</span>
+          <ArrowLeft size={16} /> <span>RETOUR À L'ACCUEIL DES ARCHIVES</span>
         </button>
 
         <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>CAPABILITIES &amp; SERVICES SPECS</h1>
@@ -616,7 +616,7 @@ const AllProjectsView = ({
           onClick={() => navigateToHome(setCurrentView)} 
           className="mosby-back-btn"
         >
-          <ArrowLeft size={16} /> <span>← RETOUR À L'ACCUEIL DES ARCHIVES</span>
+          <ArrowLeft size={16} /> <span>RETOUR À L'ACCUEIL DES ARCHIVES</span>
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px', paddingBottom: '24px' }}>
