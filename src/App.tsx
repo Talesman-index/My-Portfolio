@@ -651,8 +651,8 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
             <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
               <ExternalLink size={14} /> Behance
             </a>
-            <a href="https://github.com/shalomtalesman" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <ExternalLink size={14} /> GitHub
+            <a href="mailto:dafiashalom@gmail.com" className="mosby-footer-link">
+              <Mail size={14} /> Mail
             </a>
           </div>
         </div>
