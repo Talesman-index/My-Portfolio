@@ -1402,7 +1402,7 @@ export default function App() {
                 <div className="robin-polaroid-card scroll-reveal delay-3" style={{ transform: 'rotate(2.5deg)' }}>
                   <div className="robin-washi-tape" style={{ left: 'auto', right: '20px', background: 'rgba(147, 197, 253, 0.85)' }} />
                   <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Workspace Polaroid 2" />
-                  <div className="robin-polaroid-caption">by @shalomtalesman</div>
+                  <div className="robin-polaroid-caption">by @misterthobis</div>
                 </div>
               </div>
             </section>
