@@ -658,45 +658,47 @@ const AllProjectsView = ({
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '32px', marginTop: '20px' }}>
+        {/* Projects Grid — Wide, Spacious Editorial Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(420px, 1fr))', gap: '40px', marginTop: '36px' }}>
           {filteredProjects.map((proj) => (
             <div 
               key={proj.id}
               className="robin-service-card"
-              style={{ padding: '24px', cursor: 'pointer', background: '#FFFFFF' }}
+              style={{ padding: '36px', cursor: 'pointer', background: '#FFFFFF', borderRadius: '8px', border: '2.5px solid #121212', boxShadow: '8px 8px 0px #121212', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
               onClick={() => setCurrentView(proj.id)}
             >
-              <div style={{ position: 'relative', height: '190px', marginBottom: '18px', borderRadius: '4px', overflow: 'hidden', background: '#121212' }}>
-                <img src={proj.img} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} />
-                <span style={{ position: 'absolute', top: '12px', left: '12px', background: proj.color, color: '#FFFFFF', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 'bold', padding: '4px 10px', borderRadius: '3px', boxShadow: '2px 2px 0px #121212' }}>
-                  {proj.date}
-                </span>
+              <div>
+                <div style={{ position: 'relative', height: '260px', marginBottom: '24px', borderRadius: '6px', overflow: 'hidden', background: '#121212', border: '1.5px solid #121212' }}>
+                  <img src={proj.img} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} />
+                  <span style={{ position: 'absolute', top: '14px', left: '14px', background: proj.color, color: '#FFFFFF', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 'bold', padding: '5px 12px', borderRadius: '4px', boxShadow: '3px 3px 0px #121212' }}>
+                    {proj.date}
+                  </span>
+                </div>
+
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#666', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.04em' }}>
+                  {proj.tag}
+                </div>
+
+                <h3 style={{ fontFamily: 'var(--font-anton)', fontSize: '2.5rem', color: '#121212', margin: '0 0 14px 0', lineHeight: 1.05 }}>
+                  {proj.title}
+                </h3>
+
+                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.08rem', color: '#333', margin: '0 0 22px 0', lineHeight: 1.55 }}>
+                  {proj.desc}
+                </p>
+
+                <ul className="robin-service-deliverables" style={{ paddingLeft: '16px', marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  {proj.deliverables.map((item, idx) => (
+                    <li key={idx} style={{ fontSize: '0.88rem' }}>• {item}</li>
+                  ))}
+                </ul>
               </div>
 
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666', textTransform: 'uppercase', marginBottom: '6px' }}>
-                {proj.tag}
-              </div>
-
-              <h3 style={{ fontFamily: 'var(--font-anton)', fontSize: '2.1rem', color: '#121212', margin: '0 0 10px 0', lineHeight: 1.05 }}>
-                {proj.title}
-              </h3>
-
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.98rem', color: '#333', margin: '0 0 16px 0', lineHeight: 1.45 }}>
-                {proj.desc}
-              </p>
-
-              <ul className="robin-service-deliverables" style={{ paddingLeft: '14px', marginBottom: '20px' }}>
-                {proj.deliverables.map((item, idx) => (
-                  <li key={idx}>• {item}</li>
-                ))}
-              </ul>
-
-              <div className="robin-service-footer">
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#777' }}>DOSSIER #{proj.id.toUpperCase()}</span>
-                <button className="robin-service-cta-btn" style={{ background: '#121212', borderColor: '#121212' }}>
-                  <span>{lang === 'fr' ? 'DÉCOUVRIR' : 'EXPLORE'}</span>
-                  <ArrowRight size={14} />
+              <div className="robin-service-footer" style={{ borderTop: '1.5px dashed #E5E7EB', paddingTop: '20px', marginTop: '12px' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 600, color: '#666' }}>DOSSIER #{proj.id.toUpperCase()}</span>
+                <button className="robin-service-cta-btn" style={{ background: '#121212', borderColor: '#121212', padding: '10px 20px', fontSize: '0.85rem' }}>
+                  <span>{lang === 'fr' ? 'DÉCOUVRIR LE PROJET' : 'EXPLORE CASE STUDY'}</span>
+                  <ArrowRight size={15} />
                 </button>
               </div>
             </div>
