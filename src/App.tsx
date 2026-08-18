@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
+import PageTurnOverlay from './components/PageTurnOverlay';
 
 /* Metal Paperclip SVG Helper */
 const PaperclipSVG = ({ style }: { style?: React.CSSProperties }) => (
@@ -39,6 +40,20 @@ const BinderHoles = () => (
     <div className="mosby-binder-hole" />
     <div className="mosby-binder-hole" />
   </div>
+);
+
+const LangSwitchControl = ({ lang, onToggle, isMobile }: { lang: 'en' | 'fr'; onToggle: () => void; isMobile?: boolean }) => (
+  <button 
+    className="lang-segmented-switch" 
+    onClick={onToggle}
+    type="button"
+    aria-label="Switch Language FR / EN"
+    style={isMobile ? { width: '100%', marginBottom: '12px', justifyContent: 'center' } : undefined}
+  >
+    <span className={`lang-segmented-option ${lang === 'fr' ? 'is-active' : ''}`}>FR</span>
+    <span className="lang-segmented-divider">/</span>
+    <span className={`lang-segmented-option ${lang === 'en' ? 'is-active' : ''}`}>EN</span>
+  </button>
 );
 
 const VALID_PROJECT_IDS: CaseStudyId[] = ['asset-iq', 'ehadj', 'beans', 'sagana', 'vortex', 'sport-advisor', 'truvox', 'tavares', 'the-refuge', 'strategy-arena', 'dolce-riviera'];
@@ -1042,6 +1057,27 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Page Turn Animation States ("Effet Tournement de Page")
+  const [isPageTurning, setIsPageTurning] = useState(false);
+  const [pageTurnDirection, setPageTurnDirection] = useState<'forward' | 'reverse'>('forward');
+  const [pendingView, setPendingView] = useState<any>(null);
+
+  const handleViewSwitch = (targetView: any, forceDirection?: 'forward' | 'reverse') => {
+    if (targetView === currentView && !isPageTurning) return;
+    const isReverse = forceDirection ? forceDirection === 'reverse' : targetView === 'home';
+    setPageTurnDirection(isReverse ? 'reverse' : 'forward');
+    setPendingView(targetView);
+    setIsPageTurning(true);
+  };
+
+  const handleLangSwitch = () => {
+    setPageTurnDirection('forward');
+    setIsPageTurning(true);
+    setTimeout(() => {
+      setLang((prev) => (prev === 'en' ? 'fr' : 'en'));
+    }, 240);
+  };
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     document.documentElement.lang = lang;
@@ -1093,7 +1129,7 @@ export default function App() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const handlePopState = () => setCurrentView(getViewFromHash());
+    const handlePopState = () => handleViewSwitch(getViewFromHash());
     window.addEventListener('popstate', handlePopState);
     window.addEventListener('hashchange', handlePopState);
     return () => {
@@ -1104,10 +1140,25 @@ export default function App() {
 
   return (
     <>
+      {/* 3D Page Turn Overlay Effect ("Effet Tournement de Page") */}
+      <PageTurnOverlay
+        isTurning={isPageTurning}
+        direction={pageTurnDirection}
+        onMidTurn={() => {
+          if (pendingView) {
+            setCurrentView(pendingView);
+          }
+        }}
+        onTurnComplete={() => {
+          setIsPageTurning(false);
+          setPendingView(null);
+        }}
+      />
+
       {/* Header for Detail & Sub-Pages */}
       {currentView !== 'home' && (
         <header className="mosby-header">
-          <div className="mosby-header-logo-container" onClick={() => navigateToHome(setCurrentView)}>
+          <div className="mosby-header-logo-container" onClick={() => handleViewSwitch('home')}>
             <span className="mosby-logo-text">SACCA DAFIA</span>
             <span className="mosby-logo-tag">
               {currentView === 'experiences' ? 'CAREER' : currentView === 'services' ? 'SERVICES' : currentView === 'all-projects' ? 'ALL PROJECTS' : 'CASE STUDY'}
@@ -1116,9 +1167,7 @@ export default function App() {
 
           <div className="mosby-header-nav">
             <span className="mosby-nav-link" onClick={() => setIsAboutModalOpen(true)}>About</span>
-            <button className="mosby-lang-toggle" onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
-              {lang.toUpperCase()}
-            </button>
+            <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
             <button 
               className="robin-nav-contact-btn" 
               style={{ background: 'var(--mosby-yellow)', border: '1.5px solid #121212' }}
@@ -1233,9 +1282,8 @@ export default function App() {
             </div>
 
             <div className="robin-mobile-menu-footer">
-              <button className="robin-nav-pill" style={{ border: '1.5px solid #121212', background: '#FFFFFF', fontWeight: 'bold', width: '100%', marginBottom: '12px' }} onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
-                LANGUE: {lang.toUpperCase()}
-              </button>
+              <LangSwitchControl lang={lang} onToggle={handleLangSwitch} isMobile />
+
 
               <div style={{ display: 'flex', gap: '10px' }}>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
@@ -1267,11 +1315,11 @@ export default function App() {
       )}
 
       {/* Render Active View */}
-      {currentView === 'experiences' && <ExperiencesView setCurrentView={setCurrentView} />}
-      {currentView === 'services' && <ServicesView setCurrentView={setCurrentView} />}
-      {currentView === 'all-projects' && <AllProjectsView setCurrentView={setCurrentView} lang={lang} />}
+      {currentView === 'experiences' && <ExperiencesView setCurrentView={handleViewSwitch} />}
+      {currentView === 'services' && <ServicesView setCurrentView={handleViewSwitch} />}
+      {currentView === 'all-projects' && <AllProjectsView setCurrentView={handleViewSwitch} lang={lang} />}
       {currentView !== 'home' && currentView !== 'experiences' && currentView !== 'services' && currentView !== 'all-projects' && (
-        <CaseStudy id={currentView as CaseStudyId} setCurrentView={setCurrentView} lang={lang} />
+        <CaseStudy id={currentView as CaseStudyId} setCurrentView={handleViewSwitch} lang={lang} />
       )}
 
       {/* Main Robin / Mosby Notebook Paper Portfolio Homepage */}
@@ -1284,14 +1332,14 @@ export default function App() {
             {/* TOP FLOATING NAVIGATION BAR */}
             <nav className="robin-floating-nav">
               {/* Mobile Brand Name */}
-              <div className="robin-nav-brand" onClick={() => setCurrentView('home')}>
+              <div className="robin-nav-brand" onClick={() => handleViewSwitch('home')}>
                 SACCA DAFIA
               </div>
 
               {/* Desktop Nav Items */}
               <div className="robin-nav-desktop-container">
                 <div className="robin-nav-items">
-                  <span className={`robin-nav-pill ${currentView === 'home' ? 'is-active' : ''}`} onClick={() => setCurrentView('home')}>
+                  <span className={`robin-nav-pill ${currentView === 'home' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('home')}>
                     HOME
                   </span>
                   <span className="robin-nav-pill" onClick={() => setIsAboutModalOpen(true)}>
@@ -1309,18 +1357,16 @@ export default function App() {
                   }}>
                     FEATURED WORKS
                   </span>
-                  <span className="robin-nav-pill" onClick={() => setCurrentView('services')}>
+                  <span className="robin-nav-pill" onClick={() => handleViewSwitch('services')}>
                     SERVICES
                   </span>
-                  <span className="robin-nav-pill" onClick={() => setCurrentView('experiences')}>
+                  <span className="robin-nav-pill" onClick={() => handleViewSwitch('experiences')}>
                     CAREER
                   </span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <button className="robin-nav-pill" style={{ border: '1.5px solid #121212', background: '#FFFFFF', fontWeight: 'bold' }} onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}>
-                    {lang.toUpperCase()}
-                  </button>
+                  <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
                   <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '4px 10px' }}>
                     <Linkedin size={15} />
                   </a>
@@ -1372,7 +1418,7 @@ export default function App() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFFFFF" className="selection-cursor-svg">
                       <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
                     </svg>
-                    <span>Sacca (Product Designer)</span>
+                    <span>Talesman (Product Designer)</span>
                   </div>
 
                   {/* Figma Frame Label */}
@@ -1403,19 +1449,6 @@ export default function App() {
                     : "I design software that gets out of your way."}
                 </h1>
                 <img src="/imgs/hero_image.png" alt="Sacca Avatar 2" className="robin-avatar-circle robin-avatar-second" />
-              </div>
-
-              <div>
-                <button className="robin-cta-black-btn" onClick={() => {
-                  if ((window as any).Calendly) {
-                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-                  } else {
-                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
-                  }
-                }}>
-                  <span>{lang === 'fr' ? 'ME CONTACTER' : 'CONTACT ME'}</span>
-                  <ArrowRight size={16} />
-                </button>
               </div>
 
               {/* Hand-Drawn Pencil Sketch Scroll Down Indicator */}
