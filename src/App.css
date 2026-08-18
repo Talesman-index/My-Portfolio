@@ -920,6 +920,19 @@
   flex-wrap: wrap;
 }
 
+@keyframes diagramSpinOnHover {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mosby-diagram-icon-btn svg {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mosby-diagram-icon-btn:hover svg {
+  animation: diagramSpinOnHover 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
 .mosby-diagram-icon-btn {
   position: relative;
   background: rgba(255, 255, 255, 0.04);
