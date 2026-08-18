@@ -427,7 +427,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
     'dolce-riviera': {
       title: "Dolce Riviera",
       subtitle: "Concept de landing page premium pour l'hôtellerie de luxe sur la Riviera",
-      label: "Product Design & UI Design",
+      label: "Interface UI/UX & Product Design",
       color: "#C5A059",
       bgImage: "/imgs/dolce_cover.png",
       context: "Dolce Riviera est un concept de landing page conçu pour une marque de luxe inspirée par l'élégance intemporelle de la Riviera méditerranéenne. L'objectif était de créer une expérience immersive qui met en avant le raffinement, l'exclusivité et l'art de vivre à travers une interface moderne et minimaliste.",
