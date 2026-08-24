@@ -130,7 +130,7 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
                 <img src="/imgs/hero_image.png" alt="Sacca Dafia Executive" className="mosby-about-photo-img" style={{ filter: 'grayscale(100%) contrast(110%)' }} />
                 <div className="mosby-about-caption">
                   <strong>01. EXECUTIVE DOSSIER</strong> <br />
-                  Web &amp; Product Designer (+4 ans exp)
+                  Sacca Dafia <span style={{ opacity: 0.75 }}>· aka Talesman</span> (Web &amp; Product Designer)
                 </div>
               </div>
 
@@ -151,8 +151,8 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
           <div>
             <p className="mosby-about-serif-text">
               {lang === 'fr'
-                ? "En tant que Web Designer & Product Designer, je façonne des produits numériques à la fois beaux, intuitifs et hautement fonctionnels. En complément, ma maîtrise du Vibe Coding me permet de proposer des MVPs rapides et interactifs, offrant ainsi aux clients une meilleure validation terrain et un test utilisateur réel dès les premières phases du projet."
-                : "As a Web Designer & Product Designer, I craft digital products that are elegant, intuitive, and highly functional. As a value-added skill, my Vibe Coding capabilities allow me to quickly deliver interactive MVPs to clients for faster user validation and real-world testing."}
+                ? "En tant que Web Designer & Product Designer (connu sous le pseudo Talesman), je façonne des produits numériques à la fois beaux, intuitifs et hautement fonctionnels. En complément, ma maîtrise du Vibe Coding me permet de proposer des MVPs rapides et interactifs, offrant ainsi aux clients une meilleure validation terrain et un test utilisateur réel dès les premières phases du projet."
+                : "As a Web Designer & Product Designer (known by the pseudonym Talesman), I craft digital products that are elegant, intuitive, and highly functional. As a value-added skill, my Vibe Coding capabilities allow me to quickly deliver interactive MVPs to clients for faster user validation and real-world testing."}
             </p>
 
             <ul className="mosby-about-bullets">
@@ -185,7 +185,9 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
             </p>
 
             <div className="mosby-signature-block">
-              <div className="mosby-signature-text">Sacca Dafia</div>
+              <div className="mosby-signature-text">
+                Sacca Dafia <span style={{ fontSize: '0.62em', opacity: 0.7, fontFamily: 'monospace', fontWeight: 600 }}>(alias Talesman)</span>
+              </div>
               <div className="mosby-signature-sub">Web Designer &amp; Product Designer · Rapid MVP Prototyping</div>
             </div>
           </div>
@@ -956,7 +958,7 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
           <span>0 4 8 16 32 • WEB &amp; PRODUCT DESIGN STRATEGY</span>
         </div>
 
-        <div>© 2026 SACCA DAFIA — ALL RIGHTS RESERVED</div>
+        <div>© 2026 SACCA DAFIA (ALIAS TALESMAN) — ALL RIGHTS RESERVED</div>
       </div>
     </footer>
   );
@@ -1418,7 +1420,7 @@ export default function App() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFFFFF" className="selection-cursor-svg">
                       <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
                     </svg>
-                    <span>Talesman (Product Designer)</span>
+                    <span>Talesman (pseudo · Product Designer)</span>
                   </div>
 
                   {/* Figma Frame Label */}
@@ -1448,7 +1450,7 @@ export default function App() {
                     ? "Je conçois des produits numériques qui s'effacent pour laisser place à l'évidence."
                     : "I design software that gets out of your way."}
                 </h1>
-                <img src="/imgs/hero_image.png" alt="Sacca Avatar 2" className="robin-avatar-circle robin-avatar-second" />
+                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar 2" className="robin-avatar-circle robin-avatar-second" />
               </div>
 
               {/* Hand-Drawn Pencil Sketch Scroll Down Indicator */}
@@ -1490,7 +1492,7 @@ export default function App() {
                 <div className="robin-polaroid-card robin-polaroid-card-left scroll-reveal delay-1">
                   <div className="robin-washi-tape" />
                   <img src="/imgs/hero_image.png" alt="Sacca Dafia Polaroid 1" />
-                  <div className="robin-polaroid-caption">2026 dossier</div>
+                  <div className="robin-polaroid-caption">Sacca Dafia · aka Talesman</div>
                 </div>
 
                 {/* Center Handwritten Body Text */}
