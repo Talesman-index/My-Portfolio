@@ -1447,28 +1447,76 @@ export default function App() {
             </section>
 
             {/* SECTION 2: ABOUT (EXACT REFERENCE DESIGN) */}
-            <section id="about-me" className="v2-about-section scroll-reveal">
-              {/* Background Mosaic Grid of Design Visuals & Case Studies */}
-              <div className="v2-about-mosaic-container" aria-hidden="true">
-                <div className="v2-about-mosaic-card"><img src="/imgs/beans_cover.png" alt="Beans" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/tavares.png" alt="Tavares" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/dolce_cover.png" alt="Dolce Riviera" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/ehadj/cover_Ehadj.jpg" alt="eHadj" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/truvox_cover.png" alt="Truvox" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/sagana.png" alt="Sagana" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/vortex.webp" alt="Vortex Gallery" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/advisor.webp" alt="Sport Advisor" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding Setup" /></div>
-                <div className="v2-about-mosaic-card"><img src="/imgs/refuge.png" alt="The Refuge" /></div>
+            {/* SECTION 2: ABOUT (FULL-WIDTH DYNAMIC SCROLLING SHOWCASE & CONCISE COPY) */}
+            <section id="about-me" className="v2-about-section-fullwidth scroll-reveal">
+              {/* Full-width Dynamic Multi-Column Continuous Scrolling Background */}
+              <div className="v2-about-fullwidth-scroller" aria-hidden="true">
+                {/* Column 1 (Scrolls Up) */}
+                <div className="v2-scroll-column col-up">
+                  <div className="v2-scroller-track">
+                    <div className="v2-scroller-item"><img src="/imgs/beans_cover.png" alt="Beans" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/dolce_cover.png" alt="Dolce Riviera" /></div>
+                    {/* Repeated for seamless loop */}
+                    <div className="v2-scroller-item"><img src="/imgs/beans_cover.png" alt="Beans" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/dolce_cover.png" alt="Dolce Riviera" /></div>
+                  </div>
+                </div>
+
+                {/* Column 2 (Scrolls Down) */}
+                <div className="v2-scroll-column col-down">
+                  <div className="v2-scroller-track">
+                    <div className="v2-scroller-item"><img src="/imgs/ehadj/cover_Ehadj.jpg" alt="eHadj" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/tavares.png" alt="Tavares" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/truvox_cover.png" alt="Truvox" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/sagana.png" alt="Sagana" /></div>
+                    {/* Repeated for seamless loop */}
+                    <div className="v2-scroller-item"><img src="/imgs/ehadj/cover_Ehadj.jpg" alt="eHadj" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/tavares.png" alt="Tavares" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/truvox_cover.png" alt="Truvox" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/sagana.png" alt="Sagana" /></div>
+                  </div>
+                </div>
+
+                {/* Column 3 (Scrolls Up) */}
+                <div className="v2-scroll-column col-up col-slow">
+                  <div className="v2-scroller-track">
+                    <div className="v2-scroller-item"><img src="/imgs/vortex.webp" alt="Vortex Gallery" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/advisor.webp" alt="Sport Advisor" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/refuge.png" alt="The Refuge" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding" /></div>
+                    {/* Repeated for seamless loop */}
+                    <div className="v2-scroller-item"><img src="/imgs/vortex.webp" alt="Vortex Gallery" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/advisor.webp" alt="Sport Advisor" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/refuge.png" alt="The Refuge" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding" /></div>
+                  </div>
+                </div>
+
+                {/* Column 4 (Scrolls Down) */}
+                <div className="v2-scroll-column col-down">
+                  <div className="v2-scroller-track">
+                    <div className="v2-scroller-item"><img src="/imgs/dolce_cover.png" alt="Dolce Riviera" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/beans_cover.png" alt="Beans" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" /></div>
+                    {/* Repeated for seamless loop */}
+                    <div className="v2-scroller-item"><img src="/imgs/dolce_cover.png" alt="Dolce Riviera" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/beans_cover.png" alt="Beans" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" /></div>
+                  </div>
+                </div>
               </div>
 
-              {/* Dark Vignette & Top Spotlight Overlays */}
-              <div className="v2-about-vignette" aria-hidden="true" />
-              <div className="v2-about-spotlight" aria-hidden="true" />
+              {/* Edge-to-edge Dark Vignette & Center Spotlight */}
+              <div className="v2-about-fullwidth-vignette" aria-hidden="true" />
+              <div className="v2-about-fullwidth-spotlight" aria-hidden="true" />
 
-              {/* Center Content Card (Enhanced Glassmorphism & 100% Tailored to Talesman) */}
+              {/* Center Content Card (Concise, Clean & Refined) */}
               <div className="v2-about-content-card">
                 <span className="v2-about-eyebrow">
                   {lang === 'fr' ? 'À PROPOS' : 'ABOUT ME'}
@@ -1477,58 +1525,24 @@ export default function App() {
                   {lang === 'fr' ? 'Bonjour !' : 'Hi There!'}
                 </h2>
                 
-                <p className="v2-about-description">
+                <p className="v2-about-description-concise">
                   {lang === 'fr' ? (
                     <>
-                      Je suis <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), un Product &amp; Web Designer passionné par la simplification des systèmes complexes, avec une expertise approfondie en B2B SaaS et un soin obsessionnel pour les détails. Depuis plus de 4 ans, je façonne des plateformes et interfaces numériques qui marient élégance créative et rigueur d'ingénierie, maîtrisant les principes fondamentaux comme la{' '}
-                      <span className="v2-typo-badge">
-                        <span className="v2-typo-word">Typographie</span>
-                        <span className="v2-typo-script" aria-hidden="true">Typography</span>
-                      </span>, la com{'{'}pos{'}'}ition, et la théorie des{' '}
-                      <span className="v2-rainbow-color">
-                        <span style={{ color: '#38BDF8' }}>c</span>
-                        <span style={{ color: '#F87171' }}>o</span>
-                        <span style={{ color: '#60A5FA' }}>u</span>
-                        <span style={{ color: '#34D399' }}>l</span>
-                        <span style={{ color: '#FBBF24' }}>e</span>
-                        <span style={{ color: '#A78BFA' }}>u</span>
-                        <span style={{ color: '#F472B6' }}>r</span>
-                        <span style={{ color: '#38BDF8' }}>s</span>
-                      </span>, tout en accélérant les livraisons grâce au <strong>Vibe Coding</strong> et aux flux IA modernes.
+                      Je suis <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), Product &amp; Web Designer passionné par la simplification des systèmes complexes. Depuis plus de 4 ans, je façonne des plateformes <strong>B2B SaaS</strong> scalables et des interfaces numériques à fort impact—de l'architecture de <strong>Design Systems</strong> au prototypage rapide en <strong>Vibe Coding</strong>.
                     </>
                   ) : (
                     <>
-                      I'm <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), a Product &amp; Web Designer passionate about making complex systems feel effortless, with deep expertise in B2B SaaS architecture and an obsessive eye for detail. For over 4 years, I've crafted digital software and high-impact web experiences that balance creative distinction with engineering precision, mastering core design principles like{' '}
-                      <span className="v2-typo-badge">
-                        <span className="v2-typo-word">Typography</span>
-                        <span className="v2-typo-script" aria-hidden="true">Typography</span>
-                      </span>, com{'{'}pos{'}'}ition, and{' '}
-                      <span className="v2-rainbow-color">
-                        <span style={{ color: '#38BDF8' }}>c</span>
-                        <span style={{ color: '#F87171' }}>o</span>
-                        <span style={{ color: '#60A5FA' }}>l</span>
-                        <span style={{ color: '#34D399' }}>o</span>
-                        <span style={{ color: '#FBBF24' }}>r</span>
-                      </span>{' '}
-                      theory while accelerating product velocity through <strong>Vibe Coding</strong> and modern AI workflows.
+                      I'm <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), a Product &amp; Web Designer focused on turning complex systems into effortless digital software. For over 4 years, I've crafted high-performing <strong>B2B SaaS</strong> platforms and conversion-driven web experiences—from scalable <strong>Design Systems</strong> to rapid <strong>Vibe Coding</strong>.
                     </>
                   )}
                 </p>
 
-                {/* Talesman Specialty & Credibility Pills */}
-                <div className="v2-about-specialties">
-                  <span className="v2-about-specialty-pill pill-cyan">
-                    <span className="pill-dot" /> 4+ Years Experience
-                  </span>
-                  <span className="v2-about-specialty-pill pill-yellow">
-                    <span className="pill-dot" /> B2B SaaS &amp; Products
-                  </span>
-                  <span className="v2-about-specialty-pill pill-green">
-                    <span className="pill-dot" /> Vibe Coding &amp; Rapid MVP
-                  </span>
-                  <span className="v2-about-specialty-pill pill-purple">
-                    <span className="pill-dot" /> Design Systems &amp; Tokens
-                  </span>
+                {/* Refined Minimalist Badges (Monochrome & Cyan) */}
+                <div className="v2-about-minimal-pills">
+                  <span className="v2-minimal-pill"><span className="pill-dot" /> 4+ Years Experience</span>
+                  <span className="v2-minimal-pill"><span className="pill-dot" /> B2B SaaS &amp; Products</span>
+                  <span className="v2-minimal-pill"><span className="pill-dot" /> Vibe Coding &amp; Prototypes</span>
+                  <span className="v2-minimal-pill"><span className="pill-dot" /> Design Systems</span>
                 </div>
 
                 {/* Sub-actions Footer */}
