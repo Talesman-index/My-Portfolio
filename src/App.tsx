@@ -20,6 +20,8 @@ import { caseStudiesData, CaseStudyId } from './caseStudiesData';
 import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
+import AntigravityLogo from './components/AntigravityLogo';
+
 
 
 const LangSwitchControl = ({ lang, onToggle, isMobile }: { lang: 'en' | 'fr'; onToggle: () => void; isMobile?: boolean }) => (
@@ -716,7 +718,6 @@ const AllProjectsView = ({
 };
 
 /* ─────────────────────────────────────────────
-
    FOOTER SYSTEM (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrentView: any; setIsAboutModalOpen: any; lang: 'en' | 'fr' }) => {
@@ -743,6 +744,8 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
       setDialSpinning(prev => !prev);
       setTooltipText(dialSpinning ? "RADAR DIAL: PAUSED" : "RADAR DIAL: ROTATING");
     } else if (index === 4) {
+      setTooltipText("GOOGLE ANTIGRAVITY: ZERO GRAVITY ENGINE");
+    } else if (index === 5) {
       setTooltipText("SCROLLING TO TOP ↗");
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -853,10 +856,25 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
           )}
         </button>
 
-        {/* Widget 5: Arrow Top-Right Scroll Back ↗ */}
+        {/* Widget 5: Google Antigravity Luminous Arch */}
         <button 
           className={`v2-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
           onClick={() => handleDiagramClick(4)}
+          onMouseEnter={() => setTooltipText("GOOGLE ANTIGRAVITY ARCH")}
+          onMouseLeave={() => setTooltipText(null)}
+          aria-label="Google Antigravity widget"
+          style={{ padding: '6px' }}
+        >
+          <AntigravityLogo size={24} glow={false} />
+          {tooltipText && activeDiagram === 4 && (
+            <span className="v2-diagram-tooltip">{tooltipText}</span>
+          )}
+        </button>
+
+        {/* Widget 6: Arrow Top-Right Scroll Back ↗ */}
+        <button 
+          className={`v2-diagram-icon-btn ${activeDiagram === 5 ? 'is-active' : ''}`}
+          onClick={() => handleDiagramClick(5)}
           onMouseEnter={() => setTooltipText("RETURN TO TOP ↗")}
           onMouseLeave={() => setTooltipText(null)}
           aria-label="Scroll to top widget"
@@ -867,13 +885,13 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
             viewBox="0 0 40 40" 
             fill="none" 
             stroke="currentColor" 
-            strokeWidth="2.2"
-            strokeLinecap="round"
+            strokeWidth="2.2" 
+            strokeLinecap="round" 
             strokeLinejoin="round"
           >
             <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
           </svg>
-          {tooltipText && activeDiagram === 4 && (
+          {tooltipText && activeDiagram === 5 && (
             <span className="v2-diagram-tooltip">{tooltipText}</span>
           )}
         </button>
@@ -1166,6 +1184,9 @@ export default function App() {
               className="v2-nav-avatar" 
             />
             <span className="v2-nav-name">Talesman</span>
+            <div className="v2-nav-antigravity-badge" title="Built with Google Antigravity">
+              <AntigravityLogo size={18} glow={false} />
+            </div>
           </div>
 
           <div className="v2-nav-links">
@@ -1234,27 +1255,24 @@ export default function App() {
                 </span>
                 <span 
                   className="robin-mobile-nav-link" 
-                  onClick={() => { 
+                  onClick={() => { handleViewSwitch('all-projects'); setIsMobileMenuOpen(false); }}
+                >
+                  PROJECTS
+                </span>
+                <span 
+                  className="robin-mobile-nav-link" 
+                  onClick={() => {
                     setIsMobileMenuOpen(false);
                     const elem = document.getElementById('about-me');
                     if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                    else setIsAboutModalOpen(true);
                   }}
                 >
                   ABOUT
                 </span>
                 <span 
                   className="robin-mobile-nav-link" 
-                  onClick={() => { 
-                    setIsMobileMenuOpen(false);
-                    const elem = document.getElementById('product-design');
-                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  PROJECTS
-                </span>
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => { 
+                  onClick={() => {
                     setIsMobileMenuOpen(false);
                     const elem = document.getElementById('services');
                     if (elem) elem.scrollIntoView({ behavior: 'smooth' });
@@ -1331,6 +1349,9 @@ export default function App() {
                   className="v2-nav-avatar" 
                 />
                 <span className="v2-nav-name">Talesman</span>
+                <div className="v2-nav-antigravity-badge" title="Built with Google Antigravity">
+                  <AntigravityLogo size={18} glow={false} />
+                </div>
               </div>
 
               {/* Desktop Nav Items */}
@@ -1394,6 +1415,12 @@ export default function App() {
             <section className="v2-hero-section">
               {/* Radial Ambient Glow Background Light */}
               <div className="v2-hero-ambient-glow" aria-hidden="true" />
+
+              {/* Antigravity Hero Pill Badge */}
+              <div className="v2-hero-antigravity-pill">
+                <AntigravityLogo size={20} glow />
+                <span>{lang === 'fr' ? 'DESIGN SYSTEM & IA' : 'ANTIGRAVITY DESIGN SYSTEM'}</span>
+              </div>
 
               {/* Eyebrow Tagline */}
               <div className="v2-hero-eyebrow">
