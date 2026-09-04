@@ -1218,69 +1218,46 @@ export default function App() {
               <div className="robin-mobile-menu-links">
                 <span 
                   className="robin-mobile-nav-link" 
-                  onClick={() => { setCurrentView('home'); setIsMobileMenuOpen(false); }}
+                  onClick={() => { handleViewSwitch('home'); setIsMobileMenuOpen(false); }}
                 >
                   HOME
                 </span>
                 <span 
                   className="robin-mobile-nav-link" 
-                  onClick={() => { setIsAboutModalOpen(true); setIsMobileMenuOpen(false); }}
+                  onClick={() => { 
+                    setIsMobileMenuOpen(false);
+                    const elem = document.getElementById('about-me');
+                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   ABOUT
                 </span>
                 <span 
                   className="robin-mobile-nav-link" 
-                  onClick={() => { setCurrentView('all-projects'); setIsMobileMenuOpen(false); }}
+                  onClick={() => { 
+                    setIsMobileMenuOpen(false);
+                    const elem = document.getElementById('product-design');
+                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
-                  ALL PROJECTS
+                  PROJECTS
                 </span>
                 <span 
                   className="robin-mobile-nav-link" 
                   onClick={() => { 
                     setIsMobileMenuOpen(false);
-                    if (currentView !== 'home') {
-                      setCurrentView('home');
-                      setTimeout(() => {
-                        const elem = document.getElementById('products-saas');
-                        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                      }, 100);
-                    } else {
-                      const elem = document.getElementById('products-saas');
-                      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    const elem = document.getElementById('services');
+                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                    else handleViewSwitch('services');
                   }}
-                >
-                  PRODUCTS &amp; SAAS
-                </span>
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => { 
-                    setIsMobileMenuOpen(false);
-                    if (currentView !== 'home') {
-                      setCurrentView('home');
-                      setTimeout(() => {
-                        const elem = document.getElementById('featured-works');
-                        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                      }, 100);
-                    } else {
-                      const elem = document.getElementById('featured-works');
-                      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  FEATURED WORKS
-                </span>
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => { setCurrentView('services'); setIsMobileMenuOpen(false); }}
                 >
                   SERVICES
                 </span>
                 <span 
                   className="robin-mobile-nav-link" 
-                  onClick={() => { setCurrentView('experiences'); setIsMobileMenuOpen(false); }}
+                  onClick={() => { handleViewSwitch('experiences'); setIsMobileMenuOpen(false); }}
                 >
-                  CAREER
+                  BLOG &amp; CAREER
                 </span>
               </div>
             </div>
@@ -1362,19 +1339,7 @@ export default function App() {
                   const elem = document.getElementById('product-design');
                   if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                 }}>
-                  Product Design
-                </span>
-                <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('uiux-design');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  UI/UX Design
-                </span>
-                <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('webdesign');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  Websites
+                  Projects
                 </span>
                 <span className="v2-nav-link" onClick={() => {
                   const elem = document.getElementById('services');
