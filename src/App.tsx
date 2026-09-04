@@ -1678,6 +1678,276 @@ export default function App() {
               </div>
             </section>
 
+            {/* SECTION: WEBSITE DESIGN & TOOLS BENTO GRID (EXACT REFERENCE DESIGN) */}
+            <section id="webdesign" className="v2-webdesign-section scroll-reveal">
+              {/* Violet Atmospheric Glow */}
+              <div className="v2-webdesign-glow" aria-hidden="true" />
+
+              {/* Section Header */}
+              <div className="v2-webdesign-header">
+                <span className="v2-webdesign-eyebrow">
+                  {lang === 'fr' ? 'Conception Web & Sites' : 'Website Design'}
+                </span>
+                <h2 className="v2-webdesign-title">
+                  {lang === 'fr' ? 'Impressionner, Engager et Performer.' : 'Impress, Engage, and Perform.'}
+                </h2>
+                <p className="v2-webdesign-subtitle">
+                  {lang === 'fr'
+                    ? "Je conçois des sites web réactifs et des expériences numériques immersives avec des technologies modernes comme React, Antigravity, Figma, Next.js et TypeScript—idéals pour les marques, le SaaS et le e-commerce."
+                    : "I design responsive websites and high-impact digital experiences using modern frameworks and tools like React, Antigravity, Figma, Next.js, and TypeScript—built for brand impact and conversion."}
+                </p>
+              </div>
+
+              {/* Sub-header Bar */}
+              <div className="v2-webdesign-subbar">
+                <h3 className="v2-webdesign-subbar-title">
+                  {lang === 'fr' ? 'Sites Web Phares' : 'Featured Websites'}
+                </h3>
+                <button 
+                  className="v2-webdesign-all-btn"
+                  onClick={() => handleViewSwitch('all-projects')}
+                >
+                  <span>{lang === 'fr' ? 'Tous les sites' : 'All Sites'}</span>
+                  <ArrowRight size={15} />
+                </button>
+              </div>
+
+              {/* 4-Card Website Showcase Row */}
+              <div className="v2-webdesign-showcase-grid">
+                {/* SITE 01: STRATEGY ARENA */}
+                <div className="v2-website-card" onClick={() => handleViewSwitch('strategy-arena')}>
+                  <div className="v2-website-card-meta">
+                    <span className="v2-website-year">2026</span>
+                    <h4 className="v2-website-name">Strategy Arena</h4>
+                  </div>
+                  <div className="v2-website-preview">
+                    <img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" />
+                  </div>
+                  <div className="v2-website-card-footer">
+                    <span className="v2-website-category">Corporate / Consulting</span>
+                    <a 
+                      href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="v2-website-live-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span>Live Site</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
+                </div>
+
+                {/* SITE 02: DOLCE RIVIERA */}
+                <div className="v2-website-card" onClick={() => handleViewSwitch('dolce-riviera')}>
+                  <div className="v2-website-card-meta">
+                    <span className="v2-website-year">2025</span>
+                    <h4 className="v2-website-name">Dolce Riviera</h4>
+                  </div>
+                  <div className="v2-website-preview">
+                    <img src="/imgs/dolce_cover.png" alt="Dolce Riviera" />
+                  </div>
+                  <div className="v2-website-card-footer">
+                    <span className="v2-website-category">Luxury Hospitality</span>
+                    <a 
+                      href="https://talesmanwebcraft.vercel.app/#dolce-riviera" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="v2-website-live-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span>Live Site</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
+                </div>
+
+                {/* SITE 03: SAGANA AGENCY */}
+                <div className="v2-website-card" onClick={() => handleViewSwitch('sagana')}>
+                  <div className="v2-website-card-meta">
+                    <span className="v2-website-year">2025</span>
+                    <h4 className="v2-website-name">Sagana Agency</h4>
+                  </div>
+                  <div className="v2-website-preview">
+                    <img src="/imgs/sagana.png" alt="Sagana Agency" />
+                  </div>
+                  <div className="v2-website-card-footer">
+                    <span className="v2-website-category">Advisory &amp; Branding</span>
+                    <a 
+                      href="https://www.sagana-agency.com/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="v2-website-live-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span>Live Site</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
+                </div>
+
+                {/* SITE 04: TAVARES & VISUALS */}
+                <div className="v2-website-card" onClick={() => handleViewSwitch('tavares')}>
+                  <div className="v2-website-card-meta">
+                    <span className="v2-website-year">2025</span>
+                    <h4 className="v2-website-name">Tavares &amp; Visuals</h4>
+                  </div>
+                  <div className="v2-website-preview">
+                    <img src="/imgs/tavares.png" alt="Tavares" />
+                  </div>
+                  <div className="v2-website-card-footer">
+                    <span className="v2-website-category">Creative Art Direction</span>
+                    <a 
+                      href="https://portfolio-tavares.vercel.app/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="v2-website-live-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span>Live Site</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bento Grid: Tools + Collaborate + Navigation */}
+              <div className="v2-bento-grid">
+                {/* BENTO BLOCK 1: TOOLS 2x4 GRID (REACT, ANTIGRAVITY, FIGMA, ETC) */}
+                <div className="v2-bento-card v2-bento-tools">
+                  {/* Floating Vibe Coding Sticker */}
+                  <div className="v2-bento-sticker">
+                    <span>VIBE CODING ✦</span>
+                  </div>
+
+                  <div className="v2-tools-grid">
+                    {/* Tool 1: React */}
+                    <div className="v2-tool-item" title="React.js">
+                      <svg viewBox="-11.5 -10.23174 23 20.46348" width="34" height="34">
+                        <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
+                        <g stroke="#61DAFB" strokeWidth="1" fill="none">
+                          <ellipse rx="11" ry="4.2"/>
+                          <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+                          <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+                        </g>
+                      </svg>
+                      <span className="v2-tool-label">React</span>
+                    </div>
+
+                    {/* Tool 2: Antigravity */}
+                    <div className="v2-tool-item" title="Antigravity">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#A855F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                      </svg>
+                      <span className="v2-tool-label">Antigravity</span>
+                    </div>
+
+                    {/* Tool 3: Figma */}
+                    <div className="v2-tool-item" title="Figma">
+                      <svg viewBox="0 0 38 57" width="24" height="34" fill="none">
+                        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+                      </svg>
+                      <span className="v2-tool-label">Figma</span>
+                    </div>
+
+                    {/* Tool 4: TypeScript */}
+                    <div className="v2-tool-item" title="TypeScript">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#3178C6">
+                        <rect width="24" height="24" rx="4" fill="#3178C6" />
+                        <path d="M11.5 11.5H8.5V20H6.5V11.5H3.5V9.5H11.5V11.5ZM19.5 13.2C19.5 12.3 18.8 11.6 17.5 11.3L16.2 11C15.2 10.8 14.8 10.4 14.8 9.8C14.8 9.1 15.4 8.6 16.3 8.6C17.3 8.6 17.9 9.1 18 9.9H20C19.9 8 18.4 6.8 16.3 6.8C14.2 6.8 12.7 8 12.7 9.9C12.7 11.6 13.7 12.4 15.2 12.7L16.5 13C17.6 13.2 18 13.7 18 14.3C18 15.1 17.3 15.6 16.2 15.6C15.1 15.6 14.3 15 14.2 14H12.1C12.2 16.1 13.9 17.4 16.2 17.4C18.5 17.4 20.1 16.1 20.1 14.2L19.5 13.2Z" fill="#FFFFFF"/>
+                      </svg>
+                      <span className="v2-tool-label">TypeScript</span>
+                    </div>
+
+                    {/* Tool 5: Next.js */}
+                    <div className="v2-tool-item" title="Next.js">
+                      <svg viewBox="0 0 180 180" width="32" height="32" fill="none">
+                        <circle cx="90" cy="90" r="88" fill="#000" stroke="#FFF" strokeWidth="6" />
+                        <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.16 149.508 157.52Z" fill="white" />
+                        <rect x="115" y="54" width="12" height="72" fill="white" />
+                      </svg>
+                      <span className="v2-tool-label">Next.js</span>
+                    </div>
+
+                    {/* Tool 6: Tailwind CSS */}
+                    <div className="v2-tool-item" title="Tailwind CSS">
+                      <svg viewBox="0 0 24 24" width="34" height="34" fill="#38BDF8">
+                        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/>
+                      </svg>
+                      <span className="v2-tool-label">Tailwind</span>
+                    </div>
+
+                    {/* Tool 7: Vite */}
+                    <div className="v2-tool-item" title="Vite">
+                      <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
+                        <path d="M29.5 5.5L16.5 28.5L3 5.5L16.5 12.5L29.5 5.5Z" fill="#BD34FE" stroke="#747BFF" strokeWidth="1.2"/>
+                        <path d="M17.5 3L11.5 16H16.5L14.5 25L22.5 13H17.5L19.5 3H17.5Z" fill="#FFD026"/>
+                      </svg>
+                      <span className="v2-tool-label">Vite</span>
+                    </div>
+
+                    {/* Tool 8: Framer */}
+                    <div className="v2-tool-item" title="Framer Motion">
+                      <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF">
+                        <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/>
+                      </svg>
+                      <span className="v2-tool-label">Framer</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* BENTO BLOCK 2: COLLABORATE */}
+                <div className="v2-bento-card v2-bento-collab">
+                  <div className="v2-bento-collab-text">
+                    <h4>Collaborate</h4>
+                    <p>
+                      {lang === 'fr' 
+                        ? "Concevoir des espaces où les idées se rencontrent et où la collaboration s'épanouit." 
+                        : "Designing spaces where ideas meet and collaboration thrives."}
+                    </p>
+                  </div>
+
+                  {/* Designer Pointer Cursor Badge */}
+                  <div className="v2-bento-collab-visual">
+                    <div className="v2-collab-cursor-pill">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#A855F7" className="v2-cursor-arrow">
+                        <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
+                      </svg>
+                      <span className="v2-cursor-badge-tag">Talesman</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* BENTO BLOCK 3: NAVIGATION */}
+                <div className="v2-bento-card v2-bento-nav">
+                  <div className="v2-bento-nav-text">
+                    <h4>Navigation</h4>
+                    <p>
+                      {lang === 'fr'
+                        ? "Structurez visuellement vos pages et reliez-les en quelques clics."
+                        : "Visually structure your pages and link to them with a few clicks."}
+                    </p>
+                  </div>
+
+                  {/* Mockup Drawer Card Preview */}
+                  <div className="v2-bento-nav-drawer-mockup">
+                    <div className="v2-nav-mockup-header">
+                      <span className="v2-nav-mockup-close">✕</span>
+                    </div>
+                    <div className="v2-nav-mockup-links">
+                      <span className="is-active">Home</span>
+                      <span>About Me</span>
+                      <span>Portfolio</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             {/* SECTION 3: PRODUCTS & B2B SAAS (ASSET IQ, EHADJ, BEANS) */}
             <section id="products-saas" className="robin-featured-section scroll-reveal">
               <h2 className="robin-pixel-title">PRODUCTS &amp; B2B SAAS</h2>
