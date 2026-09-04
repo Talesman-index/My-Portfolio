@@ -1802,8 +1802,8 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* SITE 02: DOLCE RIVIERA */}
-                <div className="v2-website-card-large" onClick={() => handleViewSwitch('dolce-riviera')}>
+                {/* SITE 02: TRUVOX STUDIO */}
+                <div className="v2-website-card-large" onClick={() => handleViewSwitch('truvox')}>
                   <div className="v2-browser-mockup-bar">
                     <div className="v2-browser-dots">
                       <span className="dot dot-red" />
@@ -1811,13 +1811,13 @@ export default function App() {
                       <span className="dot dot-green" />
                     </div>
                     <div className="v2-browser-url-pill">
-                      <span className="v2-url-lock">🔒</span> dolce-riviera.luxury
+                      <span className="v2-url-lock">🔒</span> truvox.studio
                     </div>
                     <span className="v2-browser-year-badge">2025</span>
                   </div>
 
                   <div className="v2-website-large-preview">
-                    <img src="/imgs/dolce_cover.png" alt="Dolce Riviera" />
+                    <img src="/imgs/truvox_cover.png" alt="Truvox Studio" />
                     <div className="v2-preview-overlay">
                       <span className="v2-overlay-badge">
                         {lang === 'fr' ? 'Explorer le projet' : 'Explore Case'}
@@ -1828,11 +1828,11 @@ export default function App() {
                   <div className="v2-website-card-large-info">
                     <div className="v2-card-large-top">
                       <div>
-                        <span className="v2-website-category-tag">Luxury Hospitality</span>
-                        <h4 className="v2-website-large-name">Dolce Riviera</h4>
+                        <span className="v2-website-category-tag">Creative Production &amp; Studio</span>
+                        <h4 className="v2-website-large-name">Truvox Studio</h4>
                       </div>
                       <a 
-                        href="https://talesmanwebcraft.vercel.app/#dolce-riviera" 
+                        href="https://www.truvox.studio/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="v2-website-large-live-btn"
@@ -1844,14 +1844,14 @@ export default function App() {
                     </div>
                     <p className="v2-website-large-desc">
                       {lang === 'fr'
-                        ? "Expérience digitale immersive et luxueuse pour un resort exclusif sur la Côte d'Azur."
-                        : "High-end immersive digital experience crafted for an exclusive luxury resort on the French Riviera."}
+                        ? "Site vitrine immersif pour un studio créatif et maison de production audiovisuelle internationale."
+                        : "Immersive showcase website designed for an international creative studio and media production house."}
                     </p>
                     <div className="v2-website-tech-tags">
+                      <span>React</span>
                       <span>Next.js</span>
-                      <span>Figma Design</span>
-                      <span>Framer Motion</span>
                       <span>Art Direction</span>
+                      <span>GSAP Motion</span>
                     </div>
                   </div>
                 </div>
@@ -2300,7 +2300,7 @@ export default function App() {
                     <img src="/imgs/dolce_cover.png" alt="Dolce Riviera" />
                     <span className="v2-project-year-badge">2025</span>
                     <div className="v2-preview-glass-tag">
-                      <span>{lang === 'fr' ? 'Hôtellerie de Luxe & Vitrine' : 'Luxury Hospitality & Showcase'}</span>
+                      <span>{lang === 'fr' ? 'Interface & Expérience Client' : 'Digital Interface & Guest UI'}</span>
                     </div>
                   </div>
                   <div className="v2-card-content-block">
@@ -2313,18 +2313,18 @@ export default function App() {
                     </div>
                     <p className="v2-project-summary">
                       {lang === 'fr'
-                        ? "Expérience digitale haut de gamme pour un resort exclusif sur la Côte d'Azur, alliant storytelling et raffinement."
-                        : "High-end luxury digital showcase designed for a French Riviera resort, merging storytelling with elegance."}
+                        ? "Interface numérique interactive et expérience de réservation immersive pour un resort exclusif sur la Côte d'Azur."
+                        : "Interactive digital guest interface and luxury reservation experience designed for an exclusive French Riviera resort."}
                     </p>
                     <div className="v2-project-metrics-pill">
                       <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Direction Artistique & Micro-Animations 60fps' : 'Art Direction & 60fps Micro-Animations'}</span>
+                      <span>{lang === 'fr' ? 'Interface Interactive & Micro-Animations 60fps' : 'Interactive UI & 60fps Micro-Animations'}</span>
                     </div>
                     <div className="v2-project-tags-row">
-                      <span>Luxury UI</span>
+                      <span>Interface UI/UX</span>
+                      <span>Système Interactif</span>
+                      <span>Figma Tokens</span>
                       <span>Next.js</span>
-                      <span>Framer Motion</span>
-                      <span>Art Direction</span>
                     </div>
                   </div>
                 </div>
