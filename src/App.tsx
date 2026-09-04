@@ -2681,7 +2681,7 @@ export default function App() {
                       className="v2-graphic-carrousel-card"
                       onClick={() => setSelectedGraphic({
                         src: '/imgs/graphics/carrousels/c1/1.png',
-                        title: 'Carrousel 01 — Stratégie de Marque & Contenu',
+                        title: 'Strategy Arena — "Pourquoi une stratégie est le premier investissement"',
                         category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
                         slides: [
                           '/imgs/graphics/carrousels/c1/1.png',
@@ -2708,10 +2708,10 @@ export default function App() {
                       </div>
                       <div className="v2-graphic-carrousel-info">
                         <div className="v2-graphic-carrousel-meta">
-                          <span className="v2-graphic-carrousel-tag">Brand Strategy</span>
+                          <span className="v2-graphic-carrousel-tag">Strategy Arena</span>
                           <span className="v2-graphic-carrousel-badge">7 Slides</span>
                         </div>
-                        <div className="v2-graphic-carrousel-title">Carrousel 01 — Stratégie de Marque</div>
+                        <div className="v2-graphic-carrousel-title">Pourquoi une stratégie est le 1er investissement</div>
                         <div className="v2-graphic-carrousel-cta">
                           <span>{lang === 'fr' ? 'Feuilleter le carrousel' : 'Browse carousel'}</span>
                           <ArrowRight size={13} />
@@ -2724,7 +2724,7 @@ export default function App() {
                       className="v2-graphic-carrousel-card"
                       onClick={() => setSelectedGraphic({
                         src: '/imgs/graphics/carrousels/c2/cover.png',
-                        title: 'Carrousel 02 — Identité Visuelle & Direction Graphique',
+                        title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable, il y a une stratégie"',
                         category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
                         slides: [
                           '/imgs/graphics/carrousels/c2/cover.png',
@@ -2752,10 +2752,10 @@ export default function App() {
                       </div>
                       <div className="v2-graphic-carrousel-info">
                         <div className="v2-graphic-carrousel-meta">
-                          <span className="v2-graphic-carrousel-tag">Design System</span>
+                          <span className="v2-graphic-carrousel-tag">Business &amp; Growth</span>
                           <span className="v2-graphic-carrousel-badge">8 Slides</span>
                         </div>
-                        <div className="v2-graphic-carrousel-title">Carrousel 02 — Identité Visuelle</div>
+                        <div className="v2-graphic-carrousel-title">Entre idée brillante &amp; entreprise rentable</div>
                         <div className="v2-graphic-carrousel-cta">
                           <span>{lang === 'fr' ? 'Feuilleter le carrousel' : 'Browse carousel'}</span>
                           <ArrowRight size={13} />
@@ -2768,7 +2768,7 @@ export default function App() {
                       className="v2-graphic-carrousel-card"
                       onClick={() => setSelectedGraphic({
                         src: '/imgs/graphics/carrousels/c3/1.png',
-                        title: 'Carrousel 03 — Guide & Engagement Social Media',
+                        title: 'Strategy Arena — "Votre client n\'achète pas votre produit"',
                         category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
                         slides: [
                           '/imgs/graphics/carrousels/c3/1.png',
@@ -2795,10 +2795,10 @@ export default function App() {
                       </div>
                       <div className="v2-graphic-carrousel-info">
                         <div className="v2-graphic-carrousel-meta">
-                          <span className="v2-graphic-carrousel-tag">Social Growth</span>
+                          <span className="v2-graphic-carrousel-tag">Psychologie &amp; Vente</span>
                           <span className="v2-graphic-carrousel-badge">7 Slides</span>
                         </div>
-                        <div className="v2-graphic-carrousel-title">Carrousel 03 — Guide & Engagement</div>
+                        <div className="v2-graphic-carrousel-title">Votre client n'achète pas votre produit</div>
                         <div className="v2-graphic-carrousel-cta">
                           <span>{lang === 'fr' ? 'Feuilleter le carrousel' : 'Browse carousel'}</span>
                           <ArrowRight size={13} />
