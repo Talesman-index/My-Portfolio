@@ -1365,7 +1365,11 @@ export default function App() {
                 }}>
                   Designs
                 </span>
-                <span className="v2-nav-link" onClick={() => handleViewSwitch('services')}>
+                <span className="v2-nav-link" onClick={() => {
+                  const elem = document.getElementById('services');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                  else handleViewSwitch('services');
+                }}>
                   Services
                 </span>
                 <span className="v2-nav-link" onClick={() => handleViewSwitch('experiences')}>
@@ -1539,6 +1543,138 @@ export default function App() {
                     </button>
                   </div>
                 </div>
+              </div>
+            </section>
+
+            {/* SECTION: SERVICES & CAPABILITIES (EXACT DARK GLASS AESTHETIC) */}
+            <section id="services" className="v2-services-section scroll-reveal">
+              {/* Atmospheric background glow */}
+              <div className="v2-services-glow" aria-hidden="true" />
+
+              <div className="v2-services-header">
+                <span className="v2-services-eyebrow">
+                  {lang === 'fr' ? 'Mes Services' : 'Services & Solutions'}
+                </span>
+                <h2 className="v2-services-title">
+                  {lang === 'fr' ? 'Expertises & Savoir-Faire' : 'Craft & Capabilities'}
+                </h2>
+                <p className="v2-services-subtitle">
+                  {lang === 'fr'
+                    ? "Conception de bout en bout et prototypage haute vitesse pour fondateurs SaaS exigeants et marques ambitieuses."
+                    : "End-to-end digital craft and rapid functional prototyping for ambitious SaaS founders and forward-thinking brands."}
+                </p>
+              </div>
+
+              {/* Services Cards Grid */}
+              <div className="v2-services-grid">
+                {/* CARD 01: SAAS & PRODUCT DESIGN */}
+                <div className="v2-service-card card-glow-cyan">
+                  <div className="v2-service-card-top">
+                    <span className="v2-service-num">01</span>
+                    <span className="v2-service-badge badge-cyan">SaaS &amp; Product</span>
+                  </div>
+                  <h3 className="v2-service-card-title">
+                    {lang === 'fr' ? 'UI/UX & Design Produit (B2B SaaS)' : 'UI/UX & Product Design (B2B SaaS)'}
+                  </h3>
+                  <p className="v2-service-card-desc">
+                    {lang === 'fr'
+                      ? "Architecture de l'information complexe, tunnels d'activation sans friction, tableaux de bord de télémétrie et design systems Figma prêts pour l'ingénierie."
+                      : "Complex information architecture, frictionless onboarding funnels, telemetry dashboards, and scalable Figma design systems ready for engineering."}
+                  </p>
+                  <div className="v2-service-tags">
+                    <span className="v2-service-tag">Figma Tokens</span>
+                    <span className="v2-service-tag">User Flows</span>
+                    <span className="v2-service-tag">PRD Specs</span>
+                    <span className="v2-service-tag">Data Viz</span>
+                  </div>
+                </div>
+
+                {/* CARD 02: ART DIRECTION & WEB DESIGN */}
+                <div className="v2-service-card card-glow-yellow">
+                  <div className="v2-service-card-top">
+                    <span className="v2-service-num">02</span>
+                    <span className="v2-service-badge badge-yellow">Web Craft</span>
+                  </div>
+                  <h3 className="v2-service-card-title">
+                    {lang === 'fr' ? 'Direction Artistique & Web Design' : 'Art Direction & Web Design'}
+                  </h3>
+                  <p className="v2-service-card-desc">
+                    {lang === 'fr'
+                      ? "Vitrines de marque immersives, typographie éditoriale sur mesure, animations de storytelling fluides et interfaces e-commerce à fort taux de conversion."
+                      : "Immersive brand showcase websites, custom editorial typography, fluid storytelling animations, and conversion-focused digital experiences."}
+                  </p>
+                  <div className="v2-service-tags">
+                    <span className="v2-service-tag">Art Direction</span>
+                    <span className="v2-service-tag">Motion Design</span>
+                    <span className="v2-service-tag">CRO Funnels</span>
+                    <span className="v2-service-tag">Responsive UI</span>
+                  </div>
+                </div>
+
+                {/* CARD 03: VIBE CODING & RAPID MVP */}
+                <div className="v2-service-card card-glow-green">
+                  <div className="v2-service-card-top">
+                    <span className="v2-service-num">03</span>
+                    <span className="v2-service-badge badge-green">Rapid MVP</span>
+                  </div>
+                  <h3 className="v2-service-card-title">
+                    {lang === 'fr' ? 'Vibe Coding & Prototypage Rapide' : 'Vibe Coding & Rapid MVP Prototyping'}
+                  </h3>
+                  <p className="v2-service-card-desc">
+                    {lang === 'fr'
+                      ? "Prototypage fonctionnel ultra-rapide (React, TypeScript, Vite/Next) pour tester concrètement vos idées, valider l'UX auprès d'utilisateurs réels et convaincre vos investisseurs."
+                      : "Ultra-fast functional software prototyping (React, TypeScript, Next/Vite) to validate UX with real users, pitch investors, and bridge the gap between design and production."}
+                  </p>
+                  <div className="v2-service-tags">
+                    <span className="v2-service-tag">React / TypeScript</span>
+                    <span className="v2-service-tag">Live Prototypes</span>
+                    <span className="v2-service-tag">Fast Iteration</span>
+                    <span className="v2-service-tag">Production-Ready</span>
+                  </div>
+                </div>
+
+                {/* CARD 04: DESIGN SYSTEMS & DEV HANDOFF */}
+                <div className="v2-service-card card-glow-purple">
+                  <div className="v2-service-card-top">
+                    <span className="v2-service-num">04</span>
+                    <span className="v2-service-badge badge-purple">Systems &amp; Dev</span>
+                  </div>
+                  <h3 className="v2-service-card-title">
+                    {lang === 'fr' ? 'Design Systems & Handoff Ingénieur' : 'Design Systems & Engineering Hand-off'}
+                  </h3>
+                  <p className="v2-service-card-desc">
+                    {lang === 'fr'
+                      ? "Bibliothèques de composants UI réutilisables, gouvernance de tokens, accessibilité WCAG et alignement designer-développeur pour éliminer toute friction d'intégration."
+                      : "Reusable UI component libraries, design token governance, WCAG accessibility, and airtight designer-developer alignment to eliminate hand-off friction."}
+                  </p>
+                  <div className="v2-service-tags">
+                    <span className="v2-service-tag">Design Tokens</span>
+                    <span className="v2-service-tag">Accessibility</span>
+                    <span className="v2-service-tag">Storybook / UI Kits</span>
+                    <span className="v2-service-tag">Dev Handoff</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Call to Action Card */}
+              <div className="v2-services-cta-banner">
+                <div className="v2-services-cta-text">
+                  <h4>{lang === 'fr' ? 'Un projet ambitieux à concevoir ?' : 'Have an ambitious project in mind?'}</h4>
+                  <p>{lang === 'fr' ? 'Discutons ensemble de vos défis produit et créatifs.' : "Let's discuss how we can turn your vision into high-impact software."}</p>
+                </div>
+                <button 
+                  className="v2-services-cta-btn"
+                  onClick={() => {
+                    if ((window as any).Calendly) {
+                      (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                    } else {
+                      window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                    }
+                  }}
+                >
+                  <span>{lang === 'fr' ? 'Réserver un appel' : 'Book a 30-min Call'}</span>
+                  <ArrowRight size={16} />
+                </button>
               </div>
             </section>
 
