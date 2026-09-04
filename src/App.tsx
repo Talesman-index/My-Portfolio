@@ -1347,24 +1347,34 @@ export default function App() {
               </div>
 
               {/* Desktop Nav Items */}
+              {/* Center Menu Links with Smooth Scrolling to Sections */}
               <div className="v2-nav-links">
                 <span className={`v2-nav-link ${currentView === 'home' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('home')}>
                   Home
                 </span>
-                <span className="v2-nav-link" onClick={() => setIsAboutModalOpen(true)}>
-                  About Me
-                </span>
                 <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('featured-works');
+                  const elem = document.getElementById('about-me');
                   if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                 }}>
-                  Portfolio
+                  About
                 </span>
                 <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('products-saas');
+                  const elem = document.getElementById('product-design');
                   if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                 }}>
-                  Designs
+                  Product Design
+                </span>
+                <span className="v2-nav-link" onClick={() => {
+                  const elem = document.getElementById('uiux-design');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                }}>
+                  UI/UX Design
+                </span>
+                <span className="v2-nav-link" onClick={() => {
+                  const elem = document.getElementById('webdesign');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                }}>
+                  Websites
                 </span>
                 <span className="v2-nav-link" onClick={() => {
                   const elem = document.getElementById('services');
@@ -2139,194 +2149,255 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 3: PRODUCTS & B2B SAAS (ASSET IQ, EHADJ, BEANS) */}
-            <section id="products-saas" className="robin-featured-section scroll-reveal">
-              <h2 className="robin-pixel-title">PRODUCTS &amp; B2B SAAS</h2>
+            {/* SECTION: PRODUCT DESIGN & B2B SAAS (EHADJ, ASSET IQ, BEANS) */}
+            <section id="product-design" className="v2-showcase-section scroll-reveal">
+              <div className="v2-section-ambient-glow glow-blue" aria-hidden="true" />
+              
+              <div className="v2-section-header">
+                <span className="v2-section-eyebrow eyebrow-blue">
+                  {lang === 'fr' ? 'Product Design & B2B SaaS' : 'Product Design & B2B SaaS'}
+                </span>
+                <h2 className="v2-section-title">
+                  {lang === 'fr' ? 'Architecture Produit & Systèmes Complexes.' : 'Product Architecture & Complex Systems.'}
+                </h2>
+                <p className="v2-section-subtitle">
+                  {lang === 'fr'
+                    ? "Conception de plateformes denses, gouvernance d'actifs et digitalisation de flux opérationnels critiques où chaque détail compte."
+                    : "Designing data-dense platforms, asset governance engines, and mission-critical workflows with zero friction."}
+                </p>
+              </div>
 
-              <div className="robin-folder-stack">
-                {/* FOLDER 01: ASSET IQ (BLUE TAB) */}
-                <div className="robin-folder-drawer scroll-reveal delay-1">
-                  <div className="robin-folder-tab" style={{ background: '#1D4ED8' }}>
-                    ◆ PRODUCT 01
+              <div className="v2-showcase-grid-3">
+                {/* CARD 01: EHADJ */}
+                <div className="v2-project-card-large" onClick={() => handleViewSwitch('ehadj')}>
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/ehadj/cover_Ehadj.jpg" alt="eHadj" />
+                    <span className="v2-project-year-badge">2026</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'GovTech & Logistique' : 'GovTech & Logistics'}</span>
+                    </div>
                   </div>
-                  <div className="robin-folder-body">
-                    <div>
-                      <div className="robin-folder-date">• MAR 2, 2026</div>
-                      <h3 className="robin-folder-title">Asset IQ</h3>
-                      <p className="robin-folder-desc">
-                        {lang === 'fr'
-                          ? "Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code."
-                          : "Multi-site industrial physical asset governance and telemetry via QR codes."}
-                      </p>
-                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('asset-iq')} style={{ background: '#1D4ED8', borderColor: '#1D4ED8' }}>
-                        <span>VIEW PRODUCT ↗</span>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">eHadj</h3>
+                      <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); handleViewSwitch('ehadj'); }}>
+                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                        <ArrowRight size={14} />
                       </button>
                     </div>
-
-                    <div className="robin-folder-media" onClick={() => setCurrentView('asset-iq')} style={{ cursor: 'pointer' }}>
-                      <div className="robin-washi-tape" />
-                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ Preview" />
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Plateforme gouvernementale centralisant la logistique du pèlerinage national pour +30 agences et ministères."
+                        : "Centralized governmental platform orchestrating national pilgrimage operations for 30+ agencies."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? 'Impact : +3 000 pèlerins & 30+ agences' : 'Impact: 3,000+ pilgrims & 30+ agencies'}</span>
+                    </div>
+                    <div className="v2-project-tags-row">
+                      <span>Product Design</span>
+                      <span>Design System</span>
+                      <span>Figma Tokens</span>
+                      <span>PRD Specs</span>
                     </div>
                   </div>
                 </div>
 
-                {/* FOLDER 02: EHADJ (YELLOW TAB) */}
-                <div className="robin-folder-drawer scroll-reveal delay-2">
-                  <div className="robin-folder-tab" style={{ background: '#EAB308', color: '#121212' }}>
-                    ◆ PRODUCT 02
+                {/* CARD 02: ASSET IQ */}
+                <div className="v2-project-card-large" onClick={() => handleViewSwitch('asset-iq')}>
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" />
+                    <span className="v2-project-year-badge">2026</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'IoT Industriel & Télémétrie' : 'Industrial IoT & Governance'}</span>
+                    </div>
                   </div>
-                  <div className="robin-folder-body">
-                    <div>
-                      <div className="robin-folder-date">• JAN 2, 2026</div>
-                      <h3 className="robin-folder-title">eHadj</h3>
-                      <p className="robin-folder-desc">
-                        {lang === 'fr'
-                          ? "Orchestration digitale du pèlerinage au Bénin pour +30 agences et ministères."
-                          : "Digital orchestration of national pilgrimage logistics in Benin for 30+ agencies and ministries."}
-                      </p>
-                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('ehadj')} style={{ background: '#DC2626', borderColor: '#DC2626' }}>
-                        <span>VIEW PRODUCT ↗</span>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">Asset IQ</h3>
+                      <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); handleViewSwitch('asset-iq'); }}>
+                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                        <ArrowRight size={14} />
                       </button>
                     </div>
-
-                    <div className="robin-folder-media" onClick={() => setCurrentView('ehadj')} style={{ cursor: 'pointer', transform: 'rotate(-1.5deg)' }}>
-                      <div className="robin-washi-tape" style={{ background: 'rgba(244, 114, 182, 0.85)' }} />
-                      <img src="/imgs/ehadj/cover_Ehadj.jpg" alt="eHadj Preview" />
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Gouvernance et télémétrie multi-sites d'actifs physiques industriels lourds par scan QR code instantané."
+                        : "Multi-site physical asset telemetry and inventory governance powered by smart QR code telemetry."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? 'Télémétrie QR Code & Analytics Multi-Sites' : 'QR Telemetry & Multi-Site Analytics'}</span>
+                    </div>
+                    <div className="v2-project-tags-row">
+                      <span>B2B SaaS</span>
+                      <span>Data Architecture</span>
+                      <span>Enterprise UI</span>
+                      <span>Telemetry</span>
                     </div>
                   </div>
                 </div>
 
-                {/* FOLDER 03: BEANS (GREEN TAB) */}
-                <div className="robin-folder-drawer scroll-reveal delay-3">
-                  <div className="robin-folder-tab" style={{ background: '#059669' }}>
-                    ◆ PRODUCT 03
+                {/* CARD 03: BEANS */}
+                <div className="v2-project-card-large" onClick={() => handleViewSwitch('beans')}>
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/beans_cover.png" alt="Beans" />
+                    <span className="v2-project-year-badge">2025</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'Plateforme SaaS & Fidélisation' : 'SaaS & Engagement Hub'}</span>
+                    </div>
                   </div>
-                  <div className="robin-folder-body">
-                    <div>
-                      <div className="robin-folder-date">• DEC 15, 2025</div>
-                      <h3 className="robin-folder-title">Beans</h3>
-                      <p className="robin-folder-desc">
-                        {lang === 'fr'
-                          ? "Plateforme SaaS B2B de fidélisation client & hub de 10 connecteurs e-commerce et sociaux."
-                          : "B2B SaaS customer engagement platform & integration hub powering 10 major connectors."}
-                      </p>
-                      <button className="robin-cta-black-btn" onClick={() => setCurrentView('beans')} style={{ background: '#059669', borderColor: '#059669' }}>
-                        <span>VIEW PRODUCT ↗</span>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">Beans</h3>
+                      <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); handleViewSwitch('beans'); }}>
+                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                        <ArrowRight size={14} />
                       </button>
                     </div>
-
-                    <div className="robin-folder-media" onClick={() => setCurrentView('beans')} style={{ cursor: 'pointer', transform: 'rotate(1deg)' }}>
-                      <div className="robin-washi-tape" style={{ background: 'rgba(167, 243, 208, 0.85)' }} />
-                      <img src="/imgs/beans_cover.png" alt="Beans Preview" />
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Plateforme SaaS B2B d'engagement client & hub centralisé orchestrant 10 connecteurs e-commerce."
+                        : "B2B SaaS customer engagement platform & integration hub powering 10 major e-commerce connectors."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? 'Hub de 10 Connecteurs & Multi-Tenant' : '10 Connectors Hub & Multi-Tenant'}</span>
+                    </div>
+                    <div className="v2-project-tags-row">
+                      <span>SaaS Platform</span>
+                      <span>Connectors</span>
+                      <span>Dashboard</span>
+                      <span>React UI</span>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 4: FEATURED WORKS (3-COLUMN EDITORIAL CARDS: VORTEX, STRATEGY ARENA, TAVARES) */}
-            <section id="featured-works" className="robin-featured-section scroll-reveal">
-              <h2 className="robin-pixel-title">FEATURED WORKS</h2>
-
-              <div className="robin-featured-grid">
-                {/* CARD 01: VORTEX */}
-                <div className="robin-featured-card scroll-reveal delay-1" onClick={() => setCurrentView('vortex')}>
-                  <div className="robin-washi-tape" style={{ top: '-10px', left: '20px', background: 'rgba(254, 240, 138, 0.9)', zIndex: 20 }} />
-                  <div className="robin-featured-card-header">
-                    <span className="robin-featured-card-stamp badge-yellow">SHOWCASE 01</span>
-                    <img src="/imgs/vortex.webp" alt="Vortex Mobile App" className="robin-featured-card-image" />
-                  </div>
-
-                  <div className="robin-featured-card-content">
-                    <div>
-                      <div className="robin-featured-card-date">• MAR 2026</div>
-                      <h3 className="robin-featured-card-title">Vortex</h3>
-                      <p className="robin-featured-card-desc">
-                        {lang === 'fr'
-                          ? "Application mobile d'achat de carburant & gestion de portefeuille numérique ultra-rapide."
-                          : "Mobile fuel purchasing & digital wallet management app designed for speed."}
-                      </p>
-                    </div>
-
-                    <div className="robin-featured-card-footer">
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>MOBILE UX</span>
-                      <button className="robin-featured-cta-btn" style={{ background: '#D97706', borderColor: '#D97706' }}>
-                        <span>EXPLORE</span>
-                        <ArrowRight size={14} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CARD 02: STRATEGY ARENA */}
-                <div className="robin-featured-card scroll-reveal delay-2" onClick={() => setCurrentView('strategy-arena')}>
-                  <div className="robin-washi-tape" style={{ top: '-10px', right: '20px', left: 'auto', background: 'rgba(147, 197, 253, 0.9)', zIndex: 20 }} />
-                  <div className="robin-featured-card-header">
-                    <span className="robin-featured-card-stamp badge-blue">SHOWCASE 02</span>
-                    <img src="/imgs/Strategy-Arena.png" alt="Strategy Arena Platform" className="robin-featured-card-image" />
-                  </div>
-
-                  <div className="robin-featured-card-content">
-                    <div>
-                      <div className="robin-featured-card-date">• JAN 2026</div>
-                      <h3 className="robin-featured-card-title">Strategy Arena</h3>
-                      <p className="robin-featured-card-desc">
-                        {lang === 'fr'
-                          ? "Cabinet de conseil en stratégie, organisation & transformation digitale pour PME."
-                          : "Strategy & digital transformation consulting agency platform for growing SMEs."}
-                      </p>
-                    </div>
-
-                    <div className="robin-featured-card-footer">
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>BRANDING &amp; WEB</span>
-                      <button className="robin-featured-cta-btn" style={{ background: '#1D4ED8', borderColor: '#1D4ED8' }}>
-                        <span>EXPLORE</span>
-                        <ArrowRight size={14} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CARD 03: TAVARES & VISUALS */}
-                <div className="robin-featured-card scroll-reveal delay-3" onClick={() => setCurrentView('tavares')}>
-                  <div className="robin-washi-tape" style={{ top: '-10px', left: '30px', background: 'rgba(244, 114, 182, 0.9)', zIndex: 20 }} />
-                  <div className="robin-featured-card-header">
-                    <span className="robin-featured-card-stamp badge-pink">SHOWCASE 03</span>
-                    <img src="/imgs/tavares.png" alt="Tavares Showcase" className="robin-featured-card-image" />
-                  </div>
-
-                  <div className="robin-featured-card-content">
-                    <div>
-                      <div className="robin-featured-card-date">• NOV 2025</div>
-                      <h3 className="robin-featured-card-title">Tavares &amp; Visuals</h3>
-                      <p className="robin-featured-card-desc">
-                        {lang === 'fr'
-                          ? "Direction artistique web d'exception, vitrines cinématographiques et e-commerce éditorial."
-                          : "Curated collection of cinematic showcase sites, editorial e-commerce, and immersive galleries."}
-                      </p>
-                    </div>
-
-                    <div className="robin-featured-card-footer">
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>ART DIRECTION</span>
-                      <button className="robin-featured-cta-btn" style={{ background: '#DC2626', borderColor: '#DC2626' }}>
-                        <span>EXPLORE</span>
-                        <ArrowRight size={14} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
+            {/* SECTION: UI/UX DESIGN & DIGITAL EXPERIENCES (DOLCE RIVIERA, VORTEX, SPORT ADVISOR) */}
+            <section id="uiux-design" className="v2-showcase-section scroll-reveal">
+              <div className="v2-section-ambient-glow glow-purple" aria-hidden="true" />
+              
+              <div className="v2-section-header">
+                <span className="v2-section-eyebrow eyebrow-purple">
+                  {lang === 'fr' ? 'UI/UX Design & Expériences' : 'UI/UX Design & Experiences'}
+                </span>
+                <h2 className="v2-section-title">
+                  {lang === 'fr' ? 'Interfaces Immersives, Fluides et Désirables.' : 'Immersive, Fluid & Engaging Interfaces.'}
+                </h2>
+                <p className="v2-section-subtitle">
+                  {lang === 'fr'
+                    ? "Du design d'applications mobiles haute vélocité aux univers de marque prestigieux : concevoir des interfaces mémorables."
+                    : "From high-velocity mobile applications to prestigious luxury digital experiences crafted with obsessive care."}
+                </p>
               </div>
 
-              {/* SEE ALL PROJECTS CTA BUTTON */}
-              <div style={{ marginTop: '40px', textAlign: 'center' }}>
-                <button 
-                  className="robin-cta-black-btn" 
-                  style={{ padding: '16px 36px', fontSize: '0.95rem' }}
-                  onClick={() => setCurrentView('all-projects')}
-                >
-                  <span>{lang === 'fr' ? 'VOIR TOUS LES PROJETS' : 'VIEW ALL PROJECTS'}</span>
-                  <ArrowRight size={18} />
-                </button>
+              <div className="v2-showcase-grid-3">
+                {/* CARD 01: DOLCE RIVIERA */}
+                <div className="v2-project-card-large" onClick={() => handleViewSwitch('dolce-riviera')}>
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/dolce_cover.png" alt="Dolce Riviera" />
+                    <span className="v2-project-year-badge">2025</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'Hôtellerie de Luxe & Vitrine' : 'Luxury Hospitality & Showcase'}</span>
+                    </div>
+                  </div>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">Dolce Riviera</h3>
+                      <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); handleViewSwitch('dolce-riviera'); }}>
+                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Expérience digitale haut de gamme pour un resort exclusif sur la Côte d'Azur, alliant storytelling et raffinement."
+                        : "High-end luxury digital showcase designed for a French Riviera resort, merging storytelling with elegance."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? 'Direction Artistique & Micro-Animations 60fps' : 'Art Direction & 60fps Micro-Animations'}</span>
+                    </div>
+                    <div className="v2-project-tags-row">
+                      <span>Luxury UI</span>
+                      <span>Next.js</span>
+                      <span>Framer Motion</span>
+                      <span>Art Direction</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CARD 02: VORTEX */}
+                <div className="v2-project-card-large" onClick={() => handleViewSwitch('vortex')}>
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/vortex.webp" alt="Vortex Mobile App" />
+                    <span className="v2-project-year-badge">2026</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'App Mobile Fintech & Énergie' : 'Mobile Fintech & Energy'}</span>
+                    </div>
+                  </div>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">Vortex</h3>
+                      <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); handleViewSwitch('vortex'); }}>
+                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Application mobile d'achat de carburant et portefeuille numérique réduisant le temps de paiement à 3 secondes."
+                        : "High-speed mobile fuel payment & wallet app engineered for instant 3-second pump authorization."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? 'Paiement sans friction en 3 secondes' : 'Frictionless 3-second mobile flow'}</span>
+                    </div>
+                    <div className="v2-project-tags-row">
+                      <span>Mobile App UX</span>
+                      <span>iOS & Android</span>
+                      <span>Fintech</span>
+                      <span>QR Payment</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CARD 03: SPORT ADVISOR */}
+                <div className="v2-project-card-large" onClick={() => handleViewSwitch('sport-advisor')}>
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/advisor.webp" alt="Sport Advisor" />
+                    <span className="v2-project-year-badge">2025</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'Data Analytics & Performance' : 'Sports Data & Performance'}</span>
+                    </div>
+                  </div>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">Sport Advisor</h3>
+                      <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); handleViewSwitch('sport-advisor'); }}>
+                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Portail d'analyse prédictive et tableaux de bord de performance sportive pour entraîneurs et athlètes."
+                        : "Predictive sports analytics and tactical decision-support dashboard portal for teams and coaches."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? 'Visualisation de Données & Tableaux Dynamiques' : 'Data Visualization & Dynamic Tables'}</span>
+                    </div>
+                    <div className="v2-project-tags-row">
+                      <span>Data Viz</span>
+                      <span>Dashboard UI</span>
+                      <span>Analytics</span>
+                      <span>UX Research</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
 
