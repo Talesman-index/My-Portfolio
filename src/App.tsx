@@ -1357,6 +1357,12 @@ export default function App() {
                 }}>
                   Services
                 </span>
+                <span className="v2-nav-link" onClick={() => {
+                  const elem = document.getElementById('graphic-design');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                }}>
+                  Designs
+                </span>
                 <span className="v2-nav-link" onClick={() => handleViewSwitch('experiences')}>
                   Blog
                 </span>
@@ -2377,9 +2383,200 @@ export default function App() {
               </div>
             </section>
 
+            {/* SECTION 5: GRAPHIC DESIGN & BRAND ASSETS (EXACT REFERENCE DESIGN) */}
+            <section id="graphic-design" className="v2-graphic-design-section scroll-reveal">
+              <div className="v2-graphic-glow" aria-hidden="true" />
 
+              {/* Section Header */}
+              <div className="v2-section-header" style={{ marginBottom: '20px' }}>
+                <span className="v2-section-eyebrow" style={{ color: '#10B981' }}>
+                  {lang === 'fr' ? 'Graphic Design' : 'Graphic Design'}
+                </span>
+                <h2 className="v2-section-title">
+                  {lang === 'fr' ? 'Captiver, Communiquer et Connecter.' : 'Capture, Communicate, and Connect.'}
+                </h2>
+                <p className="v2-section-subtitle">
+                  {lang === 'fr'
+                    ? "Je conçois des visuels percutants qui transmettent le message de votre marque et résonnent avec votre audience, des affiches aux identités visuelles complètes."
+                    : "I create impactful graphics that convey your brand's message and resonate with your audience, from logos to marketing materials."}
+                </p>
+              </div>
 
-            {/* SECTION 5: CAREER LOGS & DETAILED TIMELINE (V2 DARK GLASS) */}
+              {/* Subheading Row: Featured Designs + All Designs */}
+              <div className="v2-graphic-subheading-row">
+                <span className="v2-graphic-subheading-title">
+                  {lang === 'fr' ? 'Créations & Catégories Récentes' : 'Featured Designs'}
+                </span>
+                <button 
+                  className="v2-graphic-all-btn"
+                  onClick={() => setIsAllProjectsModalOpen(true)}
+                >
+                  <span>{lang === 'fr' ? 'Toutes les créations' : 'All Designs'}</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
+
+              {/* 2-Column Grid of 6 Design Categories */}
+              <div className="v2-graphic-grid-2col">
+                {/* Category 1: Posters */}
+                <div className="v2-graphic-cat-card">
+                  <div className="v2-graphic-cat-header">
+                    <span className="v2-graphic-cat-icon">🖼️</span>
+                    <span className="v2-graphic-cat-name">Posters &amp; Affiches</span>
+                  </div>
+                  <div className="v2-graphic-strip-4">
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/tavares.png" alt="Poster 1" />
+                      <span className="v2-graphic-item-badge">Poster 01</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/Strategy-Arena.png" alt="Poster 2" />
+                      <span className="v2-graphic-item-badge">Poster 02</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/truvox_cover.png" alt="Poster 3" />
+                      <span className="v2-graphic-item-badge">Poster 03</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/refuge.png" alt="Poster 4" />
+                      <span className="v2-graphic-item-badge">Poster 04</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Category 2: Banners */}
+                <div className="v2-graphic-cat-card">
+                  <div className="v2-graphic-cat-header">
+                    <span className="v2-graphic-cat-icon">🎯</span>
+                    <span className="v2-graphic-cat-name">Banners &amp; Publicités</span>
+                  </div>
+                  <div className="v2-graphic-strip-4">
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/vortex.webp" alt="Banner 1" />
+                      <span className="v2-graphic-item-badge">Banner 01</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/dolce_cover.png" alt="Banner 2" />
+                      <span className="v2-graphic-item-badge">Banner 02</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/beans_cover.png" alt="Banner 3" />
+                      <span className="v2-graphic-item-badge">Banner 03</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/sagana.png" alt="Banner 4" />
+                      <span className="v2-graphic-item-badge">Banner 04</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Category 3: Brochures & Flyers */}
+                <div className="v2-graphic-cat-card">
+                  <div className="v2-graphic-cat-header">
+                    <span className="v2-graphic-cat-icon">📑</span>
+                    <span className="v2-graphic-cat-name">Brochures &amp; Flyers</span>
+                  </div>
+                  <div className="v2-graphic-strip-4">
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Flyer 1" />
+                      <span className="v2-graphic-item-badge">Flyer 01</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/ehadj/cover_Ehadj.jpg" alt="Flyer 2" />
+                      <span className="v2-graphic-item-badge">Flyer 02</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/advisor.webp" alt="Flyer 3" />
+                      <span className="v2-graphic-item-badge">Flyer 03</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/tavares.png" alt="Flyer 4" />
+                      <span className="v2-graphic-item-badge">Flyer 04</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Category 4: Post Designs */}
+                <div className="v2-graphic-cat-card">
+                  <div className="v2-graphic-cat-header">
+                    <span className="v2-graphic-cat-icon">📱</span>
+                    <span className="v2-graphic-cat-name">Post Designs &amp; Social</span>
+                  </div>
+                  <div className="v2-graphic-strip-4">
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/dolce_cover.png" alt="Social Post 1" />
+                      <span className="v2-graphic-item-badge">Post 01</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/vortex.webp" alt="Social Post 2" />
+                      <span className="v2-graphic-item-badge">Post 02</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/sagana.png" alt="Social Post 3" />
+                      <span className="v2-graphic-item-badge">Post 03</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/Strategy-Arena.png" alt="Social Post 4" />
+                      <span className="v2-graphic-item-badge">Post 04</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Category 5: Logo Designs */}
+                <div className="v2-graphic-cat-card">
+                  <div className="v2-graphic-cat-header">
+                    <span className="v2-graphic-cat-icon">✨</span>
+                    <span className="v2-graphic-cat-name">Logo Designs &amp; Identités</span>
+                  </div>
+                  <div className="v2-graphic-strip-4">
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/beans_cover.png" alt="Logo 1" />
+                      <span className="v2-graphic-item-badge">Logo 01</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/truvox_cover.png" alt="Logo 2" />
+                      <span className="v2-graphic-item-badge">Logo 02</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/refuge.png" alt="Logo 3" />
+                      <span className="v2-graphic-item-badge">Logo 03</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/advisor.webp" alt="Logo 4" />
+                      <span className="v2-graphic-item-badge">Logo 04</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Category 6: Brand Guidelines */}
+                <div className="v2-graphic-cat-card">
+                  <div className="v2-graphic-cat-header">
+                    <span className="v2-graphic-cat-icon">📐</span>
+                    <span className="v2-graphic-cat-name">Brand Guidelines &amp; Chartes</span>
+                  </div>
+                  <div className="v2-graphic-strip-4">
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/sagana.png" alt="Brandbook 1" />
+                      <span className="v2-graphic-item-badge">Brand 01</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Brandbook 2" />
+                      <span className="v2-graphic-item-badge">Brand 02</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/ehadj/cover_Ehadj.jpg" alt="Brandbook 3" />
+                      <span className="v2-graphic-item-badge">Brand 03</span>
+                    </div>
+                    <div className="v2-graphic-item">
+                      <img src="/imgs/dolce_cover.png" alt="Brandbook 4" />
+                      <span className="v2-graphic-item-badge">Brand 04</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 6: CAREER LOGS & DETAILED TIMELINE (V2 DARK GLASS) */}
             <section id="career" className="v2-experience-section scroll-reveal">
               <div className="v2-experience-glow" aria-hidden="true" />
 
