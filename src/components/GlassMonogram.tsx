@@ -31,122 +31,121 @@ export const GlassMonogram: React.FC<{ className?: string }> = ({ className }) =
       >
         <defs>
           {/* Outer Glass Rim Gradient */}
-          <linearGradient id="glassRimT" x1="20" y1="20" x2="260" y2="280" gradientUnits="userSpaceOnUse">
+          <linearGradient id="glassRimT" x1="30" y1="40" x2="250" y2="280" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
-            <stop offset="30%" stopColor="#7DD3FC" stopOpacity="0.85" />
-            <stop offset="65%" stopColor="#FFFFFF" stopOpacity="0.4" />
+            <stop offset="30%" stopColor="#7DD3FC" stopOpacity="0.9" />
+            <stop offset="70%" stopColor="#FFFFFF" stopOpacity="0.45" />
             <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.95" />
           </linearGradient>
 
-          {/* Secondary Soft Blueprint Gradient */}
-          <linearGradient id="blueprintCyan" x1="0" y1="0" x2="280" y2="300" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#7DD3FC" stopOpacity="0.9" />
-            <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#60A5FA" stopOpacity="0.8" />
+          {/* Blueprint Guideline Gradient */}
+          <linearGradient id="blueprintT" x1="0" y1="0" x2="280" y2="300" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#7DD3FC" stopOpacity="0.85" />
+            <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#60A5FA" stopOpacity="0.75" />
           </linearGradient>
 
-          {/* Frosted Glass Spiral Facet */}
-          <linearGradient id="glassFacetSpiral" x1="40" y1="30" x2="240" y2="270" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.22" />
-            <stop offset="35%" stopColor="#38BDF8" stopOpacity="0.1" />
-            <stop offset="70%" stopColor="#0B132B" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.14" />
-          </linearGradient>
-
-          {/* Glass T Stem Gradient */}
-          <linearGradient id="glassTStem" x1="120" y1="40" x2="160" y2="270" gradientUnits="userSpaceOnUse">
+          {/* Frosted Glass Body Gradient */}
+          <linearGradient id="glassBodyT" x1="40" y1="50" x2="240" y2="270" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.25" />
-            <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.08" />
+            <stop offset="35%" stopColor="#38BDF8" stopOpacity="0.12" />
+            <stop offset="75%" stopColor="#0B132B" stopOpacity="0.4" />
             <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.18" />
           </linearGradient>
 
-          {/* Atmospheric Glow Filter */}
-          <filter id="glassGlowT" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
-            <feGaussianBlur stdDeviation="5" result="blur" />
+          {/* Inner Core Refraction */}
+          <linearGradient id="glassCoreReflect" x1="140" y1="50" x2="140" y2="280" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.7" />
+            <stop offset="40%" stopColor="#38BDF8" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.4" />
+          </linearGradient>
+
+          {/* Ambient Glass Glow */}
+          <filter id="glassAuraT" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+            <feGaussianBlur stdDeviation="6" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
         </defs>
 
-        {/* ── 1. ARCHITECTURAL BLUEPRINT GRID & GUIDE LINES ── */}
-        {/* Horizontal construction guide along top crossbar of T */}
-        <line x1="20" y1="72" x2="260" y2="60" stroke="#7DD3FC" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.55" />
-        {/* Vertical center axis guide down stem of T */}
-        <line x1="138" y1="30" x2="138" y2="280" stroke="#7DD3FC" strokeWidth="1.4" strokeDasharray="8 5" opacity="0.6" />
+        {/* ── 1. ARCHITECTURAL BLUEPRINT GRID (CLEAN 'T' GEOMETRY) ── */}
+        {/* Horizontal Top Axis Guide */}
+        <line x1="15" y1="75" x2="265" y2="75" stroke="url(#blueprintT)" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.6" />
+        {/* Vertical Center Axis Guide */}
+        <line x1="140" y1="25" x2="140" y2="285" stroke="url(#blueprintT)" strokeWidth="1.4" strokeDasharray="8 5" opacity="0.65" />
         
-        {/* Concentric blueprint reference circles */}
-        <circle cx="138" cy="155" r="95" stroke="#38BDF8" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
-        <circle cx="138" cy="155" r="60" stroke="#38BDF8" strokeWidth="0.8" opacity="0.25" />
+        {/* Blueprint Dimension Arcs & Grid Bounds */}
+        <circle cx="140" cy="75" r="55" stroke="#38BDF8" strokeWidth="0.9" strokeDasharray="3 3" opacity="0.3" />
+        <circle cx="140" cy="200" r="70" stroke="#38BDF8" strokeWidth="0.9" strokeDasharray="4 4" opacity="0.25" />
+        <line x1="40" y1="45" x2="240" y2="45" stroke="#7DD3FC" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.35" />
+        <line x1="115" y1="280" x2="165" y2="280" stroke="#7DD3FC" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" />
 
-        {/* ── 2. THE MONOGRAM "T" STRUCTURE (GLASS COLUMN & TOP ARCH) ── */}
-        
-        {/* Vertical Stem of T (Translucent 3D Glass Bar) */}
-        <rect 
-          x="122" 
-          y="68" 
-          width="32" 
-          height="195" 
-          rx="6"
-          fill="url(#glassTStem)" 
-          stroke="url(#glassRimT)" 
-          strokeWidth="1.8"
-          opacity="0.85"
-        />
-        {/* Internal reflection line down T stem */}
-        <line x1="130" y1="75" x2="130" y2="255" stroke="#FFFFFF" strokeWidth="1.2" opacity="0.65" />
-
-        {/* Horizontal Top Crossbar of T (Broad sweeping glass cap) */}
+        {/* ── 2. GLASS BACK SHADOW / VOLUME OF THE 'T' ── */}
         <path 
-          d="M 32 64 C 70 52, 210 50, 248 66 L 244 86 C 205 74, 75 74, 36 84 Z" 
-          fill="url(#glassFacetSpiral)"
-          stroke="url(#glassRimT)"
-          strokeWidth="1.8"
-          opacity="0.9"
+          d="M 32 55 L 248 55 L 248 98 L 165 98 L 165 272 L 115 272 L 115 98 L 32 98 Z" 
+          fill="rgba(11, 19, 43, 0.45)"
+          filter="url(#glassAuraT)"
         />
 
-        {/* ── 3. 3D GLASS SPIRAL / VORTEX CURVES INTERTWINED WITH THE T ── */}
-        
-        {/* Background depth curve */}
+        {/* ── 3. MAIN 3D TRANSLUCENT GLASS 'T' BODY ── */}
         <path 
-          d="M 50 80 C 10 160, 60 270, 140 275 C 225 280, 265 190, 250 115 C 235 45, 120 30, 65 85 C 25 130, 45 220, 115 240 C 180 255, 225 200, 220 145 C 215 95, 160 85, 125 125 C 95 160, 110 205, 145 210 C 175 215, 195 185, 185 155" 
-          stroke="rgba(15, 23, 42, 0.5)" 
-          strokeWidth="14" 
-          strokeLinecap="round"
-          filter="url(#glassGlowT)"
-        />
-
-        {/* Main 3D Frosted Glass Ribbon Spiral Loop */}
-        <path 
-          d="M 52 82 C 12 162, 62 268, 140 272 C 222 278, 262 192, 248 118 C 234 48, 122 32, 68 86 C 28 132, 48 218, 116 238 C 178 252, 222 198, 218 146 C 214 98, 162 88, 128 126 C 98 162, 112 202, 146 208 C 172 212, 190 186, 182 158" 
-          fill="url(#glassFacetSpiral)"
+          d="M 32 55 L 248 55 L 248 98 L 165 98 L 165 272 L 115 272 L 115 98 L 32 98 Z" 
+          fill="url(#glassBodyT)" 
           stroke="url(#glassRimT)" 
           strokeWidth="2.4" 
-          strokeLinecap="round"
           strokeLinejoin="round"
+          strokeLinecap="round"
         />
 
-        {/* Blueprint Wireframe Dashed Orbital Track */}
+        {/* ── 4. 3D BEVELS, INTERNAL FACETS & WIREFRAME RIBS ── */}
+        {/* Inner Bevel Inset for the 'T' */}
         <path 
-          d="M 248 118 C 265 185, 220 270, 138 272 C 60 274, 15 180, 52 82 C 85 30, 205 25, 246 80" 
-          stroke="url(#blueprintCyan)" 
-          strokeWidth="1.4" 
-          strokeDasharray="5 4" 
-          opacity="0.8" 
+          d="M 44 67 L 236 67 L 236 86 L 153 86 L 153 260 L 127 260 L 127 86 L 44 86 Z" 
+          stroke="#7DD3FC" 
+          strokeWidth="1.2" 
+          strokeDasharray="5 3"
+          opacity="0.75"
         />
 
-        {/* ── 4. SPECULAR HIGHLIGHTS & BRIGHT GLINTS ── */}
-        
-        {/* Top sweeping white specular arch across T */}
-        <path 
-          d="M 40 68 C 95 38, 185 40, 238 60" 
+        {/* 3D Diagonal Bevel Chamfer Ribs */}
+        <line x1="32" y1="55" x2="44" y2="67" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="248" y1="55" x2="236" y2="67" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="248" y1="98" x2="236" y2="86" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="165" y1="98" x2="153" y2="86" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="165" y1="272" x2="153" y2="260" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="115" y1="272" x2="127" y2="260" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="115" y1="98" x2="127" y2="86" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="32" y1="98" x2="44" y2="86" stroke="url(#glassRimT)" strokeWidth="1.6" opacity="0.8" />
+
+        {/* Vertical Core Reflection Stripe */}
+        <rect 
+          x="134" 
+          y="60" 
+          width="12" 
+          height="205" 
+          fill="url(#glassCoreReflect)" 
+          opacity="0.5" 
+          rx="3"
+        />
+
+        {/* ── 5. SPECULAR HIGHLIGHTS & BRIGHT GLASS GLINTS ── */}
+        {/* Top Edge Intense White Reflection */}
+        <line 
+          x1="34" 
+          y1="55" 
+          x2="246" 
+          y2="55" 
           stroke="#FFFFFF" 
           strokeWidth="3.2" 
           strokeLinecap="round"
           filter="drop-shadow(0 0 8px #FFFFFF)"
         />
 
-        {/* Bottom curve specular catch */}
-        <path 
-          d="M 68 238 C 110 268, 175 268, 228 230" 
+        {/* Left Vertical Edge Highlight */}
+        <line 
+          x1="115" 
+          y1="100" 
+          x2="115" 
+          y2="270" 
           stroke="#FFFFFF" 
           strokeWidth="2.2" 
           strokeLinecap="round"
@@ -154,33 +153,42 @@ export const GlassMonogram: React.FC<{ className?: string }> = ({ className }) =
           filter="drop-shadow(0 0 6px #7DD3FC)"
         />
 
-        {/* Right spiral specular contour */}
-        <path 
-          d="M 246 110 C 255 155, 248 200, 218 245" 
+        {/* Crossbar Left Edge Highlight */}
+        <line 
+          x1="32" 
+          y1="56" 
+          x2="32" 
+          y2="96" 
           stroke="#FFFFFF" 
           strokeWidth="2.4" 
           strokeLinecap="round"
           opacity="0.9"
         />
 
-        {/* ── 5. DIAMOND STAR GLINTS ── */}
-        {/* Top right vertex star */}
+        {/* ── 6. DIAMOND STAR GLINTS ON KEY VERTICES ── */}
+        {/* Top-Right Vertex Star */}
         <polygon 
-          points="238,58 243,62 248,58 243,54" 
+          points="248,55 253,59 258,55 253,51" 
           fill="#FFFFFF" 
           filter="drop-shadow(0 0 8px #FFFFFF)" 
         />
-        {/* Top left crossbar star */}
+        {/* Top-Left Vertex Star */}
         <polygon 
-          points="40,68 44,71 48,68 44,65" 
+          points="32,55 36,58 40,55 36,52" 
           fill="#FFFFFF" 
-          filter="drop-shadow(0 0 6px #7DD3FC)" 
+          filter="drop-shadow(0 0 7px #7DD3FC)" 
         />
-        {/* Center intersection star */}
+        {/* Center Intersection Star */}
         <polygon 
-          points="138,62 141,65 144,62 141,59" 
+          points="140,55 143,58 146,55 143,52" 
           fill="#FFFFFF" 
-          filter="drop-shadow(0 0 6px #FFFFFF)" 
+          filter="drop-shadow(0 0 8px #FFFFFF)" 
+        />
+        {/* Bottom-Center Base Star */}
+        <polygon 
+          points="140,272 143,275 146,272 143,269" 
+          fill="#FFFFFF" 
+          filter="drop-shadow(0 0 6px #38BDF8)" 
         />
       </svg>
     </div>
