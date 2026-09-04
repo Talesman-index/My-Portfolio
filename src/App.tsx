@@ -1992,7 +1992,11 @@ export default function App() {
                     {/* Tool 2: Antigravity */}
                     <div className="v2-tool-item-large" title="Antigravity">
                       <div className="v2-tool-icon-wrap">
-                        <AntigravityLogo size={36} glow={false} />
+                        <img 
+                          src="/imgs/antigravity_clean.png" 
+                          alt="Antigravity" 
+                          style={{ width: '38px', height: '38px', objectFit: 'contain', filter: 'drop-shadow(0 0 10px rgba(59, 130, 246, 0.4))' }} 
+                        />
                       </div>
                       <span className="v2-tool-label-large">Antigravity</span>
                     </div>
