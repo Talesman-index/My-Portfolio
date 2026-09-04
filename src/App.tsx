@@ -22,6 +22,7 @@ import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
 import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
+import HeroSignature from './components/HeroSignature';
 
 /* Metal Paperclip SVG Helper */
 const PaperclipSVG = ({ style }: { style?: React.CSSProperties }) => (
@@ -1425,24 +1426,8 @@ export default function App() {
                   <GlassMonogram />
                 </div>
 
-                {/* Yellow Handwritten Glow Signature */}
-                <div className="v2-hero-signature">
-                  <span className="v2-signature-text">Talesman</span>
-                  <svg 
-                    className="v2-signature-stroke" 
-                    viewBox="0 0 160 32" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path 
-                      d="M 6 22 Q 65 6 128 18 Q 142 21 152 14" 
-                      stroke="#FBBF24" 
-                      strokeWidth="2.8" 
-                      strokeLinecap="round" 
-                    />
-                    <circle cx="152" cy="7" r="3.2" fill="#FBBF24" />
-                  </svg>
-                </div>
+                {/* Yellow Handwritten Animated Glow Signature */}
+                <HeroSignature />
               </div>
             </section>
 
