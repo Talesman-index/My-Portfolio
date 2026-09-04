@@ -1468,10 +1468,10 @@ export default function App() {
               <div className="v2-about-vignette" aria-hidden="true" />
               <div className="v2-about-spotlight" aria-hidden="true" />
 
-              {/* Center Content Card */}
+              {/* Center Content Card (Enhanced Glassmorphism & 100% Tailored to Talesman) */}
               <div className="v2-about-content-card">
                 <span className="v2-about-eyebrow">
-                  {lang === 'fr' ? 'À Propos' : 'About Me'}
+                  {lang === 'fr' ? 'À PROPOS' : 'ABOUT ME'}
                 </span>
                 <h2 className="v2-about-title">
                   {lang === 'fr' ? 'Bonjour !' : 'Hi There!'}
@@ -1480,7 +1480,7 @@ export default function App() {
                 <p className="v2-about-description">
                   {lang === 'fr' ? (
                     <>
-                      Je suis <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), un product designer passionné avec une expertise en narration visuelle et un œil affûté pour les détails. Depuis 2021, j'ai perfectionné mon savoir-faire dans la création de designs alliant créativité et précision, maîtrisant les principes fondamentaux comme la{' '}
+                      Je suis <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), un Product &amp; Web Designer passionné par la simplification des systèmes complexes, avec une expertise approfondie en B2B SaaS et un soin obsessionnel pour les détails. Depuis plus de 4 ans, je façonne des plateformes et interfaces numériques qui marient élégance créative et rigueur d'ingénierie, maîtrisant les principes fondamentaux comme la{' '}
                       <span className="v2-typo-badge">
                         <span className="v2-typo-word">Typographie</span>
                         <span className="v2-typo-script" aria-hidden="true">Typography</span>
@@ -1494,12 +1494,11 @@ export default function App() {
                         <span style={{ color: '#A78BFA' }}>u</span>
                         <span style={{ color: '#F472B6' }}>r</span>
                         <span style={{ color: '#38BDF8' }}>s</span>
-                      </span>{' '}
-                      tout en restant constamment à la pointe des outils modernes et des tendances.
+                      </span>, tout en accélérant les livraisons grâce au <strong>Vibe Coding</strong> et aux flux IA modernes.
                     </>
                   ) : (
                     <>
-                      I'm <strong>Devansh Prakash</strong>, a passionate graphic designer with expertise in visual storytelling and a sharp eye for detail. Since 2018, I've honed my skills in crafting designs that balance creativity and precision, mastering design principles like{' '}
+                      I'm <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), a Product &amp; Web Designer passionate about making complex systems feel effortless, with deep expertise in B2B SaaS architecture and an obsessive eye for detail. For over 4 years, I've crafted digital software and high-impact web experiences that balance creative distinction with engineering precision, mastering core design principles like{' '}
                       <span className="v2-typo-badge">
                         <span className="v2-typo-word">Typography</span>
                         <span className="v2-typo-script" aria-hidden="true">Typography</span>
@@ -1511,19 +1510,35 @@ export default function App() {
                         <span style={{ color: '#34D399' }}>o</span>
                         <span style={{ color: '#FBBF24' }}>r</span>
                       </span>{' '}
-                      theory while staying adept with the latest tools and trends.
+                      theory while accelerating product velocity through <strong>Vibe Coding</strong> and modern AI workflows.
                     </>
                   )}
                 </p>
 
+                {/* Talesman Specialty & Credibility Pills */}
+                <div className="v2-about-specialties">
+                  <span className="v2-about-specialty-pill pill-cyan">
+                    <span className="pill-dot" /> 4+ Years Experience
+                  </span>
+                  <span className="v2-about-specialty-pill pill-yellow">
+                    <span className="pill-dot" /> B2B SaaS &amp; Products
+                  </span>
+                  <span className="v2-about-specialty-pill pill-green">
+                    <span className="pill-dot" /> Vibe Coding &amp; Rapid MVP
+                  </span>
+                  <span className="v2-about-specialty-pill pill-purple">
+                    <span className="pill-dot" /> Design Systems &amp; Tokens
+                  </span>
+                </div>
+
                 {/* Sub-actions Footer */}
                 <div className="v2-about-footer">
                   <span className="v2-about-footer-prompt">
-                    {lang === 'fr' ? 'Envie d\'en savoir plus sur moi ?' : 'Want to know more about me?'}
+                    {lang === 'fr' ? 'Envie d\'en savoir plus sur mon parcours ?' : 'Want to know more about me?'}
                   </span>
                   <div className="v2-about-footer-links">
                     <button 
-                      className="v2-about-link-btn" 
+                      className="v2-about-connect-btn" 
                       onClick={() => {
                         if ((window as any).Calendly) {
                           (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
@@ -1532,14 +1547,20 @@ export default function App() {
                         }
                       }}
                     >
-                      Let's Connect
+                      <span>Let's Connect</span>
+                      <ArrowRight size={14} />
                     </button>
-                    <span className="v2-about-link-sep">|</span>
                     <button 
-                      className="v2-about-link-btn" 
+                      className="v2-about-secondary-link" 
                       onClick={() => handleViewSwitch('experiences')}
                     >
-                      Blog
+                      {lang === 'fr' ? 'Mon Parcours & Blog' : 'Career & Blog'}
+                    </button>
+                    <button 
+                      className="v2-about-secondary-link" 
+                      onClick={() => handleViewSwitch('cv')}
+                    >
+                      CV / Resume
                     </button>
                   </div>
                 </div>
