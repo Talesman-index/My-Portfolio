@@ -1713,10 +1713,11 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION: WEBSITE DESIGN & TOOLS BENTO GRID (EXACT REFERENCE DESIGN) */}
+            {/* SECTION: WEBSITE DESIGN & TOOLS BENTO GRID (MAGNIFIED & REFINED) */}
             <section id="webdesign" className="v2-webdesign-section scroll-reveal">
-              {/* Violet Atmospheric Glow */}
+              {/* Violet & Cyan Atmospheric Glow */}
               <div className="v2-webdesign-glow" aria-hidden="true" />
+              <div className="v2-webdesign-glow-secondary" aria-hidden="true" />
 
               {/* Section Header */}
               <div className="v2-webdesign-header">
@@ -1728,255 +1729,425 @@ export default function App() {
                 </h2>
                 <p className="v2-webdesign-subtitle">
                   {lang === 'fr'
-                    ? "Je conçois des sites web réactifs et des expériences numériques immersives avec des technologies modernes comme React, Antigravity, Figma, Next.js et TypeScript—idéals pour les marques, le SaaS et le e-commerce."
+                    ? "Je conçois des sites web réactifs et des expériences numériques immersives avec des technologies modernes comme React, Antigravity, Figma, Next.js et TypeScript—pensés pour sublimer l'image de marque et maximiser les conversions."
                     : "I design responsive websites and high-impact digital experiences using modern frameworks and tools like React, Antigravity, Figma, Next.js, and TypeScript—built for brand impact and conversion."}
                 </p>
               </div>
 
               {/* Sub-header Bar */}
               <div className="v2-webdesign-subbar">
-                <h3 className="v2-webdesign-subbar-title">
-                  {lang === 'fr' ? 'Sites Web Phares' : 'Featured Websites'}
-                </h3>
+                <div className="v2-subbar-left">
+                  <h3 className="v2-webdesign-subbar-title">
+                    {lang === 'fr' ? 'Sélection de Sites Web' : 'Featured Websites'}
+                  </h3>
+                  <span className="v2-webdesign-count">4 PROJETS PHARES</span>
+                </div>
                 <button 
                   className="v2-webdesign-all-btn"
                   onClick={() => handleViewSwitch('all-projects')}
                 >
-                  <span>{lang === 'fr' ? 'Tous les sites' : 'All Sites'}</span>
+                  <span>{lang === 'fr' ? 'Voir toutes les archives' : 'View all archives'}</span>
                   <ArrowRight size={15} />
                 </button>
               </div>
 
-              {/* 4-Card Website Showcase Row */}
-              <div className="v2-webdesign-showcase-grid">
+              {/* Large 2x2 Website Showcase Grid */}
+              <div className="v2-webdesign-showcase-grid-large">
                 {/* SITE 01: STRATEGY ARENA */}
-                <div className="v2-website-card" onClick={() => handleViewSwitch('strategy-arena')}>
-                  <div className="v2-website-card-meta">
-                    <span className="v2-website-year">2026</span>
-                    <h4 className="v2-website-name">Strategy Arena</h4>
+                <div className="v2-website-card-large" onClick={() => handleViewSwitch('strategy-arena')}>
+                  <div className="v2-browser-mockup-bar">
+                    <div className="v2-browser-dots">
+                      <span className="dot dot-red" />
+                      <span className="dot dot-yellow" />
+                      <span className="dot dot-green" />
+                    </div>
+                    <div className="v2-browser-url-pill">
+                      <span className="v2-url-lock">🔒</span> strategy-arena.com
+                    </div>
+                    <span className="v2-browser-year-badge">2026</span>
                   </div>
-                  <div className="v2-website-preview">
+
+                  <div className="v2-website-large-preview">
                     <img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" />
+                    <div className="v2-preview-overlay">
+                      <span className="v2-overlay-badge">
+                        {lang === 'fr' ? 'Explorer le projet' : 'Explore Case'}
+                      </span>
+                    </div>
                   </div>
-                  <div className="v2-website-card-footer">
-                    <span className="v2-website-category">Corporate / Consulting</span>
-                    <a 
-                      href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="v2-website-live-link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <span>Live Site</span>
-                      <ExternalLink size={13} />
-                    </a>
+
+                  <div className="v2-website-card-large-info">
+                    <div className="v2-card-large-top">
+                      <div>
+                        <span className="v2-website-category-tag">Corporate &amp; Advisory</span>
+                        <h4 className="v2-website-large-name">Strategy Arena</h4>
+                      </div>
+                      <a 
+                        href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="v2-website-large-live-btn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Live Site</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <p className="v2-website-large-desc">
+                      {lang === 'fr'
+                        ? "Plateforme B2B de conseil stratégique et d'accélération d'entreprises, structurée pour la conversion."
+                        : "B2B strategic consulting and business acceleration platform built for maximum executive engagement."}
+                    </p>
+                    <div className="v2-website-tech-tags">
+                      <span>React</span>
+                      <span>Antigravity</span>
+                      <span>Tailwind CSS</span>
+                      <span>Figma</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* SITE 02: DOLCE RIVIERA */}
-                <div className="v2-website-card" onClick={() => handleViewSwitch('dolce-riviera')}>
-                  <div className="v2-website-card-meta">
-                    <span className="v2-website-year">2025</span>
-                    <h4 className="v2-website-name">Dolce Riviera</h4>
+                <div className="v2-website-card-large" onClick={() => handleViewSwitch('dolce-riviera')}>
+                  <div className="v2-browser-mockup-bar">
+                    <div className="v2-browser-dots">
+                      <span className="dot dot-red" />
+                      <span className="dot dot-yellow" />
+                      <span className="dot dot-green" />
+                    </div>
+                    <div className="v2-browser-url-pill">
+                      <span className="v2-url-lock">🔒</span> dolce-riviera.luxury
+                    </div>
+                    <span className="v2-browser-year-badge">2025</span>
                   </div>
-                  <div className="v2-website-preview">
+
+                  <div className="v2-website-large-preview">
                     <img src="/imgs/dolce_cover.png" alt="Dolce Riviera" />
+                    <div className="v2-preview-overlay">
+                      <span className="v2-overlay-badge">
+                        {lang === 'fr' ? 'Explorer le projet' : 'Explore Case'}
+                      </span>
+                    </div>
                   </div>
-                  <div className="v2-website-card-footer">
-                    <span className="v2-website-category">Luxury Hospitality</span>
-                    <a 
-                      href="https://talesmanwebcraft.vercel.app/#dolce-riviera" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="v2-website-live-link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <span>Live Site</span>
-                      <ExternalLink size={13} />
-                    </a>
+
+                  <div className="v2-website-card-large-info">
+                    <div className="v2-card-large-top">
+                      <div>
+                        <span className="v2-website-category-tag">Luxury Hospitality</span>
+                        <h4 className="v2-website-large-name">Dolce Riviera</h4>
+                      </div>
+                      <a 
+                        href="https://talesmanwebcraft.vercel.app/#dolce-riviera" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="v2-website-large-live-btn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Live Site</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <p className="v2-website-large-desc">
+                      {lang === 'fr'
+                        ? "Expérience digitale immersive et luxueuse pour un resort exclusif sur la Côte d'Azur."
+                        : "High-end immersive digital experience crafted for an exclusive luxury resort on the French Riviera."}
+                    </p>
+                    <div className="v2-website-tech-tags">
+                      <span>Next.js</span>
+                      <span>Figma Design</span>
+                      <span>Framer Motion</span>
+                      <span>Art Direction</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* SITE 03: SAGANA AGENCY */}
-                <div className="v2-website-card" onClick={() => handleViewSwitch('sagana')}>
-                  <div className="v2-website-card-meta">
-                    <span className="v2-website-year">2025</span>
-                    <h4 className="v2-website-name">Sagana Agency</h4>
+                <div className="v2-website-card-large" onClick={() => handleViewSwitch('sagana')}>
+                  <div className="v2-browser-mockup-bar">
+                    <div className="v2-browser-dots">
+                      <span className="dot dot-red" />
+                      <span className="dot dot-yellow" />
+                      <span className="dot dot-green" />
+                    </div>
+                    <div className="v2-browser-url-pill">
+                      <span className="v2-url-lock">🔒</span> sagana-agency.com
+                    </div>
+                    <span className="v2-browser-year-badge">2025</span>
                   </div>
-                  <div className="v2-website-preview">
+
+                  <div className="v2-website-large-preview">
                     <img src="/imgs/sagana.png" alt="Sagana Agency" />
+                    <div className="v2-preview-overlay">
+                      <span className="v2-overlay-badge">
+                        {lang === 'fr' ? 'Explorer le projet' : 'Explore Case'}
+                      </span>
+                    </div>
                   </div>
-                  <div className="v2-website-card-footer">
-                    <span className="v2-website-category">Advisory &amp; Branding</span>
-                    <a 
-                      href="https://www.sagana-agency.com/" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="v2-website-live-link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <span>Live Site</span>
-                      <ExternalLink size={13} />
-                    </a>
+
+                  <div className="v2-website-card-large-info">
+                    <div className="v2-card-large-top">
+                      <div>
+                        <span className="v2-website-category-tag">Strategic Consulting</span>
+                        <h4 className="v2-website-large-name">Sagana Agency</h4>
+                      </div>
+                      <a 
+                        href="https://www.sagana-agency.com/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="v2-website-large-live-btn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Live Site</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <p className="v2-website-large-desc">
+                      {lang === 'fr'
+                        ? "Identité de marque et vitrine numérique d'agence de conseil en management & innovation."
+                        : "Brand identity and digital showcase for a high-level management and innovation advisory firm."}
+                    </p>
+                    <div className="v2-website-tech-tags">
+                      <span>React</span>
+                      <span>TypeScript</span>
+                      <span>Design System</span>
+                      <span>Vite</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* SITE 04: TAVARES & VISUALS */}
-                <div className="v2-website-card" onClick={() => handleViewSwitch('tavares')}>
-                  <div className="v2-website-card-meta">
-                    <span className="v2-website-year">2025</span>
-                    <h4 className="v2-website-name">Tavares &amp; Visuals</h4>
+                <div className="v2-website-card-large" onClick={() => handleViewSwitch('tavares')}>
+                  <div className="v2-browser-mockup-bar">
+                    <div className="v2-browser-dots">
+                      <span className="dot dot-red" />
+                      <span className="dot dot-yellow" />
+                      <span className="dot dot-green" />
+                    </div>
+                    <div className="v2-browser-url-pill">
+                      <span className="v2-url-lock">🔒</span> portfolio-tavares.vercel.app
+                    </div>
+                    <span className="v2-browser-year-badge">2025</span>
                   </div>
-                  <div className="v2-website-preview">
+
+                  <div className="v2-website-large-preview">
                     <img src="/imgs/tavares.png" alt="Tavares" />
+                    <div className="v2-preview-overlay">
+                      <span className="v2-overlay-badge">
+                        {lang === 'fr' ? 'Explorer le projet' : 'Explore Case'}
+                      </span>
+                    </div>
                   </div>
-                  <div className="v2-website-card-footer">
-                    <span className="v2-website-category">Creative Art Direction</span>
-                    <a 
-                      href="https://portfolio-tavares.vercel.app/" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="v2-website-live-link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <span>Live Site</span>
-                      <ExternalLink size={13} />
-                    </a>
+
+                  <div className="v2-website-card-large-info">
+                    <div className="v2-card-large-top">
+                      <div>
+                        <span className="v2-website-category-tag">Creative Direction</span>
+                        <h4 className="v2-website-large-name">Tavares &amp; Visuals</h4>
+                      </div>
+                      <a 
+                        href="https://portfolio-tavares.vercel.app/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="v2-website-large-live-btn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Live Site</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <p className="v2-website-large-desc">
+                      {lang === 'fr'
+                        ? "Direction artistique percutante et portfolio interactif fluide avec Vibe Coding."
+                        : "High-impact cinematic art direction and interactive showcase built with rapid Vibe Coding."}
+                    </p>
+                    <div className="v2-website-tech-tags">
+                      <span>Vibe Coding</span>
+                      <span>Framer</span>
+                      <span>TypeScript</span>
+                      <span>Art Direction</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Bento Grid: Tools + Collaborate + Navigation */}
-              <div className="v2-bento-grid">
+              {/* Upgraded Bento Grid: Tools + Collaborate + Architecture */}
+              <div className="v2-bento-grid-upgraded">
                 {/* BENTO BLOCK 1: TOOLS 2x4 GRID (REACT, ANTIGRAVITY, FIGMA, ETC) */}
-                <div className="v2-bento-card v2-bento-tools">
-                  {/* Floating Vibe Coding Sticker */}
-                  <div className="v2-bento-sticker">
-                    <span>VIBE CODING ✦</span>
+                <div className="v2-bento-card v2-bento-tools-large">
+                  <div className="v2-bento-card-header">
+                    <div>
+                      <span className="v2-bento-tag">STACK &amp; WORKFLOW</span>
+                      <h4 className="v2-bento-card-title">
+                        {lang === 'fr' ? 'Écosystème Technologique' : 'Tech Ecosystem & Tools'}
+                      </h4>
+                    </div>
+                    {/* Glowing Vibe Coding Pill */}
+                    <div className="v2-bento-sticker-animated">
+                      <span>VIBE CODING &amp; RAPID MVP ✦</span>
+                    </div>
                   </div>
 
-                  <div className="v2-tools-grid">
+                  <div className="v2-tools-grid-large">
                     {/* Tool 1: React */}
-                    <div className="v2-tool-item" title="React.js">
-                      <svg viewBox="-11.5 -10.23174 23 20.46348" width="34" height="34">
-                        <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
-                        <g stroke="#61DAFB" strokeWidth="1" fill="none">
-                          <ellipse rx="11" ry="4.2"/>
-                          <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-                          <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-                        </g>
-                      </svg>
-                      <span className="v2-tool-label">React</span>
+                    <div className="v2-tool-item-large" title="React.js">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="-11.5 -10.23174 23 20.46348" width="36" height="36">
+                          <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
+                          <g stroke="#61DAFB" strokeWidth="1.2" fill="none">
+                            <ellipse rx="11" ry="4.2"/>
+                            <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+                            <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+                          </g>
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">React</span>
                     </div>
 
                     {/* Tool 2: Antigravity */}
-                    <div className="v2-tool-item" title="Antigravity">
-                      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#A855F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                      </svg>
-                      <span className="v2-tool-label">Antigravity</span>
+                    <div className="v2-tool-item-large" title="Antigravity IDE">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#C084FC" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">Antigravity</span>
                     </div>
 
                     {/* Tool 3: Figma */}
-                    <div className="v2-tool-item" title="Figma">
-                      <svg viewBox="0 0 38 57" width="24" height="34" fill="none">
-                        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
-                        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
-                        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
-                        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
-                        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
-                      </svg>
-                      <span className="v2-tool-label">Figma</span>
+                    <div className="v2-tool-item-large" title="Figma">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="0 0 38 57" width="26" height="36" fill="none">
+                          <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                          <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                          <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                          <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                          <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">Figma</span>
                     </div>
 
                     {/* Tool 4: TypeScript */}
-                    <div className="v2-tool-item" title="TypeScript">
-                      <svg viewBox="0 0 24 24" width="32" height="32" fill="#3178C6">
-                        <rect width="24" height="24" rx="4" fill="#3178C6" />
-                        <path d="M11.5 11.5H8.5V20H6.5V11.5H3.5V9.5H11.5V11.5ZM19.5 13.2C19.5 12.3 18.8 11.6 17.5 11.3L16.2 11C15.2 10.8 14.8 10.4 14.8 9.8C14.8 9.1 15.4 8.6 16.3 8.6C17.3 8.6 17.9 9.1 18 9.9H20C19.9 8 18.4 6.8 16.3 6.8C14.2 6.8 12.7 8 12.7 9.9C12.7 11.6 13.7 12.4 15.2 12.7L16.5 13C17.6 13.2 18 13.7 18 14.3C18 15.1 17.3 15.6 16.2 15.6C15.1 15.6 14.3 15 14.2 14H12.1C12.2 16.1 13.9 17.4 16.2 17.4C18.5 17.4 20.1 16.1 20.1 14.2L19.5 13.2Z" fill="#FFFFFF"/>
-                      </svg>
-                      <span className="v2-tool-label">TypeScript</span>
+                    <div className="v2-tool-item-large" title="TypeScript">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="0 0 24 24" width="34" height="34" fill="#3178C6">
+                          <rect width="24" height="24" rx="4" fill="#3178C6" />
+                          <path d="M11.5 11.5H8.5V20H6.5V11.5H3.5V9.5H11.5V11.5ZM19.5 13.2C19.5 12.3 18.8 11.6 17.5 11.3L16.2 11C15.2 10.8 14.8 10.4 14.8 9.8C14.8 9.1 15.4 8.6 16.3 8.6C17.3 8.6 17.9 9.1 18 9.9H20C19.9 8 18.4 6.8 16.3 6.8C14.2 6.8 12.7 8 12.7 9.9C12.7 11.6 13.7 12.4 15.2 12.7L16.5 13C17.6 13.2 18 13.7 18 14.3C18 15.1 17.3 15.6 16.2 15.6C15.1 15.6 14.3 15 14.2 14H12.1C12.2 16.1 13.9 17.4 16.2 17.4C18.5 17.4 20.1 16.1 20.1 14.2L19.5 13.2Z" fill="#FFFFFF"/>
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">TypeScript</span>
                     </div>
 
                     {/* Tool 5: Next.js */}
-                    <div className="v2-tool-item" title="Next.js">
-                      <svg viewBox="0 0 180 180" width="32" height="32" fill="none">
-                        <circle cx="90" cy="90" r="88" fill="#000" stroke="#FFF" strokeWidth="6" />
-                        <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.16 149.508 157.52Z" fill="white" />
-                        <rect x="115" y="54" width="12" height="72" fill="white" />
-                      </svg>
-                      <span className="v2-tool-label">Next.js</span>
+                    <div className="v2-tool-item-large" title="Next.js">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="0 0 180 180" width="34" height="34" fill="none">
+                          <circle cx="90" cy="90" r="88" fill="#000" stroke="#FFF" strokeWidth="6" />
+                          <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.16 149.508 157.52Z" fill="white" />
+                          <rect x="115" y="54" width="12" height="72" fill="white" />
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">Next.js</span>
                     </div>
 
                     {/* Tool 6: Tailwind CSS */}
-                    <div className="v2-tool-item" title="Tailwind CSS">
-                      <svg viewBox="0 0 24 24" width="34" height="34" fill="#38BDF8">
-                        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/>
-                      </svg>
-                      <span className="v2-tool-label">Tailwind</span>
+                    <div className="v2-tool-item-large" title="Tailwind CSS">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="#38BDF8">
+                          <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/>
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">Tailwind</span>
                     </div>
 
                     {/* Tool 7: Vite */}
-                    <div className="v2-tool-item" title="Vite">
-                      <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
-                        <path d="M29.5 5.5L16.5 28.5L3 5.5L16.5 12.5L29.5 5.5Z" fill="#BD34FE" stroke="#747BFF" strokeWidth="1.2"/>
-                        <path d="M17.5 3L11.5 16H16.5L14.5 25L22.5 13H17.5L19.5 3H17.5Z" fill="#FFD026"/>
-                      </svg>
-                      <span className="v2-tool-label">Vite</span>
+                    <div className="v2-tool-item-large" title="Vite">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="0 0 32 32" width="34" height="34" fill="none">
+                          <path d="M29.5 5.5L16.5 28.5L3 5.5L16.5 12.5L29.5 5.5Z" fill="#BD34FE" stroke="#747BFF" strokeWidth="1.2"/>
+                          <path d="M17.5 3L11.5 16H16.5L14.5 25L22.5 13H17.5L19.5 3H17.5Z" fill="#FFD026"/>
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">Vite</span>
                     </div>
 
-                    {/* Tool 8: Framer */}
-                    <div className="v2-tool-item" title="Framer Motion">
-                      <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF">
-                        <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/>
-                      </svg>
-                      <span className="v2-tool-label">Framer</span>
+                    {/* Tool 8: Framer Motion */}
+                    <div className="v2-tool-item-large" title="Framer Motion">
+                      <div className="v2-tool-icon-wrap">
+                        <svg viewBox="0 0 24 24" width="30" height="30" fill="#FFFFFF">
+                          <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/>
+                        </svg>
+                      </div>
+                      <span className="v2-tool-label-large">Framer</span>
                     </div>
                   </div>
                 </div>
 
-                {/* BENTO BLOCK 2: COLLABORATE */}
-                <div className="v2-bento-card v2-bento-collab">
-                  <div className="v2-bento-collab-text">
-                    <h4>Collaborate</h4>
+                {/* BENTO BLOCK 2: COLLABORATE & LIVE PRESENCE */}
+                <div className="v2-bento-card v2-bento-collab-large">
+                  <div className="v2-bento-card-header">
+                    <span className="v2-bento-tag">COLLABORATION</span>
+                    <div className="v2-live-status-badge">
+                      <span className="v2-status-dot" />
+                      <span>{lang === 'fr' ? 'Disponible' : 'Available'}</span>
+                    </div>
+                  </div>
+
+                  <div className="v2-bento-collab-text-large">
+                    <h4>{lang === 'fr' ? 'Synergie & Vitesse' : 'Live Collaboration'}</h4>
                     <p>
                       {lang === 'fr' 
-                        ? "Concevoir des espaces où les idées se rencontrent et où la collaboration s'épanouit." 
-                        : "Designing spaces where ideas meet and collaboration thrives."}
+                        ? "Des cycles de conception courts, des retours en temps réel sur Figma et des prototypes interactifs testables instantanément." 
+                        : "Short design cycles, live feedback on Figma, and interactive MVPs ready for immediate user testing."}
                     </p>
                   </div>
 
-                  {/* Designer Pointer Cursor Badge */}
-                  <div className="v2-bento-collab-visual">
-                    <div className="v2-collab-cursor-pill">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#A855F7" className="v2-cursor-arrow">
+                  {/* Dynamic Designer Presence Stage */}
+                  <div className="v2-collab-interactive-stage">
+                    <div className="v2-collab-canvas-grid" />
+                    <div className="v2-collab-cursor-animated">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="#A855F7" className="v2-cursor-svg">
                         <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
                       </svg>
-                      <span className="v2-cursor-badge-tag">Talesman</span>
+                      <div className="v2-cursor-tag-large">
+                        <span className="v2-cursor-avatar">T</span>
+                        <span>Talesman (Lead Design)</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* BENTO BLOCK 3: NAVIGATION */}
-                <div className="v2-bento-card v2-bento-nav">
-                  <div className="v2-bento-nav-text">
-                    <h4>Navigation</h4>
+                {/* BENTO BLOCK 3: ARCHITECTURE & DESIGN SYSTEMS */}
+                <div className="v2-bento-card v2-bento-nav-large">
+                  <div className="v2-bento-card-header">
+                    <span className="v2-bento-tag">SYSTEMS &amp; TOKENS</span>
+                  </div>
+
+                  <div className="v2-bento-nav-text-large">
+                    <h4>{lang === 'fr' ? 'Architecture Modulaire' : 'Modular Architecture'}</h4>
                     <p>
                       {lang === 'fr'
-                        ? "Structurez visuellement vos pages et reliez-les en quelques clics."
-                        : "Visually structure your pages and link to them with a few clicks."}
+                        ? "Composants scalables, hiérarchie visuelle irréprochable et tokenisation claire."
+                        : "Scalable components, bulletproof visual hierarchy, and token-driven design systems."}
                     </p>
                   </div>
 
-                  {/* Mockup Drawer Card Preview */}
-                  <div className="v2-bento-nav-drawer-mockup">
-                    <div className="v2-nav-mockup-header">
-                      <span className="v2-nav-mockup-close">✕</span>
+                  {/* Interactive UI System Layer Visual */}
+                  <div className="v2-system-mockup-wrap">
+                    <div className="v2-system-mockup-item is-primary">
+                      <span className="item-dot" />
+                      <span>App Navigation / Header</span>
+                      <span className="item-badge">Tokenized</span>
                     </div>
-                    <div className="v2-nav-mockup-links">
-                      <span className="is-active">Home</span>
-                      <span>About Me</span>
-                      <span>Portfolio</span>
+                    <div className="v2-system-mockup-item">
+                      <span className="item-dot" />
+                      <span>Hero Section / 3D Canvas</span>
+                      <span className="item-badge">Interactive</span>
+                    </div>
+                    <div className="v2-system-mockup-item">
+                      <span className="item-dot" />
+                      <span>Product Showcase Grid</span>
+                      <span className="item-badge">Responsive</span>
                     </div>
                   </div>
                 </div>
