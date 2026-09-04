@@ -20,7 +20,7 @@ import { caseStudiesData, CaseStudyId } from './caseStudiesData';
 import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
-import AntigravityLogo from './components/AntigravityLogo';
+
 
 
 
@@ -745,8 +745,6 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
       setDialSpinning(prev => !prev);
       setTooltipText(dialSpinning ? "RADAR DIAL: PAUSED" : "RADAR DIAL: ROTATING");
     } else if (index === 4) {
-      setTooltipText("GOOGLE ANTIGRAVITY: ZERO GRAVITY ENGINE");
-    } else if (index === 5) {
       setTooltipText("SCROLLING TO TOP ↗");
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -857,25 +855,10 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
           )}
         </button>
 
-        {/* Widget 5: Google Antigravity Luminous Arch */}
+        {/* Widget 5: Arrow Top-Right Scroll Back ↗ */}
         <button 
           className={`v2-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
           onClick={() => handleDiagramClick(4)}
-          onMouseEnter={() => setTooltipText("GOOGLE ANTIGRAVITY ARCH")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Google Antigravity widget"
-          style={{ padding: '6px' }}
-        >
-          <AntigravityLogo size={24} glow={false} />
-          {tooltipText && activeDiagram === 4 && (
-            <span className="v2-diagram-tooltip">{tooltipText}</span>
-          )}
-        </button>
-
-        {/* Widget 6: Arrow Top-Right Scroll Back ↗ */}
-        <button 
-          className={`v2-diagram-icon-btn ${activeDiagram === 5 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(5)}
           onMouseEnter={() => setTooltipText("RETURN TO TOP ↗")}
           onMouseLeave={() => setTooltipText(null)}
           aria-label="Scroll to top widget"
@@ -892,7 +875,7 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
           >
             <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
           </svg>
-          {tooltipText && activeDiagram === 5 && (
+          {tooltipText && activeDiagram === 4 && (
             <span className="v2-diagram-tooltip">{tooltipText}</span>
           )}
         </button>
