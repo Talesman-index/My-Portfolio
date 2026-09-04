@@ -1442,40 +1442,102 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 2: ABOUT ("about me!" & "what's up") */}
-            <section className="robin-about-section scroll-reveal">
-              <span className="robin-handwritten-lead">about me!</span>
-              <div className="robin-stamped-title">what's up</div>
+            {/* SECTION 2: ABOUT (EXACT REFERENCE DESIGN) */}
+            <section id="about-me" className="v2-about-section scroll-reveal">
+              {/* Background Mosaic Grid of Design Visuals & Case Studies */}
+              <div className="v2-about-mosaic-container" aria-hidden="true">
+                <div className="v2-about-mosaic-card"><img src="/imgs/beans_cover.png" alt="Beans" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/assetiQ/cover_Asset.jpg" alt="Asset IQ" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/tavares.png" alt="Tavares" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/dolce_cover.png" alt="Dolce Riviera" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/ehadj/cover_Ehadj.jpg" alt="eHadj" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/Strategy-Arena.png" alt="Strategy Arena" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/truvox_cover.png" alt="Truvox" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/sagana.png" alt="Sagana" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/vortex.webp" alt="Vortex Gallery" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/advisor.webp" alt="Sport Advisor" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding Setup" /></div>
+                <div className="v2-about-mosaic-card"><img src="/imgs/refuge.png" alt="The Refuge" /></div>
+              </div>
 
-              <div className="robin-about-grid">
-                {/* Left Taped Polaroid Card */}
-                <div className="robin-polaroid-card robin-polaroid-card-left scroll-reveal delay-1">
-                  <div className="robin-washi-tape" />
-                  <img src="/imgs/hero_image.png" alt="Sacca Dafia Polaroid 1" />
-                  <div className="robin-polaroid-caption">Sacca Dafia · aka Talesman</div>
-                </div>
+              {/* Dark Vignette & Top Spotlight Overlays */}
+              <div className="v2-about-vignette" aria-hidden="true" />
+              <div className="v2-about-spotlight" aria-hidden="true" />
 
-                {/* Center Handwritten Body Text */}
-                <div className="scroll-reveal delay-2">
-                  <p className="robin-about-body-text">
-                    {lang === 'fr'
-                      ? "Je suis un product designer passionné par la simplification des systèmes complexes. Je porte un soin obsessionnel aux détails, aux cas d'usage oubliés et à la création d'interfaces qui facilitent vraiment la vie de leurs utilisateurs."
-                      : "I'm a product designer who gets a little too excited about making complicated things feel simple. I care about the small details, the edge cases everyone forgets, and shipping work that genuinely makes someone's day easier."}
-                  </p>
+              {/* Center Content Card */}
+              <div className="v2-about-content-card">
+                <span className="v2-about-eyebrow">
+                  {lang === 'fr' ? 'À Propos' : 'About Me'}
+                </span>
+                <h2 className="v2-about-title">
+                  {lang === 'fr' ? 'Bonjour !' : 'Hi There!'}
+                </h2>
+                
+                <p className="v2-about-description">
+                  {lang === 'fr' ? (
+                    <>
+                      Je suis <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), un product designer passionné avec une expertise en narration visuelle et un œil affûté pour les détails. Depuis 2021, j'ai perfectionné mon savoir-faire dans la création de designs alliant créativité et précision, maîtrisant les principes fondamentaux comme la{' '}
+                      <span className="v2-typo-badge">
+                        <span className="v2-typo-word">Typographie</span>
+                        <span className="v2-typo-script" aria-hidden="true">Typography</span>
+                      </span>, la com{'{'}pos{'}'}ition, et la théorie des{' '}
+                      <span className="v2-rainbow-color">
+                        <span style={{ color: '#38BDF8' }}>c</span>
+                        <span style={{ color: '#F87171' }}>o</span>
+                        <span style={{ color: '#60A5FA' }}>u</span>
+                        <span style={{ color: '#34D399' }}>l</span>
+                        <span style={{ color: '#FBBF24' }}>e</span>
+                        <span style={{ color: '#A78BFA' }}>u</span>
+                        <span style={{ color: '#F472B6' }}>r</span>
+                        <span style={{ color: '#38BDF8' }}>s</span>
+                      </span>{' '}
+                      tout en restant constamment à la pointe des outils modernes et des tendances.
+                    </>
+                  ) : (
+                    <>
+                      I'm <strong>Devansh Prakash</strong>, a passionate graphic designer with expertise in visual storytelling and a sharp eye for detail. Since 2018, I've honed my skills in crafting designs that balance creativity and precision, mastering design principles like{' '}
+                      <span className="v2-typo-badge">
+                        <span className="v2-typo-word">Typography</span>
+                        <span className="v2-typo-script" aria-hidden="true">Typography</span>
+                      </span>, com{'{'}pos{'}'}ition, and{' '}
+                      <span className="v2-rainbow-color">
+                        <span style={{ color: '#38BDF8' }}>c</span>
+                        <span style={{ color: '#F87171' }}>o</span>
+                        <span style={{ color: '#60A5FA' }}>l</span>
+                        <span style={{ color: '#34D399' }}>o</span>
+                        <span style={{ color: '#FBBF24' }}>r</span>
+                      </span>{' '}
+                      theory while staying adept with the latest tools and trends.
+                    </>
+                  )}
+                </p>
 
-                  <div className="robin-stamp-pills-row">
-                    <span className="robin-stamp-pill badge-yellow">Product Design</span>
-                    <span className="robin-stamp-pill badge-green">Vibe Coding</span>
-                    <span className="robin-stamp-pill badge-pink">UX Strategy</span>
-                    <span className="robin-stamp-pill badge-blue">Design Systems</span>
+                {/* Sub-actions Footer */}
+                <div className="v2-about-footer">
+                  <span className="v2-about-footer-prompt">
+                    {lang === 'fr' ? 'Envie d\'en savoir plus sur moi ?' : 'Want to know more about me?'}
+                  </span>
+                  <div className="v2-about-footer-links">
+                    <button 
+                      className="v2-about-link-btn" 
+                      onClick={() => {
+                        if ((window as any).Calendly) {
+                          (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                        } else {
+                          window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                        }
+                      }}
+                    >
+                      Let's Connect
+                    </button>
+                    <span className="v2-about-link-sep">|</span>
+                    <button 
+                      className="v2-about-link-btn" 
+                      onClick={() => handleViewSwitch('experiences')}
+                    >
+                      Blog
+                    </button>
                   </div>
-                </div>
-
-                {/* Right Taped Polaroid Card */}
-                <div className="robin-polaroid-card robin-polaroid-card-right scroll-reveal delay-3">
-                  <div className="robin-washi-tape" style={{ left: 'auto', right: '20px', background: 'rgba(147, 197, 253, 0.85)' }} />
-                  <img src="/imgs/vibe_coding_setup.jpg" alt="Sacca Workspace Polaroid 2" />
-                  <div className="robin-polaroid-caption">by @misterthobis</div>
                 </div>
               </div>
             </section>
