@@ -12,10 +12,7 @@ import {
   FileText,
   Download,
   Layers,
-  Sparkles,
   Home,
-  Building2,
-  Briefcase,
   Menu
 } from 'lucide-react';
 import './App.css';
@@ -24,25 +21,6 @@ import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
 
-/* Metal Paperclip SVG Helper */
-const PaperclipSVG = ({ style }: { style?: React.CSSProperties }) => (
-  <svg viewBox="0 0 24 50" width="22" height="44" fill="none" stroke="#666666" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ position: 'absolute', zIndex: 15, filter: 'drop-shadow(1px 2px 3px rgba(0,0,0,0.3))', ...style }}>
-    <path d="M7 40 V10 A5 5 0 0 1 17 10 V36 A8 8 0 0 1 1 36 V14 A11 11 0 0 1 23 14 V40" />
-  </svg>
-);
-
-/* Binder Holes Helper */
-const BinderHoles = () => (
-  <div className="mosby-binder-holes">
-    <div className="mosby-binder-hole" />
-    <div className="mosby-binder-hole" />
-    <div className="mosby-binder-hole" />
-    <div className="mosby-binder-hole" />
-    <div className="mosby-binder-hole" />
-    <div className="mosby-binder-hole" />
-    <div className="mosby-binder-hole" />
-  </div>
-);
 
 const LangSwitchControl = ({ lang, onToggle, isMobile }: { lang: 'en' | 'fr'; onToggle: () => void; isMobile?: boolean }) => (
   <button 
@@ -92,9 +70,8 @@ const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLa
   'vortex': { title: 'Vortex Gallery', color: '#EAB308', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel' },
   'sport-advisor': { title: 'Sport Advisor', color: '#000000', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive' }
 };
-
 /* ─────────────────────────────────────────────
-   ABOUT SHEET MODAL
+   ABOUT SHEET MODAL (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: () => void; lang: 'en' | 'fr' }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -106,44 +83,44 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
     setTimeout(() => {
       setIsClosing(false);
       onClose();
-    }, 280);
+    }, 250);
   };
 
   return (
-    <div className={`mosby-modal-overlay ${isClosing ? 'is-closing' : ''}`} onClick={handleClose}>
-      <div className={`mosby-about-sheet ${isClosing ? 'is-closing' : ''}`} onClick={(e) => e.stopPropagation()}>
-        <button className="mosby-modal-close-btn" onClick={handleClose} aria-label="Fermer">
+    <div className={`v2-modal-overlay ${isClosing ? 'is-closing' : ''}`} onClick={handleClose}>
+      <div className={`v2-modal-sheet ${isClosing ? 'is-closing' : ''}`} onClick={(e) => e.stopPropagation()}>
+        <button className="v2-modal-close-btn" onClick={handleClose} aria-label="Fermer">
           <X size={20} />
         </button>
 
-        <div className="mosby-about-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'start' }}>
           {/* Left Column: Big Bold Quote + Dual Photo Cards */}
           <div>
-            <h2 className="mosby-about-quote-title">
+            <span className="v2-subpage-eyebrow">
+              {lang === 'fr' ? 'DOSSIER PERSONNEL' : 'PERSONNEL DOSSIER'}
+            </span>
+            <h2 style={{ fontFamily: 'var(--font-anton)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', color: '#FFFFFF', lineHeight: 1.1, margin: '8px 0 24px 0', letterSpacing: '0.02em' }}>
               {lang === 'fr' 
                 ? "LE DESIGN NUMÉRIQUE EST L'ALLIANCE DE LA RIGUEUR PRODUIT ET DE L'ÉLÉGANCE WEB."
                 : "DIGITAL DESIGN IS THE FUSION OF PRODUCT RIGOR AND WEB ELEGANCE."}
             </h2>
 
-            <div className="mosby-about-photo-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               {/* Photo 1: B&W Executive Office */}
-              <div className="mosby-about-photo-card" style={{ transform: 'rotate(-1deg)' }}>
-                <PaperclipSVG style={{ top: '-14px', right: '14px' }} />
-                <img src="/imgs/hero_image.png" alt="Sacca Dafia Executive" className="mosby-about-photo-img" style={{ filter: 'grayscale(100%) contrast(110%)' }} />
-                <div className="mosby-about-caption">
-                  <strong>01. EXECUTIVE DOSSIER</strong> <br />
-                  Sacca Dafia <span style={{ opacity: 0.75 }}>· aka Talesman</span> (Web &amp; Product Designer)
+              <div style={{ background: 'rgba(5, 8, 16, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '12px', overflow: 'hidden' }}>
+                <img src="/imgs/hero_image.png" alt="Sacca Dafia Executive" style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', filter: 'grayscale(100%) contrast(110%)' }} />
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#94A3B8', marginTop: '10px', lineHeight: 1.4 }}>
+                  <strong style={{ color: '#FFFFFF' }}>01. EXECUTIVE DOSSIER</strong> <br />
+                  Sacca Dafia · Talesman
                 </div>
               </div>
 
               {/* Photo 2: Warm Ambient Workspace */}
-              <div className="mosby-about-photo-card" style={{ transform: 'rotate(1.5deg)' }}>
-                <PaperclipSVG style={{ top: '-14px', left: '14px' }} />
-                <span className="mosby-about-vibe-badge">RAPID MVP &amp; VIBE CODING</span>
-                <img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding Setup" className="mosby-about-photo-img" />
-                <div className="mosby-about-caption">
-                  <strong>02. PROTOTYPING WORKSPACE</strong> <br />
-                  Vibe Coding &amp; Rapid MVP Prototyping
+              <div style={{ background: 'rgba(5, 8, 16, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '12px', overflow: 'hidden' }}>
+                <img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding Setup" style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px' }} />
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#38BDF8', marginTop: '10px', lineHeight: 1.4 }}>
+                  <strong style={{ color: '#FFFFFF' }}>02. VIBE CODING</strong> <br />
+                  Rapid MVP Prototyping
                 </div>
               </div>
             </div>
@@ -151,46 +128,56 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
 
           {/* Right Column: Editorial Text + Core Skills + Signature */}
           <div>
-            <p className="mosby-about-serif-text">
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.02rem', lineHeight: 1.7, color: '#CBD5E1', marginBottom: '20px' }}>
               {lang === 'fr'
                 ? "En tant que Web Designer & Product Designer (connu sous le pseudo Talesman), je façonne des produits numériques à la fois beaux, intuitifs et hautement fonctionnels. En complément, ma maîtrise du Vibe Coding me permet de proposer des MVPs rapides et interactifs, offrant ainsi aux clients une meilleure validation terrain et un test utilisateur réel dès les premières phases du projet."
                 : "As a Web Designer & Product Designer (known by the pseudonym Talesman), I craft digital products that are elegant, intuitive, and highly functional. As a value-added skill, my Vibe Coding capabilities allow me to quickly deliver interactive MVPs to clients for faster user validation and real-world testing."}
             </p>
 
-            <ul className="mosby-about-bullets">
-              <li>
-                {lang === 'fr' 
-                  ? "Product Design : Plateformes SaaS B2B complexes, architecture d'information et rédaction de PRDs."
-                  : "Product Design: Complex B2B SaaS platforms, information architecture, and PRD specifications."}
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li style={{ display: 'flex', gap: '10px', fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: '#94A3B8', lineHeight: 1.5 }}>
+                <span style={{ color: '#38BDF8', fontWeight: 800 }}>▸</span>
+                <span><strong style={{ color: '#FFFFFF' }}>Product Design :</strong> {lang === 'fr' ? "Plateformes SaaS B2B complexes, architecture d'information et rédaction de PRDs." : "Complex B2B SaaS platforms, information architecture, and PRD specifications."}</span>
               </li>
-              <li>
-                {lang === 'fr'
-                  ? "Web Design : Direction artistique haut de gamme, vitrines d'exception et e-commerce sur mesure."
-                  : "Web Design: High-end art direction, luxury showcase sites, and custom e-commerce experiences."}
+              <li style={{ display: 'flex', gap: '10px', fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: '#94A3B8', lineHeight: 1.5 }}>
+                <span style={{ color: '#C084FC', fontWeight: 800 }}>▸</span>
+                <span><strong style={{ color: '#FFFFFF' }}>Web Design :</strong> {lang === 'fr' ? "Direction artistique haut de gamme, vitrines d'exception et e-commerce sur mesure." : "High-end art direction, luxury showcase sites, and custom e-commerce experiences."}</span>
               </li>
-              <li>
-                {lang === 'fr' 
-                  ? "Vibe Coding & MVPs Rapides : Prototypage interactif fonctionnel pour permettre aux clients de tester rapidement leurs concepts auprès d'utilisateurs réels."
-                  : "Vibe Coding & Rapid MVPs: Functional interactive prototyping allowing clients to quickly validate concepts with real users."}
+              <li style={{ display: 'flex', gap: '10px', fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: '#94A3B8', lineHeight: 1.5 }}>
+                <span style={{ color: '#34D399', fontWeight: 800 }}>▸</span>
+                <span><strong style={{ color: '#FFFFFF' }}>Vibe Coding &amp; MVPs :</strong> {lang === 'fr' ? "Prototypage interactif fonctionnel pour tester rapidement les concepts auprès d'utilisateurs réels." : "Functional interactive prototyping allowing clients to quickly validate concepts with real users."}</span>
               </li>
-              <li>
-                {lang === 'fr'
-                  ? "Design Systems & Leadership : Composants modulaires Figma/React et supervision technique dev."
-                  : "Design Systems & Leadership: Modular Figma/React UI systems and dev team supervision."}
+              <li style={{ display: 'flex', gap: '10px', fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: '#94A3B8', lineHeight: 1.5 }}>
+                <span style={{ color: '#F59E0B', fontWeight: 800 }}>▸</span>
+                <span><strong style={{ color: '#FFFFFF' }}>Design Systems :</strong> {lang === 'fr' ? "Composants modulaires Figma/React et supervision technique dev." : "Modular Figma/React UI systems and dev team supervision."}</span>
               </li>
             </ul>
 
-            <p className="mosby-about-serif-text" style={{ marginTop: '20px' }}>
-              {lang === 'fr' 
-                ? "Explorez l'archive de projets ci-dessous."
-                : "Explore the archive of projects below."}
-            </p>
-
-            <div className="mosby-signature-block">
-              <div className="mosby-signature-text">
-                Sacca Dafia <span style={{ fontSize: '0.62em', opacity: 0.7, fontFamily: 'monospace', fontWeight: 600 }}>(alias Talesman)</span>
+            <div style={{ marginTop: '28px', paddingTop: '20px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+              <div>
+                <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.4rem', color: '#FFFFFF', letterSpacing: '0.02em' }}>
+                  Sacca Dafia <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#38BDF8', fontWeight: 'bold' }}>(Talesman)</span>
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#64748B' }}>
+                  Web &amp; Product Designer · Rapid MVP Prototyping
+                </div>
               </div>
-              <div className="mosby-signature-sub">Web Designer &amp; Product Designer · Rapid MVP Prototyping</div>
+
+              <button 
+                className="v2-contact-primary-btn"
+                style={{ padding: '10px 20px', fontSize: '0.85rem' }}
+                onClick={() => {
+                  handleClose();
+                  if ((window as any).Calendly) {
+                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                  } else {
+                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                  }
+                }}
+              >
+                <span>Let's Connect</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
           </div>
         </div>
@@ -200,16 +187,16 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
 };
 
 /* ─────────────────────────────────────────────
-   CASE STUDY DOSSIER VIEW
+   CASE STUDY DOSSIER VIEW (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const CaseStudy = ({ 
   id, 
-  setCurrentView,
-  lang
+  setCurrentView, 
+  lang 
 }: { 
-  id: CaseStudyId, 
-  setCurrentView: any,
-  lang: 'en' | 'fr'
+  id: CaseStudyId; 
+  setCurrentView: any; 
+  lang: 'en' | 'fr'; 
 }) => {
   const data = caseStudiesData[lang][id] || caseStudiesData['fr']['asset-iq'];
   const config = PROJECT_CONFIGS[id] || { title: data.title, color: '#1D4ED8', categoryLabel: 'Design Dossier', year: '2026' };
@@ -221,323 +208,289 @@ const CaseStudy = ({
   const nextConfig = PROJECT_CONFIGS[nextId];
 
   return (
-    <div className="mosby-dossier-view">
-      {/* Top Navigation Bar with Back Button */}
-      <div className="container" style={{ paddingTop: '30px' }}>
+    <div className="v2-subpage-wrapper">
+      <div className="v2-subpage-ambient-glow" style={{ background: `radial-gradient(circle, ${config.color}25 0%, rgba(56, 189, 248, 0.08) 50%, transparent 70%)` }} />
+
+      <div className="v2-subpage-container">
+        {/* Top Back Navigation Button */}
         <button 
           onClick={() => navigateToHome(setCurrentView)} 
-          className="mosby-back-btn"
+          className="v2-subpage-back-btn"
         >
-          <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR À L\'ACCUEIL DES ARCHIVES' : 'RETURN TO ARCHIVE HOME'}</span>
+          <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}</span>
         </button>
-      </div>
 
-      {/* Huge White Title (Mosby's Files Header) */}
-      <h1 className="mosby-dossier-giant-title" style={{ paddingTop: '10px' }}>{data.title}</h1>
-
-      {/* Main Folder Backdrop Container */}
-      <div className="mosby-dossier-folder-container">
-        <div className="mosby-folder-backdrop" style={{ backgroundColor: config.color }}>
-          {/* White Paper Sheet Overlay */}
-          <div className="mosby-paper-sheet">
-            <BinderHoles />
-
-            {/* Top Grid: Portrait Photo with Paperclip + Drop-Cap Brief */}
-            <div className="mosby-paper-grid">
-              <div className="mosby-portrait-pin-box">
-                <PaperclipSVG style={{ top: '-14px', right: '20px' }} />
-                <img src={data.contextImg || data.bgImage || "/imgs/hero_image.png"} alt={data.title} className="mosby-portrait-img" />
-                
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginTop: '12px', color: '#666' }}>
-                  FILE REGISTRATION: SD-{id.toUpperCase()} <br />
-                  YEAR: {config.year} • {data.label}
-                </div>
-
-                {/* Direct CTA Button to Live Project */}
-                <a 
-                  href={liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="mosby-live-cta-btn"
-                  style={{ width: '100%', justifyContent: 'center' }}
-                >
-                  <ExternalLink size={16} />
-                  <span>{lang === 'fr' ? 'VISITER LE PROJET LIVE ↗' : 'VISIT LIVE PROJECT ↗'}</span>
-                </a>
+        {/* Hero Banner Card */}
+        <div className="v2-dossier-hero">
+          <div className="v2-dossier-grid-top">
+            {/* Left Preview Box with Project Cover & Live CTA */}
+            <div className="v2-dossier-portrait-box">
+              <img src={data.contextImg || data.bgImage || "/imgs/hero_image.png"} alt={data.title} className="v2-dossier-portrait-img" />
+              
+              <div className="v2-dossier-meta-list">
+                <div><strong>REGISTRATION:</strong> SD-{id.toUpperCase()}</div>
+                <div><strong>TIMELINE:</strong> {config.year}</div>
+                <div><strong>CATEGORY:</strong> {data.label}</div>
               </div>
 
-              <div>
-                <p className="mosby-dropcap-text">
-                  {data.context}
-                </p>
-                <p className="mosby-dropcap-text" style={{ marginTop: '16px' }}>
-                  {data.challenge}
-                </p>
-
-                {/* Technical Specs Metadata Grid */}
-                <div className="mosby-specs-metadata-grid">
-                  <div>
-                    <div className="mosby-spec-item-title">DESIGNER ROLE</div>
-                    <div className="mosby-spec-item-val">Web &amp; Product Designer</div>
-                  </div>
-                  <div>
-                    <div className="mosby-spec-item-title">PROJECT SCOPE</div>
-                    <div className="mosby-spec-item-val">{data.label}</div>
-                  </div>
-                  <div>
-                    <div className="mosby-spec-item-title">DELIVERABLES</div>
-                    <div className="mosby-spec-item-val">Art Direction, UI/UX &amp; Specs</div>
-                  </div>
-                </div>
-              </div>
+              <a 
+                href={liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="v2-dossier-live-btn"
+              >
+                <span>{lang === 'fr' ? 'VISITER LE PROJET LIVE' : 'VISIT LIVE PROJECT'}</span>
+                <ExternalLink size={15} />
+              </a>
             </div>
 
-            {/* Overlapping Physical Artifacts (Pink, Yellow, Blue Cards with Paperclips) */}
-            <div className="mosby-artifacts-container">
-              {/* Pink Index Card */}
-              <div className="mosby-artifact-card mosby-card-pink">
-                <PaperclipSVG style={{ top: '-14px', left: '16px' }} />
-                <div className="mosby-artifact-title">01. DISCOVERY &amp; INSIGHT</div>
-                <div className="mosby-artifact-text">"{data.insight}"</div>
-                {data.challengeImg && <img src={data.challengeImg} alt="Discovery Artifact" className="mosby-artifact-img" />}
-              </div>
+            {/* Right Details */}
+            <div>
+              <span className="v2-subpage-eyebrow" style={{ color: config.color }}>
+                {config.categoryLabel}
+              </span>
+              <h1 className="v2-subpage-title" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.8rem)', marginBottom: '20px' }}>
+                {data.title}
+              </h1>
 
-              {/* Yellow Sticky Note */}
-              <div className="mosby-artifact-card mosby-card-yellow">
-                <PaperclipSVG style={{ top: '-14px', right: '16px' }} />
-                <div className="mosby-artifact-title">02. SYSTEM SOLUTION</div>
-                <div className="mosby-artifact-text">{data.solution || data.uxSolutions}</div>
-                {data.dashboardImg && <img src={data.dashboardImg} alt="Solution Artifact" className="mosby-artifact-img" />}
-              </div>
+              <p className="v2-dossier-brief-text">
+                {data.context}
+              </p>
+              <p className="v2-dossier-brief-text" style={{ color: '#94A3B8', fontSize: '1.02rem' }}>
+                {data.challenge}
+              </p>
 
-              {/* Blue Note */}
-              {data.interfaceImg && (
-                <div className="mosby-artifact-card mosby-card-blue">
-                  <PaperclipSVG style={{ top: '-14px', left: '40%' }} />
-                  <div className="mosby-artifact-title">03. POLISHED PRODUCT UI</div>
-                  <div className="mosby-artifact-text">{data.conclusion}</div>
-                  <img src={data.interfaceImg} alt="Interface Showcase" className="mosby-artifact-img" />
+              {/* Technical Specs Grid */}
+              <div className="v2-dossier-specs-grid">
+                <div className="v2-dossier-spec-item">
+                  <div className="spec-label">ROLE</div>
+                  <div className="spec-val">Web &amp; Product Designer</div>
                 </div>
-              )}
-            </div>
-
-            {/* Detailed System Features Section */}
-            {data.features && data.features.length > 0 && (
-              <div style={{ marginTop: '50px', borderTop: '1px solid #DDD', paddingTop: '30px' }}>
-                <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.8rem', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Layers size={22} color={config.color} />
-                  <span>SYSTEMIC FEATURES &amp; CAPABILITIES</span>
+                <div className="v2-dossier-spec-item">
+                  <div className="spec-label">SCOPE</div>
+                  <div className="spec-val">{data.label}</div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                  {data.features.map((feat, idx) => (
-                    <div key={idx} style={{ padding: '18px', background: '#FFFFFF', borderLeft: `4px solid ${config.color}`, boxShadow: '0 2px 10px rgba(0,0,0,0.06)' }}>
-                      <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.2rem', marginBottom: '4px' }}>{feat.title}</div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#555' }}>{feat.desc}</div>
-                    </div>
-                  ))}
+                <div className="v2-dossier-spec-item">
+                  <div className="spec-label">DELIVERABLES</div>
+                  <div className="spec-val">UI/UX, Design Tokens &amp; Specs</div>
                 </div>
-              </div>
-            )}
-
-            {/* Strategic Design Decisions */}
-            {data.decisions && data.decisions.length > 0 && (
-              <div style={{ marginTop: '40px', borderTop: '1px solid #DDD', paddingTop: '30px' }}>
-                <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.8rem', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Sparkles size={22} color={config.color} />
-                  <span>ARCHITECTURAL &amp; UX DECISIONS</span>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                  {data.decisions.map((dec, idx) => (
-                    <div key={idx} style={{ padding: '20px', background: '#FEF08A', color: '#121212', borderRadius: '4px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-                      <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.25rem', marginBottom: '6px' }}>{dec.title}</div>
-                      <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', marginBottom: '8px' }}>{dec.desc}</div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#444', borderTop: '1px solid rgba(0,0,0,0.15)', paddingTop: '6px' }}>
-                        <strong>WHY:</strong> {dec.why}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Key Outcomes List */}
-            <div style={{ marginTop: '40px', borderTop: '1px solid #DDD', paddingTop: '30px' }}>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.6rem', marginBottom: '16px' }}>MEASURABLE OUTCOMES</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
-                {data.impact.map((imp, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>
-                    <CheckCircle2 size={16} color={config.color} />
-                    <span>{imp}</span>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Edge Vertical Folder Tabs */}
-        <div className="mosby-vertical-tabs-col">
-          {allKeys.slice(0, 6).map(k => {
-            const cfg = PROJECT_CONFIGS[k];
-            return (
-              <div 
-                key={k} 
-                className="mosby-vertical-tab" 
-                style={{ backgroundColor: cfg.color }}
-                onClick={() => setCurrentView(k)}
-              >
-                {cfg.title}
+        {/* Discovery, Solution & Interface Artifacts Grid */}
+        <div className="v2-dossier-artifacts-grid">
+          {/* Card 01: Discovery & Insight */}
+          <div className="v2-dossier-artifact-card">
+            <div className="v2-dossier-artifact-title" style={{ color: '#38BDF8' }}>
+              01. DISCOVERY &amp; INSIGHT
+            </div>
+            <p className="v2-dossier-artifact-text">
+              "{data.insight}"
+            </p>
+            {data.challengeImg && (
+              <img src={data.challengeImg} alt="Discovery Artifact" className="v2-dossier-artifact-img" />
+            )}
+          </div>
+
+          {/* Card 02: System Solution */}
+          <div className="v2-dossier-artifact-card">
+            <div className="v2-dossier-artifact-title" style={{ color: '#C084FC' }}>
+              02. SYSTEM ARCHITECTURE
+            </div>
+            <p className="v2-dossier-artifact-text">
+              {data.solution || data.uxSolutions}
+            </p>
+            {data.dashboardImg && (
+              <img src={data.dashboardImg} alt="Solution Artifact" className="v2-dossier-artifact-img" />
+            )}
+          </div>
+
+          {/* Card 03: Polished UI */}
+          {data.interfaceImg && (
+            <div className="v2-dossier-artifact-card">
+              <div className="v2-dossier-artifact-title" style={{ color: '#34D399' }}>
+                03. POLISHED INTERFACE
               </div>
-            );
-          })}
+              <p className="v2-dossier-artifact-text">
+                {data.conclusion}
+              </p>
+              <img src={data.interfaceImg} alt="Interface Showcase" className="v2-dossier-artifact-img" />
+            </div>
+          )}
         </div>
-      </div>
 
-      {/* Next Project Folder Bar Peeking at Bottom */}
-      <div 
-        className="mosby-next-folder-bar" 
-        style={{ backgroundColor: nextConfig.color }}
-        onClick={() => setCurrentView(nextId)}
-      >
-        <div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#FFF', opacity: 0.8, textTransform: 'uppercase' }}>{lang === 'fr' ? 'PROCHAIN DOSSIER →' : 'NEXT FILE IN ARCHIVE →'}</div>
-          <div className="mosby-next-folder-title">{nextConfig.title}</div>
+        {/* Detailed System Features */}
+        {data.features && data.features.length > 0 && (
+          <div style={{ marginTop: '50px' }}>
+            <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.8rem', color: '#FFFFFF', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Layers size={22} color={config.color} />
+              <span>SYSTEMIC FEATURES &amp; CAPABILITIES</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+              {data.features.map((feat, idx) => (
+                <div key={idx} style={{ padding: '24px', background: 'rgba(10, 16, 28, 0.75)', borderLeft: `4px solid ${config.color}`, borderTop: '1px solid rgba(255, 255, 255, 0.08)', borderRight: '1px solid rgba(255, 255, 255, 0.08)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '0 12px 12px 0' }}>
+                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.2rem', color: '#FFFFFF', marginBottom: '6px' }}>{feat.title}</div>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#94A3B8', lineHeight: 1.5 }}>{feat.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Measurable Outcomes */}
+        <div style={{ marginTop: '50px', background: 'rgba(10, 16, 28, 0.75)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '36px' }}>
+          <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.8rem', color: '#FFFFFF', marginBottom: '20px' }}>
+            MEASURABLE IMPACT &amp; OUTCOMES
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+            {data.impact.map((imp, idx) => (
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: '#E2E8F0' }}>
+                <CheckCircle2 size={18} color="#38BDF8" style={{ flexShrink: 0 }} />
+                <span>{imp}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <ArrowRight size={32} color="#FFF" />
-      </div>
 
-      {/* Floating Back to Home Badge */}
-      <div 
-        className="mosby-floating-scroll-badge" 
-        onClick={() => navigateToHome(setCurrentView)}
-        style={{ right: 'auto', left: '24px', background: '#FFFFFF', color: '#000000' }}
-      >
-        ← {lang === 'fr' ? 'RETOUR À L\'ACCUEIL' : 'RETURN HOME'}
-      </div>
-
-      {/* Floating Scroll Pill Button */}
-      <div className="mosby-floating-scroll-badge" onClick={() => setCurrentView(nextId)}>
-        {lang === 'fr' ? 'Faire défiler pour le dossier suivant ↓' : 'Scroll for next file ↓'}
+        {/* Next Project Footer Bar */}
+        <div 
+          className="v2-dossier-next-bar" 
+          onClick={() => setCurrentView(nextId)}
+        >
+          <div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: '#94A3B8', textTransform: 'uppercase', marginBottom: '4px' }}>
+              {lang === 'fr' ? 'DOSSIER SUIVANT →' : 'NEXT CASE STUDY →'}
+            </div>
+            <div className="v2-dossier-next-title">{nextConfig.title}</div>
+          </div>
+          <ArrowRight size={28} color="#38BDF8" />
+        </div>
       </div>
     </div>
   );
 };
 
 /* ─────────────────────────────────────────────
-   EXPERIENCES DOSSIER VIEW
+   EXPERIENCES DOSSIER VIEW (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
   return (
-    <div className="mosby-dossier-view" style={{ paddingTop: '40px' }}>
-      <div className="container">
+    <div className="v2-subpage-wrapper">
+      <div className="v2-subpage-ambient-glow" />
+
+      <div className="v2-subpage-container">
         <button 
           onClick={() => navigateToHome(setCurrentView)} 
-          className="mosby-back-btn"
+          className="v2-subpage-back-btn"
         >
-          <ArrowLeft size={16} /> <span>RETOUR À L'ACCUEIL DES ARCHIVES</span>
+          <ArrowLeft size={16} /> <span>RETOUR AU PORTFOLIO</span>
         </button>
 
-        <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>REGISTRE DES EXPÉRIENCES</h1>
+        <div className="v2-subpage-header">
+          <div>
+            <span className="v2-subpage-eyebrow">PARCOURS PROFESSIONNEL &amp; EXPÉRIENCES</span>
+            <h1 className="v2-subpage-title">REGISTRE DES EXPÉRIENCES</h1>
+          </div>
+        </div>
 
-        <div className="mosby-paper-sheet" style={{ maxWidth: '1050px' }}>
-          <BinderHoles />
-
-          <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.2rem', marginBottom: '28px', letterSpacing: '0.02em', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Building2 size={26} color="#DC2626" />
-            <span>EXPÉRIENCES EN ENTREPRISE</span>
+        <div className="v2-timeline-container" style={{ margin: '30px auto 0 auto' }}>
+          {/* 01. CACTUCE */}
+          <div className="v2-timeline-card">
+            <div className="v2-timeline-node node-red">
+              <div className="v2-timeline-node-inner" />
+            </div>
+            <div className="v2-timeline-body">
+              <div className="v2-timeline-header-row">
+                <div className="v2-timeline-title-group">
+                  <span className="v2-timeline-company">CACTUCE</span>
+                  <span className="v2-timeline-role-badge">Product Designer</span>
+                </div>
+                <span className="v2-timeline-date">Octobre 2025 — Mai 2026</span>
+              </div>
+              <div className="v2-timeline-tagline">
+                B2B SAAS ARCHITECTURE &amp; PROCESS OPTIMIZATION
+              </div>
+              <ul className="v2-timeline-bullets">
+                <li>Lead Product Designer chargé de l'optimisation des produits <strong>eHadj</strong> (logistique nationale) et <strong>Asset IQ</strong> (télémétrie industrielle).</li>
+                <li>Identification et élimination chirurgicale des frictions dans l'expérience utilisateur et les parcours multi-acteurs.</li>
+                <li>Définition précise des parcours utilisateurs, création du Design System Figma Tokens et supervision complète du processus d'assurance qualité (QA).</li>
+              </ul>
+              <div className="v2-timeline-impact-pill">
+                RÉSULTAT : 90% d'erreurs en moins &amp; zéro doublon de dossier
+              </div>
+              <div className="v2-timeline-tools-row">
+                <span className="v2-timeline-tool-tag">Product Design</span>
+                <span className="v2-timeline-tool-tag">Figma Tokens</span>
+                <span className="v2-timeline-tool-tag">QA Recipe</span>
+                <span className="v2-timeline-tool-tag">eHadj &amp; Asset IQ</span>
+              </div>
+            </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            {/* 01. CACTUCE */}
-            <div style={{ padding: '28px', background: '#FFF', borderLeft: '6px solid #DC2626', boxShadow: '0 6px 18px rgba(0,0,0,0.08)', borderRadius: '2px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
-                <div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', background: '#DC2626', color: '#FFF', padding: '3px 8px', borderRadius: '2px', fontWeight: 'bold' }}>
-                    01. ENTREPRISE
-                  </span>
-                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.2rem', margin: '8px 0 2px 0', color: '#121212' }}>
-                    CACTUCE
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', color: '#DC2626', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Briefcase size={15} /> Product Designer
-                  </div>
+          {/* 02. TRELLIX */}
+          <div className="v2-timeline-card">
+            <div className="v2-timeline-node node-blue">
+              <div className="v2-timeline-node-inner" />
+            </div>
+            <div className="v2-timeline-body">
+              <div className="v2-timeline-header-row">
+                <div className="v2-timeline-title-group">
+                  <span className="v2-timeline-company">TRELLIX</span>
+                  <span className="v2-timeline-role-badge badge-blue">Lead Product Designer</span>
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#333', background: '#F5F5F5', padding: '6px 14px', border: '1px solid #DDD', fontWeight: 'bold' }}>
-                  Octobre 2025 - Mai 2026
-                </div>
+                <span className="v2-timeline-date">Février 2024 — Septembre 2025</span>
               </div>
-
-              <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #EEE' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 'bold', color: '#444', marginBottom: '10px', textTransform: 'uppercase' }}>
-                  RESPONSABILITÉS ET RÉALISATIONS :
-                </div>
-                <ul style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: '#222', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px', lineHeight: '1.5' }}>
-                  <li>Chargé de l'optimisation des produits <strong>eHadj</strong> et <strong>Asset IQ</strong>.</li>
-                  <li>Identification et correction des frictions dans l'expérience utilisateur.</li>
-                  <li>Définition précise des parcours utilisateurs et supervision complète du processus d'assurance qualité (QA).</li>
-                </ul>
+              <div className="v2-timeline-tagline" style={{ color: '#60A5FA' }}>
+                ENTERPRISE SAAS &amp; PRODUCT STRATEGY LEADERSHIP
+              </div>
+              <ul className="v2-timeline-bullets">
+                <li>Direction et leadership de l'équipe design pour façonner des solutions SaaS B2B complexes centrées sur l'utilisateur.</li>
+                <li>Rédaction intégrale des Product Requirement Documents (PRDs), spécifications fonctionnelles &amp; API, et gestion des cycles de recherche utilisateur.</li>
+                <li>Mise en place de standards de livraison dev-handoff ayant augmenté la vélocité de développement de +50%.</li>
+              </ul>
+              <div className="v2-timeline-impact-pill pill-blue">
+                RÉSULTAT : +50% de vélocité de dev via PRDs &amp; specs fonctionnelles
+              </div>
+              <div className="v2-timeline-tools-row">
+                <span className="v2-timeline-tool-tag">PRD Writing</span>
+                <span className="v2-timeline-tool-tag">Team Leadership</span>
+                <span className="v2-timeline-tool-tag">User Research</span>
+                <span className="v2-timeline-tool-tag">B2B SaaS</span>
               </div>
             </div>
+          </div>
 
-            {/* 02. TRELLIX */}
-            <div style={{ padding: '28px', background: '#FFF', borderLeft: '6px solid #1D4ED8', boxShadow: '0 6px 18px rgba(0,0,0,0.08)', borderRadius: '2px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
-                <div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', background: '#1D4ED8', color: '#FFF', padding: '3px 8px', borderRadius: '2px', fontWeight: 'bold' }}>
-                    02. ENTREPRISE
-                  </span>
-                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.2rem', margin: '8px 0 2px 0', color: '#121212' }}>
-                    TRELLIX
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', color: '#1D4ED8', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Briefcase size={15} /> Lead Product Designer
-                  </div>
-                </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#333', background: '#F5F5F5', padding: '6px 14px', border: '1px solid #DDD', fontWeight: 'bold' }}>
-                  Février 2024 - Septembre 2025
-                </div>
-              </div>
-
-              <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #EEE' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 'bold', color: '#444', marginBottom: '10px', textTransform: 'uppercase' }}>
-                  RESPONSABILITÉS ET RÉALISATIONS :
-                </div>
-                <ul style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: '#222', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px', lineHeight: '1.5' }}>
-                  <li>Direction et leadership d'équipe pour concevoir et développer des solutions axées sur l'utilisateur.</li>
-                  <li>Prise en charge de la recherche de produits (Product research).</li>
-                  <li>Gestion intégrale des projets de design.</li>
-                </ul>
-              </div>
+          {/* 03. CREAFIX */}
+          <div className="v2-timeline-card">
+            <div className="v2-timeline-node node-green">
+              <div className="v2-timeline-node-inner" />
             </div>
-
-            {/* 03. CREAFIX */}
-            <div style={{ padding: '28px', background: '#FFF', borderLeft: '6px solid #059669', boxShadow: '0 6px 18px rgba(0,0,0,0.08)', borderRadius: '2px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
-                <div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', background: '#059669', color: '#FFF', padding: '3px 8px', borderRadius: '2px', fontWeight: 'bold' }}>
-                    03. ENTREPRISE
-                  </span>
-                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '2.2rem', margin: '8px 0 2px 0', color: '#121212' }}>
-                    CREAFIX
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', color: '#059669', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Briefcase size={15} /> Web Designer
-                  </div>
+            <div className="v2-timeline-body">
+              <div className="v2-timeline-header-row">
+                <div className="v2-timeline-title-group">
+                  <span className="v2-timeline-company">CREAFIX</span>
+                  <span className="v2-timeline-role-badge badge-green">Web Designer</span>
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#333', background: '#F5F5F5', padding: '6px 14px', border: '1px solid #DDD', fontWeight: 'bold' }}>
-                  Août 2022 - Février 2024
-                </div>
+                <span className="v2-timeline-date">Août 2022 — Février 2024</span>
               </div>
-
-              <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #EEE' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 'bold', color: '#444', marginBottom: '10px', textTransform: 'uppercase' }}>
-                  RESPONSABILITÉS ET RÉALISATIONS :
-                </div>
-                <ul style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: '#222', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px', lineHeight: '1.5' }}>
-                  <li>Conception d'interfaces web modernes intégrant rigoureusement les principes UX/UI.</li>
-                  <li>Optimisation des interfaces pour un affichage multi-supports (responsive design).</li>
-                  <li>Participation et contribution active aux campagnes de marketing digital de l'entreprise.</li>
-                </ul>
+              <div className="v2-timeline-tagline" style={{ color: '#34D399' }}>
+                WEB ART DIRECTION &amp; BRAND EXPERIENCE
+              </div>
+              <ul className="v2-timeline-bullets">
+                <li>Conception d'interfaces web d'exception et de vitrines interactives pour +15 clients et agences internationales.</li>
+                <li>Direction artistique web, typographie éditoriale, animations 60fps et optimisation responsive multi-supports.</li>
+                <li>Participation et contribution active aux campagnes de marketing digital et à l'optimisation des taux de conversion.</li>
+              </ul>
+              <div className="v2-timeline-impact-pill pill-green">
+                RÉSULTAT : +15 vitrines web &amp; e-commerce livrées avec succès
+              </div>
+              <div className="v2-timeline-tools-row">
+                <span className="v2-timeline-tool-tag">Web Art Direction</span>
+                <span className="v2-timeline-tool-tag">Responsive UI</span>
+                <span className="v2-timeline-tool-tag">E-Commerce</span>
+                <span className="v2-timeline-tool-tag">Micro-Animations</span>
               </div>
             </div>
           </div>
@@ -548,47 +501,90 @@ const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
 };
 
 /* ─────────────────────────────────────────────
-   SERVICES DOSSIER VIEW
+   SERVICES DOSSIER VIEW (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
   return (
-    <div className="mosby-dossier-view" style={{ paddingTop: '40px' }}>
-      <div className="container">
+    <div className="v2-subpage-wrapper">
+      <div className="v2-subpage-ambient-glow" />
+
+      <div className="v2-subpage-container">
         <button 
           onClick={() => navigateToHome(setCurrentView)} 
-          className="mosby-back-btn"
+          className="v2-subpage-back-btn"
         >
-          <ArrowLeft size={16} /> <span>RETOUR À L'ACCUEIL DES ARCHIVES</span>
+          <ArrowLeft size={16} /> <span>RETOUR AU PORTFOLIO</span>
         </button>
 
-        <h1 className="mosby-dossier-giant-title" style={{ padding: '0 0 20px 0' }}>CAPABILITIES &amp; SERVICES SPECS</h1>
+        <div className="v2-subpage-header">
+          <div>
+            <span className="v2-subpage-eyebrow">CAPABILITIES &amp; EXPERTISES</span>
+            <h1 className="v2-subpage-title">SERVICES &amp; SOLUTIONS</h1>
+          </div>
+        </div>
 
-        <div className="mosby-paper-sheet" style={{ maxWidth: '1050px' }}>
-          <BinderHoles />
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            <div style={{ padding: '24px', background: '#FFF', border: '1px solid #DDD', borderRadius: '4px' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#DC2626' }}>SPEC 01</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Web &amp; Art Direction</div>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', color: '#444' }}>
-                Direction artistique Web Design d'exception, sites vitrines haut de gamme, e-commerce sur mesure et typographie éditoriale.
-              </p>
+        <div className="v2-services-grid" style={{ marginTop: '20px' }}>
+          <div className="v2-service-card card-glow-cyan">
+            <div className="v2-service-card-top">
+              <span className="v2-service-num">01</span>
+              <span className="v2-service-badge badge-cyan">SaaS &amp; Product</span>
             </div>
-
-            <div style={{ padding: '24px', background: '#FFF', border: '1px solid #DDD', borderRadius: '4px' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#1D4ED8' }}>SPEC 02</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Product &amp; SaaS B2B Strategy</div>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', color: '#444' }}>
-                Architecture d'information, rédaction de PRDs, tunnels d'activation sans friction et supervision d'ingénierie dev.
-              </p>
+            <h3 className="v2-service-card-title">UI/UX &amp; Product Design (B2B SaaS)</h3>
+            <p className="v2-service-card-desc">
+              Architecture de l'information complexe, tunnels d'activation sans friction, tableaux de bord de télémétrie et design systems Figma prêts pour l'ingénierie.
+            </p>
+            <div className="v2-service-tags">
+              <span className="v2-service-tag">Figma Tokens</span>
+              <span className="v2-service-tag">User Flows</span>
+              <span className="v2-service-tag">PRD Specs</span>
             </div>
+          </div>
 
-            <div style={{ padding: '24px', background: '#FFF', border: '1px solid #DDD', borderRadius: '4px' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#059669' }}>SPEC 03</div>
-              <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.5rem', margin: '8px 0' }}>Vibe Coding &amp; Rapid MVP</div>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', color: '#444' }}>
-                Prototypage interactif fonctionnel permettant aux clients de tester rapidement leurs concepts et de valider leur produit auprès d'utilisateurs réels.
-              </p>
+          <div className="v2-service-card card-glow-yellow">
+            <div className="v2-service-card-top">
+              <span className="v2-service-num">02</span>
+              <span className="v2-service-badge badge-yellow">Web Craft</span>
+            </div>
+            <h3 className="v2-service-card-title">Direction Artistique &amp; Web Design</h3>
+            <p className="v2-service-card-desc">
+              Vitrines de marque immersives, typographie éditoriale sur mesure, animations fluides et interfaces e-commerce à fort taux de conversion.
+            </p>
+            <div className="v2-service-tags">
+              <span className="v2-service-tag">Art Direction</span>
+              <span className="v2-service-tag">Motion Design</span>
+              <span className="v2-service-tag">CRO Funnels</span>
+            </div>
+          </div>
+
+          <div className="v2-service-card card-glow-green">
+            <div className="v2-service-card-top">
+              <span className="v2-service-num">03</span>
+              <span className="v2-service-badge badge-green">Rapid MVP</span>
+            </div>
+            <h3 className="v2-service-card-title">Vibe Coding &amp; Prototypage Rapide</h3>
+            <p className="v2-service-card-desc">
+              Prototypage fonctionnel ultra-rapide (React, TypeScript, Vite/Next) pour tester concrètement vos idées et valider l'UX auprès d'utilisateurs réels.
+            </p>
+            <div className="v2-service-tags">
+              <span className="v2-service-tag">React / TypeScript</span>
+              <span className="v2-service-tag">Live Prototypes</span>
+              <span className="v2-service-tag">Fast Iteration</span>
+            </div>
+          </div>
+
+          <div className="v2-service-card card-glow-purple">
+            <div className="v2-service-card-top">
+              <span className="v2-service-num">04</span>
+              <span className="v2-service-badge badge-purple">Systems &amp; Dev</span>
+            </div>
+            <h3 className="v2-service-card-title">Design Systems &amp; Handoff Ingénieur</h3>
+            <p className="v2-service-card-desc">
+              Bibliothèques de composants UI réutilisables, gouvernance de tokens et alignement designer-développeur pour éliminer toute friction.
+            </p>
+            <div className="v2-service-tags">
+              <span className="v2-service-tag">Design Tokens</span>
+              <span className="v2-service-tag">Storybook</span>
+              <span className="v2-service-tag">Dev Handoff</span>
             </div>
           </div>
         </div>
@@ -598,29 +594,29 @@ const ServicesView = ({ setCurrentView }: { setCurrentView: any }) => {
 };
 
 /* ─────────────────────────────────────────────
-   ALL PROJECTS DOSSIER VIEW
+   ALL PROJECTS DOSSIER VIEW (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const AllProjectsView = ({ 
   setCurrentView, 
   lang 
 }: { 
   setCurrentView: any; 
-  lang: 'en' | 'fr' 
+  lang: 'en' | 'fr'; 
 }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'saas' | 'mobile' | 'web'>('all');
 
   const allProjects = [
-    { id: 'asset-iq', title: 'Asset IQ', category: 'saas', tag: 'Product Design & SaaS', date: 'MAR 2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.', deliverables: ['QR Code Telemetry', 'Figma Tokens', 'Asset Governance'] },
-    { id: 'ehadj', title: 'eHadj', category: 'saas', tag: 'National Logistics SaaS', date: 'JAN 2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 agences et ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.', deliverables: ['Multi-agency Workflows', 'NPI Onboarding', 'Quota Tracking'] },
-    { id: 'beans', title: 'Beans', category: 'saas', tag: 'B2B SaaS Engagement', date: 'DEC 2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS B2B de fidélisation client & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.', deliverables: ['10 Connector Hub', 'Shopify & Klaviyo', 'PRD Specs & QA'] },
-    { id: 'vortex', title: 'Vortex', category: 'mobile', tag: 'Mobile UX & Fuel Wallet', date: 'MAR 2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et de gestion de portefeuille numérique.' : 'Mobile fuel purchasing & digital wallet management app.', deliverables: ['1-Click Purchasing', 'QR Station Code', 'High Contrast UI'] },
-    { id: 'strategy-arena', title: 'Strategy Arena', category: 'web', tag: 'Branding & Web Strategy', date: 'JAN 2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie, organisation & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.', deliverables: ['Canary Yellow Brand', 'Preloader Animation', 'CRO Tunnel'] },
-    { id: 'tavares', title: 'Tavares & Visuals', category: 'web', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web d\'exception, vitrines cinématographiques et e-commerce.' : 'Curated collection of cinematic showcase sites, editorial e-commerce & galleries.', deliverables: ['Showreel Player', 'Black Theme', 'Micro-animations'] },
-    { id: 'truvox', title: 'Truvox Studio', category: 'web', tag: 'Web Design & Studio', date: 'OCT 2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception, stratégie de marque & développement.' : 'High-end studio brand experience, web design & development.', deliverables: ['Brand Strategy', 'Quote Tunnel', 'Performance Web'] },
-    { id: 'sport-advisor', title: 'Sport Advisor', category: 'mobile', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/assetiQ/advisor_image.png', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'intelligence artificielle.' : 'AI-driven sports analysis & data visualization platform.', deliverables: ['AI Prediction Engine', 'Odds Comparer', 'Confidence Gauges'] },
-    { id: 'sagana', title: 'Sagana Agency', category: 'web', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana_cover.png', color: '#F59E0B', desc: lang === 'fr' ? 'Site vitrine d\'excellence pour agence de conseil stratégique haut de gamme.' : 'High-end showcase site for elite advisory agency.', deliverables: ['Editorial Layout', 'High-end Branding', 'Micro-interactions'] },
-    { id: 'dolce-riviera', title: 'Dolce Riviera', category: 'web', tag: 'Luxury Hospitality UI/UX Interface', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception & landing page pour un hôtel de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept & booking funnel.', deliverables: ['UI/UX Design System', 'Booking Funnel UI', 'Fluid Luxury Typography'] },
-    { id: 'the-refuge', title: 'The Refuge', category: 'web', tag: 'Humanitarian Portal', date: 'JUN 2025', img: '/imgs/your-refuge.jpg', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel pour l\'ONG The Refuge.' : 'Humanitarian portal & real-time impact tracker in Cotonou.', deliverables: ['Real-time Tracker', 'Mobile Money FCFA', 'Human Touch Doodles'] }
+    { id: 'asset-iq', title: 'Asset IQ', category: 'saas', tag: 'Product Design & SaaS', date: '2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.', deliverables: ['QR Code Telemetry', 'Figma Tokens', 'Asset Governance'] },
+    { id: 'ehadj', title: 'eHadj', category: 'saas', tag: 'National Logistics SaaS', date: '2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 agences et ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.', deliverables: ['Multi-agency Workflows', 'NPI Onboarding', 'Quota Tracking'] },
+    { id: 'beans', title: 'Beans', category: 'saas', tag: 'B2B SaaS Engagement', date: '2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS B2B de fidélisation client & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.', deliverables: ['10 Connector Hub', 'Shopify & Klaviyo', 'PRD Specs & QA'] },
+    { id: 'dolce-riviera', title: 'Dolce Riviera', category: 'web', tag: 'Luxury Hospitality UI/UX Interface', date: '2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception & landing page pour un hôtel de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept & booking funnel.', deliverables: ['UI/UX Design System', 'Booking Funnel UI', 'Fluid Luxury Typography'] },
+    { id: 'vortex', title: 'Vortex', category: 'mobile', tag: 'Mobile UX & Fuel Wallet', date: '2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et de gestion de portefeuille numérique.' : 'Mobile fuel purchasing & digital wallet management app.', deliverables: ['1-Click Purchasing', 'QR Station Code', 'High Contrast UI'] },
+    { id: 'strategy-arena', title: 'Strategy Arena', category: 'web', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie, organisation & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.', deliverables: ['Canary Yellow Brand', 'Preloader Animation', 'CRO Tunnel'] },
+    { id: 'truvox', title: 'Truvox Studio', category: 'web', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception, stratégie de marque & développement.' : 'High-end studio brand experience, web design & development.', deliverables: ['Brand Strategy', 'Quote Tunnel', 'Performance Web'] },
+    { id: 'sport-advisor', title: 'Sport Advisor', category: 'mobile', tag: 'AI & Data Visualization', date: '2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'intelligence artificielle.' : 'AI-driven sports analysis & data visualization platform.', deliverables: ['AI Prediction Engine', 'Odds Comparer', 'Confidence Gauges'] },
+    { id: 'sagana', title: 'Sagana Agency', category: 'web', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Site vitrine d\'excellence pour agence de conseil stratégique haut de gamme.' : 'High-end showcase site for elite advisory agency.', deliverables: ['Editorial Layout', 'High-end Branding', 'Micro-interactions'] },
+    { id: 'tavares', title: 'Tavares & Visuals', category: 'web', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web d\'exception, vitrines cinématographiques et e-commerce.' : 'Curated collection of cinematic showcase sites, editorial e-commerce & galleries.', deliverables: ['Showreel Player', 'Black Theme', 'Micro-animations'] },
+    { id: 'the-refuge', title: 'The Refuge', category: 'web', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel pour l\'ONG The Refuge.' : 'Humanitarian portal & real-time impact tracker in Cotonou.', deliverables: ['Real-time Tracker', 'Mobile Money FCFA', 'Human Touch Doodles'] }
   ];
 
   const filteredProjects = allProjects.filter(p => {
@@ -629,47 +625,49 @@ const AllProjectsView = ({
   });
 
   return (
-    <div className="mosby-dossier-view" style={{ paddingTop: '40px' }}>
-      <div className="container">
+    <div className="v2-subpage-wrapper">
+      <div className="v2-subpage-ambient-glow" />
+
+      <div className="v2-subpage-container">
         <button 
           onClick={() => navigateToHome(setCurrentView)} 
-          className="mosby-back-btn"
+          className="v2-subpage-back-btn"
         >
-          <ArrowLeft size={16} /> <span>RETOUR À L'ACCUEIL DES ARCHIVES</span>
+          <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}</span>
         </button>
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px', paddingBottom: '24px' }}>
+        <div className="v2-subpage-header">
           <div>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#999999', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              INDEX DES ARCHIVES COMPLÈTES ({allProjects.length} DOSSIERS)
+            <span className="v2-subpage-eyebrow">
+              {lang === 'fr' ? `INDEX DES ARCHIVES (${allProjects.length} PROJETS)` : `FULL ARCHIVE INDEX (${allProjects.length} PROJECTS)`}
             </span>
-            <h1 className="mosby-dossier-giant-title" style={{ padding: '8px 0 0 0' }}>
-              ALL PROJECTS &amp; DOSSIERS
+            <h1 className="v2-subpage-title">
+              {lang === 'fr' ? 'TOUS LES PROJETS' : 'ALL PROJECTS'}
             </h1>
           </div>
 
           {/* Filter Pills */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <div className="v2-filter-pills-row">
             <button 
-              className={`robin-nav-pill ${activeFilter === 'all' ? 'is-active' : ''}`}
+              className={`v2-filter-pill-btn ${activeFilter === 'all' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('all')}
             >
-              {lang === 'fr' ? 'TOUS (11)' : 'ALL (11)'}
+              {lang === 'fr' ? `TOUS (${allProjects.length})` : `ALL (${allProjects.length})`}
             </button>
             <button 
-              className={`robin-nav-pill ${activeFilter === 'saas' ? 'is-active' : ''}`}
+              className={`v2-filter-pill-btn ${activeFilter === 'saas' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('saas')}
             >
               SAAS &amp; B2B
             </button>
             <button 
-              className={`robin-nav-pill ${activeFilter === 'mobile' ? 'is-active' : ''}`}
+              className={`v2-filter-pill-btn ${activeFilter === 'mobile' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('mobile')}
             >
               MOBILE UX
             </button>
             <button 
-              className={`robin-nav-pill ${activeFilter === 'web' ? 'is-active' : ''}`}
+              className={`v2-filter-pill-btn ${activeFilter === 'web' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('web')}
             >
               WEB &amp; BRANDING
@@ -677,48 +675,37 @@ const AllProjectsView = ({
           </div>
         </div>
 
-        {/* Projects Grid — Wide, Spacious Editorial Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(420px, 1fr))', gap: '40px', marginTop: '36px' }}>
+        {/* Projects Showcase 3-Column Grid */}
+        <div className="v2-showcase-grid-3">
           {filteredProjects.map((proj) => (
             <div 
               key={proj.id}
-              className="robin-service-card"
-              style={{ padding: '36px', cursor: 'pointer', background: '#FFFFFF', borderRadius: '8px', border: '2.5px solid #121212', boxShadow: '8px 8px 0px #121212', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+              className="v2-project-card-large"
               onClick={() => setCurrentView(proj.id)}
             >
-              <div>
-                <div style={{ position: 'relative', height: '260px', marginBottom: '24px', borderRadius: '6px', overflow: 'hidden', background: '#121212', border: '1.5px solid #121212' }}>
-                  <img src={proj.img} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} />
-                  <span style={{ position: 'absolute', top: '14px', left: '14px', background: proj.color, color: '#FFFFFF', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 'bold', padding: '5px 12px', borderRadius: '4px', boxShadow: '3px 3px 0px #121212' }}>
-                    {proj.date}
-                  </span>
+              <div className="v2-card-preview-container">
+                <img src={proj.img} alt={proj.title} />
+                <span className="v2-project-year-badge">{proj.date}</span>
+                <div className="v2-preview-glass-tag">
+                  <span>{proj.tag}</span>
                 </div>
-
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#666', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.04em' }}>
-                  {proj.tag}
+              </div>
+              <div className="v2-card-content-block">
+                <div className="v2-card-title-row">
+                  <h3 className="v2-project-title">{proj.title}</h3>
+                  <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); setCurrentView(proj.id); }}>
+                    <span>{lang === 'fr' ? 'Explorer' : 'Explore'}</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
-
-                <h3 style={{ fontFamily: 'var(--font-anton)', fontSize: '2.5rem', color: '#121212', margin: '0 0 14px 0', lineHeight: 1.05 }}>
-                  {proj.title}
-                </h3>
-
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.08rem', color: '#333', margin: '0 0 22px 0', lineHeight: 1.55 }}>
+                <p className="v2-project-summary">
                   {proj.desc}
                 </p>
-
-                <ul className="robin-service-deliverables" style={{ paddingLeft: '16px', marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  {proj.deliverables.map((item, idx) => (
-                    <li key={idx} style={{ fontSize: '0.88rem' }}>• {item}</li>
+                <div className="v2-project-tags-row">
+                  {proj.deliverables.map((d, i) => (
+                    <span key={i}>{d}</span>
                   ))}
-                </ul>
-              </div>
-
-              <div className="robin-service-footer" style={{ borderTop: '1.5px dashed #E5E7EB', paddingTop: '20px', marginTop: '12px' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 600, color: '#666' }}>DOSSIER #{proj.id.toUpperCase()}</span>
-                <button className="robin-service-cta-btn" style={{ background: '#121212', borderColor: '#121212', padding: '10px 20px', fontSize: '0.85rem' }}>
-                  <span>{lang === 'fr' ? 'DÉCOUVRIR LE PROJET' : 'EXPLORE CASE STUDY'}</span>
-                  <ArrowRight size={15} />
-                </button>
+                </div>
               </div>
             </div>
           ))}
@@ -729,7 +716,8 @@ const AllProjectsView = ({
 };
 
 /* ─────────────────────────────────────────────
-   ARCHIVAL FOOTER SYSTEM
+
+   FOOTER SYSTEM (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrentView: any; setIsAboutModalOpen: any; lang: 'en' | 'fr' }) => {
   const [activeDiagram, setActiveDiagram] = useState<number | null>(null);
@@ -761,20 +749,20 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
   };
 
   return (
-    <footer className="mosby-footer">
+    <footer className="v2-footer">
       {/* Row of Architectural & Design Diagram Symbols (Interactive Widgets) */}
-      <div className="mosby-footer-diagrams-row">
+      <div className="v2-footer-diagrams-row">
         {/* Widget 1: Compass Radar */}
         <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 0 ? 'is-active' : ''}`}
+          className={`v2-diagram-icon-btn ${activeDiagram === 0 ? 'is-active' : ''}`}
           onClick={() => handleDiagramClick(0)}
           onMouseEnter={() => setTooltipText("COMPASS RADAR")}
           onMouseLeave={() => setTooltipText(null)}
           aria-label="Compass radar widget"
         >
           <svg 
-            width="30" 
-            height="30" 
+            width="26" 
+            height="26" 
             viewBox="0 0 40 40" 
             fill="none" 
             stroke="currentColor" 
@@ -785,22 +773,22 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
             <path d="M20 4 L20 36 M4 20 L36 20" strokeDasharray="2 2" />
             <text x="20" y="11" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" fontWeight="bold">N</text>
           </svg>
-          {tooltipText && (
-            <span className="mosby-diagram-tooltip">{tooltipText}</span>
+          {tooltipText && activeDiagram === 0 && (
+            <span className="v2-diagram-tooltip">{tooltipText}</span>
           )}
         </button>
 
         {/* Widget 2: Blueprint Box */}
         <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 1 ? 'is-active' : ''}`}
+          className={`v2-diagram-icon-btn ${activeDiagram === 1 ? 'is-active' : ''}`}
           onClick={() => handleDiagramClick(1)}
           onMouseEnter={() => setTooltipText("BLUEPRINT GRID")}
           onMouseLeave={() => setTooltipText(null)}
           aria-label="Blueprint box widget"
         >
           <svg 
-            width="30" 
-            height="30" 
+            width="26" 
+            height="26" 
             viewBox="0 0 40 40" 
             fill="none" 
             stroke="currentColor" 
@@ -808,43 +796,49 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
             style={{ transform: boxFlipped ? 'rotateY(180deg) scale(1.1)' : 'none', transition: 'transform 0.4s ease' }}
           >
             <rect x="6" y="6" width="28" height="28" strokeWidth="2" />
-            <path d="M6 6 L34 34 M34 6 L6 34" strokeOpacity={boxFlipped ? "1" : "0.5"} stroke={boxFlipped ? "var(--mosby-yellow)" : "currentColor"} />
+            <path d="M6 6 L34 34 M34 6 L6 34" strokeOpacity={boxFlipped ? "1" : "0.5"} stroke={boxFlipped ? "#38BDF8" : "currentColor"} />
           </svg>
+          {tooltipText && activeDiagram === 1 && (
+            <span className="v2-diagram-tooltip">{tooltipText}</span>
+          )}
         </button>
 
         {/* Widget 3: Prism Pyramid */}
         <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 2 ? 'is-active' : ''}`}
+          className={`v2-diagram-icon-btn ${activeDiagram === 2 ? 'is-active' : ''}`}
           onClick={() => handleDiagramClick(2)}
           onMouseEnter={() => setTooltipText("DESIGN PRISM")}
           onMouseLeave={() => setTooltipText(null)}
           aria-label="Design prism widget"
         >
           <svg 
-            width="30" 
-            height="30" 
+            width="26" 
+            height="26" 
             viewBox="0 0 40 40" 
             fill="none" 
             stroke="currentColor" 
             strokeWidth="1.8"
-            style={{ transform: pyramidPushed ? 'translateY(-8px) scale(1.2)' : 'none', transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+            style={{ transform: pyramidPushed ? 'translateY(-6px) scale(1.15)' : 'none', transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
           >
             <polygon points="20,4 36,36 4,36" strokeWidth="2" />
             <line x1="20" y1="4" x2="20" y2="36" />
           </svg>
+          {tooltipText && activeDiagram === 2 && (
+            <span className="v2-diagram-tooltip">{tooltipText}</span>
+          )}
         </button>
 
         {/* Widget 4: Dial Radar Circle */}
         <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 3 ? 'is-active' : ''}`}
+          className={`v2-diagram-icon-btn ${activeDiagram === 3 ? 'is-active' : ''}`}
           onClick={() => handleDiagramClick(3)}
           onMouseEnter={() => setTooltipText("DIAL RADAR")}
           onMouseLeave={() => setTooltipText(null)}
           aria-label="Dial radar widget"
         >
           <svg 
-            width="30" 
-            height="30" 
+            width="26" 
+            height="26" 
             viewBox="0 0 40 40" 
             fill="none" 
             stroke="currentColor" 
@@ -854,19 +848,22 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
             <circle cx="20" cy="20" r="14" />
             <circle cx="20" cy="20" r="6" strokeDasharray="2 3" strokeWidth="2" />
           </svg>
+          {tooltipText && activeDiagram === 3 && (
+            <span className="v2-diagram-tooltip">{tooltipText}</span>
+          )}
         </button>
 
         {/* Widget 5: Arrow Top-Right Scroll Back ↗ */}
         <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
+          className={`v2-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
           onClick={() => handleDiagramClick(4)}
           onMouseEnter={() => setTooltipText("RETURN TO TOP ↗")}
           onMouseLeave={() => setTooltipText(null)}
           aria-label="Scroll to top widget"
         >
           <svg 
-            width="30" 
-            height="30" 
+            width="26" 
+            height="26" 
             viewBox="0 0 40 40" 
             fill="none" 
             stroke="currentColor" 
@@ -876,23 +873,26 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
           >
             <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
           </svg>
+          {tooltipText && activeDiagram === 4 && (
+            <span className="v2-diagram-tooltip">{tooltipText}</span>
+          )}
         </button>
       </div>
 
       {/* Useful Links & Contact Grid */}
-      <div className="mosby-footer-grid">
+      <div className="v2-footer-grid">
         {/* Col 1: Direct Contact */}
         <div>
-          <div className="mosby-footer-col-title">01. DIRECT CONTACT</div>
-          <div className="mosby-footer-links-list">
-            <a href="mailto:dafiashalom@gmail.com" className="mosby-footer-link">
-              <Mail size={14} /> dafiashalom@gmail.com
+          <div className="v2-footer-col-title">01. CONTACT &amp; BOOKING</div>
+          <div className="v2-footer-links-list">
+            <a href="mailto:dafiashalom@gmail.com" className="v2-footer-link">
+              <Mail size={15} color="#38BDF8" /> dafiashalom@gmail.com
             </a>
-            <a href="tel:+2290154921801" className="mosby-footer-link">
-              <Phone size={14} /> +229 01 54 92 18 01
+            <a href="tel:+2290154921801" className="v2-footer-link">
+              <Phone size={15} color="#38BDF8" /> +229 01 54 92 18 01
             </a>
             <a 
-              href="https://assets.calendly.com" 
+              href="https://calendly.com/dafiashalom/30min" 
               onClick={(e) => {
                 e.preventDefault();
                 if ((window as any).Calendly) {
@@ -901,63 +901,64 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
                   window.open('https://calendly.com/dafiashalom/30min', '_blank');
                 }
               }} 
-              className="mosby-footer-link"
-              style={{ color: '#FEF08A' }}
+              className="v2-footer-link"
+              style={{ color: '#38BDF8', fontWeight: 600 }}
             >
-              <Calendar size={14} /> {lang === 'fr' ? 'Réserver un Appel (Calendly)' : 'Book Strategy Call (Calendly)'}
+              <Calendar size={15} color="#38BDF8" /> {lang === 'fr' ? 'Réserver un Appel (Calendly)' : 'Book Strategy Call (Calendly)'}
             </a>
           </div>
         </div>
 
-        {/* Col 2: Social & Archives */}
+        {/* Col 2: Social & Networks */}
         <div>
-          <div className="mosby-footer-col-title">02. SOCIAL ARCHIVES</div>
-          <div className="mosby-footer-links-list">
-            <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <Linkedin size={14} /> LinkedIn
+          <div className="v2-footer-col-title">02. SOCIAL ARCHIVES</div>
+          <div className="v2-footer-links-list">
+            <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="v2-footer-link">
+              <Linkedin size={15} /> LinkedIn Profile ↗
             </a>
-            <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <ExternalLink size={14} /> Behance
+            <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="v2-footer-link">
+              <ExternalLink size={15} /> Behance Portfolio ↗
             </a>
-            <a href="mailto:dafiashalom@gmail.com" className="mosby-footer-link">
-              <Mail size={14} /> Mail
+            <a href="mailto:dafiashalom@gmail.com" className="v2-footer-link">
+              <Mail size={15} /> Direct Email ↗
             </a>
           </div>
         </div>
 
-        {/* Col 3: Core Dossiers */}
+        {/* Col 3: Core Navigation */}
         <div>
-          <div className="mosby-footer-col-title">03. CORE DOSSIERS</div>
-          <div className="mosby-footer-links-list">
-            <span className="mosby-footer-link" onClick={() => navigateToHome(setCurrentView)} style={{ cursor: 'pointer', color: '#FEF08A' }}>
-              <Home size={14} /> ← Return to Archive Home
+          <div className="v2-footer-col-title">03. NAVIGATION &amp; RESUME</div>
+          <div className="v2-footer-links-list">
+            <span className="v2-footer-link" onClick={() => navigateToHome(setCurrentView)} style={{ cursor: 'pointer' }}>
+              <Home size={15} /> {lang === 'fr' ? 'Accueil Portfolio' : 'Portfolio Home'}
             </span>
-            <span className="mosby-footer-link" onClick={() => setIsAboutModalOpen(true)} style={{ cursor: 'pointer' }}>
-              <FileText size={14} /> Personnel File (About Sacca)
+            <span className="v2-footer-link" onClick={() => setIsAboutModalOpen(true)} style={{ cursor: 'pointer' }}>
+              <FileText size={15} /> {lang === 'fr' ? 'Dossier Personnel (About)' : 'Personnel File (About)'}
             </span>
-            <span className="mosby-footer-link" onClick={() => setCurrentView('experiences')} style={{ cursor: 'pointer' }}>
-              <FileText size={14} /> Experiences Field Logs
+            <span className="v2-footer-link" onClick={() => setCurrentView('experiences')} style={{ cursor: 'pointer' }}>
+              <FileText size={15} /> {lang === 'fr' ? 'Registre des Expériences' : 'Career Logs & History'}
             </span>
-            <span className="mosby-footer-link" onClick={() => setCurrentView('services')} style={{ cursor: 'pointer' }}>
-              <FileText size={14} /> Capabilities &amp; Specs
+            <span className="v2-footer-link" onClick={() => setCurrentView('all-projects')} style={{ cursor: 'pointer' }}>
+              <Layers size={15} /> {lang === 'fr' ? 'Index des Projets (11)' : 'All Projects Archive (11)'}
             </span>
             <a 
               href="https://drive.google.com/file/d/14q3ARxXM3rk82VKS6dKYmyGJCk9UWruu/view?usp=sharing" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="mosby-footer-link"
+              className="v2-footer-link"
+              style={{ color: '#C084FC' }}
             >
-              <Download size={14} /> Download CV (PDF)
+              <Download size={15} color="#C084FC" /> Download CV / Resume (PDF)
             </a>
           </div>
         </div>
       </div>
 
       {/* Bottom Technical Metadata Bar */}
-      <div className="mosby-footer-bottom-bar">
-        <div className="mosby-footer-scale-key">
-          <span style={{ height: '2px', width: '40px', background: '#FFF', display: 'inline-block' }} />
-          <span>0 4 8 16 32 • WEB &amp; PRODUCT DESIGN STRATEGY</span>
+      <div className="v2-footer-bottom-bar">
+        <div className="v2-footer-location-tag">
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', display: 'inline-block', boxShadow: '0 0 8px #10B981' }} />
+          <span>COTONOU, BJ • UTC+1 • AVAILABLE WORLDWIDE</span>
         </div>
 
         <div>© 2026 SACCA DAFIA (ALIAS TALESMAN) — ALL RIGHTS RESERVED</div>
@@ -967,7 +968,7 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
 };
 
 /* ─────────────────────────────────────────────
-   ALL PROJECTS ARCHIVE SHEET MODAL
+   ALL PROJECTS ARCHIVE MODAL (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const AllProjectsModal = ({ 
   isOpen, 
@@ -978,35 +979,35 @@ const AllProjectsModal = ({
   isOpen: boolean; 
   onClose: () => void; 
   setCurrentView: (view: any) => void; 
-  lang: 'en' | 'fr' 
+  lang: 'en' | 'fr'; 
 }) => {
   if (!isOpen) return null;
 
   const allProjects = [
-    { id: 'asset-iq', title: 'Asset IQ', tag: 'Product Design & SaaS', date: 'MAR 2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.' },
-    { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: 'JAN 2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.' },
-    { id: 'beans', title: 'Beans', tag: 'B2B SaaS Engagement', date: 'DEC 2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS de fidélisation & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.' },
-    { id: 'vortex', title: 'Vortex', tag: 'Mobile UX & Wallet', date: 'MAR 2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et gestion de portefeuille.' : 'Mobile fuel purchasing & digital wallet management app.' },
-    { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: 'JAN 2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.' },
-    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web, vitrines cinématographiques & e-commerce.' : 'Cinematic showcase sites, editorial e-commerce & galleries.' },
-    { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: 'OCT 2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception & identité digitale de studio.' : 'High-end studio brand experience & digital showcase.' },
-    { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/assetiQ/advisor_image.png', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'IA.' : 'AI-driven sports analysis & data visualization platform.' },
-    { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana_cover.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for elite advisory agency.' },
-    { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX Interface', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception pour l\'hôtellerie de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept for Riviera resort.' },
-    { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: 'JUN 2025', img: '/imgs/your-refuge.jpg', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel à Cotonou.' : 'Humanitarian portal & real-time impact tracker in Cotonou.' }
+    { id: 'asset-iq', title: 'Asset IQ', tag: 'Product Design & SaaS', date: '2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs industriels par QR code.' : 'Industrial asset telemetry via QR codes.' },
+    { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: '2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage pour +30 ministères.' : 'Digital orchestration of pilgrimage logistics.' },
+    { id: 'beans', title: 'Beans', tag: 'B2B SaaS Engagement', date: '2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS de fidélisation & 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform.' },
+    { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX Interface', date: '2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception & booking funnel pour resort de luxe.' : 'Luxury hospitality UI/UX interface concept.' },
+    { id: 'vortex', title: 'Vortex', tag: 'Mobile UX & Wallet', date: '2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'App mobile d\'achat de carburant et gestion de portefeuille.' : 'Mobile fuel purchasing & digital wallet app.' },
+    { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie & transformation digitale.' : 'Strategic consulting agency platform.' },
+    { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception & vitrine digitale.' : 'High-end studio brand experience.' },
+    { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: '2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs par IA.' : 'AI sports analysis platform.' },
+    { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for advisory agency.' },
+    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web & vitrines cinématographiques.' : 'Cinematic showcase sites & galleries.' },
+    { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel.' : 'Humanitarian portal & impact tracker.' }
   ];
 
   return (
-    <div className="robin-modal-overlay" onClick={onClose}>
-      <div className="robin-modal-sheet" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '1050px', maxHeight: '90vh', overflowY: 'auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', borderBottom: '2px solid #121212', paddingBottom: '16px' }}>
+    <div className="v2-modal-overlay" onClick={onClose}>
+      <div className="v2-modal-sheet" onClick={(e) => e.stopPropagation()}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '28px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', paddingBottom: '18px' }}>
           <div>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#666', textTransform: 'uppercase' }}>ARCHIVE COMPLÈTE ({allProjects.length} DOSSIERS)</span>
-            <h2 style={{ fontFamily: 'var(--font-anton)', fontSize: '2.4rem', color: '#121212', margin: '4px 0 0 0', lineHeight: 1 }}>
+            <span className="v2-subpage-eyebrow">ARCHIVE COMPLÈTE ({allProjects.length} DOSSIERS)</span>
+            <h2 style={{ fontFamily: 'var(--font-anton)', fontSize: '2.4rem', color: '#FFFFFF', margin: '4px 0 0 0', lineHeight: 1 }}>
               {lang === 'fr' ? 'INDEX TOUS LES PROJETS' : 'ALL PROJECTS ARCHIVE'}
             </h2>
           </div>
-          <button onClick={onClose} style={{ background: '#121212', color: '#FFF', border: 'none', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <button onClick={onClose} className="v2-modal-close-btn" style={{ position: 'static' }}>
             <X size={20} />
           </button>
         </div>
@@ -1015,32 +1016,28 @@ const AllProjectsModal = ({
           {allProjects.map((proj) => (
             <div 
               key={proj.id}
-              className="robin-service-card"
-              style={{ padding: '20px', cursor: 'pointer' }}
+              className="v2-project-card-large"
+              style={{ cursor: 'pointer' }}
               onClick={() => {
                 onClose();
                 setCurrentView(proj.id);
               }}
             >
-              <div style={{ position: 'relative', height: '160px', marginBottom: '14px', borderRadius: '4px', overflow: 'hidden', background: '#121212' }}>
-                <img src={proj.img} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <span style={{ position: 'absolute', top: '10px', left: '10px', background: proj.color, color: '#FFF', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 'bold', padding: '3px 8px', borderRadius: '3px' }}>
-                  {proj.date}
-                </span>
+              <div className="v2-card-preview-container" style={{ height: '160px' }}>
+                <img src={proj.img} alt={proj.title} />
+                <span className="v2-project-year-badge">{proj.date}</span>
+                <div className="v2-preview-glass-tag">
+                  <span>{proj.tag}</span>
+                </div>
               </div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#666', textTransform: 'uppercase', marginBottom: '4px' }}>
-                {proj.tag}
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-anton)', fontSize: '1.6rem', color: '#121212', margin: '0 0 8px 0', lineHeight: 1 }}>
-                {proj.title}
-              </h3>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.9rem', color: '#444', margin: '0 0 14px 0', lineHeight: 1.4 }}>
-                {proj.desc}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', borderTop: '1px dashed #DDD', paddingTop: '10px' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 'bold', color: '#121212', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  VOIR LE PROJET <ArrowRight size={14} />
-                </span>
+              <div className="v2-card-content-block" style={{ padding: '16px' }}>
+                <h3 className="v2-project-title" style={{ fontSize: '1.4rem' }}>{proj.title}</h3>
+                <p className="v2-project-summary" style={{ fontSize: '0.85rem', marginBottom: '12px' }}>{proj.desc}</p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '10px' }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 'bold', color: '#38BDF8', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    VOIR LE PROJET <ArrowRight size={13} />
+                  </span>
+                </div>
               </div>
             </div>
           ))}
@@ -1159,22 +1156,37 @@ export default function App() {
         }}
       />
 
-      {/* Header for Detail & Sub-Pages */}
+      {/* Floating Header for Detail & Sub-Pages */}
       {currentView !== 'home' && (
-        <header className="mosby-header">
-          <div className="mosby-header-logo-container" onClick={() => handleViewSwitch('home')}>
-            <span className="mosby-logo-text">SACCA DAFIA</span>
-            <span className="mosby-logo-tag">
-              {currentView === 'experiences' ? 'CAREER' : currentView === 'services' ? 'SERVICES' : currentView === 'all-projects' ? 'ALL PROJECTS' : 'CASE STUDY'}
+        <nav className="v2-floating-nav">
+          <div className="v2-nav-profile" onClick={() => handleViewSwitch('home')}>
+            <img 
+              src="/imgs/sacca_headshot.jpg" 
+              alt="Talesman Avatar" 
+              className="v2-nav-avatar" 
+            />
+            <span className="v2-nav-name">Talesman</span>
+          </div>
+
+          <div className="v2-nav-links">
+            <span className="v2-nav-link" onClick={() => handleViewSwitch('home')}>
+              Home
+            </span>
+            <span className={`v2-nav-link ${currentView === 'all-projects' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('all-projects')}>
+              Projects
+            </span>
+            <span className={`v2-nav-link ${currentView === 'services' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('services')}>
+              Services
+            </span>
+            <span className={`v2-nav-link ${currentView === 'experiences' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('experiences')}>
+              Blog / Career
             </span>
           </div>
 
-          <div className="mosby-header-nav">
-            <span className="mosby-nav-link" onClick={() => setIsAboutModalOpen(true)}>About</span>
+          <div className="v2-nav-actions">
             <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
             <button 
-              className="robin-nav-contact-btn" 
-              style={{ background: 'var(--mosby-yellow)', border: '1.5px solid #121212' }}
+              className="v2-nav-connect-btn" 
               onClick={() => {
                 if ((window as any).Calendly) {
                   (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
@@ -1183,20 +1195,18 @@ export default function App() {
                 }
               }}
             >
-              CONTACT
+              Let's Connect
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle Button for Detail Pages */}
           <button 
-            className="robin-mobile-hamburger-btn mosby-header-mobile-toggle" 
+            className="robin-mobile-hamburger-btn v2-mobile-toggle" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-            <span>MENU</span>
           </button>
-        </header>
+        </nav>
       )}
 
       {/* About Sheet Modal & All Projects Archive Modal */}
@@ -2368,188 +2378,224 @@ export default function App() {
 
 
 
-            {/* SECTION 5: CAREER LOGS & DETAILED TIMELINE */}
-            <section className="robin-experience-section scroll-reveal">
-              <h2 className="robin-pixel-title">CAREER LOGS</h2>
+            {/* SECTION 5: CAREER LOGS & DETAILED TIMELINE (V2 DARK GLASS) */}
+            <section id="career" className="v2-experience-section scroll-reveal">
+              <div className="v2-experience-glow" aria-hidden="true" />
 
-              <div className="robin-timeline-container">
+              <div className="v2-section-header">
+                <span className="v2-section-eyebrow eyebrow-blue">
+                  {lang === 'fr' ? 'Parcours & Expériences' : 'Career & Field Logs'}
+                </span>
+                <h2 className="v2-section-title">
+                  {lang === 'fr' ? 'Parcours Professionnel & Impact.' : 'Professional Journey & Impact.'}
+                </h2>
+                <p className="v2-section-subtitle">
+                  {lang === 'fr'
+                    ? "Plus de 4 années d'expertise en Product Design, SaaS B2B, Direction Artistique Web et Vibe Coding."
+                    : "Over 4 years of proven product craft, B2B SaaS architecture, web art direction, and rapid MVP prototyping."}
+                </p>
+              </div>
+
+              <div className="v2-timeline-container">
                 {/* ROLE 01: CACTUCE */}
-                <div className="robin-timeline-card scroll-reveal delay-1">
-                  <div className="robin-timeline-node">
-                    <div className="robin-timeline-node-inner" />
+                <div className="v2-timeline-card scroll-reveal delay-1">
+                  <div className="v2-timeline-node node-red">
+                    <div className="v2-timeline-node-inner" />
                   </div>
-
-                  <div className="robin-timeline-header">
-                    <div>
-                      <span className="robin-timeline-company">CACTUCE</span>
-                      <span className="robin-timeline-role-badge" style={{ marginLeft: '12px' }}>Product Designer</span>
+                  <div className="v2-timeline-body">
+                    <div className="v2-timeline-header-row">
+                      <div className="v2-timeline-title-group">
+                        <span className="v2-timeline-company">CACTUCE</span>
+                        <span className="v2-timeline-role-badge">Product Designer</span>
+                      </div>
+                      <span className="v2-timeline-date">OCT 2025 — MAY 2026</span>
                     </div>
-                    <span className="robin-timeline-date">OCT 2025 — MAY 2026</span>
-                  </div>
 
-                  <div className="robin-timeline-tagline">
-                    B2B SAAS ARCHITECTURE &amp; PROCESS OPTIMIZATION
-                  </div>
+                    <div className="v2-timeline-tagline">
+                      B2B SAAS ARCHITECTURE &amp; PROCESS OPTIMIZATION
+                    </div>
 
-                  <ul className="robin-timeline-bullets">
-                    <li>
-                      {lang === 'fr'
-                        ? "Lead Product Designer chargé de l'optimisation et de la refonte UX des plateformes eHadj (logistique nationale) et Asset IQ (télémétrie industrielle)."
-                        : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ)."}
-                    </li>
-                    <li>
-                      {lang === 'fr'
-                        ? "Conception des flux multi-agences (+30 ministères et entités), création du Design System Figma Tokens et harmonisation des parcours."
-                        : "Designed end-to-end user flows for 30+ government agencies and health/bank gateways, establishing Figma Tokens & modular UI architecture."}
-                    </li>
-                    <li>
-                      {lang === 'fr'
-                        ? "Supervision complète de l'assurance qualité (recette QA), des audits d'accessibilité et des tests terrain auprès des opérateurs."
-                        : "Supervised complete QA recipe process, accessibility audits, and field usability testing on mobile devices."}
-                    </li>
-                  </ul>
+                    <ul className="v2-timeline-bullets">
+                      <li>
+                        {lang === 'fr'
+                          ? "Lead Product Designer chargé de l'optimisation et de la refonte UX des plateformes eHadj (logistique nationale) et Asset IQ (télémétrie industrielle)."
+                          : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ)."}
+                      </li>
+                      <li>
+                        {lang === 'fr'
+                          ? "Conception des flux multi-agences (+30 ministères et entités), création du Design System Figma Tokens et harmonisation des parcours."
+                          : "Designed end-to-end user flows for 30+ government agencies and health/bank gateways, establishing Figma Tokens & modular UI architecture."}
+                      </li>
+                      <li>
+                        {lang === 'fr'
+                          ? "Supervision complète de l'assurance qualité (recette QA), des audits d'accessibilité et des tests terrain auprès des opérateurs."
+                          : "Supervised complete QA recipe process, accessibility audits, and field usability testing on mobile devices."}
+                      </li>
+                    </ul>
 
-                  <div className="robin-timeline-impact-pill">
-                    {lang === 'fr' ? 'RÉSULTAT : 90% d\'erreurs en moins & zéro doublon de dossier' : 'IMPACT: 90% reduction in dossier errors & zero duplicate records'}
-                  </div>
+                    <div className="v2-timeline-impact-pill">
+                      {lang === 'fr' ? 'RÉSULTAT : 90% d\'erreurs en moins & zéro doublon de dossier' : 'IMPACT: 90% reduction in dossier errors & zero duplicate records'}
+                    </div>
 
-                  <div className="robin-timeline-tools-row">
-                    <span className="robin-timeline-tool-tag">Product Design</span>
-                    <span className="robin-timeline-tool-tag">Figma Tokens</span>
-                    <span className="robin-timeline-tool-tag">QA Recipe</span>
-                    <span className="robin-timeline-tool-tag">eHadj &amp; Asset IQ</span>
-                    <span className="robin-timeline-tool-tag">User Flows</span>
+                    <div className="v2-timeline-tools-row">
+                      <span className="v2-timeline-tool-tag">Product Design</span>
+                      <span className="v2-timeline-tool-tag">Figma Tokens</span>
+                      <span className="v2-timeline-tool-tag">QA Recipe</span>
+                      <span className="v2-timeline-tool-tag">eHadj &amp; Asset IQ</span>
+                      <span className="v2-timeline-tool-tag">User Flows</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* ROLE 02: TRELLIX */}
-                <div className="robin-timeline-card scroll-reveal delay-2">
-                  <div className="robin-timeline-node">
-                    <div className="robin-timeline-node-inner" style={{ background: '#1D4ED8' }} />
+                <div className="v2-timeline-card scroll-reveal delay-2">
+                  <div className="v2-timeline-node node-blue">
+                    <div className="v2-timeline-node-inner" />
                   </div>
-
-                  <div className="robin-timeline-header">
-                    <div>
-                      <span className="robin-timeline-company">TRELLIX</span>
-                      <span className="robin-timeline-role-badge" style={{ background: '#93C5FD', color: '#121212', marginLeft: '12px' }}>
-                        Lead Product Designer
-                      </span>
+                  <div className="v2-timeline-body">
+                    <div className="v2-timeline-header-row">
+                      <div className="v2-timeline-title-group">
+                        <span className="v2-timeline-company">TRELLIX</span>
+                        <span className="v2-timeline-role-badge badge-blue">Lead Product Designer</span>
+                      </div>
+                      <span className="v2-timeline-date">FEB 2024 — SEP 2025</span>
                     </div>
-                    <span className="robin-timeline-date">FEB 2024 — SEP 2025</span>
-                  </div>
 
-                  <div className="robin-timeline-tagline" style={{ color: '#1D4ED8' }}>
-                    ENTERPRISE SAAS &amp; PRODUCT STRATEGY LEADERSHIP
-                  </div>
+                    <div className="v2-timeline-tagline" style={{ color: '#60A5FA' }}>
+                      ENTERPRISE SAAS &amp; PRODUCT STRATEGY LEADERSHIP
+                    </div>
 
-                  <ul className="robin-timeline-bullets">
-                    <li>
-                      {lang === 'fr'
-                        ? "Direction et leadership de l'équipe design pour façonner des solutions SaaS B2B complexes centrées sur l'utilisateur."
-                        : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces."}
-                    </li>
-                    <li>
-                      {lang === 'fr'
-                        ? "Rédaction intégrale des Product Requirement Documents (PRDs), spécifications fonctionnelles & API, et gestion des cycles de recherche utilisateur."
-                        : "Authored complete PRDs, API functional specifications, and led comprehensive user research & heuristic evaluation sprints."}
-                    </li>
-                    <li>
-                      {lang === 'fr'
-                        ? "Mise en place de standards de livraison dev-handoff ayant augmenté la vélocité de développement de +50%."
-                        : "Established rigorous dev-handoff protocols and design tokens, boosting engineering delivery speed by +50%."}
-                    </li>
-                  </ul>
+                    <ul className="v2-timeline-bullets">
+                      <li>
+                        {lang === 'fr'
+                          ? "Direction et leadership de l'équipe design pour façonner des solutions SaaS B2B complexes centrées sur l'utilisateur."
+                          : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces."}
+                      </li>
+                      <li>
+                        {lang === 'fr'
+                          ? "Rédaction intégrale des Product Requirement Documents (PRDs), spécifications fonctionnelles & API, et gestion des cycles de recherche utilisateur."
+                          : "Authored complete PRDs, API functional specifications, and led comprehensive user research & heuristic evaluation sprints."}
+                      </li>
+                      <li>
+                        {lang === 'fr'
+                          ? "Mise en place de standards de livraison dev-handoff ayant augmenté la vélocité de développement de +50%."
+                          : "Established rigorous dev-handoff protocols and design tokens, boosting engineering delivery speed by +50%."}
+                      </li>
+                    </ul>
 
-                  <div className="robin-timeline-impact-pill" style={{ background: 'rgba(29, 78, 216, 0.1)', color: '#1D4ED8', borderColor: 'rgba(29, 78, 216, 0.3)' }}>
-                    {lang === 'fr' ? 'RÉSULTAT : +50% de vélocité de dev via PRDs & specs' : 'IMPACT: +50% dev velocity via PRDs & clear functional specs'}
-                  </div>
+                    <div className="v2-timeline-impact-pill pill-blue">
+                      {lang === 'fr' ? 'RÉSULTAT : +50% de vélocité de dev via PRDs & specs' : 'IMPACT: +50% dev velocity via PRDs & clear functional specs'}
+                    </div>
 
-                  <div className="robin-timeline-tools-row">
-                    <span className="robin-timeline-tool-tag">PRD Writing</span>
-                    <span className="robin-timeline-tool-tag">Team Leadership</span>
-                    <span className="robin-timeline-tool-tag">User Research</span>
-                    <span className="robin-timeline-tool-tag">B2B SaaS</span>
-                    <span className="robin-timeline-tool-tag">Dev Handoff</span>
+                    <div className="v2-timeline-tools-row">
+                      <span className="v2-timeline-tool-tag">PRD Writing</span>
+                      <span className="v2-timeline-tool-tag">Team Leadership</span>
+                      <span className="v2-timeline-tool-tag">User Research</span>
+                      <span className="v2-timeline-tool-tag">B2B SaaS</span>
+                      <span className="v2-timeline-tool-tag">Dev Handoff</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* ROLE 03: CREAFIX */}
-                <div className="robin-timeline-card scroll-reveal delay-3">
-                  <div className="robin-timeline-node">
-                    <div className="robin-timeline-node-inner" style={{ background: '#059669' }} />
+                <div className="v2-timeline-card scroll-reveal delay-3">
+                  <div className="v2-timeline-node node-green">
+                    <div className="v2-timeline-node-inner" />
                   </div>
-
-                  <div className="robin-timeline-header">
-                    <div>
-                      <span className="robin-timeline-company">CREAFIX</span>
-                      <span className="robin-timeline-role-badge" style={{ background: '#A7F3D0', color: '#121212', marginLeft: '12px' }}>
-                        Web Designer
-                      </span>
+                  <div className="v2-timeline-body">
+                    <div className="v2-timeline-header-row">
+                      <div className="v2-timeline-title-group">
+                        <span className="v2-timeline-company">CREAFIX</span>
+                        <span className="v2-timeline-role-badge badge-green">Web Designer</span>
+                      </div>
+                      <span className="v2-timeline-date">AUG 2022 — FEB 2024</span>
                     </div>
-                    <span className="robin-timeline-date">AUG 2022 — FEB 2024</span>
-                  </div>
 
-                  <div className="robin-timeline-tagline" style={{ color: '#059669' }}>
-                    WEB ART DIRECTION &amp; BRAND EXPERIENCE
-                  </div>
+                    <div className="v2-timeline-tagline" style={{ color: '#34D399' }}>
+                      WEB ART DIRECTION &amp; BRAND EXPERIENCE
+                    </div>
 
-                  <ul className="robin-timeline-bullets">
-                    <li>
-                      {lang === 'fr'
-                        ? "Conception d'interfaces web d'exception et de vitrines interactives pour +15 clients et agences internationales."
-                        : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ clients."}
-                    </li>
-                    <li>
-                      {lang === 'fr'
-                        ? "Direction artistique web, typographie éditoriale, animations 60fps et optimisation responsive multi-supports."
-                        : "Spearheaded web art direction, editorial typography, 60fps micro-animations, and multi-device responsive layouts."}
-                    </li>
-                    <li>
-                      {lang === 'fr'
-                        ? "Création d'actifs pour campagnes marketing digitales et optimisation du taux de conversion (CRO)."
-                        : "Created marketing campaign assets, promotional landing pages, and optimized conversion funnels."}
-                    </li>
-                  </ul>
+                    <ul className="v2-timeline-bullets">
+                      <li>
+                        {lang === 'fr'
+                          ? "Conception d'interfaces web d'exception et de vitrines interactives pour +15 clients et agences internationales."
+                          : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ clients."}
+                      </li>
+                      <li>
+                        {lang === 'fr'
+                          ? "Direction artistique web, typographie éditoriale, animations 60fps et optimisation responsive multi-supports."
+                          : "Spearheaded web art direction, editorial typography, 60fps micro-animations, and multi-device responsive layouts."}
+                      </li>
+                      <li>
+                        {lang === 'fr'
+                          ? "Création d'actifs pour campagnes marketing digitales et optimisation du taux de conversion (CRO)."
+                          : "Created marketing campaign assets, promotional landing pages, and optimized conversion funnels."}
+                      </li>
+                    </ul>
 
-                  <div className="robin-timeline-impact-pill" style={{ background: 'rgba(5, 150, 105, 0.1)', color: '#059669', borderColor: 'rgba(5, 150, 105, 0.3)' }}>
-                    {lang === 'fr' ? 'RÉSULTAT : +15 vitrines web & e-commerce d\'exception livrées' : 'IMPACT: 15+ luxury showcase & e-commerce sites delivered'}
-                  </div>
+                    <div className="v2-timeline-impact-pill pill-green">
+                      {lang === 'fr' ? 'RÉSULTAT : +15 vitrines web & e-commerce d\'exception livrées' : 'IMPACT: 15+ luxury showcase & e-commerce sites delivered'}
+                    </div>
 
-                  <div className="robin-timeline-tools-row">
-                    <span className="robin-timeline-tool-tag">Web Art Direction</span>
-                    <span className="robin-timeline-tool-tag">Responsive UI</span>
-                    <span className="robin-timeline-tool-tag">E-Commerce</span>
-                    <span className="robin-timeline-tool-tag">Micro-Animations</span>
-                    <span className="robin-timeline-tool-tag">CRO</span>
+                    <div className="v2-timeline-tools-row">
+                      <span className="v2-timeline-tool-tag">Web Art Direction</span>
+                      <span className="v2-timeline-tool-tag">Responsive UI</span>
+                      <span className="v2-timeline-tool-tag">E-Commerce</span>
+                      <span className="v2-timeline-tool-tag">Micro-Animations</span>
+                      <span className="v2-timeline-tool-tag">CRO</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 6: CONTACT STICKY NOTE ("LET'S TALK") */}
-            <section className="robin-contact-section scroll-reveal">
-              <h2 className="robin-pixel-title">LET'S TALK</h2>
+            {/* SECTION 6: CONTACT & LET'S TALK (V2 DARK GLASS) */}
+            <section id="contact" className="v2-contact-section scroll-reveal">
+              <div className="v2-contact-glow" aria-hidden="true" />
 
-              <div className="robin-sticky-note-box scroll-reveal delay-1">
-                <div className="robin-washi-tape" style={{ top: '-14px', left: '30px' }} />
-                <div className="robin-washi-tape" style={{ top: '-14px', right: '30px', left: 'auto' }} />
+              <div className="v2-contact-card">
+                <div className="v2-contact-status">
+                  <span className="v2-contact-status-dot" />
+                  <span>{lang === 'fr' ? 'DISPONIBLE POUR PROJETS Q3/Q4 2026' : 'AVAILABLE FOR Q3/Q4 2026 PROJECTS'}</span>
+                </div>
 
-                <p>
+                <h2 className="v2-contact-title">
                   {lang === 'fr'
-                    ? '"Vous avez un projet, un problème complexe ou souhaitez échanger ? Discutons-en directement lors d\'un appel."'
-                    : '"Got a project, a complex problem, or want to explore working together? Let\'s discuss it directly on a call."'}
+                    ? "Concevons ensemble votre prochain produit d'exception."
+                    : "Let's Build Something Extraordinary Together."}
+                </h2>
+
+                <p className="v2-contact-desc">
+                  {lang === 'fr'
+                    ? "Vous avez un SaaS B2B dense à architecturer, une vitrine d'exception à créer ou un MVP fonctionnel à prototyper en Vibe Coding ? Échangeons directement sur vos enjeux."
+                    : "Have a complex B2B SaaS to design, a high-impact digital showcase to craft, or a rapid MVP to build with Vibe Coding? Let's discuss your vision on a call."}
                 </p>
 
-                <button className="robin-cta-black-btn" onClick={() => {
-                  if ((window as any).Calendly) {
-                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-                  } else {
-                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
-                  }
-                }}>
-                  <span>{lang === 'fr' ? 'RÉSERVER UN APPEL' : 'BOOK A CALL'}</span>
-                  <Calendar size={16} />
-                </button>
+                <div className="v2-contact-actions">
+                  <button 
+                    className="v2-contact-primary-btn" 
+                    onClick={() => {
+                      if ((window as any).Calendly) {
+                        (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                      } else {
+                        window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                      }
+                    }}
+                  >
+                    <Calendar size={18} />
+                    <span>{lang === 'fr' ? 'Réserver un Appel (Calendly)' : 'Book Strategy Call (Calendly)'}</span>
+                  </button>
+
+                  <a href="mailto:dafiashalom@gmail.com" className="v2-contact-secondary-btn">
+                    <Mail size={16} />
+                    <span>dafiashalom@gmail.com</span>
+                  </a>
+
+                  <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="v2-contact-secondary-btn">
+                    <Linkedin size={16} />
+                    <span>LinkedIn Profile ↗</span>
+                  </a>
+                </div>
               </div>
 
               {/* Archival Footer */}
@@ -2561,3 +2607,4 @@ export default function App() {
     </>
   );
 }
+
