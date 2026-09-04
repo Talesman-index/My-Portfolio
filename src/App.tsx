@@ -21,7 +21,6 @@ import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
 import AntigravityLogo from './components/AntigravityLogo';
-import GoogleAIStudioLogo from './components/GoogleAIStudioLogo';
 
 
 
@@ -1186,9 +1185,6 @@ export default function App() {
               className="v2-nav-avatar" 
             />
             <span className="v2-nav-name">Talesman</span>
-            <div className="v2-nav-antigravity-badge" title="Built with Google Antigravity">
-              <AntigravityLogo size={18} glow={false} />
-            </div>
           </div>
 
           <div className="v2-nav-links">
@@ -1351,9 +1347,6 @@ export default function App() {
                   className="v2-nav-avatar" 
                 />
                 <span className="v2-nav-name">Talesman</span>
-                <div className="v2-nav-antigravity-badge" title="Built with Google Antigravity">
-                  <AntigravityLogo size={18} glow={false} />
-                </div>
               </div>
 
               {/* Desktop Nav Items */}
@@ -1417,12 +1410,6 @@ export default function App() {
             <section className="v2-hero-section">
               {/* Radial Ambient Glow Background Light */}
               <div className="v2-hero-ambient-glow" aria-hidden="true" />
-
-              {/* Antigravity Hero Pill Badge */}
-              <div className="v2-hero-antigravity-pill">
-                <AntigravityLogo size={20} glow />
-                <span>{lang === 'fr' ? 'DESIGN SYSTEM & IA' : 'ANTIGRAVITY DESIGN SYSTEM'}</span>
-              </div>
 
               {/* Eyebrow Tagline */}
               <div className="v2-hero-eyebrow">
@@ -2003,11 +1990,9 @@ export default function App() {
                     </div>
 
                     {/* Tool 2: Antigravity */}
-                    <div className="v2-tool-item-large" title="Antigravity IDE">
+                    <div className="v2-tool-item-large" title="Antigravity">
                       <div className="v2-tool-icon-wrap">
-                        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#C084FC" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
+                        <AntigravityLogo size={36} glow={false} />
                       </div>
                       <span className="v2-tool-label-large">Antigravity</span>
                     </div>
@@ -2026,12 +2011,15 @@ export default function App() {
                       <span className="v2-tool-label-large">Figma</span>
                     </div>
 
-                    {/* Tool 4: Google AI Studio */}
-                    <div className="v2-tool-item-large" title="Google AI Studio">
+                    {/* Tool 4: TypeScript */}
+                    <div className="v2-tool-item-large" title="TypeScript">
                       <div className="v2-tool-icon-wrap">
-                        <GoogleAIStudioLogo size={36} />
+                        <svg viewBox="0 0 24 24" width="34" height="34" fill="#3178C6">
+                          <rect width="24" height="24" rx="4" fill="#3178C6" />
+                          <path d="M11.5 11.5H8.5V20H6.5V11.5H3.5V9.5H11.5V11.5ZM19.5 13.2C19.5 12.3 18.8 11.6 17.5 11.3L16.2 11C15.2 10.8 14.8 10.4 14.8 9.8C14.8 9.1 15.4 8.6 16.3 8.6C17.3 8.6 17.9 9.1 18 9.9H20C19.9 8 18.4 6.8 16.3 6.8C14.2 6.8 12.7 8 12.7 9.9C12.7 11.6 13.7 12.4 15.2 12.7L16.5 13C17.6 13.2 18 13.7 18 14.3C18 15.1 17.3 15.6 16.2 15.6C15.1 15.6 14.3 15 14.2 14H12.1C12.2 16.1 13.9 17.4 16.2 17.4C18.5 17.4 20.1 16.1 20.1 14.2L19.5 13.2Z" fill="#FFFFFF"/>
+                        </svg>
                       </div>
-                      <span className="v2-tool-label-large">AI Studio</span>
+                      <span className="v2-tool-label-large">TypeScript</span>
                     </div>
 
                     {/* Tool 5: Next.js */}
