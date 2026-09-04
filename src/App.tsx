@@ -15,7 +15,9 @@ import {
   Home,
   Menu,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Image as ImageIcon,
+  Lock
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
@@ -1881,7 +1883,7 @@ export default function App() {
                       <span className="dot dot-green" />
                     </div>
                     <div className="v2-browser-url-pill">
-                      <span className="v2-url-lock">🔒</span> strategy-arena.com
+                      <span className="v2-url-lock"><Lock size={10} /></span> strategy-arena.com
                     </div>
                     <span className="v2-browser-year-badge">2026</span>
                   </div>
@@ -1935,7 +1937,7 @@ export default function App() {
                       <span className="dot dot-green" />
                     </div>
                     <div className="v2-browser-url-pill">
-                      <span className="v2-url-lock">🔒</span> truvox.studio
+                      <span className="v2-url-lock"><Lock size={10} /></span> truvox.studio
                     </div>
                     <span className="v2-browser-year-badge">2025</span>
                   </div>
@@ -1989,7 +1991,7 @@ export default function App() {
                       <span className="dot dot-green" />
                     </div>
                     <div className="v2-browser-url-pill">
-                      <span className="v2-url-lock">🔒</span> sagana-agency.com
+                      <span className="v2-url-lock"><Lock size={10} /></span> sagana-agency.com
                     </div>
                     <span className="v2-browser-year-badge">2025</span>
                   </div>
@@ -2043,7 +2045,7 @@ export default function App() {
                       <span className="dot dot-green" />
                     </div>
                     <div className="v2-browser-url-pill">
-                      <span className="v2-url-lock">🔒</span> portfolio-tavares.vercel.app
+                      <span className="v2-url-lock"><Lock size={10} /></span> portfolio-tavares.vercel.app
                     </div>
                     <span className="v2-browser-year-badge">2025</span>
                   </div>
@@ -2566,7 +2568,7 @@ export default function App() {
                 <div className="v2-graphic-cat-card">
                   <div className="v2-graphic-cat-header">
                     <div className="v2-graphic-cat-title-wrap">
-                      <span className="v2-graphic-cat-icon">🖼️</span>
+                      <span className="v2-graphic-cat-icon"><ImageIcon size={18} color="#10B981" /></span>
                       <span className="v2-graphic-cat-name">{lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}</span>
                     </div>
                     <span className="v2-graphic-cat-count">5 {lang === 'fr' ? 'PROJETS' : 'WORKS'}</span>
@@ -2664,7 +2666,7 @@ export default function App() {
                 <div className="v2-graphic-cat-card">
                   <div className="v2-graphic-cat-header">
                     <div className="v2-graphic-cat-title-wrap">
-                      <span className="v2-graphic-cat-icon">📱</span>
+                      <span className="v2-graphic-cat-icon"><Layers size={18} color="#10B981" /></span>
                       <span className="v2-graphic-cat-name">{lang === 'fr' ? 'Carrousels' : 'Social Carousels'}</span>
                     </div>
                     <span className="v2-graphic-cat-count">3 {lang === 'fr' ? 'SÉRIES' : 'SERIES'}</span>
