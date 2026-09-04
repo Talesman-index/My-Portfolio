@@ -1057,8 +1057,10 @@ export default function App() {
   const [lang, setLang] = useState<'en' | 'fr'>('en');
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isAllProjectsModalOpen, setIsAllProjectsModalOpen] = useState(false);
+  const [selectedGraphic, setSelectedGraphic] = useState<{ src: string; title: string; category: string } | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+
 
   // Page Turn Animation States ("Effet Tournement de Page")
   const [isPageTurning, setIsPageTurning] = useState(false);
@@ -1214,6 +1216,56 @@ export default function App() {
       {/* About Sheet Modal & All Projects Archive Modal */}
       <AboutSheetModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} lang={lang} />
       <AllProjectsModal isOpen={isAllProjectsModalOpen} onClose={() => setIsAllProjectsModalOpen(false)} setCurrentView={setCurrentView} lang={lang} />
+
+      {/* Graphic Design High-Res Lightbox Modal */}
+      {selectedGraphic && (
+        <div className="v2-modal-overlay" onClick={() => setSelectedGraphic(null)}>
+          <div 
+            className="v2-modal-sheet" 
+            style={{ 
+              maxWidth: '680px', 
+              textAlign: 'center',
+              padding: '28px 24px 32px'
+            }} 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setSelectedGraphic(null)} 
+              className="v2-modal-close-btn"
+              aria-label="Fermer l'aperçu"
+            >
+              <X size={20} />
+            </button>
+
+            <span className="v2-subpage-eyebrow" style={{ color: '#10B981', marginBottom: '8px', display: 'inline-block' }}>
+              {selectedGraphic.category}
+            </span>
+            <h3 style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', fontWeight: 600, color: '#FFFFFF', marginBottom: '20px', lineHeight: 1.4 }}>
+              {selectedGraphic.title}
+            </h3>
+
+            <div style={{ 
+              borderRadius: '16px', 
+              overflow: 'hidden', 
+              border: '1px solid rgba(255, 255, 255, 0.12)', 
+              background: '#000000',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)'
+            }}>
+              <img 
+                src={selectedGraphic.src} 
+                alt={selectedGraphic.title} 
+                style={{ 
+                  width: '100%', 
+                  maxHeight: '72vh', 
+                  objectFit: 'contain', 
+                  display: 'block',
+                  margin: '0 auto' 
+                }} 
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Slide-out Notebook Paper Drawer Menu (Global) */}
       {isMobileMenuOpen && (
@@ -2425,21 +2477,21 @@ export default function App() {
                     <span className="v2-graphic-cat-name">Posters &amp; Affiches</span>
                   </div>
                   <div className="v2-graphic-strip-4">
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/tavares.png" alt="Poster 1" />
-                      <span className="v2-graphic-item-badge">Poster 01</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_2souza_barman.jpg', title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie', category: 'Posters & Affiches' })}>
+                      <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="2SOUZA Barman" />
+                      <span className="v2-graphic-item-badge">2SOUZA</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/Strategy-Arena.png" alt="Poster 2" />
-                      <span className="v2-graphic-item-badge">Poster 02</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_strategie_arena_red.jpg', title: 'Stratégie Arena — Affiche Performance & Growth', category: 'Posters & Affiches' })}>
+                      <img src="/imgs/graphics/graphic_strategie_arena_red.jpg" alt="Stratégie Arena" />
+                      <span className="v2-graphic-item-badge">Arena Growth</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/truvox_cover.png" alt="Poster 3" />
-                      <span className="v2-graphic-item-badge">Poster 03</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_billboard.jpg', title: 'DADA Management — Affiche Billboard Challenge 30 Jours', category: 'Posters & Affiches' })}>
+                      <img src="/imgs/graphics/graphic_dada_billboard.jpg" alt="DADA Billboard" />
+                      <span className="v2-graphic-item-badge">DADA Billboard</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/refuge.png" alt="Poster 4" />
-                      <span className="v2-graphic-item-badge">Poster 04</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_aidarag_tennis.jpg', title: 'Aidarag Tennis — Affiche Éditoriale & Collage Athlète', category: 'Posters & Affiches' })}>
+                      <img src="/imgs/graphics/graphic_aidarag_tennis.jpg" alt="Aidarag Tennis" />
+                      <span className="v2-graphic-item-badge">Aidarag Tennis</span>
                     </div>
                   </div>
                 </div>
@@ -2451,21 +2503,21 @@ export default function App() {
                     <span className="v2-graphic-cat-name">Banners &amp; Publicités</span>
                   </div>
                   <div className="v2-graphic-strip-4">
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/vortex.webp" alt="Banner 1" />
-                      <span className="v2-graphic-item-badge">Banner 01</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_billboard.jpg', title: 'DADA Management — Affichage Autoroutier & Digital Display', category: 'Banners & Publicités' })}>
+                      <img src="/imgs/graphics/graphic_dada_billboard.jpg" alt="DADA Banner" />
+                      <span className="v2-graphic-item-badge">Billboard Display</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/dolce_cover.png" alt="Banner 2" />
-                      <span className="v2-graphic-item-badge">Banner 02</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_strategie_arena_red.jpg', title: 'Stratégie Arena — Bannière Digitale Retargeting', category: 'Banners & Publicités' })}>
+                      <img src="/imgs/graphics/graphic_strategie_arena_red.jpg" alt="Arena Ad" />
+                      <span className="v2-graphic-item-badge">Growth Banner</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/beans_cover.png" alt="Banner 3" />
-                      <span className="v2-graphic-item-badge">Banner 03</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_collab_fistbump.jpg', title: 'Arena x DADA — Bannière Partenariat & Lancement', category: 'Banners & Publicités' })}>
+                      <img src="/imgs/graphics/graphic_dada_collab_fistbump.jpg" alt="Arena x DADA Collab" />
+                      <span className="v2-graphic-item-badge">Collab Launch</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/sagana.png" alt="Banner 4" />
-                      <span className="v2-graphic-item-badge">Banner 04</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_2souza_barman.jpg', title: '2SOUZA — Bannière Événementielle Bar & Mixologie', category: 'Banners & Publicités' })}>
+                      <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="2SOUZA Banner" />
+                      <span className="v2-graphic-item-badge">Event Banner</span>
                     </div>
                   </div>
                 </div>
@@ -2477,21 +2529,21 @@ export default function App() {
                     <span className="v2-graphic-cat-name">Brochures &amp; Flyers</span>
                   </div>
                   <div className="v2-graphic-strip-4">
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Flyer 1" />
-                      <span className="v2-graphic-item-badge">Flyer 01</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_strategie_arena_red.jpg', title: 'Stratégie Arena — Flyer Exécutif & Plan Stratégique', category: 'Brochures & Flyers' })}>
+                      <img src="/imgs/graphics/graphic_strategie_arena_red.jpg" alt="Strategy Flyer" />
+                      <span className="v2-graphic-item-badge">Strategy Flyer</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/ehadj/cover_Ehadj.jpg" alt="Flyer 2" />
-                      <span className="v2-graphic-item-badge">Flyer 02</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_2souza_barman.jpg', title: '2SOUZA — Carte & Dépliant Mixologie Signature', category: 'Brochures & Flyers' })}>
+                      <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="2SOUZA Flyer" />
+                      <span className="v2-graphic-item-badge">Menu &amp; Flyer</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/advisor.webp" alt="Flyer 3" />
-                      <span className="v2-graphic-item-badge">Flyer 03</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_aidarag_tennis.jpg', title: 'Aidarag Tennis — Kit Presse & Fiche Athlète', category: 'Brochures & Flyers' })}>
+                      <img src="/imgs/graphics/graphic_aidarag_tennis.jpg" alt="Aidarag Press Kit" />
+                      <span className="v2-graphic-item-badge">Press Kit</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/tavares.png" alt="Flyer 4" />
-                      <span className="v2-graphic-item-badge">Flyer 04</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_collab_fistbump.jpg', title: 'DADA Management — Plaquette Programme 30 Jours', category: 'Brochures & Flyers' })}>
+                      <img src="/imgs/graphics/graphic_dada_collab_fistbump.jpg" alt="DADA Flyer" />
+                      <span className="v2-graphic-item-badge">Program Flyer</span>
                     </div>
                   </div>
                 </div>
@@ -2503,21 +2555,21 @@ export default function App() {
                     <span className="v2-graphic-cat-name">Post Designs &amp; Social</span>
                   </div>
                   <div className="v2-graphic-strip-4">
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/dolce_cover.png" alt="Social Post 1" />
-                      <span className="v2-graphic-item-badge">Post 01</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_aidarag_tennis.jpg', title: 'Aidarag Tennis — Visuel Story & Post Instagram Collage', category: 'Post Designs & Social' })}>
+                      <img src="/imgs/graphics/graphic_aidarag_tennis.jpg" alt="Instagram Post" />
+                      <span className="v2-graphic-item-badge">Athlete Story</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/vortex.webp" alt="Social Post 2" />
-                      <span className="v2-graphic-item-badge">Post 02</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_collab_fistbump.jpg', title: 'Arena x DADA — Annonce Collaborations & Carrousel', category: 'Post Designs & Social' })}>
+                      <img src="/imgs/graphics/graphic_dada_collab_fistbump.jpg" alt="Collab Announcement" />
+                      <span className="v2-graphic-item-badge">Announcement</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/sagana.png" alt="Social Post 3" />
-                      <span className="v2-graphic-item-badge">Post 03</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_strategie_arena_red.jpg', title: 'Stratégie Arena — Post Engagement "Pourquoi tu n\'obtiens pas de résultats"', category: 'Post Designs & Social' })}>
+                      <img src="/imgs/graphics/graphic_strategie_arena_red.jpg" alt="Growth Post" />
+                      <span className="v2-graphic-item-badge">Growth Post</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/Strategy-Arena.png" alt="Social Post 4" />
-                      <span className="v2-graphic-item-badge">Post 04</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_billboard.jpg', title: 'Challenge 30 Jours — Campagne Visuelle Social Media', category: 'Post Designs & Social' })}>
+                      <img src="/imgs/graphics/graphic_dada_billboard.jpg" alt="Challenge Post" />
+                      <span className="v2-graphic-item-badge">Challenge Promo</span>
                     </div>
                   </div>
                 </div>
@@ -2529,21 +2581,21 @@ export default function App() {
                     <span className="v2-graphic-cat-name">Logo Designs &amp; Identités</span>
                   </div>
                   <div className="v2-graphic-strip-4">
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/beans_cover.png" alt="Logo 1" />
-                      <span className="v2-graphic-item-badge">Logo 01</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_strategie_arena_red.jpg', title: 'Stratégie Arena — Monogramme & Symbole Flèche Lumineuse', category: 'Logo Designs & Identités' })}>
+                      <img src="/imgs/graphics/graphic_strategie_arena_red.jpg" alt="Arena Monogram" />
+                      <span className="v2-graphic-item-badge">Arena Logo</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/truvox_cover.png" alt="Logo 2" />
-                      <span className="v2-graphic-item-badge">Logo 02</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_2souza_barman.jpg', title: '2SOUZA — Typographie Gothique & Wordmark Signature', category: 'Logo Designs & Identités' })}>
+                      <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="2SOUZA Logo" />
+                      <span className="v2-graphic-item-badge">2SOUZA Wordmark</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/refuge.png" alt="Logo 3" />
-                      <span className="v2-graphic-item-badge">Logo 03</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_collab_fistbump.jpg', title: 'DADA Management — Logotype Sérif & Système de Titrage', category: 'Logo Designs & Identités' })}>
+                      <img src="/imgs/graphics/graphic_dada_collab_fistbump.jpg" alt="DADA Logo" />
+                      <span className="v2-graphic-item-badge">DADA Serif</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/advisor.webp" alt="Logo 4" />
-                      <span className="v2-graphic-item-badge">Logo 04</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_aidarag_tennis.jpg', title: 'Aidarag — Branding Personnel Athlète', category: 'Logo Designs & Identités' })}>
+                      <img src="/imgs/graphics/graphic_aidarag_tennis.jpg" alt="Aidarag Brand" />
+                      <span className="v2-graphic-item-badge">Athlete Mark</span>
                     </div>
                   </div>
                 </div>
@@ -2555,21 +2607,21 @@ export default function App() {
                     <span className="v2-graphic-cat-name">Brand Guidelines &amp; Chartes</span>
                   </div>
                   <div className="v2-graphic-strip-4">
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/sagana.png" alt="Brandbook 1" />
-                      <span className="v2-graphic-item-badge">Brand 01</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_strategie_arena_red.jpg', title: 'Stratégie Arena — Charte Chromatique & Règles de Grille', category: 'Brand Guidelines & Chartes' })}>
+                      <img src="/imgs/graphics/graphic_strategie_arena_red.jpg" alt="Arena Brandbook" />
+                      <span className="v2-graphic-item-badge">Arena Standards</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/assetiQ/cover_Asset.jpg" alt="Brandbook 2" />
-                      <span className="v2-graphic-item-badge">Brand 02</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_billboard.jpg', title: 'DADA Management — Charte d\'Affichage Urbain & Signalétique', category: 'Brand Guidelines & Chartes' })}>
+                      <img src="/imgs/graphics/graphic_dada_billboard.jpg" alt="DADA Signage" />
+                      <span className="v2-graphic-item-badge">Outdoor Signage</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/ehadj/cover_Ehadj.jpg" alt="Brandbook 3" />
-                      <span className="v2-graphic-item-badge">Brand 03</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_2souza_barman.jpg', title: '2SOUZA — Charte Éditoriale, Textures & Découpes', category: 'Brand Guidelines & Chartes' })}>
+                      <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="2SOUZA Guidelines" />
+                      <span className="v2-graphic-item-badge">Print &amp; Layout</span>
                     </div>
-                    <div className="v2-graphic-item">
-                      <img src="/imgs/dolce_cover.png" alt="Brandbook 4" />
-                      <span className="v2-graphic-item-badge">Brand 04</span>
+                    <div className="v2-graphic-item" onClick={() => setSelectedGraphic({ src: '/imgs/graphics/graphic_dada_collab_fistbump.jpg', title: 'Arena x DADA — Guide Co-Branding & Alignement Visuel', category: 'Brand Guidelines & Chartes' })}>
+                      <img src="/imgs/graphics/graphic_dada_collab_fistbump.jpg" alt="Co-Branding Guidelines" />
+                      <span className="v2-graphic-item-badge">Co-Branding</span>
                     </div>
                   </div>
                 </div>
