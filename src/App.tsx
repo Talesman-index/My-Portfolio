@@ -21,6 +21,7 @@ import {
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
 import PageTurnOverlay from './components/PageTurnOverlay';
+import GlassMonogram from './components/GlassMonogram';
 
 /* Metal Paperclip SVG Helper */
 const PaperclipSVG = ({ style }: { style?: React.CSSProperties }) => (
@@ -1332,153 +1333,112 @@ export default function App() {
 
           <main className="robin-notebook-page">
             {/* TOP FLOATING NAVIGATION BAR */}
-            <nav className="robin-floating-nav">
-              {/* Mobile Brand Name */}
-              <div className="robin-nav-brand" onClick={() => handleViewSwitch('home')}>
-                SACCA DAFIA
+            {/* TOP FLOATING NAVIGATION BAR (EXACT REFERENCE DESIGN) */}
+            <nav className="v2-floating-nav">
+              {/* Left Profile Avatar & Name */}
+              <div className="v2-nav-profile" onClick={() => handleViewSwitch('home')}>
+                <img 
+                  src="/imgs/sacca_headshot.jpg" 
+                  alt="Talesman Avatar" 
+                  className="v2-nav-avatar" 
+                />
+                <span className="v2-nav-name">Talesman</span>
               </div>
 
               {/* Desktop Nav Items */}
-              <div className="robin-nav-desktop-container">
-                <div className="robin-nav-items">
-                  <span className={`robin-nav-pill ${currentView === 'home' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('home')}>
-                    HOME
-                  </span>
-                  <span className="robin-nav-pill" onClick={() => setIsAboutModalOpen(true)}>
-                    ABOUT
-                  </span>
-                  <span className="robin-nav-pill" onClick={() => {
-                    const elem = document.getElementById('products-saas');
-                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                  }}>
-                    PRODUCTS &amp; SAAS
-                  </span>
-                  <span className="robin-nav-pill" onClick={() => {
-                    const elem = document.getElementById('featured-works');
-                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                  }}>
-                    FEATURED WORKS
-                  </span>
-                  <span className="robin-nav-pill" onClick={() => handleViewSwitch('services')}>
-                    SERVICES
-                  </span>
-                  <span className="robin-nav-pill" onClick={() => handleViewSwitch('experiences')}>
-                    CAREER
-                  </span>
-                </div>
+              <div className="v2-nav-links">
+                <span className={`v2-nav-link ${currentView === 'home' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('home')}>
+                  Home
+                </span>
+                <span className="v2-nav-link" onClick={() => setIsAboutModalOpen(true)}>
+                  About Me
+                </span>
+                <span className="v2-nav-link" onClick={() => {
+                  const elem = document.getElementById('featured-works');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                }}>
+                  Portfolio
+                </span>
+                <span className="v2-nav-link" onClick={() => {
+                  const elem = document.getElementById('products-saas');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                }}>
+                  Designs
+                </span>
+                <span className="v2-nav-link" onClick={() => handleViewSwitch('services')}>
+                  Services
+                </span>
+                <span className="v2-nav-link" onClick={() => handleViewSwitch('experiences')}>
+                  Blog
+                </span>
+              </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '4px 10px' }}>
-                    <Linkedin size={15} />
-                  </a>
-                  <a href="mailto:dafiashalom@gmail.com" className="robin-nav-pill" style={{ padding: '4px 10px' }} title="dafiashalom@gmail.com">
-                    <Mail size={15} />
-                  </a>
-                  <button className="robin-nav-contact-btn" onClick={() => {
+              {/* Right Side: Lang Switch & Connect Button */}
+              <div className="v2-nav-actions">
+                <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
+                <button 
+                  className="v2-nav-connect-btn" 
+                  onClick={() => {
                     if ((window as any).Calendly) {
                       (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
                     } else {
                       window.open('https://calendly.com/dafiashalom/30min', '_blank');
                     }
-                  }}>
-                    CONTACT
-                  </button>
-                </div>
+                  }}
+                >
+                  Let's Connect
+                </button>
               </div>
 
               {/* Mobile Hamburger Toggle Button */}
               <button 
-                className="robin-mobile-hamburger-btn" 
+                className="robin-mobile-hamburger-btn v2-mobile-toggle" 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-                <span>MENU</span>
               </button>
             </nav>
 
-            {/* SECTION 1: HERO & POSITIONING */}
-            <section className="robin-hero-section scroll-reveal">
-              <span className="robin-handwritten-lead">my name is</span>
+            {/* SECTION 1: HERO (EXACT REFERENCE DESIGN) */}
+            <section className="v2-hero-section">
+              {/* Radial Ambient Glow Background Light */}
+              <div className="v2-hero-ambient-glow" aria-hidden="true" />
 
-              <div className="robin-hero-box-container">
-                {/* Big Outlined Boxed Name with Figma/Canvas Selection Bounding Box */}
-                <div className="robin-hero-boxed-name">
-                  {/* Selection Corner & Edge Drag Handles */}
-                  <span className="selection-handle handle-tl" />
-                  <span className="selection-handle handle-tr" />
-                  <span className="selection-handle handle-bl" />
-                  <span className="selection-handle handle-br" />
-                  <span className="selection-handle-edge handle-tm" />
-                  <span className="selection-handle-edge handle-bm" />
-                  <span className="selection-handle-edge handle-lm" />
-                  <span className="selection-handle-edge handle-rm" />
-
-                  {/* Designer Mouse Cursor Pointer Tag */}
-                  <div className="selection-cursor-badge">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFFFFF" className="selection-cursor-svg">
-                      <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
-                    </svg>
-                    <span>Talesman (Product Designer)</span>
-                  </div>
-
-                  {/* Figma Frame Label */}
-                  <div className="selection-frame-label">
-                    <span>FRAME: HERO_TITLE</span>
-                  </div>
-
-                  SACCA DAFIA
-                </div>
-
-                {/* Floating Pills around Name Box */}
-                <div className="robin-hero-badges-wrapper">
-                  <span className="robin-badge-floating badge-yellow badge-pos-bottom-left">Product Designer</span>
-                  <span className="robin-badge-floating badge-white badge-pos-bottom-mid">
-                    <span className="hero-status-dot" style={{ display: 'inline-block', marginRight: '6px' }} />
-                    OPEN TO NEW WORK AND GOOD PROBLEMS
-                  </span>
-                  <span className="robin-badge-floating badge-yellow badge-pos-bottom-right">CRAFT &amp; PRECISION</span>
-                </div>
+              {/* Eyebrow Tagline */}
+              <div className="v2-hero-eyebrow">
+                {lang === 'fr' ? 'Le Design dans les Détails' : 'Design in Details'}
               </div>
 
-              {/* Tagline with Circular Avatars */}
-              <div className="robin-hero-tagline-wrapper">
-                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar" className="robin-avatar-circle robin-avatar-first" />
-                <h1 className="robin-hero-tagline">
-                  {lang === 'fr'
-                    ? "Je conçois des produits numériques qui s'effacent pour laisser place à l'évidence."
-                    : "I design software that gets out of your way."}
+              {/* Giant Wordmark with Center 3D Glass Monogram & Signature */}
+              <div className="v2-hero-title-wrapper">
+                <h1 className="v2-hero-title">
+                  PORTFOLIO
                 </h1>
-                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar 2" className="robin-avatar-circle robin-avatar-second" />
-              </div>
 
-              {/* Hand-Drawn Pencil Sketch Scroll Down Indicator */}
-              <div 
-                className="robin-pencil-scroll-container" 
-                onClick={() => {
-                  const elem = document.querySelector('.robin-about-section');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <span className="robin-pencil-scroll-text">
-                  {lang === 'fr' ? 'défiler vers le bas' : 'scroll down'}
-                </span>
-                <svg 
-                  className="robin-pencil-scroll-svg" 
-                  width="30" 
-                  height="46" 
-                  viewBox="0 0 30 46" 
-                  fill="none" 
-                  stroke="#121212" 
-                  strokeWidth="2.2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                >
-                  <path d="M15 4 C14.2 14 15.8 24 15 35" strokeDasharray="5 3 2 2" />
-                  <path d="M7 27 C10 32 13 36 15 39 C17 36 20 32 23 27" strokeWidth="2.4" />
-                  <path d="M11 41 C13 43 17 43 19 41" strokeWidth="1.6" strokeOpacity="0.7" />
-                </svg>
+                {/* 3D Wireframe Glass Monogram Intertwined with PORTFOLIO */}
+                <div className="v2-hero-glass-overlay">
+                  <GlassMonogram />
+                </div>
+
+                {/* Yellow Handwritten Glow Signature */}
+                <div className="v2-hero-signature">
+                  <span className="v2-signature-text">Talesman</span>
+                  <svg 
+                    className="v2-signature-stroke" 
+                    viewBox="0 0 160 32" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M 6 22 Q 65 6 128 18 Q 142 21 152 14" 
+                      stroke="#FBBF24" 
+                      strokeWidth="2.8" 
+                      strokeLinecap="round" 
+                    />
+                    <circle cx="152" cy="7" r="3.2" fill="#FBBF24" />
+                  </svg>
+                </div>
               </div>
             </section>
 
