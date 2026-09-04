@@ -1347,8 +1347,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 72vh;
-  padding: 40px 16px 80px 16px;
+  min-height: 92vh;
+  padding: 80px 20px 150px 20px;
   text-align: center;
   overflow: visible;
 }
@@ -1356,16 +1356,16 @@
 /* Atmospheric Overhead Blue Glow */
 .v2-hero-ambient-glow {
   position: absolute;
-  top: -15%;
+  top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 90vw;
-  max-width: 1050px;
-  height: 500px;
-  background: radial-gradient(ellipse 65% 50% at 50% 30%, rgba(30, 95, 235, 0.42) 0%, rgba(14, 45, 120, 0.20) 45%, transparent 75%);
+  width: 95vw;
+  max-width: 1250px;
+  height: 650px;
+  background: radial-gradient(ellipse 70% 55% at 50% 30%, rgba(30, 95, 235, 0.48) 0%, rgba(14, 45, 120, 0.22) 45%, transparent 75%);
   pointer-events: none;
   z-index: 0;
-  filter: blur(40px);
+  filter: blur(55px);
 }
 
 /* Eyebrow Tagline */
