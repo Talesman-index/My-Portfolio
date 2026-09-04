@@ -5746,12 +5746,13 @@
 .v2-graphic-grid-2col {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1024px) {
   .v2-graphic-grid-2col {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
@@ -5761,100 +5762,340 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 22px;
+  border-radius: 24px;
+  padding: 28px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .v2-graphic-cat-card:hover {
   border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.12);
-  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.1);
 }
 
 .v2-graphic-cat-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.v2-graphic-cat-title-wrap {
+  display: flex;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 18px;
 }
 
 .v2-graphic-cat-icon {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #10B981;
 }
 
 .v2-graphic-cat-name {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #FFFFFF;
 }
 
-.v2-graphic-strip-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+.v2-graphic-cat-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
-.v2-graphic-item {
+.v2-graphic-cat-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #94A3B8;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+/* Category 1: Posters Grid */
+.v2-graphic-posters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .v2-graphic-posters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.v2-graphic-poster-item {
   position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
   overflow: hidden;
   background: #0B101D;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v2-graphic-poster-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.v2-graphic-poster-item:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.15);
+  transform: translateY(-4px);
+  z-index: 2;
+}
+
+.v2-graphic-poster-item:hover img {
+  transform: scale(1.06);
+}
+
+.v2-graphic-poster-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(3, 5, 8, 0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
+}
+
+.v2-graphic-poster-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #34D399;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.v2-graphic-poster-title {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Category 2: Carrousels Stack & Cards */
+.v2-graphic-carrousels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.v2-graphic-carrousel-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(15, 23, 42, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 14px 16px;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.v2-graphic-item img {
+.v2-graphic-carrousel-card:hover {
+  background: rgba(20, 30, 52, 0.85);
+  border-color: rgba(16, 185, 129, 0.4);
+  transform: translateX(4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.v2-graphic-carrousel-stack {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.v2-graphic-carrousel-stack-layer {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0B101D;
+  transition: transform 0.3s ease;
+}
+
+.v2-graphic-carrousel-stack-layer.layer-1 {
+  top: 0;
+  left: 8px;
+  opacity: 0.4;
+  transform: rotate(6deg);
+}
+
+.v2-graphic-carrousel-stack-layer.layer-2 {
+  top: 4px;
+  left: 4px;
+  opacity: 0.7;
+  transform: rotate(-3deg);
+}
+
+.v2-graphic-carrousel-stack-layer.layer-3 {
+  top: 6px;
+  left: 0;
+  opacity: 1;
+  transform: rotate(0deg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.v2-graphic-carrousel-stack-layer img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
 }
 
-.v2-graphic-item:hover {
-  border-color: rgba(16, 185, 129, 0.5);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  transform: scale(1.03);
-  z-index: 2;
+.v2-graphic-carrousel-card:hover .layer-1 {
+  transform: rotate(10deg) translate(4px, -2px);
 }
 
-.v2-graphic-item:hover img {
-  transform: scale(1.08);
+.v2-graphic-carrousel-card:hover .layer-2 {
+  transform: rotate(-6deg) translate(-2px, 0);
 }
 
-.v2-graphic-item-badge {
-  position: absolute;
-  bottom: 6px;
-  left: 6px;
-  right: 6px;
-  background: rgba(3, 5, 8, 0.75);
-  backdrop-filter: blur(8px);
-  padding: 3px 6px;
-  border-radius: 4px;
+.v2-graphic-carrousel-card:hover .layer-3 {
+  transform: scale(1.04);
+}
+
+.v2-graphic-carrousel-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.v2-graphic-carrousel-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.v2-graphic-carrousel-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #10B981;
+  font-weight: 600;
+}
+
+.v2-graphic-carrousel-badge {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: #E2E8F0;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.v2-graphic-carrousel-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: all 0.2s ease;
-  text-align: center;
 }
 
-.v2-graphic-item:hover .v2-graphic-item-badge {
-  opacity: 1;
-  transform: translateY(0);
+.v2-graphic-carrousel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #38BDF8;
+  transition: gap 0.2s ease;
 }
+
+.v2-graphic-carrousel-card:hover .v2-graphic-carrousel-cta {
+  color: #34D399;
+  gap: 8px;
+}
+
+/* Lightbox Multi-Slide Controls */
+.v2-lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(10, 16, 28, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.v2-lightbox-nav-btn:hover {
+  background: rgba(16, 185, 129, 0.9);
+  color: #030508;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.v2-lightbox-nav-btn.prev {
+  left: 12px;
+}
+
+.v2-lightbox-nav-btn.next {
+  right: 12px;
+}
+
+.v2-lightbox-dots-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.v2-lightbox-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.v2-lightbox-dot.active {
+  background: #10B981;
+  width: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
 
 
 
