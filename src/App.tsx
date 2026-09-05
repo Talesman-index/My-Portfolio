@@ -2250,10 +2250,6 @@ export default function App() {
                 <div className="v2-bento-card v2-bento-collab-large">
                   <div className="v2-bento-card-header">
                     <span className="v2-bento-tag">COLLABORATION</span>
-                    <div className="v2-live-status-badge">
-                      <span className="v2-status-dot" />
-                      <span>{lang === 'fr' ? 'Disponible' : 'Available'}</span>
-                    </div>
                   </div>
 
                   <div className="v2-bento-collab-text-large">
