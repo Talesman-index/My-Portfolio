@@ -6440,6 +6440,206 @@
   box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   FUTURISTIC 3D GLASS PRELOADER
+   ═══════════════════════════════════════════════════════════════ */
+.futuristic-preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #030712;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s ease;
+}
+
+.futuristic-preloader-overlay.preloader-exit {
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.preloader-ambient-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(99, 102, 241, 0.12) 45%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  animation: preloaderPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderPulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+.preloader-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.preloader-content-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* 3D Blueprint Glass Symbol Stage */
+.preloader-symbol-wrapper {
+  position: relative;
+  width: 220px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ring-outer {
+  width: 260px;
+  height: 260px;
+  border: 1px dashed rgba(56, 189, 248, 0.2);
+  animation: spinRing 18s linear infinite;
+}
+
+.ring-inner {
+  width: 200px;
+  height: 200px;
+  border: 1px dashed rgba(129, 140, 248, 0.25);
+  animation: spinRingRev 12s linear infinite;
+}
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinRingRev {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.preloader-symbol-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.4));
+  animation: symbolFloat 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes symbolFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+.preloader-glass-body {
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.35));
+}
+
+.preloader-core-pulse {
+  animation: corePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes corePulse {
+  0% { opacity: 0.6; transform: scale(0.95); transform-origin: 140px 145px; }
+  100% { opacity: 1; transform: scale(1.08); transform-origin: 140px 145px; }
+}
+
+/* Telemetry Section */
+.preloader-telemetry {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preloader-counter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preloader-os-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+}
+
+.preloader-percentage {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #38BDF8;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.preloader-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38BDF8, #818CF8);
+  border-radius: 9999px;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+  transition: width 0.08s linear;
+}
+
+.preloader-status-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.preloader-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+  animation: blinkDot 1s infinite alternate;
+}
+
+@keyframes blinkDot {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.preloader-status-text {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+
 
 
 

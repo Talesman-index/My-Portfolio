@@ -20,6 +20,7 @@ import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
 import { GlassServiceVisual } from './components/ServiceGlassVisuals';
+import { FuturisticPreloader } from './components/FuturisticPreloader';
 
 
 
@@ -1126,6 +1127,9 @@ export default function App() {
 
   return (
     <>
+      {/* 3D Blueprint Glass Preloader with Brand Symbol */}
+      <FuturisticPreloader />
+
       {/* 3D Page Turn Overlay Effect ("Effet Tournement de Page") */}
       <PageTurnOverlay
         isTurning={isPageTurning}
