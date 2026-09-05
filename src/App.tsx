@@ -12,18 +12,14 @@ import {
   Menu,
   ChevronLeft,
   ChevronRight,
-  Lock,
-  Sparkles,
-  Palette,
-  Zap,
-  Component,
-  Check
+  Lock
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
 import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
+import { GlassServiceVisual } from './components/ServiceGlassVisuals';
 
 
 
@@ -540,64 +536,55 @@ const ServicesView = ({
           {/* CARD 01: SAAS & PRODUCT DESIGN */}
           <div className="v2-service-card card-glow-cyan">
             <div className="v2-service-card-top">
-              <div className="v2-service-icon-box box-cyan">
-                <Sparkles size={20} />
+              <div className="v2-service-header-spec">
+                <span className="v2-service-idx">// 01</span>
+                <span className="v2-service-category-tag">SAAS · PRODUCT SYSTEMS</span>
               </div>
-              <div className="v2-service-top-meta">
-                <span className="v2-service-num">01</span>
-                <span className="v2-service-badge badge-cyan">SaaS &amp; Product</span>
+              <div className="v2-service-status-node">
+                <span className="v2-status-dot dot-cyan"></span>
+                <span className="v2-status-label">ACTIVE_SPEC</span>
               </div>
+            </div>
+
+            <div className="v2-service-visual-stage">
+              <GlassServiceVisual type="saas" />
             </div>
             
             <div className="v2-service-body">
               <h3 className="v2-service-card-title">
                 {lang === 'fr' ? 'UI/UX & Design Produit (B2B SaaS)' : 'UI/UX & Product Design (B2B SaaS)'}
               </h3>
-              
-              <div className="v2-service-impact-pill pill-cyan">
-                <span>{lang === 'fr' ? '✦ Réduction du Churn & Onboarding Fluide' : '✦ Lower Churn & Frictionless Onboarding'}</span>
-              </div>
 
               <p className="v2-service-card-desc">
                 {lang === 'fr'
                   ? "Architecture de l'information complexe, tunnels d'activation sans friction, tableaux de bord de télémétrie et design systems Figma prêts pour l'ingénierie."
                   : "Complex information architecture, frictionless onboarding funnels, telemetry dashboards, and scalable Figma design systems ready for engineering."}
               </p>
-
-              <div className="v2-service-features-list">
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-cyan"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Audit UX & Architecture d'Information" : 'UX Audit & Information Architecture'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-cyan"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Tunnels d'Onboarding & Rétention B2B" : 'B2B Onboarding & Retention Funnels'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-cyan"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Dashboards & Visualisation de Données" : 'Telemetry Dashboards & Data Viz'}</span>
-                </div>
-              </div>
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">Figma Tokens</span>
-              <span className="v2-service-tag">User Flows</span>
-              <span className="v2-service-tag">PRD Specs</span>
-              <span className="v2-service-tag">Data Viz</span>
+              <span className="v2-service-tag">[FIGMA_VARIABLES]</span>
+              <span className="v2-service-tag">[USER_FLOWS]</span>
+              <span className="v2-service-tag">[TELEMETRY_DASH]</span>
+              <span className="v2-service-tag">[DATA_VIZ]</span>
             </div>
           </div>
 
           {/* CARD 02: ART DIRECTION & WEB DESIGN */}
           <div className="v2-service-card card-glow-yellow">
             <div className="v2-service-card-top">
-              <div className="v2-service-icon-box box-yellow">
-                <Palette size={20} />
+              <div className="v2-service-header-spec">
+                <span className="v2-service-idx">// 02</span>
+                <span className="v2-service-category-tag">WEB CRAFT · ART DIRECTION</span>
               </div>
-              <div className="v2-service-top-meta">
-                <span className="v2-service-num">02</span>
-                <span className="v2-service-badge badge-yellow">Web Craft</span>
+              <div className="v2-service-status-node">
+                <span className="v2-status-dot dot-yellow"></span>
+                <span className="v2-status-label">ACTIVE_SPEC</span>
               </div>
+            </div>
+
+            <div className="v2-service-visual-stage">
+              <GlassServiceVisual type="craft" />
             </div>
 
             <div className="v2-service-body">
@@ -605,50 +592,36 @@ const ServicesView = ({
                 {lang === 'fr' ? 'Direction Artistique & Web Design' : 'Art Direction & Web Design'}
               </h3>
 
-              <div className="v2-service-impact-pill pill-yellow">
-                <span>{lang === 'fr' ? '✦ Identité Mémorable & Taux de Conversion' : '✦ Distinctive Brand & Higher Conversion'}</span>
-              </div>
-
               <p className="v2-service-card-desc">
                 {lang === 'fr'
-                  ? "Vitrines de marque immersives, typographie éditoriale sur mesure, animations de storytelling fluides et interfaces e-commerce à fort impact."
+                  ? "Vitrines de marque immersives, typographie éditoriale sur mesure, animations de storytelling fluides et interfaces de conversion à fort impact visuel."
                   : "Immersive brand showcase websites, custom editorial typography, fluid storytelling animations, and conversion-focused digital experiences."}
               </p>
-
-              <div className="v2-service-features-list">
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-yellow"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Direction Artistique Éditoriale & Univers de Marque" : 'Editorial Art Direction & Brand Identity'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-yellow"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Micro-Animations & Storytelling Interactif" : 'Micro-Animations & Interactive Storytelling'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-yellow"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Pages de Vente Haute Conversion (CRO)" : 'High-Converting Sales & Landing Pages'}</span>
-                </div>
-              </div>
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">Art Direction</span>
-              <span className="v2-service-tag">Motion Design</span>
-              <span className="v2-service-tag">CRO Funnels</span>
-              <span className="v2-service-tag">Responsive UI</span>
+              <span className="v2-service-tag">[ART_DIRECTION]</span>
+              <span className="v2-service-tag">[3D_SPATIAL_MOTION]</span>
+              <span className="v2-service-tag">[EDITORIAL_TYPE]</span>
+              <span className="v2-service-tag">[HIGH_CONVERSION]</span>
             </div>
           </div>
 
           {/* CARD 03: VIBE CODING & RAPID MVP */}
           <div className="v2-service-card card-glow-green">
             <div className="v2-service-card-top">
-              <div className="v2-service-icon-box box-green">
-                <Zap size={20} />
+              <div className="v2-service-header-spec">
+                <span className="v2-service-idx">// 03</span>
+                <span className="v2-service-category-tag">VIBE CODING · RAPID MVP</span>
               </div>
-              <div className="v2-service-top-meta">
-                <span className="v2-service-num">03</span>
-                <span className="v2-service-badge badge-green">Rapid MVP</span>
+              <div className="v2-service-status-node">
+                <span className="v2-status-dot dot-green"></span>
+                <span className="v2-status-label">ACTIVE_SPEC</span>
               </div>
+            </div>
+
+            <div className="v2-service-visual-stage">
+              <GlassServiceVisual type="code" />
             </div>
 
             <div className="v2-service-body">
@@ -656,50 +629,36 @@ const ServicesView = ({
                 {lang === 'fr' ? 'Vibe Coding & Prototypage Rapide' : 'Vibe Coding & Rapid MVP Prototyping'}
               </h3>
 
-              <div className="v2-service-impact-pill pill-green">
-                <span>{lang === 'fr' ? "✦ De l'Idée à l'URL Live en Quelques Jours" : '✦ From Idea to Testable URL in Days'}</span>
-              </div>
-
               <p className="v2-service-card-desc">
                 {lang === 'fr'
                   ? "Prototypage fonctionnel ultra-rapide (React, TypeScript, Vite/Next) pour tester concrètement vos idées, valider l'UX auprès d'utilisateurs réels et convaincre vos investisseurs."
                   : "Ultra-fast functional software prototyping (React, TypeScript, Next/Vite) to validate UX with real users, pitch investors, and bridge the gap between design and production."}
               </p>
-
-              <div className="v2-service-features-list">
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-green"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Prototypes Fonctionnels & Déployés" : 'Functional Deployed Web Prototypes'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-green"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Intégration API & LLM (Google AI Studio)" : 'API & LLM Integration (Google AI Studio)'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-green"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Itérations Rapides & Validation Utilisateurs" : 'Rapid Iteration & User Testing'}</span>
-                </div>
-              </div>
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">React / Vite</span>
-              <span className="v2-service-tag">Google AI Studio</span>
-              <span className="v2-service-tag">Live Prototypes</span>
-              <span className="v2-service-tag">Fast MVP</span>
+              <span className="v2-service-tag">[REACT_19]</span>
+              <span className="v2-service-tag">[GOOGLE_AI_STUDIO]</span>
+              <span className="v2-service-tag">[RAPID_PROTOTYPE]</span>
+              <span className="v2-service-tag">[EDGE_DEPLOY]</span>
             </div>
           </div>
 
           {/* CARD 04: DESIGN SYSTEMS & DEV HANDOFF */}
           <div className="v2-service-card card-glow-purple">
             <div className="v2-service-card-top">
-              <div className="v2-service-icon-box box-purple">
-                <Component size={20} />
+              <div className="v2-service-header-spec">
+                <span className="v2-service-idx">// 04</span>
+                <span className="v2-service-category-tag">DESIGN SYSTEMS · HANDOFF</span>
               </div>
-              <div className="v2-service-top-meta">
-                <span className="v2-service-num">04</span>
-                <span className="v2-service-badge badge-purple">Systems &amp; Dev</span>
+              <div className="v2-service-status-node">
+                <span className="v2-status-dot dot-purple"></span>
+                <span className="v2-status-label">ACTIVE_SPEC</span>
               </div>
+            </div>
+
+            <div className="v2-service-visual-stage">
+              <GlassServiceVisual type="system" />
             </div>
 
             <div className="v2-service-body">
@@ -707,37 +666,18 @@ const ServicesView = ({
                 {lang === 'fr' ? 'Design Systems & Handoff Ingénieur' : 'Design Systems & Engineering Hand-off'}
               </h3>
 
-              <div className="v2-service-impact-pill pill-purple">
-                <span>{lang === 'fr' ? '✦ Zéro Friction Designer ↔ Développeur' : '✦ Zero Designer ↔ Developer Friction'}</span>
-              </div>
-
               <p className="v2-service-card-desc">
                 {lang === 'fr'
                   ? "Bibliothèques de composants UI réutilisables, gouvernance de tokens, accessibilité WCAG et alignement designer-développeur pour éliminer toute friction d'intégration."
                   : "Reusable UI component libraries, design token governance, WCAG accessibility, and airtight designer-developer alignment to eliminate hand-off friction."}
               </p>
-
-              <div className="v2-service-features-list">
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-purple"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Gouvernance de Tokens (Figma Variables)" : 'Design Tokens Governance & Variables'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-purple"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Composants Robustes & Accessibilité WCAG" : 'Robust Component Libraries & WCAG'}</span>
-                </div>
-                <div className="v2-service-feature-item">
-                  <span className="v2-feature-check check-purple"><Check size={12} /></span>
-                  <span>{lang === 'fr' ? "Documentation Technique & Spécifications PRD" : 'PRD Specs & Engineering Handoff'}</span>
-                </div>
-              </div>
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">Design Tokens</span>
-              <span className="v2-service-tag">Accessibility</span>
-              <span className="v2-service-tag">Storybook / UI Kits</span>
-              <span className="v2-service-tag">Dev Handoff</span>
+              <span className="v2-service-tag">[TOKEN_GOVERNANCE]</span>
+              <span className="v2-service-tag">[WCAG_AAA]</span>
+              <span className="v2-service-tag">[STORYBOOK]</span>
+              <span className="v2-service-tag">[DEV_HANDOFF]</span>
             </div>
           </div>
         </div>
@@ -1739,64 +1679,55 @@ export default function App() {
                 {/* CARD 01: SAAS & PRODUCT DESIGN */}
                 <div className="v2-service-card card-glow-cyan">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-icon-box box-cyan">
-                      <Sparkles size={20} />
+                    <div className="v2-service-header-spec">
+                      <span className="v2-service-idx">// 01</span>
+                      <span className="v2-service-category-tag">SAAS · PRODUCT SYSTEMS</span>
                     </div>
-                    <div className="v2-service-top-meta">
-                      <span className="v2-service-num">01</span>
-                      <span className="v2-service-badge badge-cyan">SaaS &amp; Product</span>
+                    <div className="v2-service-status-node">
+                      <span className="v2-status-dot dot-cyan"></span>
+                      <span className="v2-status-label">ACTIVE_SPEC</span>
                     </div>
+                  </div>
+
+                  <div className="v2-service-visual-stage">
+                    <GlassServiceVisual type="saas" />
                   </div>
                   
                   <div className="v2-service-body">
                     <h3 className="v2-service-card-title">
                       {lang === 'fr' ? 'UI/UX & Design Produit (B2B SaaS)' : 'UI/UX & Product Design (B2B SaaS)'}
                     </h3>
-                    
-                    <div className="v2-service-impact-pill pill-cyan">
-                      <span>{lang === 'fr' ? '✦ Réduction du Churn & Onboarding Fluide' : '✦ Lower Churn & Frictionless Onboarding'}</span>
-                    </div>
 
                     <p className="v2-service-card-desc">
                       {lang === 'fr'
                         ? "Architecture de l'information complexe, tunnels d'activation sans friction, tableaux de bord de télémétrie et design systems Figma prêts pour l'ingénierie."
                         : "Complex information architecture, frictionless onboarding funnels, telemetry dashboards, and scalable Figma design systems ready for engineering."}
                     </p>
-
-                    <div className="v2-service-features-list">
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-cyan"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Audit UX & Architecture d'Information" : 'UX Audit & Information Architecture'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-cyan"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Tunnels d'Onboarding & Rétention B2B" : 'B2B Onboarding & Retention Funnels'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-cyan"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Dashboards & Visualisation de Données" : 'Telemetry Dashboards & Data Viz'}</span>
-                      </div>
-                    </div>
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">Figma Tokens</span>
-                    <span className="v2-service-tag">User Flows</span>
-                    <span className="v2-service-tag">PRD Specs</span>
-                    <span className="v2-service-tag">Data Viz</span>
+                    <span className="v2-service-tag">[FIGMA_VARIABLES]</span>
+                    <span className="v2-service-tag">[USER_FLOWS]</span>
+                    <span className="v2-service-tag">[TELEMETRY_DASH]</span>
+                    <span className="v2-service-tag">[DATA_VIZ]</span>
                   </div>
                 </div>
 
                 {/* CARD 02: ART DIRECTION & WEB DESIGN */}
                 <div className="v2-service-card card-glow-yellow">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-icon-box box-yellow">
-                      <Palette size={20} />
+                    <div className="v2-service-header-spec">
+                      <span className="v2-service-idx">// 02</span>
+                      <span className="v2-service-category-tag">WEB CRAFT · ART DIRECTION</span>
                     </div>
-                    <div className="v2-service-top-meta">
-                      <span className="v2-service-num">02</span>
-                      <span className="v2-service-badge badge-yellow">Web Craft</span>
+                    <div className="v2-service-status-node">
+                      <span className="v2-status-dot dot-yellow"></span>
+                      <span className="v2-status-label">ACTIVE_SPEC</span>
                     </div>
+                  </div>
+
+                  <div className="v2-service-visual-stage">
+                    <GlassServiceVisual type="craft" />
                   </div>
 
                   <div className="v2-service-body">
@@ -1804,50 +1735,36 @@ export default function App() {
                       {lang === 'fr' ? 'Direction Artistique & Web Design' : 'Art Direction & Web Design'}
                     </h3>
 
-                    <div className="v2-service-impact-pill pill-yellow">
-                      <span>{lang === 'fr' ? '✦ Identité Mémorable & Taux de Conversion' : '✦ Distinctive Brand & Higher Conversion'}</span>
-                    </div>
-
                     <p className="v2-service-card-desc">
                       {lang === 'fr'
-                        ? "Vitrines de marque immersives, typographie éditoriale sur mesure, animations de storytelling fluides et interfaces e-commerce à fort impact."
+                        ? "Vitrines de marque immersives, typographie éditoriale sur mesure, animations de storytelling fluides et interfaces de conversion à fort impact visuel."
                         : "Immersive brand showcase websites, custom editorial typography, fluid storytelling animations, and conversion-focused digital experiences."}
                     </p>
-
-                    <div className="v2-service-features-list">
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-yellow"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Direction Artistique Éditoriale & Univers de Marque" : 'Editorial Art Direction & Brand Identity'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-yellow"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Micro-Animations & Storytelling Interactif" : 'Micro-Animations & Interactive Storytelling'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-yellow"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Pages de Vente Haute Conversion (CRO)" : 'High-Converting Sales & Landing Pages'}</span>
-                      </div>
-                    </div>
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">Art Direction</span>
-                    <span className="v2-service-tag">Motion Design</span>
-                    <span className="v2-service-tag">CRO Funnels</span>
-                    <span className="v2-service-tag">Responsive UI</span>
+                    <span className="v2-service-tag">[ART_DIRECTION]</span>
+                    <span className="v2-service-tag">[3D_SPATIAL_MOTION]</span>
+                    <span className="v2-service-tag">[EDITORIAL_TYPE]</span>
+                    <span className="v2-service-tag">[HIGH_CONVERSION]</span>
                   </div>
                 </div>
 
                 {/* CARD 03: VIBE CODING & RAPID MVP */}
                 <div className="v2-service-card card-glow-green">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-icon-box box-green">
-                      <Zap size={20} />
+                    <div className="v2-service-header-spec">
+                      <span className="v2-service-idx">// 03</span>
+                      <span className="v2-service-category-tag">VIBE CODING · RAPID MVP</span>
                     </div>
-                    <div className="v2-service-top-meta">
-                      <span className="v2-service-num">03</span>
-                      <span className="v2-service-badge badge-green">Rapid MVP</span>
+                    <div className="v2-service-status-node">
+                      <span className="v2-status-dot dot-green"></span>
+                      <span className="v2-status-label">ACTIVE_SPEC</span>
                     </div>
+                  </div>
+
+                  <div className="v2-service-visual-stage">
+                    <GlassServiceVisual type="code" />
                   </div>
 
                   <div className="v2-service-body">
@@ -1855,50 +1772,36 @@ export default function App() {
                       {lang === 'fr' ? 'Vibe Coding & Prototypage Rapide' : 'Vibe Coding & Rapid MVP Prototyping'}
                     </h3>
 
-                    <div className="v2-service-impact-pill pill-green">
-                      <span>{lang === 'fr' ? "✦ De l'Idée à l'URL Live en Quelques Jours" : '✦ From Idea to Testable URL in Days'}</span>
-                    </div>
-
                     <p className="v2-service-card-desc">
                       {lang === 'fr'
                         ? "Prototypage fonctionnel ultra-rapide (React, TypeScript, Vite/Next) pour tester concrètement vos idées, valider l'UX auprès d'utilisateurs réels et convaincre vos investisseurs."
                         : "Ultra-fast functional software prototyping (React, TypeScript, Next/Vite) to validate UX with real users, pitch investors, and bridge the gap between design and production."}
                     </p>
-
-                    <div className="v2-service-features-list">
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-green"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Prototypes Fonctionnels & Déployés" : 'Functional Deployed Web Prototypes'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-green"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Intégration API & LLM (Google AI Studio)" : 'API & LLM Integration (Google AI Studio)'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-green"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Itérations Rapides & Validation Utilisateurs" : 'Rapid Iteration & User Testing'}</span>
-                      </div>
-                    </div>
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">React / Vite</span>
-                    <span className="v2-service-tag">Google AI Studio</span>
-                    <span className="v2-service-tag">Live Prototypes</span>
-                    <span className="v2-service-tag">Fast MVP</span>
+                    <span className="v2-service-tag">[REACT_19]</span>
+                    <span className="v2-service-tag">[GOOGLE_AI_STUDIO]</span>
+                    <span className="v2-service-tag">[RAPID_PROTOTYPE]</span>
+                    <span className="v2-service-tag">[EDGE_DEPLOY]</span>
                   </div>
                 </div>
 
                 {/* CARD 04: DESIGN SYSTEMS & DEV HANDOFF */}
                 <div className="v2-service-card card-glow-purple">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-icon-box box-purple">
-                      <Component size={20} />
+                    <div className="v2-service-header-spec">
+                      <span className="v2-service-idx">// 04</span>
+                      <span className="v2-service-category-tag">DESIGN SYSTEMS · HANDOFF</span>
                     </div>
-                    <div className="v2-service-top-meta">
-                      <span className="v2-service-num">04</span>
-                      <span className="v2-service-badge badge-purple">Systems &amp; Dev</span>
+                    <div className="v2-service-status-node">
+                      <span className="v2-status-dot dot-purple"></span>
+                      <span className="v2-status-label">ACTIVE_SPEC</span>
                     </div>
+                  </div>
+
+                  <div className="v2-service-visual-stage">
+                    <GlassServiceVisual type="system" />
                   </div>
 
                   <div className="v2-service-body">
@@ -1906,37 +1809,18 @@ export default function App() {
                       {lang === 'fr' ? 'Design Systems & Handoff Ingénieur' : 'Design Systems & Engineering Hand-off'}
                     </h3>
 
-                    <div className="v2-service-impact-pill pill-purple">
-                      <span>{lang === 'fr' ? '✦ Zéro Friction Designer ↔ Développeur' : '✦ Zero Designer ↔ Developer Friction'}</span>
-                    </div>
-
                     <p className="v2-service-card-desc">
                       {lang === 'fr'
                         ? "Bibliothèques de composants UI réutilisables, gouvernance de tokens, accessibilité WCAG et alignement designer-développeur pour éliminer toute friction d'intégration."
                         : "Reusable UI component libraries, design token governance, WCAG accessibility, and airtight designer-developer alignment to eliminate hand-off friction."}
                     </p>
-
-                    <div className="v2-service-features-list">
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-purple"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Gouvernance de Tokens (Figma Variables)" : 'Design Tokens Governance & Variables'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-purple"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Composants Robustes & Accessibilité WCAG" : 'Robust Component Libraries & WCAG'}</span>
-                      </div>
-                      <div className="v2-service-feature-item">
-                        <span className="v2-feature-check check-purple"><Check size={12} /></span>
-                        <span>{lang === 'fr' ? "Documentation Technique & Spécifications PRD" : 'PRD Specs & Engineering Handoff'}</span>
-                      </div>
-                    </div>
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">Design Tokens</span>
-                    <span className="v2-service-tag">Accessibility</span>
-                    <span className="v2-service-tag">Storybook / UI Kits</span>
-                    <span className="v2-service-tag">Dev Handoff</span>
+                    <span className="v2-service-tag">[TOKEN_GOVERNANCE]</span>
+                    <span className="v2-service-tag">[WCAG_AAA]</span>
+                    <span className="v2-service-tag">[STORYBOOK]</span>
+                    <span className="v2-service-tag">[DEV_HANDOFF]</span>
                   </div>
                 </div>
               </div>
