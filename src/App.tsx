@@ -1318,78 +1318,135 @@ export default function App() {
         </div>
       )}
 
-      {/* Mobile Slide-out Notebook Paper Drawer Menu (Global) */}
+      {/* Futuristic 3D Glass Mobile Drawer (Global) */}
       {isMobileMenuOpen && (
-        <div className="robin-mobile-menu-overlay" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className="robin-mobile-menu-drawer" onClick={(e) => e.stopPropagation()}>
-            <div>
-              <div className="robin-mobile-menu-header">
-                <span className="robin-mobile-menu-title">SACCA DAFIA</span>
-                <button className="robin-mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>
-                  <X size={18} />
-                </button>
+        <div className="v2-glass-mobile-overlay" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="v2-glass-mobile-drawer" onClick={(e) => e.stopPropagation()}>
+            {/* Top Header of Drawer */}
+            <div className="v2-mobile-drawer-header">
+              <div className="v2-nav-profile" onClick={() => { handleViewSwitch('home'); setIsMobileMenuOpen(false); }}>
+                <img 
+                  src="/imgs/sacca_headshot.jpg" 
+                  alt="Talesman Avatar" 
+                  className="v2-nav-avatar" 
+                />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                  <span className="v2-nav-name">Talesman</span>
+                  <span className="v2-mobile-status-tag">SYSTEM_ONLINE</span>
+                </div>
+              </div>
+              <button 
+                className="v2-glass-close-btn" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Fermer le menu"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Navigation Links List */}
+            <div className="v2-mobile-nav-links">
+              <div 
+                className={`v2-mobile-nav-item ${currentView === 'home' ? 'is-active' : ''}`}
+                onClick={() => { handleViewSwitch('home'); setIsMobileMenuOpen(false); }}
+              >
+                <span className="v2-nav-item-num">// 01</span>
+                <span className="v2-nav-item-title">HOME</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
-              <div className="robin-mobile-menu-links">
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => { handleViewSwitch('home'); setIsMobileMenuOpen(false); }}
-                >
-                  HOME
-                </span>
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => { handleViewSwitch('all-projects'); setIsMobileMenuOpen(false); }}
-                >
-                  PROJECTS
-                </span>
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    const elem = document.getElementById('about-me');
+              <div 
+                className="v2-mobile-nav-item"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  const elem = document.getElementById('about-me');
+                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                  else setIsAboutModalOpen(true);
+                }}
+              >
+                <span className="v2-nav-item-num">// 02</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'À PROPOS' : 'ABOUT'}</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
+              </div>
+
+              <div 
+                className={`v2-mobile-nav-item ${currentView === 'all-projects' ? 'is-active' : ''}`}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (currentView === 'home') {
+                    const elem = document.getElementById('product-design');
                     if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                    else setIsAboutModalOpen(true);
-                  }}
-                >
-                  ABOUT
-                </span>
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
+                    else handleViewSwitch('all-projects');
+                  } else {
+                    handleViewSwitch('all-projects');
+                  }
+                }}
+              >
+                <span className="v2-nav-item-num">// 03</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'PROJETS & CASE STUDIES' : 'PROJECTS & CASE STUDIES'}</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
+              </div>
+
+              <div 
+                className={`v2-mobile-nav-item ${currentView === 'services' ? 'is-active' : ''}`}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (currentView === 'home') {
                     const elem = document.getElementById('services');
                     if (elem) elem.scrollIntoView({ behavior: 'smooth' });
                     else handleViewSwitch('services');
-                  }}
-                >
-                  SERVICES
-                </span>
-                <span 
-                  className="robin-mobile-nav-link" 
-                  onClick={() => { handleViewSwitch('experiences'); setIsMobileMenuOpen(false); }}
-                >
-                  BLOG &amp; CAREER
-                </span>
+                  } else {
+                    handleViewSwitch('services');
+                  }
+                }}
+              >
+                <span className="v2-nav-item-num">// 04</span>
+                <span className="v2-nav-item-title">SERVICES &amp; SOLUTIONS</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
+              </div>
+
+              <div 
+                className="v2-mobile-nav-item"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (currentView === 'home') {
+                    const elem = document.getElementById('graphic-design');
+                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    handleViewSwitch('home');
+                    setTimeout(() => {
+                      const elem = document.getElementById('graphic-design');
+                      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                  }
+                }}
+              >
+                <span className="v2-nav-item-num">// 05</span>
+                <span className="v2-nav-item-title">GRAPHIC DESIGN</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
+              </div>
+
+              <div 
+                className={`v2-mobile-nav-item ${currentView === 'experiences' ? 'is-active' : ''}`}
+                onClick={() => { handleViewSwitch('experiences'); setIsMobileMenuOpen(false); }}
+              >
+                <span className="v2-nav-item-num">// 06</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'BLOG &amp; PARCOURS' : 'BLOG &amp; CAREER'}</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
             </div>
 
-            <div className="robin-mobile-menu-footer">
-              <LangSwitchControl lang={lang} onToggle={handleLangSwitch} isMobile />
-
-
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
-                  <Linkedin size={15} /> LinkedIn
-                </a>
-                <a href="mailto:dafiashalom@gmail.com" className="robin-nav-pill" style={{ padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px', flex: 1, justifyContent: 'center', border: '1.5px solid #121212' }}>
-                  <Mail size={15} /> Mail
-                </a>
+            {/* Drawer Footer Actions (All Header Elements) */}
+            <div className="v2-mobile-drawer-footer">
+              {/* Language Switcher */}
+              <div className="v2-mobile-lang-wrap">
+                <span className="v2-mobile-section-label">LANGUAGE</span>
+                <LangSwitchControl lang={lang} onToggle={handleLangSwitch} isMobile />
               </div>
 
+              {/* Primary Contact CTA */}
               <button 
-                className="robin-cta-black-btn" 
-                style={{ width: '100%', marginTop: '16px', justifyContent: 'center' }}
+                className="v2-nav-connect-btn v2-mobile-connect-btn" 
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   if ((window as any).Calendly) {
@@ -1399,9 +1456,27 @@ export default function App() {
                   }
                 }}
               >
-                <span>BOOK A CALL</span>
+                <span>{lang === 'fr' ? "Réserver un appel (30 min)" : "Book a 30-min Call"}</span>
                 <ArrowRight size={16} />
               </button>
+
+              {/* Social / Direct Channels */}
+              <div className="v2-mobile-socials-row">
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="v2-mobile-social-pill"
+                >
+                  <Linkedin size={15} /> LinkedIn
+                </a>
+                <a 
+                  href="mailto:dafiashalom@gmail.com" 
+                  className="v2-mobile-social-pill"
+                >
+                  <Mail size={15} /> Email
+                </a>
+              </div>
             </div>
           </div>
         </div>
