@@ -116,7 +116,7 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
               <div style={{ background: 'rgba(5, 8, 16, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '12px', overflow: 'hidden' }}>
                 <img src="/imgs/hero_image.png" alt="Sacca Dafia Executive" style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', filter: 'grayscale(100%) contrast(110%)' }} />
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#94A3B8', marginTop: '10px', lineHeight: 1.4 }}>
-                  <strong style={{ color: '#FFFFFF' }}>01. EXECUTIVE DOSSIER</strong> <br />
+                  <strong style={{ color: '#FFFFFF' }}>EXECUTIVE DOSSIER</strong> <br />
                   Sacca Dafia · Talesman
                 </div>
               </div>
@@ -125,7 +125,7 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
               <div style={{ background: 'rgba(5, 8, 16, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '12px', overflow: 'hidden' }}>
                 <img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding Setup" style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px' }} />
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#38BDF8', marginTop: '10px', lineHeight: 1.4 }}>
-                  <strong style={{ color: '#FFFFFF' }}>02. VIBE CODING</strong> <br />
+                  <strong style={{ color: '#FFFFFF' }}>VIBE CODING</strong> <br />
                   Rapid MVP Prototyping
                 </div>
               </div>
@@ -287,10 +287,10 @@ const CaseStudy = ({
 
         {/* Discovery, Solution & Interface Artifacts Grid */}
         <div className="v2-dossier-artifacts-grid">
-          {/* Card 01: Discovery & Insight */}
+          {/* Card: Discovery & Insight */}
           <div className="v2-dossier-artifact-card">
             <div className="v2-dossier-artifact-title" style={{ color: '#38BDF8' }}>
-              01. DISCOVERY &amp; INSIGHT
+              DISCOVERY &amp; INSIGHT
             </div>
             <p className="v2-dossier-artifact-text">
               "{data.insight}"
@@ -300,10 +300,10 @@ const CaseStudy = ({
             )}
           </div>
 
-          {/* Card 02: System Solution */}
+          {/* Card: System Solution */}
           <div className="v2-dossier-artifact-card">
             <div className="v2-dossier-artifact-title" style={{ color: '#C084FC' }}>
-              02. SYSTEM ARCHITECTURE
+              SYSTEM ARCHITECTURE
             </div>
             <p className="v2-dossier-artifact-text">
               {data.solution || data.uxSolutions}
@@ -313,11 +313,11 @@ const CaseStudy = ({
             )}
           </div>
 
-          {/* Card 03: Polished UI */}
+          {/* Card: Polished UI */}
           {data.interfaceImg && (
             <div className="v2-dossier-artifact-card">
               <div className="v2-dossier-artifact-title" style={{ color: '#34D399' }}>
-                03. POLISHED INTERFACE
+                POLISHED INTERFACE
               </div>
               <p className="v2-dossier-artifact-text">
                 {data.conclusion}
@@ -520,7 +520,6 @@ const ServicesView = ({
           <div className="v2-service-card card-glow-cyan">
             <div className="v2-service-card-top">
               <div className="v2-service-index-wrap">
-                <span className="v2-service-num">01</span>
                 <span className="v2-service-category-label">SaaS &amp; Product</span>
               </div>
               <GlassServiceVisual type="saas" />
@@ -550,7 +549,6 @@ const ServicesView = ({
           <div className="v2-service-card card-glow-yellow">
             <div className="v2-service-card-top">
               <div className="v2-service-index-wrap">
-                <span className="v2-service-num">02</span>
                 <span className="v2-service-category-label">Web Craft &amp; Art</span>
               </div>
               <GlassServiceVisual type="craft" />
@@ -580,7 +578,6 @@ const ServicesView = ({
           <div className="v2-service-card card-glow-green">
             <div className="v2-service-card-top">
               <div className="v2-service-index-wrap">
-                <span className="v2-service-num">03</span>
                 <span className="v2-service-category-label">Rapid MVP &amp; AI</span>
               </div>
               <GlassServiceVisual type="code" />
@@ -610,7 +607,6 @@ const ServicesView = ({
           <div className="v2-service-card card-glow-purple">
             <div className="v2-service-card-top">
               <div className="v2-service-index-wrap">
-                <span className="v2-service-num">04</span>
                 <span className="v2-service-category-label">Systems &amp; Dev</span>
               </div>
               <GlassServiceVisual type="system" />
@@ -1307,7 +1303,6 @@ export default function App() {
                 className={`v2-mobile-nav-item ${currentView === 'home' ? 'is-active' : ''}`}
                 onClick={() => { handleViewSwitch('home'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-num">// 01</span>
                 <span className="v2-nav-item-title">HOME</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -1321,7 +1316,6 @@ export default function App() {
                   else setIsAboutModalOpen(true);
                 }}
               >
-                <span className="v2-nav-item-num">// 02</span>
                 <span className="v2-nav-item-title">{lang === 'fr' ? 'À PROPOS' : 'ABOUT'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -1339,7 +1333,6 @@ export default function App() {
                   }
                 }}
               >
-                <span className="v2-nav-item-num">// 03</span>
                 <span className="v2-nav-item-title">{lang === 'fr' ? 'PROJETS & CASE STUDIES' : 'PROJECTS & CASE STUDIES'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -1357,7 +1350,6 @@ export default function App() {
                   }
                 }}
               >
-                <span className="v2-nav-item-num">// 04</span>
                 <span className="v2-nav-item-title">SERVICES &amp; SOLUTIONS</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -1378,7 +1370,6 @@ export default function App() {
                   }
                 }}
               >
-                <span className="v2-nav-item-num">// 05</span>
                 <span className="v2-nav-item-title">GRAPHIC DESIGN</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -1387,7 +1378,6 @@ export default function App() {
                 className={`v2-mobile-nav-item ${currentView === 'experiences' ? 'is-active' : ''}`}
                 onClick={() => { handleViewSwitch('experiences'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-num">// 06</span>
                 <span className="v2-nav-item-title">{lang === 'fr' ? 'BLOG &amp; PARCOURS' : 'BLOG &amp; CAREER'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -1727,7 +1717,6 @@ export default function App() {
                 <div className="v2-service-card card-glow-cyan">
                   <div className="v2-service-card-top">
                     <div className="v2-service-index-wrap">
-                      <span className="v2-service-num">01</span>
                       <span className="v2-service-category-label">SaaS &amp; Product</span>
                     </div>
                     <GlassServiceVisual type="saas" />
@@ -1757,7 +1746,6 @@ export default function App() {
                 <div className="v2-service-card card-glow-yellow">
                   <div className="v2-service-card-top">
                     <div className="v2-service-index-wrap">
-                      <span className="v2-service-num">02</span>
                       <span className="v2-service-category-label">Web Craft &amp; Art</span>
                     </div>
                     <GlassServiceVisual type="craft" />
@@ -1787,7 +1775,6 @@ export default function App() {
                 <div className="v2-service-card card-glow-green">
                   <div className="v2-service-card-top">
                     <div className="v2-service-index-wrap">
-                      <span className="v2-service-num">03</span>
                       <span className="v2-service-category-label">Rapid MVP &amp; AI</span>
                     </div>
                     <GlassServiceVisual type="code" />
@@ -1817,7 +1804,6 @@ export default function App() {
                 <div className="v2-service-card card-glow-purple">
                   <div className="v2-service-card-top">
                     <div className="v2-service-index-wrap">
-                      <span className="v2-service-num">04</span>
                       <span className="v2-service-category-label">Systems &amp; Dev</span>
                     </div>
                     <GlassServiceVisual type="system" />
