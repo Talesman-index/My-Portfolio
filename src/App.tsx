@@ -827,10 +827,6 @@ const ConnectAndFooterSection = ({
             <div className="v2-ref-brand-meta">
               <span className="v2-ref-brand-name">SACCA DAFIA</span>
               <span className="v2-ref-brand-sub">Web &amp; Product Designer</span>
-              <div className="v2-footer-availability-tag">
-                <span className="v2-availability-dot" />
-                <span>{lang === 'fr' ? 'Disponible pour nouveaux projets' : 'Available for new projects'}</span>
-              </div>
             </div>
           </div>
 
