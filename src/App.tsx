@@ -1691,11 +1691,11 @@ export default function App() {
                 <p className="v2-about-description-concise">
                   {lang === 'fr' ? (
                     <>
-                      Je suis <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), Product &amp; Web Designer passionné par la simplification des systèmes complexes. Depuis plus de 4 ans, je façonne des plateformes <strong>B2B SaaS</strong> scalables et des interfaces numériques à fort impact—de l'architecture de <strong>Design Systems</strong> au prototypage rapide en <strong>Vibe Coding</strong>.
+                      Je suis <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), Product &amp; Web Designer passionné par la simplification des systèmes complexes. Depuis plus de 4 ans, je façonne des plateformes <strong>B2B SaaS</strong> scalables et des interfaces numériques à fort impact, de l'architecture de <strong>Design Systems</strong> au prototypage rapide en <strong>Vibe Coding</strong>.
                     </>
                   ) : (
                     <>
-                      I'm <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), a Product &amp; Web Designer focused on turning complex systems into effortless digital software. For over 4 years, I've crafted high-performing <strong>B2B SaaS</strong> platforms and conversion-driven web experiences—from scalable <strong>Design Systems</strong> to rapid <strong>Vibe Coding</strong>.
+                      I'm <strong>Sacca Dafia</strong> (alias <strong>Talesman</strong>), a Product &amp; Web Designer focused on turning complex systems into effortless digital software. For over 4 years, I've crafted high-performing <strong>B2B SaaS</strong> platforms and conversion-driven web experiences, from scalable <strong>Design Systems</strong> to rapid <strong>Vibe Coding</strong>.
                     </>
                   )}
                 </p>
