@@ -21,6 +21,7 @@ import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
 import { GlassServiceVisual } from './components/ServiceGlassVisuals';
 import { FuturisticPreloader } from './components/FuturisticPreloader';
+import { FramerExperienceCard } from './components/FramerExperienceCard';
 
 
 
@@ -379,7 +380,7 @@ const CaseStudy = ({
 /* ─────────────────────────────────────────────
    EXPERIENCES DOSSIER VIEW (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
-const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
+const ExperiencesView = ({ setCurrentView, lang = 'fr' }: { setCurrentView: any; lang?: 'en' | 'fr' }) => {
   return (
     <div className="v2-subpage-wrapper">
       <div className="v2-subpage-ambient-glow" />
@@ -389,115 +390,95 @@ const ExperiencesView = ({ setCurrentView }: { setCurrentView: any }) => {
           onClick={() => navigateToHome(setCurrentView)} 
           className="v2-subpage-back-btn"
         >
-          <ArrowLeft size={16} /> <span>RETOUR AU PORTFOLIO</span>
+          <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}</span>
         </button>
 
         <div className="v2-subpage-header">
           <div>
-            <span className="v2-subpage-eyebrow">PARCOURS PROFESSIONNEL &amp; EXPÉRIENCES</span>
-            <h1 className="v2-subpage-title">REGISTRE DES EXPÉRIENCES</h1>
+            <span className="v2-subpage-eyebrow">
+              {lang === 'fr' ? 'PARCOURS PROFESSIONNEL & EXPÉRIENCES' : 'CAREER TRACK & EXPERIENCE LOGS'}
+            </span>
+            <h1 className="v2-subpage-title">
+              {lang === 'fr' ? 'REGISTRE DES EXPÉRIENCES' : 'EXPERIENCE DOSSIER'}
+            </h1>
           </div>
         </div>
 
-        <div className="v2-timeline-container" style={{ margin: '30px auto 0 auto' }}>
+        <div className="framer-experience-container" style={{ margin: '40px auto 0 auto' }}>
           {/* 01. CACTUCE */}
-          <div className="v2-timeline-card">
-            <div className="v2-timeline-node node-red">
-              <div className="v2-timeline-node-inner" />
-            </div>
-            <div className="v2-timeline-body">
-              <div className="v2-timeline-header-row">
-                <div className="v2-timeline-title-group">
-                  <span className="v2-timeline-company">CACTUCE</span>
-                  <span className="v2-timeline-role-badge">Product Designer</span>
-                </div>
-                <span className="v2-timeline-date">Octobre 2025 — Mai 2026</span>
-              </div>
-              <div className="v2-timeline-tagline">
-                B2B SAAS ARCHITECTURE &amp; PROCESS OPTIMIZATION
-              </div>
-              <ul className="v2-timeline-bullets">
-                <li>Lead Product Designer chargé de l'optimisation des produits <strong>eHadj</strong> (logistique nationale) et <strong>Asset IQ</strong> (télémétrie industrielle).</li>
-                <li>Identification et élimination chirurgicale des frictions dans l'expérience utilisateur et les parcours multi-acteurs.</li>
-                <li>Définition précise des parcours utilisateurs, création du Design System Figma Tokens et supervision complète du processus d'assurance qualité (QA).</li>
-              </ul>
-              <div className="v2-timeline-impact-pill">
-                RÉSULTAT : 90% d'erreurs en moins &amp; zéro doublon de dossier
-              </div>
-              <div className="v2-timeline-tools-row">
-                <span className="v2-timeline-tool-tag">Product Design</span>
-                <span className="v2-timeline-tool-tag">Figma Tokens</span>
-                <span className="v2-timeline-tool-tag">QA Recipe</span>
-                <span className="v2-timeline-tool-tag">eHadj &amp; Asset IQ</span>
-              </div>
-            </div>
-          </div>
+          <FramerExperienceCard 
+            company="CACTUCE"
+            monogram="CT"
+            role={lang === 'fr' ? 'Product Designer' : 'Product Designer'}
+            date={lang === 'fr' ? 'Octobre 2025 — Mai 2026' : 'OCT 2025 — MAY 2026'}
+            tagline="B2B SAAS ARCHITECTURE & PROCESS OPTIMIZATION"
+            description={
+              lang === 'fr'
+                ? "Lead Product Designer chargé de la refonte UX/UI et de l'optimisation des flux critiques pour eHadj (logistique nationale) et Asset IQ (télémétrie industrielle). Définition des parcours multi-acteurs, création du Design System Figma Tokens et supervision QA."
+                : "Lead Product Designer optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ). Designed modular UI architecture and supervised complete QA recipe audits."
+            }
+            accentColor="cyan"
+            metrics={lang === 'fr' ? [
+              { value: "90%", label: "Moins d'erreurs dossier" },
+              { value: "30+", label: "Passerelles ministères" },
+              { value: "0", label: "Doublon sur le terrain" }
+            ] : [
+              { value: "90%", label: "Fewer dossier errors" },
+              { value: "30+", label: "Integrated gateways" },
+              { value: "0", label: "Duplicate field records" }
+            ]}
+            tags={['Product Design', 'Figma Tokens', 'QA Recipe', 'eHadj & Asset IQ', 'User Flows', 'Telemetry UI']}
+          />
 
           {/* 02. TRELLIX */}
-          <div className="v2-timeline-card">
-            <div className="v2-timeline-node node-blue">
-              <div className="v2-timeline-node-inner" />
-            </div>
-            <div className="v2-timeline-body">
-              <div className="v2-timeline-header-row">
-                <div className="v2-timeline-title-group">
-                  <span className="v2-timeline-company">TRELLIX</span>
-                  <span className="v2-timeline-role-badge badge-blue">Lead Product Designer</span>
-                </div>
-                <span className="v2-timeline-date">Février 2024 — Septembre 2025</span>
-              </div>
-              <div className="v2-timeline-tagline" style={{ color: '#60A5FA' }}>
-                ENTERPRISE SAAS &amp; PRODUCT STRATEGY LEADERSHIP
-              </div>
-              <ul className="v2-timeline-bullets">
-                <li>Direction et leadership de l'équipe design pour façonner des solutions SaaS B2B complexes centrées sur l'utilisateur.</li>
-                <li>Rédaction intégrale des Product Requirement Documents (PRDs), spécifications fonctionnelles &amp; API, et gestion des cycles de recherche utilisateur.</li>
-                <li>Mise en place de standards de livraison dev-handoff ayant augmenté la vélocité de développement de +50%.</li>
-              </ul>
-              <div className="v2-timeline-impact-pill pill-blue">
-                RÉSULTAT : +50% de vélocité de dev via PRDs &amp; specs fonctionnelles
-              </div>
-              <div className="v2-timeline-tools-row">
-                <span className="v2-timeline-tool-tag">PRD Writing</span>
-                <span className="v2-timeline-tool-tag">Team Leadership</span>
-                <span className="v2-timeline-tool-tag">User Research</span>
-                <span className="v2-timeline-tool-tag">B2B SaaS</span>
-              </div>
-            </div>
-          </div>
+          <FramerExperienceCard 
+            company="TRELLIX"
+            monogram="TX"
+            role="Lead Product Designer"
+            date={lang === 'fr' ? 'Février 2024 — Septembre 2025' : 'FEB 2024 — SEP 2025'}
+            tagline="ENTERPRISE SAAS & PRODUCT STRATEGY LEADERSHIP"
+            description={
+              lang === 'fr'
+                ? "Direction du design produit et cadrage stratégique des fonctionnalités SaaS B2B complexes. Rédaction intégrale des PRDs, spécifications fonctionnelles & API, et mise en place de standards de livraison dev-handoff haute vélocité."
+                : "Led product design operations and SaaS strategy, translating complex enterprise requirements into high-performing interfaces. Authored complete PRDs, functional specs, and established rigorous dev-handoff protocols."
+            }
+            accentColor="blue"
+            metrics={lang === 'fr' ? [
+              { value: "+50%", label: "Vélocité dev via PRDs" },
+              { value: "100%", label: "Alignement tokens & eng" },
+              { value: "B2B", label: "Architecture d'entreprise" }
+            ] : [
+              { value: "+50%", label: "Dev speed via PRD specs" },
+              { value: "100%", label: "Design-eng token fidelity" },
+              { value: "B2B", label: "Enterprise SaaS systems" }
+            ]}
+            tags={['PRD Specs', 'Product Strategy', 'User Research', 'B2B SaaS', 'Dev Handoff', 'Design System']}
+          />
 
           {/* 03. CREAFIX */}
-          <div className="v2-timeline-card">
-            <div className="v2-timeline-node node-green">
-              <div className="v2-timeline-node-inner" />
-            </div>
-            <div className="v2-timeline-body">
-              <div className="v2-timeline-header-row">
-                <div className="v2-timeline-title-group">
-                  <span className="v2-timeline-company">CREAFIX</span>
-                  <span className="v2-timeline-role-badge badge-green">Web Designer</span>
-                </div>
-                <span className="v2-timeline-date">Août 2022 — Février 2024</span>
-              </div>
-              <div className="v2-timeline-tagline" style={{ color: '#34D399' }}>
-                WEB ART DIRECTION &amp; BRAND EXPERIENCE
-              </div>
-              <ul className="v2-timeline-bullets">
-                <li>Conception d'interfaces web d'exception et de vitrines interactives pour +15 clients et agences internationales.</li>
-                <li>Direction artistique web, typographie éditoriale, animations 60fps et optimisation responsive multi-supports.</li>
-                <li>Participation et contribution active aux campagnes de marketing digital et à l'optimisation des taux de conversion.</li>
-              </ul>
-              <div className="v2-timeline-impact-pill pill-green">
-                RÉSULTAT : +15 vitrines web &amp; e-commerce livrées avec succès
-              </div>
-              <div className="v2-timeline-tools-row">
-                <span className="v2-timeline-tool-tag">Web Art Direction</span>
-                <span className="v2-timeline-tool-tag">Responsive UI</span>
-                <span className="v2-timeline-tool-tag">E-Commerce</span>
-                <span className="v2-timeline-tool-tag">Micro-Animations</span>
-              </div>
-            </div>
-          </div>
+          <FramerExperienceCard 
+            company="CREAFIX"
+            monogram="CF"
+            role={lang === 'fr' ? 'Web Designer & DA' : 'Web Designer & Art Director'}
+            date={lang === 'fr' ? 'Août 2022 — Février 2024' : 'AUG 2022 — FEB 2024'}
+            tagline="WEB ART DIRECTION & BRAND EXPERIENCE"
+            description={
+              lang === 'fr'
+                ? "Direction artistique web, typographie éditoriale et conception d'interfaces e-commerce immersives. Réalisation de vitrines interactives avec micro-animations 60fps et optimisation continue du taux de conversion (CRO)."
+                : "Crafted luxury responsive websites, custom e-commerce experiences, and brand visual systems for 15+ international clients. Spearheaded editorial typography, 60fps micro-animations, and conversion funnels."
+            }
+            accentColor="green"
+            metrics={lang === 'fr' ? [
+              { value: "15+", label: "Vitrines web livrées" },
+              { value: "60 FPS", label: "Micro-animations fluides" },
+              { value: "CRO", label: "Optimisation conversion" }
+            ] : [
+              { value: "15+", label: "Showcases & web stores" },
+              { value: "60 FPS", label: "Fluid motion physics" },
+              { value: "CRO", label: "Conversion rate boost" }
+            ]}
+            tags={['Web Art Direction', 'Responsive UI', 'E-Commerce', 'Micro-Animations', 'CRO Strategy', 'Typography']}
+          />
         </div>
       </div>
     </div>
@@ -1455,7 +1436,7 @@ export default function App() {
       )}
 
       {/* Render Active View */}
-      {currentView === 'experiences' && <ExperiencesView setCurrentView={handleViewSwitch} />}
+      {currentView === 'experiences' && <ExperiencesView setCurrentView={handleViewSwitch} lang={lang} />}
       {currentView === 'services' && <ServicesView setCurrentView={handleViewSwitch} lang={lang} />}
       {currentView === 'all-projects' && <AllProjectsView setCurrentView={handleViewSwitch} lang={lang} />}
       {currentView !== 'home' && currentView !== 'experiences' && currentView !== 'services' && currentView !== 'all-projects' && (
@@ -2819,156 +2800,81 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="v2-timeline-container">
+              <div className="framer-experience-container">
                 {/* ROLE 01: CACTUCE */}
-                <div className="v2-timeline-card scroll-reveal delay-1">
-                  <div className="v2-timeline-node node-red">
-                    <div className="v2-timeline-node-inner" />
-                  </div>
-                  <div className="v2-timeline-body">
-                    <div className="v2-timeline-header-row">
-                      <div className="v2-timeline-title-group">
-                        <span className="v2-timeline-company">CACTUCE</span>
-                        <span className="v2-timeline-role-badge">Product Designer</span>
-                      </div>
-                      <span className="v2-timeline-date">OCT 2025 — MAY 2026</span>
-                    </div>
-
-                    <div className="v2-timeline-tagline">
-                      B2B SAAS ARCHITECTURE &amp; PROCESS OPTIMIZATION
-                    </div>
-
-                    <ul className="v2-timeline-bullets">
-                      <li>
-                        {lang === 'fr'
-                          ? "Lead Product Designer chargé de l'optimisation et de la refonte UX des plateformes eHadj (logistique nationale) et Asset IQ (télémétrie industrielle)."
-                          : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ)."}
-                      </li>
-                      <li>
-                        {lang === 'fr'
-                          ? "Conception des flux multi-agences (+30 ministères et entités), création du Design System Figma Tokens et harmonisation des parcours."
-                          : "Designed end-to-end user flows for 30+ government agencies and health/bank gateways, establishing Figma Tokens & modular UI architecture."}
-                      </li>
-                      <li>
-                        {lang === 'fr'
-                          ? "Supervision complète de l'assurance qualité (recette QA), des audits d'accessibilité et des tests terrain auprès des opérateurs."
-                          : "Supervised complete QA recipe process, accessibility audits, and field usability testing on mobile devices."}
-                      </li>
-                    </ul>
-
-                    <div className="v2-timeline-impact-pill">
-                      {lang === 'fr' ? 'RÉSULTAT : 90% d\'erreurs en moins & zéro doublon de dossier' : 'IMPACT: 90% reduction in dossier errors & zero duplicate records'}
-                    </div>
-
-                    <div className="v2-timeline-tools-row">
-                      <span className="v2-timeline-tool-tag">Product Design</span>
-                      <span className="v2-timeline-tool-tag">Figma Tokens</span>
-                      <span className="v2-timeline-tool-tag">QA Recipe</span>
-                      <span className="v2-timeline-tool-tag">eHadj &amp; Asset IQ</span>
-                      <span className="v2-timeline-tool-tag">User Flows</span>
-                    </div>
-                  </div>
-                </div>
+                <FramerExperienceCard 
+                  company="CACTUCE"
+                  monogram="CT"
+                  role={lang === 'fr' ? 'Product Designer' : 'Product Designer'}
+                  date={lang === 'fr' ? 'OCT 2025 — MAI 2026' : 'OCT 2025 — MAY 2026'}
+                  tagline="B2B SAAS ARCHITECTURE & PROCESS OPTIMIZATION"
+                  description={
+                    lang === 'fr'
+                      ? "Lead Product Designer chargé de la refonte UX/UI et de l'optimisation des flux critiques pour eHadj (logistique nationale) et Asset IQ (télémétrie industrielle). Définition des parcours multi-acteurs (+30 ministères), création du Design System Figma Tokens et recette QA."
+                      : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ). Designed end-to-end user flows for 30+ government agencies, establishing Figma Tokens & modular UI architecture."
+                  }
+                  accentColor="cyan"
+                  metrics={lang === 'fr' ? [
+                    { value: "90%", label: "Moins d'erreurs dossier" },
+                    { value: "30+", label: "Passerelles ministères" },
+                    { value: "0", label: "Doublon sur le terrain" }
+                  ] : [
+                    { value: "90%", label: "Fewer dossier errors" },
+                    { value: "30+", label: "Integrated gateways" },
+                    { value: "0", label: "Duplicate field records" }
+                  ]}
+                  tags={['Product Design', 'Figma Tokens', 'QA Recipe', 'eHadj & Asset IQ', 'User Flows', 'Telemetry UI']}
+                />
 
                 {/* ROLE 02: TRELLIX */}
-                <div className="v2-timeline-card scroll-reveal delay-2">
-                  <div className="v2-timeline-node node-blue">
-                    <div className="v2-timeline-node-inner" />
-                  </div>
-                  <div className="v2-timeline-body">
-                    <div className="v2-timeline-header-row">
-                      <div className="v2-timeline-title-group">
-                        <span className="v2-timeline-company">TRELLIX</span>
-                        <span className="v2-timeline-role-badge badge-blue">Lead Product Designer</span>
-                      </div>
-                      <span className="v2-timeline-date">FEB 2024 — SEP 2025</span>
-                    </div>
-
-                    <div className="v2-timeline-tagline" style={{ color: '#60A5FA' }}>
-                      ENTERPRISE SAAS &amp; PRODUCT STRATEGY LEADERSHIP
-                    </div>
-
-                    <ul className="v2-timeline-bullets">
-                      <li>
-                        {lang === 'fr'
-                          ? "Direction et leadership de l'équipe design pour façonner des solutions SaaS B2B complexes centrées sur l'utilisateur."
-                          : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces."}
-                      </li>
-                      <li>
-                        {lang === 'fr'
-                          ? "Rédaction intégrale des Product Requirement Documents (PRDs), spécifications fonctionnelles & API, et gestion des cycles de recherche utilisateur."
-                          : "Authored complete PRDs, API functional specifications, and led comprehensive user research & heuristic evaluation sprints."}
-                      </li>
-                      <li>
-                        {lang === 'fr'
-                          ? "Mise en place de standards de livraison dev-handoff ayant augmenté la vélocité de développement de +50%."
-                          : "Established rigorous dev-handoff protocols and design tokens, boosting engineering delivery speed by +50%."}
-                      </li>
-                    </ul>
-
-                    <div className="v2-timeline-impact-pill pill-blue">
-                      {lang === 'fr' ? 'RÉSULTAT : +50% de vélocité de dev via PRDs & specs' : 'IMPACT: +50% dev velocity via PRDs & clear functional specs'}
-                    </div>
-
-                    <div className="v2-timeline-tools-row">
-                      <span className="v2-timeline-tool-tag">PRD Writing</span>
-                      <span className="v2-timeline-tool-tag">Team Leadership</span>
-                      <span className="v2-timeline-tool-tag">User Research</span>
-                      <span className="v2-timeline-tool-tag">B2B SaaS</span>
-                      <span className="v2-timeline-tool-tag">Dev Handoff</span>
-                    </div>
-                  </div>
-                </div>
+                <FramerExperienceCard 
+                  company="TRELLIX"
+                  monogram="TX"
+                  role="Lead Product Designer"
+                  date={lang === 'fr' ? 'FÉV 2024 — SEP 2025' : 'FEB 2024 — SEP 2025'}
+                  tagline="ENTERPRISE SAAS & PRODUCT STRATEGY LEADERSHIP"
+                  description={
+                    lang === 'fr'
+                      ? "Direction du design produit et cadrage stratégique des fonctionnalités SaaS B2B complexes. Rédaction intégrale des PRDs, spécifications fonctionnelles & API, et mise en place de standards de livraison dev-handoff haute vélocité."
+                      : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces. Authored complete PRDs, API functional specifications, and established rigorous dev-handoff protocols."
+                  }
+                  accentColor="blue"
+                  metrics={lang === 'fr' ? [
+                    { value: "+50%", label: "Vélocité dev via PRDs" },
+                    { value: "100%", label: "Alignement tokens & eng" },
+                    { value: "B2B", label: "Architecture d'entreprise" }
+                  ] : [
+                    { value: "+50%", label: "Dev velocity via PRDs" },
+                    { value: "100%", label: "Design-to-eng token fidelity" },
+                    { value: "B2B", label: "Enterprise SaaS architecture" }
+                  ]}
+                  tags={['PRD Specs', 'Product Strategy', 'User Research', 'B2B SaaS', 'Dev Handoff', 'Design System']}
+                />
 
                 {/* ROLE 03: CREAFIX */}
-                <div className="v2-timeline-card scroll-reveal delay-3">
-                  <div className="v2-timeline-node node-green">
-                    <div className="v2-timeline-node-inner" />
-                  </div>
-                  <div className="v2-timeline-body">
-                    <div className="v2-timeline-header-row">
-                      <div className="v2-timeline-title-group">
-                        <span className="v2-timeline-company">CREAFIX</span>
-                        <span className="v2-timeline-role-badge badge-green">Web Designer</span>
-                      </div>
-                      <span className="v2-timeline-date">AUG 2022 — FEB 2024</span>
-                    </div>
-
-                    <div className="v2-timeline-tagline" style={{ color: '#34D399' }}>
-                      WEB ART DIRECTION &amp; BRAND EXPERIENCE
-                    </div>
-
-                    <ul className="v2-timeline-bullets">
-                      <li>
-                        {lang === 'fr'
-                          ? "Conception d'interfaces web d'exception et de vitrines interactives pour +15 clients et agences internationales."
-                          : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ clients."}
-                      </li>
-                      <li>
-                        {lang === 'fr'
-                          ? "Direction artistique web, typographie éditoriale, animations 60fps et optimisation responsive multi-supports."
-                          : "Spearheaded web art direction, editorial typography, 60fps micro-animations, and multi-device responsive layouts."}
-                      </li>
-                      <li>
-                        {lang === 'fr'
-                          ? "Création d'actifs pour campagnes marketing digitales et optimisation du taux de conversion (CRO)."
-                          : "Created marketing campaign assets, promotional landing pages, and optimized conversion funnels."}
-                      </li>
-                    </ul>
-
-                    <div className="v2-timeline-impact-pill pill-green">
-                      {lang === 'fr' ? 'RÉSULTAT : +15 vitrines web & e-commerce d\'exception livrées' : 'IMPACT: 15+ luxury showcase & e-commerce sites delivered'}
-                    </div>
-
-                    <div className="v2-timeline-tools-row">
-                      <span className="v2-timeline-tool-tag">Web Art Direction</span>
-                      <span className="v2-timeline-tool-tag">Responsive UI</span>
-                      <span className="v2-timeline-tool-tag">E-Commerce</span>
-                      <span className="v2-timeline-tool-tag">Micro-Animations</span>
-                      <span className="v2-timeline-tool-tag">CRO</span>
-                    </div>
-                  </div>
-                </div>
+                <FramerExperienceCard 
+                  company="CREAFIX"
+                  monogram="CF"
+                  role={lang === 'fr' ? 'Web Designer & DA' : 'Web Designer & Art Director'}
+                  date={lang === 'fr' ? 'AOÛT 2022 — FÉV 2024' : 'AUG 2022 — FEB 2024'}
+                  tagline="WEB ART DIRECTION & BRAND EXPERIENCE"
+                  description={
+                    lang === 'fr'
+                      ? "Direction artistique web, typographie éditoriale et conception d'interfaces e-commerce immersives. Conception de vitrines interactives d'exception avec micro-animations 60fps et optimisation continue du taux de conversion (CRO)."
+                      : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ international clients. Spearheaded editorial typography, 60fps micro-animations, and conversion funnels."
+                  }
+                  accentColor="green"
+                  metrics={lang === 'fr' ? [
+                    { value: "15+", label: "Vitrines web livrées" },
+                    { value: "60 FPS", label: "Micro-animations fluides" },
+                    { value: "CRO", label: "Optimisation conversion" }
+                  ] : [
+                    { value: "15+", label: "Luxury showcase & stores" },
+                    { value: "60 FPS", label: "Fluid physics & motion" },
+                    { value: "CRO", label: "Conversion rate boost" }
+                  ]}
+                  tags={['Web Art Direction', 'Responsive UI', 'E-Commerce', 'Micro-Animations', 'CRO Strategy', 'Typography']}
+                />
               </div>
             </section>
 
