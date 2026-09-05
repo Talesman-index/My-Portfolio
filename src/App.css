@@ -6251,14 +6251,14 @@
 .v2-footer-monumental-container {
   position: relative;
   width: 100%;
-  margin: 28px 0 36px 0;
-  padding: 16px 0;
+  margin: 32px 0 36px 0;
+  padding: 28px 0 24px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   background: radial-gradient(50% 100% at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
 }
 
@@ -6270,7 +6270,8 @@
   width: 100%;
   text-decoration: none;
   cursor: pointer;
-  padding: 10px 0;
+  padding: 16px 0 12px 0;
+  overflow: visible;
 }
 
 .v2-footer-monumental-text {
@@ -6279,10 +6280,11 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.01em;
-  line-height: 0.85;
+  line-height: 1.05;
   text-align: center;
   white-space: nowrap;
   user-select: none;
+  padding: 8px 0;
 
   /* Subtle deep-dark embossed metallic styling */
   background: linear-gradient(
