@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { SymbolGlyphIcon } from './SymbolIllustrations';
 
 interface PageTurnOverlayProps {
   isTurning: boolean;
   direction?: 'forward' | 'reverse';
+  targetLabel?: string;
   onMidTurn?: () => void;
   onTurnComplete?: () => void;
 }
@@ -10,6 +12,7 @@ interface PageTurnOverlayProps {
 export const PageTurnOverlay: React.FC<PageTurnOverlayProps> = ({
   isTurning,
   direction = 'forward',
+  targetLabel,
   onMidTurn,
   onTurnComplete,
 }) => {
@@ -24,13 +27,15 @@ export const PageTurnOverlay: React.FC<PageTurnOverlayProps> = ({
   useEffect(() => {
     if (!isTurning) return;
 
+    // Snappy, silky-smooth cyber transition (170ms mid-point switch, 380ms completion)
     const midTimer = setTimeout(() => {
       onMidTurnRef.current?.();
-    }, 280);
+      window.scrollTo(0, 0);
+    }, 170);
 
     const endTimer = setTimeout(() => {
       onTurnCompleteRef.current?.();
-    }, 600);
+    }, 380);
 
     return () => {
       clearTimeout(midTimer);
@@ -40,39 +45,30 @@ export const PageTurnOverlay: React.FC<PageTurnOverlayProps> = ({
 
   if (!isTurning) return null;
 
+  const isReverse = direction === 'reverse';
+
   return (
-    <div className={`page-turn-stage ${direction}`} aria-hidden="true">
-      {/* Dark Dimmed Canvas Backdrop */}
-      <div className="page-turn-backdrop" />
+    <div className={`v2-portal-transition ${isReverse ? 'is-reverse' : 'is-forward'}`} aria-hidden="true">
+      {/* Dark Ambient Backdrop */}
+      <div className="v2-portal-backdrop" />
 
-      {/* Dynamic Moving Page Fold Spine Shadow */}
-      <div className="page-turn-spine-shadow" />
+      {/* Top and Bottom Glass Aperture Shutters */}
+      <div className="v2-portal-shutter shutter-top" />
+      <div className="v2-portal-shutter shutter-bottom" />
 
-      {/* 3D Flipping Paper Sheet */}
-      <div className="page-turn-sheet-container">
-        <div className="page-turn-sheet">
-          {/* Front Side */}
-          <div className="page-turn-side side-front">
-            <div className="page-turn-binder-holes">
-              <span className="hole" />
-              <span className="hole" />
-              <span className="hole" />
-            </div>
-            <div className="page-turn-tab-tag">TALESMAN DOSSIER</div>
-            <div className="page-turn-lines" />
-            <div className="page-turn-corner-curl-3d" />
-          </div>
+      {/* Horizontal Laser Scanning Energy Beam */}
+      <div className="v2-portal-laser-beam" />
 
-          {/* Back Side */}
-          <div className="page-turn-side side-back">
-            <div className="page-turn-binder-holes">
-              <span className="hole" />
-              <span className="hole" />
-              <span className="hole" />
-            </div>
-            <div className="page-turn-tab-tag" style={{ background: '#18A0FB', color: '#FFF' }}>TALESMAN FILES</div>
-            <div className="page-turn-lines" />
-          </div>
+      {/* Central Hologram Emblem HUD */}
+      <div className="v2-portal-hud">
+        <div className="v2-portal-symbol-wrap">
+          <SymbolGlyphIcon size={38} color="cyan" className="v2-portal-symbol" />
+        </div>
+        <div className="v2-portal-ticker">
+          <span className="v2-portal-ticker-dot" />
+          <span className="v2-portal-ticker-text">
+            {targetLabel || (isReverse ? 'RETOUR AU PORTFOLIO' : 'SYSTEM INITIALIZATION')}
+          </span>
         </div>
       </div>
     </div>

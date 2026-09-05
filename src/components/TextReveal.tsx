@@ -91,13 +91,15 @@ export const WordByWordReveal: React.FC<WordByWordRevealProps> = ({
         );
 
         return (
-          <span
-            key={idx}
-            className={`v2-reveal-word ${isRevealed ? 'is-lit' : 'is-dim'} ${isHighlight ? 'is-highlight' : ''}`}
-            style={{ '--word-idx': idx } as React.CSSProperties}
-          >
-            {word}{' '}
-          </span>
+          <React.Fragment key={idx}>
+            <span
+              className={`v2-reveal-word ${isRevealed ? 'is-lit' : 'is-dim'} ${isHighlight ? 'is-highlight' : ''}`}
+              style={{ '--word-idx': idx } as React.CSSProperties}
+            >
+              {word}
+            </span>
+            {idx < words.length - 1 ? ' ' : ''}
+          </React.Fragment>
         );
       })}
     </p>

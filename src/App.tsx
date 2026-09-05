@@ -12,7 +12,12 @@ import {
   Menu,
   ChevronLeft,
   ChevronRight,
-  Lock
+  Lock,
+  TrendingUp,
+  Quote,
+  ShieldCheck,
+  Sparkles,
+  Workflow
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
@@ -28,6 +33,27 @@ import { TextReveal, WordByWordReveal } from './components/TextReveal';
 
 
 
+
+const ProjectHighlightBadge = ({
+  tag,
+  value,
+  variant = 'cyan'
+}: {
+  tag?: string;
+  value: string;
+  variant?: 'cyan' | 'purple' | 'emerald';
+}) => {
+  return (
+    <div className={`v2-project-highlight-badge badge-${variant}`}>
+      <div className="v2-highlight-pulse-wrap">
+        <span className="v2-highlight-pulse-dot" />
+        <span className="v2-highlight-pulse-ring" />
+      </div>
+      {tag && <span className="v2-highlight-tag">{tag}</span>}
+      <span className="v2-highlight-text">{value}</span>
+    </div>
+  );
+};
 
 const LangSwitchControl = ({ lang, onToggle, isMobile }: { lang: 'en' | 'fr'; onToggle: () => void; isMobile?: boolean }) => (
   <button 
@@ -57,11 +83,7 @@ function getViewFromHash(): 'home' | 'cv' | 'experiences' | 'services' | 'all-pr
 }
 
 const navigateToHome = (setCurrentView: any) => {
-  setCurrentView('home');
-  if (typeof window !== 'undefined') {
-    window.history.pushState({ view: 'home' }, '', window.location.pathname);
-    window.scrollTo(0, 0);
-  }
+  setCurrentView('home', 'reverse');
 };
 
 const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLabel: string; year: string; externalLink?: string }> = {
@@ -194,15 +216,17 @@ const AboutSheetModal = ({ isOpen, onClose, lang }: { isOpen: boolean; onClose: 
 };
 
 /* ─────────────────────────────────────────────
-   CASE STUDY DOSSIER VIEW (V2 DARK GLASSMORPHISM)
+   CASE STUDY DOSSIER VIEW (V2 DARK ARCHITECTURAL SHOWCASE)
 ───────────────────────────────────────────── */
 const CaseStudy = ({ 
   id, 
   setCurrentView, 
+  setIsAboutModalOpen,
   lang 
 }: { 
   id: CaseStudyId; 
   setCurrentView: any; 
+  setIsAboutModalOpen: any; 
   lang: 'en' | 'fr'; 
 }) => {
   const data = caseStudiesData[lang][id] || caseStudiesData['fr']['asset-iq'];
@@ -214,167 +238,327 @@ const CaseStudy = ({
   const nextId = allKeys[(currentIndex + 1) % allKeys.length];
   const nextConfig = PROJECT_CONFIGS[nextId];
 
+  // Primary showcase visual
+  const showcaseImage = data.interfaceImg || data.dashboardImg || data.contextImg || data.bgImage || "/imgs/hero_image.png";
+
   return (
     <div className="v2-subpage-wrapper">
-      <div className="v2-subpage-ambient-glow" style={{ background: `radial-gradient(circle, ${config.color}25 0%, rgba(56, 189, 248, 0.08) 50%, transparent 70%)` }} />
+      <div className="v2-subpage-ambient-glow" style={{ background: `radial-gradient(circle, ${config.color}28 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%)` }} />
 
-      <div className="v2-subpage-container">
-        {/* Top Back Navigation Button */}
-        <button 
-          onClick={() => navigateToHome(setCurrentView)} 
-          className="v2-subpage-back-btn"
-        >
-          <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}</span>
-        </button>
+      {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+      <SymbolWatermark size={760} color="cyan" opacity={0.08} className="v2-watermark-ambient watermark-pos-right" />
 
-        {/* Hero Banner Card */}
-        <div className="v2-dossier-hero">
-          <div className="v2-dossier-grid-top">
-            {/* Left Preview Box with Project Cover & Live CTA */}
-            <div className="v2-dossier-portrait-box">
-              <img src={data.contextImg || data.bgImage || "/imgs/hero_image.png"} alt={data.title} className="v2-dossier-portrait-img" />
-              
-              <div className="v2-dossier-meta-list">
-                <div><strong>REGISTRATION:</strong> SD-{id.toUpperCase()}</div>
-                <div><strong>TIMELINE:</strong> {config.year}</div>
-                <div><strong>CATEGORY:</strong> {data.label}</div>
-              </div>
+      <div className="v2-subpage-container v2-cs-layout">
+        {/* Top Floating Control Bar */}
+        <div className="v2-cs-top-bar">
+          <button 
+            onClick={() => navigateToHome(setCurrentView)} 
+            className="v2-subpage-back-btn"
+          >
+            <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}</span>
+          </button>
 
+          <div className="v2-cs-top-actions">
+            <span className="v2-cs-reg-badge">
+              REG // SD-{id.toUpperCase()}-{config.year}
+            </span>
+            {liveUrl && (
               <a 
                 href={liveUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="v2-dossier-live-btn"
+                className="v2-cs-live-pill"
               >
-                <span>{lang === 'fr' ? 'VISITER LE PROJET LIVE' : 'VISIT LIVE PROJECT'}</span>
-                <ExternalLink size={15} />
+                <span className="v2-cs-live-dot" />
+                <span>{lang === 'fr' ? 'VOIR LE PROJET LIVE' : 'LIVE EXPERIENCE'}</span>
+                <ExternalLink size={13} />
               </a>
+            )}
+          </div>
+        </div>
+
+        {/* Cinematic Project Header */}
+        <header className="v2-cs-header">
+          <div className="v2-cs-eyebrow-wrap">
+            <span className="v2-cs-eyebrow" style={{ color: config.color, borderColor: `${config.color}50` }}>
+              <span className="v2-cs-eyebrow-dot" style={{ background: config.color }} />
+              {config.categoryLabel.toUpperCase()}
+            </span>
+            <span className="v2-cs-year-tag">{config.year}</span>
+          </div>
+
+          <h1 className="v2-cs-main-title">
+            {data.title}
+          </h1>
+
+          {data.subtitle && (
+            <p className="v2-cs-main-subtitle">
+              {data.subtitle}
+            </p>
+          )}
+
+          {/* Floating Specs Ribbon / Dock */}
+          <div className="v2-cs-specs-ribbon">
+            <div className="v2-cs-spec-cell">
+              <span className="v2-cs-spec-kicker">ROLE</span>
+              <span className="v2-cs-spec-value">Web &amp; Product Designer</span>
+            </div>
+            <div className="v2-cs-spec-cell">
+              <span className="v2-cs-spec-kicker">SCOPE</span>
+              <span className="v2-cs-spec-value">{data.label}</span>
+            </div>
+            <div className="v2-cs-spec-cell">
+              <span className="v2-cs-spec-kicker">TIMELINE</span>
+              <span className="v2-cs-spec-value">{config.year} · Production</span>
+            </div>
+            <div className="v2-cs-spec-cell">
+              <span className="v2-cs-spec-kicker">DELIVERABLES</span>
+              <span className="v2-cs-spec-value">UI/UX, Tokens &amp; System Specs</span>
+            </div>
+          </div>
+        </header>
+
+        {/* Monumental Showcase Canvas with macOS Window Chrome */}
+        <div className="v2-cs-canvas-wrap">
+          <div className="v2-cs-canvas-window">
+            <div className="v2-cs-window-bar">
+              <div className="v2-cs-window-dots">
+                <span className="dot dot-red" />
+                <span className="dot dot-yellow" />
+                <span className="dot dot-green" />
+              </div>
+              <div className="v2-cs-window-url">
+                <Lock size={12} className="v2-cs-lock-icon" />
+                <span>https://app.{id}.io/production-release</span>
+              </div>
+              <div className="v2-cs-window-badge">
+                <Sparkles size={13} color="#38BDF8" />
+                <span>{lang === 'fr' ? 'Interface Live' : 'Live System'}</span>
+              </div>
             </div>
 
-            {/* Right Details */}
-            <div>
-              <span className="v2-subpage-eyebrow" style={{ color: config.color }}>
-                {config.categoryLabel}
-              </span>
-              <h1 className="v2-subpage-title" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.8rem)', marginBottom: '20px' }}>
-                {data.title}
-              </h1>
+            <div className="v2-cs-window-body">
+              <img src={showcaseImage} alt={data.title} className="v2-cs-window-img" />
+              <div className="v2-cs-window-overlay" />
+            </div>
+          </div>
+        </div>
 
-              <p className="v2-dossier-brief-text">
+        {/* Narrative Deep Dive (Editorial 2-Column Grid) */}
+        <section className="v2-cs-narrative-section">
+          <div className="v2-cs-narrative-grid">
+            {/* Left Column: Context & Friction */}
+            <div className="v2-cs-narrative-card context-card">
+              <div className="v2-cs-card-num-tag" style={{ color: config.color }}>
+                01 / {lang === 'fr' ? 'CONTEXTE & ENJEUX' : 'CONTEXT & CHALLENGE'}
+              </div>
+              <h2 className="v2-cs-narrative-heading">
+                {data.contextTitle || (lang === 'fr' ? 'La complexité opérationnelle' : 'The Operational Friction')}
+              </h2>
+              <p className="v2-cs-narrative-lead">
                 {data.context}
               </p>
-              <p className="v2-dossier-brief-text" style={{ color: '#94A3B8', fontSize: '1.02rem' }}>
-                {data.challenge}
-              </p>
+              <div className="v2-cs-divider-line" />
+              <div className="v2-cs-problem-box">
+                <span className="v2-cs-mini-label">{lang === 'fr' ? 'LE DÉFI CRITIQUE' : 'THE CORE CHALLENGE'}</span>
+                <p>{data.problem || data.challenge}</p>
+              </div>
+            </div>
 
-              {/* Technical Specs Grid */}
-              <div className="v2-dossier-specs-grid">
-                <div className="v2-dossier-spec-item">
-                  <div className="spec-label">ROLE</div>
-                  <div className="spec-val">Web &amp; Product Designer</div>
-                </div>
-                <div className="v2-dossier-spec-item">
-                  <div className="spec-label">SCOPE</div>
-                  <div className="spec-val">{data.label}</div>
-                </div>
-                <div className="v2-dossier-spec-item">
-                  <div className="spec-label">DELIVERABLES</div>
-                  <div className="spec-val">UI/UX, Design Tokens &amp; Specs</div>
+            {/* Right Column: Architectural Solution & Insight */}
+            <div className="v2-cs-narrative-card solution-card">
+              <div className="v2-cs-card-num-tag" style={{ color: '#38BDF8' }}>
+                02 / {lang === 'fr' ? 'APPROCHE & ARCHITECTURE UX' : 'SYSTEM ARCHITECTURE & UX'}
+              </div>
+              <h2 className="v2-cs-narrative-heading">
+                {data.solutionTitle || (lang === 'fr' ? 'Orchestration procédurale & interface unifiée' : 'Unified Procedural Orchestration')}
+              </h2>
+              <p className="v2-cs-narrative-lead">
+                {data.solution || data.uxSolutions || data.challenge}
+              </p>
+              
+              {/* Insight Quote Callout */}
+              <div className="v2-cs-insight-quote-box">
+                <Quote size={26} className="v2-cs-quote-icon" />
+                <div>
+                  <span className="v2-cs-mini-label" style={{ color: '#38BDF8' }}>
+                    KEY DESIGN INSIGHT
+                  </span>
+                  <p className="v2-cs-quote-text">"{data.insight}"</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Discovery, Solution & Interface Artifacts Grid */}
-        <div className="v2-dossier-artifacts-grid">
-          {/* Card: Discovery & Insight */}
-          <div className="v2-dossier-artifact-card">
-            <div className="v2-dossier-artifact-title" style={{ color: '#38BDF8' }}>
-              DISCOVERY &amp; INSIGHT
-            </div>
-            <p className="v2-dossier-artifact-text">
-              "{data.insight}"
-            </p>
-            {data.challengeImg && (
-              <img src={data.challengeImg} alt="Discovery Artifact" className="v2-dossier-artifact-img" />
-            )}
-          </div>
-
-          {/* Card: System Solution */}
-          <div className="v2-dossier-artifact-card">
-            <div className="v2-dossier-artifact-title" style={{ color: '#C084FC' }}>
-              SYSTEM ARCHITECTURE
-            </div>
-            <p className="v2-dossier-artifact-text">
-              {data.solution || data.uxSolutions}
-            </p>
-            {data.dashboardImg && (
-              <img src={data.dashboardImg} alt="Solution Artifact" className="v2-dossier-artifact-img" />
-            )}
-          </div>
-
-          {/* Card: Polished UI */}
-          {data.interfaceImg && (
-            <div className="v2-dossier-artifact-card">
-              <div className="v2-dossier-artifact-title" style={{ color: '#34D399' }}>
-                POLISHED INTERFACE
+        {/* Architectural Decisions Flow (if available) */}
+        {data.decisions && data.decisions.length > 0 && (
+          <section className="v2-cs-decisions-section">
+            <div className="v2-cs-section-header">
+              <div className="v2-cs-header-pill">
+                <Workflow size={15} color="#38BDF8" />
+                <span>{lang === 'fr' ? 'DÉCISIONS D\'ARCHITECTURE UX' : 'ARCHITECTURAL UX DECISIONS'}</span>
               </div>
-              <p className="v2-dossier-artifact-text">
-                {data.conclusion}
-              </p>
-              <img src={data.interfaceImg} alt="Interface Showcase" className="v2-dossier-artifact-img" />
+              <h2 className="v2-cs-section-title">
+                {lang === 'fr' ? 'Arbitrages clés & Logique de conception' : 'Key Trade-offs & Strategic Logic'}
+              </h2>
             </div>
-          )}
-        </div>
 
-        {/* Detailed System Features */}
-        {data.features && data.features.length > 0 && (
-          <div style={{ marginTop: '50px' }}>
-            <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.8rem', color: '#FFFFFF', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Layers size={22} color={config.color} />
-              <span>SYSTEMIC FEATURES &amp; CAPABILITIES</span>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-              {data.features.map((feat, idx) => (
-                <div key={idx} style={{ padding: '24px', background: 'rgba(10, 16, 28, 0.75)', borderLeft: `4px solid ${config.color}`, borderTop: '1px solid rgba(255, 255, 255, 0.08)', borderRight: '1px solid rgba(255, 255, 255, 0.08)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '0 12px 12px 0' }}>
-                  <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.2rem', color: '#FFFFFF', marginBottom: '6px' }}>{feat.title}</div>
-                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#94A3B8', lineHeight: 1.5 }}>{feat.desc}</div>
+            <div className="v2-cs-decisions-grid">
+              {data.decisions.map((dec, idx) => (
+                <div key={idx} className="v2-cs-decision-card">
+                  <div className="v2-cs-decision-top">
+                    <span className="v2-cs-step-badge">0{idx + 1}</span>
+                    <h3 className="v2-cs-decision-title">{dec.title}</h3>
+                  </div>
+                  <p className="v2-cs-decision-desc">{dec.desc}</p>
+                  <div className="v2-cs-decision-why">
+                    <span className="why-label">{lang === 'fr' ? 'POURQUOI CET ARBITRAGE :' : 'RATIONALE :'}</span>
+                    <span>{dec.why}</span>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
-        {/* Measurable Outcomes */}
-        <div style={{ marginTop: '50px', background: 'rgba(10, 16, 28, 0.75)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '20px', padding: '36px' }}>
-          <div style={{ fontFamily: 'var(--font-anton)', fontSize: '1.8rem', color: '#FFFFFF', marginBottom: '20px' }}>
-            MEASURABLE IMPACT &amp; OUTCOMES
+        {/* Asymmetric Bento Showcase: Artifacts, Research & Interface */}
+        <section className="v2-cs-bento-section">
+          <div className="v2-cs-section-header">
+            <div className="v2-cs-header-pill">
+              <Layers size={15} color="#C084FC" />
+              <span>{lang === 'fr' ? 'ARTEFACTS & PREUVES DE CONCEPTION' : 'DESIGN ARTIFACTS & EVIDENCE'}</span>
+            </div>
+            <h2 className="v2-cs-section-title">
+              {lang === 'fr' ? 'De l\'analyse terrain à la production' : 'From Field Research to Final Production'}
+            </h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
-            {data.impact.map((imp, idx) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: '#E2E8F0' }}>
-                <CheckCircle2 size={18} color="#38BDF8" style={{ flexShrink: 0 }} />
-                <span>{imp}</span>
+
+          <div className="v2-cs-bento-grid">
+            {/* Card A: Research / Context Photo */}
+            {(data.challengeImg || data.contextImg) && (
+              <div className="v2-cs-bento-card bento-discovery">
+                <div className="v2-cs-bento-media">
+                  <img src={data.challengeImg || data.contextImg} alt="Discovery Artifact" />
+                  <div className="v2-cs-bento-badge">{lang === 'fr' ? '01 / RÉALITÉ TERRAIN & AUDIT' : '01 / FIELD AUDIT'}</div>
+                </div>
+                <div className="v2-cs-bento-content">
+                  <h3 className="v2-cs-bento-title">{lang === 'fr' ? 'Immersion & Découverte' : 'Discovery & Field Reality'}</h3>
+                  <p className="v2-cs-bento-desc">"{data.insight}"</p>
+                </div>
               </div>
-            ))}
+            )}
+
+            {/* Card B: System Logic / Flow */}
+            {(data.dashboardImg || data.bgImage) && (
+              <div className="v2-cs-bento-card bento-system">
+                <div className="v2-cs-bento-media">
+                  <img src={data.dashboardImg || data.bgImage} alt="System Architecture" />
+                  <div className="v2-cs-bento-badge" style={{ color: '#C084FC' }}>{lang === 'fr' ? '02 / ARCHITECTURE SYSTÈME' : '02 / SYSTEM LOGIC'}</div>
+                </div>
+                <div className="v2-cs-bento-content">
+                  <h3 className="v2-cs-bento-title">{lang === 'fr' ? 'Modélisation des Flux' : 'Workflow Orchestration'}</h3>
+                  <p className="v2-cs-bento-desc">{data.uxSolutions || data.solution}</p>
+                </div>
+              </div>
+            )}
+
+            {/* Card C: Polished Interface (Wide) */}
+            {data.interfaceImg && (
+              <div className="v2-cs-bento-card bento-interface-wide">
+                <div className="v2-cs-bento-media wide-media">
+                  <img src={data.interfaceImg} alt="Interface Showcase" />
+                  <div className="v2-cs-bento-badge" style={{ color: '#34D399' }}>{lang === 'fr' ? '03 / INTERFACE FINALE LIVRÉE' : '03 / POLISHED PRODUCTION INTERFACE'}</div>
+                </div>
+                <div className="v2-cs-bento-content">
+                  <h3 className="v2-cs-bento-title">{lang === 'fr' ? 'Expérience Utilisateur Finale' : 'Final User Experience'}</h3>
+                  <p className="v2-cs-bento-desc">{data.conclusion}</p>
+                </div>
+              </div>
+            )}
           </div>
-        </div>
+        </section>
+
+        {/* Systemic Capabilities & Feature Modules */}
+        {data.features && data.features.length > 0 && (
+          <section className="v2-cs-features-section">
+            <div className="v2-cs-section-header">
+              <div className="v2-cs-header-pill">
+                <ShieldCheck size={15} color={config.color} />
+                <span>{lang === 'fr' ? 'CAPACITÉS & MODULES' : 'SYSTEMIC CAPABILITIES'}</span>
+              </div>
+              <h2 className="v2-cs-section-title">
+                {lang === 'fr' ? 'Fonctionnalités & Spécifications Clés' : 'Core Features & Structural Modules'}
+              </h2>
+            </div>
+
+            <div className="v2-cs-features-grid">
+              {data.features.map((feat, idx) => (
+                <div key={idx} className="v2-cs-feature-card" style={{ borderTopColor: config.color }}>
+                  <div className="v2-cs-feature-num">0{idx + 1}</div>
+                  <h3 className="v2-cs-feature-title">{feat.title}</h3>
+                  <p className="v2-cs-feature-desc">{feat.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Measurable Outcomes & Business Impact */}
+        {data.impact && data.impact.length > 0 && (
+          <section className="v2-cs-impact-section">
+            <div className="v2-cs-section-header">
+              <div className="v2-cs-header-pill">
+                <TrendingUp size={15} color="#38BDF8" />
+                <span>{lang === 'fr' ? 'RÉSULTATS & IMPACT' : 'MEASURABLE IMPACT'}</span>
+              </div>
+              <h2 className="v2-cs-section-title">
+                {lang === 'fr' ? 'Impact mesurable & valeur métier créée' : 'Quantified Outcomes & Business Value'}
+              </h2>
+            </div>
+
+            <div className="v2-cs-impact-grid">
+              {data.impact.map((imp, idx) => (
+                <div key={idx} className="v2-cs-impact-card">
+                  <div className="v2-cs-impact-icon-wrap">
+                    <CheckCircle2 size={18} color="#38BDF8" />
+                  </div>
+                  <div className="v2-cs-impact-text">{imp}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Next Project Footer Bar */}
         <div 
-          className="v2-dossier-next-bar" 
-          onClick={() => setCurrentView(nextId)}
+          className="v2-cs-next-banner" 
+          onClick={() => {
+            setCurrentView(nextId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
         >
-          <div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: '#94A3B8', textTransform: 'uppercase', marginBottom: '4px' }}>
-              {lang === 'fr' ? 'DOSSIER SUIVANT →' : 'NEXT CASE STUDY →'}
-            </div>
-            <div className="v2-dossier-next-title">{nextConfig.title}</div>
+          <div className="v2-cs-next-info">
+            <span className="v2-cs-next-eyebrow">
+              {lang === 'fr' ? 'ÉTUDE DE CAS SUIVANTE' : 'NEXT CASE STUDY'}
+            </span>
+            <h3 className="v2-cs-next-name">{nextConfig.title}</h3>
+            <span className="v2-cs-next-cat" style={{ color: nextConfig.color }}>
+              {nextConfig.categoryLabel}
+            </span>
           </div>
-          <ArrowRight size={28} color="#38BDF8" />
+          <div className="v2-cs-next-action">
+            <span className="v2-cs-next-cue">{lang === 'fr' ? 'Explorer' : 'Explore'}</span>
+            <div className="v2-cs-next-arrow-circle">
+              <ArrowRight size={22} />
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Laser Divider & Global Monumental Connect Footer */}
+      <SymbolLaserDivider color="cyan" />
+      <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
     </div>
   );
 };
@@ -463,10 +647,21 @@ const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceIte
 /* ─────────────────────────────────────────────
    EXPERIENCES DOSSIER VIEW (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
-const ExperiencesView = ({ setCurrentView, lang = 'fr' }: { setCurrentView: any; lang?: 'en' | 'fr' }) => {
+const ExperiencesView = ({ 
+  setCurrentView, 
+  setIsAboutModalOpen,
+  lang = 'fr' 
+}: { 
+  setCurrentView: any; 
+  setIsAboutModalOpen: any;
+  lang?: 'en' | 'fr'; 
+}) => {
   return (
     <div className="v2-subpage-wrapper">
       <div className="v2-subpage-ambient-glow" />
+
+      {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+      <SymbolWatermark size={680} color="emerald" opacity={0.09} className="v2-watermark-ambient watermark-pos-left" />
 
       <div className="v2-subpage-container">
         <button 
@@ -490,6 +685,10 @@ const ExperiencesView = ({ setCurrentView, lang = 'fr' }: { setCurrentView: any;
         {/* Dynamic Creative Interactive Timeline */}
         <CreativeTimelineExperience items={getTimelineExperiences(lang)} lang={lang} />
       </div>
+
+      {/* Laser Divider & Monumental Connect Footer */}
+      <SymbolLaserDivider color="emerald" />
+      <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
     </div>
   );
 };
@@ -499,14 +698,19 @@ const ExperiencesView = ({ setCurrentView, lang = 'fr' }: { setCurrentView: any;
 ───────────────────────────────────────────── */
 const ServicesView = ({ 
   setCurrentView, 
+  setIsAboutModalOpen,
   lang = 'fr' 
 }: { 
   setCurrentView: any; 
+  setIsAboutModalOpen: any;
   lang?: 'en' | 'fr'; 
 }) => {
   return (
     <div className="v2-subpage-wrapper">
       <div className="v2-subpage-ambient-glow" />
+
+      {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+      <SymbolWatermark size={680} color="cyan" opacity={0.09} className="v2-watermark-ambient watermark-pos-right" />
 
       <div className="v2-subpage-container">
         <button 
@@ -641,6 +845,10 @@ const ServicesView = ({
           </div>
         </div>
       </div>
+
+      {/* Laser Divider & Monumental Connect Footer */}
+      <SymbolLaserDivider color="cyan" />
+      <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
     </div>
   );
 };
@@ -650,9 +858,11 @@ const ServicesView = ({
 ───────────────────────────────────────────── */
 const AllProjectsView = ({ 
   setCurrentView, 
+  setIsAboutModalOpen,
   lang 
 }: { 
   setCurrentView: any; 
+  setIsAboutModalOpen: any;
   lang: 'en' | 'fr'; 
 }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'saas' | 'mobile' | 'web'>('all');
@@ -679,6 +889,9 @@ const AllProjectsView = ({
   return (
     <div className="v2-subpage-wrapper">
       <div className="v2-subpage-ambient-glow" />
+
+      {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+      <SymbolWatermark size={680} color="cyan" opacity={0.09} className="v2-watermark-ambient watermark-pos-right" />
 
       <div className="v2-subpage-container">
         <button 
@@ -763,6 +976,10 @@ const AllProjectsView = ({
           ))}
         </div>
       </div>
+
+      {/* Laser Divider & Monumental Connect Footer */}
+      <SymbolLaserDivider color="cyan" />
+      <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
     </div>
   );
 };
@@ -1112,10 +1329,17 @@ export default function App() {
       {/* 3D Blueprint Glass Preloader with Brand Symbol */}
       <FuturisticPreloader />
 
-      {/* 3D Page Turn Overlay Effect ("Effet Tournement de Page") */}
+      {/* Futuristic Cyber-Glass Portal View Transition */}
       <PageTurnOverlay
         isTurning={isPageTurning}
         direction={pageTurnDirection}
+        targetLabel={
+          pendingView === 'home' 
+            ? (lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'RETURN TO PORTFOLIO') 
+            : pendingView 
+              ? (lang === 'fr' ? `ACCÈS DOSSIER // ${String(pendingView).toUpperCase()}` : `ACCESSING // ${String(pendingView).toUpperCase()}`)
+              : undefined
+        }
         onMidTurn={() => {
           if (pendingView) {
             setCurrentView(pendingView);
@@ -1157,7 +1381,7 @@ export default function App() {
           <div className="v2-nav-actions">
             <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
             <button 
-              className="v2-nav-connect-btn" 
+              className="v2-nav-connect-btn v2-desktop-only" 
               onClick={() => {
                 if ((window as any).Calendly) {
                   (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
@@ -1168,15 +1392,14 @@ export default function App() {
             >
               Let's Connect
             </button>
+            <button 
+              className="v2-mobile-hamburger-btn" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
-
-          <button 
-            className="robin-mobile-hamburger-btn v2-mobile-toggle" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
         </nav>
       )}
 
@@ -1459,11 +1682,11 @@ export default function App() {
       )}
 
       {/* Render Active View */}
-      {currentView === 'experiences' && <ExperiencesView setCurrentView={handleViewSwitch} lang={lang} />}
-      {currentView === 'services' && <ServicesView setCurrentView={handleViewSwitch} lang={lang} />}
-      {currentView === 'all-projects' && <AllProjectsView setCurrentView={handleViewSwitch} lang={lang} />}
+      {currentView === 'experiences' && <ExperiencesView setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />}
+      {currentView === 'services' && <ServicesView setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />}
+      {currentView === 'all-projects' && <AllProjectsView setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />}
       {currentView !== 'home' && currentView !== 'experiences' && currentView !== 'services' && currentView !== 'all-projects' && (
-        <CaseStudy id={currentView as CaseStudyId} setCurrentView={handleViewSwitch} lang={lang} />
+        <CaseStudy id={currentView as CaseStudyId} setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
       )}
 
       {/* Main Robin / Mosby Notebook Paper Portfolio Homepage */}
@@ -1522,11 +1745,11 @@ export default function App() {
                 </span>
               </div>
 
-              {/* Right Side: Lang Switch & Connect Button */}
+              {/* Right Side: Lang Switch & Connect Button / Mobile Hamburger */}
               <div className="v2-nav-actions">
                 <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
                 <button 
-                  className="v2-nav-connect-btn" 
+                  className="v2-nav-connect-btn v2-desktop-only" 
                   onClick={() => {
                     if ((window as any).Calendly) {
                       (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
@@ -1537,16 +1760,14 @@ export default function App() {
                 >
                   Let's Connect
                 </button>
+                <button 
+                  className="v2-mobile-hamburger-btn" 
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
               </div>
-
-              {/* Mobile Hamburger Toggle Button */}
-              <button 
-                className="robin-mobile-hamburger-btn v2-mobile-toggle" 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-              </button>
             </nav>
 
             {/* SECTION 1: HERO (EXACT REFERENCE DESIGN) */}
@@ -1556,7 +1777,9 @@ export default function App() {
 
               {/* Eyebrow Tagline */}
               <div className="v2-hero-eyebrow">
-                {lang === 'fr' ? 'Le Design dans les Détails' : 'Design in Details'}
+                {lang === 'fr' 
+                  ? "Résoudre des problèmes complexes par un design clair et percutant" 
+                  : "Solving complex problems through clear, high-impact design"}
               </div>
 
               {/* Giant Wordmark with Center 3D Glass Monogram & Signature */}
@@ -1931,7 +2154,6 @@ export default function App() {
                   <h3 className="v2-webdesign-subbar-title">
                     {lang === 'fr' ? 'Sélection de Sites Web' : 'Featured Websites'}
                   </h3>
-                  <span className="v2-webdesign-count">4 PROJETS PHARES</span>
                 </div>
                 <button 
                   className="v2-webdesign-all-btn"
@@ -2294,7 +2516,6 @@ export default function App() {
 
                   {/* Dynamic Designer Presence Stage */}
                   <div className="v2-collab-interactive-stage">
-                    <div className="v2-collab-canvas-grid" />
                     <div className="v2-collab-cursor-animated">
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="#A855F7" className="v2-cursor-svg">
                         <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
@@ -2389,10 +2610,11 @@ export default function App() {
                         ? "Plateforme gouvernementale centralisant la logistique du pèlerinage national pour +30 agences et ministères."
                         : "Centralized governmental platform orchestrating national pilgrimage operations for 30+ agencies."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Impact : +3 000 pèlerins & 30+ agences' : 'Impact: 3,000+ pilgrims & 30+ agencies'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'IMPACT' : 'IMPACT'}
+                      value={lang === 'fr' ? '+3 000 pèlerins & 30+ agences' : '3,000+ pilgrims & 30+ agencies'}
+                      variant="cyan"
+                    />
                     <div className="v2-project-tags-row">
                       <span>Product Design</span>
                       <span>Design System</span>
@@ -2424,10 +2646,11 @@ export default function App() {
                         ? "Gouvernance et télémétrie multi-sites d'actifs physiques industriels lourds par scan QR code instantané."
                         : "Multi-site physical asset telemetry and inventory governance powered by smart QR code telemetry."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Télémétrie QR Code & Analytics Multi-Sites' : 'QR Telemetry & Multi-Site Analytics'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'TÉLÉMÉTRIE' : 'TELEMETRY'}
+                      value={lang === 'fr' ? 'Scans QR Instantanés & Multi-Sites' : 'Instant QR Scans & Multi-Site Analytics'}
+                      variant="cyan"
+                    />
                     <div className="v2-project-tags-row">
                       <span>B2B SaaS</span>
                       <span>Data Architecture</span>
@@ -2459,10 +2682,11 @@ export default function App() {
                         ? "Plateforme SaaS B2B d'engagement client & hub centralisé orchestrant 10 connecteurs e-commerce."
                         : "B2B SaaS customer engagement platform & integration hub powering 10 major e-commerce connectors."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Hub de 10 Connecteurs & Multi-Tenant' : '10 Connectors Hub & Multi-Tenant'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'ARCHITECTURE' : 'ARCHITECTURE'}
+                      value={lang === 'fr' ? 'Hub 10 Connecteurs & Multi-Tenant' : '10 Connectors Hub & Multi-Tenant'}
+                      variant="cyan"
+                    />
                     <div className="v2-project-tags-row">
                       <span>SaaS Platform</span>
                       <span>Connectors</span>
@@ -2522,10 +2746,11 @@ export default function App() {
                         ? "Interface numérique interactive et expérience de réservation immersive pour un resort exclusif sur la Côte d'Azur."
                         : "Interactive digital guest interface and luxury reservation experience designed for an exclusive French Riviera resort."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Interface Interactive & Micro-Animations 60fps' : 'Interactive UI & 60fps Micro-Animations'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'EXPÉRIENCE' : 'EXPERIENCE'}
+                      value={lang === 'fr' ? 'Micro-Animations 60fps & UI Interactive' : '60fps Micro-Animations & Interactive UI'}
+                      variant="purple"
+                    />
                     <div className="v2-project-tags-row">
                       <span>Interface UI/UX</span>
                       <span>Système Interactif</span>
@@ -2557,10 +2782,11 @@ export default function App() {
                         ? "Application mobile d'achat de carburant et portefeuille numérique réduisant le temps de paiement à 3 secondes."
                         : "High-speed mobile fuel payment & wallet app engineered for instant 3-second pump authorization."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Paiement sans friction en 3 secondes' : 'Frictionless 3-second mobile flow'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'PERFORMANCE' : 'PERFORMANCE'}
+                      value={lang === 'fr' ? 'Paiement sans friction en 3s' : 'Frictionless 3-second checkout'}
+                      variant="purple"
+                    />
                     <div className="v2-project-tags-row">
                       <span>Mobile App UX</span>
                       <span>iOS & Android</span>
@@ -2592,10 +2818,11 @@ export default function App() {
                         ? "Portail d'analyse prédictive et tableaux de bord de performance sportive pour entraîneurs et athlètes."
                         : "Predictive sports analytics and tactical decision-support dashboard portal for teams and coaches."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Visualisation de Données & Tableaux Dynamiques' : 'Data Visualization & Dynamic Tables'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'DATA VIZ' : 'DATA VIZ'}
+                      value={lang === 'fr' ? 'Tableaux Dynamiques & Analyse Prédictive' : 'Dynamic Tables & Predictive Analytics'}
+                      variant="purple"
+                    />
                     <div className="v2-project-tags-row">
                       <span>Data Viz</span>
                       <span>Dashboard UI</span>
@@ -2684,10 +2911,11 @@ export default function App() {
                         ? "Directions artistiques singulières, affiches de mixologie, événements culturels et compositions typographiques haute définition."
                         : "Art direction, editorial collage, mixology posters, and high-impact typographic layouts crafted for cultural events."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? '5 Affiches Haute Définition & Print' : '5 High-Definition Event Posters'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'ÉDITORIAL' : 'EDITORIAL'}
+                      value={lang === 'fr' ? '5 Compositions Visuelles & Print 300dpi' : '5 Visual Artworks & 300dpi Print'}
+                      variant="cyan"
+                    />
                     <div className="v2-project-tags-row">
                       <span>Art Direction</span>
                       <span>Photoshop</span>
@@ -2758,10 +2986,11 @@ export default function App() {
                         ? "Structures narratives et visuelles complètes conçues pour captiver l'attention et générer un fort engagement slide après slide."
                         : "Multi-slide narrative frameworks and educational storytelling series crafted for peak attention and social engagement."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? '3 Séries Complètes (21 Slides Multi-Formats)' : '3 Complete Multi-Slide Series (21 Visuals)'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'STORYTELLING' : 'STORYTELLING'}
+                      value={lang === 'fr' ? '3 Séries Complètes (21 Slides)' : '3 Complete Series (21 Slides)'}
+                      variant="cyan"
+                    />
                     <div className="v2-project-tags-row">
                       <span>Carrousels</span>
                       <span>Storytelling</span>
@@ -2824,10 +3053,11 @@ export default function App() {
                         ? "Affichage grand format, visuels de lancement de partenariats stratégiques et directions créatives 360° percutantes."
                         : "Urban billboard displays, strategic partnership launch assets, and high-impact 360° creative campaigns."}
                     </p>
-                    <div className="v2-project-metrics-pill">
-                      <span className="metric-icon">◆</span>
-                      <span>{lang === 'fr' ? 'Affichage Urbain & Campagnes de Lancement' : 'Urban Billboards & Launch Campaigns'}</span>
-                    </div>
+                    <ProjectHighlightBadge 
+                      tag={lang === 'fr' ? 'CAMPAGNE' : 'CAMPAIGN'}
+                      value={lang === 'fr' ? 'Affichage Urbain Grand Format & 360°' : 'Urban Large Format Displays & 360°'}
+                      variant="cyan"
+                    />
                     <div className="v2-project-tags-row">
                       <span>Billboard</span>
                       <span>Campagne 360°</span>
