@@ -537,17 +537,10 @@ const ServicesView = ({
           {/* CARD 01: SAAS & PRODUCT DESIGN */}
           <div className="v2-service-card card-glow-cyan">
             <div className="v2-service-card-top">
-              <div className="v2-service-header-spec">
-                <span className="v2-service-idx">// 01</span>
-                <span className="v2-service-category-tag">SAAS · PRODUCT SYSTEMS</span>
+              <div className="v2-service-index-wrap">
+                <span className="v2-service-num">01</span>
+                <span className="v2-service-category-label">SaaS &amp; Product</span>
               </div>
-              <div className="v2-service-status-node">
-                <span className="v2-status-dot dot-cyan"></span>
-                <span className="v2-status-label">ACTIVE_SPEC</span>
-              </div>
-            </div>
-
-            <div className="v2-service-visual-stage">
               <GlassServiceVisual type="saas" />
             </div>
             
@@ -564,27 +557,20 @@ const ServicesView = ({
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">[FIGMA_VARIABLES]</span>
-              <span className="v2-service-tag">[USER_FLOWS]</span>
-              <span className="v2-service-tag">[TELEMETRY_DASH]</span>
-              <span className="v2-service-tag">[DATA_VIZ]</span>
+              <span className="v2-service-tag">Figma Tokens</span>
+              <span className="v2-service-tag">User Flows</span>
+              <span className="v2-service-tag">Telemetry</span>
+              <span className="v2-service-tag">Data Viz</span>
             </div>
           </div>
 
           {/* CARD 02: ART DIRECTION & WEB DESIGN */}
           <div className="v2-service-card card-glow-yellow">
             <div className="v2-service-card-top">
-              <div className="v2-service-header-spec">
-                <span className="v2-service-idx">// 02</span>
-                <span className="v2-service-category-tag">WEB CRAFT · ART DIRECTION</span>
+              <div className="v2-service-index-wrap">
+                <span className="v2-service-num">02</span>
+                <span className="v2-service-category-label">Web Craft &amp; Art</span>
               </div>
-              <div className="v2-service-status-node">
-                <span className="v2-status-dot dot-yellow"></span>
-                <span className="v2-status-label">ACTIVE_SPEC</span>
-              </div>
-            </div>
-
-            <div className="v2-service-visual-stage">
               <GlassServiceVisual type="craft" />
             </div>
 
@@ -601,27 +587,20 @@ const ServicesView = ({
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">[ART_DIRECTION]</span>
-              <span className="v2-service-tag">[3D_SPATIAL_MOTION]</span>
-              <span className="v2-service-tag">[EDITORIAL_TYPE]</span>
-              <span className="v2-service-tag">[HIGH_CONVERSION]</span>
+              <span className="v2-service-tag">Art Direction</span>
+              <span className="v2-service-tag">Spatial Motion</span>
+              <span className="v2-service-tag">Editorial Type</span>
+              <span className="v2-service-tag">CRO Strategy</span>
             </div>
           </div>
 
           {/* CARD 03: VIBE CODING & RAPID MVP */}
           <div className="v2-service-card card-glow-green">
             <div className="v2-service-card-top">
-              <div className="v2-service-header-spec">
-                <span className="v2-service-idx">// 03</span>
-                <span className="v2-service-category-tag">VIBE CODING · RAPID MVP</span>
+              <div className="v2-service-index-wrap">
+                <span className="v2-service-num">03</span>
+                <span className="v2-service-category-label">Rapid MVP &amp; AI</span>
               </div>
-              <div className="v2-service-status-node">
-                <span className="v2-status-dot dot-green"></span>
-                <span className="v2-status-label">ACTIVE_SPEC</span>
-              </div>
-            </div>
-
-            <div className="v2-service-visual-stage">
               <GlassServiceVisual type="code" />
             </div>
 
@@ -638,27 +617,20 @@ const ServicesView = ({
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">[REACT_19]</span>
-              <span className="v2-service-tag">[GOOGLE_AI_STUDIO]</span>
-              <span className="v2-service-tag">[RAPID_PROTOTYPE]</span>
-              <span className="v2-service-tag">[EDGE_DEPLOY]</span>
+              <span className="v2-service-tag">React &amp; TypeScript</span>
+              <span className="v2-service-tag">Google AI Studio</span>
+              <span className="v2-service-tag">Rapid MVP</span>
+              <span className="v2-service-tag">Live Deploys</span>
             </div>
           </div>
 
           {/* CARD 04: DESIGN SYSTEMS & DEV HANDOFF */}
           <div className="v2-service-card card-glow-purple">
             <div className="v2-service-card-top">
-              <div className="v2-service-header-spec">
-                <span className="v2-service-idx">// 04</span>
-                <span className="v2-service-category-tag">DESIGN SYSTEMS · HANDOFF</span>
+              <div className="v2-service-index-wrap">
+                <span className="v2-service-num">04</span>
+                <span className="v2-service-category-label">Systems &amp; Dev</span>
               </div>
-              <div className="v2-service-status-node">
-                <span className="v2-status-dot dot-purple"></span>
-                <span className="v2-status-label">ACTIVE_SPEC</span>
-              </div>
-            </div>
-
-            <div className="v2-service-visual-stage">
               <GlassServiceVisual type="system" />
             </div>
 
@@ -675,10 +647,10 @@ const ServicesView = ({
             </div>
 
             <div className="v2-service-tags">
-              <span className="v2-service-tag">[TOKEN_GOVERNANCE]</span>
-              <span className="v2-service-tag">[WCAG_AAA]</span>
-              <span className="v2-service-tag">[STORYBOOK]</span>
-              <span className="v2-service-tag">[DEV_HANDOFF]</span>
+              <span className="v2-service-tag">Token Engine</span>
+              <span className="v2-service-tag">WCAG AAA</span>
+              <span className="v2-service-tag">Storybook</span>
+              <span className="v2-service-tag">Zero Drift</span>
             </div>
           </div>
         </div>
@@ -1758,17 +1730,10 @@ export default function App() {
                 {/* CARD 01: SAAS & PRODUCT DESIGN */}
                 <div className="v2-service-card card-glow-cyan">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-header-spec">
-                      <span className="v2-service-idx">// 01</span>
-                      <span className="v2-service-category-tag">SAAS · PRODUCT SYSTEMS</span>
+                    <div className="v2-service-index-wrap">
+                      <span className="v2-service-num">01</span>
+                      <span className="v2-service-category-label">SaaS &amp; Product</span>
                     </div>
-                    <div className="v2-service-status-node">
-                      <span className="v2-status-dot dot-cyan"></span>
-                      <span className="v2-status-label">ACTIVE_SPEC</span>
-                    </div>
-                  </div>
-
-                  <div className="v2-service-visual-stage">
                     <GlassServiceVisual type="saas" />
                   </div>
                   
@@ -1785,27 +1750,20 @@ export default function App() {
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">[FIGMA_VARIABLES]</span>
-                    <span className="v2-service-tag">[USER_FLOWS]</span>
-                    <span className="v2-service-tag">[TELEMETRY_DASH]</span>
-                    <span className="v2-service-tag">[DATA_VIZ]</span>
+                    <span className="v2-service-tag">Figma Tokens</span>
+                    <span className="v2-service-tag">User Flows</span>
+                    <span className="v2-service-tag">Telemetry</span>
+                    <span className="v2-service-tag">Data Viz</span>
                   </div>
                 </div>
 
                 {/* CARD 02: ART DIRECTION & WEB DESIGN */}
                 <div className="v2-service-card card-glow-yellow">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-header-spec">
-                      <span className="v2-service-idx">// 02</span>
-                      <span className="v2-service-category-tag">WEB CRAFT · ART DIRECTION</span>
+                    <div className="v2-service-index-wrap">
+                      <span className="v2-service-num">02</span>
+                      <span className="v2-service-category-label">Web Craft &amp; Art</span>
                     </div>
-                    <div className="v2-service-status-node">
-                      <span className="v2-status-dot dot-yellow"></span>
-                      <span className="v2-status-label">ACTIVE_SPEC</span>
-                    </div>
-                  </div>
-
-                  <div className="v2-service-visual-stage">
                     <GlassServiceVisual type="craft" />
                   </div>
 
@@ -1822,27 +1780,20 @@ export default function App() {
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">[ART_DIRECTION]</span>
-                    <span className="v2-service-tag">[3D_SPATIAL_MOTION]</span>
-                    <span className="v2-service-tag">[EDITORIAL_TYPE]</span>
-                    <span className="v2-service-tag">[HIGH_CONVERSION]</span>
+                    <span className="v2-service-tag">Art Direction</span>
+                    <span className="v2-service-tag">Spatial Motion</span>
+                    <span className="v2-service-tag">Editorial Type</span>
+                    <span className="v2-service-tag">CRO Strategy</span>
                   </div>
                 </div>
 
                 {/* CARD 03: VIBE CODING & RAPID MVP */}
                 <div className="v2-service-card card-glow-green">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-header-spec">
-                      <span className="v2-service-idx">// 03</span>
-                      <span className="v2-service-category-tag">VIBE CODING · RAPID MVP</span>
+                    <div className="v2-service-index-wrap">
+                      <span className="v2-service-num">03</span>
+                      <span className="v2-service-category-label">Rapid MVP &amp; AI</span>
                     </div>
-                    <div className="v2-service-status-node">
-                      <span className="v2-status-dot dot-green"></span>
-                      <span className="v2-status-label">ACTIVE_SPEC</span>
-                    </div>
-                  </div>
-
-                  <div className="v2-service-visual-stage">
                     <GlassServiceVisual type="code" />
                   </div>
 
@@ -1859,27 +1810,20 @@ export default function App() {
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">[REACT_19]</span>
-                    <span className="v2-service-tag">[GOOGLE_AI_STUDIO]</span>
-                    <span className="v2-service-tag">[RAPID_PROTOTYPE]</span>
-                    <span className="v2-service-tag">[EDGE_DEPLOY]</span>
+                    <span className="v2-service-tag">React &amp; TypeScript</span>
+                    <span className="v2-service-tag">Google AI Studio</span>
+                    <span className="v2-service-tag">Rapid MVP</span>
+                    <span className="v2-service-tag">Live Deploys</span>
                   </div>
                 </div>
 
                 {/* CARD 04: DESIGN SYSTEMS & DEV HANDOFF */}
                 <div className="v2-service-card card-glow-purple">
                   <div className="v2-service-card-top">
-                    <div className="v2-service-header-spec">
-                      <span className="v2-service-idx">// 04</span>
-                      <span className="v2-service-category-tag">DESIGN SYSTEMS · HANDOFF</span>
+                    <div className="v2-service-index-wrap">
+                      <span className="v2-service-num">04</span>
+                      <span className="v2-service-category-label">Systems &amp; Dev</span>
                     </div>
-                    <div className="v2-service-status-node">
-                      <span className="v2-status-dot dot-purple"></span>
-                      <span className="v2-status-label">ACTIVE_SPEC</span>
-                    </div>
-                  </div>
-
-                  <div className="v2-service-visual-stage">
                     <GlassServiceVisual type="system" />
                   </div>
 
@@ -1896,10 +1840,10 @@ export default function App() {
                   </div>
 
                   <div className="v2-service-tags">
-                    <span className="v2-service-tag">[TOKEN_GOVERNANCE]</span>
-                    <span className="v2-service-tag">[WCAG_AAA]</span>
-                    <span className="v2-service-tag">[STORYBOOK]</span>
-                    <span className="v2-service-tag">[DEV_HANDOFF]</span>
+                    <span className="v2-service-tag">Token Engine</span>
+                    <span className="v2-service-tag">WCAG AAA</span>
+                    <span className="v2-service-tag">Storybook</span>
+                    <span className="v2-service-tag">Zero Drift</span>
                   </div>
                 </div>
               </div>
