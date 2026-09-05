@@ -21,7 +21,7 @@ import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
 import { GlassServiceVisual } from './components/ServiceGlassVisuals';
 import { FuturisticPreloader } from './components/FuturisticPreloader';
-import { FramerExperienceCard } from './components/FramerExperienceCard';
+import { CreativeTimelineExperience, TimelineExperienceItem } from './components/CreativeTimelineExperience';
 import { SymbolWatermark, SymbolGlyphIcon, SymbolLaserDivider } from './components/SymbolIllustrations';
 
 
@@ -379,6 +379,114 @@ const CaseStudy = ({
 };
 
 /* ─────────────────────────────────────────────
+   SHARED TIMELINE EXPERIENCE DATA
+───────────────────────────────────────────── */
+const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceItem[] => [
+  {
+    id: 'cactuce',
+    company: 'CACTUCE',
+    monogram: 'CT',
+    role: lang === 'fr' ? 'Product Designer' : 'Product Designer',
+    period: lang === 'fr' ? 'Octobre 2025 — Mai 2026' : 'OCT 2025 — MAY 2026',
+    yearBadge: '2025 — 2026',
+    statusBadge: lang === 'fr' ? 'Mission Récente' : 'Flagship Project',
+    tagline: 'B2B SAAS ARCHITECTURE & PROCESS OPTIMIZATION',
+    description:
+      lang === 'fr'
+        ? "Lead Product Designer chargé de la refonte UX/UI et de l'optimisation des flux critiques pour eHadj (logistique nationale) et Asset IQ (télémétrie industrielle). Définition des parcours multi-acteurs (+30 ministères), création du Design System Figma Tokens et supervision QA."
+        : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ). Designed end-to-end user flows for 30+ government agencies, establishing Figma Tokens & modular UI architecture.",
+    accentColor: 'cyan',
+    metrics: lang === 'fr' ? [
+      { value: "90%", label: "Moins d'erreurs dossier" },
+      { value: "30+", label: "Passerelles ministères" },
+      { value: "0", label: "Doublon sur le terrain" }
+    ] : [
+      { value: "90%", label: "Fewer dossier errors" },
+      { value: "30+", label: "Integrated gateways" },
+      { value: "0", label: "Duplicate field records" }
+    ],
+    tags: ['Product Design', 'Figma Tokens', 'QA Recipe', 'eHadj & Asset IQ', 'User Flows', 'Telemetry UI'],
+    highlights: lang === 'fr' ? [
+      'Refonte UX nationale multi-ministères',
+      'Système de tokens Figma enterprise-ready',
+      'Audits recette QA zéro régression'
+    ] : [
+      'Cross-agency national workflow UX',
+      'Scalable Figma enterprise token engine',
+      'Zero-regression QA handoff audits'
+    ]
+  },
+  {
+    id: 'trellix',
+    company: 'TRELLIX',
+    monogram: 'TX',
+    role: 'Lead Product Designer',
+    period: lang === 'fr' ? 'Février 2024 — Septembre 2025' : 'FEB 2024 — SEP 2025',
+    yearBadge: '2024 — 2025',
+    statusBadge: lang === 'fr' ? 'Direction Stratégique' : 'Strategic Leadership',
+    tagline: 'ENTERPRISE SAAS & PRODUCT STRATEGY LEADERSHIP',
+    description:
+      lang === 'fr'
+        ? "Direction du design produit et cadrage stratégique des fonctionnalités SaaS B2B complexes. Rédaction intégrale des PRDs, spécifications fonctionnelles & API, et mise en place de standards de livraison dev-handoff haute vélocité."
+        : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces. Authored complete PRDs, API functional specifications, and established rigorous dev-handoff protocols.",
+    accentColor: 'blue',
+    metrics: lang === 'fr' ? [
+      { value: "+50%", label: "Vélocité dev via PRDs" },
+      { value: "100%", label: "Alignement tokens & eng" },
+      { value: "B2B", label: "Architecture d'entreprise" }
+    ] : [
+      { value: "+50%", label: "Dev velocity via PRDs" },
+      { value: "100%", label: "Design-to-eng token fidelity" },
+      { value: "B2B", label: "Enterprise SaaS architecture" }
+    ],
+    tags: ['PRD Specs', 'Product Strategy', 'User Research', 'B2B SaaS', 'Dev Handoff', 'Design System'],
+    highlights: lang === 'fr' ? [
+      'Spécifications fonctionnelles PRD & API',
+      'Protocole de handoff ingénierie sans friction',
+      'Stratégie de rétention & métriques produit'
+    ] : [
+      'Full PRD & API functional specifications',
+      'Frictionless engineering handoff protocol',
+      'Product growth & retention strategy'
+    ]
+  },
+  {
+    id: 'creafix',
+    company: 'CREAFIX',
+    monogram: 'CF',
+    role: lang === 'fr' ? 'Web Designer & DA' : 'Web Designer & Art Director',
+    period: lang === 'fr' ? 'Août 2022 — Février 2024' : 'AUG 2022 — FEB 2024',
+    yearBadge: '2022 — 2024',
+    statusBadge: lang === 'fr' ? 'Craft & Motion' : 'Craft & Art Direction',
+    tagline: 'WEB ART DIRECTION & BRAND EXPERIENCE',
+    description:
+      lang === 'fr'
+        ? "Direction artistique web, typographie éditoriale et conception d'interfaces e-commerce immersives. Conception de vitrines interactives d'exception avec micro-animations 60fps et optimisation continue du taux de conversion (CRO)."
+        : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ international clients. Spearheaded editorial typography, 60fps micro-animations, and conversion funnels.",
+    accentColor: 'green',
+    metrics: lang === 'fr' ? [
+      { value: "15+", label: "Vitrines web livrées" },
+      { value: "60 FPS", label: "Micro-animations fluides" },
+      { value: "CRO", label: "Optimisation conversion" }
+    ] : [
+      { value: "15+", label: "Luxury showcase & stores" },
+      { value: "60 FPS", label: "Fluid physics & motion" },
+      { value: "CRO", label: "Conversion rate boost" }
+    ],
+    tags: ['Web Art Direction', 'Responsive UI', 'E-Commerce', 'Micro-Animations', 'CRO Strategy', 'Typography'],
+    highlights: lang === 'fr' ? [
+      '+15 vitrines et boutiques de marque livrées',
+      'Micro-animations et physique fluide 60fps',
+      'Optimisation des taux de conversion (CRO)'
+    ] : [
+      '15+ high-converting brand platforms launched',
+      'Fluid physics & 60fps micro-interactions',
+      'Conversion rate optimization (CRO) engines'
+    ]
+  }
+];
+
+/* ─────────────────────────────────────────────
    EXPERIENCES DOSSIER VIEW (V2 DARK GLASSMORPHISM)
 ───────────────────────────────────────────── */
 const ExperiencesView = ({ setCurrentView, lang = 'fr' }: { setCurrentView: any; lang?: 'en' | 'fr' }) => {
@@ -405,82 +513,8 @@ const ExperiencesView = ({ setCurrentView, lang = 'fr' }: { setCurrentView: any;
           </div>
         </div>
 
-        <div className="framer-experience-container" style={{ margin: '40px auto 0 auto' }}>
-          {/* 01. CACTUCE */}
-          <FramerExperienceCard 
-            company="CACTUCE"
-            monogram="CT"
-            role={lang === 'fr' ? 'Product Designer' : 'Product Designer'}
-            date={lang === 'fr' ? 'Octobre 2025 — Mai 2026' : 'OCT 2025 — MAY 2026'}
-            tagline="B2B SAAS ARCHITECTURE & PROCESS OPTIMIZATION"
-            description={
-              lang === 'fr'
-                ? "Lead Product Designer chargé de la refonte UX/UI et de l'optimisation des flux critiques pour eHadj (logistique nationale) et Asset IQ (télémétrie industrielle). Définition des parcours multi-acteurs, création du Design System Figma Tokens et supervision QA."
-                : "Lead Product Designer optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ). Designed modular UI architecture and supervised complete QA recipe audits."
-            }
-            accentColor="cyan"
-            metrics={lang === 'fr' ? [
-              { value: "90%", label: "Moins d'erreurs dossier" },
-              { value: "30+", label: "Passerelles ministères" },
-              { value: "0", label: "Doublon sur le terrain" }
-            ] : [
-              { value: "90%", label: "Fewer dossier errors" },
-              { value: "30+", label: "Integrated gateways" },
-              { value: "0", label: "Duplicate field records" }
-            ]}
-            tags={['Product Design', 'Figma Tokens', 'QA Recipe', 'eHadj & Asset IQ', 'User Flows', 'Telemetry UI']}
-          />
-
-          {/* 02. TRELLIX */}
-          <FramerExperienceCard 
-            company="TRELLIX"
-            monogram="TX"
-            role="Lead Product Designer"
-            date={lang === 'fr' ? 'Février 2024 — Septembre 2025' : 'FEB 2024 — SEP 2025'}
-            tagline="ENTERPRISE SAAS & PRODUCT STRATEGY LEADERSHIP"
-            description={
-              lang === 'fr'
-                ? "Direction du design produit et cadrage stratégique des fonctionnalités SaaS B2B complexes. Rédaction intégrale des PRDs, spécifications fonctionnelles & API, et mise en place de standards de livraison dev-handoff haute vélocité."
-                : "Led product design operations and SaaS strategy, translating complex enterprise requirements into high-performing interfaces. Authored complete PRDs, functional specs, and established rigorous dev-handoff protocols."
-            }
-            accentColor="blue"
-            metrics={lang === 'fr' ? [
-              { value: "+50%", label: "Vélocité dev via PRDs" },
-              { value: "100%", label: "Alignement tokens & eng" },
-              { value: "B2B", label: "Architecture d'entreprise" }
-            ] : [
-              { value: "+50%", label: "Dev speed via PRD specs" },
-              { value: "100%", label: "Design-eng token fidelity" },
-              { value: "B2B", label: "Enterprise SaaS systems" }
-            ]}
-            tags={['PRD Specs', 'Product Strategy', 'User Research', 'B2B SaaS', 'Dev Handoff', 'Design System']}
-          />
-
-          {/* 03. CREAFIX */}
-          <FramerExperienceCard 
-            company="CREAFIX"
-            monogram="CF"
-            role={lang === 'fr' ? 'Web Designer & DA' : 'Web Designer & Art Director'}
-            date={lang === 'fr' ? 'Août 2022 — Février 2024' : 'AUG 2022 — FEB 2024'}
-            tagline="WEB ART DIRECTION & BRAND EXPERIENCE"
-            description={
-              lang === 'fr'
-                ? "Direction artistique web, typographie éditoriale et conception d'interfaces e-commerce immersives. Réalisation de vitrines interactives avec micro-animations 60fps et optimisation continue du taux de conversion (CRO)."
-                : "Crafted luxury responsive websites, custom e-commerce experiences, and brand visual systems for 15+ international clients. Spearheaded editorial typography, 60fps micro-animations, and conversion funnels."
-            }
-            accentColor="green"
-            metrics={lang === 'fr' ? [
-              { value: "15+", label: "Vitrines web livrées" },
-              { value: "60 FPS", label: "Micro-animations fluides" },
-              { value: "CRO", label: "Optimisation conversion" }
-            ] : [
-              { value: "15+", label: "Showcases & web stores" },
-              { value: "60 FPS", label: "Fluid motion physics" },
-              { value: "CRO", label: "Conversion rate boost" }
-            ]}
-            tags={['Web Art Direction', 'Responsive UI', 'E-Commerce', 'Micro-Animations', 'CRO Strategy', 'Typography']}
-          />
-        </div>
+        {/* Dynamic Creative Interactive Timeline */}
+        <CreativeTimelineExperience items={getTimelineExperiences(lang)} lang={lang} />
       </div>
     </div>
   );
@@ -2827,82 +2861,8 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="framer-experience-container">
-                {/* ROLE 01: CACTUCE */}
-                <FramerExperienceCard 
-                  company="CACTUCE"
-                  monogram="CT"
-                  role={lang === 'fr' ? 'Product Designer' : 'Product Designer'}
-                  date={lang === 'fr' ? 'OCT 2025 — MAI 2026' : 'OCT 2025 — MAY 2026'}
-                  tagline="B2B SAAS ARCHITECTURE & PROCESS OPTIMIZATION"
-                  description={
-                    lang === 'fr'
-                      ? "Lead Product Designer chargé de la refonte UX/UI et de l'optimisation des flux critiques pour eHadj (logistique nationale) et Asset IQ (télémétrie industrielle). Définition des parcours multi-acteurs (+30 ministères), création du Design System Figma Tokens et recette QA."
-                      : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ). Designed end-to-end user flows for 30+ government agencies, establishing Figma Tokens & modular UI architecture."
-                  }
-                  accentColor="cyan"
-                  metrics={lang === 'fr' ? [
-                    { value: "90%", label: "Moins d'erreurs dossier" },
-                    { value: "30+", label: "Passerelles ministères" },
-                    { value: "0", label: "Doublon sur le terrain" }
-                  ] : [
-                    { value: "90%", label: "Fewer dossier errors" },
-                    { value: "30+", label: "Integrated gateways" },
-                    { value: "0", label: "Duplicate field records" }
-                  ]}
-                  tags={['Product Design', 'Figma Tokens', 'QA Recipe', 'eHadj & Asset IQ', 'User Flows', 'Telemetry UI']}
-                />
-
-                {/* ROLE 02: TRELLIX */}
-                <FramerExperienceCard 
-                  company="TRELLIX"
-                  monogram="TX"
-                  role="Lead Product Designer"
-                  date={lang === 'fr' ? 'FÉV 2024 — SEP 2025' : 'FEB 2024 — SEP 2025'}
-                  tagline="ENTERPRISE SAAS & PRODUCT STRATEGY LEADERSHIP"
-                  description={
-                    lang === 'fr'
-                      ? "Direction du design produit et cadrage stratégique des fonctionnalités SaaS B2B complexes. Rédaction intégrale des PRDs, spécifications fonctionnelles & API, et mise en place de standards de livraison dev-handoff haute vélocité."
-                      : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces. Authored complete PRDs, API functional specifications, and established rigorous dev-handoff protocols."
-                  }
-                  accentColor="blue"
-                  metrics={lang === 'fr' ? [
-                    { value: "+50%", label: "Vélocité dev via PRDs" },
-                    { value: "100%", label: "Alignement tokens & eng" },
-                    { value: "B2B", label: "Architecture d'entreprise" }
-                  ] : [
-                    { value: "+50%", label: "Dev velocity via PRDs" },
-                    { value: "100%", label: "Design-to-eng token fidelity" },
-                    { value: "B2B", label: "Enterprise SaaS architecture" }
-                  ]}
-                  tags={['PRD Specs', 'Product Strategy', 'User Research', 'B2B SaaS', 'Dev Handoff', 'Design System']}
-                />
-
-                {/* ROLE 03: CREAFIX */}
-                <FramerExperienceCard 
-                  company="CREAFIX"
-                  monogram="CF"
-                  role={lang === 'fr' ? 'Web Designer & DA' : 'Web Designer & Art Director'}
-                  date={lang === 'fr' ? 'AOÛT 2022 — FÉV 2024' : 'AUG 2022 — FEB 2024'}
-                  tagline="WEB ART DIRECTION & BRAND EXPERIENCE"
-                  description={
-                    lang === 'fr'
-                      ? "Direction artistique web, typographie éditoriale et conception d'interfaces e-commerce immersives. Conception de vitrines interactives d'exception avec micro-animations 60fps et optimisation continue du taux de conversion (CRO)."
-                      : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ international clients. Spearheaded editorial typography, 60fps micro-animations, and conversion funnels."
-                  }
-                  accentColor="green"
-                  metrics={lang === 'fr' ? [
-                    { value: "15+", label: "Vitrines web livrées" },
-                    { value: "60 FPS", label: "Micro-animations fluides" },
-                    { value: "CRO", label: "Optimisation conversion" }
-                  ] : [
-                    { value: "15+", label: "Luxury showcase & stores" },
-                    { value: "60 FPS", label: "Fluid physics & motion" },
-                    { value: "CRO", label: "Conversion rate boost" }
-                  ]}
-                  tags={['Web Art Direction', 'Responsive UI', 'E-Commerce', 'Micro-Animations', 'CRO Strategy', 'Typography']}
-                />
-              </div>
+              {/* Dynamic Creative Interactive Timeline */}
+              <CreativeTimelineExperience items={getTimelineExperiences(lang)} lang={lang} />
             </section>
 
             {/* Laser Divider 7 */}
