@@ -50,7 +50,6 @@ export const FuturisticPreloader: React.FC<{ onComplete?: () => void }> = ({ onC
     <div className={`futuristic-preloader-overlay ${isExiting ? 'preloader-exit' : ''}`}>
       {/* Ambient background spatial aura */}
       <div className="preloader-ambient-glow" />
-      <div className="preloader-grid-bg" />
 
       <div className="preloader-content-stage">
         {/* 3D Blueprint Glass Symbol */}
@@ -211,7 +210,7 @@ export const FuturisticPreloader: React.FC<{ onComplete?: () => void }> = ({ onC
         {/* Telemetry Progress Info */}
         <div className="preloader-telemetry">
           <div className="preloader-counter-row">
-            <span className="preloader-os-tag">TALÉSMAN // SPATIAL_CORE</span>
+            <span className="preloader-os-tag">TALESMAN PORTFOLIO</span>
             <span className="preloader-percentage">{progress.toString().padStart(3, '0')}%</span>
           </div>
 
