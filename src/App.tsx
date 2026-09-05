@@ -17,7 +17,9 @@ import {
   Quote,
   ShieldCheck,
   Sparkles,
-  Workflow
+  Workflow,
+  LayoutGrid,
+  Maximize2
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
@@ -29,31 +31,12 @@ import { FuturisticPreloader } from './components/FuturisticPreloader';
 import { CreativeTimelineExperience, TimelineExperienceItem } from './components/CreativeTimelineExperience';
 import { SymbolWatermark, SymbolGlyphIcon, SymbolLaserDivider } from './components/SymbolIllustrations';
 import { TextReveal, WordByWordReveal } from './components/TextReveal';
+import { ScrollToTopButton } from './components/ScrollToTopButton';
 
 
 
 
 
-const ProjectHighlightBadge = ({
-  tag,
-  value,
-  variant = 'cyan'
-}: {
-  tag?: string;
-  value: string;
-  variant?: 'cyan' | 'purple' | 'emerald';
-}) => {
-  return (
-    <div className={`v2-project-highlight-badge badge-${variant}`}>
-      <div className="v2-highlight-pulse-wrap">
-        <span className="v2-highlight-pulse-dot" />
-        <span className="v2-highlight-pulse-ring" />
-      </div>
-      {tag && <span className="v2-highlight-tag">{tag}</span>}
-      <span className="v2-highlight-text">{value}</span>
-    </div>
-  );
-};
 
 const LangSwitchControl = ({ lang, onToggle, isMobile }: { lang: 'en' | 'fr'; onToggle: () => void; isMobile?: boolean }) => (
   <button 
@@ -571,50 +554,50 @@ const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceIte
     id: 'cactuce',
     company: 'CACTUCE',
     monogram: 'CT',
-    role: lang === 'fr' ? 'Product Designer' : 'Product Designer',
+    role: 'Product Designer',
     period: lang === 'fr' ? 'Octobre 2025 — Mai 2026' : 'OCT 2025 — MAY 2026',
     yearBadge: '2025 — 2026',
-    statusBadge: lang === 'fr' ? 'Mission Récente' : 'Flagship Project',
-    tagline: 'B2B SAAS ARCHITECTURE & PROCESS OPTIMIZATION',
+    statusBadge: lang === 'fr' ? 'eHadj & Asset IQ · GovTech & SaaS' : 'eHadj & Asset IQ · GovTech & SaaS',
+    tagline: lang === 'fr' ? 'ORCHESTRATION LOGISTIQUE NATIONALE & TÉLÉMÉTRIE INDUSTRIELLE' : 'NATIONAL LOGISTICS ORCHESTRATION & INDUSTRIAL TELEMETRY',
     description:
       lang === 'fr'
-        ? "Lead Product Designer chargé de la refonte UX/UI et de l'optimisation des flux critiques pour eHadj (logistique nationale) et Asset IQ (télémétrie industrielle). Définition des parcours multi-acteurs (+30 ministères), création du Design System Figma Tokens et supervision QA."
-        : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ). Designed end-to-end user flows for 30+ government agencies, establishing Figma Tokens & modular UI architecture.",
+        ? "Lead Product Designer sur les deux plateformes phares : eHadj (dématérialisation et sécurisation du pèlerinage national pour plus de 30 ministères et agences agréées) et Asset IQ (gouvernance et télémétrie de flotte d'équipements industriels). Conception des flux NPI, du Design System multi-thème et suivi de la recette technique."
+        : "Lead Product Designer on two flagship enterprise platforms: eHadj (national pilgrim orchestration across 30+ government ministries and private travel agencies) and Asset IQ (industrial fleet governance and equipment telemetry). Designed identity-first NPI flows, established scalable Figma tokens, and supervised engineering QA.",
     accentColor: 'cyan',
-    tags: ['Product Design', 'Figma Tokens', 'QA Recipe', 'eHadj & Asset IQ', 'User Flows', 'Telemetry UI'],
+    tags: ['eHadj (GovTech)', 'Asset IQ (IoT)', 'Figma Tokens', 'Parcours NPI', 'Recette QA', 'Architecture SaaS'],
     highlights: lang === 'fr' ? [
-      'Refonte UX nationale multi-ministères',
-      'Système de tokens Figma enterprise-ready',
-      'Audits recette QA zéro régression'
+      'eHadj : Parcours NPI, validation Santé ➔ Banques ➔ Visas',
+      'Asset IQ : Inventaire QR code & télémétrie de flotte en 3 étapes',
+      'Design System : Tokens sémantiques Figma & recette QA avec les devs'
     ] : [
-      'Cross-agency national workflow UX',
-      'Scalable Figma enterprise token engine',
-      'Zero-regression QA handoff audits'
+      'eHadj: NPI identity flow & Health ➔ Bank ➔ Visa sequential workflow',
+      'Asset IQ: 3-step field equipment QR capture & real-time telemetry',
+      'Design System: Semantic Figma tokens & zero-regression dev QA'
     ]
   },
   {
     id: 'trellix',
     company: 'TRELLIX',
     monogram: 'TX',
-    role: 'Lead Product Designer',
+    role: lang === 'fr' ? 'Chef de Projet Intégrations & Product Designer' : 'Integration PM & Product Designer',
     period: lang === 'fr' ? 'Février 2024 — Septembre 2025' : 'FEB 2024 — SEP 2025',
     yearBadge: '2024 — 2025',
-    statusBadge: lang === 'fr' ? 'Direction Stratégique' : 'Strategic Leadership',
-    tagline: 'ENTERPRISE SAAS & PRODUCT STRATEGY LEADERSHIP',
+    statusBadge: lang === 'fr' ? 'Beans · SaaS B2B & Écosystème' : 'Beans · B2B SaaS & Ecosystem',
+    tagline: lang === 'fr' ? 'PLATEFORME BEANS (TRYBEANS.COM) : HUB D\'INTÉGRATIONS & ENGAGEMENT' : 'BEANS PLATFORM (TRYBEANS.COM): INTEGRATION HUB & ENGAGEMENT',
     description:
       lang === 'fr'
-        ? "Direction du design produit et cadrage stratégique des fonctionnalités SaaS B2B complexes. Rédaction intégrale des PRDs, spécifications fonctionnelles & API, et mise en place de standards de livraison dev-handoff haute vélocité."
-        : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces. Authored complete PRDs, API functional specifications, and established rigorous dev-handoff protocols.",
+        ? "Chef de Projet Intégrations & Product Designer sur la plateforme SaaS Beans (trybeans.com). Pilotage de A à Z du hub de connecteurs tiers : rédaction des PRDs et spécifications API, design des flux d'activation en 2 clics et direction visuelle des Feature Images. Supervision des sprints dev et recette QA sur 10 intégrations majeures (Shopify, Klaviyo, Instagram, POS, WooCommerce...)."
+        : "Integration Project Manager & Product Designer on Beans (trybeans.com), an enterprise customer loyalty SaaS. Led the third-party connector hub from audit to rollout: authored comprehensive PRDs & API specs, designed 2-click activation UX, created app store feature images, and supervised dev sprints with QA for 10 major integrations (Shopify, Klaviyo, Instagram, POS, WooCommerce...).",
     accentColor: 'blue',
-    tags: ['PRD Specs', 'Product Strategy', 'User Research', 'B2B SaaS', 'Dev Handoff', 'Design System'],
+    tags: ['Beans (trybeans.com)', 'Hub d\'Intégrations', 'Cadrage PRD & APIs', 'Connecteurs Shopify & POS', 'Supervision Dev & QA', 'SaaS Loyalty'],
     highlights: lang === 'fr' ? [
-      'Spécifications fonctionnelles PRD & API',
-      'Protocole de handoff ingénierie sans friction',
-      'Stratégie de rétention & métriques produit'
+      'Beans : 10 connecteurs tiers majeurs livrés (Shopify, Klaviyo, POS, Instagram)',
+      'Rédaction des PRDs & spécifications API réduisant les temps de dev de 50%',
+      'UX Plug & Play en 2 clics, visuels Feature Images & recette QA sans bogue'
     ] : [
-      'Full PRD & API functional specifications',
-      'Frictionless engineering handoff protocol',
-      'Product growth & retention strategy'
+      'Beans: 10 major third-party connectors shipped (Shopify, Klaviyo, POS, Instagram)',
+      'Comprehensive PRDs & API specs cutting engineering development cycles by 50%',
+      'Plug & Play 2-click activation UX, app store feature images & zero-bug QA'
     ]
   },
   {
@@ -624,22 +607,22 @@ const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceIte
     role: lang === 'fr' ? 'Web Designer & DA' : 'Web Designer & Art Director',
     period: lang === 'fr' ? 'Août 2022 — Février 2024' : 'AUG 2022 — FEB 2024',
     yearBadge: '2022 — 2024',
-    statusBadge: lang === 'fr' ? 'Craft & Motion' : 'Craft & Art Direction',
-    tagline: 'WEB ART DIRECTION & BRAND EXPERIENCE',
+    statusBadge: lang === 'fr' ? 'Resthy & Terroir Bénin · E-Commerce' : 'Resthy & Terroir Bénin · E-Commerce',
+    tagline: lang === 'fr' ? 'DIRECTION ARTISTIQUE WEB, E-COMMERCE & EXPÉRIENCES DE MARQUE' : 'WEB ART DIRECTION, E-COMMERCE & BRAND EXPERIENCES',
     description:
       lang === 'fr'
-        ? "Direction artistique web, typographie éditoriale et conception d'interfaces e-commerce immersives. Conception de vitrines interactives d'exception avec micro-animations 60fps et optimisation continue du taux de conversion (CRO)."
-        : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ international clients. Spearheaded editorial typography, 60fps micro-animations, and conversion funnels.",
+        ? "Web Designer & Directeur Artistique en charge de la conception d'expériences digitales immersives et de boutiques e-commerce pour des marques phares telles que Resthy Pâtisseries et Terroir Bénin. Création d'identités visuelles soignées, structuration de catalogues de produits, micro-interactions 60fps et optimisation continue des tunnels de conversion (CRO)."
+        : "Web Designer & Art Director responsible for crafting immersive digital showcases and custom e-commerce experiences for prominent brands including Resthy Pâtisseries and Terroir Bénin. Led brand art direction, catalog UX structuring, 60fps responsive micro-interactions, and conversion-optimized checkout funnels.",
     accentColor: 'green',
-    tags: ['Web Art Direction', 'Responsive UI', 'E-Commerce', 'Micro-Animations', 'CRO Strategy', 'Typography'],
+    tags: ['Resthy Pâtisseries', 'Terroir Bénin', 'Direction Artistique Web', 'E-Commerce Sur-Mesure', 'Micro-Animations 60fps', 'Optimisation CRO'],
     highlights: lang === 'fr' ? [
-      '+15 vitrines et boutiques de marque livrées',
-      'Micro-animations et physique fluide 60fps',
-      'Optimisation des taux de conversion (CRO)'
+      'Resthy Pâtisseries : Boutique en ligne sur mesure & mise en valeur gourmande',
+      'Terroir Bénin : Expérience e-commerce de produits locaux & tunnel d\'achat fluide',
+      'Direction artistique web soignée, micro-animations 60fps & optimisation CRO'
     ] : [
-      '15+ high-converting brand platforms launched',
-      'Fluid physics & 60fps micro-interactions',
-      'Conversion rate optimization (CRO) engines'
+      'Resthy Pâtisseries: Custom online boutique & high-end appetizing showcase',
+      'Terroir Bénin: Authentic local goods e-commerce & friction-free checkout',
+      'Refined web art direction, 60fps micro-interactions & CRO optimization'
     ]
   }
 ];
@@ -859,13 +842,15 @@ const ServicesView = ({
 const AllProjectsView = ({ 
   setCurrentView, 
   setIsAboutModalOpen: _setIsAboutModalOpen,
+  setSelectedGraphic,
   lang 
 }: { 
   setCurrentView: any; 
   setIsAboutModalOpen: any;
+  setSelectedGraphic?: any;
   lang: 'en' | 'fr'; 
 }) => {
-  const [activeSection, setActiveSection] = useState<string>('saas');
+  const [activeSection, setActiveSection] = useState<string>('all');
 
   const categories = [
     {
@@ -904,6 +889,86 @@ const AllProjectsView = ({
         { id: 'sagana', title: 'Sagana Agency', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B' },
         { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#DC2626' },
         { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479' },
+      ]
+    },
+    {
+      id: 'graphic',
+      label: 'Graphic Design',
+      desc: lang === 'fr'
+        ? "Directions artistiques singulières, affiches éditoriales et campagnes événementielles grand format."
+        : "Distinctive art direction, editorial posters, and high-impact large-format brand campaigns.",
+      projects: [
+        {
+          id: 'graphic-posters',
+          title: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+          tag: 'Editorial & Print 300dpi',
+          date: '2025',
+          img: '/imgs/graphics/graphic_2souza_barman.jpg',
+          color: '#8B5CF6',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/graphic_2souza_barman.jpg',
+            title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
+            category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+            slides: [
+              '/imgs/graphics/graphic_2souza_barman.jpg',
+              '/imgs/graphics/graphic_strategie_arena_red.jpg',
+              '/imgs/graphics/graphic_aidarag_tennis.jpg'
+            ],
+            currentSlideIndex: 0
+          }
+        },
+        {
+          id: 'graphic-carrousels',
+          title: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+          tag: 'Storytelling & Growth',
+          date: '2026',
+          img: '/imgs/graphics/carrousels/c2/cover.png',
+          color: '#EC4899',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/carrousels/c2/cover.png',
+            title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"',
+            category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+            slides: [
+              '/imgs/graphics/carrousels/c2/cover.png',
+              '/imgs/graphics/carrousels/c2/1.png',
+              '/imgs/graphics/carrousels/c2/2.png',
+              '/imgs/graphics/carrousels/c2/3.png',
+              '/imgs/graphics/carrousels/c2/4.png',
+              '/imgs/graphics/carrousels/c2/5.png',
+              '/imgs/graphics/carrousels/c2/6.png',
+              '/imgs/graphics/carrousels/c2/7.png',
+              '/imgs/graphics/carrousels/c4/1.png',
+              '/imgs/graphics/carrousels/c4/2.png',
+              '/imgs/graphics/carrousels/c4/3.png',
+              '/imgs/graphics/carrousels/c4/4.png',
+              '/imgs/graphics/carrousels/c4/5.png',
+              '/imgs/graphics/carrousels/c4/6.png',
+              '/imgs/graphics/carrousels/c4/7.png'
+            ],
+            currentSlideIndex: 0
+          }
+        },
+        {
+          id: 'graphic-billboards',
+          title: lang === 'fr' ? 'Campagnes & Billboards' : 'Campaigns & Billboards',
+          tag: 'Brand Identity & Visuals',
+          date: '2025',
+          img: '/imgs/graphics/graphic_dada_billboard.jpg',
+          color: '#F59E0B',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/graphic_dada_billboard.jpg',
+            title: 'DADA Management — Affiche Billboard Challenge 30 Jours',
+            category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
+            slides: [
+              '/imgs/graphics/graphic_dada_billboard.jpg',
+              '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+            ],
+            currentSlideIndex: 0
+          }
+        },
       ]
     },
   ];
@@ -945,9 +1010,9 @@ const AllProjectsView = ({
             SaaS & B2B
           </button>
           <div className="v2-apv-nav-sub">
-            <span>Asset IQ</span>
-            <span>eHadj</span>
-            <span>Beans</span>
+            <span onClick={() => setCurrentView('asset-iq')}>Asset IQ</span>
+            <span onClick={() => setCurrentView('ehadj')}>eHadj</span>
+            <span onClick={() => setCurrentView('beans')}>Beans</span>
           </div>
 
           <button
@@ -957,8 +1022,8 @@ const AllProjectsView = ({
             Mobile UX
           </button>
           <div className="v2-apv-nav-sub">
-            <span>Vortex</span>
-            <span>Sport Advisor</span>
+            <span onClick={() => setCurrentView('vortex')}>Vortex</span>
+            <span onClick={() => setCurrentView('sport-advisor')}>Sport Advisor</span>
           </div>
 
           <button
@@ -968,26 +1033,87 @@ const AllProjectsView = ({
             Web & Branding
           </button>
           <div className="v2-apv-nav-sub">
-            <span>Dolce Riviera</span>
-            <span>Strategy Arena</span>
-            <span>Truvox Studio</span>
-            <span>Sagana Agency</span>
-            <span>Tavares & Visuals</span>
-            <span>The Refuge</span>
+            <span onClick={() => setCurrentView('dolce-riviera')}>Dolce Riviera</span>
+            <span onClick={() => setCurrentView('strategy-arena')}>Strategy Arena</span>
+            <span onClick={() => setCurrentView('truvox')}>Truvox Studio</span>
+            <span onClick={() => setCurrentView('sagana')}>Sagana Agency</span>
+            <span onClick={() => setCurrentView('tavares')}>Tavares & Visuals</span>
+            <span onClick={() => setCurrentView('the-refuge')}>The Refuge</span>
           </div>
 
           <button
-            className="v2-apv-nav-item"
-            onClick={() => setCurrentView('experiences')}
+            className={`v2-apv-nav-item ${activeSection === 'graphic' ? 'is-active' : ''}`}
+            onClick={() => setActiveSection('graphic')}
           >
-            {lang === 'fr' ? 'Expériences' : 'Experiences'}
+            Graphic Design
           </button>
-          <button
-            className="v2-apv-nav-item"
-            onClick={() => setCurrentView('services')}
-          >
-            Services
-          </button>
+          <div className="v2-apv-nav-sub">
+            <span onClick={() => {
+              setActiveSection('graphic');
+              if (setSelectedGraphic) {
+                setSelectedGraphic({
+                  src: '/imgs/graphics/graphic_2souza_barman.jpg',
+                  title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
+                  category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+                  slides: [
+                    '/imgs/graphics/graphic_2souza_barman.jpg',
+                    '/imgs/graphics/graphic_strategie_arena_red.jpg',
+                    '/imgs/graphics/graphic_aidarag_tennis.jpg'
+                  ],
+                  currentSlideIndex: 0
+                });
+              }
+            }}>
+              {lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}
+            </span>
+            <span onClick={() => {
+              setActiveSection('graphic');
+              if (setSelectedGraphic) {
+                setSelectedGraphic({
+                  src: '/imgs/graphics/carrousels/c2/cover.png',
+                  title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"',
+                  category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+                  slides: [
+                    '/imgs/graphics/carrousels/c2/cover.png',
+                    '/imgs/graphics/carrousels/c2/1.png',
+                    '/imgs/graphics/carrousels/c2/2.png',
+                    '/imgs/graphics/carrousels/c2/3.png',
+                    '/imgs/graphics/carrousels/c2/4.png',
+                    '/imgs/graphics/carrousels/c2/5.png',
+                    '/imgs/graphics/carrousels/c2/6.png',
+                    '/imgs/graphics/carrousels/c2/7.png',
+                    '/imgs/graphics/carrousels/c4/1.png',
+                    '/imgs/graphics/carrousels/c4/2.png',
+                    '/imgs/graphics/carrousels/c4/3.png',
+                    '/imgs/graphics/carrousels/c4/4.png',
+                    '/imgs/graphics/carrousels/c4/5.png',
+                    '/imgs/graphics/carrousels/c4/6.png',
+                    '/imgs/graphics/carrousels/c4/7.png'
+                  ],
+                  currentSlideIndex: 0
+                });
+              }
+            }}>
+              {lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels'}
+            </span>
+            <span onClick={() => {
+              setActiveSection('graphic');
+              if (setSelectedGraphic) {
+                setSelectedGraphic({
+                  src: '/imgs/graphics/graphic_dada_billboard.jpg',
+                  title: 'DADA Management — Affiche Billboard Challenge 30 Jours',
+                  category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
+                  slides: [
+                    '/imgs/graphics/graphic_dada_billboard.jpg',
+                    '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+                  ],
+                  currentSlideIndex: 0
+                });
+              }
+            }}>
+              {lang === 'fr' ? 'Campagnes & Billboards' : 'Campaigns & Billboards'}
+            </span>
+          </div>
         </nav>
       </aside>
 
@@ -998,8 +1124,8 @@ const AllProjectsView = ({
           <h1 className="v2-apv-page-title">{lang === 'fr' ? 'Portfolio' : 'Portfolio'}</h1>
           <p className="v2-apv-page-desc">
             {lang === 'fr'
-              ? `Une sélection de ${allCount} projets — SaaS enterprise, applications mobiles, directions artistiques web et portails humanitaires. Chaque projet reflète une approche centrée sur l'utilisateur, des décisions d'architecture rigoureuses et une exécution visuelle premium.`
-              : `A curated selection of ${allCount} projects — enterprise SaaS, mobile apps, web art direction and humanitarian portals. Each project reflects a user-first approach, rigorous architecture decisions and premium visual execution.`}
+              ? `Une sélection de ${allCount} projets — SaaS enterprise, applications mobiles, directions artistiques web, affiches et carrousels. Chaque projet reflète une approche centrée sur l'utilisateur, des décisions d'architecture rigoureuses et une exécution visuelle premium.`
+              : `A curated selection of ${allCount} projects — enterprise SaaS, mobile apps, web art direction, posters and carousels. Each project reflects a user-first approach, rigorous architecture decisions and premium visual execution.`}
           </p>
         </div>
 
@@ -1012,17 +1138,23 @@ const AllProjectsView = ({
             </div>
 
             <div className="v2-apv-grid">
-              {cat.projects.map((proj) => (
+              {cat.projects.map((proj: any) => (
                 <div
                   key={proj.id}
                   className="v2-apv-card"
-                  onClick={() => setCurrentView(proj.id)}
+                  onClick={() => {
+                    if (proj.isGraphic && proj.graphicData && setSelectedGraphic) {
+                      setSelectedGraphic(proj.graphicData);
+                    } else {
+                      setCurrentView(proj.id);
+                    }
+                  }}
                 >
                   <div className="v2-apv-card-media">
                     <img src={proj.img} alt={proj.title} />
                     <span className="v2-apv-card-year">{proj.date}</span>
                     <div className="v2-apv-card-hover-overlay">
-                      <span>{lang === 'fr' ? 'Voir le projet →' : 'View project →'}</span>
+                      <span>{proj.isGraphic ? (lang === 'fr' ? 'Voir visuels →' : 'View visuals →') : (lang === 'fr' ? 'Voir le projet →' : 'View project →')}</span>
                     </div>
                   </div>
                   <div className="v2-apv-card-body">
@@ -1033,10 +1165,17 @@ const AllProjectsView = ({
                       <span className="v2-apv-card-tag" style={{ color: proj.color }}>{proj.tag}</span>
                       <button
                         className="v2-apv-card-link"
-                        onClick={(e) => { e.stopPropagation(); setCurrentView(proj.id); }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (proj.isGraphic && proj.graphicData && setSelectedGraphic) {
+                            setSelectedGraphic(proj.graphicData);
+                          } else {
+                            setCurrentView(proj.id);
+                          }
+                        }}
                       >
                         <ExternalLink size={12} />
-                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                        <span>{proj.isGraphic ? (lang === 'fr' ? 'Galerie' : 'Gallery') : (lang === 'fr' ? 'Étude de cas' : 'Case Study')}</span>
                       </button>
                     </div>
                   </div>
@@ -1056,13 +1195,42 @@ const AllProjectsView = ({
 ───────────────────────────────────────────── */
 const ConnectAndFooterSection = ({ 
   setCurrentView, 
-  setIsAboutModalOpen, 
-  lang 
+  setIsAboutModalOpen: _setIsAboutModalOpen, 
+  lang,
+  scrollToSection
 }: { 
   setCurrentView: any; 
   setIsAboutModalOpen: any; 
   lang: 'en' | 'fr'; 
+  scrollToSection?: (sectionId: string) => void;
 }) => {
+  const handleNavClick = (sectionId: string) => {
+    if (scrollToSection) {
+      scrollToSection(sectionId);
+    } else {
+      const elem = document.getElementById(sectionId);
+      if (elem) {
+        const navOffset = 80;
+        const elementPosition = elem.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: Math.max(0, elementPosition - navOffset), behavior: 'smooth' });
+      } else {
+        setCurrentView('home');
+        setTimeout(() => {
+          if (sectionId === 'hero' || sectionId === 'home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const el = document.getElementById(sectionId);
+            if (el) {
+              const navOffset = 80;
+              const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+              window.scrollTo({ top: Math.max(0, elementPosition - navOffset), behavior: 'smooth' });
+            }
+          }
+        }, 350);
+      }
+    }
+  };
+
   return (
     <footer id="contact" className="v2-connect-reference-section scroll-reveal">
       {/* Background ambient glow */}
@@ -1073,7 +1241,7 @@ const ConnectAndFooterSection = ({
         <div className="v2-reference-footer-grid">
           {/* Logo / Monogram Col */}
           <div className="v2-ref-footer-brand">
-            <div className="v2-ref-monogram" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="v2-ref-monogram" onClick={() => handleNavClick('hero')}>
               <svg width="40" height="40" viewBox="0 0 280 290" fill="none">
                 <path 
                   d="M 95 100 A 45 45 0 0 1 185 100 A 45 45 0 0 1 185 190 A 45 45 0 0 1 95 190 A 45 45 0 0 1 95 100 Z M 140 100 A 45 45 0 0 0 185 145 A 45 45 0 0 0 140 190 A 45 45 0 0 0 95 145 A 45 45 0 0 0 140 100 Z" 
@@ -1092,20 +1260,27 @@ const ConnectAndFooterSection = ({
           <div className="v2-ref-footer-col">
             <span className="v2-ref-col-title">Navigation</span>
             <div className="v2-ref-col-links">
-              <a href="#home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+              <a href="#hero" onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
                 {lang === 'fr' ? 'Accueil' : 'Home'}
               </a>
-              <span onClick={() => setIsAboutModalOpen(true)}>
+              <a href="#about-me" onClick={(e) => { e.preventDefault(); handleNavClick('about-me'); }}>
                 {lang === 'fr' ? 'À propos' : 'About Me'}
-              </span>
-              <a href="#graphic-design">
-                {lang === 'fr' ? 'Créations' : 'Designs'}
               </a>
-              <span onClick={() => setCurrentView('services')}>Services</span>
-              <span onClick={() => setCurrentView('all-projects')}>Portfolio</span>
-              <span onClick={() => setCurrentView('experiences')}>
-                {lang === 'fr' ? 'Expériences' : 'Experiences'}
-              </span>
+              <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }}>
+                Services
+              </a>
+              <a href="#webdesign" onClick={(e) => { e.preventDefault(); handleNavClick('webdesign'); }}>
+                {lang === 'fr' ? 'Projets' : 'Projects'}
+              </a>
+              <a href="#graphic-design" onClick={(e) => { e.preventDefault(); handleNavClick('graphic-design'); }}>
+                {lang === 'fr' ? 'Graphisme' : 'Graphic Design'}
+              </a>
+              <a href="#career" onClick={(e) => { e.preventDefault(); handleNavClick('career'); }}>
+                {lang === 'fr' ? 'Parcours' : 'Career'}
+              </a>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>
+                Contact
+              </a>
             </div>
           </div>
 
@@ -1271,6 +1446,32 @@ const AllProjectsModal = ({
 };
 
 /* ─────────────────────────────────────────────
+   CARROUSEL SLIDE COLLECTIONS & VISUAL CONSTANTS
+───────────────────────────────────────────── */
+const CARROUSEL_4_SLIDES = [
+  '/imgs/graphics/carrousels/c4/1.png',
+  '/imgs/graphics/carrousels/c4/2.png',
+  '/imgs/graphics/carrousels/c4/3.png',
+  '/imgs/graphics/carrousels/c4/4.png',
+  '/imgs/graphics/carrousels/c4/5.png',
+  '/imgs/graphics/carrousels/c4/6.png',
+  '/imgs/graphics/carrousels/c4/7.png'
+];
+
+const CARROUSEL_2_SLIDES = [
+  '/imgs/graphics/carrousels/c2/cover.png',
+  '/imgs/graphics/carrousels/c2/1.png',
+  '/imgs/graphics/carrousels/c2/2.png',
+  '/imgs/graphics/carrousels/c2/3.png',
+  '/imgs/graphics/carrousels/c2/4.png',
+  '/imgs/graphics/carrousels/c2/5.png',
+  '/imgs/graphics/carrousels/c2/6.png',
+  '/imgs/graphics/carrousels/c2/7.png'
+];
+
+const ALL_CARROUSEL_SLIDES = [...CARROUSEL_2_SLIDES, ...CARROUSEL_4_SLIDES];
+
+/* ─────────────────────────────────────────────
    MAIN HOMEPAGE
 ───────────────────────────────────────────── */
 export default function App() {
@@ -1284,9 +1485,47 @@ export default function App() {
     category: string;
     slides?: string[];
     currentSlideIndex?: number;
+    isOverview?: boolean;
   } | null>(null);
+  const [isLightboxOverview, setIsLightboxOverview] = useState(false);
+  const [cardCarrouselSeries, setCardCarrouselSeries] = useState<2 | 4 | 'all'>(2);
+  const [cardCarrouselCover, setCardCarrouselCover] = useState<string>('/imgs/graphics/carrousels/c2/cover.png');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeNavSection, setActiveNavSection] = useState<'home' | 'about' | 'services' | 'projects' | 'graphic' | 'career' | 'contact'>('home');
+
+  // Smooth scroll to section with support for transitioning from sub-pages
+  const scrollToSection = (sectionId: string) => {
+    const targetId = sectionId === 'projects' ? 'webdesign' : sectionId;
+    if (currentView !== 'home') {
+      handleViewSwitch('home');
+      setTimeout(() => {
+        if (targetId === 'home' || targetId === 'hero') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          setActiveNavSection('home');
+        } else {
+          const elem = document.getElementById(targetId);
+          if (elem) {
+            const navOffset = 80;
+            const elementPosition = elem.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: Math.max(0, elementPosition - navOffset), behavior: 'smooth' });
+          }
+        }
+      }, 350);
+    } else {
+      if (targetId === 'home' || targetId === 'hero') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveNavSection('home');
+      } else {
+        const elem = document.getElementById(targetId);
+        if (elem) {
+          const navOffset = 80;
+          const elementPosition = elem.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: Math.max(0, elementPosition - navOffset), behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   // Keyboard navigation for Lightbox Multi-Slide Carrousels
   useEffect(() => {
@@ -1344,6 +1583,43 @@ export default function App() {
         setScrollProgress(p);
         document.documentElement.style.setProperty('--scroll-percent', `${p.toFixed(2)}%`);
         document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
+      }
+
+      // Dynamic Active Section Scroll-spy for Menus
+      if (currentView === 'home') {
+        const scrollY = window.scrollY;
+        if (scrollY < 200) {
+          setActiveNavSection('home');
+          return;
+        }
+
+        // Bottom of page detection (Contact section)
+        if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 120) {
+          setActiveNavSection('contact');
+          return;
+        }
+
+        const sectionMap: { id: string; key: 'contact' | 'career' | 'graphic' | 'projects' | 'services' | 'about' }[] = [
+          { id: 'contact', key: 'contact' },
+          { id: 'career', key: 'career' },
+          { id: 'graphic-design', key: 'graphic' },
+          { id: 'product-design', key: 'projects' },
+          { id: 'webdesign', key: 'projects' },
+          { id: 'services', key: 'services' },
+          { id: 'about-me', key: 'about' },
+        ];
+
+        for (const item of sectionMap) {
+          const el = document.getElementById(item.id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.45) {
+              setActiveNavSection(item.key);
+              return;
+            }
+          }
+        }
+        setActiveNavSection('home');
       }
     };
 
@@ -1431,17 +1707,41 @@ export default function App() {
           </div>
 
           <div className="v2-nav-links">
-            <span className="v2-nav-link" onClick={() => handleViewSwitch('home')}>
-              Home
+            <span className="v2-nav-link" onClick={() => scrollToSection('hero')}>
+              {lang === 'fr' ? 'Accueil' : 'Home'}
             </span>
-            <span className={`v2-nav-link ${currentView === 'all-projects' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('all-projects')}>
-              Projects
+            <span className="v2-nav-link" onClick={() => scrollToSection('about-me')}>
+              {lang === 'fr' ? 'À propos' : 'About'}
             </span>
-            <span className={`v2-nav-link ${currentView === 'services' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('services')}>
+            <span 
+              className={`v2-nav-link ${currentView === 'services' ? 'is-active' : ''}`} 
+              onClick={() => {
+                if (currentView !== 'services') handleViewSwitch('services');
+              }}
+            >
               Services
             </span>
-            <span className={`v2-nav-link ${currentView === 'experiences' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('experiences')}>
-              Blog / Career
+            <span 
+              className={`v2-nav-link ${currentView === 'all-projects' ? 'is-active' : ''}`} 
+              onClick={() => {
+                if (currentView !== 'all-projects') handleViewSwitch('all-projects');
+              }}
+            >
+              {lang === 'fr' ? 'Projets' : 'Projects'}
+            </span>
+            <span className="v2-nav-link" onClick={() => scrollToSection('graphic-design')}>
+              {lang === 'fr' ? 'Graphisme' : 'Graphics'}
+            </span>
+            <span 
+              className={`v2-nav-link ${currentView === 'experiences' ? 'is-active' : ''}`} 
+              onClick={() => {
+                if (currentView !== 'experiences') handleViewSwitch('experiences');
+              }}
+            >
+              {lang === 'fr' ? 'Parcours' : 'Career'}
+            </span>
+            <span className="v2-nav-link" onClick={() => scrollToSection('contact')}>
+              Contact
             </span>
           </div>
 
@@ -1457,7 +1757,7 @@ export default function App() {
                 }
               }}
             >
-              Let's Connect
+              {lang === 'fr' ? 'Prendre RDV' : "Let's Connect"}
             </button>
             <button 
               className="v2-mobile-hamburger-btn" 
@@ -1480,10 +1780,11 @@ export default function App() {
           <div 
             className="v2-modal-sheet" 
             style={{ 
-              maxWidth: '720px', 
+              maxWidth: isLightboxOverview ? '980px' : '740px', 
               textAlign: 'center',
-              padding: '28px 24px 30px',
-              position: 'relative'
+              padding: '24px 22px 28px',
+              position: 'relative',
+              transition: 'max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
             }} 
             onClick={(e) => e.stopPropagation()}
           >
@@ -1495,96 +1796,200 @@ export default function App() {
               <X size={20} />
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '8px' }}>
-              <span className="v2-subpage-eyebrow" style={{ color: '#10B981', display: 'inline-block' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '6px' }}>
+              <span style={{ 
+                fontFamily: 'var(--font-body)', 
+                fontSize: '0.78rem', 
+                fontWeight: 500, 
+                letterSpacing: '0.06em', 
+                textTransform: 'uppercase', 
+                color: 'rgba(255, 255, 255, 0.45)' 
+              }}>
                 {selectedGraphic.category}
               </span>
               {selectedGraphic.slides && selectedGraphic.slides.length > 1 && (
-                <span style={{ 
-                  fontFamily: 'var(--font-mono)', 
-                  fontSize: '0.72rem', 
-                  color: '#38BDF8', 
-                  background: 'rgba(56, 189, 248, 0.12)', 
-                  padding: '2px 8px', 
-                  borderRadius: '9999px',
-                  border: '1px solid rgba(56, 189, 248, 0.25)',
-                  fontWeight: 600
-                }}>
-                  Slide {(selectedGraphic.currentSlideIndex || 0) + 1} / {selectedGraphic.slides.length}
-                </span>
+                <>
+                  <span style={{ color: 'rgba(255, 255, 255, 0.2)', fontSize: '0.7rem' }}>•</span>
+                  <span style={{ 
+                    fontFamily: 'var(--font-mono)', 
+                    fontSize: '0.75rem', 
+                    color: 'rgba(255, 255, 255, 0.45)', 
+                    background: 'rgba(255, 255, 255, 0.05)', 
+                    padding: '2px 8px', 
+                    borderRadius: '9999px',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    fontWeight: 500
+                  }}>
+                    {isLightboxOverview 
+                      ? (lang === 'fr' ? `${selectedGraphic.slides.length} visuels` : `${selectedGraphic.slides.length} visuals`) 
+                      : `${(selectedGraphic.currentSlideIndex || 0) + 1} / ${selectedGraphic.slides.length}`}
+                  </span>
+                </>
               )}
             </div>
 
-            <h3 style={{ fontFamily: 'var(--font-body)', fontSize: '1.2rem', fontWeight: 600, color: '#FFFFFF', marginBottom: '18px', lineHeight: 1.4 }}>
+            <h3 style={{ 
+              fontFamily: 'var(--font-body)', 
+              fontSize: '1.05rem', 
+              fontWeight: 500, 
+              color: '#F1F5F9', 
+              marginBottom: '12px', 
+              lineHeight: 1.45,
+              letterSpacing: '-0.01em'
+            }}>
               {selectedGraphic.title}
             </h3>
 
-            <div style={{ 
-              position: 'relative',
-              borderRadius: '16px', 
-              overflow: 'hidden', 
-              border: '1px solid rgba(255, 255, 255, 0.12)', 
-              background: '#000000',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)'
-            }}>
-              {selectedGraphic.slides && selectedGraphic.slides.length > 1 && (
-                <>
-                  <button 
-                    className="v2-lightbox-nav-btn prev"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const prevIdx = ((selectedGraphic.currentSlideIndex || 0) - 1 + selectedGraphic.slides!.length) % selectedGraphic.slides!.length;
-                      setSelectedGraphic({ ...selectedGraphic, currentSlideIndex: prevIdx, src: selectedGraphic.slides![prevIdx] });
-                    }}
-                    aria-label="Slide précédente"
-                  >
-                    <ChevronLeft size={22} />
-                  </button>
-                  <button 
-                    className="v2-lightbox-nav-btn next"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const nextIdx = ((selectedGraphic.currentSlideIndex || 0) + 1) % selectedGraphic.slides!.length;
-                      setSelectedGraphic({ ...selectedGraphic, currentSlideIndex: nextIdx, src: selectedGraphic.slides![nextIdx] });
-                    }}
-                    aria-label="Slide suivante"
-                  >
-                    <ChevronRight size={22} />
-                  </button>
-                </>
-              )}
-
-              <img 
-                src={selectedGraphic.src} 
-                alt={selectedGraphic.title} 
-                style={{ 
-                  width: '100%', 
-                  maxHeight: '70vh', 
-                  objectFit: 'contain', 
-                  display: 'block',
-                  margin: '0 auto' 
-                }} 
-              />
-            </div>
-
+            {/* View Mode Switcher: Diaporama vs Vue d'ensemble (Overview) */}
             {selectedGraphic.slides && selectedGraphic.slides.length > 1 && (
-              <div className="v2-lightbox-dots-row">
-                {selectedGraphic.slides.map((_, dotIdx) => (
-                  <button
-                    key={dotIdx}
-                    className={`v2-lightbox-dot ${dotIdx === (selectedGraphic.currentSlideIndex || 0) ? 'active' : ''}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedGraphic({
-                        ...selectedGraphic,
-                        currentSlideIndex: dotIdx,
-                        src: selectedGraphic.slides![dotIdx]
-                      });
-                    }}
-                    aria-label={`Aller au slide ${dotIdx + 1}`}
-                  />
-                ))}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '16px' }}>
+                <button
+                  className={`v2-modal-tab-btn ${!isLightboxOverview ? 'active' : ''}`}
+                  onClick={() => setIsLightboxOverview(false)}
+                >
+                  <Maximize2 size={12} />
+                  <span>{lang === 'fr' ? 'Diaporama' : 'Slide View'}</span>
+                </button>
+                <button
+                  className={`v2-modal-tab-btn ${isLightboxOverview ? 'active' : ''}`}
+                  onClick={() => setIsLightboxOverview(true)}
+                >
+                  <LayoutGrid size={12} />
+                  <span>{lang === 'fr' ? `Vue d'ensemble (${selectedGraphic.slides.length})` : `Overview (${selectedGraphic.slides.length})`}</span>
+                </button>
               </div>
+            )}
+
+            {/* OVERVIEW MODE: High-Res Visuals Grid */}
+            {isLightboxOverview && selectedGraphic.slides ? (
+              <div className="v2-lightbox-overview-grid">
+                {selectedGraphic.slides.map((slideUrl, idx) => {
+                  const isCarrousel = selectedGraphic.category.toLowerCase().includes('carrousel');
+                  const isCover = slideUrl.includes('cover.png');
+                  const isC2 = slideUrl.includes('/c2/');
+                  let seriesBadge = '';
+                  let slideNum = '';
+
+                  if (isCarrousel) {
+                    seriesBadge = isC2
+                      ? (lang === 'fr' ? 'SÉRIE 02' : 'SERIES 02')
+                      : (lang === 'fr' ? 'SÉRIE 04' : 'SERIES 04');
+                    if (isCover) {
+                      slideNum = 'COVER';
+                    } else if (isC2) {
+                      const c2Idx = CARROUSEL_2_SLIDES.indexOf(slideUrl);
+                      slideNum = `0${c2Idx > 0 ? c2Idx : idx + 1}`;
+                    } else {
+                      const c4Idx = CARROUSEL_4_SLIDES.indexOf(slideUrl);
+                      slideNum = `0${c4Idx >= 0 ? c4Idx + 1 : idx + 1}`;
+                    }
+                  } else {
+                    seriesBadge = lang === 'fr' ? `VISUEL 0${idx + 1}` : `VISUAL 0${idx + 1}`;
+                    slideNum = `0${idx + 1}`;
+                  }
+
+                  return (
+                    <div
+                      key={idx}
+                      className="v2-lightbox-grid-card"
+                      onClick={() => {
+                        setSelectedGraphic({
+                          ...selectedGraphic,
+                          currentSlideIndex: idx,
+                          src: slideUrl
+                        });
+                        setIsLightboxOverview(false);
+                      }}
+                      title={isCover ? `${seriesBadge} — Mockup Capture (Couverture)` : `${seriesBadge} — Slide ${slideNum}`}
+                    >
+                      <img src={slideUrl} alt={`Visuel ${idx + 1}`} loading="lazy" />
+                      <span className="v2-lightbox-grid-badge">
+                        {isCarrousel ? `${seriesBadge} · ${slideNum}` : `0${idx + 1}`}
+                      </span>
+                      <div className="v2-lightbox-grid-zoom-hint">
+                        <span className="v2-lightbox-grid-zoom-pill">
+                          <Maximize2 size={12} />
+                          <span>{lang === 'fr' ? 'Agrandir' : 'Expand'}</span>
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              /* DIAPORAMA MODE: Full-Width Stage with Nav + Interactive Filmstrip */
+              <>
+                <div style={{ 
+                  position: 'relative',
+                  borderRadius: '16px', 
+                  overflow: 'hidden', 
+                  border: '1px solid rgba(255, 255, 255, 0.12)', 
+                  background: '#000000',
+                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)'
+                }}>
+                  {selectedGraphic.slides && selectedGraphic.slides.length > 1 && (
+                    <>
+                      <button 
+                        className="v2-lightbox-nav-btn prev"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const prevIdx = ((selectedGraphic.currentSlideIndex || 0) - 1 + selectedGraphic.slides!.length) % selectedGraphic.slides!.length;
+                          setSelectedGraphic({ ...selectedGraphic, currentSlideIndex: prevIdx, src: selectedGraphic.slides![prevIdx] });
+                        }}
+                        aria-label="Slide précédente"
+                      >
+                        <ChevronLeft size={22} />
+                      </button>
+                      <button 
+                        className="v2-lightbox-nav-btn next"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const nextIdx = ((selectedGraphic.currentSlideIndex || 0) + 1) % selectedGraphic.slides!.length;
+                          setSelectedGraphic({ ...selectedGraphic, currentSlideIndex: nextIdx, src: selectedGraphic.slides![nextIdx] });
+                        }}
+                        aria-label="Slide suivante"
+                      >
+                        <ChevronRight size={22} />
+                      </button>
+                    </>
+                  )}
+
+                  <img 
+                    src={selectedGraphic.src} 
+                    alt={selectedGraphic.title} 
+                    style={{ 
+                      width: '100%', 
+                      maxHeight: '62vh', 
+                      objectFit: 'contain', 
+                      display: 'block',
+                      margin: '0 auto' 
+                    }} 
+                  />
+                </div>
+
+                {/* Interactive Filmstrip Strip of all slides */}
+                {selectedGraphic.slides && selectedGraphic.slides.length > 1 && (
+                  <div className="v2-lightbox-filmstrip">
+                    {selectedGraphic.slides.map((slideUrl, idx) => (
+                      <div
+                        key={idx}
+                        className={`v2-lightbox-filmstrip-thumb ${idx === (selectedGraphic.currentSlideIndex || 0) ? 'active' : ''}`}
+                        onClick={() => setSelectedGraphic({
+                          ...selectedGraphic,
+                          currentSlideIndex: idx,
+                          src: slideUrl
+                        })}
+                        title={`Slide ${idx + 1}`}
+                      >
+                        <img src={slideUrl} alt={`Slide ${idx + 1}`} />
+                        <span className="v2-filmstrip-idx">
+                          {slideUrl.includes('cover.png') ? 'COVER' : `0${idx + 1}`}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -1619,85 +2024,65 @@ export default function App() {
             {/* Navigation Links List */}
             <div className="v2-mobile-nav-links">
               <div 
-                className={`v2-mobile-nav-item ${currentView === 'home' ? 'is-active' : ''}`}
-                onClick={() => { handleViewSwitch('home'); setIsMobileMenuOpen(false); }}
+                className={`v2-mobile-nav-item ${currentView === 'home' && activeNavSection === 'home' ? 'is-active' : ''}`}
+                onClick={() => { scrollToSection('hero'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-title">HOME</span>
+                <span className="v2-nav-item-num">01</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'ACCUEIL' : 'HOME'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
               <div 
-                className="v2-mobile-nav-item"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  const elem = document.getElementById('about-me');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                  else setIsAboutModalOpen(true);
-                }}
+                className={`v2-mobile-nav-item ${currentView === 'home' && activeNavSection === 'about' ? 'is-active' : ''}`}
+                onClick={() => { scrollToSection('about-me'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'À PROPOS' : 'ABOUT'}</span>
+                <span className="v2-nav-item-num">02</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'À PROPOS' : 'ABOUT ME'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
               <div 
-                className={`v2-mobile-nav-item ${currentView === 'all-projects' ? 'is-active' : ''}`}
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  if (currentView === 'home') {
-                    const elem = document.getElementById('product-design');
-                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                    else handleViewSwitch('all-projects');
-                  } else {
-                    handleViewSwitch('all-projects');
-                  }
-                }}
+                className={`v2-mobile-nav-item ${(currentView === 'home' && activeNavSection === 'services') || currentView === 'services' ? 'is-active' : ''}`}
+                onClick={() => { scrollToSection('services'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'PROJETS & CASE STUDIES' : 'PROJECTS & CASE STUDIES'}</span>
-                <ArrowRight size={14} className="v2-nav-item-arrow" />
-              </div>
-
-              <div 
-                className={`v2-mobile-nav-item ${currentView === 'services' ? 'is-active' : ''}`}
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  if (currentView === 'home') {
-                    const elem = document.getElementById('services');
-                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                    else handleViewSwitch('services');
-                  } else {
-                    handleViewSwitch('services');
-                  }
-                }}
-              >
+                <span className="v2-nav-item-num">03</span>
                 <span className="v2-nav-item-title">SERVICES &amp; SOLUTIONS</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
               <div 
-                className="v2-mobile-nav-item"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  if (currentView === 'home') {
-                    const elem = document.getElementById('graphic-design');
-                    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                  } else {
-                    handleViewSwitch('home');
-                    setTimeout(() => {
-                      const elem = document.getElementById('graphic-design');
-                      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
-                  }
-                }}
+                className={`v2-mobile-nav-item ${(currentView === 'home' && activeNavSection === 'projects') || currentView === 'all-projects' ? 'is-active' : ''}`}
+                onClick={() => { scrollToSection('webdesign'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-title">GRAPHIC DESIGN</span>
+                <span className="v2-nav-item-num">04</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'PROJETS & ÉTUDES DE CAS' : 'PROJECTS & CASE STUDIES'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
               <div 
-                className={`v2-mobile-nav-item ${currentView === 'experiences' ? 'is-active' : ''}`}
-                onClick={() => { handleViewSwitch('experiences'); setIsMobileMenuOpen(false); }}
+                className={`v2-mobile-nav-item ${currentView === 'home' && activeNavSection === 'graphic' ? 'is-active' : ''}`}
+                onClick={() => { scrollToSection('graphic-design'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'BLOG &amp; PARCOURS' : 'BLOG &amp; CAREER'}</span>
+                <span className="v2-nav-item-num">05</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'GRAPHISME & IDENTITÉS' : 'GRAPHIC DESIGN & BRANDING'}</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
+              </div>
+
+              <div 
+                className={`v2-mobile-nav-item ${(currentView === 'home' && activeNavSection === 'career') || currentView === 'experiences' ? 'is-active' : ''}`}
+                onClick={() => { scrollToSection('career'); setIsMobileMenuOpen(false); }}
+              >
+                <span className="v2-nav-item-num">06</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'PARCOURS & EXPÉRIENCES' : 'CAREER & TIMELINE'}</span>
+                <ArrowRight size={14} className="v2-nav-item-arrow" />
+              </div>
+
+              <div 
+                className={`v2-mobile-nav-item ${currentView === 'home' && activeNavSection === 'contact' ? 'is-active' : ''}`}
+                onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }}
+              >
+                <span className="v2-nav-item-num">07</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'CONTACT & COLLABORATION' : 'CONTACT & GET IN TOUCH'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
             </div>
@@ -1751,7 +2136,7 @@ export default function App() {
       {/* Render Active View */}
       {currentView === 'experiences' && <ExperiencesView setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />}
       {currentView === 'services' && <ServicesView setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />}
-      {currentView === 'all-projects' && <AllProjectsView setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />}
+      {currentView === 'all-projects' && <AllProjectsView setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} setSelectedGraphic={setSelectedGraphic} lang={lang} />}
       {currentView !== 'home' && currentView !== 'experiences' && currentView !== 'services' && currentView !== 'all-projects' && (
         <CaseStudy id={currentView as CaseStudyId} setCurrentView={handleViewSwitch} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
       )}
@@ -1779,36 +2164,47 @@ export default function App() {
               {/* Desktop Nav Items */}
               {/* Center Menu Links with Smooth Scrolling to Sections */}
               <div className="v2-nav-links">
-                <span className={`v2-nav-link ${currentView === 'home' ? 'is-active' : ''}`} onClick={() => handleViewSwitch('home')}>
-                  Home
+                <span 
+                  className={`v2-nav-link ${activeNavSection === 'home' ? 'is-active' : ''}`} 
+                  onClick={() => scrollToSection('hero')}
+                >
+                  {lang === 'fr' ? 'Accueil' : 'Home'}
                 </span>
-                <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('about-me');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  About
+                <span 
+                  className={`v2-nav-link ${activeNavSection === 'about' ? 'is-active' : ''}`} 
+                  onClick={() => scrollToSection('about-me')}
+                >
+                  {lang === 'fr' ? 'À propos' : 'About'}
                 </span>
-                <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('product-design');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  Projects
-                </span>
-                <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('services');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                  else handleViewSwitch('services');
-                }}>
+                <span 
+                  className={`v2-nav-link ${activeNavSection === 'services' ? 'is-active' : ''}`} 
+                  onClick={() => scrollToSection('services')}
+                >
                   Services
                 </span>
-                <span className="v2-nav-link" onClick={() => {
-                  const elem = document.getElementById('graphic-design');
-                  if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  Designs
+                <span 
+                  className={`v2-nav-link ${activeNavSection === 'projects' ? 'is-active' : ''}`} 
+                  onClick={() => scrollToSection('webdesign')}
+                >
+                  {lang === 'fr' ? 'Projets' : 'Projects'}
                 </span>
-                <span className="v2-nav-link" onClick={() => handleViewSwitch('experiences')}>
-                  Blog
+                <span 
+                  className={`v2-nav-link ${activeNavSection === 'graphic' ? 'is-active' : ''}`} 
+                  onClick={() => scrollToSection('graphic-design')}
+                >
+                  {lang === 'fr' ? 'Graphisme' : 'Graphics'}
+                </span>
+                <span 
+                  className={`v2-nav-link ${activeNavSection === 'career' ? 'is-active' : ''}`} 
+                  onClick={() => scrollToSection('career')}
+                >
+                  {lang === 'fr' ? 'Parcours' : 'Career'}
+                </span>
+                <span 
+                  className={`v2-nav-link ${activeNavSection === 'contact' ? 'is-active' : ''}`} 
+                  onClick={() => scrollToSection('contact')}
+                >
+                  Contact
                 </span>
               </div>
 
@@ -1825,7 +2221,7 @@ export default function App() {
                     }
                   }}
                 >
-                  Let's Connect
+                  {lang === 'fr' ? 'Prendre RDV' : "Let's Connect"}
                 </button>
                 <button 
                   className="v2-mobile-hamburger-btn" 
@@ -1838,7 +2234,7 @@ export default function App() {
             </nav>
 
             {/* SECTION 1: HERO (EXACT REFERENCE DESIGN) */}
-            <section className="v2-hero-section">
+            <section id="hero" className="v2-hero-section">
               {/* Radial Ambient Glow Background Light */}
               <div className="v2-hero-ambient-glow" aria-hidden="true" />
 
@@ -1996,9 +2392,9 @@ export default function App() {
                       </button>
                       <button 
                         className="v2-about-secondary-link" 
-                        onClick={() => handleViewSwitch('experiences')}
+                        onClick={() => scrollToSection('career')}
                       >
-                        {lang === 'fr' ? 'Mon Parcours & Blog' : 'Career & Blog'}
+                        {lang === 'fr' ? 'Mon Parcours & Expériences' : 'Career & Experience'}
                       </button>
                       <button 
                         className="v2-about-secondary-link" 
@@ -2677,11 +3073,6 @@ export default function App() {
                         ? "Plateforme gouvernementale centralisant la logistique du pèlerinage national pour +30 agences et ministères."
                         : "Centralized governmental platform orchestrating national pilgrimage operations for 30+ agencies."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'IMPACT' : 'IMPACT'}
-                      value={lang === 'fr' ? '+3 000 pèlerins & 30+ agences' : '3,000+ pilgrims & 30+ agencies'}
-                      variant="cyan"
-                    />
                     <div className="v2-project-tags-row">
                       <span>Product Design</span>
                       <span>Design System</span>
@@ -2713,11 +3104,6 @@ export default function App() {
                         ? "Gouvernance et télémétrie multi-sites d'actifs physiques industriels lourds par scan QR code instantané."
                         : "Multi-site physical asset telemetry and inventory governance powered by smart QR code telemetry."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'TÉLÉMÉTRIE' : 'TELEMETRY'}
-                      value={lang === 'fr' ? 'Scans QR Instantanés & Multi-Sites' : 'Instant QR Scans & Multi-Site Analytics'}
-                      variant="cyan"
-                    />
                     <div className="v2-project-tags-row">
                       <span>B2B SaaS</span>
                       <span>Data Architecture</span>
@@ -2749,11 +3135,6 @@ export default function App() {
                         ? "Plateforme SaaS B2B d'engagement client & hub centralisé orchestrant 10 connecteurs e-commerce."
                         : "B2B SaaS customer engagement platform & integration hub powering 10 major e-commerce connectors."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'ARCHITECTURE' : 'ARCHITECTURE'}
-                      value={lang === 'fr' ? 'Hub 10 Connecteurs & Multi-Tenant' : '10 Connectors Hub & Multi-Tenant'}
-                      variant="cyan"
-                    />
                     <div className="v2-project-tags-row">
                       <span>SaaS Platform</span>
                       <span>Connectors</span>
@@ -2813,11 +3194,6 @@ export default function App() {
                         ? "Interface numérique interactive et expérience de réservation immersive pour un resort exclusif sur la Côte d'Azur."
                         : "Interactive digital guest interface and luxury reservation experience designed for an exclusive French Riviera resort."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'EXPÉRIENCE' : 'EXPERIENCE'}
-                      value={lang === 'fr' ? 'Micro-Animations 60fps & UI Interactive' : '60fps Micro-Animations & Interactive UI'}
-                      variant="purple"
-                    />
                     <div className="v2-project-tags-row">
                       <span>Interface UI/UX</span>
                       <span>Système Interactif</span>
@@ -2849,11 +3225,6 @@ export default function App() {
                         ? "Application mobile d'achat de carburant et portefeuille numérique réduisant le temps de paiement à 3 secondes."
                         : "High-speed mobile fuel payment & wallet app engineered for instant 3-second pump authorization."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'PERFORMANCE' : 'PERFORMANCE'}
-                      value={lang === 'fr' ? 'Paiement sans friction en 3s' : 'Frictionless 3-second checkout'}
-                      variant="purple"
-                    />
                     <div className="v2-project-tags-row">
                       <span>Mobile App UX</span>
                       <span>iOS & Android</span>
@@ -2885,11 +3256,6 @@ export default function App() {
                         ? "Portail d'analyse prédictive et tableaux de bord de performance sportive pour entraîneurs et athlètes."
                         : "Predictive sports analytics and tactical decision-support dashboard portal for teams and coaches."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'DATA VIZ' : 'DATA VIZ'}
-                      value={lang === 'fr' ? 'Tableaux Dynamiques & Analyse Prédictive' : 'Dynamic Tables & Predictive Analytics'}
-                      variant="purple"
-                    />
                     <div className="v2-project-tags-row">
                       <span>Data Viz</span>
                       <span>Dashboard UI</span>
@@ -2915,8 +3281,8 @@ export default function App() {
                 </h2>
                 <p className="v2-section-subtitle">
                   {lang === 'fr'
-                    ? "Des affiches éditoriales et campagnes événementielles aux séries de carrousels captivants pensés pour marquer les esprits."
-                    : "From high-impact cultural and event posters to immersive brand carousels crafted with obsessive care."}
+                    ? "Affiches éditoriales haute définition, séries de carrousels narratifs et campagnes d'affichage grand format."
+                    : "High-impact editorial posters, strategic storytelling carousels, and large-format brand campaigns."}
                 </p>
               </div>
 
@@ -2931,9 +3297,7 @@ export default function App() {
                     slides: [
                       '/imgs/graphics/graphic_2souza_barman.jpg',
                       '/imgs/graphics/graphic_strategie_arena_red.jpg',
-                      '/imgs/graphics/graphic_dada_billboard.jpg',
-                      '/imgs/graphics/graphic_aidarag_tennis.jpg',
-                      '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+                      '/imgs/graphics/graphic_aidarag_tennis.jpg'
                     ],
                     currentSlideIndex: 0
                   })}
@@ -2945,6 +3309,39 @@ export default function App() {
                       <span>{lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}</span>
                     </div>
                   </div>
+
+                  {/* Thumbnail strip showing ALL visuals of this collection */}
+                  <div className="v2-card-visuals-strip">
+                    {[
+                      { src: '/imgs/graphics/graphic_2souza_barman.jpg', label: '2SOUZA Barman' },
+                      { src: '/imgs/graphics/graphic_strategie_arena_red.jpg', label: 'Strategy Arena' },
+                      { src: '/imgs/graphics/graphic_aidarag_tennis.jpg', label: 'Aïdarag Tennis' }
+                    ].map((item, idx) => (
+                      <div 
+                        key={idx} 
+                        className="v2-card-visual-thumb" 
+                        title={item.label}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedGraphic({
+                            src: item.src,
+                            title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
+                            category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+                            slides: [
+                              '/imgs/graphics/graphic_2souza_barman.jpg',
+                              '/imgs/graphics/graphic_strategie_arena_red.jpg',
+                              '/imgs/graphics/graphic_aidarag_tennis.jpg'
+                            ],
+                            currentSlideIndex: idx
+                          });
+                        }}
+                      >
+                        <img src={item.src} alt={item.label} />
+                        <span className="v2-thumb-index">0{idx + 1}</span>
+                      </div>
+                    ))}
+                  </div>
+
                   <div className="v2-card-content-block">
                     <div className="v2-card-title-row">
                       <h3 className="v2-project-title">
@@ -2961,15 +3358,13 @@ export default function App() {
                             slides: [
                               '/imgs/graphics/graphic_2souza_barman.jpg',
                               '/imgs/graphics/graphic_strategie_arena_red.jpg',
-                              '/imgs/graphics/graphic_dada_billboard.jpg',
-                              '/imgs/graphics/graphic_aidarag_tennis.jpg',
-                              '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+                              '/imgs/graphics/graphic_aidarag_tennis.jpg'
                             ],
                             currentSlideIndex: 0
                           });
                         }}
                       >
-                        <span>{lang === 'fr' ? 'Galerie (5)' : 'Gallery (5)'}</span>
+                        <span>{lang === 'fr' ? 'Galerie (3)' : 'Gallery (3)'}</span>
                         <ArrowRight size={14} />
                       </button>
                     </div>
@@ -2978,11 +3373,6 @@ export default function App() {
                         ? "Directions artistiques singulières, affiches de mixologie, événements culturels et compositions typographiques haute définition."
                         : "Art direction, editorial collage, mixology posters, and high-impact typographic layouts crafted for cultural events."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'ÉDITORIAL' : 'EDITORIAL'}
-                      value={lang === 'fr' ? '5 Compositions Visuelles & Print 300dpi' : '5 Visual Artworks & 300dpi Print'}
-                      variant="cyan"
-                    />
                     <div className="v2-project-tags-row">
                       <span>Art Direction</span>
                       <span>Photoshop</span>
@@ -2992,77 +3382,169 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* CARD 02: CARROUSELS & STORYTELLING */}
+                {/* CARD 02: CARROUSELS & STORYTELLING (CARROUSELS 2 & 4) */}
                 <div 
                   className="v2-project-card-large" 
-                  onClick={() => setSelectedGraphic({
-                    src: '/imgs/graphics/carrousels/c1/1.png',
-                    title: 'Strategy Arena — "Pourquoi une stratégie est le premier investissement"',
-                    category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
-                    slides: [
-                      '/imgs/graphics/carrousels/c1/1.png',
-                      '/imgs/graphics/carrousels/c1/2.png',
-                      '/imgs/graphics/carrousels/c1/3.png',
-                      '/imgs/graphics/carrousels/c1/4.png',
-                      '/imgs/graphics/carrousels/c1/5.png',
-                      '/imgs/graphics/carrousels/c1/6.png',
-                      '/imgs/graphics/carrousels/c1/7.png'
-                    ],
-                    currentSlideIndex: 0
-                  })}
+                  onClick={() => {
+                    const activeIdx = ALL_CARROUSEL_SLIDES.indexOf(cardCarrouselCover);
+                    const isC2 = cardCarrouselCover.includes('/c2/');
+                    setSelectedGraphic({
+                      src: cardCarrouselCover,
+                      title: isC2 
+                        ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"' 
+                        : 'Strategy Arena — "Votre client n\'achète pas votre produit"',
+                      category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+                      slides: ALL_CARROUSEL_SLIDES,
+                      currentSlideIndex: activeIdx >= 0 ? activeIdx : 0,
+                      isOverview: false
+                    });
+                    setIsLightboxOverview(false);
+                  }}
                 >
                   <div className="v2-card-preview-container">
-                    <img src="/imgs/graphics/carrousels/c1/1.png" alt="Carrousels & Storytelling" />
+                    <img src={cardCarrouselCover} alt="Carrousels & Storytelling" />
                     <span className="v2-project-year-badge">2026</span>
                     <div className="v2-preview-glass-tag">
                       <span>{lang === 'fr' ? 'Carrousels Réseaux' : 'Social Carousels'}</span>
                     </div>
                   </div>
+
+                  {/* Series Navigation Tabs to overview both carrousels */}
+                  <div className="v2-card-series-tabs" onClick={(e) => e.stopPropagation()}>
+                    <button
+                      type="button"
+                      className={`v2-card-series-tab ${cardCarrouselSeries === 2 ? 'active' : ''}`}
+                      onClick={() => {
+                        setCardCarrouselSeries(2);
+                        setCardCarrouselCover(CARROUSEL_2_SLIDES[0]);
+                      }}
+                    >
+                      {lang === 'fr' ? 'Série 02 (8)' : 'Series 02 (8)'}
+                    </button>
+                    <button
+                      type="button"
+                      className={`v2-card-series-tab ${cardCarrouselSeries === 4 ? 'active' : ''}`}
+                      onClick={() => {
+                        setCardCarrouselSeries(4);
+                        setCardCarrouselCover(CARROUSEL_4_SLIDES[0]);
+                      }}
+                    >
+                      {lang === 'fr' ? 'Série 04 (7)' : 'Series 04 (7)'}
+                    </button>
+                    <button
+                      type="button"
+                      className={`v2-card-series-tab ${cardCarrouselSeries === 'all' ? 'active' : ''}`}
+                      onClick={() => setCardCarrouselSeries('all')}
+                    >
+                      {lang === 'fr' ? 'Tous (15)' : 'All (15)'}
+                    </button>
+                  </div>
+
+                  {/* Overview Strip showing all visuals of the active series or all 15 slides */}
+                  <div className="v2-card-visuals-strip-scroll" onClick={(e) => e.stopPropagation()}>
+                    {(cardCarrouselSeries === 2 ? CARROUSEL_2_SLIDES : cardCarrouselSeries === 4 ? CARROUSEL_4_SLIDES : ALL_CARROUSEL_SLIDES).map((slideUrl, idx) => {
+                      const globalIdx = ALL_CARROUSEL_SLIDES.indexOf(slideUrl);
+                      const isCover = slideUrl.includes('cover.png');
+                      const isC2 = slideUrl.includes('/c2/');
+                      
+                      let displayNum = '';
+                      if (isCover) {
+                        displayNum = 'COVER';
+                      } else if (cardCarrouselSeries === 2) {
+                        displayNum = `0${CARROUSEL_2_SLIDES.indexOf(slideUrl)}`;
+                      } else if (cardCarrouselSeries === 4) {
+                        displayNum = `0${CARROUSEL_4_SLIDES.indexOf(slideUrl) + 1}`;
+                      } else {
+                        displayNum = isC2 ? `2·${isCover ? 'C' : CARROUSEL_2_SLIDES.indexOf(slideUrl)}` : `4·${CARROUSEL_4_SLIDES.indexOf(slideUrl) + 1}`;
+                      }
+
+                      return (
+                        <div 
+                          key={idx} 
+                          className={`v2-card-visual-thumb ${cardCarrouselCover === slideUrl ? 'is-active-thumb' : ''}`}
+                          title={isCover ? (lang === 'fr' ? 'Capture Mockup — Couverture' : 'Mockup Capture — Cover') : `Slide ${displayNum} — Cliquer pour agrandir`}
+                          onMouseEnter={() => setCardCarrouselCover(slideUrl)}
+                          onClick={() => {
+                            setCardCarrouselCover(slideUrl);
+                            setSelectedGraphic({
+                              src: slideUrl,
+                              title: isC2 
+                                ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"' 
+                                : 'Strategy Arena — "Votre client n\'achète pas votre produit"',
+                              category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+                              slides: ALL_CARROUSEL_SLIDES,
+                              currentSlideIndex: globalIdx >= 0 ? globalIdx : idx,
+                              isOverview: false
+                            });
+                            setIsLightboxOverview(false);
+                          }}
+                        >
+                          <img src={slideUrl} alt={isCover ? 'Mockup Couverture' : `Slide ${displayNum}`} loading="lazy" />
+                          <span className="v2-thumb-index">{displayNum}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+
                   <div className="v2-card-content-block">
                     <div className="v2-card-title-row">
                       <h3 className="v2-project-title">
                         {lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels'}
                       </h3>
-                      <button 
-                        className="v2-project-explore-btn" 
-                        onClick={(e) => { 
-                          e.stopPropagation(); 
-                          setSelectedGraphic({
-                            src: '/imgs/graphics/carrousels/c1/1.png',
-                            title: 'Strategy Arena — "Pourquoi une stratégie est le premier investissement"',
-                            category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
-                            slides: [
-                              '/imgs/graphics/carrousels/c1/1.png',
-                              '/imgs/graphics/carrousels/c1/2.png',
-                              '/imgs/graphics/carrousels/c1/3.png',
-                              '/imgs/graphics/carrousels/c1/4.png',
-                              '/imgs/graphics/carrousels/c1/5.png',
-                              '/imgs/graphics/carrousels/c1/6.png',
-                              '/imgs/graphics/carrousels/c1/7.png'
-                            ],
-                            currentSlideIndex: 0
-                          });
-                        }}
-                      >
-                        <span>{lang === 'fr' ? 'Feuilleter' : 'Browse'}</span>
-                        <ArrowRight size={14} />
-                      </button>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <button 
+                          className="v2-project-explore-btn" 
+                          title={lang === 'fr' ? 'Vue d\'ensemble de tous les visuels' : 'Overview of all visuals'}
+                          onClick={(e) => { 
+                            e.stopPropagation(); 
+                            setSelectedGraphic({
+                              src: ALL_CARROUSEL_SLIDES[0],
+                              title: 'Strategy Arena — Séries Carrousels Narratifs (02 & 04)',
+                              category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+                              slides: ALL_CARROUSEL_SLIDES,
+                              currentSlideIndex: 0,
+                              isOverview: true
+                            });
+                            setIsLightboxOverview(true);
+                          }}
+                        >
+                          <LayoutGrid size={13} />
+                          <span>{lang === 'fr' ? 'Overview (15)' : 'Overview (15)'}</span>
+                        </button>
+                        <button 
+                          className="v2-project-explore-btn" 
+                          onClick={(e) => { 
+                            e.stopPropagation(); 
+                            const activeIdx = ALL_CARROUSEL_SLIDES.indexOf(cardCarrouselCover);
+                            const isC2 = cardCarrouselCover.includes('/c2/');
+                            setSelectedGraphic({
+                              src: cardCarrouselCover,
+                              title: isC2 
+                                ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"' 
+                                : 'Strategy Arena — "Votre client n\'achète pas votre produit"',
+                              category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+                              slides: ALL_CARROUSEL_SLIDES,
+                              currentSlideIndex: activeIdx >= 0 ? activeIdx : 0,
+                              isOverview: false
+                            });
+                            setIsLightboxOverview(false);
+                          }}
+                        >
+                          <span>{lang === 'fr' ? 'Feuilleter' : 'Browse'}</span>
+                          <ArrowRight size={13} />
+                        </button>
+                      </div>
                     </div>
                     <p className="v2-project-summary">
                       {lang === 'fr'
-                        ? "Structures narratives et visuelles complètes conçues pour captiver l'attention et générer un fort engagement slide après slide."
-                        : "Multi-slide narrative frameworks and educational storytelling series crafted for peak attention and social engagement."}
+                        ? "Structures narratives percutantes, collages éditoriaux et carrousels stratégiques conçus pour captiver et générer de l'engagement."
+                        : "Editorial collage storytelling and strategic carousels engineered for deep engagement and brand resonance."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'STORYTELLING' : 'STORYTELLING'}
-                      value={lang === 'fr' ? '3 Séries Complètes (21 Slides)' : '3 Complete Series (21 Slides)'}
-                      variant="cyan"
-                    />
                     <div className="v2-project-tags-row">
-                      <span>Carrousels</span>
                       <span>Storytelling</span>
+                      <span>Direction Artistique</span>
                       <span>Social Media</span>
-                      <span>Growth Design</span>
+                      <span>Stratégie</span>
                     </div>
                   </div>
                 </div>
@@ -3076,8 +3558,7 @@ export default function App() {
                     category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
                     slides: [
                       '/imgs/graphics/graphic_dada_billboard.jpg',
-                      '/imgs/graphics/graphic_dada_collab_fistbump.jpg',
-                      '/imgs/graphics/graphic_strategie_arena_red.jpg'
+                      '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
                     ],
                     currentSlideIndex: 0
                   })}
@@ -3089,6 +3570,37 @@ export default function App() {
                       <span>{lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns'}</span>
                     </div>
                   </div>
+
+                  {/* Thumbnail strip showing ALL visuals of this collection */}
+                  <div className="v2-card-visuals-strip">
+                    {[
+                      { src: '/imgs/graphics/graphic_dada_billboard.jpg', label: 'Billboard 30 Jours' },
+                      { src: '/imgs/graphics/graphic_dada_collab_fistbump.jpg', label: 'Collab & Partenariats' }
+                    ].map((item, idx) => (
+                      <div 
+                        key={idx} 
+                        className="v2-card-visual-thumb" 
+                        title={item.label}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedGraphic({
+                            src: item.src,
+                            title: 'DADA Management — Affiche Billboard Challenge 30 Jours',
+                            category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
+                            slides: [
+                              '/imgs/graphics/graphic_dada_billboard.jpg',
+                              '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+                            ],
+                            currentSlideIndex: idx
+                          });
+                        }}
+                      >
+                        <img src={item.src} alt={item.label} />
+                        <span className="v2-thumb-index">0{idx + 1}</span>
+                      </div>
+                    ))}
+                  </div>
+
                   <div className="v2-card-content-block">
                     <div className="v2-card-title-row">
                       <h3 className="v2-project-title">
@@ -3104,14 +3616,13 @@ export default function App() {
                             category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
                             slides: [
                               '/imgs/graphics/graphic_dada_billboard.jpg',
-                              '/imgs/graphics/graphic_dada_collab_fistbump.jpg',
-                              '/imgs/graphics/graphic_strategie_arena_red.jpg'
+                              '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
                             ],
                             currentSlideIndex: 0
                           });
                         }}
                       >
-                        <span>{lang === 'fr' ? 'Voir visuels' : 'View Visuals'}</span>
+                        <span>{lang === 'fr' ? 'Voir visuels (2)' : 'View Visuals (2)'}</span>
                         <ArrowRight size={14} />
                       </button>
                     </div>
@@ -3120,11 +3631,6 @@ export default function App() {
                         ? "Affichage grand format, visuels de lancement de partenariats stratégiques et directions créatives 360° percutantes."
                         : "Urban billboard displays, strategic partnership launch assets, and high-impact 360° creative campaigns."}
                     </p>
-                    <ProjectHighlightBadge 
-                      tag={lang === 'fr' ? 'CAMPAGNE' : 'CAMPAIGN'}
-                      value={lang === 'fr' ? 'Affichage Urbain Grand Format & 360°' : 'Urban Large Format Displays & 360°'}
-                      variant="cyan"
-                    />
                     <div className="v2-project-tags-row">
                       <span>Billboard</span>
                       <span>Campagne 360°</span>
@@ -3169,10 +3675,13 @@ export default function App() {
             <SymbolLaserDivider color="cyan" />
 
             {/* SECTION 6: REFERENCE DUAL-PANEL CONNECT & FOOTER */}
-            <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
+            <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} scrollToSection={scrollToSection} />
           </main>
         </div>
       )}
+
+      {/* Premium Floating Back to Top Button with Dynamic Circular Scroll Meter */}
+      <ScrollToTopButton scrollProgress={scrollProgress} lang={lang} />
     </>
   );
 }

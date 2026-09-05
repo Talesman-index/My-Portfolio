@@ -1,8 +1,8 @@
 :root {
   /* Dark Charcoal & Pitch Backgrounds */
-  --bg-dark: #121212;
-  --bg-surface: #181818;
-  --bg-card: #202020;
+  --bg-dark: #030508;
+  --bg-surface: #0a0e18;
+  --bg-card: #0d1527;
   
   /* Mosby's Files Primary Palette */
   --mosby-blue: #1D4ED8;
@@ -73,6 +73,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+#root {
+  background-color: var(--bg-dark);
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
