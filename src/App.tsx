@@ -807,14 +807,16 @@ const ConnectAndFooterSection = ({
 }) => {
   return (
     <footer id="contact" className="v2-connect-reference-section scroll-reveal">
+      {/* Background ambient glow */}
+      <div className="v2-footer-ambient-glow" aria-hidden="true" />
 
-      {/* Bottom Footer Structure matching Reference */}
+      {/* Top Footer Columns */}
       <div className="v2-reference-footer-wrap">
         <div className="v2-reference-footer-grid">
           {/* Logo / Monogram Col */}
           <div className="v2-ref-footer-brand">
             <div className="v2-ref-monogram" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <svg width="38" height="38" viewBox="0 0 280 290" fill="none">
+              <svg width="40" height="40" viewBox="0 0 280 290" fill="none">
                 <path 
                   d="M 95 100 A 45 45 0 0 1 185 100 A 45 45 0 0 1 185 190 A 45 45 0 0 1 95 190 A 45 45 0 0 1 95 100 Z M 140 100 A 45 45 0 0 0 185 145 A 45 45 0 0 0 140 190 A 45 45 0 0 0 95 145 A 45 45 0 0 0 140 100 Z" 
                   fill="#FFFFFF" 
@@ -825,6 +827,10 @@ const ConnectAndFooterSection = ({
             <div className="v2-ref-brand-meta">
               <span className="v2-ref-brand-name">SACCA DAFIA</span>
               <span className="v2-ref-brand-sub">Web &amp; Product Designer</span>
+              <div className="v2-footer-availability-tag">
+                <span className="v2-availability-dot" />
+                <span>{lang === 'fr' ? 'Disponible pour nouveaux projets' : 'Available for new projects'}</span>
+              </div>
             </div>
           </div>
 
@@ -854,19 +860,19 @@ const ConnectAndFooterSection = ({
             <span className="v2-ref-col-title">Portfolio</span>
             <div className="v2-ref-col-links">
               <span onClick={() => setCurrentView('asset-iq')}>
-                {lang === 'fr' ? 'Sites Web' : 'Websites'}
+                {lang === 'fr' ? 'Sites Web & SaaS' : 'Websites & SaaS'}
               </span>
               <a href="#graphic-design">
-                {lang === 'fr' ? 'Graphisme' : 'Graphics'}
+                {lang === 'fr' ? 'Direction Artistique' : 'Art Direction'}
               </a>
               <span onClick={() => setCurrentView('vortex')}>Mobile &amp; MVPs</span>
-              <span onClick={() => setCurrentView('sport-advisor')}>3D &amp; Motion</span>
+              <span onClick={() => setCurrentView('sport-advisor')}>AI &amp; Data Viz</span>
             </div>
           </div>
 
           {/* Contact Column */}
           <div className="v2-ref-footer-col">
-            <span className="v2-ref-col-title">Contact</span>
+            <span className="v2-ref-col-title">Contact &amp; Bookings</span>
             <div className="v2-ref-col-links">
               <a href="mailto:dafiashalom@gmail.com" className="v2-ref-contact-link">
                 <Mail size={13} />
@@ -892,6 +898,25 @@ const ConnectAndFooterSection = ({
               </a>
             </div>
           </div>
+        </div>
+
+        {/* ─── MONUMENTAL "LET'S CONNECT" BIG BANNER ─── */}
+        <div className="v2-footer-monumental-container">
+          <a 
+            href="mailto:dafiashalom@gmail.com" 
+            className="v2-footer-monumental-link"
+            aria-label="Let's Connect - Send an Email"
+          >
+            <div className="v2-footer-monumental-text">
+              LET'S CONNECT
+            </div>
+            
+            {/* Interactive hover indicator */}
+            <div className="v2-footer-hover-pill">
+              <span>{lang === 'fr' ? 'DÉMARRER UN PROJET' : 'START A PROJECT'}</span>
+              <ArrowRight size={14} className="v2-hover-pill-arrow" />
+            </div>
+          </a>
         </div>
 
         {/* Copyright Bar */}

@@ -6009,11 +6009,25 @@
 ───────────────────────────────────────────── */
 .v2-connect-reference-section {
   position: relative;
-  max-width: 1300px;
+  max-width: 1380px;
   margin: 0 auto;
-  padding: 80px 4% 40px 4%;
+  padding: 80px 4% 36px 4%;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 2;
+  overflow: hidden;
+}
+
+.v2-footer-ambient-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(168, 85, 247, 0.04) 50%, transparent 75%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ─────────────────────────────────────────────
@@ -6021,16 +6035,17 @@
 ───────────────────────────────────────────── */
 .v2-reference-footer-wrap {
   position: relative;
-  max-width: 1050px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding-top: 40px;
+  padding-top: 20px;
+  z-index: 2;
 }
 
 .v2-reference-footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
   gap: 40px;
-  padding-bottom: 48px;
+  padding-bottom: 40px;
   align-items: flex-start;
 }
 
@@ -6050,13 +6065,14 @@
 
 .v2-ref-footer-brand {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
 }
 
 .v2-ref-monogram {
   cursor: pointer;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .v2-ref-monogram:hover {
@@ -6066,19 +6082,49 @@
 .v2-ref-brand-meta {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 .v2-ref-brand-name {
   font-family: var(--font-anton);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #FFFFFF;
   letter-spacing: 0.04em;
 }
 
 .v2-ref-brand-sub {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: #64748B;
+}
+
+.v2-footer-availability-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #34D399;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  padding: 3px 8px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.v2-availability-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px #34D399;
+  animation: v2PulseDot 2s infinite ease-in-out;
+}
+
+@keyframes v2PulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
 }
 
 .v2-ref-footer-col {
@@ -6123,12 +6169,121 @@
   gap: 8px;
 }
 
+/* ─────────────────────────────────────────────
+   MONUMENTAL "LET'S CONNECT" BIG BANNER (FULL WIDTH)
+───────────────────────────────────────────── */
+.v2-footer-monumental-container {
+  position: relative;
+  width: 100%;
+  margin: 28px 0 36px 0;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(50% 100% at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+}
+
+.v2-footer-monumental-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.v2-footer-monumental-text {
+  font-family: var(--font-anton), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(3.6rem, 11.2vw, 11.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.85;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+
+  /* Subtle deep-dark embossed metallic styling */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.06) 45%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
+  
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v2-footer-monumental-link:hover .v2-footer-monumental-text {
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #BAE6FD 35%,
+    #38BDF8 65%,
+    rgba(14, 116, 144, 0.4) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(56, 189, 248, 0.4);
+  filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.35));
+  transform: scale(1.015);
+}
+
+/* Floating Hover Pill */
+.v2-footer-hover-pill {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(8, 14, 26, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+}
+
+.v2-footer-monumental-link:hover .v2-footer-hover-pill {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.v2-hover-pill-arrow {
+  color: #38BDF8;
+  transition: transform 0.25s ease;
+}
+
+.v2-footer-monumental-link:hover .v2-hover-pill-arrow {
+  transform: translateX(4px);
+}
+
+/* Bottom Copyright Bar */
 .v2-ref-footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 18px;
   font-family: var(--font-body);
   font-size: 0.76rem;
   color: #64748B;
@@ -6144,11 +6299,12 @@
 
 .v2-ref-footer-socials a {
   color: #64748B;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .v2-ref-footer-socials a:hover {
   color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .v2-footer-location-tag {
