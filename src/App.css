@@ -1867,20 +1867,96 @@
   }
 }
 
+/* Hero Section with Sticky Parallax Superposition */
+.v2-hero-section {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
 /* ==========================================================================
-   V2 ABOUT ME SECTION — FULL-WIDTH DYNAMIC SCROLLER & CONCISE CRAFT
+   V2 ABOUT ME SECTION — SUPERPOSITION SHEET & FULL-WIDTH SCROLLER
    ========================================================================== */
 .v2-about-section-fullwidth {
   position: relative;
+  z-index: 5;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  min-height: 85vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 100px 20px;
+  padding: 120px 20px 100px 20px;
   background: #030508;
+  border-top-left-radius: 44px;
+  border-top-right-radius: 44px;
+  box-shadow: 0 -40px 100px rgba(0, 0, 0, 0.95), 0 -1px 0 rgba(255, 255, 255, 0.18);
+  border-top: 1px solid rgba(56, 189, 248, 0.28);
+}
+
+/* ─────────────────────────────────────────────
+   TEXT REVEAL & WORD-BY-WORD SCROLL ILLUMINATION
+───────────────────────────────────────────── */
+.v2-text-reveal-container {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(4px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  will-change: transform, opacity, filter;
+}
+
+.v2-text-reveal-container.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.v2-word-reveal-paragraph {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+  line-height: 1.78;
+  font-weight: 400;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.v2-reveal-word {
+  display: inline-block;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: color, opacity, filter, transform;
+}
+
+.v2-reveal-word.is-dim {
+  opacity: 0.25;
+  filter: blur(1.5px);
+  color: #64748B;
+  transform: translateY(2px);
+}
+
+.v2-reveal-word.is-lit {
+  opacity: 1;
+  filter: blur(0);
+  color: #CBD5E1;
+  transform: translateY(0);
+}
+
+.v2-reveal-word.is-lit.is-highlight {
+  color: #FFFFFF;
+  font-weight: 700;
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
 }
 
 /* Full-width Multi-Column Dynamic Scroller */
