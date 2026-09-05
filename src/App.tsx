@@ -22,6 +22,7 @@ import HeroSignature from './components/HeroSignature';
 import { GlassServiceVisual } from './components/ServiceGlassVisuals';
 import { FuturisticPreloader } from './components/FuturisticPreloader';
 import { FramerExperienceCard } from './components/FramerExperienceCard';
+import { SymbolWatermark, SymbolGlyphIcon, SymbolLaserDivider } from './components/SymbolIllustrations';
 
 
 
@@ -1030,7 +1031,10 @@ export default function App() {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (totalHeight > 0) {
-        setScrollProgress((window.scrollY / totalHeight) * 100);
+        const p = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(p);
+        document.documentElement.style.setProperty('--scroll-percent', `${p.toFixed(2)}%`);
+        document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
       }
     };
 
@@ -1044,10 +1048,10 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
     );
 
-    const revealElems = document.querySelectorAll('.scroll-reveal');
+    const revealElems = document.querySelectorAll('.scroll-reveal, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right');
     revealElems.forEach((elem) => observer.observe(elem));
 
     return () => {
@@ -1552,6 +1556,9 @@ export default function App() {
               </div>
             </section>
 
+            {/* Laser Divider 1 */}
+            <SymbolLaserDivider color="cyan" />
+
             {/* SECTION 2: ABOUT (EXACT REFERENCE DESIGN) */}
             {/* SECTION 2: ABOUT (FULL-WIDTH DYNAMIC SCROLLING SHOWCASE & CONCISE COPY) */}
             <section id="about-me" className="v2-about-section-fullwidth scroll-reveal">
@@ -1625,7 +1632,8 @@ export default function App() {
               {/* Center Content Card (Concise, Clean & Refined) */}
               <div className="v2-about-content-card">
                 <span className="v2-about-eyebrow">
-                  {lang === 'fr' ? 'À PROPOS' : 'ABOUT ME'}
+                  <SymbolGlyphIcon size={14} color="cyan" />
+                  <span>{lang === 'fr' ? 'À PROPOS' : 'ABOUT ME'}</span>
                 </span>
                 <h2 className="v2-about-title">
                   {lang === 'fr' ? 'Bonjour !' : 'Hi There!'}
@@ -1687,14 +1695,21 @@ export default function App() {
               </div>
             </section>
 
+            {/* Laser Divider 2 */}
+            <SymbolLaserDivider color="cyan" />
+
             {/* SECTION: SERVICES & CAPABILITIES (EXACT DARK GLASS AESTHETIC) */}
             <section id="services" className="v2-services-section scroll-reveal">
               {/* Atmospheric background glow */}
               <div className="v2-services-glow" aria-hidden="true" />
 
+              {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+              <SymbolWatermark size={580} color="cyan" opacity={0.12} className="v2-watermark-ambient watermark-pos-right" />
+
               <div className="v2-services-header">
                 <span className="v2-services-eyebrow">
-                  {lang === 'fr' ? 'Mes Services' : 'Services & Solutions'}
+                  <SymbolGlyphIcon size={14} color="cyan" />
+                  <span>{lang === 'fr' ? 'Mes Services' : 'Services & Solutions'}</span>
                 </span>
                 <h2 className="v2-services-title">
                   {lang === 'fr' ? 'Expertises & Savoir-Faire' : 'Craft & Capabilities'}
@@ -1859,16 +1874,23 @@ export default function App() {
               </div>
             </section>
 
+            {/* Laser Divider 3 */}
+            <SymbolLaserDivider color="blue" />
+
             {/* SECTION: WEBSITE DESIGN & TOOLS BENTO GRID (MAGNIFIED & REFINED) */}
             <section id="webdesign" className="v2-webdesign-section scroll-reveal">
               {/* Violet & Cyan Atmospheric Glow */}
               <div className="v2-webdesign-glow" aria-hidden="true" />
               <div className="v2-webdesign-glow-secondary" aria-hidden="true" />
 
+              {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+              <SymbolWatermark size={560} color="blue" opacity={0.11} className="v2-watermark-ambient watermark-pos-left" />
+
               {/* Section Header */}
               <div className="v2-webdesign-header">
                 <span className="v2-webdesign-eyebrow">
-                  {lang === 'fr' ? 'Conception Web & Sites' : 'Website Design'}
+                  <SymbolGlyphIcon size={14} color="cyan" />
+                  <span>{lang === 'fr' ? 'Conception Web & Sites' : 'Website Design'}</span>
                 </span>
                 <h2 className="v2-webdesign-title">
                   {lang === 'fr' ? 'Impressionner, Engager et Performer.' : 'Impress, Engage, and Perform.'}
@@ -2299,13 +2321,17 @@ export default function App() {
               </div>
             </section>
 
+            {/* Laser Divider 4 */}
+            <SymbolLaserDivider color="blue" />
+
             {/* SECTION: PRODUCT DESIGN & B2B SAAS (EHADJ, ASSET IQ, BEANS) */}
             <section id="product-design" className="v2-showcase-section scroll-reveal">
               <div className="v2-section-ambient-glow glow-blue" aria-hidden="true" />
               
               <div className="v2-section-header">
                 <span className="v2-section-eyebrow eyebrow-blue">
-                  {lang === 'fr' ? 'Product Design & B2B SaaS' : 'Product Design & B2B SaaS'}
+                  <SymbolGlyphIcon size={14} color="blue" />
+                  <span>{lang === 'fr' ? 'Product Design & B2B SaaS' : 'Product Design & B2B SaaS'}</span>
                 </span>
                 <h2 className="v2-section-title">
                   {lang === 'fr' ? 'Architecture Produit & Systèmes Complexes.' : 'Product Architecture & Complex Systems.'}
@@ -2425,13 +2451,20 @@ export default function App() {
               </div>
             </section>
 
+            {/* Laser Divider 5 */}
+            <SymbolLaserDivider color="purple" />
+
             {/* SECTION: UI/UX DESIGN & DIGITAL EXPERIENCES (DOLCE RIVIERA, VORTEX, SPORT ADVISOR) */}
             <section id="uiux-design" className="v2-showcase-section scroll-reveal">
               <div className="v2-section-ambient-glow glow-purple" aria-hidden="true" />
               
+              {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+              <SymbolWatermark size={520} color="purple" opacity={0.1} className="v2-watermark-ambient watermark-pos-right" />
+
               <div className="v2-section-header">
                 <span className="v2-section-eyebrow eyebrow-purple">
-                  {lang === 'fr' ? 'UI/UX Design & Expériences' : 'UI/UX Design & Experiences'}
+                  <SymbolGlyphIcon size={14} color="purple" />
+                  <span>{lang === 'fr' ? 'UI/UX Design & Expériences' : 'UI/UX Design & Experiences'}</span>
                 </span>
                 <h2 className="v2-section-title">
                   {lang === 'fr' ? 'Interfaces Immersives, Fluides et Désirables.' : 'Immersive, Fluid & Engaging Interfaces.'}
@@ -2557,7 +2590,8 @@ export default function App() {
               
               <div className="v2-section-header">
                 <span className="v2-section-eyebrow eyebrow-purple">
-                  {lang === 'fr' ? 'GRAPHIC DESIGN & CRÉATION' : 'GRAPHIC DESIGN & BRANDING'}
+                  <SymbolGlyphIcon size={14} color="purple" />
+                  <span>{lang === 'fr' ? 'GRAPHIC DESIGN & CRÉATION' : 'GRAPHIC DESIGN & BRANDING'}</span>
                 </span>
                 <h2 className="v2-section-title">
                   {lang === 'fr' ? 'Direction Artistique, Posters & Carrousels.' : 'Visual Direction, Posters & Carousels.'}
@@ -2782,13 +2816,20 @@ export default function App() {
               </div>
             </section>
 
+            {/* Laser Divider 6 */}
+            <SymbolLaserDivider color="emerald" />
+
             {/* SECTION 6: CAREER LOGS & DETAILED TIMELINE (V2 DARK GLASS) */}
             <section id="career" className="v2-experience-section scroll-reveal">
               <div className="v2-experience-glow" aria-hidden="true" />
 
+              {/* Architectural Blueprint Glass Symbol Watermark in Background */}
+              <SymbolWatermark size={560} color="emerald" opacity={0.11} className="v2-watermark-ambient watermark-pos-left" />
+
               <div className="v2-section-header">
                 <span className="v2-section-eyebrow eyebrow-blue">
-                  {lang === 'fr' ? 'Parcours & Expériences' : 'Career & Field Logs'}
+                  <SymbolGlyphIcon size={14} color="emerald" />
+                  <span>{lang === 'fr' ? 'Parcours & Expériences' : 'Career & Field Logs'}</span>
                 </span>
                 <h2 className="v2-section-title">
                   {lang === 'fr' ? 'Parcours Professionnel & Impact.' : 'Professional Journey & Impact.'}
@@ -2877,6 +2918,9 @@ export default function App() {
                 />
               </div>
             </section>
+
+            {/* Laser Divider 7 */}
+            <SymbolLaserDivider color="cyan" />
 
             {/* SECTION 6: REFERENCE DUAL-PANEL CONNECT & FOOTER */}
             <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />

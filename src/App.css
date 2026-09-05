@@ -1176,11 +1176,23 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #38BDF8, #60A5FA, #FBBF24);
-  z-index: 999;
-  transition: width 0.1s linear;
-  box-shadow: 0 1px 6px rgba(56, 189, 248, 0.6);
+  height: 3.5px;
+  background: linear-gradient(90deg, #38BDF8 0%, #60A5FA 40%, #A855F7 75%, #34D399 100%);
+  z-index: 99999;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.8), 0 0 24px rgba(168, 85, 247, 0.5);
+}
+
+.robin-scroll-progress-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 12px #38BDF8, 0 0 20px #FFFFFF;
 }
 
 /* Full-Width Container Sheet */
@@ -1198,23 +1210,216 @@
   border: none;
 }
 
-/* Scroll Reveal Animation System */
+/* ─────────────────────────────────────────────
+   ENHANCED 3D SCROLL REVEAL ANIMATION SYSTEM
+───────────────────────────────────────────── */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(38px) scale(0.985);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
 .scroll-reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.92) translateY(24px);
+  filter: blur(8px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.scroll-reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
 }
 
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
+
+/* ─────────────────────────────────────────────
+   SYMBOL LASER GRADIENT DIVIDERS
+───────────────────────────────────────────── */
+.symbol-laser-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 60px auto;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.symbol-laser-line {
+  flex: 1;
+  height: 1px;
+}
+
+.symbol-laser-divider.cyan .line-left {
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.35) 70%, rgba(56, 189, 248, 0.9) 100%);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+.symbol-laser-divider.cyan .line-right {
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.9) 0%, rgba(56, 189, 248, 0.35) 30%, transparent 100%);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.symbol-laser-divider.blue .line-left {
+  background: linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.35) 70%, rgba(96, 165, 250, 0.9) 100%);
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.4);
+}
+.symbol-laser-divider.blue .line-right {
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.9) 0%, rgba(96, 165, 250, 0.35) 30%, transparent 100%);
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.4);
+}
+
+.symbol-laser-divider.purple .line-left {
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.35) 70%, rgba(168, 85, 247, 0.9) 100%);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+}
+.symbol-laser-divider.purple .line-right {
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.9) 0%, rgba(168, 85, 247, 0.35) 30%, transparent 100%);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+}
+
+.symbol-laser-divider.emerald .line-left {
+  background: linear-gradient(90deg, transparent 0%, rgba(52, 211, 153, 0.35) 70%, rgba(52, 211, 153, 0.9) 100%);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+}
+.symbol-laser-divider.emerald .line-right {
+  background: linear-gradient(90deg, rgba(52, 211, 153, 0.9) 0%, rgba(52, 211, 153, 0.35) 30%, transparent 100%);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+}
+
+.symbol-laser-center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.symbol-laser-glow {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.symbol-laser-icon {
+  filter: drop-shadow(0 0 8px currentColor);
+  animation: symbolPulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes symbolPulseGlow {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────
+   SYMBOL WATERMARK & ARCHITECTURAL BLUEPRINTS
+───────────────────────────────────────────── */
+.symbol-watermark-wrapper {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.watermark-pos-right {
+  top: 5%;
+  right: -80px;
+}
+
+.watermark-pos-left {
+  top: 5%;
+  left: -80px;
+}
+
+.symbol-watermark-ambient {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.symbol-watermark-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.25));
+}
+
+.symbol-spin-slow {
+  animation: spinSlow 36s linear infinite;
+  transform-origin: 140px 145px;
+}
+
+.symbol-spin-rev {
+  animation: spinRev 24s linear infinite;
+  transform-origin: 140px 145px;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinRev {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Eyebrow glyph icons */
+.symbol-glyph-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4));
+}
 
 /* Floating Dark Glass Navbar */
 .v2-floating-nav {
