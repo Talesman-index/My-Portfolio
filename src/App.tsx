@@ -12,7 +12,6 @@ import {
   Menu,
   ChevronLeft,
   ChevronRight,
-  Image as ImageIcon,
   Lock
 } from 'lucide-react';
 import './App.css';
@@ -2386,283 +2385,231 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 5: GRAPHIC DESIGN (2 CATEGORIES: POSTERS & AFFICHES + CARROUSELS) */}
-            <section id="graphic-design" className="v2-graphic-design-section scroll-reveal">
-              <div className="v2-graphic-glow" aria-hidden="true" />
-
-              {/* Section Header */}
-              <div className="v2-section-header" style={{ marginBottom: '20px' }}>
-                <span className="v2-section-eyebrow" style={{ color: '#10B981' }}>
-                  {lang === 'fr' ? 'Graphic Design' : 'Graphic Design'}
+            {/* SECTION 5: GRAPHIC DESIGN & BRANDING */}
+            <section id="graphic-design" className="v2-showcase-section scroll-reveal">
+              <div className="v2-section-ambient-glow glow-purple" aria-hidden="true" />
+              
+              <div className="v2-section-header">
+                <span className="v2-section-eyebrow eyebrow-purple">
+                  {lang === 'fr' ? 'GRAPHIC DESIGN & CRÉATION' : 'GRAPHIC DESIGN & BRANDING'}
                 </span>
                 <h2 className="v2-section-title">
-                  {lang === 'fr' ? 'Captiver, Communiquer et Connecter.' : 'Capture, Communicate, and Connect.'}
+                  {lang === 'fr' ? 'Direction Artistique, Posters & Carrousels.' : 'Visual Direction, Posters & Carousels.'}
                 </h2>
                 <p className="v2-section-subtitle">
                   {lang === 'fr'
-                    ? "Je conçois des visuels percutants qui transmettent le message de votre marque et résonnent avec votre audience, des affiches aux carrousels narratifs."
-                    : "I create impactful graphics that convey your brand's message and resonate with your audience, from editorial posters to high-converting carousels."}
+                    ? "Des affiches éditoriales et campagnes événementielles aux séries de carrousels captivants pensés pour marquer les esprits."
+                    : "From high-impact cultural and event posters to immersive brand carousels crafted with obsessive care."}
                 </p>
               </div>
 
-              {/* Subheading Row: Featured Designs + All Designs */}
-              <div className="v2-graphic-subheading-row">
-                <span className="v2-graphic-subheading-title">
-                  {lang === 'fr' ? 'Créations & Séries Récentes' : 'Featured Designs & Series'}
-                </span>
-                <button 
-                  className="v2-graphic-all-btn"
-                  onClick={() => setIsAllProjectsModalOpen(true)}
+              <div className="v2-showcase-grid-3">
+                {/* CARD 01: POSTERS & AFFICHES D'ART */}
+                <div 
+                  className="v2-project-card-large" 
+                  onClick={() => setSelectedGraphic({
+                    src: '/imgs/graphics/graphic_2souza_barman.jpg',
+                    title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
+                    category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+                    slides: [
+                      '/imgs/graphics/graphic_2souza_barman.jpg',
+                      '/imgs/graphics/graphic_strategie_arena_red.jpg',
+                      '/imgs/graphics/graphic_dada_billboard.jpg',
+                      '/imgs/graphics/graphic_aidarag_tennis.jpg',
+                      '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+                    ],
+                    currentSlideIndex: 0
+                  })}
                 >
-                  <span>{lang === 'fr' ? 'Toutes les créations' : 'All Designs'}</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-
-              {/* 2-Column Grid: Exactly 2 Categories */}
-              <div className="v2-graphic-grid-2col">
-                {/* CATEGORY 1: POSTERS & AFFICHES */}
-                <div className="v2-graphic-cat-card">
-                  <div className="v2-graphic-cat-header">
-                    <div className="v2-graphic-cat-title-wrap">
-                      <span className="v2-graphic-cat-icon"><ImageIcon size={18} color="#10B981" /></span>
-                      <span className="v2-graphic-cat-name">{lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}</span>
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="Posters & Affiches" />
+                    <span className="v2-project-year-badge">2025</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}</span>
                     </div>
-                    <span className="v2-graphic-cat-count">5 {lang === 'fr' ? 'PROJETS' : 'WORKS'}</span>
                   </div>
-                  <p className="v2-graphic-cat-desc">
-                    {lang === 'fr'
-                      ? "Directions artistiques singulières, compositions éditoriales, affiches typographiques et campagnes de communication d'impact."
-                      : "Art direction, editorial collage, typographic layouts, and high-impact visual campaign posters."}
-                  </p>
-
-                  <div className="v2-graphic-posters-grid">
-                    {/* Item 1: 2SOUZA */}
-                    <div 
-                      className="v2-graphic-poster-item" 
-                      onClick={() => setSelectedGraphic({ 
-                        src: '/imgs/graphics/graphic_2souza_barman.jpg', 
-                        title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie', 
-                        category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints' 
-                      })}
-                    >
-                      <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="2SOUZA Barman" loading="lazy" />
-                      <div className="v2-graphic-poster-overlay">
-                        <span className="v2-graphic-poster-tag">Art Direction</span>
-                        <span className="v2-graphic-poster-title">2SOUZA Barman</span>
-                      </div>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">
+                        {lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}
+                      </h3>
+                      <button 
+                        className="v2-project-explore-btn" 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          setSelectedGraphic({
+                            src: '/imgs/graphics/graphic_2souza_barman.jpg',
+                            title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
+                            category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+                            slides: [
+                              '/imgs/graphics/graphic_2souza_barman.jpg',
+                              '/imgs/graphics/graphic_strategie_arena_red.jpg',
+                              '/imgs/graphics/graphic_dada_billboard.jpg',
+                              '/imgs/graphics/graphic_aidarag_tennis.jpg',
+                              '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+                            ],
+                            currentSlideIndex: 0
+                          });
+                        }}
+                      >
+                        <span>{lang === 'fr' ? 'Galerie (5)' : 'Gallery (5)'}</span>
+                        <ArrowRight size={14} />
+                      </button>
                     </div>
-
-                    {/* Item 2: Stratégie Arena */}
-                    <div 
-                      className="v2-graphic-poster-item" 
-                      onClick={() => setSelectedGraphic({ 
-                        src: '/imgs/graphics/graphic_strategie_arena_red.jpg', 
-                        title: 'Stratégie Arena — Affiche Performance & Growth', 
-                        category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints' 
-                      })}
-                    >
-                      <img src="/imgs/graphics/graphic_strategie_arena_red.jpg" alt="Stratégie Arena" loading="lazy" />
-                      <div className="v2-graphic-poster-overlay">
-                        <span className="v2-graphic-poster-tag">Strategy Poster</span>
-                        <span className="v2-graphic-poster-title">Stratégie Arena</span>
-                      </div>
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Directions artistiques singulières, affiches de mixologie, événements culturels et compositions typographiques haute définition."
+                        : "Art direction, editorial collage, mixology posters, and high-impact typographic layouts crafted for cultural events."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? '5 Affiches Haute Définition & Print' : '5 High-Definition Event Posters'}</span>
                     </div>
-
-                    {/* Item 3: DADA Billboard */}
-                    <div 
-                      className="v2-graphic-poster-item" 
-                      onClick={() => setSelectedGraphic({ 
-                        src: '/imgs/graphics/graphic_dada_billboard.jpg', 
-                        title: 'DADA Management — Affiche Billboard Challenge 30 Jours', 
-                        category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints' 
-                      })}
-                    >
-                      <img src="/imgs/graphics/graphic_dada_billboard.jpg" alt="DADA Billboard" loading="lazy" />
-                      <div className="v2-graphic-poster-overlay">
-                        <span className="v2-graphic-poster-tag">Billboard</span>
-                        <span className="v2-graphic-poster-title">DADA Billboard</span>
-                      </div>
-                    </div>
-
-                    {/* Item 4: Aidarag Tennis */}
-                    <div 
-                      className="v2-graphic-poster-item" 
-                      onClick={() => setSelectedGraphic({ 
-                        src: '/imgs/graphics/graphic_aidarag_tennis.jpg', 
-                        title: 'Aidarag Tennis — Affiche Éditoriale & Collage Athlète', 
-                        category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints' 
-                      })}
-                    >
-                      <img src="/imgs/graphics/graphic_aidarag_tennis.jpg" alt="Aidarag Tennis" loading="lazy" />
-                      <div className="v2-graphic-poster-overlay">
-                        <span className="v2-graphic-poster-tag">Sports Editorial</span>
-                        <span className="v2-graphic-poster-title">Aidarag Tennis</span>
-                      </div>
-                    </div>
-
-                    {/* Item 5: Arena x DADA */}
-                    <div 
-                      className="v2-graphic-poster-item" 
-                      onClick={() => setSelectedGraphic({ 
-                        src: '/imgs/graphics/graphic_dada_collab_fistbump.jpg', 
-                        title: 'Stratégie Arena x DADA Management — Visuel Partenariat & Lancement', 
-                        category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints' 
-                      })}
-                    >
-                      <img src="/imgs/graphics/graphic_dada_collab_fistbump.jpg" alt="Arena x DADA Collab" loading="lazy" />
-                      <div className="v2-graphic-poster-overlay">
-                        <span className="v2-graphic-poster-tag">Partnership</span>
-                        <span className="v2-graphic-poster-title">Arena x DADA</span>
-                      </div>
+                    <div className="v2-project-tags-row">
+                      <span>Art Direction</span>
+                      <span>Photoshop</span>
+                      <span>Typographie</span>
+                      <span>Print & Web</span>
                     </div>
                   </div>
                 </div>
 
-                {/* CATEGORY 2: CARROUSELS */}
-                <div className="v2-graphic-cat-card">
-                  <div className="v2-graphic-cat-header">
-                    <div className="v2-graphic-cat-title-wrap">
-                      <span className="v2-graphic-cat-icon"><Layers size={18} color="#10B981" /></span>
-                      <span className="v2-graphic-cat-name">{lang === 'fr' ? 'Carrousels' : 'Social Carousels'}</span>
+                {/* CARD 02: CARROUSELS & STORYTELLING */}
+                <div 
+                  className="v2-project-card-large" 
+                  onClick={() => setSelectedGraphic({
+                    src: '/imgs/graphics/carrousels/c1/1.png',
+                    title: 'Strategy Arena — "Pourquoi une stratégie est le premier investissement"',
+                    category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
+                    slides: [
+                      '/imgs/graphics/carrousels/c1/1.png',
+                      '/imgs/graphics/carrousels/c1/2.png',
+                      '/imgs/graphics/carrousels/c1/3.png',
+                      '/imgs/graphics/carrousels/c1/4.png',
+                      '/imgs/graphics/carrousels/c1/5.png',
+                      '/imgs/graphics/carrousels/c1/6.png',
+                      '/imgs/graphics/carrousels/c1/7.png'
+                    ],
+                    currentSlideIndex: 0
+                  })}
+                >
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/graphics/carrousels/c1/1.png" alt="Carrousels & Storytelling" />
+                    <span className="v2-project-year-badge">2026</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'Carrousels Réseaux' : 'Social Carousels'}</span>
                     </div>
-                    <span className="v2-graphic-cat-count">3 {lang === 'fr' ? 'SÉRIES' : 'SERIES'}</span>
                   </div>
-                  <p className="v2-graphic-cat-desc">
-                    {lang === 'fr'
-                      ? "Structures narratives et visuelles complètes pensées pour captiver l'attention slide après slide sur les réseaux sociaux."
-                      : "Multi-slide narrative frameworks and educational storytelling series crafted for peak social engagement."}
-                  </p>
-
-                  <div className="v2-graphic-carrousels-list">
-                    {/* Carrousel 01 */}
-                    <div 
-                      className="v2-graphic-carrousel-card"
-                      onClick={() => setSelectedGraphic({
-                        src: '/imgs/graphics/carrousels/c1/1.png',
-                        title: 'Strategy Arena — "Pourquoi une stratégie est le premier investissement"',
-                        category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
-                        slides: [
-                          '/imgs/graphics/carrousels/c1/1.png',
-                          '/imgs/graphics/carrousels/c1/2.png',
-                          '/imgs/graphics/carrousels/c1/3.png',
-                          '/imgs/graphics/carrousels/c1/4.png',
-                          '/imgs/graphics/carrousels/c1/5.png',
-                          '/imgs/graphics/carrousels/c1/6.png',
-                          '/imgs/graphics/carrousels/c1/7.png'
-                        ],
-                        currentSlideIndex: 0
-                      })}
-                    >
-                      <div className="v2-graphic-carrousel-stack">
-                        <div className="v2-graphic-carrousel-stack-layer layer-1">
-                          <img src="/imgs/graphics/carrousels/c1/3.png" alt="Slide Preview 3" />
-                        </div>
-                        <div className="v2-graphic-carrousel-stack-layer layer-2">
-                          <img src="/imgs/graphics/carrousels/c1/2.png" alt="Slide Preview 2" />
-                        </div>
-                        <div className="v2-graphic-carrousel-stack-layer layer-3">
-                          <img src="/imgs/graphics/carrousels/c1/1.png" alt="Cover Slide 1" />
-                        </div>
-                      </div>
-                      <div className="v2-graphic-carrousel-info">
-                        <div className="v2-graphic-carrousel-meta">
-                          <span className="v2-graphic-carrousel-tag">Strategy Arena</span>
-                          <span className="v2-graphic-carrousel-badge">7 Slides</span>
-                        </div>
-                        <div className="v2-graphic-carrousel-title">Pourquoi une stratégie est le 1er investissement</div>
-                        <div className="v2-graphic-carrousel-cta">
-                          <span>{lang === 'fr' ? 'Feuilleter le carrousel' : 'Browse carousel'}</span>
-                          <ArrowRight size={13} />
-                        </div>
-                      </div>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">
+                        {lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels'}
+                      </h3>
+                      <button 
+                        className="v2-project-explore-btn" 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          setSelectedGraphic({
+                            src: '/imgs/graphics/carrousels/c1/1.png',
+                            title: 'Strategy Arena — "Pourquoi une stratégie est le premier investissement"',
+                            category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
+                            slides: [
+                              '/imgs/graphics/carrousels/c1/1.png',
+                              '/imgs/graphics/carrousels/c1/2.png',
+                              '/imgs/graphics/carrousels/c1/3.png',
+                              '/imgs/graphics/carrousels/c1/4.png',
+                              '/imgs/graphics/carrousels/c1/5.png',
+                              '/imgs/graphics/carrousels/c1/6.png',
+                              '/imgs/graphics/carrousels/c1/7.png'
+                            ],
+                            currentSlideIndex: 0
+                          });
+                        }}
+                      >
+                        <span>{lang === 'fr' ? 'Feuilleter' : 'Browse'}</span>
+                        <ArrowRight size={14} />
+                      </button>
                     </div>
-
-                    {/* Carrousel 02 */}
-                    <div 
-                      className="v2-graphic-carrousel-card"
-                      onClick={() => setSelectedGraphic({
-                        src: '/imgs/graphics/carrousels/c2/cover.png',
-                        title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable, il y a une stratégie"',
-                        category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
-                        slides: [
-                          '/imgs/graphics/carrousels/c2/cover.png',
-                          '/imgs/graphics/carrousels/c2/1.png',
-                          '/imgs/graphics/carrousels/c2/2.png',
-                          '/imgs/graphics/carrousels/c2/3.png',
-                          '/imgs/graphics/carrousels/c2/4.png',
-                          '/imgs/graphics/carrousels/c2/5.png',
-                          '/imgs/graphics/carrousels/c2/6.png',
-                          '/imgs/graphics/carrousels/c2/7.png'
-                        ],
-                        currentSlideIndex: 0
-                      })}
-                    >
-                      <div className="v2-graphic-carrousel-stack">
-                        <div className="v2-graphic-carrousel-stack-layer layer-1">
-                          <img src="/imgs/graphics/carrousels/c2/2.png" alt="Slide Preview 2" />
-                        </div>
-                        <div className="v2-graphic-carrousel-stack-layer layer-2">
-                          <img src="/imgs/graphics/carrousels/c2/1.png" alt="Slide Preview 1" />
-                        </div>
-                        <div className="v2-graphic-carrousel-stack-layer layer-3">
-                          <img src="/imgs/graphics/carrousels/c2/cover.png" alt="Cover Slide" />
-                        </div>
-                      </div>
-                      <div className="v2-graphic-carrousel-info">
-                        <div className="v2-graphic-carrousel-meta">
-                          <span className="v2-graphic-carrousel-tag">Business &amp; Growth</span>
-                          <span className="v2-graphic-carrousel-badge">8 Slides</span>
-                        </div>
-                        <div className="v2-graphic-carrousel-title">Entre idée brillante &amp; entreprise rentable</div>
-                        <div className="v2-graphic-carrousel-cta">
-                          <span>{lang === 'fr' ? 'Feuilleter le carrousel' : 'Browse carousel'}</span>
-                          <ArrowRight size={13} />
-                        </div>
-                      </div>
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Structures narratives et visuelles complètes conçues pour captiver l'attention et générer un fort engagement slide après slide."
+                        : "Multi-slide narrative frameworks and educational storytelling series crafted for peak attention and social engagement."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? '3 Séries Complètes (21 Slides Multi-Formats)' : '3 Complete Multi-Slide Series (21 Visuals)'}</span>
                     </div>
+                    <div className="v2-project-tags-row">
+                      <span>Carrousels</span>
+                      <span>Storytelling</span>
+                      <span>Social Media</span>
+                      <span>Growth Design</span>
+                    </div>
+                  </div>
+                </div>
 
-                    {/* Carrousel 03 */}
-                    <div 
-                      className="v2-graphic-carrousel-card"
-                      onClick={() => setSelectedGraphic({
-                        src: '/imgs/graphics/carrousels/c3/1.png',
-                        title: 'Strategy Arena — "Votre client n\'achète pas votre produit"',
-                        category: lang === 'fr' ? 'Carrousels' : 'Social Carousels',
-                        slides: [
-                          '/imgs/graphics/carrousels/c3/1.png',
-                          '/imgs/graphics/carrousels/c3/2.png',
-                          '/imgs/graphics/carrousels/c3/3.png',
-                          '/imgs/graphics/carrousels/c3/4.png',
-                          '/imgs/graphics/carrousels/c3/5.png',
-                          '/imgs/graphics/carrousels/c3/6.png',
-                          '/imgs/graphics/carrousels/c3/7.png'
-                        ],
-                        currentSlideIndex: 0
-                      })}
-                    >
-                      <div className="v2-graphic-carrousel-stack">
-                        <div className="v2-graphic-carrousel-stack-layer layer-1">
-                          <img src="/imgs/graphics/carrousels/c3/3.png" alt="Slide Preview 3" />
-                        </div>
-                        <div className="v2-graphic-carrousel-stack-layer layer-2">
-                          <img src="/imgs/graphics/carrousels/c3/2.png" alt="Slide Preview 2" />
-                        </div>
-                        <div className="v2-graphic-carrousel-stack-layer layer-3">
-                          <img src="/imgs/graphics/carrousels/c3/1.png" alt="Cover Slide 1" />
-                        </div>
-                      </div>
-                      <div className="v2-graphic-carrousel-info">
-                        <div className="v2-graphic-carrousel-meta">
-                          <span className="v2-graphic-carrousel-tag">Psychologie &amp; Vente</span>
-                          <span className="v2-graphic-carrousel-badge">7 Slides</span>
-                        </div>
-                        <div className="v2-graphic-carrousel-title">Votre client n'achète pas votre produit</div>
-                        <div className="v2-graphic-carrousel-cta">
-                          <span>{lang === 'fr' ? 'Feuilleter le carrousel' : 'Browse carousel'}</span>
-                          <ArrowRight size={13} />
-                        </div>
-                      </div>
+                {/* CARD 03: CAMPAGNES BILLBOARDS & PARTENARIATS */}
+                <div 
+                  className="v2-project-card-large" 
+                  onClick={() => setSelectedGraphic({
+                    src: '/imgs/graphics/graphic_dada_billboard.jpg',
+                    title: 'DADA Management — Affiche Billboard Challenge 30 Jours',
+                    category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
+                    slides: [
+                      '/imgs/graphics/graphic_dada_billboard.jpg',
+                      '/imgs/graphics/graphic_dada_collab_fistbump.jpg',
+                      '/imgs/graphics/graphic_strategie_arena_red.jpg'
+                    ],
+                    currentSlideIndex: 0
+                  })}
+                >
+                  <div className="v2-card-preview-container">
+                    <img src="/imgs/graphics/graphic_dada_billboard.jpg" alt="Campagnes Billboards" />
+                    <span className="v2-project-year-badge">2025</span>
+                    <div className="v2-preview-glass-tag">
+                      <span>{lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns'}</span>
+                    </div>
+                  </div>
+                  <div className="v2-card-content-block">
+                    <div className="v2-card-title-row">
+                      <h3 className="v2-project-title">
+                        {lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns'}
+                      </h3>
+                      <button 
+                        className="v2-project-explore-btn" 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          setSelectedGraphic({
+                            src: '/imgs/graphics/graphic_dada_billboard.jpg',
+                            title: 'DADA Management — Affiche Billboard Challenge 30 Jours',
+                            category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
+                            slides: [
+                              '/imgs/graphics/graphic_dada_billboard.jpg',
+                              '/imgs/graphics/graphic_dada_collab_fistbump.jpg',
+                              '/imgs/graphics/graphic_strategie_arena_red.jpg'
+                            ],
+                            currentSlideIndex: 0
+                          });
+                        }}
+                      >
+                        <span>{lang === 'fr' ? 'Voir visuels' : 'View Visuals'}</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                    <p className="v2-project-summary">
+                      {lang === 'fr'
+                        ? "Affichage grand format, visuels de lancement de partenariats stratégiques et directions créatives 360° percutantes."
+                        : "Urban billboard displays, strategic partnership launch assets, and high-impact 360° creative campaigns."}
+                    </p>
+                    <div className="v2-project-metrics-pill">
+                      <span className="metric-icon">◆</span>
+                      <span>{lang === 'fr' ? 'Affichage Urbain & Campagnes de Lancement' : 'Urban Billboards & Launch Campaigns'}</span>
+                    </div>
+                    <div className="v2-project-tags-row">
+                      <span>Billboard</span>
+                      <span>Campagne 360°</span>
+                      <span>Partenariats</span>
+                      <span>Direction Créative</span>
                     </div>
                   </div>
                 </div>

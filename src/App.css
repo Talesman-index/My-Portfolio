@@ -2969,7 +2969,8 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.15);
 }
 
-#uiux-design .v2-project-card-large:hover {
+#uiux-design .v2-project-card-large:hover,
+#graphic-design .v2-project-card-large:hover {
   border-color: rgba(168, 85, 247, 0.45);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(168, 85, 247, 0.18);
 }
