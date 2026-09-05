@@ -396,15 +396,6 @@ const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceIte
         ? "Lead Product Designer chargé de la refonte UX/UI et de l'optimisation des flux critiques pour eHadj (logistique nationale) et Asset IQ (télémétrie industrielle). Définition des parcours multi-acteurs (+30 ministères), création du Design System Figma Tokens et supervision QA."
         : "Lead Product Designer in charge of optimizing user journeys and eliminating operational friction for national logistics (eHadj) and asset telemetry (Asset IQ). Designed end-to-end user flows for 30+ government agencies, establishing Figma Tokens & modular UI architecture.",
     accentColor: 'cyan',
-    metrics: lang === 'fr' ? [
-      { value: "90%", label: "Moins d'erreurs dossier" },
-      { value: "30+", label: "Passerelles ministères" },
-      { value: "0", label: "Doublon sur le terrain" }
-    ] : [
-      { value: "90%", label: "Fewer dossier errors" },
-      { value: "30+", label: "Integrated gateways" },
-      { value: "0", label: "Duplicate field records" }
-    ],
     tags: ['Product Design', 'Figma Tokens', 'QA Recipe', 'eHadj & Asset IQ', 'User Flows', 'Telemetry UI'],
     highlights: lang === 'fr' ? [
       'Refonte UX nationale multi-ministères',
@@ -430,15 +421,6 @@ const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceIte
         ? "Direction du design produit et cadrage stratégique des fonctionnalités SaaS B2B complexes. Rédaction intégrale des PRDs, spécifications fonctionnelles & API, et mise en place de standards de livraison dev-handoff haute vélocité."
         : "Led design operations and product strategy, translating business objectives into high-performing SaaS interfaces. Authored complete PRDs, API functional specifications, and established rigorous dev-handoff protocols.",
     accentColor: 'blue',
-    metrics: lang === 'fr' ? [
-      { value: "+50%", label: "Vélocité dev via PRDs" },
-      { value: "100%", label: "Alignement tokens & eng" },
-      { value: "B2B", label: "Architecture d'entreprise" }
-    ] : [
-      { value: "+50%", label: "Dev velocity via PRDs" },
-      { value: "100%", label: "Design-to-eng token fidelity" },
-      { value: "B2B", label: "Enterprise SaaS architecture" }
-    ],
     tags: ['PRD Specs', 'Product Strategy', 'User Research', 'B2B SaaS', 'Dev Handoff', 'Design System'],
     highlights: lang === 'fr' ? [
       'Spécifications fonctionnelles PRD & API',
@@ -464,15 +446,6 @@ const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceIte
         ? "Direction artistique web, typographie éditoriale et conception d'interfaces e-commerce immersives. Conception de vitrines interactives d'exception avec micro-animations 60fps et optimisation continue du taux de conversion (CRO)."
         : "Crafted high-end responsive websites, custom e-commerce experiences, and brand visual systems for 15+ international clients. Spearheaded editorial typography, 60fps micro-animations, and conversion funnels.",
     accentColor: 'green',
-    metrics: lang === 'fr' ? [
-      { value: "15+", label: "Vitrines web livrées" },
-      { value: "60 FPS", label: "Micro-animations fluides" },
-      { value: "CRO", label: "Optimisation conversion" }
-    ] : [
-      { value: "15+", label: "Luxury showcase & stores" },
-      { value: "60 FPS", label: "Fluid physics & motion" },
-      { value: "CRO", label: "Conversion rate boost" }
-    ],
     tags: ['Web Art Direction', 'Responsive UI', 'E-Commerce', 'Micro-Animations', 'CRO Strategy', 'Typography'],
     highlights: lang === 'fr' ? [
       '+15 vitrines et boutiques de marque livrées',

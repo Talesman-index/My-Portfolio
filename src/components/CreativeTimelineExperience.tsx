@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Sparkles, Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
 
 export interface TimelineExperienceItem {
   id: string;
@@ -12,7 +12,7 @@ export interface TimelineExperienceItem {
   tagline: string;
   description: string;
   accentColor: 'cyan' | 'blue' | 'green' | 'purple';
-  metrics: { value: string; label: string }[];
+  metrics?: { value: string; label: string }[];
   tags: string[];
   highlights?: string[];
 }
@@ -238,19 +238,6 @@ const TimelineRowItem: React.FC<TimelineRowItemProps> = ({
             <p className="v2-tcard-description">
               {item.description}
             </p>
-
-            {/* High-Impact Metrics Grid */}
-            <div className="v2-tcard-metrics-grid">
-              {item.metrics.map((metric, mIdx) => (
-                <div key={mIdx} className="v2-tcard-metric-box">
-                  <div className="v2-metric-top-row">
-                    <span className="v2-metric-value">{metric.value}</span>
-                    <ArrowUpRight size={13} className="v2-metric-arrow" />
-                  </div>
-                  <span className="v2-metric-label">{metric.label}</span>
-                </div>
-              ))}
-            </div>
 
             {/* Deliverables / Skill Chips */}
             <div className="v2-tcard-footer-tags">
