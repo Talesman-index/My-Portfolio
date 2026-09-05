@@ -858,128 +858,195 @@ const ServicesView = ({
 ───────────────────────────────────────────── */
 const AllProjectsView = ({ 
   setCurrentView, 
-  setIsAboutModalOpen,
+  setIsAboutModalOpen: _setIsAboutModalOpen,
   lang 
 }: { 
   setCurrentView: any; 
   setIsAboutModalOpen: any;
   lang: 'en' | 'fr'; 
 }) => {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'saas' | 'mobile' | 'web'>('all');
+  const [activeSection, setActiveSection] = useState<string>('saas');
 
-  const allProjects = [
-    { id: 'asset-iq', title: 'Asset IQ', category: 'saas', tag: 'Product Design & SaaS', date: '2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.', deliverables: ['QR Code Telemetry', 'Figma Tokens', 'Asset Governance'] },
-    { id: 'ehadj', title: 'eHadj', category: 'saas', tag: 'National Logistics SaaS', date: '2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 agences et ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.', deliverables: ['Multi-agency Workflows', 'NPI Onboarding', 'Quota Tracking'] },
-    { id: 'beans', title: 'Beans', category: 'saas', tag: 'B2B SaaS Engagement', date: '2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS B2B de fidélisation client & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.', deliverables: ['10 Connector Hub', 'Shopify & Klaviyo', 'PRD Specs & QA'] },
-    { id: 'dolce-riviera', title: 'Dolce Riviera', category: 'web', tag: 'Luxury Hospitality UI/UX Interface', date: '2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception & landing page pour un hôtel de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept & booking funnel.', deliverables: ['UI/UX Design System', 'Booking Funnel UI', 'Fluid Luxury Typography'] },
-    { id: 'vortex', title: 'Vortex', category: 'mobile', tag: 'Mobile UX & Fuel Wallet', date: '2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et de gestion de portefeuille numérique.' : 'Mobile fuel purchasing & digital wallet management app.', deliverables: ['1-Click Purchasing', 'QR Station Code', 'High Contrast UI'] },
-    { id: 'strategy-arena', title: 'Strategy Arena', category: 'web', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie, organisation & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.', deliverables: ['Canary Yellow Brand', 'Preloader Animation', 'CRO Tunnel'] },
-    { id: 'truvox', title: 'Truvox Studio', category: 'web', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception, stratégie de marque & développement.' : 'High-end studio brand experience, web design & development.', deliverables: ['Brand Strategy', 'Quote Tunnel', 'Performance Web'] },
-    { id: 'sport-advisor', title: 'Sport Advisor', category: 'mobile', tag: 'AI & Data Visualization', date: '2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'intelligence artificielle.' : 'AI-driven sports analysis & data visualization platform.', deliverables: ['AI Prediction Engine', 'Odds Comparer', 'Confidence Gauges'] },
-    { id: 'sagana', title: 'Sagana Agency', category: 'web', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Site vitrine d\'excellence pour agence de conseil stratégique haut de gamme.' : 'High-end showcase site for elite advisory agency.', deliverables: ['Editorial Layout', 'High-end Branding', 'Micro-interactions'] },
-    { id: 'tavares', title: 'Tavares & Visuals', category: 'web', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web d\'exception, vitrines cinématographiques et e-commerce.' : 'Curated collection of cinematic showcase sites, editorial e-commerce & galleries.', deliverables: ['Showreel Player', 'Black Theme', 'Micro-animations'] },
-    { id: 'the-refuge', title: 'The Refuge', category: 'web', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel pour l\'ONG The Refuge.' : 'Humanitarian portal & real-time impact tracker in Cotonou.', deliverables: ['Real-time Tracker', 'Mobile Money FCFA', 'Human Touch Doodles'] }
+  const categories = [
+    {
+      id: 'saas',
+      label: lang === 'fr' ? 'SaaS & B2B' : 'SaaS & B2B',
+      desc: lang === 'fr'
+        ? "Produits SaaS enterprise-grade, architectures UX multi-acteurs et systèmes de design Figma tokens pour des clients B2B exigeants."
+        : "Enterprise-grade SaaS products, multi-actor UX architectures and Figma token design systems for demanding B2B clients.",
+      projects: [
+        { id: 'asset-iq', title: 'Asset IQ', tag: 'Product Design & SaaS', date: '2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8' },
+        { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: '2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308' },
+        { id: 'beans', title: 'Beans', tag: 'B2B SaaS Engagement', date: '2025', img: '/imgs/beans_cover.png', color: '#059669' },
+      ]
+    },
+    {
+      id: 'mobile',
+      label: 'Mobile UX',
+      desc: lang === 'fr'
+        ? "Applications mobiles à haute performance, UI d'achat frictionless et data visualization pour plateformes iOS & Android."
+        : "High-performance mobile apps, frictionless purchasing UI and data visualization for iOS & Android platforms.",
+      projects: [
+        { id: 'vortex', title: 'Vortex', tag: 'Mobile UX & Fuel Wallet', date: '2026', img: '/imgs/vortex.webp', color: '#D97706' },
+        { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: '2025', img: '/imgs/advisor.webp', color: '#00FA9A' },
+      ]
+    },
+    {
+      id: 'web',
+      label: lang === 'fr' ? 'Web & Branding' : 'Web & Branding',
+      desc: lang === 'fr'
+        ? "Sites vitrine haut de gamme, direction artistique éditoriale, identités de marque et landing pages de conversion."
+        : "Premium showcase sites, editorial art direction, brand identities and high-converting landing pages.",
+      projects: [
+        { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX', date: '2025', img: '/imgs/dolce_cover.png', color: '#C5A059' },
+        { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308' },
+        { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981' },
+        { id: 'sagana', title: 'Sagana Agency', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B' },
+        { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#DC2626' },
+        { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479' },
+      ]
+    },
   ];
 
-  const filteredProjects = allProjects.filter(p => {
-    if (activeFilter === 'all') return true;
-    return p.category === activeFilter;
-  });
+  const allCount = categories.reduce((acc, c) => acc + c.projects.length, 0);
+
+  const visibleCategories = activeSection === 'all' ? categories : categories.filter(c => c.id === activeSection);
 
   return (
-    <div className="v2-subpage-wrapper">
-      <div className="v2-subpage-ambient-glow" />
+    <div className="v2-apv-shell">
 
-      {/* Architectural Blueprint Glass Symbol Watermark in Background */}
-      <SymbolWatermark size={680} color="cyan" opacity={0.09} className="v2-watermark-ambient watermark-pos-right" />
-
-      <div className="v2-subpage-container">
-        <button 
-          onClick={() => navigateToHome(setCurrentView)} 
-          className="v2-subpage-back-btn"
-        >
-          <ArrowLeft size={16} /> <span>{lang === 'fr' ? 'RETOUR AU PORTFOLIO' : 'BACK TO PORTFOLIO'}</span>
+      {/* ─── LEFT SIDEBAR ─── */}
+      <aside className="v2-apv-sidebar">
+        <button onClick={() => navigateToHome(setCurrentView)} className="v2-apv-back">
+          <ArrowLeft size={14} />
+          <span>{lang === 'fr' ? 'Portfolio' : 'Portfolio'}</span>
         </button>
 
-        <div className="v2-subpage-header">
-          <div>
-            <span className="v2-subpage-eyebrow">
-              {lang === 'fr' ? `INDEX DES ARCHIVES (${allProjects.length} PROJETS)` : `FULL ARCHIVE INDEX (${allProjects.length} PROJECTS)`}
-            </span>
-            <h1 className="v2-subpage-title">
-              {lang === 'fr' ? 'TOUS LES PROJETS' : 'ALL PROJECTS'}
-            </h1>
-          </div>
-
-          {/* Filter Pills */}
-          <div className="v2-filter-pills-row">
-            <button 
-              className={`v2-filter-pill-btn ${activeFilter === 'all' ? 'is-active' : ''}`}
-              onClick={() => setActiveFilter('all')}
-            >
-              {lang === 'fr' ? `TOUS (${allProjects.length})` : `ALL (${allProjects.length})`}
-            </button>
-            <button 
-              className={`v2-filter-pill-btn ${activeFilter === 'saas' ? 'is-active' : ''}`}
-              onClick={() => setActiveFilter('saas')}
-            >
-              SAAS &amp; B2B
-            </button>
-            <button 
-              className={`v2-filter-pill-btn ${activeFilter === 'mobile' ? 'is-active' : ''}`}
-              onClick={() => setActiveFilter('mobile')}
-            >
-              MOBILE UX
-            </button>
-            <button 
-              className={`v2-filter-pill-btn ${activeFilter === 'web' ? 'is-active' : ''}`}
-              onClick={() => setActiveFilter('web')}
-            >
-              WEB &amp; BRANDING
-            </button>
-          </div>
+        <div className="v2-apv-sidebar-title">
+          {lang === 'fr' ? 'Portfolio' : 'Portfolio'}
         </div>
 
-        {/* Projects Showcase 3-Column Grid */}
-        <div className="v2-showcase-grid-3">
-          {filteredProjects.map((proj) => (
-            <div 
-              key={proj.id}
-              className="v2-project-card-large"
-              onClick={() => setCurrentView(proj.id)}
-            >
-              <div className="v2-card-preview-container">
-                <img src={proj.img} alt={proj.title} />
-                <span className="v2-project-year-badge">{proj.date}</span>
-                <div className="v2-preview-glass-tag">
-                  <span>{proj.tag}</span>
-                </div>
-              </div>
-              <div className="v2-card-content-block">
-                <div className="v2-card-title-row">
-                  <h3 className="v2-project-title">{proj.title}</h3>
-                  <button className="v2-project-explore-btn" onClick={(e) => { e.stopPropagation(); setCurrentView(proj.id); }}>
-                    <span>{lang === 'fr' ? 'Explorer' : 'Explore'}</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-                <p className="v2-project-summary">
-                  {proj.desc}
-                </p>
-                <div className="v2-project-tags-row">
-                  {proj.deliverables.map((d, i) => (
-                    <span key={i}>{d}</span>
-                  ))}
-                </div>
-              </div>
+        <nav className="v2-apv-nav">
+          <button
+            className={`v2-apv-nav-item ${activeSection === 'all' ? 'is-active' : ''}`}
+            onClick={() => setActiveSection('all')}
+          >
+            {lang === 'fr' ? `Tous les projets (${allCount})` : `All Projects (${allCount})`}
+          </button>
+
+          <div className="v2-apv-nav-section-label">
+            {lang === 'fr' ? 'Catégories' : 'Categories'}
+          </div>
+
+          <button
+            className={`v2-apv-nav-item ${activeSection === 'saas' ? 'is-active' : ''}`}
+            onClick={() => setActiveSection('saas')}
+          >
+            SaaS & B2B
+          </button>
+          <div className="v2-apv-nav-sub">
+            <span>Asset IQ</span>
+            <span>eHadj</span>
+            <span>Beans</span>
+          </div>
+
+          <button
+            className={`v2-apv-nav-item ${activeSection === 'mobile' ? 'is-active' : ''}`}
+            onClick={() => setActiveSection('mobile')}
+          >
+            Mobile UX
+          </button>
+          <div className="v2-apv-nav-sub">
+            <span>Vortex</span>
+            <span>Sport Advisor</span>
+          </div>
+
+          <button
+            className={`v2-apv-nav-item ${activeSection === 'web' ? 'is-active' : ''}`}
+            onClick={() => setActiveSection('web')}
+          >
+            Web & Branding
+          </button>
+          <div className="v2-apv-nav-sub">
+            <span>Dolce Riviera</span>
+            <span>Strategy Arena</span>
+            <span>Truvox Studio</span>
+            <span>Sagana Agency</span>
+            <span>Tavares & Visuals</span>
+            <span>The Refuge</span>
+          </div>
+
+          <button
+            className="v2-apv-nav-item"
+            onClick={() => setCurrentView('experiences')}
+          >
+            {lang === 'fr' ? 'Expériences' : 'Experiences'}
+          </button>
+          <button
+            className="v2-apv-nav-item"
+            onClick={() => setCurrentView('services')}
+          >
+            Services
+          </button>
+        </nav>
+      </aside>
+
+      {/* ─── MAIN CONTENT ─── */}
+      <main className="v2-apv-main">
+        {/* Page intro */}
+        <div className="v2-apv-intro">
+          <h1 className="v2-apv-page-title">{lang === 'fr' ? 'Portfolio' : 'Portfolio'}</h1>
+          <p className="v2-apv-page-desc">
+            {lang === 'fr'
+              ? `Une sélection de ${allCount} projets — SaaS enterprise, applications mobiles, directions artistiques web et portails humanitaires. Chaque projet reflète une approche centrée sur l'utilisateur, des décisions d'architecture rigoureuses et une exécution visuelle premium.`
+              : `A curated selection of ${allCount} projects — enterprise SaaS, mobile apps, web art direction and humanitarian portals. Each project reflects a user-first approach, rigorous architecture decisions and premium visual execution.`}
+          </p>
+        </div>
+
+        {/* Category sections */}
+        {visibleCategories.map((cat) => (
+          <section key={cat.id} className="v2-apv-section" id={`section-${cat.id}`}>
+            <div className="v2-apv-section-header">
+              <h2 className="v2-apv-section-title">{cat.label}</h2>
+              <p className="v2-apv-section-desc">{cat.desc}</p>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Laser Divider & Monumental Connect Footer */}
-      <SymbolLaserDivider color="cyan" />
-      <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
+            <div className="v2-apv-grid">
+              {cat.projects.map((proj) => (
+                <div
+                  key={proj.id}
+                  className="v2-apv-card"
+                  onClick={() => setCurrentView(proj.id)}
+                >
+                  <div className="v2-apv-card-media">
+                    <img src={proj.img} alt={proj.title} />
+                    <span className="v2-apv-card-year">{proj.date}</span>
+                    <div className="v2-apv-card-hover-overlay">
+                      <span>{lang === 'fr' ? 'Voir le projet →' : 'View project →'}</span>
+                    </div>
+                  </div>
+                  <div className="v2-apv-card-body">
+                    <div className="v2-apv-card-top">
+                      <h3 className="v2-apv-card-title">{proj.title}</h3>
+                    </div>
+                    <div className="v2-apv-card-meta">
+                      <span className="v2-apv-card-tag" style={{ color: proj.color }}>{proj.tag}</span>
+                      <button
+                        className="v2-apv-card-link"
+                        onClick={(e) => { e.stopPropagation(); setCurrentView(proj.id); }}
+                      >
+                        <ExternalLink size={12} />
+                        <span>{lang === 'fr' ? 'Étude de cas' : 'Case Study'}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </main>
+
     </div>
   );
 };
