@@ -13,16 +13,13 @@ import {
   ChevronLeft,
   ChevronRight,
   Image as ImageIcon,
-  Lock,
-  Globe,
-  ChevronDown
+  Lock
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
 import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
-import InteractiveLiquidSpheres from './components/InteractiveLiquidSpheres';
 
 
 
@@ -733,196 +730,8 @@ const ConnectAndFooterSection = ({
   setIsAboutModalOpen: any; 
   lang: 'en' | 'fr'; 
 }) => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    country: 'France',
-    requirements: ['Website'] as string[],
-    message: ''
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const requirementOptions = ['Website', 'Graphics', 'Product Design', 'Rapid MVP'];
-
-  const toggleRequirement = (req: string) => {
-    setFormData(prev => ({
-      ...prev,
-      requirements: prev.requirements.includes(req)
-        ? prev.requirements.filter(r => r !== req)
-        : [...prev.requirements, req]
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    const subject = encodeURIComponent(`Nouveau Projet: ${formData.requirements.join(', ')} — ${formData.firstName} ${formData.lastName}`);
-    const body = encodeURIComponent(
-      `Nom: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\nPays: ${formData.country}\nBesoins: ${formData.requirements.join(', ')}\n\nMessage:\n${formData.message}`
-    );
-    window.open(`mailto:dafiashalom@gmail.com?subject=${subject}&body=${body}`, '_blank');
-  };
-
   return (
-    <section id="contact" className="v2-connect-reference-section scroll-reveal">
-      {/* Giant Ambient Watermark Background */}
-      <div className="v2-connect-watermark-text" aria-hidden="true">
-        LET'S CONNECT
-      </div>
-
-      <div className="v2-connect-ambient-glow" aria-hidden="true" />
-
-      {/* Main Dual Card Container */}
-      <div className="v2-connect-dual-card">
-        {/* Left Form Panel */}
-        <div className="v2-connect-form-panel">
-          <h2 className="v2-connect-form-title">
-            Connect with me
-          </h2>
-
-          {isSubmitted ? (
-            <div className="v2-connect-success-box">
-              <CheckCircle2 size={36} color="#10B981" />
-              <h3>{lang === 'fr' ? 'Message envoyé avec succès !' : 'Message Sent Successfully!'}</h3>
-              <p>
-                {lang === 'fr' 
-                  ? "Merci pour votre message. Je vous répondrai sous 24h ou vous pouvez directement réserver un créneau stratégique."
-                  : "Thank you for reaching out. I'll get back to you within 24 hours, or you can book a call directly."}
-              </p>
-              <button 
-                type="button" 
-                className="v2-connect-calendly-btn"
-                onClick={() => {
-                  if ((window as any).Calendly) {
-                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-                  } else {
-                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
-                  }
-                }}
-              >
-                <span>{lang === 'fr' ? 'Réserver un appel Calendly ↗' : 'Book a Calendly Call ↗'}</span>
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="v2-connect-actual-form">
-              {/* Row 1: First Name & Last Name */}
-              <div className="v2-form-row-2col">
-                <div className="v2-form-field">
-                  <label>{lang === 'fr' ? 'Prénom *' : 'First name *'}</label>
-                  <input 
-                    type="text" 
-                    placeholder={lang === 'fr' ? 'Votre prénom' : 'First name'} 
-                    required 
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  />
-                </div>
-                <div className="v2-form-field">
-                  <label>{lang === 'fr' ? 'Nom' : 'Last name'}</label>
-                  <input 
-                    type="text" 
-                    placeholder={lang === 'fr' ? 'Votre nom' : 'Last name'} 
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              {/* Row 2: Email & Phone */}
-              <div className="v2-form-row-2col">
-                <div className="v2-form-field">
-                  <label>{lang === 'fr' ? 'Email *' : 'Email *'}</label>
-                  <input 
-                    type="email" 
-                    placeholder="email@example.com" 
-                    required 
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-                <div className="v2-form-field">
-                  <label>{lang === 'fr' ? 'Téléphone' : 'Phone'}</label>
-                  <div className="v2-form-phone-wrapper">
-                    <Globe size={14} className="v2-form-phone-icon" />
-                    <input 
-                      type="tel" 
-                      placeholder="+33 / +229..." 
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Row 3: Country */}
-              <div className="v2-form-field">
-                <label>{lang === 'fr' ? 'Pays *' : 'Country *'}</label>
-                <div className="v2-form-select-wrapper">
-                  <select 
-                    value={formData.country} 
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  >
-                    <option value="France">France</option>
-                    <option value="United States">United States</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Bénin">Bénin</option>
-                    <option value="Sénégal">Sénégal</option>
-                    <option value="Côte d'Ivoire">Côte d'Ivoire</option>
-                    <option value="Switzerland">Switzerland / Suisse</option>
-                    <option value="Belgium">Belgium / Belgique</option>
-                    <option value="Autre">Other / Autre pays...</option>
-                  </select>
-                  <ChevronDown size={14} className="v2-form-select-chevron" />
-                </div>
-              </div>
-
-              {/* Row 4: Your Requirement */}
-              <div className="v2-form-field">
-                <label>{lang === 'fr' ? 'Votre besoin' : 'Your Requirement'}</label>
-                <div className="v2-requirement-pills">
-                  {requirementOptions.map((req) => {
-                    const isSelected = formData.requirements.includes(req);
-                    return (
-                      <button
-                        type="button"
-                        key={req}
-                        className={`v2-requirement-pill ${isSelected ? 'active' : ''}`}
-                        onClick={() => toggleRequirement(req)}
-                      >
-                        {req}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Row 5: How can I help? */}
-              <div className="v2-form-field">
-                <label>{lang === 'fr' ? 'Comment puis-je vous aider ?' : 'How can I help?'}</label>
-                <textarea 
-                  rows={3}
-                  placeholder={lang === 'fr' ? 'Décrivez brièvement votre projet ou vos objectifs...' : 'Feel free to outline your ideas or needs...'}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                />
-              </div>
-
-              {/* Submit Button */}
-              <button type="submit" className="v2-connect-submit-btn">
-                {lang === 'fr' ? 'Envoyer' : 'Submit'}
-              </button>
-            </form>
-          )}
-        </div>
-
-        {/* Right 3D Liquid Spheres Panel */}
-        <div className="v2-connect-visual-panel" style={{ height: '100%', minHeight: '380px' }}>
-          <InteractiveLiquidSpheres />
-        </div>
-      </div>
+    <footer id="contact" className="v2-connect-reference-section scroll-reveal">
 
       {/* Bottom Footer Structure matching Reference */}
       <div className="v2-reference-footer-wrap">
@@ -945,12 +754,20 @@ const ConnectAndFooterSection = ({
           <div className="v2-ref-footer-col">
             <span className="v2-ref-col-title">Navigation</span>
             <div className="v2-ref-col-links">
-              <a href="#home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</a>
-              <span onClick={() => setIsAboutModalOpen(true)}>About Me</span>
-              <a href="#graphic-design">Designs</a>
+              <a href="#home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                {lang === 'fr' ? 'Accueil' : 'Home'}
+              </a>
+              <span onClick={() => setIsAboutModalOpen(true)}>
+                {lang === 'fr' ? 'À propos' : 'About Me'}
+              </span>
+              <a href="#graphic-design">
+                {lang === 'fr' ? 'Créations' : 'Designs'}
+              </a>
               <span onClick={() => setCurrentView('services')}>Services</span>
               <span onClick={() => setCurrentView('all-projects')}>Portfolio</span>
-              <span onClick={() => setCurrentView('experiences')}>Experiences</span>
+              <span onClick={() => setCurrentView('experiences')}>
+                {lang === 'fr' ? 'Expériences' : 'Experiences'}
+              </span>
             </div>
           </div>
 
@@ -958,8 +775,12 @@ const ConnectAndFooterSection = ({
           <div className="v2-ref-footer-col">
             <span className="v2-ref-col-title">Portfolio</span>
             <div className="v2-ref-col-links">
-              <span onClick={() => setCurrentView('asset-iq')}>Websites</span>
-              <a href="#graphic-design">Graphics</a>
+              <span onClick={() => setCurrentView('asset-iq')}>
+                {lang === 'fr' ? 'Sites Web' : 'Websites'}
+              </span>
+              <a href="#graphic-design">
+                {lang === 'fr' ? 'Graphisme' : 'Graphics'}
+              </a>
               <span onClick={() => setCurrentView('vortex')}>Mobile &amp; MVPs</span>
               <span onClick={() => setCurrentView('sport-advisor')}>3D &amp; Motion</span>
             </div>
@@ -997,7 +818,7 @@ const ConnectAndFooterSection = ({
 
         {/* Copyright Bar */}
         <div className="v2-ref-footer-bottom">
-          <span>© 2026 Sacca Dafia (Talesman). All rights reserved.</span>
+          <span>© 2026 Sacca Dafia (Talesman). {lang === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}</span>
           <div className="v2-ref-footer-socials">
             <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin size={15} />
@@ -1008,7 +829,7 @@ const ConnectAndFooterSection = ({
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 
