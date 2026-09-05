@@ -889,9 +889,12 @@ const ConnectAndFooterSection = ({
           {/* Logo / Monogram Col */}
           <div className="v2-ref-footer-brand">
             <div className="v2-ref-monogram" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-                <path d="M15 12C15 12 35 12 45 25C55 38 42 48 30 48C18 48 15 38 15 38L22 36C22 36 24 42 30 42C36 42 45 35 38 27C31 19 22 20 22 20L15 12Z" fill="#FFFFFF" />
-                <path d="M15 12V48H20V12H15Z" fill="#10B981" />
+              <svg width="38" height="38" viewBox="0 0 280 290" fill="none">
+                <path 
+                  d="M 95 100 A 45 45 0 0 1 185 100 A 45 45 0 0 1 185 190 A 45 45 0 0 1 95 190 A 45 45 0 0 1 95 100 Z M 140 100 A 45 45 0 0 0 185 145 A 45 45 0 0 0 140 190 A 45 45 0 0 0 95 145 A 45 45 0 0 0 140 100 Z" 
+                  fill="#FFFFFF" 
+                  fillRule="evenodd"
+                />
               </svg>
             </div>
             <div className="v2-ref-brand-meta">
