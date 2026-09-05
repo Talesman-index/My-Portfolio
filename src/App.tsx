@@ -5,25 +5,24 @@ import {
   CheckCircle2,
   X,
   Mail,
-  Phone,
   Calendar,
   Linkedin,
   ExternalLink,
-  FileText,
-  Download,
   Layers,
-  Home,
   Menu,
   ChevronLeft,
   ChevronRight,
   Image as ImageIcon,
-  Lock
+  Lock,
+  Globe,
+  ChevronDown
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
 import PageTurnOverlay from './components/PageTurnOverlay';
 import GlassMonogram from './components/GlassMonogram';
 import HeroSignature from './components/HeroSignature';
+import InteractiveLiquidSpheres from './components/InteractiveLiquidSpheres';
 
 
 
@@ -723,253 +722,293 @@ const AllProjectsView = ({
 };
 
 /* ─────────────────────────────────────────────
-   FOOTER SYSTEM (V2 DARK GLASSMORPHISM)
+   CONNECT & FOOTER SYSTEM (REFERENCE STYLE)
 ───────────────────────────────────────────── */
-const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrentView: any; setIsAboutModalOpen: any; lang: 'en' | 'fr' }) => {
-  const [activeDiagram, setActiveDiagram] = useState<number | null>(null);
-  const [compassAngle, setCompassAngle] = useState(0);
-  const [boxFlipped, setBoxFlipped] = useState(false);
-  const [pyramidPushed, setPyramidPushed] = useState(false);
-  const [dialSpinning, setDialSpinning] = useState(false);
-  const [tooltipText, setTooltipText] = useState<string | null>(null);
+const ConnectAndFooterSection = ({ 
+  setCurrentView, 
+  setIsAboutModalOpen, 
+  lang 
+}: { 
+  setCurrentView: any; 
+  setIsAboutModalOpen: any; 
+  lang: 'en' | 'fr'; 
+}) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    country: 'France',
+    requirements: ['Website'] as string[],
+    message: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleDiagramClick = (index: number) => {
-    setActiveDiagram(index);
-    if (index === 0) {
-      setCompassAngle(prev => prev + 360);
-      setTooltipText("COMPASS: COTONOU, BJ (6.369° N, 2.418° E)");
-    } else if (index === 1) {
-      setBoxFlipped(prev => !prev);
-      setTooltipText(boxFlipped ? "BLUEPRINT: DEFAULT" : "BLUEPRINT: 12-COL GRID ACTIVE");
-    } else if (index === 2) {
-      setPyramidPushed(true);
-      setTimeout(() => setPyramidPushed(false), 500);
-      setTooltipText("PRISM: FIGMA DESIGN SYSTEM TOKENS");
-    } else if (index === 3) {
-      setDialSpinning(prev => !prev);
-      setTooltipText(dialSpinning ? "RADAR DIAL: PAUSED" : "RADAR DIAL: ROTATING");
-    } else if (index === 4) {
-      setTooltipText("SCROLLING TO TOP ↗");
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  const requirementOptions = ['Website', 'Graphics', 'Product Design', 'Rapid MVP'];
+
+  const toggleRequirement = (req: string) => {
+    setFormData(prev => ({
+      ...prev,
+      requirements: prev.requirements.includes(req)
+        ? prev.requirements.filter(r => r !== req)
+        : [...prev.requirements, req]
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    const subject = encodeURIComponent(`Nouveau Projet: ${formData.requirements.join(', ')} — ${formData.firstName} ${formData.lastName}`);
+    const body = encodeURIComponent(
+      `Nom: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\nPays: ${formData.country}\nBesoins: ${formData.requirements.join(', ')}\n\nMessage:\n${formData.message}`
+    );
+    window.open(`mailto:dafiashalom@gmail.com?subject=${subject}&body=${body}`, '_blank');
   };
 
   return (
-    <footer className="v2-footer">
-      {/* Row of Architectural & Design Diagram Symbols (Interactive Widgets) */}
-      <div className="v2-footer-diagrams-row">
-        {/* Widget 1: Compass Radar */}
-        <button 
-          className={`v2-diagram-icon-btn ${activeDiagram === 0 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(0)}
-          onMouseEnter={() => setTooltipText("COMPASS RADAR")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Compass radar widget"
-        >
-          <svg 
-            width="26" 
-            height="26" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ transform: `rotate(${compassAngle}deg)`, transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-          >
-            <circle cx="20" cy="20" r="16" />
-            <path d="M20 4 L20 36 M4 20 L36 20" strokeDasharray="2 2" />
-            <text x="20" y="11" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" fontWeight="bold">N</text>
-          </svg>
-          {tooltipText && activeDiagram === 0 && (
-            <span className="v2-diagram-tooltip">{tooltipText}</span>
-          )}
-        </button>
-
-        {/* Widget 2: Blueprint Box */}
-        <button 
-          className={`v2-diagram-icon-btn ${activeDiagram === 1 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(1)}
-          onMouseEnter={() => setTooltipText("BLUEPRINT GRID")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Blueprint box widget"
-        >
-          <svg 
-            width="26" 
-            height="26" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ transform: boxFlipped ? 'rotateY(180deg) scale(1.1)' : 'none', transition: 'transform 0.4s ease' }}
-          >
-            <rect x="6" y="6" width="28" height="28" strokeWidth="2" />
-            <path d="M6 6 L34 34 M34 6 L6 34" strokeOpacity={boxFlipped ? "1" : "0.5"} stroke={boxFlipped ? "#38BDF8" : "currentColor"} />
-          </svg>
-          {tooltipText && activeDiagram === 1 && (
-            <span className="v2-diagram-tooltip">{tooltipText}</span>
-          )}
-        </button>
-
-        {/* Widget 3: Prism Pyramid */}
-        <button 
-          className={`v2-diagram-icon-btn ${activeDiagram === 2 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(2)}
-          onMouseEnter={() => setTooltipText("DESIGN PRISM")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Design prism widget"
-        >
-          <svg 
-            width="26" 
-            height="26" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ transform: pyramidPushed ? 'translateY(-6px) scale(1.15)' : 'none', transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-          >
-            <polygon points="20,4 36,36 4,36" strokeWidth="2" />
-            <line x1="20" y1="4" x2="20" y2="36" />
-          </svg>
-          {tooltipText && activeDiagram === 2 && (
-            <span className="v2-diagram-tooltip">{tooltipText}</span>
-          )}
-        </button>
-
-        {/* Widget 4: Dial Radar Circle */}
-        <button 
-          className={`v2-diagram-icon-btn ${activeDiagram === 3 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(3)}
-          onMouseEnter={() => setTooltipText("DIAL RADAR")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Dial radar widget"
-        >
-          <svg 
-            width="26" 
-            height="26" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ animation: dialSpinning ? 'spin 3s linear infinite' : 'none' }}
-          >
-            <circle cx="20" cy="20" r="14" />
-            <circle cx="20" cy="20" r="6" strokeDasharray="2 3" strokeWidth="2" />
-          </svg>
-          {tooltipText && activeDiagram === 3 && (
-            <span className="v2-diagram-tooltip">{tooltipText}</span>
-          )}
-        </button>
-
-        {/* Widget 5: Arrow Top-Right Scroll Back ↗ */}
-        <button 
-          className={`v2-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(4)}
-          onMouseEnter={() => setTooltipText("RETURN TO TOP ↗")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Scroll to top widget"
-        >
-          <svg 
-            width="26" 
-            height="26" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2.2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
-          </svg>
-          {tooltipText && activeDiagram === 4 && (
-            <span className="v2-diagram-tooltip">{tooltipText}</span>
-          )}
-        </button>
+    <section id="contact" className="v2-connect-reference-section scroll-reveal">
+      {/* Giant Ambient Watermark Background */}
+      <div className="v2-connect-watermark-text" aria-hidden="true">
+        LET'S CONNECT
       </div>
 
-      {/* Useful Links & Contact Grid */}
-      <div className="v2-footer-grid">
-        {/* Col 1: Direct Contact */}
-        <div>
-          <div className="v2-footer-col-title">01. CONTACT &amp; BOOKING</div>
-          <div className="v2-footer-links-list">
-            <a href="mailto:dafiashalom@gmail.com" className="v2-footer-link">
-              <Mail size={15} color="#38BDF8" /> dafiashalom@gmail.com
-            </a>
-            <a href="tel:+2290154921801" className="v2-footer-link">
-              <Phone size={15} color="#38BDF8" /> +229 01 54 92 18 01
-            </a>
-            <a 
-              href="https://calendly.com/dafiashalom/30min" 
-              onClick={(e) => {
-                e.preventDefault();
-                if ((window as any).Calendly) {
-                  (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-                } else {
-                  window.open('https://calendly.com/dafiashalom/30min', '_blank');
-                }
-              }} 
-              className="v2-footer-link"
-              style={{ color: '#38BDF8', fontWeight: 600 }}
-            >
-              <Calendar size={15} color="#38BDF8" /> {lang === 'fr' ? 'Réserver un Appel (Calendly)' : 'Book Strategy Call (Calendly)'}
-            </a>
-          </div>
+      <div className="v2-connect-ambient-glow" aria-hidden="true" />
+
+      {/* Main Dual Card Container */}
+      <div className="v2-connect-dual-card">
+        {/* Left Form Panel */}
+        <div className="v2-connect-form-panel">
+          <h2 className="v2-connect-form-title">
+            Connect with me
+          </h2>
+
+          {isSubmitted ? (
+            <div className="v2-connect-success-box">
+              <CheckCircle2 size={36} color="#10B981" />
+              <h3>{lang === 'fr' ? 'Message envoyé avec succès !' : 'Message Sent Successfully!'}</h3>
+              <p>
+                {lang === 'fr' 
+                  ? "Merci pour votre message. Je vous répondrai sous 24h ou vous pouvez directement réserver un créneau stratégique."
+                  : "Thank you for reaching out. I'll get back to you within 24 hours, or you can book a call directly."}
+              </p>
+              <button 
+                type="button" 
+                className="v2-connect-calendly-btn"
+                onClick={() => {
+                  if ((window as any).Calendly) {
+                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                  } else {
+                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                  }
+                }}
+              >
+                <span>{lang === 'fr' ? 'Réserver un appel Calendly ↗' : 'Book a Calendly Call ↗'}</span>
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="v2-connect-actual-form">
+              {/* Row 1: First Name & Last Name */}
+              <div className="v2-form-row-2col">
+                <div className="v2-form-field">
+                  <label>{lang === 'fr' ? 'Prénom *' : 'First name *'}</label>
+                  <input 
+                    type="text" 
+                    placeholder={lang === 'fr' ? 'Votre prénom' : 'First name'} 
+                    required 
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  />
+                </div>
+                <div className="v2-form-field">
+                  <label>{lang === 'fr' ? 'Nom' : 'Last name'}</label>
+                  <input 
+                    type="text" 
+                    placeholder={lang === 'fr' ? 'Votre nom' : 'Last name'} 
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              {/* Row 2: Email & Phone */}
+              <div className="v2-form-row-2col">
+                <div className="v2-form-field">
+                  <label>{lang === 'fr' ? 'Email *' : 'Email *'}</label>
+                  <input 
+                    type="email" 
+                    placeholder="email@example.com" 
+                    required 
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </div>
+                <div className="v2-form-field">
+                  <label>{lang === 'fr' ? 'Téléphone' : 'Phone'}</label>
+                  <div className="v2-form-phone-wrapper">
+                    <Globe size={14} className="v2-form-phone-icon" />
+                    <input 
+                      type="tel" 
+                      placeholder="+33 / +229..." 
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 3: Country */}
+              <div className="v2-form-field">
+                <label>{lang === 'fr' ? 'Pays *' : 'Country *'}</label>
+                <div className="v2-form-select-wrapper">
+                  <select 
+                    value={formData.country} 
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                  >
+                    <option value="France">France</option>
+                    <option value="United States">United States</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Bénin">Bénin</option>
+                    <option value="Sénégal">Sénégal</option>
+                    <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                    <option value="Switzerland">Switzerland / Suisse</option>
+                    <option value="Belgium">Belgium / Belgique</option>
+                    <option value="Autre">Other / Autre pays...</option>
+                  </select>
+                  <ChevronDown size={14} className="v2-form-select-chevron" />
+                </div>
+              </div>
+
+              {/* Row 4: Your Requirement */}
+              <div className="v2-form-field">
+                <label>{lang === 'fr' ? 'Votre besoin' : 'Your Requirement'}</label>
+                <div className="v2-requirement-pills">
+                  {requirementOptions.map((req) => {
+                    const isSelected = formData.requirements.includes(req);
+                    return (
+                      <button
+                        type="button"
+                        key={req}
+                        className={`v2-requirement-pill ${isSelected ? 'active' : ''}`}
+                        onClick={() => toggleRequirement(req)}
+                      >
+                        {req}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Row 5: How can I help? */}
+              <div className="v2-form-field">
+                <label>{lang === 'fr' ? 'Comment puis-je vous aider ?' : 'How can I help?'}</label>
+                <textarea 
+                  rows={3}
+                  placeholder={lang === 'fr' ? 'Décrivez brièvement votre projet ou vos objectifs...' : 'Feel free to outline your ideas or needs...'}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button type="submit" className="v2-connect-submit-btn">
+                {lang === 'fr' ? 'Envoyer' : 'Submit'}
+              </button>
+            </form>
+          )}
         </div>
 
-        {/* Col 2: Social & Networks */}
-        <div>
-          <div className="v2-footer-col-title">02. SOCIAL ARCHIVES</div>
-          <div className="v2-footer-links-list">
-            <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="v2-footer-link">
-              <Linkedin size={15} /> LinkedIn Profile ↗
-            </a>
-            <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="v2-footer-link">
-              <ExternalLink size={15} /> Behance Portfolio ↗
-            </a>
-            <a href="mailto:dafiashalom@gmail.com" className="v2-footer-link">
-              <Mail size={15} /> Direct Email ↗
-            </a>
-          </div>
-        </div>
-
-        {/* Col 3: Core Navigation */}
-        <div>
-          <div className="v2-footer-col-title">03. NAVIGATION &amp; RESUME</div>
-          <div className="v2-footer-links-list">
-            <span className="v2-footer-link" onClick={() => navigateToHome(setCurrentView)} style={{ cursor: 'pointer' }}>
-              <Home size={15} /> {lang === 'fr' ? 'Accueil Portfolio' : 'Portfolio Home'}
-            </span>
-            <span className="v2-footer-link" onClick={() => setIsAboutModalOpen(true)} style={{ cursor: 'pointer' }}>
-              <FileText size={15} /> {lang === 'fr' ? 'Dossier Personnel (About)' : 'Personnel File (About)'}
-            </span>
-            <span className="v2-footer-link" onClick={() => setCurrentView('experiences')} style={{ cursor: 'pointer' }}>
-              <FileText size={15} /> {lang === 'fr' ? 'Registre des Expériences' : 'Career Logs & History'}
-            </span>
-            <span className="v2-footer-link" onClick={() => setCurrentView('all-projects')} style={{ cursor: 'pointer' }}>
-              <Layers size={15} /> {lang === 'fr' ? 'Index des Projets (11)' : 'All Projects Archive (11)'}
-            </span>
-            <a 
-              href="https://drive.google.com/file/d/14q3ARxXM3rk82VKS6dKYmyGJCk9UWruu/view?usp=sharing" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="v2-footer-link"
-              style={{ color: '#C084FC' }}
-            >
-              <Download size={15} color="#C084FC" /> Download CV / Resume (PDF)
-            </a>
-          </div>
+        {/* Right 3D Liquid Spheres Panel */}
+        <div className="v2-connect-visual-panel" style={{ height: '100%', minHeight: '380px' }}>
+          <InteractiveLiquidSpheres />
         </div>
       </div>
 
-      {/* Bottom Technical Metadata Bar */}
-      <div className="v2-footer-bottom-bar">
-        <div className="v2-footer-location-tag">
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', display: 'inline-block', boxShadow: '0 0 8px #10B981' }} />
-          <span>COTONOU, BJ • UTC+1 • AVAILABLE WORLDWIDE</span>
+      {/* Bottom Footer Structure matching Reference */}
+      <div className="v2-reference-footer-wrap">
+        <div className="v2-reference-footer-grid">
+          {/* Logo / Monogram Col */}
+          <div className="v2-ref-footer-brand">
+            <div className="v2-ref-monogram" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+                <path d="M15 12C15 12 35 12 45 25C55 38 42 48 30 48C18 48 15 38 15 38L22 36C22 36 24 42 30 42C36 42 45 35 38 27C31 19 22 20 22 20L15 12Z" fill="#FFFFFF" />
+                <path d="M15 12V48H20V12H15Z" fill="#10B981" />
+              </svg>
+            </div>
+            <div className="v2-ref-brand-meta">
+              <span className="v2-ref-brand-name">SACCA DAFIA</span>
+              <span className="v2-ref-brand-sub">Web &amp; Product Designer</span>
+            </div>
+          </div>
+
+          {/* Navigation Column */}
+          <div className="v2-ref-footer-col">
+            <span className="v2-ref-col-title">Navigation</span>
+            <div className="v2-ref-col-links">
+              <a href="#home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</a>
+              <span onClick={() => setIsAboutModalOpen(true)}>About Me</span>
+              <a href="#graphic-design">Designs</a>
+              <span onClick={() => setCurrentView('services')}>Services</span>
+              <span onClick={() => setCurrentView('all-projects')}>Portfolio</span>
+              <span onClick={() => setCurrentView('experiences')}>Experiences</span>
+            </div>
+          </div>
+
+          {/* Portfolio Column */}
+          <div className="v2-ref-footer-col">
+            <span className="v2-ref-col-title">Portfolio</span>
+            <div className="v2-ref-col-links">
+              <span onClick={() => setCurrentView('asset-iq')}>Websites</span>
+              <a href="#graphic-design">Graphics</a>
+              <span onClick={() => setCurrentView('vortex')}>Mobile &amp; MVPs</span>
+              <span onClick={() => setCurrentView('sport-advisor')}>3D &amp; Motion</span>
+            </div>
+          </div>
+
+          {/* Contact Column */}
+          <div className="v2-ref-footer-col">
+            <span className="v2-ref-col-title">Contact</span>
+            <div className="v2-ref-col-links">
+              <a href="mailto:dafiashalom@gmail.com" className="v2-ref-contact-link">
+                <Mail size={13} />
+                <span>dafiashalom@gmail.com</span>
+              </a>
+              <a 
+                href="https://calendly.com/dafiashalom/30min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="v2-ref-contact-link"
+              >
+                <Calendar size={13} />
+                <span>calendly.com/dafiashalom</span>
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/dafia-s-860290218/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="v2-ref-contact-link"
+              >
+                <Linkedin size={13} />
+                <span>LinkedIn Profile ↗</span>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div>© 2026 SACCA DAFIA (ALIAS TALESMAN) — ALL RIGHTS RESERVED</div>
+        {/* Copyright Bar */}
+        <div className="v2-ref-footer-bottom">
+          <span>© 2026 Sacca Dafia (Talesman). All rights reserved.</span>
+          <div className="v2-ref-footer-socials">
+            <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Linkedin size={15} />
+            </a>
+            <a href="mailto:dafiashalom@gmail.com" aria-label="Email">
+              <Mail size={15} />
+            </a>
+          </div>
+        </div>
       </div>
-    </footer>
+    </section>
   );
 };
 
@@ -2983,58 +3022,8 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 6: CONTACT & LET'S TALK (V2 DARK GLASS) */}
-            <section id="contact" className="v2-contact-section scroll-reveal">
-              <div className="v2-contact-glow" aria-hidden="true" />
-
-              <div className="v2-contact-card">
-                <div className="v2-contact-status">
-                  <span className="v2-contact-status-dot" />
-                  <span>{lang === 'fr' ? 'DISPONIBLE POUR PROJETS Q3/Q4 2026' : 'AVAILABLE FOR Q3/Q4 2026 PROJECTS'}</span>
-                </div>
-
-                <h2 className="v2-contact-title">
-                  {lang === 'fr'
-                    ? "Concevons ensemble votre prochain produit d'exception."
-                    : "Let's Build Something Extraordinary Together."}
-                </h2>
-
-                <p className="v2-contact-desc">
-                  {lang === 'fr'
-                    ? "Vous avez un SaaS B2B dense à architecturer, une vitrine d'exception à créer ou un MVP fonctionnel à prototyper en Vibe Coding ? Échangeons directement sur vos enjeux."
-                    : "Have a complex B2B SaaS to design, a high-impact digital showcase to craft, or a rapid MVP to build with Vibe Coding? Let's discuss your vision on a call."}
-                </p>
-
-                <div className="v2-contact-actions">
-                  <button 
-                    className="v2-contact-primary-btn" 
-                    onClick={() => {
-                      if ((window as any).Calendly) {
-                        (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-                      } else {
-                        window.open('https://calendly.com/dafiashalom/30min', '_blank');
-                      }
-                    }}
-                  >
-                    <Calendar size={18} />
-                    <span>{lang === 'fr' ? 'Réserver un Appel (Calendly)' : 'Book Strategy Call (Calendly)'}</span>
-                  </button>
-
-                  <a href="mailto:dafiashalom@gmail.com" className="v2-contact-secondary-btn">
-                    <Mail size={16} />
-                    <span>dafiashalom@gmail.com</span>
-                  </a>
-
-                  <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="v2-contact-secondary-btn">
-                    <Linkedin size={16} />
-                    <span>LinkedIn Profile ↗</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Archival Footer */}
-              <MosbyFooter setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
-            </section>
+            {/* SECTION 6: REFERENCE DUAL-PANEL CONNECT & FOOTER */}
+            <ConnectAndFooterSection setCurrentView={setCurrentView} setIsAboutModalOpen={setIsAboutModalOpen} lang={lang} />
           </main>
         </div>
       )}
