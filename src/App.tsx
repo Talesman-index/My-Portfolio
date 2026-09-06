@@ -2220,31 +2220,34 @@ export default function App() {
               {/* Radial Ambient Glow Background Light */}
               <div className="v2-hero-ambient-glow" aria-hidden="true" />
 
-              {/* Eyebrow Tagline */}
-              <div className="v2-hero-eyebrow">
-                {lang === 'fr' 
-                  ? "Résoudre des problèmes complexes par un design clair et percutant" 
-                  : "Solving complex problems through clear, high-impact design"}
-              </div>
-
-              {/* Giant Wordmark with Center 3D Glass Monogram & Signature */}
-              <div className="v2-hero-title-wrapper">
-                <h1 className="v2-hero-title">
-                  PORTFOLIO
-                </h1>
-
-                {/* 3D Wireframe Glass Monogram Intertwined with PORTFOLIO */}
-                <div className="v2-hero-glass-overlay">
-                  <GlassMonogram />
+              {/* Hero Main Centered Content */}
+              <div className="v2-hero-main-content">
+                {/* Eyebrow Tagline */}
+                <div className="v2-hero-eyebrow">
+                  {lang === 'fr' 
+                    ? "Résoudre des problèmes complexes par un design clair et percutant" 
+                    : "Solving complex problems through clear, high-impact design"}
                 </div>
 
-                {/* Yellow Handwritten Animated Glow Signature */}
-                <HeroSignature />
-              </div>
-            </section>
+                {/* Giant Wordmark with Center 3D Glass Monogram & Signature */}
+                <div className="v2-hero-title-wrapper">
+                  <h1 className="v2-hero-title">
+                    PORTFOLIO
+                  </h1>
 
-            {/* Laser Divider 1 */}
-            <SymbolLaserDivider color="cyan" />
+                  {/* 3D Wireframe Glass Monogram Intertwined with PORTFOLIO */}
+                  <div className="v2-hero-glass-overlay">
+                    <GlassMonogram />
+                  </div>
+
+                  {/* Yellow Handwritten Animated Glow Signature */}
+                  <HeroSignature />
+                </div>
+              </div>
+
+              {/* Bottom Laser Divider inside hero - visible immediately without scrolling */}
+              <SymbolLaserDivider color="cyan" className="v2-hero-bottom-divider" />
+            </section>
 
             {/* SECTION 2: ABOUT (EXACT REFERENCE DESIGN) */}
             {/* SECTION 2: ABOUT (FULL-WIDTH DYNAMIC SCROLLING SHOWCASE & CONCISE COPY) */}
