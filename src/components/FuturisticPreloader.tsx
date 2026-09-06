@@ -33,6 +33,8 @@ export const FuturisticPreloader: React.FC<{ onComplete?: () => void }> = ({ onC
         // Exit transition trigger
         setTimeout(() => {
           setIsExiting(true);
+          (window as any).__preloaderComplete = true;
+          window.dispatchEvent(new CustomEvent('preloaderComplete'));
           setTimeout(() => {
             setIsDone(true);
             if (onComplete) onComplete();

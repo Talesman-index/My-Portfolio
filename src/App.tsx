@@ -618,11 +618,11 @@ const getTimelineExperiences = (lang: 'fr' | 'en' = 'fr'): TimelineExperienceIte
     highlights: lang === 'fr' ? [
       'Resthy Pâtisseries : Boutique en ligne sur mesure & mise en valeur gourmande',
       'Terroir Bénin : Expérience e-commerce de produits locaux & tunnel d\'achat fluide',
-      'Direction artistique web soignée, micro-animations 60fps & optimisation CRO'
+      'Direction Artistique : Micro-animations 60fps & optimisation CRO'
     ] : [
       'Resthy Pâtisseries: Custom online boutique & high-end appetizing showcase',
       'Terroir Bénin: Authentic local goods e-commerce & friction-free checkout',
-      'Refined web art direction, 60fps micro-interactions & CRO optimization'
+      'Art Direction: 60fps micro-interactions & CRO optimization'
     ]
   }
 ];
@@ -1729,9 +1729,6 @@ export default function App() {
             >
               {lang === 'fr' ? 'Projets' : 'Projects'}
             </span>
-            <span className="v2-nav-link" onClick={() => scrollToSection('graphic-design')}>
-              {lang === 'fr' ? 'Graphisme' : 'Graphics'}
-            </span>
             <span 
               className={`v2-nav-link ${currentView === 'experiences' ? 'is-active' : ''}`} 
               onClick={() => {
@@ -2060,19 +2057,10 @@ export default function App() {
               </div>
 
               <div 
-                className={`v2-mobile-nav-item ${currentView === 'home' && activeNavSection === 'graphic' ? 'is-active' : ''}`}
-                onClick={() => { scrollToSection('graphic-design'); setIsMobileMenuOpen(false); }}
-              >
-                <span className="v2-nav-item-num">05</span>
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'GRAPHISME & IDENTITÉS' : 'GRAPHIC DESIGN & BRANDING'}</span>
-                <ArrowRight size={14} className="v2-nav-item-arrow" />
-              </div>
-
-              <div 
                 className={`v2-mobile-nav-item ${(currentView === 'home' && activeNavSection === 'career') || currentView === 'experiences' ? 'is-active' : ''}`}
                 onClick={() => { scrollToSection('career'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-num">06</span>
+                <span className="v2-nav-item-num">05</span>
                 <span className="v2-nav-item-title">{lang === 'fr' ? 'PARCOURS & EXPÉRIENCES' : 'CAREER & TIMELINE'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -2081,7 +2069,7 @@ export default function App() {
                 className={`v2-mobile-nav-item ${currentView === 'home' && activeNavSection === 'contact' ? 'is-active' : ''}`}
                 onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }}
               >
-                <span className="v2-nav-item-num">07</span>
+                <span className="v2-nav-item-num">06</span>
                 <span className="v2-nav-item-title">{lang === 'fr' ? 'CONTACT & COLLABORATION' : 'CONTACT & GET IN TOUCH'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
@@ -2187,12 +2175,6 @@ export default function App() {
                   onClick={() => scrollToSection('webdesign')}
                 >
                   {lang === 'fr' ? 'Projets' : 'Projects'}
-                </span>
-                <span 
-                  className={`v2-nav-link ${activeNavSection === 'graphic' ? 'is-active' : ''}`} 
-                  onClick={() => scrollToSection('graphic-design')}
-                >
-                  {lang === 'fr' ? 'Graphisme' : 'Graphics'}
                 </span>
                 <span 
                   className={`v2-nav-link ${activeNavSection === 'career' ? 'is-active' : ''}`} 

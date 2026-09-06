@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Sparkles, Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 
 export interface TimelineExperienceItem {
   id: string;
@@ -139,36 +139,51 @@ const TimelineRowItem: React.FC<TimelineRowItemProps> = ({
       className={`v2-timeline-row ${isLeft ? 'row-align-left' : 'row-align-right'} glow-${item.accentColor} ${isActive ? 'is-active' : ''}`}
       onMouseEnter={onMouseEnter}
     >
-      {/* ─── SIDE A: TIME META & HIGHLIGHT PILL (Opposite the Card) ─── */}
+      {/* ─── SIDE A: TIME META & HIGHLIGHTS (Curated Milestone Stepper) ─── */}
       <div className="v2-timeline-meta-col">
-        <div className="v2-timeline-time-card">
-          <div className="v2-timeline-year-badge">
-            <Calendar size={13} className="v2-timeline-cal-icon" />
-            <span>{item.yearBadge}</span>
-          </div>
-
-          <div className="v2-timeline-period-text">
-            {item.period}
-          </div>
-
-          {item.statusBadge && (
-            <div className={`v2-timeline-status-pill pill-${item.accentColor}`}>
-              <Sparkles size={11} />
-              <span>{item.statusBadge}</span>
+        <div className={`v2-milestone-card glow-${item.accentColor}`}>
+          {/* Header Bar: Timestamp + Sector Capsule */}
+          <div className="v2-milestone-header">
+            <div className="v2-milestone-date-wrap">
+              <span className={`v2-milestone-beacon dot-${item.accentColor}`} />
+              <span className="v2-milestone-period">{item.period}</span>
             </div>
-          )}
 
-          {/* Quick micro highlights list */}
-          {item.highlights && item.highlights.length > 0 && (
-            <div className="v2-timeline-highlights-list">
-              {item.highlights.map((h, i) => (
-                <div key={i} className="v2-timeline-highlight-item">
-                  <CheckCircle2 size={12} className="v2-highlight-bullet" />
-                  <span>{h}</span>
+            {item.statusBadge && (
+              <span className={`v2-milestone-badge badge-${item.accentColor}`}>
+                {item.statusBadge}
+              </span>
+            )}
+          </div>
+
+          <div className="v2-milestone-divider" />
+
+          {/* Stepper / Timeline Micro-Rail for Deliverables */}
+          <div className="v2-milestone-rail">
+            {item.highlights && item.highlights.map((h, i) => {
+              const colonIdx = h.indexOf(':');
+              const title = colonIdx > -1 ? h.slice(0, colonIdx).trim() : null;
+              const desc = colonIdx > -1 ? h.slice(colonIdx + 1).trim() : h;
+
+              return (
+                <div key={i} className="v2-milestone-step">
+                  <div className="v2-step-tracker">
+                    <span className={`v2-step-node node-${item.accentColor}`}>
+                      0{i + 1}
+                    </span>
+                    {i < (item.highlights?.length || 0) - 1 && (
+                      <span className="v2-step-line" />
+                    )}
+                  </div>
+
+                  <div className="v2-step-content">
+                    {title && <h4 className="v2-step-title">{title}</h4>}
+                    <p className="v2-step-desc">{desc}</p>
+                  </div>
                 </div>
-              ))}
-            </div>
-          )}
+              );
+            })}
+          </div>
         </div>
       </div>
 
