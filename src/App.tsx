@@ -3221,18 +3221,24 @@ export default function App() {
                   {/* Interactive UI System Layer Visual */}
                   <div className="v2-system-mockup-wrap">
                     <div className="v2-system-mockup-item is-primary">
-                      <span className="item-dot" />
-                      <span>App Navigation / Header</span>
+                      <div className="v2-system-mockup-left">
+                        <span className="item-dot" />
+                        <span className="v2-system-mockup-label">App Navigation / Header</span>
+                      </div>
                       <span className="item-badge">Tokenized</span>
                     </div>
                     <div className="v2-system-mockup-item">
-                      <span className="item-dot" />
-                      <span>Hero Section / 3D Canvas</span>
+                      <div className="v2-system-mockup-left">
+                        <span className="item-dot" />
+                        <span className="v2-system-mockup-label">Hero Section / 3D Canvas</span>
+                      </div>
                       <span className="item-badge">Interactive</span>
                     </div>
                     <div className="v2-system-mockup-item">
-                      <span className="item-dot" />
-                      <span>Product Showcase Grid</span>
+                      <div className="v2-system-mockup-left">
+                        <span className="item-dot" />
+                        <span className="v2-system-mockup-label">Product Showcase Grid</span>
+                      </div>
                       <span className="item-badge">Responsive</span>
                     </div>
                   </div>
