@@ -2089,7 +2089,7 @@ export default function App() {
                 onClick={() => { scrollToSection('hero'); setIsMobileMenuOpen(false); }}
               >
                 <span className="v2-nav-item-num">01</span>
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'ACCUEIL' : 'HOME'}</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'Accueil' : 'Home'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
@@ -2098,34 +2098,48 @@ export default function App() {
                 onClick={() => { scrollToSection('about-me'); setIsMobileMenuOpen(false); }}
               >
                 <span className="v2-nav-item-num">02</span>
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'À PROPOS' : 'ABOUT ME'}</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'À propos' : 'About'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
               <div 
                 className={`v2-mobile-nav-item ${(currentView === 'home' && activeNavSection === 'services') || currentView === 'services' ? 'is-active' : ''}`}
-                onClick={() => { scrollToSection('services'); setIsMobileMenuOpen(false); }}
+                onClick={() => { 
+                  if (currentView === 'home') {
+                    scrollToSection('services');
+                  } else {
+                    handleViewSwitch('services');
+                  }
+                  setIsMobileMenuOpen(false); 
+                }}
               >
                 <span className="v2-nav-item-num">03</span>
-                <span className="v2-nav-item-title">SERVICES &amp; SOLUTIONS</span>
+                <span className="v2-nav-item-title">Services</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
               <div 
-                className={`v2-mobile-nav-item ${currentView === 'all-projects' ? 'is-active' : ''}`}
+                className={`v2-mobile-nav-item ${currentView === 'all-projects' || (currentView === 'home' && activeNavSection === 'projects') ? 'is-active' : ''}`}
                 onClick={() => { handleViewSwitch('all-projects'); setIsMobileMenuOpen(false); }}
               >
                 <span className="v2-nav-item-num">04</span>
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'PORTFOLIO (TOUS LES PROJETS)' : 'PORTFOLIO (ALL PROJECTS)'}</span>
+                <span className="v2-nav-item-title">Portfolio</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
               <div 
                 className={`v2-mobile-nav-item ${(currentView === 'home' && activeNavSection === 'career') || currentView === 'experiences' ? 'is-active' : ''}`}
-                onClick={() => { scrollToSection('career'); setIsMobileMenuOpen(false); }}
+                onClick={() => { 
+                  if (currentView === 'home') {
+                    scrollToSection('career');
+                  } else {
+                    handleViewSwitch('experiences');
+                  }
+                  setIsMobileMenuOpen(false); 
+                }}
               >
                 <span className="v2-nav-item-num">05</span>
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'PARCOURS & EXPÉRIENCES' : 'CAREER & TIMELINE'}</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'Parcours' : 'Career'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
@@ -2134,7 +2148,7 @@ export default function App() {
                 onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }}
               >
                 <span className="v2-nav-item-num">06</span>
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'CONTACT & COLLABORATION' : 'CONTACT & GET IN TOUCH'}</span>
+                <span className="v2-nav-item-title">Contact</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
             </div>
@@ -2160,7 +2174,7 @@ export default function App() {
                 }}
               >
                 <Mail size={14} className="v2-btn-mail-icon" />
-                <span>{lang === 'fr' ? "Réserver un appel (30 min)" : "Book a 30-min Call"}</span>
+                <span>{lang === 'fr' ? 'Prendre RDV' : "Let's Connect"}</span>
                 <ArrowRight size={16} />
               </button>
 
