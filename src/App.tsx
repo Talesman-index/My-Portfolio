@@ -70,17 +70,17 @@ const navigateToHome = (setCurrentView: any) => {
 };
 
 const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLabel: string; year: string; externalLink?: string }> = {
-  'asset-iq': { title: 'Asset IQ', color: '#1D4ED8', categoryLabel: 'B2B SaaS & Resource Telemetry', year: '2026', externalLink: 'https://www.assetiQ.com' },
-  'ehadj': { title: 'eHadj', color: '#DC2626', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://ehadj.aglo.bj/' },
+  'asset-iq': { title: 'Asset IQ', color: '#38BDF8', categoryLabel: 'B2B SaaS & Resource Telemetry', year: '2026', externalLink: 'https://www.assetiQ.com' },
+  'ehadj': { title: 'eHadj', color: '#10B981', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://ehadj.aglo.bj/' },
   'beans': { title: 'Beans', color: '#059669', categoryLabel: 'Customer Engagement & Integrations', year: '2025', externalLink: 'https://trybeans.com' },
-  'truvox': { title: 'Truvox Studio', color: '#059669', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
-  'tavares': { title: 'Tavares', color: '#E50914', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://portfolio-tavares.vercel.app/' },
-  'strategy-arena': { title: 'Strategy Arena', color: '#1E3A8A', categoryLabel: 'Strategic Consulting & Transformation', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#strategy-arena' },
-  'dolce-riviera': { title: 'Dolce Riviera', color: '#C5A059', categoryLabel: 'Luxury Hospitality UI/UX Interface', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' },
-  'sagana': { title: 'Sagana', color: '#7C3AED', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://www.sagana-agency.com/' },
-  'the-refuge': { title: 'The Refuge', color: '#0D3479', categoryLabel: 'Humanitarian Impact Portal', year: '2025', externalLink: 'https://your-refuge.vercel.app/' },
-  'vortex': { title: 'Vortex Gallery', color: '#EAB308', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel' },
-  'sport-advisor': { title: 'Sport Advisor', color: '#000000', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive' }
+  'truvox': { title: 'Truvox Studio', color: '#34D399', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
+  'tavares': { title: 'Tavares', color: '#F59E0B', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://portfolio-tavares.vercel.app/' },
+  'strategy-arena': { title: 'Strategy Arena', color: '#60A5FA', categoryLabel: 'Strategic Consulting & Transformation', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#strategy-arena' },
+  'dolce-riviera': { title: 'Dolce Riviera', color: '#FBBF24', categoryLabel: 'Luxury Hospitality UI/UX Interface', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' },
+  'sagana': { title: 'Sagana', color: '#C084FC', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://www.sagana-agency.com/' },
+  'the-refuge': { title: 'The Refuge', color: '#38BDF8', categoryLabel: 'Humanitarian Impact Portal', year: '2025', externalLink: 'https://your-refuge.vercel.app/' },
+  'vortex': { title: 'Vortex Gallery', color: '#FCD34D', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel' },
+  'sport-advisor': { title: 'Sport Advisor', color: '#38BDF8', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive' }
 };
 /* ─────────────────────────────────────────────
    ABOUT SHEET MODAL (V2 DARK GLASSMORPHISM)
@@ -887,7 +887,7 @@ const AllProjectsView = ({
         { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308' },
         { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981' },
         { id: 'sagana', title: 'Sagana Agency', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B' },
-        { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#DC2626' },
+        { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B' },
         { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479' },
       ]
     },
@@ -984,11 +984,14 @@ const AllProjectsView = ({
       <aside className="v2-apv-sidebar">
         <button onClick={() => navigateToHome(setCurrentView)} className="v2-apv-back">
           <ArrowLeft size={14} />
-          <span>{lang === 'fr' ? 'Portfolio' : 'Portfolio'}</span>
+          <span>{lang === 'fr' ? 'Retour Accueil' : 'Back to Home'}</span>
         </button>
 
-        <div className="v2-apv-sidebar-title">
-          {lang === 'fr' ? 'Portfolio' : 'Portfolio'}
+        <div className="v2-apv-sidebar-header">
+          <span className="v2-apv-sidebar-eyebrow">ARCHIVES</span>
+          <div className="v2-apv-sidebar-title">
+            Portfolio
+          </div>
         </div>
 
         <nav className="v2-apv-nav">
@@ -996,7 +999,8 @@ const AllProjectsView = ({
             className={`v2-apv-nav-item ${activeSection === 'all' ? 'is-active' : ''}`}
             onClick={() => setActiveSection('all')}
           >
-            {lang === 'fr' ? `Tous les projets (${allCount})` : `All Projects (${allCount})`}
+            <span className="v2-apv-nav-item-text">{lang === 'fr' ? 'Tous les projets' : 'All Projects'}</span>
+            <span className="v2-apv-badge-count">{allCount}</span>
           </button>
 
           <div className="v2-apv-nav-section-label">
@@ -1007,7 +1011,8 @@ const AllProjectsView = ({
             className={`v2-apv-nav-item ${activeSection === 'saas' ? 'is-active' : ''}`}
             onClick={() => setActiveSection('saas')}
           >
-            SaaS & B2B
+            <span className="v2-apv-nav-item-text">SaaS &amp; B2B</span>
+            <span className="v2-apv-badge-count">3</span>
           </button>
           <div className="v2-apv-nav-sub">
             <span onClick={() => setCurrentView('asset-iq')}>Asset IQ</span>
@@ -1019,7 +1024,8 @@ const AllProjectsView = ({
             className={`v2-apv-nav-item ${activeSection === 'mobile' ? 'is-active' : ''}`}
             onClick={() => setActiveSection('mobile')}
           >
-            Mobile UX
+            <span className="v2-apv-nav-item-text">Mobile UX</span>
+            <span className="v2-apv-badge-count">2</span>
           </button>
           <div className="v2-apv-nav-sub">
             <span onClick={() => setCurrentView('vortex')}>Vortex</span>
@@ -1030,14 +1036,15 @@ const AllProjectsView = ({
             className={`v2-apv-nav-item ${activeSection === 'web' ? 'is-active' : ''}`}
             onClick={() => setActiveSection('web')}
           >
-            Web & Branding
+            <span className="v2-apv-nav-item-text">Web &amp; Branding</span>
+            <span className="v2-apv-badge-count">6</span>
           </button>
           <div className="v2-apv-nav-sub">
             <span onClick={() => setCurrentView('dolce-riviera')}>Dolce Riviera</span>
             <span onClick={() => setCurrentView('strategy-arena')}>Strategy Arena</span>
             <span onClick={() => setCurrentView('truvox')}>Truvox Studio</span>
             <span onClick={() => setCurrentView('sagana')}>Sagana Agency</span>
-            <span onClick={() => setCurrentView('tavares')}>Tavares & Visuals</span>
+            <span onClick={() => setCurrentView('tavares')}>Tavares &amp; Visuals</span>
             <span onClick={() => setCurrentView('the-refuge')}>The Refuge</span>
           </div>
 
@@ -1045,7 +1052,8 @@ const AllProjectsView = ({
             className={`v2-apv-nav-item ${activeSection === 'graphic' ? 'is-active' : ''}`}
             onClick={() => setActiveSection('graphic')}
           >
-            Graphic Design
+            <span className="v2-apv-nav-item-text">Graphic Design</span>
+            <span className="v2-apv-badge-count">3</span>
           </button>
           <div className="v2-apv-nav-sub">
             <span onClick={() => {
@@ -1119,21 +1127,68 @@ const AllProjectsView = ({
 
       {/* ─── MAIN CONTENT ─── */}
       <main className="v2-apv-main">
+        {/* Atmospheric Ambient Glow */}
+        <div className="v2-apv-ambient-glow" aria-hidden="true" />
+
         {/* Page intro */}
         <div className="v2-apv-intro">
-          <h1 className="v2-apv-page-title">{lang === 'fr' ? 'Portfolio' : 'Portfolio'}</h1>
+          <div className="v2-apv-eyebrow">
+            <span className="v2-apv-eyebrow-dot" />
+            <span>{lang === 'fr' ? 'ARCHIVES DE PRODUCTION // 2024 — 2026' : 'PRODUCTION ARCHIVES // 2024 — 2026'}</span>
+          </div>
+          <h1 className="v2-apv-page-title">Portfolio</h1>
           <p className="v2-apv-page-desc">
             {lang === 'fr'
-              ? `Une sélection de ${allCount} projets — SaaS enterprise, applications mobiles, directions artistiques web, affiches et carrousels. Chaque projet reflète une approche centrée sur l'utilisateur, des décisions d'architecture rigoureuses et une exécution visuelle premium.`
-              : `A curated selection of ${allCount} projects — enterprise SaaS, mobile apps, web art direction, posters and carousels. Each project reflects a user-first approach, rigorous architecture decisions and premium visual execution.`}
+              ? `Une sélection soignée de ${allCount} projets majeurs — architectures SaaS B2B, applications mobiles, directions artistiques web immersives, affiches éditoriales et carrousels. Chaque étude de cas illustre une approche produit rigoureuse et une exécution visuelle haute fidélité.`
+              : `A curated selection of ${allCount} major projects — enterprise B2B SaaS, high-performance mobile apps, immersive web art direction, editorial posters and carousels. Each project reflects user-first product design and high-fidelity visual execution.`}
           </p>
+
+          {/* Quick Stats Ribbon */}
+          <div className="v2-apv-stats-bar">
+            <div className="v2-apv-stat-pill">
+              <span className="v2-apv-stat-num">{allCount}</span>
+              <span className="v2-apv-stat-lbl">{lang === 'fr' ? 'Projets Archivés' : 'Archived Projects'}</span>
+            </div>
+            <div className="v2-apv-stat-pill">
+              <span className="v2-apv-stat-num">4</span>
+              <span className="v2-apv-stat-lbl">{lang === 'fr' ? 'Disciplines Clés' : 'Key Disciplines'}</span>
+            </div>
+            <div className="v2-apv-stat-pill">
+              <span className="v2-apv-stat-num">100%</span>
+              <span className="v2-apv-stat-lbl">{lang === 'fr' ? 'Cas Réels en Prod' : 'Real-World Systems'}</span>
+            </div>
+          </div>
+
+          {/* Top Filter Category Pills */}
+          <div className="v2-apv-filter-tabs">
+            <button
+              className={`v2-apv-tab ${activeSection === 'all' ? 'is-active' : ''}`}
+              onClick={() => setActiveSection('all')}
+            >
+              <span>{lang === 'fr' ? 'Tous les projets' : 'All Projects'}</span>
+              <span className="v2-apv-tab-count">{allCount}</span>
+            </button>
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                className={`v2-apv-tab ${activeSection === c.id ? 'is-active' : ''}`}
+                onClick={() => setActiveSection(c.id)}
+              >
+                <span>{c.label}</span>
+                <span className="v2-apv-tab-count">{c.projects.length}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Category sections */}
         {visibleCategories.map((cat) => (
           <section key={cat.id} className="v2-apv-section" id={`section-${cat.id}`}>
             <div className="v2-apv-section-header">
-              <h2 className="v2-apv-section-title">{cat.label}</h2>
+              <div className="v2-apv-section-title-wrap">
+                <span className="v2-apv-section-kicker">0{categories.findIndex(c => c.id === cat.id) + 1} // DISCIPLINE</span>
+                <h2 className="v2-apv-section-title">{cat.label}</h2>
+              </div>
               <p className="v2-apv-section-desc">{cat.desc}</p>
             </div>
 
@@ -1151,18 +1206,26 @@ const AllProjectsView = ({
                   }}
                 >
                   <div className="v2-apv-card-media">
-                    <img src={proj.img} alt={proj.title} />
+                    <img src={proj.img} alt={proj.title} loading="lazy" />
+                    <div className="v2-apv-card-media-gradient" />
                     <span className="v2-apv-card-year">{proj.date}</span>
                     <div className="v2-apv-card-hover-overlay">
-                      <span>{proj.isGraphic ? (lang === 'fr' ? 'Voir visuels →' : 'View visuals →') : (lang === 'fr' ? 'Voir le projet →' : 'View project →')}</span>
+                      <div className="v2-apv-card-hover-btn">
+                        <span>{proj.isGraphic ? (lang === 'fr' ? 'Voir visuels' : 'View visuals') : (lang === 'fr' ? 'Découvrir le projet' : 'Explore project')}</span>
+                        <ArrowRight size={14} />
+                      </div>
                     </div>
                   </div>
                   <div className="v2-apv-card-body">
                     <div className="v2-apv-card-top">
-                      <h3 className="v2-apv-card-title">{proj.title}</h3>
+                      <div className="v2-apv-card-title-wrap">
+                        <span className="v2-apv-dot" style={{ backgroundColor: proj.color, boxShadow: `0 0 10px ${proj.color}` }} />
+                        <h3 className="v2-apv-card-title">{proj.title}</h3>
+                      </div>
+                      <span className="v2-apv-card-tag" style={{ color: proj.color }}>{proj.tag}</span>
                     </div>
                     <div className="v2-apv-card-meta">
-                      <span className="v2-apv-card-tag" style={{ color: proj.color }}>{proj.tag}</span>
+                      <span className="v2-apv-card-subtag">{cat.label}</span>
                       <button
                         className="v2-apv-card-link"
                         onClick={(e) => {
@@ -1174,8 +1237,8 @@ const AllProjectsView = ({
                           }
                         }}
                       >
-                        <ExternalLink size={12} />
                         <span>{proj.isGraphic ? (lang === 'fr' ? 'Galerie' : 'Gallery') : (lang === 'fr' ? 'Étude de cas' : 'Case Study')}</span>
+                        <ExternalLink size={12} />
                       </button>
                     </div>
                   </div>
@@ -1383,7 +1446,7 @@ const AllProjectsModal = ({
 
   const allProjects = [
     { id: 'asset-iq', title: 'Asset IQ', tag: 'Product Design & SaaS', date: '2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs industriels par QR code.' : 'Industrial asset telemetry via QR codes.' },
-    { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: '2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage pour +30 ministères.' : 'Digital orchestration of pilgrimage logistics.' },
+    { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: '2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#10B981', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage pour +30 ministères.' : 'Digital orchestration of pilgrimage logistics.' },
     { id: 'beans', title: 'Beans', tag: 'B2B SaaS Engagement', date: '2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS de fidélisation & 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform.' },
     { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX Interface', date: '2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception & booking funnel pour resort de luxe.' : 'Luxury hospitality UI/UX interface concept.' },
     { id: 'vortex', title: 'Vortex', tag: 'Mobile UX & Wallet', date: '2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'App mobile d\'achat de carburant et gestion de portefeuille.' : 'Mobile fuel purchasing & digital wallet app.' },
@@ -1391,7 +1454,7 @@ const AllProjectsModal = ({
     { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception & vitrine digitale.' : 'High-end studio brand experience.' },
     { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: '2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs par IA.' : 'AI sports analysis platform.' },
     { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for advisory agency.' },
-    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web & vitrines cinématographiques.' : 'Cinematic showcase sites & galleries.' },
+    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B', desc: lang === 'fr' ? 'Direction artistique web & vitrines cinématographiques.' : 'Cinematic showcase sites & galleries.' },
     { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel.' : 'Humanitarian portal & impact tracker.' }
   ];
 
@@ -1727,7 +1790,7 @@ export default function App() {
                 if (currentView !== 'all-projects') handleViewSwitch('all-projects');
               }}
             >
-              {lang === 'fr' ? 'Projets' : 'Projects'}
+              Portfolio
             </span>
             <span 
               className={`v2-nav-link ${currentView === 'experiences' ? 'is-active' : ''}`} 
@@ -2049,11 +2112,11 @@ export default function App() {
               </div>
 
               <div 
-                className={`v2-mobile-nav-item ${(currentView === 'home' && activeNavSection === 'projects') || currentView === 'all-projects' ? 'is-active' : ''}`}
-                onClick={() => { scrollToSection('webdesign'); setIsMobileMenuOpen(false); }}
+                className={`v2-mobile-nav-item ${currentView === 'all-projects' ? 'is-active' : ''}`}
+                onClick={() => { handleViewSwitch('all-projects'); setIsMobileMenuOpen(false); }}
               >
                 <span className="v2-nav-item-num">04</span>
-                <span className="v2-nav-item-title">{lang === 'fr' ? 'PROJETS & ÉTUDES DE CAS' : 'PROJECTS & CASE STUDIES'}</span>
+                <span className="v2-nav-item-title">{lang === 'fr' ? 'PORTFOLIO (TOUS LES PROJETS)' : 'PORTFOLIO (ALL PROJECTS)'}</span>
                 <ArrowRight size={14} className="v2-nav-item-arrow" />
               </div>
 
@@ -2174,9 +2237,9 @@ export default function App() {
                 </span>
                 <span 
                   className={`v2-nav-link ${activeNavSection === 'projects' ? 'is-active' : ''}`} 
-                  onClick={() => scrollToSection('webdesign')}
+                  onClick={() => handleViewSwitch('all-projects')}
                 >
-                  {lang === 'fr' ? 'Projets' : 'Projects'}
+                  Portfolio
                 </span>
                 <span 
                   className={`v2-nav-link ${activeNavSection === 'career' ? 'is-active' : ''}`} 
