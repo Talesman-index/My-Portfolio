@@ -1554,7 +1554,6 @@ export default function App() {
   const [cardCarrouselSeries, setCardCarrouselSeries] = useState<2 | 4 | 'all'>(2);
   const [cardCarrouselCover, setCardCarrouselCover] = useState<string>('/imgs/graphics/carrousels/c2/cover.png');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeNavSection, setActiveNavSection] = useState<'home' | 'about' | 'services' | 'projects' | 'graphic' | 'career' | 'contact'>('home');
 
   // Smooth scroll to section with support for transitioning from sub-pages
@@ -1639,68 +1638,91 @@ export default function App() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    let ticking = false;
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const p = (window.scrollY / totalHeight) * 100;
-        setScrollProgress(p);
-        document.documentElement.style.setProperty('--scroll-percent', `${p.toFixed(2)}%`);
-        document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
-      }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (totalHeight > 0) {
+            const p = (window.scrollY / totalHeight) * 100;
+            document.documentElement.style.setProperty('--scroll-percent', `${p.toFixed(2)}%`);
+            document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
+          }
 
-      // Dynamic Active Section Scroll-spy for Menus
-      if (currentView === 'home') {
-        const scrollY = window.scrollY;
-        if (scrollY < 200) {
-          setActiveNavSection('home');
-          return;
-        }
-
-        // Bottom of page detection (Contact section)
-        if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 120) {
-          setActiveNavSection('contact');
-          return;
-        }
-
-        const sectionMap: { id: string; key: 'contact' | 'career' | 'graphic' | 'projects' | 'services' | 'about' }[] = [
-          { id: 'contact', key: 'contact' },
-          { id: 'career', key: 'career' },
-          { id: 'graphic-design', key: 'graphic' },
-          { id: 'product-design', key: 'projects' },
-          { id: 'webdesign', key: 'projects' },
-          { id: 'services', key: 'services' },
-          { id: 'about-me', key: 'about' },
-        ];
-
-        for (const item of sectionMap) {
-          const el = document.getElementById(item.id);
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.45) {
-              setActiveNavSection(item.key);
+          // Dynamic Active Section Scroll-spy for Menus (Only triggers re-render when key changes)
+          if (currentView === 'home') {
+            const scrollY = window.scrollY;
+            if (scrollY < 200) {
+              setActiveNavSection((prev) => (prev !== 'home' ? 'home' : prev));
+              ticking = false;
               return;
             }
+
+            // Bottom of page detection (Contact section)
+            if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 120) {
+              setActiveNavSection((prev) => (prev !== 'contact' ? 'contact' : prev));
+              ticking = false;
+              return;
+            }
+
+            const sectionMap: { id: string; key: 'contact' | 'career' | 'graphic' | 'projects' | 'services' | 'about' }[] = [
+              { id: 'contact', key: 'contact' },
+              { id: 'career', key: 'career' },
+              { id: 'graphic-design', key: 'graphic' },
+              { id: 'product-design', key: 'projects' },
+              { id: 'webdesign', key: 'projects' },
+              { id: 'services', key: 'services' },
+              { id: 'about-me', key: 'about' },
+            ];
+
+            let found = false;
+            for (const item of sectionMap) {
+              const el = document.getElementById(item.id);
+              if (el) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.45) {
+                  setActiveNavSection((prev) => (prev !== item.key ? item.key : prev));
+                  found = true;
+                  break;
+                }
+              }
+            }
+            if (!found) {
+              setActiveNavSection((prev) => (prev !== 'home' ? 'home' : prev));
+            }
           }
-        }
-        setActiveNavSection('home');
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 
+    // Anticipatory IntersectionObserver: triggers 140px BEFORE elements hit the viewport bottom
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.01, rootMargin: '140px 0px 60px 0px' }
     );
 
     const revealElems = document.querySelectorAll('.scroll-reveal, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right');
-    revealElems.forEach((elem) => observer.observe(elem));
+    revealElems.forEach((elem) => {
+      // If already in or above viewport, reveal immediately without transition lag
+      const rect = elem.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 100) {
+        elem.classList.add('is-visible');
+      } else {
+        observer.observe(elem);
+      }
+    });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -2212,7 +2234,7 @@ export default function App() {
       {currentView === 'home' && (
         <div className="robin-notebook-outer">
           {/* Scroll Progress Bar */}
-          <div className="robin-scroll-progress-bar" style={{ width: `${scrollProgress}%` }} />
+          <div className="robin-scroll-progress-bar" style={{ width: 'var(--scroll-percent, 0%)' }} />
 
           <main className="robin-notebook-page">
             {/* TOP FLOATING NAVIGATION BAR */}
@@ -3746,7 +3768,7 @@ export default function App() {
       )}
 
       {/* Premium Floating Back to Top Button with Dynamic Circular Scroll Meter */}
-      <ScrollToTopButton scrollProgress={scrollProgress} lang={lang} />
+      <ScrollToTopButton lang={lang} />
     </>
   );
 }

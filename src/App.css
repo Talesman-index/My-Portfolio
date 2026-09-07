@@ -1212,62 +1212,88 @@
 ───────────────────────────────────────────── */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(38px) scale(0.985);
-  filter: blur(6px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  transform: translateY(22px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .scroll-reveal.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
+  transform: translateY(0);
 }
 
 .scroll-reveal-scale {
   opacity: 0;
-  transform: scale(0.92) translateY(24px);
-  filter: blur(8px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  transform: scale(0.96) translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .scroll-reveal-scale.is-visible {
   opacity: 1;
   transform: scale(1) translateY(0);
-  filter: blur(0);
 }
 
 .scroll-reveal-left {
   opacity: 0;
-  transform: translateX(-40px);
-  filter: blur(6px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-24px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-left.is-visible {
   opacity: 1;
   transform: translateX(0);
-  filter: blur(0);
 }
 
 .scroll-reveal-right {
   opacity: 0;
-  transform: translateX(40px);
-  filter: blur(6px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(24px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-right.is-visible {
   opacity: 1;
   transform: translateX(0);
-  filter: blur(0);
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
+.delay-1 { transition-delay: 0.06s; }
+.delay-2 { transition-delay: 0.12s; }
+.delay-3 { transition-delay: 0.18s; }
+.delay-4 { transition-delay: 0.24s; }
+
+@media (max-width: 860px) {
+  .scroll-reveal,
+  .scroll-reveal-scale,
+  .scroll-reveal-left,
+  .scroll-reveal-right {
+    filter: none !important;
+    transform: translateY(12px) !important;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: opacity, transform;
+  }
+  .scroll-reveal.is-visible,
+  .scroll-reveal-scale.is-visible,
+  .scroll-reveal-left.is-visible,
+  .scroll-reveal-right.is-visible {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+  .delay-1, .delay-2, .delay-3, .delay-4 {
+    transition-delay: 0s !important;
+  }
+  .v2-text-reveal-container {
+    filter: none !important;
+    transform: translateY(10px) !important;
+    transition-duration: 0.25s !important;
+    --reveal-delay: 0ms !important;
+  }
+  .v2-text-reveal-container.is-revealed {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
 
 /* ─────────────────────────────────────────────
    SYMBOL LASER GRADIENT DIVIDERS

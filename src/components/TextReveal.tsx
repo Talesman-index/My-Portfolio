@@ -15,9 +15,12 @@ export const TextReveal: React.FC<TextRevealProps> = ({ children, className = ''
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsRevealed(true);
+          if (containerRef.current) {
+            observer.unobserve(containerRef.current);
+          }
         }
       },
-      { threshold: 0.25, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.02, rootMargin: '100px 0px 40px 0px' }
     );
 
     if (containerRef.current) {

@@ -1,16 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 
 interface ScrollToTopButtonProps {
-  scrollProgress: number;
+  scrollProgress?: number;
   lang?: 'en' | 'fr';
 }
 
-export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ scrollProgress, lang = 'fr' }) => {
+export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ scrollProgress: externalProgress, lang = 'fr' }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [internalProgress, setInternalProgress] = useState(0);
+
+  useEffect(() => {
+    if (externalProgress !== undefined) return;
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (totalHeight > 0) {
+            setInternalProgress((window.scrollY / totalHeight) * 100);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [externalProgress]);
+
+  const activeProgress = externalProgress !== undefined ? externalProgress : internalProgress;
   
   // Show button once user has scrolled past initial viewport
-  const isVisible = scrollProgress > 4;
+  const isVisible = activeProgress > 4;
 
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -22,7 +45,7 @@ export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ scrollProg
   // Circular scroll meter geometry (Radius = 20, Circumference = 125.66)
   const radius = 20;
   const circumference = 2 * Math.PI * radius;
-  const clampedPercent = Math.min(Math.max(scrollProgress, 0), 100);
+  const clampedPercent = Math.min(Math.max(activeProgress, 0), 100);
   const strokeDashoffset = circumference - (clampedPercent / 100) * circumference;
 
   return (
