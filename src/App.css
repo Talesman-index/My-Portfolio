@@ -7761,6 +7761,71 @@
   transform: translateY(-1px);
 }
 
+/* Specialized styling for Graphic Design cards to showcase uncropped visual detail */
+.v2-apv-card.is-graphic-card {
+  position: relative;
+}
+
+.v2-apv-card.is-graphic-card .v2-apv-card-media {
+  height: 410px;
+  background: radial-gradient(circle at center, #0f172a 0%, #03050a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v2-apv-card.is-graphic-card .v2-apv-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.v2-apv-card.is-graphic-card .v2-apv-card-title {
+  white-space: nowrap !important;
+  line-height: 1.2;
+  font-size: 1.05rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.v2-apv-card.is-graphic-card .v2-apv-card-tag {
+  white-space: nowrap !important;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 0.74rem;
+  line-height: 1.2;
+  max-width: none;
+}
+
+.v2-apv-card-hd-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #38BDF8;
+  background: rgba(8, 14, 28, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+@media (max-width: 860px) {
+  .v2-apv-card.is-graphic-card .v2-apv-card-media {
+    height: 330px;
+  }
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .v2-apv-grid {

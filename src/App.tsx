@@ -899,37 +899,111 @@ const AllProjectsView = ({
         : "Distinctive art direction, editorial posters, and high-impact large-format brand campaigns.",
       projects: [
         {
-          id: 'graphic-posters',
-          title: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
-          tag: 'Editorial & Print 300dpi',
+          id: 'graphic-2souza',
+          title: '2SOUZA The Bartender',
+          tag: lang === 'fr' ? 'Mixologie · 2 visuels' : 'Mixology · 2 visuals',
           date: '2025',
-          img: '/imgs/graphics/graphic_2souza_barman.jpg',
-          color: '#8B5CF6',
+          img: '/imgs/graphics/graphic_2souza_full_poster.jpg',
+          color: '#E11D48',
           isGraphic: true,
           graphicData: {
-            src: '/imgs/graphics/graphic_2souza_barman.jpg',
-            title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
-            category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+            src: '/imgs/graphics/graphic_2souza_full_poster.jpg',
+            title: '2SOUZA The Bartender — Direction Artistique & Affiches Mixologie',
+            category: lang === 'fr' ? '2SOUZA — Mixologie & DA' : '2SOUZA — Mixology & Art Direction',
             slides: [
-              '/imgs/graphics/graphic_2souza_barman.jpg',
-              '/imgs/graphics/graphic_strategie_arena_red.jpg',
-              '/imgs/graphics/graphic_aidarag_tennis.jpg'
+              '/imgs/graphics/graphic_2souza_full_poster.jpg',
+              '/imgs/graphics/graphic_2souza_barman.jpg'
             ],
             currentSlideIndex: 0
           }
         },
         {
-          id: 'graphic-carrousels',
-          title: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
-          tag: 'Storytelling & Growth',
+          id: 'graphic-aidarag',
+          title: 'Aïda Garba — K-State Tennis',
+          tag: lang === 'fr' ? 'Tennis · 2 visuels' : 'Tennis · 2 visuals',
+          date: '2025',
+          img: '/imgs/graphics/graphic_aidarag_tennis.jpg',
+          color: '#8B5CF6',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/graphic_aidarag_tennis.jpg',
+            title: 'Aïda Garba — K-State Tennis Player of the Week (Big 12 Sports Editorial & Social Collage)',
+            category: lang === 'fr' ? 'Aïda Garba — Sports Editorial' : 'Aïda Garba — Sports Editorial',
+            slides: [
+              '/imgs/graphics/graphic_aidarag_tennis.jpg',
+              '/imgs/graphics/graphic_aidarag_tennis_social.jpg'
+            ],
+            currentSlideIndex: 0
+          }
+        },
+        {
+          id: 'graphic-koffi',
+          title: 'Koffi Nation',
+          tag: lang === 'fr' ? 'Streetwear · 2 visuels' : 'Streetwear · 2 visuals',
+          date: '2025',
+          img: '/imgs/graphics/graphic_koffi_nation_poster.jpg',
+          color: '#DC2626',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/graphic_koffi_nation_poster.jpg',
+            title: 'Koffi Nation — "Born in Cotonou. Worn everywhere." Poster & Lookbook Lineup',
+            category: lang === 'fr' ? 'Koffi Nation — Streetwear & DA' : 'Koffi Nation — Streetwear & Art Direction',
+            slides: [
+              '/imgs/graphics/graphic_koffi_nation_poster.jpg',
+              '/imgs/graphics/graphic_koffi_nation_lineup.png'
+            ],
+            currentSlideIndex: 0
+          }
+        },
+        {
+          id: 'graphic-strategy-red',
+          title: 'Strategy Arena — Art Print Red',
+          tag: lang === 'fr' ? 'Typographie Suisse' : 'Swiss Typography',
+          date: '2026',
+          img: '/imgs/graphics/graphic_strategie_arena_red.jpg',
+          color: '#EF4444',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/graphic_strategie_arena_red.jpg',
+            title: 'Strategy Arena — Art Print Red (Typographie & Grille Suisse)',
+            category: lang === 'fr' ? 'Strategy Arena — Art Print' : 'Strategy Arena — Art Print',
+            slides: [
+              '/imgs/graphics/graphic_strategie_arena_red.jpg'
+            ],
+            currentSlideIndex: 0
+          }
+        },
+        {
+          id: 'graphic-dada-billboard',
+          title: 'DADA Management',
+          tag: lang === 'fr' ? 'Billboards · 2 visuels' : 'Billboards · 2 visuals',
+          date: '2025',
+          img: '/imgs/graphics/graphic_dada_billboard.jpg',
+          color: '#F59E0B',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/graphic_dada_billboard.jpg',
+            title: 'DADA Management — Affiche Billboard Challenge 30 Jours & Brand System',
+            category: lang === 'fr' ? 'DADA Management — Campagnes' : 'DADA Management — Campaigns',
+            slides: [
+              '/imgs/graphics/graphic_dada_billboard.jpg',
+              '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
+            ],
+            currentSlideIndex: 0
+          }
+        },
+        {
+          id: 'graphic-carrousel-1',
+          title: 'Strategy Arena — Carrousel 01',
+          tag: lang === 'fr' ? 'Idée & Entreprise · 8 slides' : 'Idea & Business · 8 slides',
           date: '2026',
           img: '/imgs/graphics/carrousels/c2/cover.png',
           color: '#EC4899',
           isGraphic: true,
           graphicData: {
             src: '/imgs/graphics/carrousels/c2/cover.png',
-            title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"',
-            category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+            title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable" (Carrousel 01)',
+            category: lang === 'fr' ? 'Carrousel 01 — Idée & Entreprise' : 'Carousel 01 — Idea & Business',
             slides: [
               '/imgs/graphics/carrousels/c2/cover.png',
               '/imgs/graphics/carrousels/c2/1.png',
@@ -938,7 +1012,24 @@ const AllProjectsView = ({
               '/imgs/graphics/carrousels/c2/4.png',
               '/imgs/graphics/carrousels/c2/5.png',
               '/imgs/graphics/carrousels/c2/6.png',
-              '/imgs/graphics/carrousels/c2/7.png',
+              '/imgs/graphics/carrousels/c2/7.png'
+            ],
+            currentSlideIndex: 0
+          }
+        },
+        {
+          id: 'graphic-carrousel-2',
+          title: 'Strategy Arena — Carrousel 02',
+          tag: lang === 'fr' ? 'Psychologie Client · 7 slides' : 'Client Psychology · 7 slides',
+          date: '2026',
+          img: '/imgs/graphics/carrousels/c4/1.png',
+          color: '#06B6D4',
+          isGraphic: true,
+          graphicData: {
+            src: '/imgs/graphics/carrousels/c4/1.png',
+            title: 'Strategy Arena — "Votre client n\'achète pas votre produit" (Carrousel 02)',
+            category: lang === 'fr' ? 'Carrousel 02 — Psychologie Client' : 'Carousel 02 — Client Psychology',
+            slides: [
               '/imgs/graphics/carrousels/c4/1.png',
               '/imgs/graphics/carrousels/c4/2.png',
               '/imgs/graphics/carrousels/c4/3.png',
@@ -946,25 +1037,6 @@ const AllProjectsView = ({
               '/imgs/graphics/carrousels/c4/5.png',
               '/imgs/graphics/carrousels/c4/6.png',
               '/imgs/graphics/carrousels/c4/7.png'
-            ],
-            currentSlideIndex: 0
-          }
-        },
-        {
-          id: 'graphic-billboards',
-          title: lang === 'fr' ? 'Campagnes & Billboards' : 'Campaigns & Billboards',
-          tag: 'Brand Identity & Visuals',
-          date: '2025',
-          img: '/imgs/graphics/graphic_dada_billboard.jpg',
-          color: '#F59E0B',
-          isGraphic: true,
-          graphicData: {
-            src: '/imgs/graphics/graphic_dada_billboard.jpg',
-            title: 'DADA Management — Affiche Billboard Challenge 30 Jours',
-            category: lang === 'fr' ? 'Campagnes & Billboards' : 'Billboards & Campaigns',
-            slides: [
-              '/imgs/graphics/graphic_dada_billboard.jpg',
-              '/imgs/graphics/graphic_dada_collab_fistbump.jpg'
             ],
             currentSlideIndex: 0
           }
@@ -1053,34 +1125,67 @@ const AllProjectsView = ({
             onClick={() => setActiveSection('graphic')}
           >
             <span className="v2-apv-nav-item-text">Graphic Design</span>
-            <span className="v2-apv-badge-count">3</span>
+            <span className="v2-apv-badge-count">{categories.find(c => c.id === 'graphic')?.projects.length || 8}</span>
           </button>
           <div className="v2-apv-nav-sub">
             <span onClick={() => {
               setActiveSection('graphic');
               if (setSelectedGraphic) {
                 setSelectedGraphic({
-                  src: '/imgs/graphics/graphic_2souza_barman.jpg',
-                  title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
-                  category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+                  src: '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                  title: '2SOUZA The Bartender — Direction Artistique & Affiches Mixologie',
+                  category: lang === 'fr' ? '2SOUZA — Mixologie & DA' : '2SOUZA — Mixology & Art Direction',
                   slides: [
-                    '/imgs/graphics/graphic_2souza_barman.jpg',
-                    '/imgs/graphics/graphic_strategie_arena_red.jpg',
-                    '/imgs/graphics/graphic_aidarag_tennis.jpg'
+                    '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                    '/imgs/graphics/graphic_2souza_barman.jpg'
                   ],
                   currentSlideIndex: 0
                 });
               }
             }}>
-              {lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}
+              2SOUZA The Bartender (2 visuels)
+            </span>
+            <span onClick={() => {
+              setActiveSection('graphic');
+              if (setSelectedGraphic) {
+                setSelectedGraphic({
+                  src: '/imgs/graphics/graphic_aidarag_tennis.jpg',
+                  title: 'Aïda Garba — K-State Tennis (Big 12 Sports Editorial & Social Collage)',
+                  category: lang === 'fr' ? 'Aïda Garba — Sports Editorial' : 'Aïda Garba — Sports Editorial',
+                  slides: [
+                    '/imgs/graphics/graphic_aidarag_tennis.jpg',
+                    '/imgs/graphics/graphic_aidarag_tennis_social.jpg'
+                  ],
+                  currentSlideIndex: 0
+                });
+              }
+            }}>
+              Aïda Garba (2 visuels)
+            </span>
+            <span onClick={() => {
+              setActiveSection('graphic');
+              if (setSelectedGraphic) {
+                setSelectedGraphic({
+                  src: '/imgs/graphics/graphic_koffi_nation_poster.jpg',
+                  title: 'Koffi Nation — "Born in Cotonou. Worn everywhere." Poster & Lookbook',
+                  category: lang === 'fr' ? 'Koffi Nation — Streetwear & DA' : 'Koffi Nation — Streetwear & Art Direction',
+                  slides: [
+                    '/imgs/graphics/graphic_koffi_nation_poster.jpg',
+                    '/imgs/graphics/graphic_koffi_nation_lineup.png'
+                  ],
+                  currentSlideIndex: 0
+                });
+              }
+            }}>
+              Koffi Nation (Poster &amp; Lineup)
             </span>
             <span onClick={() => {
               setActiveSection('graphic');
               if (setSelectedGraphic) {
                 setSelectedGraphic({
                   src: '/imgs/graphics/carrousels/c2/cover.png',
-                  title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"',
-                  category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
+                  title: 'Strategy Arena — "Entre une idée brillante et une entreprise rentable" (Carrousel 01)',
+                  category: lang === 'fr' ? 'Carrousel 01 — Idée & Entreprise' : 'Carousel 01 — Idea & Business',
                   slides: [
                     '/imgs/graphics/carrousels/c2/cover.png',
                     '/imgs/graphics/carrousels/c2/1.png',
@@ -1089,7 +1194,22 @@ const AllProjectsView = ({
                     '/imgs/graphics/carrousels/c2/4.png',
                     '/imgs/graphics/carrousels/c2/5.png',
                     '/imgs/graphics/carrousels/c2/6.png',
-                    '/imgs/graphics/carrousels/c2/7.png',
+                    '/imgs/graphics/carrousels/c2/7.png'
+                  ],
+                  currentSlideIndex: 0
+                });
+              }
+            }}>
+              {lang === 'fr' ? 'Carrousel 01 — Idée (8 slides)' : 'Carousel 01 — Idea (8 slides)'}
+            </span>
+            <span onClick={() => {
+              setActiveSection('graphic');
+              if (setSelectedGraphic) {
+                setSelectedGraphic({
+                  src: '/imgs/graphics/carrousels/c4/1.png',
+                  title: 'Strategy Arena — "Votre client n\'achète pas votre produit" (Carrousel 02)',
+                  category: lang === 'fr' ? 'Carrousel 02 — Psychologie Client' : 'Carousel 02 — Client Psychology',
+                  slides: [
                     '/imgs/graphics/carrousels/c4/1.png',
                     '/imgs/graphics/carrousels/c4/2.png',
                     '/imgs/graphics/carrousels/c4/3.png',
@@ -1102,7 +1222,7 @@ const AllProjectsView = ({
                 });
               }
             }}>
-              {lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels'}
+              {lang === 'fr' ? 'Carrousel 02 — Psychologie (7 slides)' : 'Carousel 02 — Psychology (7 slides)'}
             </span>
             <span onClick={() => {
               setActiveSection('graphic');
@@ -1196,7 +1316,7 @@ const AllProjectsView = ({
               {cat.projects.map((proj: any) => (
                 <div
                   key={proj.id}
-                  className="v2-apv-card"
+                  className={`v2-apv-card ${proj.isGraphic ? 'is-graphic-card' : ''}`}
                   onClick={() => {
                     if (proj.isGraphic && proj.graphicData && setSelectedGraphic) {
                       setSelectedGraphic(proj.graphicData);
@@ -1209,10 +1329,16 @@ const AllProjectsView = ({
                     <img src={proj.img} alt={proj.title} loading="lazy" />
                     <div className="v2-apv-card-media-gradient" />
                     <span className="v2-apv-card-year">{proj.date}</span>
+                    {proj.isGraphic && (
+                      <span className="v2-apv-card-hd-badge">
+                        <Sparkles size={11} />
+                        <span>HD DETAIL</span>
+                      </span>
+                    )}
                     <div className="v2-apv-card-hover-overlay">
                       <div className="v2-apv-card-hover-btn">
-                        <span>{proj.isGraphic ? (lang === 'fr' ? 'Voir visuels' : 'View visuals') : (lang === 'fr' ? 'Découvrir le projet' : 'Explore project')}</span>
-                        <ArrowRight size={14} />
+                        <span>{proj.isGraphic ? (lang === 'fr' ? 'Inspecter en HD' : 'Inspect in HD') : (lang === 'fr' ? 'Découvrir le projet' : 'Explore project')}</span>
+                        {proj.isGraphic ? <Maximize2 size={13} /> : <ArrowRight size={14} />}
                       </div>
                     </div>
                   </div>
@@ -1237,8 +1363,8 @@ const AllProjectsView = ({
                           }
                         }}
                       >
-                        <span>{proj.isGraphic ? (lang === 'fr' ? 'Galerie' : 'Gallery') : (lang === 'fr' ? 'Étude de cas' : 'Case Study')}</span>
-                        <ExternalLink size={12} />
+                        <span>{proj.isGraphic ? (lang === 'fr' ? 'Zoom HD' : 'HD View') : (lang === 'fr' ? 'Étude de cas' : 'Case Study')}</span>
+                        {proj.isGraphic ? <Maximize2 size={12} /> : <ExternalLink size={12} />}
                       </button>
                     </div>
                   </div>
@@ -1532,7 +1658,6 @@ const CARROUSEL_2_SLIDES = [
   '/imgs/graphics/carrousels/c2/7.png'
 ];
 
-const ALL_CARROUSEL_SLIDES = [...CARROUSEL_2_SLIDES, ...CARROUSEL_4_SLIDES];
 
 /* ─────────────────────────────────────────────
    MAIN HOMEPAGE
@@ -1551,7 +1676,7 @@ export default function App() {
     isOverview?: boolean;
   } | null>(null);
   const [isLightboxOverview, setIsLightboxOverview] = useState(false);
-  const [cardCarrouselSeries, setCardCarrouselSeries] = useState<2 | 4 | 'all'>(2);
+  const [cardCarrouselSeries, setCardCarrouselSeries] = useState<2 | 4>(2);
   const [cardCarrouselCover, setCardCarrouselCover] = useState<string>('/imgs/graphics/carrousels/c2/cover.png');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeNavSection, setActiveNavSection] = useState<'home' | 'about' | 'services' | 'projects' | 'graphic' | 'career' | 'contact'>('home');
@@ -3378,31 +3503,101 @@ export default function App() {
                 <div 
                   className="v2-project-card-large" 
                   onClick={() => setSelectedGraphic({
-                    src: '/imgs/graphics/graphic_2souza_barman.jpg',
-                    title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
-                    category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+                    src: '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                    title: '2SOUZA The Bartender — Direction Artistique & Affiches Mixologie',
+                    category: lang === 'fr' ? '2SOUZA — Mixologie & DA' : '2SOUZA — Mixology & Art Direction',
                     slides: [
-                      '/imgs/graphics/graphic_2souza_barman.jpg',
-                      '/imgs/graphics/graphic_strategie_arena_red.jpg',
-                      '/imgs/graphics/graphic_aidarag_tennis.jpg'
+                      '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                      '/imgs/graphics/graphic_2souza_barman.jpg'
                     ],
                     currentSlideIndex: 0
                   })}
                 >
                   <div className="v2-card-preview-container">
-                    <img src="/imgs/graphics/graphic_2souza_barman.jpg" alt="Posters & Affiches" />
+                    <img src="/imgs/graphics/graphic_2souza_full_poster.jpg" alt="Posters & Affiches" />
                     <span className="v2-project-year-badge">2025</span>
                     <div className="v2-preview-glass-tag">
                       <span>{lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints'}</span>
                     </div>
                   </div>
 
-                  {/* Thumbnail strip showing ALL visuals of this collection */}
+                  {/* Thumbnail strip showing visual projects */}
                   <div className="v2-card-visuals-strip">
                     {[
-                      { src: '/imgs/graphics/graphic_2souza_barman.jpg', label: '2SOUZA Barman' },
-                      { src: '/imgs/graphics/graphic_strategie_arena_red.jpg', label: 'Strategy Arena' },
-                      { src: '/imgs/graphics/graphic_aidarag_tennis.jpg', label: 'Aïdarag Tennis' }
+                      { 
+                        src: '/imgs/graphics/graphic_2souza_full_poster.jpg', 
+                        label: '2SOUZA (Poster)', 
+                        title: '2SOUZA The Bartender — Direction Artistique & Affiche Mixologie',
+                        category: lang === 'fr' ? '2SOUZA — Mixologie & DA' : '2SOUZA — Mixology & Art Direction',
+                        slides: [
+                          '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                          '/imgs/graphics/graphic_2souza_barman.jpg'
+                        ],
+                        slideIdx: 0
+                      },
+                      { 
+                        src: '/imgs/graphics/graphic_2souza_barman.jpg', 
+                        label: '2SOUZA (Détail)', 
+                        title: '2SOUZA The Bartender — Cadrage & Focus Portrait',
+                        category: lang === 'fr' ? '2SOUZA — Mixologie & DA' : '2SOUZA — Mixology & Art Direction',
+                        slides: [
+                          '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                          '/imgs/graphics/graphic_2souza_barman.jpg'
+                        ],
+                        slideIdx: 1
+                      },
+                      { 
+                        src: '/imgs/graphics/graphic_aidarag_tennis.jpg', 
+                        label: 'Aïda Garba (Poster)', 
+                        title: 'Aïda Garba — K-State Tennis Player of the Week (Big 12 Sports Editorial)',
+                        category: lang === 'fr' ? 'Aïda Garba — Sports Editorial' : 'Aïda Garba — Sports Editorial',
+                        slides: [
+                          '/imgs/graphics/graphic_aidarag_tennis.jpg',
+                          '/imgs/graphics/graphic_aidarag_tennis_social.jpg'
+                        ],
+                        slideIdx: 0
+                      },
+                      { 
+                        src: '/imgs/graphics/graphic_aidarag_tennis_social.jpg', 
+                        label: 'Aïda Garba (Social)', 
+                        title: 'Aïda Garba — K-State Tennis Social Media Collage',
+                        category: lang === 'fr' ? 'Aïda Garba — Sports Editorial' : 'Aïda Garba — Sports Editorial',
+                        slides: [
+                          '/imgs/graphics/graphic_aidarag_tennis.jpg',
+                          '/imgs/graphics/graphic_aidarag_tennis_social.jpg'
+                        ],
+                        slideIdx: 1
+                      },
+                      { 
+                        src: '/imgs/graphics/graphic_koffi_nation_poster.jpg', 
+                        label: 'Koffi Nation (Poster)', 
+                        title: 'Koffi Nation — "Born in Cotonou" Streetwear Poster & Lookbook Lineup',
+                        category: lang === 'fr' ? 'Koffi Nation — Streetwear & DA' : 'Koffi Nation — Streetwear & Art Direction',
+                        slides: [
+                          '/imgs/graphics/graphic_koffi_nation_poster.jpg',
+                          '/imgs/graphics/graphic_koffi_nation_lineup.png'
+                        ],
+                        slideIdx: 0
+                      },
+                      { 
+                        src: '/imgs/graphics/graphic_koffi_nation_lineup.png', 
+                        label: 'Koffi Nation (Lookbook)', 
+                        title: 'Koffi Nation — Collection Lookbook Lineup & Merchandising',
+                        category: lang === 'fr' ? 'Koffi Nation — Streetwear & DA' : 'Koffi Nation — Streetwear & Art Direction',
+                        slides: [
+                          '/imgs/graphics/graphic_koffi_nation_poster.jpg',
+                          '/imgs/graphics/graphic_koffi_nation_lineup.png'
+                        ],
+                        slideIdx: 1
+                      },
+                      { 
+                        src: '/imgs/graphics/graphic_strategie_arena_red.jpg', 
+                        label: 'Strategy Arena', 
+                        title: 'Strategy Arena — Art Print Red (Typographie Suisse)',
+                        category: lang === 'fr' ? 'Strategy Arena — Art Print' : 'Strategy Arena — Art Print',
+                        slides: ['/imgs/graphics/graphic_strategie_arena_red.jpg'],
+                        slideIdx: 0
+                      }
                     ].map((item, idx) => (
                       <div 
                         key={idx} 
@@ -3412,14 +3607,10 @@ export default function App() {
                           e.stopPropagation();
                           setSelectedGraphic({
                             src: item.src,
-                            title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
-                            category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
-                            slides: [
-                              '/imgs/graphics/graphic_2souza_barman.jpg',
-                              '/imgs/graphics/graphic_strategie_arena_red.jpg',
-                              '/imgs/graphics/graphic_aidarag_tennis.jpg'
-                            ],
-                            currentSlideIndex: idx
+                            title: item.title,
+                            category: item.category,
+                            slides: item.slides,
+                            currentSlideIndex: item.slideIdx
                           });
                         }}
                       >
@@ -3439,19 +3630,18 @@ export default function App() {
                         onClick={(e) => { 
                           e.stopPropagation(); 
                           setSelectedGraphic({
-                            src: '/imgs/graphics/graphic_2souza_barman.jpg',
-                            title: '2SOUZA Barman — Direction Artistique & Affiche Mixologie',
-                            category: lang === 'fr' ? 'Posters & Affiches' : 'Posters & Art Prints',
+                            src: '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                            title: '2SOUZA The Bartender — Direction Artistique & Affiches Mixologie',
+                            category: lang === 'fr' ? '2SOUZA — Mixologie & DA' : '2SOUZA — Mixology & Art Direction',
                             slides: [
-                              '/imgs/graphics/graphic_2souza_barman.jpg',
-                              '/imgs/graphics/graphic_strategie_arena_red.jpg',
-                              '/imgs/graphics/graphic_aidarag_tennis.jpg'
+                              '/imgs/graphics/graphic_2souza_full_poster.jpg',
+                              '/imgs/graphics/graphic_2souza_barman.jpg'
                             ],
                             currentSlideIndex: 0
                           });
                         }}
                       >
-                        <span>{lang === 'fr' ? 'Galerie (3)' : 'Gallery (3)'}</span>
+                        <span>{lang === 'fr' ? 'Découvrir' : 'Explore'}</span>
                         <ArrowRight size={14} />
                       </button>
                     </div>
@@ -3469,19 +3659,22 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* CARD 02: CARROUSELS & STORYTELLING (CARROUSELS 2 & 4) */}
+                {/* CARD 02: CARROUSELS & STORYTELLING (SEPARATE CAROUSELS 01 & 02) */}
                 <div 
                   className="v2-project-card-large" 
                   onClick={() => {
-                    const activeIdx = ALL_CARROUSEL_SLIDES.indexOf(cardCarrouselCover);
-                    const isC2 = cardCarrouselCover.includes('/c2/');
+                    const isC2 = cardCarrouselSeries === 2;
+                    const activeSlides = isC2 ? CARROUSEL_2_SLIDES : CARROUSEL_4_SLIDES;
+                    const activeIdx = activeSlides.indexOf(cardCarrouselCover);
                     setSelectedGraphic({
                       src: cardCarrouselCover,
                       title: isC2 
-                        ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"' 
-                        : 'Strategy Arena — "Votre client n\'achète pas votre produit"',
-                      category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
-                      slides: ALL_CARROUSEL_SLIDES,
+                        ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable" (Carrousel 01)' 
+                        : 'Strategy Arena — "Votre client n\'achète pas votre produit" (Carrousel 02)',
+                      category: isC2 
+                        ? (lang === 'fr' ? 'Carrousel 01 — Idée & Entreprise' : 'Carousel 01 — Idea & Business')
+                        : (lang === 'fr' ? 'Carrousel 02 — Psychologie Client' : 'Carousel 02 — Client Psychology'),
+                      slides: activeSlides,
                       currentSlideIndex: activeIdx >= 0 ? activeIdx : 0,
                       isOverview: false
                     });
@@ -3492,11 +3685,13 @@ export default function App() {
                     <img src={cardCarrouselCover} alt="Carrousels & Storytelling" />
                     <span className="v2-project-year-badge">2026</span>
                     <div className="v2-preview-glass-tag">
-                      <span>{lang === 'fr' ? 'Carrousels Réseaux' : 'Social Carousels'}</span>
+                      <span>{cardCarrouselSeries === 2 
+                        ? (lang === 'fr' ? 'Carrousel 01 (8 slides)' : 'Carousel 01 (8 slides)')
+                        : (lang === 'fr' ? 'Carrousel 02 (7 slides)' : 'Carousel 02 (7 slides)')}</span>
                     </div>
                   </div>
 
-                  {/* Series Navigation Tabs to overview both carrousels */}
+                  {/* Series Navigation Tabs: 2 separate carousels */}
                   <div className="v2-card-series-tabs" onClick={(e) => e.stopPropagation()}>
                     <button
                       type="button"
@@ -3506,7 +3701,7 @@ export default function App() {
                         setCardCarrouselCover(CARROUSEL_2_SLIDES[0]);
                       }}
                     >
-                      {lang === 'fr' ? 'Série 02 (8)' : 'Series 02 (8)'}
+                      {lang === 'fr' ? 'Carrousel 01 (8 slides)' : 'Carousel 01 (8 slides)'}
                     </button>
                     <button
                       type="button"
@@ -3516,57 +3711,42 @@ export default function App() {
                         setCardCarrouselCover(CARROUSEL_4_SLIDES[0]);
                       }}
                     >
-                      {lang === 'fr' ? 'Série 04 (7)' : 'Series 04 (7)'}
-                    </button>
-                    <button
-                      type="button"
-                      className={`v2-card-series-tab ${cardCarrouselSeries === 'all' ? 'active' : ''}`}
-                      onClick={() => setCardCarrouselSeries('all')}
-                    >
-                      {lang === 'fr' ? 'Tous (15)' : 'All (15)'}
+                      {lang === 'fr' ? 'Carrousel 02 (7 slides)' : 'Carousel 02 (7 slides)'}
                     </button>
                   </div>
 
-                  {/* Overview Strip showing all visuals of the active series or all 15 slides */}
+                  {/* Overview Strip showing exclusively the active carousel slides */}
                   <div className="v2-card-visuals-strip-scroll" onClick={(e) => e.stopPropagation()}>
-                    {(cardCarrouselSeries === 2 ? CARROUSEL_2_SLIDES : cardCarrouselSeries === 4 ? CARROUSEL_4_SLIDES : ALL_CARROUSEL_SLIDES).map((slideUrl, idx) => {
-                      const globalIdx = ALL_CARROUSEL_SLIDES.indexOf(slideUrl);
+                    {(cardCarrouselSeries === 2 ? CARROUSEL_2_SLIDES : CARROUSEL_4_SLIDES).map((slideUrl, idx) => {
                       const isCover = slideUrl.includes('cover.png');
-                      const isC2 = slideUrl.includes('/c2/');
-                      
-                      let displayNum = '';
-                      if (isCover) {
-                        displayNum = 'COVER';
-                      } else if (cardCarrouselSeries === 2) {
-                        displayNum = `0${CARROUSEL_2_SLIDES.indexOf(slideUrl)}`;
-                      } else if (cardCarrouselSeries === 4) {
-                        displayNum = `0${CARROUSEL_4_SLIDES.indexOf(slideUrl) + 1}`;
-                      } else {
-                        displayNum = isC2 ? `2·${isCover ? 'C' : CARROUSEL_2_SLIDES.indexOf(slideUrl)}` : `4·${CARROUSEL_4_SLIDES.indexOf(slideUrl) + 1}`;
-                      }
+                      const displayNum = isCover ? 'COVER' : `0${cardCarrouselSeries === 2 ? idx : idx + 1}`;
+                      const isC2 = cardCarrouselSeries === 2;
+                      const activeSlides = isC2 ? CARROUSEL_2_SLIDES : CARROUSEL_4_SLIDES;
 
                       return (
                         <div 
                           key={idx} 
                           className={`v2-card-visual-thumb ${cardCarrouselCover === slideUrl ? 'is-active-thumb' : ''}`}
-                          title={isCover ? (lang === 'fr' ? 'Capture Mockup — Couverture' : 'Mockup Capture — Cover') : `Slide ${displayNum} — Cliquer pour agrandir`}
+                          title={isCover ? (lang === 'fr' ? 'Couverture Carrousel 01' : 'Cover Carousel 01') : `Slide ${displayNum} — Cliquer pour agrandir`}
                           onMouseEnter={() => setCardCarrouselCover(slideUrl)}
                           onClick={() => {
                             setCardCarrouselCover(slideUrl);
                             setSelectedGraphic({
                               src: slideUrl,
                               title: isC2 
-                                ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"' 
-                                : 'Strategy Arena — "Votre client n\'achète pas votre produit"',
-                              category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
-                              slides: ALL_CARROUSEL_SLIDES,
-                              currentSlideIndex: globalIdx >= 0 ? globalIdx : idx,
+                                ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable" (Carrousel 01)' 
+                                : 'Strategy Arena — "Votre client n\'achète pas votre produit" (Carrousel 02)',
+                              category: isC2 
+                                ? (lang === 'fr' ? 'Carrousel 01 — Idée & Entreprise' : 'Carousel 01 — Idea & Business')
+                                : (lang === 'fr' ? 'Carrousel 02 — Psychologie Client' : 'Carousel 02 — Client Psychology'),
+                              slides: activeSlides,
+                              currentSlideIndex: idx,
                               isOverview: false
                             });
                             setIsLightboxOverview(false);
                           }}
                         >
-                          <img src={slideUrl} alt={isCover ? 'Mockup Couverture' : `Slide ${displayNum}`} loading="lazy" />
+                          <img src={slideUrl} alt={isCover ? 'Couverture' : `Slide ${displayNum}`} loading="lazy" />
                           <span className="v2-thumb-index">{displayNum}</span>
                         </div>
                       );
@@ -3576,19 +3756,27 @@ export default function App() {
                   <div className="v2-card-content-block">
                     <div className="v2-card-title-row">
                       <h3 className="v2-project-title">
-                        {lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels'}
+                        {cardCarrouselSeries === 2 
+                          ? (lang === 'fr' ? 'Carrousel 01 — Idée & Entreprise' : 'Carousel 01 — Idea & Business')
+                          : (lang === 'fr' ? 'Carrousel 02 — Psychologie Client' : 'Carousel 02 — Customer Psychology')}
                       </h3>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <button 
                           className="v2-project-explore-btn" 
-                          title={lang === 'fr' ? 'Vue d\'ensemble de tous les visuels' : 'Overview of all visuals'}
+                          title={lang === 'fr' ? "Vue d'ensemble de ce carrousel" : "Overview of this carousel"}
                           onClick={(e) => { 
                             e.stopPropagation(); 
+                            const isC2 = cardCarrouselSeries === 2;
+                            const activeSlides = isC2 ? CARROUSEL_2_SLIDES : CARROUSEL_4_SLIDES;
                             setSelectedGraphic({
-                              src: ALL_CARROUSEL_SLIDES[0],
-                              title: 'Strategy Arena — Séries Carrousels Narratifs (02 & 04)',
-                              category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
-                              slides: ALL_CARROUSEL_SLIDES,
+                              src: activeSlides[0],
+                              title: isC2 
+                                ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable" (Carrousel 01)' 
+                                : 'Strategy Arena — "Votre client n\'achète pas votre produit" (Carrousel 02)',
+                              category: isC2 
+                                ? (lang === 'fr' ? 'Carrousel 01 — Idée & Entreprise' : 'Carousel 01 — Idea & Business')
+                                : (lang === 'fr' ? 'Carrousel 02 — Psychologie Client' : 'Carousel 02 — Client Psychology'),
+                              slides: activeSlides,
                               currentSlideIndex: 0,
                               isOverview: true
                             });
@@ -3596,21 +3784,24 @@ export default function App() {
                           }}
                         >
                           <LayoutGrid size={13} />
-                          <span>{lang === 'fr' ? 'Overview (15)' : 'Overview (15)'}</span>
+                          <span>Overview ({cardCarrouselSeries === 2 ? 8 : 7})</span>
                         </button>
                         <button 
                           className="v2-project-explore-btn" 
                           onClick={(e) => { 
                             e.stopPropagation(); 
-                            const activeIdx = ALL_CARROUSEL_SLIDES.indexOf(cardCarrouselCover);
-                            const isC2 = cardCarrouselCover.includes('/c2/');
+                            const isC2 = cardCarrouselSeries === 2;
+                            const activeSlides = isC2 ? CARROUSEL_2_SLIDES : CARROUSEL_4_SLIDES;
+                            const activeIdx = activeSlides.indexOf(cardCarrouselCover);
                             setSelectedGraphic({
                               src: cardCarrouselCover,
                               title: isC2 
-                                ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable"' 
-                                : 'Strategy Arena — "Votre client n\'achète pas votre produit"',
-                              category: lang === 'fr' ? 'Carrousels Narratifs' : 'Social Carousels',
-                              slides: ALL_CARROUSEL_SLIDES,
+                                ? 'Strategy Arena — "Entre une idée brillante et une entreprise rentable" (Carrousel 01)' 
+                                : 'Strategy Arena — "Votre client n\'achète pas votre produit" (Carrousel 02)',
+                              category: isC2 
+                                ? (lang === 'fr' ? 'Carrousel 01 — Idée & Entreprise' : 'Carousel 01 — Idea & Business')
+                                : (lang === 'fr' ? 'Carrousel 02 — Psychologie Client' : 'Carousel 02 — Client Psychology'),
+                              slides: activeSlides,
                               currentSlideIndex: activeIdx >= 0 ? activeIdx : 0,
                               isOverview: false
                             });
@@ -3623,15 +3814,19 @@ export default function App() {
                       </div>
                     </div>
                     <p className="v2-project-summary">
-                      {lang === 'fr'
-                        ? "Structures narratives percutantes, collages éditoriaux et carrousels stratégiques conçus pour captiver et générer de l'engagement."
-                        : "Editorial collage storytelling and strategic carousels engineered for deep engagement and brand resonance."}
+                      {cardCarrouselSeries === 2
+                        ? (lang === 'fr' 
+                            ? 'Carrousel 01 : 8 slides analysant le passage crucial entre une idée créative et un modèle d\'entreprise rentable et scalable.'
+                            : 'Carousel 01: 8 slides exploring the critical path from a brilliant idea to a profitable, scalable business model.')
+                        : (lang === 'fr' 
+                            ? 'Carrousel 02 : 7 slides décryptant la psychologie d\'achat : pourquoi le client n\'achète pas votre produit mais sa propre transformation.'
+                            : 'Carousel 02: 7 slides dissecting customer psychology: why people buy their own transformation rather than your product.')}
                     </p>
                     <div className="v2-project-tags-row">
+                      <span>{cardCarrouselSeries === 2 ? 'Carrousel 01' : 'Carrousel 02'}</span>
                       <span>Storytelling</span>
                       <span>Direction Artistique</span>
                       <span>Social Media</span>
-                      <span>Stratégie</span>
                     </div>
                   </div>
                 </div>
