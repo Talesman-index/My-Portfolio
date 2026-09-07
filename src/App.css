@@ -3165,6 +3165,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   margin-bottom: 16px;
 }
 
@@ -3174,34 +3175,38 @@
   font-weight: 700;
   color: #A855F7;
   letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .v2-bento-card-title {
   font-family: var(--font-body);
-  font-size: 1.25rem;
+  font-size: clamp(1.05rem, 1.25vw, 1.25rem);
   font-weight: 700;
   color: #FFFFFF;
   margin-top: 4px;
   margin-bottom: 0;
   text-transform: none;
+  white-space: nowrap !important;
 }
 
 .v2-bento-tools-large {
   position: relative;
-  padding: 26px 28px;
+  padding: 24px 22px;
 }
 
 .v2-bento-sticker-animated {
   background: #A855F7;
   color: #FFFFFF;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 9999px;
   box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.5);
   animation: stickerGlow 3s infinite alternate ease-in-out;
+  white-space: nowrap !important;
+  flex-shrink: 0;
 }
 
 @keyframes stickerGlow {
@@ -3396,6 +3401,11 @@
   }
   .v2-tools-grid-large {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .v2-bento-tools-large .v2-bento-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 }
 
