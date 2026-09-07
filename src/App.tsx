@@ -1754,7 +1754,8 @@ export default function App() {
                 }
               }}
             >
-              {lang === 'fr' ? 'Prendre RDV' : "Let's Connect"}
+              <Mail size={13} className="v2-btn-mail-icon" />
+              <span>{lang === 'fr' ? 'Prendre RDV' : "Let's Connect"}</span>
             </button>
             <button 
               className="v2-mobile-hamburger-btn" 
@@ -2095,6 +2096,7 @@ export default function App() {
                   }
                 }}
               >
+                <Mail size={14} className="v2-btn-mail-icon" />
                 <span>{lang === 'fr' ? "Réserver un appel (30 min)" : "Book a 30-min Call"}</span>
                 <ArrowRight size={16} />
               </button>
@@ -2203,7 +2205,8 @@ export default function App() {
                     }
                   }}
                 >
-                  {lang === 'fr' ? 'Prendre RDV' : "Let's Connect"}
+                  <Mail size={13} className="v2-btn-mail-icon" />
+                  <span>{lang === 'fr' ? 'Prendre RDV' : "Let's Connect"}</span>
                 </button>
                 <button 
                   className="v2-mobile-hamburger-btn" 
