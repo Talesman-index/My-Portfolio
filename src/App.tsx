@@ -887,8 +887,8 @@ const AllProjectsView = ({
         { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX', date: '2025', img: '/imgs/dolce_cover.png', color: '#C5A059' },
         { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308' },
         { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981' },
-        { id: 'sagana', title: 'Sagana Agency', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B' },
-        { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B' }
+        { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B' },
+        { id: 'sagana', title: 'Sagana Agency', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B' }
       ]
     },
     {
@@ -1116,8 +1116,8 @@ const AllProjectsView = ({
             <span onClick={() => setCurrentView('dolce-riviera')}>Dolce Riviera</span>
             <span onClick={() => setCurrentView('strategy-arena')}>Strategy Arena</span>
             <span onClick={() => setCurrentView('truvox')}>Truvox Studio</span>
-            <span onClick={() => setCurrentView('sagana')}>Sagana Agency</span>
             <span onClick={() => setCurrentView('tavares')}>Tavares &amp; Visuals</span>
+            <span onClick={() => setCurrentView('sagana')}>Sagana Agency</span>
           </div>
 
           <button
@@ -1580,8 +1580,8 @@ const AllProjectsModal = ({
     { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie & transformation digitale.' : 'Strategic consulting agency platform.' },
     { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception & vitrine digitale.' : 'High-end studio brand experience.' },
     { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: '2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs par IA.' : 'AI sports analysis platform.' },
-    { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for advisory agency.' },
-    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B', desc: lang === 'fr' ? 'Direction artistique web & vitrines cinématographiques.' : 'Cinematic showcase sites & galleries.' }
+    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B', desc: lang === 'fr' ? 'Direction artistique web & vitrines cinématographiques.' : 'Cinematic showcase sites & galleries.' },
+    { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for advisory agency.' }
   ];
 
   return (
@@ -3014,61 +3014,7 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* SITE 03: SAGANA AGENCY */}
-                <div className="v2-website-card-large" onClick={() => handleViewSwitch('sagana')}>
-                  <div className="v2-browser-mockup-bar">
-                    <div className="v2-browser-dots">
-                      <span className="dot dot-red" />
-                      <span className="dot dot-yellow" />
-                      <span className="dot dot-green" />
-                    </div>
-                    <div className="v2-browser-url-pill">
-                      <span className="v2-url-lock"><Lock size={10} /></span> sagana-agency.com
-                    </div>
-                    <span className="v2-browser-year-badge">2025</span>
-                  </div>
-
-                  <div className="v2-website-large-preview">
-                    <img src="/imgs/sagana.png" alt="Sagana Agency" />
-                    <div className="v2-preview-overlay">
-                      <span className="v2-overlay-badge">
-                        {lang === 'fr' ? 'Explorer le projet' : 'Explore Case'}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="v2-website-card-large-info">
-                    <div className="v2-card-large-top">
-                      <div>
-                        <span className="v2-website-category-tag">Strategic Consulting</span>
-                        <h4 className="v2-website-large-name">Sagana Agency</h4>
-                      </div>
-                      <a 
-                        href="https://www.sagana-agency.com/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="v2-website-large-live-btn"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <span>Live Site</span>
-                        <ExternalLink size={14} />
-                      </a>
-                    </div>
-                    <p className="v2-website-large-desc">
-                      {lang === 'fr'
-                        ? "Identité de marque et vitrine numérique d'agence de conseil en management & innovation."
-                        : "Brand identity and digital showcase for a high-level management and innovation advisory firm."}
-                    </p>
-                    <div className="v2-website-tech-tags">
-                      <span>React</span>
-                      <span>TypeScript</span>
-                      <span>Design System</span>
-                      <span>Vite</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* SITE 04: TAVARES & VISUALS */}
+                {/* SITE 03: TAVARES & VISUALS */}
                 <div className="v2-website-card-large" onClick={() => handleViewSwitch('tavares')}>
                   <div className="v2-browser-mockup-bar">
                     <div className="v2-browser-dots">
@@ -3118,6 +3064,60 @@ export default function App() {
                       <span>Framer</span>
                       <span>TypeScript</span>
                       <span>Art Direction</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SITE 04: SAGANA AGENCY */}
+                <div className="v2-website-card-large" onClick={() => handleViewSwitch('sagana')}>
+                  <div className="v2-browser-mockup-bar">
+                    <div className="v2-browser-dots">
+                      <span className="dot dot-red" />
+                      <span className="dot dot-yellow" />
+                      <span className="dot dot-green" />
+                    </div>
+                    <div className="v2-browser-url-pill">
+                      <span className="v2-url-lock"><Lock size={10} /></span> sagana-agency.com
+                    </div>
+                    <span className="v2-browser-year-badge">2025</span>
+                  </div>
+
+                  <div className="v2-website-large-preview">
+                    <img src="/imgs/sagana.png" alt="Sagana Agency" />
+                    <div className="v2-preview-overlay">
+                      <span className="v2-overlay-badge">
+                        {lang === 'fr' ? 'Explorer le projet' : 'Explore Case'}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="v2-website-card-large-info">
+                    <div className="v2-card-large-top">
+                      <div>
+                        <span className="v2-website-category-tag">Strategic Consulting</span>
+                        <h4 className="v2-website-large-name">Sagana Agency</h4>
+                      </div>
+                      <a 
+                        href="https://www.sagana-agency.com/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="v2-website-large-live-btn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Live Site</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <p className="v2-website-large-desc">
+                      {lang === 'fr'
+                        ? "Identité de marque et vitrine numérique d'agence de conseil en management & innovation."
+                        : "Brand identity and digital showcase for a high-level management and innovation advisory firm."}
+                    </p>
+                    <div className="v2-website-tech-tags">
+                      <span>React</span>
+                      <span>TypeScript</span>
+                      <span>Design System</span>
+                      <span>Vite</span>
                     </div>
                   </div>
                 </div>
