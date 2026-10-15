@@ -2853,7 +2853,12 @@ export default function App() {
                       <span className="v2-url-lock"><Lock size={10} /></span> thobixeclou.com
                     </div>
                     <span className="v2-browser-year-badge v2-badge-featured">
-                      {lang === 'fr' ? '★ PROJET PHARE · 2026' : '★ FEATURED SPOTLIGHT · 2026'}
+                      <span className="v2-badge-full">
+                        {lang === 'fr' ? '★ PROJET PHARE · 2026' : '★ FEATURED SPOTLIGHT · 2026'}
+                      </span>
+                      <span className="v2-badge-compact">
+                        {lang === 'fr' ? '★ PROJET PHARE' : '★ FEATURED'}
+                      </span>
                     </span>
                   </div>
 

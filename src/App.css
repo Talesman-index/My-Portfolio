@@ -2867,6 +2867,7 @@
   margin-bottom: 30px;
   position: relative;
   z-index: 2;
+  gap: 16px;
 }
 
 .v2-subbar-left {
@@ -2909,6 +2910,8 @@
   gap: 8px;
   cursor: pointer;
   transition: all 0.25s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .v2-webdesign-all-btn:hover {
@@ -2959,12 +2962,15 @@
   padding: 12px 18px;
   background: rgba(5, 8, 16, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 8px;
+  min-width: 0;
 }
 
 .v2-browser-dots {
   display: flex;
   align-items: center;
   gap: 7px;
+  flex-shrink: 0;
 }
 
 .v2-browser-dots .dot {
@@ -2984,11 +2990,13 @@
   color: #94A3B8;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 4px 16px;
+  padding: 4px 14px;
   border-radius: 6px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .v2-url-lock {
@@ -3005,6 +3013,8 @@
   border: 1px solid rgba(168, 85, 247, 0.25);
   padding: 2px 10px;
   border-radius: 9999px;
+  white-space: nowrap !important;
+  flex-shrink: 0;
 }
 
 .v2-badge-featured {
@@ -3013,6 +3023,16 @@
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.15);
   letter-spacing: 0.05em;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.v2-badge-full {
+  display: inline;
+}
+
+.v2-badge-compact {
+  display: none;
 }
 
 .v2-website-card-flagship {
@@ -3446,6 +3466,47 @@
 }
 
 @media (max-width: 640px) {
+  .v2-webdesign-subbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .v2-subbar-left {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .v2-webdesign-all-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 18px;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .v2-browser-mockup-bar {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+  .v2-browser-url-pill {
+    padding: 3px 8px;
+    font-size: 0.68rem;
+    gap: 4px;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v2-browser-year-badge {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+  .v2-badge-full {
+    display: none;
+  }
+  .v2-badge-compact {
+    display: inline;
+  }
   .v2-website-large-preview {
     height: 220px;
   }
