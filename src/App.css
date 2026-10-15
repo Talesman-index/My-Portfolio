@@ -3007,6 +3007,36 @@
   border-radius: 9999px;
 }
 
+.v2-badge-featured {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.05em;
+}
+
+.v2-website-card-flagship {
+  grid-column: 1 / -1;
+  background: linear-gradient(145deg, rgba(14, 20, 36, 0.88), rgba(8, 12, 22, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 255, 255, 0.04);
+}
+
+.v2-website-card-flagship:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(255, 255, 255, 0.12);
+}
+
+.v2-website-card-flagship .v2-website-large-preview {
+  height: 380px;
+}
+
+@media (min-width: 1024px) {
+  .v2-website-card-flagship .v2-website-large-preview {
+    height: 440px;
+  }
+}
+
 /* Large Preview Mockup */
 .v2-website-large-preview {
   width: 100%;

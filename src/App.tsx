@@ -52,7 +52,7 @@ const LangSwitchControl = ({ lang, onToggle, isMobile }: { lang: 'en' | 'fr'; on
   </button>
 );
 
-const VALID_PROJECT_IDS: CaseStudyId[] = ['asset-iq', 'ehadj', 'beans', 'sagana', 'vortex', 'sport-advisor', 'truvox', 'tavares', 'the-refuge', 'strategy-arena', 'dolce-riviera'];
+const VALID_PROJECT_IDS: CaseStudyId[] = ['thobix', 'asset-iq', 'ehadj', 'beans', 'sagana', 'vortex', 'sport-advisor', 'truvox', 'tavares', 'strategy-arena', 'dolce-riviera'];
 
 function getViewFromHash(): 'home' | 'cv' | 'experiences' | 'services' | 'all-projects' | CaseStudyId {
   if (typeof window === 'undefined') return 'home';
@@ -70,15 +70,15 @@ const navigateToHome = (setCurrentView: any) => {
 };
 
 const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLabel: string; year: string; externalLink?: string }> = {
+  'thobix': { title: 'Thobix Eclou', color: '#E5E7EB', categoryLabel: 'Editorial Photography & Art Direction', year: '2026', externalLink: 'https://www.thobixeclou.com/' },
   'asset-iq': { title: 'Asset IQ', color: '#38BDF8', categoryLabel: 'B2B SaaS & Resource Telemetry', year: '2026', externalLink: 'https://www.assetiQ.com' },
   'ehadj': { title: 'eHadj', color: '#10B981', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://ehadj.aglo.bj/' },
   'beans': { title: 'Beans', color: '#059669', categoryLabel: 'Customer Engagement & Integrations', year: '2025', externalLink: 'https://trybeans.com' },
   'truvox': { title: 'Truvox Studio', color: '#34D399', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
-  'tavares': { title: 'Tavares', color: '#F59E0B', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://portfolio-tavares.vercel.app/' },
+  'tavares': { title: 'Tavares', color: '#F59E0B', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://www.tavares.studio/' },
   'strategy-arena': { title: 'Strategy Arena', color: '#60A5FA', categoryLabel: 'Strategic Consulting & Transformation', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#strategy-arena' },
   'dolce-riviera': { title: 'Dolce Riviera', color: '#FBBF24', categoryLabel: 'Luxury Hospitality UI/UX Interface', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' },
   'sagana': { title: 'Sagana', color: '#C084FC', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://www.sagana-agency.com/' },
-  'the-refuge': { title: 'The Refuge', color: '#38BDF8', categoryLabel: 'Humanitarian Impact Portal', year: '2025', externalLink: 'https://your-refuge.vercel.app/' },
   'vortex': { title: 'Vortex Gallery', color: '#FCD34D', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel' },
   'sport-advisor': { title: 'Sport Advisor', color: '#38BDF8', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://www.behance.net/gallery/232665713/Sport-Advisor-IA-dAnalyse-Sportive' }
 };
@@ -883,12 +883,12 @@ const AllProjectsView = ({
         ? "Sites vitrine haut de gamme, direction artistique éditoriale, identités de marque et landing pages de conversion."
         : "Premium showcase sites, editorial art direction, brand identities and high-converting landing pages.",
       projects: [
+        { id: 'thobix', title: 'Thobix Eclou', tag: 'Art Direction & Photography', date: '2026', img: '/imgs/thobix.png', color: '#E5E7EB' },
         { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX', date: '2025', img: '/imgs/dolce_cover.png', color: '#C5A059' },
         { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: '2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308' },
         { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981' },
         { id: 'sagana', title: 'Sagana Agency', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B' },
-        { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B' },
-        { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479' },
+        { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B' }
       ]
     },
     {
@@ -1112,12 +1112,12 @@ const AllProjectsView = ({
             <span className="v2-apv-badge-count">6</span>
           </button>
           <div className="v2-apv-nav-sub">
+            <span onClick={() => setCurrentView('thobix')} style={{ color: '#FFFFFF', fontWeight: 600 }}>★ Thobix Eclou</span>
             <span onClick={() => setCurrentView('dolce-riviera')}>Dolce Riviera</span>
             <span onClick={() => setCurrentView('strategy-arena')}>Strategy Arena</span>
             <span onClick={() => setCurrentView('truvox')}>Truvox Studio</span>
             <span onClick={() => setCurrentView('sagana')}>Sagana Agency</span>
             <span onClick={() => setCurrentView('tavares')}>Tavares &amp; Visuals</span>
-            <span onClick={() => setCurrentView('the-refuge')}>The Refuge</span>
           </div>
 
           <button
@@ -1571,6 +1571,7 @@ const AllProjectsModal = ({
   if (!isOpen) return null;
 
   const allProjects = [
+    { id: 'thobix', title: 'Thobix Eclou', tag: 'Editorial Photography & Art Direction', date: '2026', img: '/imgs/thobix.png', color: '#E5E7EB', desc: lang === 'fr' ? 'Portfolio immersif pour photographe & directeur artistique international.' : 'Immersive photography & editorial art direction portfolio.' },
     { id: 'asset-iq', title: 'Asset IQ', tag: 'Product Design & SaaS', date: '2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs industriels par QR code.' : 'Industrial asset telemetry via QR codes.' },
     { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: '2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#10B981', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage pour +30 ministères.' : 'Digital orchestration of pilgrimage logistics.' },
     { id: 'beans', title: 'Beans', tag: 'B2B SaaS Engagement', date: '2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS de fidélisation & 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform.' },
@@ -1580,8 +1581,7 @@ const AllProjectsModal = ({
     { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: '2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception & vitrine digitale.' : 'High-end studio brand experience.' },
     { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: '2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs par IA.' : 'AI sports analysis platform.' },
     { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: '2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for advisory agency.' },
-    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B', desc: lang === 'fr' ? 'Direction artistique web & vitrines cinématographiques.' : 'Cinematic showcase sites & galleries.' },
-    { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: '2025', img: '/imgs/refuge.png', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel.' : 'Humanitarian portal & impact tracker.' }
+    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: '2025', img: '/imgs/tavares.png', color: '#F59E0B', desc: lang === 'fr' ? 'Direction artistique web & vitrines cinématographiques.' : 'Cinematic showcase sites & galleries.' }
   ];
 
   return (
@@ -2516,12 +2516,12 @@ export default function App() {
                   <div className="v2-scroller-track">
                     <div className="v2-scroller-item"><img src="/imgs/vortex.webp" alt="Vortex Gallery" /></div>
                     <div className="v2-scroller-item"><img src="/imgs/advisor.webp" alt="Sport Advisor" /></div>
-                    <div className="v2-scroller-item"><img src="/imgs/refuge.png" alt="The Refuge" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/thobix.png" alt="Thobix Eclou" /></div>
                     <div className="v2-scroller-item"><img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding" /></div>
                     {/* Repeated for seamless loop */}
                     <div className="v2-scroller-item"><img src="/imgs/vortex.webp" alt="Vortex Gallery" /></div>
                     <div className="v2-scroller-item"><img src="/imgs/advisor.webp" alt="Sport Advisor" /></div>
-                    <div className="v2-scroller-item"><img src="/imgs/refuge.png" alt="The Refuge" /></div>
+                    <div className="v2-scroller-item"><img src="/imgs/thobix.png" alt="Thobix Eclou" /></div>
                     <div className="v2-scroller-item"><img src="/imgs/vibe_coding_setup.jpg" alt="Vibe Coding" /></div>
                   </div>
                 </div>
@@ -2841,6 +2841,66 @@ export default function App() {
 
               {/* Large 2x2 Website Showcase Grid */}
               <div className="v2-webdesign-showcase-grid-large">
+                {/* FLAGSHIP SHOWCASE: THOBIX ECLOU */}
+                <div className="v2-website-card-large v2-website-card-flagship" onClick={() => handleViewSwitch('thobix')}>
+                  <div className="v2-browser-mockup-bar">
+                    <div className="v2-browser-dots">
+                      <span className="dot dot-red" />
+                      <span className="dot dot-yellow" />
+                      <span className="dot dot-green" />
+                    </div>
+                    <div className="v2-browser-url-pill">
+                      <span className="v2-url-lock"><Lock size={10} /></span> thobixeclou.com
+                    </div>
+                    <span className="v2-browser-year-badge v2-badge-featured">
+                      {lang === 'fr' ? '★ PROJET PHARE · 2026' : '★ FEATURED SPOTLIGHT · 2026'}
+                    </span>
+                  </div>
+
+                  <div className="v2-website-large-preview">
+                    <img src="/imgs/thobix.png" alt="Thobix Eclou" />
+                    <div className="v2-preview-overlay">
+                      <span className="v2-overlay-badge">
+                        {lang === 'fr' ? 'Explorer l\'étude de cas' : 'Explore Case Study'}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="v2-website-card-large-info">
+                    <div className="v2-card-large-top">
+                      <div>
+                        <span className="v2-website-category-tag" style={{ color: '#E5E7EB', borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                          {lang === 'fr' ? 'Direction Artistique & Photographie Éditoriale' : 'Editorial Photography & Art Direction'}
+                        </span>
+                        <h4 className="v2-website-large-name">Thobix Eclou</h4>
+                      </div>
+                      <a 
+                        href="https://www.thobixeclou.com/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="v2-website-large-live-btn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Live Site</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <p className="v2-website-large-desc">
+                      {lang === 'fr'
+                        ? "Scénographie digitale haute couture, expérience sonore immersive (Audio On) et portfolio photographique plein écran pour photographe & directeur artistique international."
+                        : "High-fashion digital scenography, immersive ambient audio (Audio On), and full-bleed photographic showcase for an international photographer & art director."}
+                    </p>
+                    <div className="v2-website-tech-tags">
+                      <span>React</span>
+                      <span>Vite</span>
+                      <span>Vibe Coding</span>
+                      <span>Audio Ambience</span>
+                      <span>Art Direction</span>
+                      <span>Editorial UX</span>
+                    </div>
+                  </div>
+                </div>
+
                 {/* SITE 01: STRATEGY ARENA */}
                 <div className="v2-website-card-large" onClick={() => handleViewSwitch('strategy-arena')}>
                   <div className="v2-browser-mockup-bar">
@@ -3012,7 +3072,7 @@ export default function App() {
                       <span className="dot dot-green" />
                     </div>
                     <div className="v2-browser-url-pill">
-                      <span className="v2-url-lock"><Lock size={10} /></span> portfolio-tavares.vercel.app
+                      <span className="v2-url-lock"><Lock size={10} /></span> tavares.studio
                     </div>
                     <span className="v2-browser-year-badge">2025</span>
                   </div>
@@ -3033,7 +3093,7 @@ export default function App() {
                         <h4 className="v2-website-large-name">Tavares &amp; Visuals</h4>
                       </div>
                       <a 
-                        href="https://portfolio-tavares.vercel.app/" 
+                        href="https://www.tavares.studio/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="v2-website-large-live-btn"
