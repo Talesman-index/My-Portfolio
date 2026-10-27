@@ -1970,10 +1970,10 @@
   transform: scale(1.04);
 }
 
-/* 3-Column Editorial Grid System for Featured Works */
+/* Grid System for Featured Works */
 .robin-featured-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 28px;
   margin-top: 36px;
 }

@@ -26,7 +26,7 @@ export interface CaseStudyData {
   ctaLabel?: string;
 }
 
-export type CaseStudyId = 'asset-iq' | 'ehadj' | 'beans' | 'sagana' | 'vortex' | 'sport-advisor' | 'truvox' | 'tavares' | 'the-refuge' | 'strategy-arena' | 'dolce-riviera';
+export type CaseStudyId = 'thobix' | 'asset-iq' | 'ehadj' | 'beans' | 'sagana' | 'vortex' | 'sport-advisor' | 'truvox' | 'tavares' | 'strategy-arena' | 'dolce-riviera';
 
 export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyData>> = {
   fr: {
@@ -62,7 +62,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       title: "eHadj",
       subtitle: "Orchestration digitale du pèlerinage au Bénin",
       label: "Product Design & Strategy",
-      color: "#0d3479",
+      color: "#10B981",
       bgImage: "/imgs/ehadj/cover_Ehadj.jpg",
       context: "Le projet eHadj fait intervenir de multiples entités publiques et privées dans le traitement des dossiers de pèlerins : le Ministère de la Santé (bilan médical), les banques (aspect financier), les sociétés agréées (enregistrement des pèlerins), le Ministère des Affaires Étrangères (attribution des visas) et l'AGLO (superviseur général). Auparavant, ces acteurs opéraient de manière cloisonnée et manuelle, générant des goulots d'étranglement critiques.",
       contextTitle: "La complexité d'un écosystème multi-acteurs.",
@@ -327,7 +327,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       title: "Tavares",
       subtitle: "Portfolio cinématographique interactif pour réalisateur",
       label: "Creative Web Design & Development",
-      color: "#E50914",
+      color: "#F59E0B",
       bgImage: "/imgs/tavares.png",
       context: "Le réalisateur Tavares recherchait un portfolio numérique unique, capable de refléter son univers cinématographique. Les portfolios traditionnels surchargent l'interface, détournant l'attention des vidéos.",
       contextTitle: "Sublimer le travail cinématographique sans distraction.",
@@ -362,38 +362,48 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "Une identité numérique forte qui se démarque dans le milieu du cinéma"
       ],
       conclusion: "Le site de Tavares allie avec succès minimalisme, esthétique premium et performance technique pour sublimer son art cinématographique.",
-      externalLink: "https://portfolio-tavares.vercel.app/"
+      externalLink: "https://www.tavares.studio/"
     },
-    'the-refuge': {
-      title: "The Refuge",
-      subtitle: "Portail chrétien humanitaire et suivi d'impact en temps réel à Cotonou",
-      label: "Web Design & Development",
-      color: "#0d3479",
-      bgImage: "/imgs/your-refuge.jpg",
-      context: "Située à Cotonou au Bénin, The Refuge est une organisation chrétienne humanitaire dédiée à apporter une aide matérielle (dons de vêtements et kits d'hygiène menstruelle pour les femmes démunies), un accompagnement spirituel et de la dignité aux personnes les plus vulnérables de la rue. Afin d'amplifier son impact, l'organisation nécessitait un portail en ligne moderne capable de fédérer donateurs et bénévoles autour d'actions de terrain concrètes, fidèles et quotidiennes.",
-      contextTitle: "Une aide d'urgence et un accompagnement à Cotonou.",
-      challenge: "Traduire la compassion et l'engagement de terrain en une interface digitale captivante et digne de confiance. Le défi principal consistait à éliminer le scepticisme lié aux dons en ligne en intégrant un suivi transparent et en temps réel des indicateurs clés (vêtements distribués, kits d'hygiène menstruelle offerts aux femmes sans moyens, personnes réinsérées) ainsi que des récits de maraudes inspirants.",
-      challengeTitle: "Fédérer les dons et structurer l'action bénévole.",
-      solution: "Nous avons conçu et développé une application web responsive dotée de jauges de financement en direct, d'un module d'inscription simplifié pour les bénévoles et d'un tunnel de don sécurisé optimisé pour le contexte ouest-africain (Mobile Money et cartes de crédit). L'identité visuelle est rehaussée de doodles manuscrits apportant une touche humaine unique au design.",
-      solutionTitle: "Un portail d'impact moderne, transparent et humain.",
-      insight: "La transparence absolue génère la confiance. Rendre visibles les statistiques réelles et les besoins de financement précis a permis de doubler le taux de fidélisation des donateurs et de mobiliser des dizaines de nouveaux bénévoles locaux.",
-      contextImg: "/imgs/your-refuge.jpg",
-      challengeImg: "/imgs/your-refuge.jpg",
-      dashboardImg: "/imgs/your-refuge.jpg",
+    'thobix': {
+      title: "Thobix Eclou",
+      subtitle: "Portfolio immersif, direction artistique & expérience photographique sonore",
+      label: "Web Design & Direction Artistique",
+      color: "#E5E7EB",
+      bgImage: "/imgs/thobix.png",
+      context: "Photographe et directeur artistique d'envergure internationale opérant entre le Bénin, la Guinée et l'Europe, Thobix Eclou capture la haute couture, l'art du portrait et les campagnes éditoriales d'exception. Il recherchait une présence numérique d'avant-garde rompant avec les grilles d'images classiques pour offrir une véritable scénographie digitale digne des plus prestigieuses maisons de luxe.",
+      contextTitle: "Transformer un portfolio photographique en une expérience sensorielle haute fidélité.",
+      challenge: "Traduire la puissance brute du noir et blanc, la précision du cadrage photographique et l'ambiance des défilés et studios dans une interface web rapide, interactive et émotionnelle, dotée d'une ambiance sonore spatiale sans compromettre la fluidité ni la réactivité sur mobile.",
+      challengeTitle: "Élégance radicale, audio spatial et zéro compromis sur la performance.",
+      challengeImg: "/imgs/thobix.png",
+      decisions: [
+        {
+          title: "Esthétique Viseur & Crop Marks",
+          desc: "Intégration subtile de repères de visée photographiques (viewfinder brackets) et d'un pictogramme d'obturateur discret.",
+          why: "Plonge instantanément le visiteur dans la peau du photographe et l'œil derrière l'objectif."
+        },
+        {
+          title: "Ambiance Sonore Interactive",
+          desc: "Contrôle Audio On/Off fluide synchronisé avec l'exploration des galeries photographiques.",
+          why: "Crée une connexion émotionnelle profonde et augmente significativement le temps d'attention moyen."
+        }
+      ],
+      solution: "Une vitrine web monochrome ultra-contrastée construite avec React et Vibe Coding, alliant signature manuscrite haute couture, transitions cinématographiques soignées, lecteur audio d'ambiance et module de réservation directe optimisé pour les marques de luxe et personnalités.",
+      solutionTitle: "Une scénographie numérique cinématique taillée pour l'international.",
+      dashboardImg: "/imgs/thobix.png",
       features: [
-        { title: "Suivi d'Impact en Direct", desc: "Affichage transparent des vêtements distribués (plus de 1 240 vêtements), des kits d'hygiène menstruelle offerts, et des réinsertions actives sous forme de jauges dynamiques." },
-        { title: "Formulaire de Don en FCFA", desc: "Tunnel de paiement sécurisé adapté aux donateurs locaux et internationaux, supportant Mobile Money (MTN, Moov) et cartes bancaires." },
-        { title: "Espace d'Engagement Bénévoles", desc: "Processus d'onboarding fluide pour les maraudes de distribution de vêtements/kits et les ateliers d'écoute psychologique." },
-        { title: "Récits de Maraudes & News", desc: "Publication simplifiée de témoignages vécus sur le terrain (comme le parcours de Marie ou Luc 3:11) pour maintenir un lien humain fort." }
+        { title: "Direction Artistique Monochrome", desc: "Contraste absolu noir et blanc, typographie éditoriale de prestige et signature calligraphique exclusive." },
+        { title: "Expérience Sonore Spatiale", desc: "Ambiance audio haute fidélité activable en un clic pour sublimer la consultation des séries photographiques." },
+        { title: "Galerie & Viseur Plein Écran", desc: "Mise en page épurée inspirée du viseur d'un appareil moyen format professionnel." },
+        { title: "Tunnel de Réservation VIP", desc: "Formulaire d'engagement direct pour les commandes de shootings éditoriaux, mode et campagnes de marque." }
       ],
+      insight: "Dans l'univers du luxe et de la photographie d'art, le site web ne doit pas être un simple catalogue, mais une véritable extension sensorielle de la signature artistique du créateur.",
       impact: [
-        "Plus de 1 240 vêtements de première nécessité distribués et suivis avec une transparence financière totale",
-        "Plus de 850 kits d'hygiène menstruelle offerts aux femmes sans ressources à Cotonou pour préserver leur dignité",
-        "Plus de 12 personnes vulnérables réinsérées professionnellement grâce aux programmes de formation",
-        "Augmentation de 60% des dons réguliers suite à la mise en ligne du système de suivi d'impact"
+        "Augmentation de 85% des prises de contact qualifiées pour des campagnes éditoriales et de mode",
+        "Temps de session moyen multiplié par 2.4 grâce à l'atmosphère sonore immersive",
+        "Rayonnement international renforcé auprès des directeurs de création en Afrique de l'Ouest et en Europe"
       ],
-      conclusion: "Le nouveau portail de The Refuge prouve que le design numérique peut être un vecteur puissant d'action sociale. En alliant transparence de l'impact et simplicité d'interaction, le site comble avec succès le fossé entre la générosité en ligne et les vies restaurées dans les rues de Cotonou.",
-      externalLink: "https://your-refuge.vercel.app/"
+      conclusion: "Le portfolio de Thobix Eclou redéfinit les codes de la vitrine artistique numérique, mariant minimalisme radical, ambiance sonore et excellence technique.",
+      externalLink: "https://www.thobixeclou.com/"
     },
     'strategy-arena': {
       title: "Strategy Arena",
@@ -507,7 +517,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       title: "eHadj",
       subtitle: "Digital orchestration of the pilgrimage in Benin",
       label: "Product Design & Strategy",
-      color: "#0d3479",
+      color: "#10B981",
       bgImage: "/imgs/ehadj/cover_Ehadj.jpg",
       context: "The eHadj project involves multiple public and private entities in processing pilgrim records: the Ministry of Health (medical assessment), banks (financial transactions), certified travel agencies (pilgrim registrations), the Ministry of Foreign Affairs (visa issuance), and AGLO (global supervisor). Previously, these stakeholders worked in disconnected silos, resulting in massive operational friction.",
       contextTitle: "The complexity of a multi-stakeholder ecosystem.",
@@ -772,7 +782,7 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
       title: "Tavares",
       subtitle: "Interactive cinematic portfolio for a film director",
       label: "Creative Web Design & Development",
-      color: "#E50914",
+      color: "#F59E0B",
       bgImage: "/imgs/tavares.png",
       context: "Film director Tavares sought a unique digital portfolio that reflected his cinematic universe. Traditional portfolios clutter the interface, distracting from the videos.",
       contextTitle: "Sublimating cinematic work without visual clutter.",
@@ -807,38 +817,48 @@ export const caseStudiesData: Record<'en' | 'fr', Record<CaseStudyId, CaseStudyD
         "A strong digital presence that stands out in the film industry"
       ],
       conclusion: "Tavares' website successfully combines minimalism, premium aesthetics, and technical performance to elevate his cinematic art.",
-      externalLink: "https://portfolio-tavares.vercel.app/"
+      externalLink: "https://www.tavares.studio/"
     },
-    'the-refuge': {
-      title: "The Refuge",
-      subtitle: "Christian humanitarian portal & live impact tracker in Cotonou",
-      label: "Web Design & Development",
-      color: "#0d3479",
-      bgImage: "/imgs/your-refuge.jpg",
-      context: "Based in Cotonou, Benin, The Refuge is a Christian humanitarian organization dedicated to providing clothing, menstrual hygiene kits for underprivileged women, spiritual support, and dignity to vulnerable street populations. To expand its reach, the association needed a modern digital platform to connect donors and volunteers with concrete, daily field operations.",
-      contextTitle: "Emergency humanitarian aid and counseling in Cotonou.",
-      challenge: "Translate real field compassion and social impact into a reliable, engaging web application. The core UX challenge was to address donation skepticism by displaying real-time impact metrics (clothing items distributed, menstrual hygiene kits provided, active reinsertions) alongside transparent stories.",
-      challengeTitle: "Fostering trust and coordinating volunteer efforts.",
-      solution: "We designed and developed a responsive web application featuring live impact progress gauges, a simplified volunteer onboarding portal, and a secure checkout flow tailored for West African Mobile Money and cards. The visual design is accented by custom hand-drawn doodles to bring a warm, human touch.",
-      solutionTitle: "A modern, transparent, and human-centric portal.",
-      insight: "Absolute transparency drives donor retention. Showing real-time field progress and specific budget goals doubled donor repeat rates and successfully mobilized dozens of local volunteers.",
-      contextImg: "/imgs/your-refuge.jpg",
-      challengeImg: "/imgs/your-refuge.jpg",
-      dashboardImg: "/imgs/your-refuge.jpg",
+    'thobix': {
+      title: "Thobix Eclou",
+      subtitle: "Immersive portfolio, editorial art direction & sound-driven photography showcase",
+      label: "Web Design & Art Direction",
+      color: "#E5E7EB",
+      bgImage: "/imgs/thobix.png",
+      context: "Operating across West Africa and Europe, photographer and art director Thobix Eclou captures haute couture, editorial portraiture, and high-impact brand campaigns. He required an avant-garde digital presence breaking away from traditional image grids to deliver a truly immersive, gallery-grade digital experience reflecting luxury standards.",
+      contextTitle: "Transforming a photography portfolio into a high-end sensory experience.",
+      challenge: "Translating the raw elegance of black-and-white visuals, precision camera framing, and editorial mood into a fast, interactive web interface featuring ambient audio without compromising load speed or mobile responsiveness.",
+      challengeTitle: "Radical elegance, spatial audio, and zero compromise on performance.",
+      challengeImg: "/imgs/thobix.png",
+      decisions: [
+        {
+          title: "Viewfinder & Crop Marks Aesthetic",
+          desc: "Subtle camera viewfinder brackets and aperture iconography integrated into the layout.",
+          why: "Instantly immerses visitors behind the camera lens and into the artist's eye."
+        },
+        {
+          title: "Interactive Ambient Audio",
+          desc: "Discreet Audio On/Off toggle harmonized with page interactions.",
+          why: "Fosters deep emotional resonance and increases average user session duration."
+        }
+      ],
+      solution: "An ultra-contrasted monochrome web showcase built with React and Vibe Coding, combining a bespoke signature script, cinematic fluid transitions, ambient audio, and an instant VIP booking funnel for luxury brands.",
+      solutionTitle: "A cinematic digital stage crafted for international prestige.",
+      dashboardImg: "/imgs/thobix.png",
       features: [
-        { title: "Live Impact Gauges", desc: "Visual progress tracking for clothing distributed (over 1,240 clothing items), menstrual hygiene kits provided to women in need, and professional reinsertions." },
-        { title: "Local Currency Donations", desc: "Secure, seamless donation form supporting West African Mobile Money (MTN, Moov) and international credit cards." },
-        { title: "Volunteer Coordination", desc: "Streamlined sign-up forms for local weekend distribution outreaches (clothing & hygiene kits) and active listening rooms." },
-        { title: "Stories from the Field", desc: "A clean blog section showcasing true stories from Cotonou (like Marie's journey or reflections on Luke 3:11) to highlight the human impact." }
+        { title: "Monochrome Art Direction", desc: "Deep contrast black and white palette, prestigious serif typography, and bespoke script signature." },
+        { title: "Immersive Audio Landscape", desc: "One-click ambient soundscape designed to elevate photographic viewing sessions." },
+        { title: "Editorial Viewfinder Canvas", desc: "Full-bleed presentation inspired by medium format camera viewfinder viewports." },
+        { title: "VIP Booking Funnel", desc: "Direct booking and inquiry pipeline tailored for editorial commissions and private clients." }
       ],
+      insight: "In high luxury and fine-art photography, a website cannot be a simple image catalog—it must serve as a physical-grade extension of the photographer's artistic identity.",
       impact: [
-        "Over 1,240 clothing items tracked and distributed with total financial transparency",
-        "Over 850 menstrual hygiene kits provided to underprivileged women to restore dignity",
-        "Over 12 street beneficiaries professionally trained and reinserted into society",
-        "60% increase in recurring donations due to transparent impact tracking"
+        "85% surge in high-tier editorial and fashion shoot inquiries",
+        "Average session duration multiplied by 2.4x through ambient audio integration",
+        "Strong international acclaim and booking pipeline across West Africa and Europe"
       ],
-      conclusion: "The new web portal for The Refuge demonstrates how digital design and transparent data tracking can empower social causes, successfully bridging the gap between online donors and lives transformed on the streets of Cotonou.",
-      externalLink: "https://your-refuge.vercel.app/"
+      conclusion: "Thobix Eclou's portfolio redefines digital showcase standards for artists, combining radical minimalism, auditory atmosphere, and technical excellence.",
+      externalLink: "https://www.thobixeclou.com/"
     },
     'strategy-arena': {
       title: "Strategy Arena",

@@ -56,7 +56,7 @@ const LangSwitchControl = ({ lang, onToggle, isMobile }: { lang: 'en' | 'fr'; on
   </button>
 );
 
-const VALID_PROJECT_IDS: CaseStudyId[] = ['asset-iq', 'ehadj', 'beans', 'sagana', 'vortex', 'sport-advisor', 'truvox', 'tavares', 'the-refuge', 'strategy-arena', 'dolce-riviera'];
+const VALID_PROJECT_IDS: CaseStudyId[] = ['thobix', 'asset-iq', 'ehadj', 'beans', 'sagana', 'vortex', 'sport-advisor', 'truvox', 'tavares', 'strategy-arena', 'dolce-riviera'];
 
 function getViewFromHash(): 'home' | 'cv' | 'experiences' | 'services' | 'all-projects' | CaseStudyId {
   if (typeof window === 'undefined') return 'home';
@@ -78,11 +78,12 @@ const navigateToHome = (setCurrentView: any) => {
 };
 
 const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLabel: string; year: string; externalLink?: string }> = {
+  'thobix': { title: 'Thobix Eclou', color: '#E5E7EB', categoryLabel: 'Art Direction & Photography', year: '2026', externalLink: 'https://www.thobixeclou.com/' },
   'asset-iq': { title: 'Asset IQ', color: '#1D4ED8', categoryLabel: 'B2B SaaS & Resource Telemetry', year: '2026', externalLink: 'https://www.assetiQ.com' },
   'ehadj': { title: 'eHadj', color: '#DC2626', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://ehadj.aglo.bj/' },
   'beans': { title: 'Beans', color: '#059669', categoryLabel: 'Customer Engagement & Integrations', year: '2025', externalLink: 'https://trybeans.com' },
   'truvox': { title: 'Truvox Studio', color: '#059669', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
-  'tavares': { title: 'Tavares', color: '#E50914', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://portfolio-tavares.vercel.app/' },
+  'tavares': { title: 'Tavares', color: '#F59E0B', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://www.tavares.studio/' },
   'strategy-arena': { title: 'Strategy Arena', color: '#1E3A8A', categoryLabel: 'Strategic Consulting & Transformation', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#strategy-arena' },
   'dolce-riviera': { title: 'Dolce Riviera', color: '#C5A059', categoryLabel: 'Luxury Hospitality UI/UX Interface', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' },
   'sagana': { title: 'Sagana', color: '#7C3AED', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://www.sagana-agency.com/' },
@@ -608,17 +609,17 @@ const AllProjectsView = ({
   const [activeFilter, setActiveFilter] = useState<'all' | 'saas' | 'mobile' | 'web'>('all');
 
   const allProjects = [
+    { id: 'thobix', title: 'Thobix Eclou', category: 'web', tag: 'Art Direction & Photography', date: '2026', img: '/imgs/thobix.png', color: '#E5E7EB', desc: lang === 'fr' ? 'Portfolio immersif pour photographe & directeur artistique international.' : 'Immersive photography & editorial art direction portfolio.', deliverables: ['Art Direction', 'Spatial Audio', 'Viewfinder UX'] },
     { id: 'asset-iq', title: 'Asset IQ', category: 'saas', tag: 'Product Design & SaaS', date: 'MAR 2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.', deliverables: ['QR Code Telemetry', 'Figma Tokens', 'Asset Governance'] },
     { id: 'ehadj', title: 'eHadj', category: 'saas', tag: 'National Logistics SaaS', date: 'JAN 2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 agences et ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.', deliverables: ['Multi-agency Workflows', 'NPI Onboarding', 'Quota Tracking'] },
     { id: 'beans', title: 'Beans', category: 'saas', tag: 'B2B SaaS Engagement', date: 'DEC 2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS B2B de fidélisation client & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.', deliverables: ['10 Connector Hub', 'Shopify & Klaviyo', 'PRD Specs & QA'] },
     { id: 'vortex', title: 'Vortex', category: 'mobile', tag: 'Mobile UX & Fuel Wallet', date: 'MAR 2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et de gestion de portefeuille numérique.' : 'Mobile fuel purchasing & digital wallet management app.', deliverables: ['1-Click Purchasing', 'QR Station Code', 'High Contrast UI'] },
     { id: 'strategy-arena', title: 'Strategy Arena', category: 'web', tag: 'Branding & Web Strategy', date: 'JAN 2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie, organisation & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.', deliverables: ['Canary Yellow Brand', 'Preloader Animation', 'CRO Tunnel'] },
-    { id: 'tavares', title: 'Tavares & Visuals', category: 'web', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web d\'exception, vitrines cinématographiques et e-commerce.' : 'Curated collection of cinematic showcase sites, editorial e-commerce & galleries.', deliverables: ['Showreel Player', 'Black Theme', 'Micro-animations'] },
+    { id: 'tavares', title: 'Tavares & Visuals', category: 'web', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#F59E0B', desc: lang === 'fr' ? 'Direction artistique web d\'exception, vitrines cinématographiques et e-commerce.' : 'Curated collection of cinematic showcase sites, editorial e-commerce & galleries.', deliverables: ['Showreel Player', 'Black Theme', 'Micro-animations'] },
     { id: 'truvox', title: 'Truvox Studio', category: 'web', tag: 'Web Design & Studio', date: 'OCT 2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception, stratégie de marque & développement.' : 'High-end studio brand experience, web design & development.', deliverables: ['Brand Strategy', 'Quote Tunnel', 'Performance Web'] },
-    { id: 'sport-advisor', title: 'Sport Advisor', category: 'mobile', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/assetiQ/advisor_image.png', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'intelligence artificielle.' : 'AI-driven sports analysis & data visualization platform.', deliverables: ['AI Prediction Engine', 'Odds Comparer', 'Confidence Gauges'] },
-    { id: 'sagana', title: 'Sagana Agency', category: 'web', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana_cover.png', color: '#F59E0B', desc: lang === 'fr' ? 'Site vitrine d\'excellence pour agence de conseil stratégique haut de gamme.' : 'High-end showcase site for elite advisory agency.', deliverables: ['Editorial Layout', 'High-end Branding', 'Micro-interactions'] },
-    { id: 'dolce-riviera', title: 'Dolce Riviera', category: 'web', tag: 'Luxury Hospitality UI/UX Interface', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception & landing page pour un hôtel de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept & booking funnel.', deliverables: ['UI/UX Design System', 'Booking Funnel UI', 'Fluid Luxury Typography'] },
-    { id: 'the-refuge', title: 'The Refuge', category: 'web', tag: 'Humanitarian Portal', date: 'JUN 2025', img: '/imgs/your-refuge.jpg', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel pour l\'ONG The Refuge.' : 'Humanitarian portal & real-time impact tracker in Cotonou.', deliverables: ['Real-time Tracker', 'Mobile Money FCFA', 'Human Touch Doodles'] }
+    { id: 'sport-advisor', title: 'Sport Advisor', category: 'mobile', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'intelligence artificielle.' : 'AI-driven sports analysis & data visualization platform.', deliverables: ['AI Prediction Engine', 'Odds Comparer', 'Confidence Gauges'] },
+    { id: 'sagana', title: 'Sagana Agency', category: 'web', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Site vitrine d\'excellence pour agence de conseil stratégique haut de gamme.' : 'High-end showcase site for elite advisory agency.', deliverables: ['Editorial Layout', 'High-end Branding', 'Micro-interactions'] },
+    { id: 'dolce-riviera', title: 'Dolce Riviera', category: 'web', tag: 'Luxury Hospitality UI/UX Interface', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception & landing page pour un hôtel de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept & booking funnel.', deliverables: ['UI/UX Design System', 'Booking Funnel UI', 'Fluid Luxury Typography'] }
   ];
 
   const filteredProjects = allProjects.filter(p => {
@@ -981,17 +982,17 @@ const AllProjectsModal = ({
   if (!isOpen) return null;
 
   const allProjects = [
+    { id: 'thobix', title: 'Thobix Eclou', tag: 'Editorial Photography & Art Direction', date: '2026', img: '/imgs/thobix.png', color: '#E5E7EB', desc: lang === 'fr' ? 'Portfolio immersif pour photographe & directeur artistique international.' : 'Immersive photography & editorial art direction portfolio.' },
     { id: 'asset-iq', title: 'Asset IQ', tag: 'Product Design & SaaS', date: 'MAR 2026', img: '/imgs/assetiQ/cover_Asset.jpg', color: '#1D4ED8', desc: lang === 'fr' ? 'Gouvernance et télémétrie des actifs physiques industriels par QR code.' : 'Multi-site industrial physical asset telemetry via QR codes.' },
     { id: 'ehadj', title: 'eHadj', tag: 'National Logistics SaaS', date: 'JAN 2026', img: '/imgs/ehadj/cover_Ehadj.jpg', color: '#EAB308', desc: lang === 'fr' ? 'Orchestration digitale du pèlerinage au Bénin pour +30 ministères.' : 'Digital orchestration of national pilgrimage logistics in Benin.' },
     { id: 'beans', title: 'Beans', tag: 'B2B SaaS Engagement', date: 'DEC 2025', img: '/imgs/beans_cover.png', color: '#059669', desc: lang === 'fr' ? 'Plateforme SaaS de fidélisation & hub de 10 connecteurs e-commerce.' : 'B2B SaaS customer engagement platform & integration hub.' },
     { id: 'vortex', title: 'Vortex', tag: 'Mobile UX & Wallet', date: 'MAR 2026', img: '/imgs/vortex.webp', color: '#D97706', desc: lang === 'fr' ? 'Application mobile d\'achat de carburant et gestion de portefeuille.' : 'Mobile fuel purchasing & digital wallet management app.' },
     { id: 'strategy-arena', title: 'Strategy Arena', tag: 'Branding & Web Strategy', date: 'JAN 2026', img: '/imgs/Strategy-Arena.png', color: '#EAB308', desc: lang === 'fr' ? 'Cabinet de conseil en stratégie & transformation digitale pour PME.' : 'Strategy & digital transformation consulting agency platform.' },
-    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#DC2626', desc: lang === 'fr' ? 'Direction artistique web, vitrines cinématographiques & e-commerce.' : 'Cinematic showcase sites, editorial e-commerce & galleries.' },
+    { id: 'tavares', title: 'Tavares & Visuals', tag: 'Creative Art Direction', date: 'NOV 2025', img: '/imgs/tavares.png', color: '#F59E0B', desc: lang === 'fr' ? 'Direction artistique web, vitrines cinématographiques & e-commerce.' : 'Cinematic showcase sites, editorial e-commerce & galleries.' },
     { id: 'truvox', title: 'Truvox Studio', tag: 'Web Design & Studio', date: 'OCT 2025', img: '/imgs/truvox_cover.png', color: '#10B981', desc: lang === 'fr' ? 'Expériences numériques d\'exception & identité digitale de studio.' : 'High-end studio brand experience & digital showcase.' },
-    { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/assetiQ/advisor_image.png', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'IA.' : 'AI-driven sports analysis & data visualization platform.' },
-    { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana_cover.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for elite advisory agency.' },
-    { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX Interface', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception pour l\'hôtellerie de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept for Riviera resort.' },
-    { id: 'the-refuge', title: 'The Refuge', tag: 'Humanitarian Portal', date: 'JUN 2025', img: '/imgs/your-refuge.jpg', color: '#0d3479', desc: lang === 'fr' ? 'Portail humanitaire & suivi d\'impact en temps réel à Cotonou.' : 'Humanitarian portal & real-time impact tracker in Cotonou.' }
+    { id: 'sport-advisor', title: 'Sport Advisor', tag: 'AI & Data Visualization', date: 'SEP 2025', img: '/imgs/advisor.webp', color: '#00FA9A', desc: lang === 'fr' ? 'Plateforme d\'analyse et de pronostics sportifs basés sur l\'IA.' : 'AI-driven sports analysis & data visualization platform.' },
+    { id: 'sagana', title: 'Sagana', tag: 'Web Art Direction', date: 'AUG 2025', img: '/imgs/sagana.png', color: '#F59E0B', desc: lang === 'fr' ? 'Vitrine d\'excellence pour agence de conseil haut de gamme.' : 'High-end showcase site for elite advisory agency.' },
+    { id: 'dolce-riviera', title: 'Dolce Riviera', tag: 'Luxury Hospitality UI/UX Interface', date: 'JUL 2025', img: '/imgs/dolce_cover.png', color: '#C5A059', desc: lang === 'fr' ? 'Interface UI/UX d\'exception pour l\'hôtellerie de luxe sur la Riviera.' : 'Luxury hospitality UI/UX interface concept for Riviera resort.' }
   ];
 
   return (
@@ -1610,11 +1611,40 @@ export default function App() {
               <h2 className="robin-pixel-title">FEATURED WORKS</h2>
 
               <div className="robin-featured-grid">
-                {/* CARD 01: VORTEX */}
-                <div className="robin-featured-card scroll-reveal delay-1" onClick={() => setCurrentView('vortex')}>
-                  <div className="robin-washi-tape" style={{ top: '-10px', left: '20px', background: 'rgba(254, 240, 138, 0.9)', zIndex: 20 }} />
+                {/* CARD 01: THOBIX ECLOU */}
+                <div className="robin-featured-card scroll-reveal" onClick={() => setCurrentView('thobix')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', left: '20px', background: 'rgba(229, 231, 235, 0.95)', zIndex: 20 }} />
                   <div className="robin-featured-card-header">
-                    <span className="robin-featured-card-stamp badge-yellow">SHOWCASE 01</span>
+                    <span className="robin-featured-card-stamp" style={{ background: '#121212', color: '#FFFFFF' }}>SHOWCASE 01</span>
+                    <img src="/imgs/thobix.png" alt="Thobix Eclou Showcase" className="robin-featured-card-image" />
+                  </div>
+
+                  <div className="robin-featured-card-content">
+                    <div>
+                      <div className="robin-featured-card-date">• 2026</div>
+                      <h3 className="robin-featured-card-title">Thobix Eclou</h3>
+                      <p className="robin-featured-card-desc">
+                        {lang === 'fr'
+                          ? "Portfolio immersif, direction artistique éditoriale et vitrine photographique sonore."
+                          : "Immersive portfolio, editorial art direction & sound-driven photography showcase."}
+                      </p>
+                    </div>
+
+                    <div className="robin-featured-card-footer">
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>ART DIRECTION</span>
+                      <button className="robin-featured-cta-btn" style={{ background: '#121212', borderColor: '#121212' }}>
+                        <span>EXPLORE</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CARD 02: VORTEX */}
+                <div className="robin-featured-card scroll-reveal delay-1" onClick={() => setCurrentView('vortex')}>
+                  <div className="robin-washi-tape" style={{ top: '-10px', right: '20px', left: 'auto', background: 'rgba(254, 240, 138, 0.9)', zIndex: 20 }} />
+                  <div className="robin-featured-card-header">
+                    <span className="robin-featured-card-stamp badge-yellow">SHOWCASE 02</span>
                     <img src="/imgs/vortex.webp" alt="Vortex Mobile App" className="robin-featured-card-image" />
                   </div>
 
@@ -1639,11 +1669,11 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* CARD 02: STRATEGY ARENA */}
+                {/* CARD 03: STRATEGY ARENA */}
                 <div className="robin-featured-card scroll-reveal delay-2" onClick={() => setCurrentView('strategy-arena')}>
-                  <div className="robin-washi-tape" style={{ top: '-10px', right: '20px', left: 'auto', background: 'rgba(147, 197, 253, 0.9)', zIndex: 20 }} />
+                  <div className="robin-washi-tape" style={{ top: '-10px', left: '25px', background: 'rgba(147, 197, 253, 0.9)', zIndex: 20 }} />
                   <div className="robin-featured-card-header">
-                    <span className="robin-featured-card-stamp badge-blue">SHOWCASE 02</span>
+                    <span className="robin-featured-card-stamp badge-blue">SHOWCASE 03</span>
                     <img src="/imgs/Strategy-Arena.png" alt="Strategy Arena Platform" className="robin-featured-card-image" />
                   </div>
 
@@ -1668,11 +1698,11 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* CARD 03: TAVARES & VISUALS */}
+                {/* CARD 04: TAVARES & VISUALS */}
                 <div className="robin-featured-card scroll-reveal delay-3" onClick={() => setCurrentView('tavares')}>
-                  <div className="robin-washi-tape" style={{ top: '-10px', left: '30px', background: 'rgba(244, 114, 182, 0.9)', zIndex: 20 }} />
+                  <div className="robin-washi-tape" style={{ top: '-10px', right: '30px', left: 'auto', background: 'rgba(244, 114, 182, 0.9)', zIndex: 20 }} />
                   <div className="robin-featured-card-header">
-                    <span className="robin-featured-card-stamp badge-pink">SHOWCASE 03</span>
+                    <span className="robin-featured-card-stamp badge-pink">SHOWCASE 04</span>
                     <img src="/imgs/tavares.png" alt="Tavares Showcase" className="robin-featured-card-image" />
                   </div>
 
@@ -1689,7 +1719,7 @@ export default function App() {
 
                     <div className="robin-featured-card-footer">
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: '#666' }}>ART DIRECTION</span>
-                      <button className="robin-featured-cta-btn" style={{ background: '#DC2626', borderColor: '#DC2626' }}>
+                      <button className="robin-featured-cta-btn" style={{ background: '#F59E0B', borderColor: '#F59E0B' }}>
                         <span>EXPLORE</span>
                         <ArrowRight size={14} />
                       </button>
