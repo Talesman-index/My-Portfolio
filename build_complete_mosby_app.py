@@ -54,13 +54,13 @@ function getViewFromHash(): 'home' | 'cv' | 'experiences' | 'services' | CaseStu
 
 const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLabel: string; year: string; externalLink?: string }> = {
   'asset-iq': { title: 'Asset IQ', color: '#1D4ED8', categoryLabel: 'B2B SaaS & Resource Telemetry', year: '2026', externalLink: 'https://www.assetiQ.com' },
-  'ehadj': { title: 'eHadj', color: '#DC2626', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#ehadj' },
+  'ehadj': { title: 'eHadj', color: '#DC2626', categoryLabel: 'Logistics & Process Orchestration', year: '2026', externalLink: 'https://www.talesman.space/#ehadj' },
   'beans': { title: 'Beans', color: '#059669', categoryLabel: 'Customer Engagement & Integrations', year: '2025', externalLink: 'https://trybeans.com' },
-  'sagana': { title: 'Sagana', color: '#7C3AED', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#sagana' },
-  'vortex': { title: 'Vortex Gallery', color: '#EAB308', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://talesmanwebcraft.vercel.app/#vortex' },
-  'sport-advisor': { title: 'Sport Advisor', color: '#000000', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://talesmanwebcraft.vercel.app/#sport-advisor' },
+  'sagana': { title: 'Sagana', color: '#7C3AED', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://www.talesman.space/#sagana' },
+  'vortex': { title: 'Vortex Gallery', color: '#EAB308', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://www.talesman.space/#vortex' },
+  'sport-advisor': { title: 'Sport Advisor', color: '#000000', categoryLabel: 'Mobile App & Athletic Engine', year: '2024', externalLink: 'https://www.talesman.space/#sport-advisor' },
   'truvox': { title: 'Truvox Studio', color: '#DC2626', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
-  'dolce-riviera': { title: 'Dolce Riviera', color: '#1D4ED8', categoryLabel: 'Luxury E-Commerce & Editorial UI', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' }
+  'dolce-riviera': { title: 'Dolce Riviera', color: '#1D4ED8', categoryLabel: 'Luxury E-Commerce & Editorial UI', year: '2025', externalLink: 'https://www.talesman.space/#dolce-riviera' }
 };
 
 /* ─────────────────────────────────────────────

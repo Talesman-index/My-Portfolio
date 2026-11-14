@@ -69,8 +69,8 @@ const PROJECT_CONFIGS: Record<string, { title: string; color: string; categoryLa
   'beans': { title: 'Beans', color: '#059669', categoryLabel: 'Customer Engagement & Integrations', year: '2025', externalLink: 'https://trybeans.com' },
   'truvox': { title: 'Truvox Studio', color: '#059669', categoryLabel: 'Digital Studio Web Experience', year: '2025', externalLink: 'https://www.truvox.studio/' },
   'tavares': { title: 'Tavares', color: '#E50914', categoryLabel: 'Cinematic Interactive Portfolio', year: '2025', externalLink: 'https://portfolio-tavares.vercel.app/' },
-  'strategy-arena': { title: 'Strategy Arena', color: '#1E3A8A', categoryLabel: 'Strategic Consulting & Transformation', year: '2026', externalLink: 'https://talesmanwebcraft.vercel.app/#strategy-arena' },
-  'dolce-riviera': { title: 'Dolce Riviera', color: '#1D4ED8', categoryLabel: 'Luxury E-Commerce & Editorial UI', year: '2025', externalLink: 'https://talesmanwebcraft.vercel.app/#dolce-riviera' },
+  'strategy-arena': { title: 'Strategy Arena', color: '#1E3A8A', categoryLabel: 'Strategic Consulting & Transformation', year: '2026', externalLink: 'https://www.talesman.space/#strategy-arena' },
+  'dolce-riviera': { title: 'Dolce Riviera', color: '#1D4ED8', categoryLabel: 'Luxury E-Commerce & Editorial UI', year: '2025', externalLink: 'https://www.talesman.space/#dolce-riviera' },
   'sagana': { title: 'Sagana', color: '#7C3AED', categoryLabel: 'Modular Design Systems', year: '2025', externalLink: 'https://www.sagana-agency.com/' },
   'the-refuge': { title: 'The Refuge', color: '#0D3479', categoryLabel: 'Humanitarian Impact Portal', year: '2025', externalLink: 'https://your-refuge.vercel.app/' },
   'vortex': { title: 'Vortex Gallery', color: '#EAB308', categoryLabel: 'Immersive Web3 Exhibition', year: '2024', externalLink: 'https://www.behance.net/gallery/218017715/Mobile-App-to-buy-fuel' },
@@ -925,7 +925,7 @@ export default function App() {
                         <span>DOSSIER COMPLET: STRATEGY ARENA →</span>
                       </button>
                       <a 
-                        href="https://talesmanwebcraft.vercel.app/#strategy-arena" 
+                        href="https://www.talesman.space/#strategy-arena" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="mosby-expanded-open-btn"
