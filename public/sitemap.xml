@@ -1,65 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://talesmanwebcraft.vercel.app/</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://talesmanwebcraft.vercel.app/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://talesmanwebcraft.vercel.app/" />
-    <lastmod>2026-07-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://talesmanwebcraft.vercel.app/" />
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#about</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#services</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#saas</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#ehadj</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#asset-iq</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#beans</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#projects</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#process</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://talesmanwebcraft.vercel.app/#contact</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/og-preview.jpg</image:loc>
+      <image:title>Sacca Dafia (Talesman) — Portfolio Product &amp; Web Designer</image:title>
+      <image:caption>Archives de projets SaaS B2B, interfaces complexes et Design Systems par Sacca Dafia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/hero_image.png</image:loc>
+      <image:title>Sacca Dafia Portrait</image:title>
+      <image:caption>Sacca Dafia, Product &amp; Web Designer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/assetiQ/cover_Asset.jpg</image:loc>
+      <image:title>Asset IQ SaaS Platform Case Study</image:title>
+      <image:caption>Gouvernance et télémétrie des actifs physiques industriels multi-sites par QR code</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/ehadj/cover_Ehadj.jpg</image:loc>
+      <image:title>eHadj Pilgrimage Logistics SaaS</image:title>
+      <image:caption>Orchestration logistique et digitale du pèlerinage national pour agences et ministères</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/beans_cover.png</image:loc>
+      <image:title>Beans Loyalty &amp; Integrations Hub SaaS</image:title>
+      <image:caption>Plateforme SaaS B2B d'engagement client et hub de connecteurs e-commerce</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/thobix.png</image:loc>
+      <image:title>Thobix Eclou Editorial Portfolio</image:title>
+      <image:caption>Direction artistique éditoriale et vitrine photographique sonore</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/Strategy-Arena.png</image:loc>
+      <image:title>Strategy Arena Platform</image:title>
+      <image:caption>Plateforme d'analyse et de conseil stratégique d'entreprise</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/dolce_cover.png</image:loc>
+      <image:title>Dolce Riviera Luxury Hospitality Interface</image:title>
+      <image:caption>Expérience web immersive et réservation luxe</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/tavares.png</image:loc>
+      <image:title>Tavares Cinematic Portfolio</image:title>
+      <image:caption>Portfolio cinématographique interactif</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/truvox_cover.png</image:loc>
+      <image:title>Truvox Studio Web Experience</image:title>
+      <image:caption>Studio de création digitale et direction artistique d'exception</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://talesmanwebcraft.vercel.app/imgs/sagana.png</image:loc>
+      <image:title>Sagana Agency &amp; Modular Design System</image:title>
+      <image:caption>Design system modulaire pour agence digitale</image:caption>
+    </image:image>
   </url>
 </urlset>

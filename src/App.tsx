@@ -16,7 +16,10 @@ import {
   Home,
   Building2,
   Briefcase,
-  Menu
+  Menu,
+  Copy,
+  Check,
+  ArrowUp
 } from 'lucide-react';
 import './App.css';
 import { caseStudiesData, CaseStudyId } from './caseStudiesData';
@@ -728,7 +731,7 @@ const AllProjectsView = ({
 };
 
 /* ─────────────────────────────────────────────
-   ARCHIVAL FOOTER SYSTEM
+   ARCHIVAL FOOTER SYSTEM (SOFT & CREATIVE NOTEBOOK COLOPHON)
 ───────────────────────────────────────────── */
 const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrentView: any; setIsAboutModalOpen: any; lang: 'en' | 'fr' }) => {
   const [activeDiagram, setActiveDiagram] = useState<number | null>(null);
@@ -737,6 +740,31 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
   const [pyramidPushed, setPyramidPushed] = useState(false);
   const [dialSpinning, setDialSpinning] = useState(false);
   const [tooltipText, setTooltipText] = useState<string | null>(null);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [cotonouTime, setCotonouTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      try {
+        const now = new Date();
+        setCotonouTime(now.toLocaleTimeString('fr-FR', { timeZone: 'Africa/Porto-Novo', hour: '2-digit', minute: '2-digit' }));
+      } catch (e) {
+        setCotonouTime('14:30');
+      }
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('dafiashalom@gmail.com');
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2200);
+    }
+  };
 
   const handleDiagramClick = (index: number) => {
     setActiveDiagram(index);
@@ -761,205 +789,265 @@ const MosbyFooter = ({ setCurrentView, setIsAboutModalOpen, lang }: { setCurrent
 
   return (
     <footer className="mosby-footer">
-      {/* Row of Architectural & Design Diagram Symbols (Interactive Widgets) */}
-      <div className="mosby-footer-diagrams-row">
-        {/* Widget 1: Compass Radar */}
-        <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 0 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(0)}
-          onMouseEnter={() => setTooltipText("COMPASS RADAR")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Compass radar widget"
-        >
-          <svg 
-            width="30" 
-            height="30" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ transform: `rotate(${compassAngle}deg)`, transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-          >
-            <circle cx="20" cy="20" r="16" />
-            <path d="M20 4 L20 36 M4 20 L36 20" strokeDasharray="2 2" />
-            <text x="20" y="11" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" fontWeight="bold">N</text>
-          </svg>
-          {tooltipText && (
-            <span className="mosby-diagram-tooltip">{tooltipText}</span>
-          )}
-        </button>
+      <div className="mosby-footer-card">
+        {/* Sleek Minimalist Tape on top */}
+        <div className="robin-washi-tape" style={{ top: '-14px', left: '50%', transform: 'translateX(-50%) rotate(-1deg)', background: 'rgba(255, 255, 255, 0.08)', borderColor: 'rgba(255, 255, 255, 0.15)' }} />
 
-        {/* Widget 2: Blueprint Box */}
-        <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 1 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(1)}
-          onMouseEnter={() => setTooltipText("BLUEPRINT GRID")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Blueprint box widget"
-        >
-          <svg 
-            width="30" 
-            height="30" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ transform: boxFlipped ? 'rotateY(180deg) scale(1.1)' : 'none', transition: 'transform 0.4s ease' }}
-          >
-            <rect x="6" y="6" width="28" height="28" strokeWidth="2" />
-            <path d="M6 6 L34 34 M34 6 L6 34" strokeOpacity={boxFlipped ? "1" : "0.5"} stroke={boxFlipped ? "var(--mosby-yellow)" : "currentColor"} />
-          </svg>
-        </button>
+        {/* Top Archival Header Bar */}
+        <div className="mosby-footer-meta-header">
+          <div className="mosby-footer-badge">
+            <span className="mosby-footer-badge-dot" />
+            <span>ARCHIVE FILE REF: #2026-TLSMN</span>
+          </div>
 
-        {/* Widget 3: Prism Pyramid */}
-        <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 2 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(2)}
-          onMouseEnter={() => setTooltipText("DESIGN PRISM")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Design prism widget"
-        >
-          <svg 
-            width="30" 
-            height="30" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ transform: pyramidPushed ? 'translateY(-8px) scale(1.2)' : 'none', transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-          >
-            <polygon points="20,4 36,36 4,36" strokeWidth="2" />
-            <line x1="20" y1="4" x2="20" y2="36" />
-          </svg>
-        </button>
+          <div className="mosby-footer-handwritten-note">
+            {lang === 'fr' 
+              ? 'Fin du registre — merci d’avoir exploré jusqu’ici' 
+              : 'End of file — thank you for exploring the archive'}
+          </div>
 
-        {/* Widget 4: Dial Radar Circle */}
-        <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 3 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(3)}
-          onMouseEnter={() => setTooltipText("DIAL RADAR")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Dial radar widget"
-        >
-          <svg 
-            width="30" 
-            height="30" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.8"
-            style={{ animation: dialSpinning ? 'spin 3s linear infinite' : 'none' }}
-          >
-            <circle cx="20" cy="20" r="14" />
-            <circle cx="20" cy="20" r="6" strokeDasharray="2 3" strokeWidth="2" />
-          </svg>
-        </button>
+          <div className="mosby-footer-status-pill">
+            <span className="hero-status-dot" style={{ display: 'inline-block', marginRight: '6px', width: '6px', height: '6px', background: '#A1A1AA' }} />
+            <span>COTONOU, BJ · {cotonouTime || 'UTC+1'}</span>
+          </div>
+        </div>
 
-        {/* Widget 5: Arrow Top-Right Scroll Back ↗ */}
-        <button 
-          className={`mosby-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
-          onClick={() => handleDiagramClick(4)}
-          onMouseEnter={() => setTooltipText("RETURN TO TOP ↗")}
-          onMouseLeave={() => setTooltipText(null)}
-          aria-label="Scroll to top widget"
-        >
-          <svg 
-            width="30" 
-            height="30" 
-            viewBox="0 0 40 40" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Useful Links & Contact Grid */}
-      <div className="mosby-footer-grid">
-        {/* Col 1: Direct Contact */}
-        <div>
-          <div className="mosby-footer-col-title">01. DIRECT CONTACT</div>
-          <div className="mosby-footer-links-list">
-            <a href="mailto:dafiashalom@gmail.com" className="mosby-footer-link">
-              <Mail size={14} /> dafiashalom@gmail.com
-            </a>
-            <a href="tel:+2290154921801" className="mosby-footer-link">
-              <Phone size={14} /> +229 01 54 92 18 01
-            </a>
-            <a 
-              href="https://assets.calendly.com" 
-              onClick={(e) => {
-                e.preventDefault();
-                if ((window as any).Calendly) {
-                  (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
-                } else {
-                  window.open('https://calendly.com/dafiashalom/30min', '_blank');
-                }
-              }} 
-              className="mosby-footer-link"
-              style={{ color: '#FEF08A' }}
+        {/* Row of Architectural & Design Diagram Symbols (Interactive Widgets) */}
+        <div className="mosby-footer-diagrams-wrap">
+          <span className="mosby-footer-tools-label">DRAFTING CONTROLS &amp; TOOLS</span>
+          <div className="mosby-footer-diagrams-row">
+            {/* Widget 1: Compass Radar */}
+            <button 
+              className={`mosby-diagram-icon-btn ${activeDiagram === 0 ? 'is-active' : ''}`}
+              onClick={() => handleDiagramClick(0)}
+              onMouseEnter={() => setTooltipText("COMPASS RADAR")}
+              onMouseLeave={() => setTooltipText(null)}
+              aria-label="Compass radar widget"
             >
-              <Calendar size={14} /> {lang === 'fr' ? 'Réserver un Appel (Calendly)' : 'Book Strategy Call (Calendly)'}
-            </a>
-          </div>
-        </div>
+              <svg 
+                width="22" 
+                height="22" 
+                viewBox="0 0 40 40" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                style={{ transform: `rotate(${compassAngle}deg)`, transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+              >
+                <circle cx="20" cy="20" r="16" />
+                <path d="M20 4 L20 36 M4 20 L36 20" strokeDasharray="2 2" />
+                <text x="20" y="11" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" fontWeight="bold">N</text>
+              </svg>
+              {tooltipText && (
+                <span className="mosby-diagram-tooltip">{tooltipText}</span>
+              )}
+            </button>
 
-        {/* Col 2: Social & Archives */}
-        <div>
-          <div className="mosby-footer-col-title">02. SOCIAL ARCHIVES</div>
-          <div className="mosby-footer-links-list">
-            <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <Linkedin size={14} /> LinkedIn
-            </a>
-            <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
-              <ExternalLink size={14} /> Behance
-            </a>
-            <a href="mailto:dafiashalom@gmail.com" className="mosby-footer-link">
-              <Mail size={14} /> Mail
-            </a>
-          </div>
-        </div>
-
-        {/* Col 3: Core Dossiers */}
-        <div>
-          <div className="mosby-footer-col-title">03. CORE DOSSIERS</div>
-          <div className="mosby-footer-links-list">
-            <span className="mosby-footer-link" onClick={() => navigateToHome(setCurrentView)} style={{ cursor: 'pointer', color: '#FEF08A' }}>
-              <Home size={14} /> ← Return to Archive Home
-            </span>
-            <span className="mosby-footer-link" onClick={() => setIsAboutModalOpen(true)} style={{ cursor: 'pointer' }}>
-              <FileText size={14} /> Personnel File (About Sacca)
-            </span>
-            <span className="mosby-footer-link" onClick={() => setCurrentView('experiences')} style={{ cursor: 'pointer' }}>
-              <FileText size={14} /> Experiences Field Logs
-            </span>
-            <span className="mosby-footer-link" onClick={() => setCurrentView('services')} style={{ cursor: 'pointer' }}>
-              <FileText size={14} /> Capabilities &amp; Specs
-            </span>
-            <a 
-              href="https://drive.google.com/file/d/14q3ARxXM3rk82VKS6dKYmyGJCk9UWruu/view?usp=sharing" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="mosby-footer-link"
+            {/* Widget 2: Blueprint Box */}
+            <button 
+              className={`mosby-diagram-icon-btn ${activeDiagram === 1 ? 'is-active' : ''}`}
+              onClick={() => handleDiagramClick(1)}
+              onMouseEnter={() => setTooltipText("BLUEPRINT GRID")}
+              onMouseLeave={() => setTooltipText(null)}
+              aria-label="Blueprint box widget"
             >
-              <Download size={14} /> Download CV (PDF)
-            </a>
+              <svg 
+                width="22" 
+                height="22" 
+                viewBox="0 0 40 40" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                style={{ transform: boxFlipped ? 'rotateY(180deg) scale(1.1)' : 'none', transition: 'transform 0.4s ease' }}
+              >
+                <rect x="6" y="6" width="28" height="28" strokeWidth="2" />
+                <path d="M6 6 L34 34 M34 6 L6 34" strokeOpacity={boxFlipped ? "1" : "0.5"} stroke={boxFlipped ? "var(--mosby-yellow)" : "currentColor"} />
+              </svg>
+            </button>
+
+            {/* Widget 3: Prism Pyramid */}
+            <button 
+              className={`mosby-diagram-icon-btn ${activeDiagram === 2 ? 'is-active' : ''}`}
+              onClick={() => handleDiagramClick(2)}
+              onMouseEnter={() => setTooltipText("DESIGN PRISM")}
+              onMouseLeave={() => setTooltipText(null)}
+              aria-label="Design prism widget"
+            >
+              <svg 
+                width="22" 
+                height="22" 
+                viewBox="0 0 40 40" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                style={{ transform: pyramidPushed ? 'translateY(-6px) scale(1.15)' : 'none', transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+              >
+                <polygon points="20,4 36,36 4,36" strokeWidth="2" />
+                <line x1="20" y1="4" x2="20" y2="36" />
+              </svg>
+            </button>
+
+            {/* Widget 4: Dial Radar Circle */}
+            <button 
+              className={`mosby-diagram-icon-btn ${activeDiagram === 3 ? 'is-active' : ''}`}
+              onClick={() => handleDiagramClick(3)}
+              onMouseEnter={() => setTooltipText("DIAL RADAR")}
+              onMouseLeave={() => setTooltipText(null)}
+              aria-label="Dial radar widget"
+            >
+              <svg 
+                width="22" 
+                height="22" 
+                viewBox="0 0 40 40" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                style={{ animation: dialSpinning ? 'spin 3s linear infinite' : 'none' }}
+              >
+                <circle cx="20" cy="20" r="14" />
+                <circle cx="20" cy="20" r="6" strokeDasharray="2 3" strokeWidth="2" />
+              </svg>
+            </button>
+
+            {/* Widget 5: Arrow Top-Right Scroll Back ↗ */}
+            <button 
+              className={`mosby-diagram-icon-btn ${activeDiagram === 4 ? 'is-active' : ''}`}
+              onClick={() => handleDiagramClick(4)}
+              onMouseEnter={() => setTooltipText("RETURN TO TOP ↗")}
+              onMouseLeave={() => setTooltipText(null)}
+              aria-label="Scroll to top widget"
+            >
+              <svg 
+                width="22" 
+                height="22" 
+                viewBox="0 0 40 40" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.4" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M10 30 L30 10 M30 10 H16 M30 10 V24" />
+              </svg>
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Technical Metadata Bar */}
-      <div className="mosby-footer-bottom-bar">
-        <div className="mosby-footer-scale-key">
-          <span style={{ height: '2px', width: '40px', background: '#FFF', display: 'inline-block' }} />
-          <span>0 4 8 16 32 • WEB &amp; PRODUCT DESIGN STRATEGY</span>
+        {/* Useful Links & Contact Grid */}
+        <div className="mosby-footer-grid">
+          {/* Col 1: Direct Contact */}
+          <div className="mosby-footer-col">
+            <div className="mosby-footer-col-title">
+              <span className="mosby-footer-col-num">01.</span>
+              <span>DIRECT CONTACT</span>
+            </div>
+            <div className="mosby-footer-links-list">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <a href="mailto:dafiashalom@gmail.com" className="mosby-footer-link">
+                  <Mail size={14} /> dafiashalom@gmail.com
+                </a>
+                <button 
+                  onClick={handleCopyEmail} 
+                  type="button" 
+                  aria-label="Copy email"
+                  title="Copy email to clipboard"
+                  className="mosby-footer-copy-btn"
+                >
+                  {copiedEmail ? <Check size={11} color="#E4E4E7" /> : <Copy size={11} />}
+                  <span>{copiedEmail ? (lang === 'fr' ? 'Copié !' : 'Copied!') : (lang === 'fr' ? 'Copier' : 'Copy')}</span>
+                </button>
+              </div>
+
+              <a href="tel:+2290154921801" className="mosby-footer-link">
+                <Phone size={14} /> +229 01 54 92 18 01
+              </a>
+
+              <a 
+                href="https://assets.calendly.com" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  if ((window as any).Calendly) {
+                    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/dafiashalom/30min' });
+                  } else {
+                    window.open('https://calendly.com/dafiashalom/30min', '_blank');
+                  }
+                }} 
+                className="mosby-footer-link mosby-footer-link-highlight"
+              >
+                <Calendar size={14} /> {lang === 'fr' ? 'Réserver un Appel (Calendly)' : 'Book Strategy Call (Calendly)'}
+              </a>
+            </div>
+          </div>
+
+          {/* Col 2: Social & Archives */}
+          <div className="mosby-footer-col">
+            <div className="mosby-footer-col-title">
+              <span className="mosby-footer-col-num">02.</span>
+              <span>SOCIAL ARCHIVES</span>
+            </div>
+            <div className="mosby-footer-links-list">
+              <a href="https://www.linkedin.com/in/dafia-s-860290218/" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
+                <Linkedin size={14} /> LinkedIn · dafia-s
+              </a>
+              <a href="https://www.behance.net/shalomsacca" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
+                <ExternalLink size={14} /> Behance · shalomsacca
+              </a>
+              <a href="https://github.com/shalomtalesman" target="_blank" rel="noopener noreferrer" className="mosby-footer-link">
+                <ExternalLink size={14} /> GitHub · shalomtalesman
+              </a>
+            </div>
+          </div>
+
+          {/* Col 3: Core Dossiers */}
+          <div className="mosby-footer-col">
+            <div className="mosby-footer-col-title">
+              <span className="mosby-footer-col-num">03.</span>
+              <span>CORE DOSSIERS</span>
+            </div>
+            <div className="mosby-footer-links-list">
+              <span className="mosby-footer-link mosby-footer-link-nav" onClick={() => navigateToHome(setCurrentView)} style={{ cursor: 'pointer' }}>
+                <Home size={14} /> {lang === 'fr' ? '← Retour au Sommaire' : '← Return to Archive Home'}
+              </span>
+              <span className="mosby-footer-link" onClick={() => setIsAboutModalOpen(true)} style={{ cursor: 'pointer' }}>
+                <FileText size={14} /> {lang === 'fr' ? 'Dossier Personnel (Bio & Vision)' : 'Personnel File (About Sacca)'}
+              </span>
+              <span className="mosby-footer-link" onClick={() => setCurrentView('experiences')} style={{ cursor: 'pointer' }}>
+                <FileText size={14} /> {lang === 'fr' ? 'Registre des Expériences' : 'Experiences Field Logs'}
+              </span>
+              <span className="mosby-footer-link" onClick={() => setCurrentView('services')} style={{ cursor: 'pointer' }}>
+                <FileText size={14} /> {lang === 'fr' ? 'Services & Spécifications' : 'Capabilities & Specs'}
+              </span>
+              <a 
+                href="https://drive.google.com/file/d/14q3ARxXM3rk82VKS6dKYmyGJCk9UWruu/view?usp=sharing" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mosby-footer-link"
+              >
+                <Download size={14} /> {lang === 'fr' ? 'Télécharger CV (PDF)' : 'Download CV (PDF)'}
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div>© 2026 SACCA DAFIA (ALIAS TALESMAN) — ALL RIGHTS RESERVED</div>
+        {/* Bottom Technical Metadata Bar */}
+        <div className="mosby-footer-bottom-bar">
+          <div className="mosby-footer-scale-key">
+            <span className="mosby-footer-scale-line" />
+            <span>0 4 8 16 32 64px • 8-PT GRID SYSTEM</span>
+          </div>
+
+          <div className="mosby-footer-credit-text">
+            © 2026 SACCA DAFIA (ALIAS TALESMAN) — ALL RIGHTS RESERVED
+          </div>
+
+          <button 
+            type="button" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            className="mosby-footer-back-to-top"
+          >
+            <span>TOP</span>
+            <ArrowUp size={12} />
+          </button>
+        </div>
       </div>
     </footer>
   );
@@ -1130,6 +1218,53 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [currentView]);
 
+  // Dynamic SEO metadata updates based on current view & language
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    const baseTitle = "Sacca Dafia (Talesman) | Web Designer & Product Designer · TALESMAN FILES";
+    let title = baseTitle;
+    let description = lang === 'fr'
+      ? "Portfolio de Sacca Dafia (alias Talesman, Web Designer & Product Designer, +4 ans d'exp). Plateformes SaaS B2B complexes, design systems et prototypage rapide Vibe Coding."
+      : "Portfolio of Sacca Dafia (alias Talesman, Web & Product Designer, 4+ yrs exp). Complex B2B SaaS platforms, design systems, and rapid Vibe Coding prototyping.";
+
+    const pagePath = currentView === 'home' ? '' : `#${currentView}`;
+
+    if (currentView === 'cv') {
+      title = lang === 'fr' ? "Curriculum Vitae & Parcours · Sacca Dafia (Talesman)" : "Curriculum Vitae & Career · Sacca Dafia (Talesman)";
+      description = lang === 'fr' ? "Consultez le CV de Sacca Dafia, Product & Web Designer (+4 ans d'expérience)." : "View the CV of Sacca Dafia, Lead Product & Web Designer (4+ years experience).";
+    } else if (currentView === 'experiences') {
+      title = lang === 'fr' ? "Registre des Expériences & Carrière · Sacca Dafia" : "Career Experiences & Track Record · Sacca Dafia";
+      description = lang === 'fr' ? "Historique des missions et réalisations de Sacca Dafia en SaaS B2B, interfaces complexes et design systems." : "Track record of Sacca Dafia's roles in B2B SaaS, complex interfaces, and design systems.";
+    } else if (currentView === 'services') {
+      title = lang === 'fr' ? "Capabilities & Services Specs · Sacca Dafia" : "Capabilities & Services Specs · Sacca Dafia";
+      description = lang === 'fr' ? "Expertises : Conception de SaaS B2B, Design Systems multi-produits, Vibe Coding & Direction Artistique." : "Capabilities: B2B SaaS design, multi-brand design systems, Vibe Coding, and web art direction.";
+    } else if (currentView === 'all-projects') {
+      title = lang === 'fr' ? "Archive Complète des Projets & Case Studies · Sacca Dafia" : "Complete Projects Archive & Case Studies · Sacca Dafia";
+      description = lang === 'fr' ? "Archives des études de cas de Sacca Dafia : Asset IQ, eHadj, Beans, Thobix Eclou, Tavares, Dolce Riviera, Sagana." : "Case studies archive of Sacca Dafia: Asset IQ, eHadj, Beans, Thobix Eclou, Tavares, Dolce Riviera, Sagana.";
+    } else if (VALID_PROJECT_IDS.includes(currentView as CaseStudyId)) {
+      const study = caseStudiesData[lang]?.[currentView as CaseStudyId];
+      if (study) {
+        title = `${study.title} — ${study.subtitle} | Étude de Cas · Sacca Dafia`;
+        description = study.context ? study.context.slice(0, 160) : description;
+      }
+    }
+
+    document.title = title;
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', description);
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', description);
+
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', `https://talesmanwebcraft.vercel.app/${pagePath}`);
+  }, [currentView, lang]);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const handlePopState = () => handleViewSwitch(getViewFromHash());
@@ -1186,15 +1321,18 @@ export default function App() {
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle Button for Detail Pages */}
-          <button 
-            className="robin-mobile-hamburger-btn mosby-header-mobile-toggle" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-            <span>MENU</span>
-          </button>
+          {/* Mobile Right Controls for Detail Pages */}
+          <div className="mosby-header-mobile-right">
+            <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
+            <button 
+              className="robin-mobile-hamburger-btn mosby-header-mobile-toggle" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+              <span>MENU</span>
+            </button>
+          </div>
         </header>
       )}
 
@@ -1388,15 +1526,18 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Mobile Hamburger Toggle Button */}
-              <button 
-                className="robin-mobile-hamburger-btn" 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-                <span>MENU</span>
-              </button>
+              {/* Mobile Right Controls: Lang Switch + Hamburger */}
+              <div className="robin-nav-mobile-right">
+                <LangSwitchControl lang={lang} onToggle={handleLangSwitch} />
+                <button 
+                  className="robin-mobile-hamburger-btn" 
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                  <span>MENU</span>
+                </button>
+              </div>
             </nav>
 
             {/* SECTION 1: HERO & POSITIONING */}
@@ -1429,6 +1570,7 @@ export default function App() {
                     <span>FRAME: HERO_TITLE</span>
                   </div>
 
+                  <span className="sr-only">Sacca Dafia (Talesman) — Lead Product Designer &amp; Web Designer</span>
                   SACCA DAFIA
                 </div>
 
@@ -1445,13 +1587,13 @@ export default function App() {
 
               {/* Tagline with Circular Avatars */}
               <div className="robin-hero-tagline-wrapper">
-                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar" className="robin-avatar-circle robin-avatar-first" />
+                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Headshot" width="48" height="48" loading="lazy" decoding="async" className="robin-avatar-circle robin-avatar-first" />
                 <h1 className="robin-hero-tagline">
                   {lang === 'fr'
                     ? "Je conçois des produits numériques qui s'effacent pour laisser place à l'évidence."
                     : "I design software that gets out of your way."}
                 </h1>
-                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Avatar 2" className="robin-avatar-circle robin-avatar-second" />
+                <img src="/imgs/sacca_headshot.jpg" alt="Sacca Dafia Portrait" width="48" height="48" loading="lazy" decoding="async" className="robin-avatar-circle robin-avatar-second" />
               </div>
 
               {/* Hand-Drawn Pencil Sketch Scroll Down Indicator */}
@@ -1892,9 +2034,9 @@ export default function App() {
                   </div>
 
                   <div className="robin-timeline-header">
-                    <div>
+                    <div className="robin-timeline-title-group">
                       <span className="robin-timeline-company">CACTUCE</span>
-                      <span className="robin-timeline-role-badge" style={{ marginLeft: '12px' }}>Product Designer</span>
+                      <span className="robin-timeline-role-badge">Product Designer</span>
                     </div>
                     <span className="robin-timeline-date">OCT 2025 — MAY 2026</span>
                   </div>
@@ -1941,9 +2083,9 @@ export default function App() {
                   </div>
 
                   <div className="robin-timeline-header">
-                    <div>
+                    <div className="robin-timeline-title-group">
                       <span className="robin-timeline-company">TRELLIX</span>
-                      <span className="robin-timeline-role-badge" style={{ background: '#93C5FD', color: '#121212', marginLeft: '12px' }}>
+                      <span className="robin-timeline-role-badge" style={{ background: '#93C5FD', color: '#121212' }}>
                         Lead Product Designer
                       </span>
                     </div>
@@ -1992,9 +2134,9 @@ export default function App() {
                   </div>
 
                   <div className="robin-timeline-header">
-                    <div>
+                    <div className="robin-timeline-title-group">
                       <span className="robin-timeline-company">CREAFIX</span>
-                      <span className="robin-timeline-role-badge" style={{ background: '#A7F3D0', color: '#121212', marginLeft: '12px' }}>
+                      <span className="robin-timeline-role-badge" style={{ background: '#A7F3D0', color: '#121212' }}>
                         Web Designer
                       </span>
                     </div>

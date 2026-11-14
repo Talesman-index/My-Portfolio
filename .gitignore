@@ -11,3 +11,8 @@ node_modules/
 # Astro / Vite cache
 .astro/
 .vite/
+
+# Playwright & test artifacts
+.playwright-mcp/
+mobile_before.png
+
